@@ -1,0 +1,15 @@
+{
+	"name": "scraperService",
+	"description": "Node.js scraper service for Open Graph info",
+	"version": "1.0.0",
+	"author": {
+		"name": "Josh Shemas"
+	},
+	"dependencies": {
+		"express": "3.3.7",
+		"request": "2.27.0",
+		"cheerio": "0.12.1",
+		"supertest": "0.7.0",
+		"expect.js": "0.2.0"
+	}
+}
