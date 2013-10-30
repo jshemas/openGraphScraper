@@ -1,8 +1,8 @@
 var request = require('request'),
 	cheerio = require('cheerio');
 
-module.exports = function(url, callback){
-	exports.getInfo(url, function(err,results){
+module.exports = function(options, callback){
+	exports.getInfo(options, function(err,results){
 		callback(err,results);
 	});
 };
@@ -12,13 +12,13 @@ module.exports = function(url, callback){
  * @param string url - user input of url
  * @param function callback
  */
-exports.getInfo = function(url, callback){
+exports.getInfo = function(options, callback){
 	var error = null, returnResule = {};
 	that = this;
-	this.validateVar(url, function(results){
+	this.validateVar(options.url, function(results){
 		if(results && results == true){
-			url = that.validateUrl(url);
-			that.getOG(url, function(err, results) {
+			options.url = that.validateUrl(options.url);
+			that.getOG(options.url, function(err, results) {
 				if(results && results.success){
 					returnResule = {
 						data: results,
@@ -80,8 +80,8 @@ exports.validateUrl = function(inputUrl) {
  * @param string url - the url we want to scrape
  * @param function callback
  */
-exports.getOG = function(url, callback) {
-	request(url, function(err, response, body) {
+exports.getOG = function(options, callback) {
+	request(options, function(err, response, body) {
 		if(err){
 			callback(err, null);
 		} else {

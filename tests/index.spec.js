@@ -3,73 +3,89 @@ var app = require('../app'),
 	expect = require('expect.js');
 
 //test url - this has alot of OG info
-var url1 = "http://ogp.me/";
+var options1 = {
+	'url':'http://ogp.me/'
+};
 
 //test url formats
-var	url2 = "http://www.google.com/",
-	url3 = "https://www.google.com/",
-	url4 = "www.google.com/",
-	url5 = "google.com/",
-	url6 = "http://google.com/";
+var	options2 = {
+		'url':'http://www.google.com/'
+	},
+	options3 = {
+		'url':'https://www.google.com/'
+	},
+	options4 = {
+		'url':'www.google.com/'
+	},
+	options5 = {
+		'url':'google.com/'
+	},
+	options6 = {
+		'url':'http://google.com/'
+	};
 
 //invaild url
-var url7 = "http://testtesttest45656465.com";
+var options7 = {
+	'url':'http://testtesttest45656468.com'
+};
 
 //empty value 
-var empty = '';
+var optionsEmpty = {
+	'url':''
+};
 
 describe('GET - GET OG', function (done) {
 	it('Valid call og - url1', function(done) {
-		app(url1, function(err, result){
+		app(options1, function(err, result){
 			expect(err).to.be(null);
 			expect(result.success).to.be(true);
 			done();
 		});
 	});
 	it('Valid call og - url2', function(done) {
-		app(url2, function(err, result){
+		app(options2, function(err, result){
 			expect(err).to.be(null);
 			expect(result.success).to.be(true);
 			done();
 		});
 	});
 	it('Valid call og - url3', function(done) {
-		app(url3, function(err, result){
+		app(options3, function(err, result){
 			expect(err).to.be(null);
 			expect(result.success).to.be(true);
 			done();
 		});
 	});
 	it('Valid call og - url4', function(done) {
-		app(url4, function(err, result){
+		app(options4, function(err, result){
 			expect(err).to.be(null);
 			expect(result.success).to.be(true);
 			done();
 		});
 	});
 	it('Valid call og - url5', function(done) {
-		app(url5, function(err, result){
+		app(options5, function(err, result){
 			expect(err).to.be(null);
 			expect(result.success).to.be(true);
 			done();
 		});
 	});
 	it('Valid call og - url6', function(done) {
-		app(url6, function(err, result){
+		app(options6, function(err, result){
 			expect(err).to.be(null);
 			expect(result.success).to.be(true);
 			done();
 		});
 	});
 	it('Invalid call og - url7', function(done) {
-		app(url7, function(err, result){
+		app(options7, function(err, result){
 			expect(result.err).to.be('Page Not Found');
 			expect(result.success).to.be(false);
 			done();
 		});
 	});
 	it('Invalid get og - empty', function(done) {
-		app(empty, function(err, result){
+		app(optionsEmpty, function(err, result){
 			expect(result.err).to.be('Invalid URL');
 			expect(result.success).to.be(false);
 			done();
