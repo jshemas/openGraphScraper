@@ -1,15 +1,32 @@
 {
-	"name": "scraperService",
+	"name": "openGraphScraper",
 	"description": "Node.js scraper service for Open Graph info",
 	"version": "1.0.0",
+	"license": "MIT",
+	"main": "app.js",
 	"author": {
 		"name": "Josh Shemas"
 	},
 	"dependencies": {
-		"express": "3.3.7",
 		"request": "2.27.0",
-		"cheerio": "0.12.1",
-		"supertest": "0.7.0",
-		"expect.js": "0.2.0"
-	}
+		"cheerio": "0.12.3"
+	},
+	"devDependencies": {
+		"supertest": "0.8.1",
+		"expect.js": "0.2.0",
+		"mocha": "1.13.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/jshemas/openGraphScraper.git",
+		"web" : "http://github.com/jshemas/openGraphScraper"
+	},
+	"keywords": [
+		"open graph",
+		"scraper",
+		"open",
+		"graph",
+		"opengraph",
+		"og"
+	]
 }
