@@ -15,10 +15,11 @@ module.exports = function(options, callback){
 exports.getInfo = function(options, callback){
 	var error = null, returnResule = {};
 	that = this;
-	this.validateVar(options.url, function(results){
-		if(results && results == true){
-			options.url = that.validateUrl(options.url);
-			that.getOG(options.url, function(err, results) {
+	this.validateVars(options.url, options.timeout, function(inputUrlFlag, inputUrl, inputTimeoutFlag, inputTimeout){
+		if(inputUrlFlag && inputUrlFlag == true && inputTimeoutFlag && inputTimeoutFlag ==true){
+			options.url = inputUrl;
+			options.timeout = inputTimeout;
+			that.getOG(options, function(err, results) {
 				if(results && results.success){
 					returnResule = {
 						data: results,
@@ -34,7 +35,7 @@ exports.getInfo = function(options, callback){
 					}else{
 						error = 'err';
 						returnResule = {
-							err: results,
+							err: 'Page Not Found',
 							success: false
 						};
 					}
@@ -55,12 +56,28 @@ exports.getInfo = function(options, callback){
  * @param string var - user input
  * @param function callback
  */
-exports.validateVar = function(inputVar, callback) {
-	if ( inputVar == null || inputVar.length < 1 || typeof inputVar === 'undefined' || !inputVar) {
-		callback(false);
+exports.validateVars = function(inputUrl, inputTimeout, callback) {
+	var returnInputUrl,returnInputUrlFlag,returnInputTimeout,returnInputTimeoutFlag;
+	if ( inputUrl == null || inputUrl.length < 1 || typeof inputUrl === 'undefined' || !inputUrl) {
+		returnInputUrlFlag = false;
+		returnInputUrl = '';
 	} else {
-		callback(true);
+		returnInputUrlFlag = true;
+		returnInputUrl = this.validateUrl(inputUrl)
 	};
+	if ( inputTimeout == null || inputTimeout.length < 1 || typeof inputTimeout === 'undefined' || !inputTimeout) {
+		returnInputTimeoutFlag = true;
+		returnInputTimeout = 2000; //time default to 2000ms
+	} else {
+		if(this.validateTimeout(inputTimeout)){
+			returnInputTimeoutFlag = true;
+			returnInputTimeout = inputTimeout;
+		} else {
+			eturnInputTimeoutFlag = true;
+			returnInputTimeout = 2000; //time default to 2000ms
+		}
+	};
+	callback(returnInputUrlFlag, returnInputUrl, returnInputTimeoutFlag, returnInputTimeout)
 };
 
 /*
@@ -70,9 +87,21 @@ exports.validateVar = function(inputVar, callback) {
  */
 exports.validateUrl = function(inputUrl) {
 	if(!/^(f|ht)tps?:\/\//i.test(inputUrl)) {
-      inputUrl = "http://" + inputUrl;
-   };
-   return inputUrl;
+		inputUrl = "http://" + inputUrl;
+	};
+	return inputUrl;
+};
+
+/*
+ * validate timeout - how long should we wait for a request
+ * @param number var - the time we want to wait
+ * @param function callback
+ */
+exports.validateTimeout = function(inputTimeout) {
+	if(!/^\d{1,10}$/test(inputUrl)) {
+		return false;
+	};
+	return true;
 };
 
 /*

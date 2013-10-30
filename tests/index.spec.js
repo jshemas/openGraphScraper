@@ -1,5 +1,4 @@
-var app = require('../app'), 
-	request = require('supertest'),
+var app = require('../app'),
 	expect = require('expect.js');
 
 //test url - this has alot of OG info
@@ -26,7 +25,7 @@ var	options2 = {
 
 //invaild url
 var options7 = {
-	'url':'http://testtesttest45656468.com'
+	'url':'http://testtesttest4564468.com'
 };
 
 //empty value 
@@ -34,7 +33,11 @@ var optionsEmpty = {
 	'url':''
 };
 
-describe('GET - GET OG', function (done) {
+//no url
+var optionsNoUrl = { };
+
+describe('GET OG', function (done) {
+	this.timeout(3000); //shoudl wait atleast 3secs before failing
 	it('Valid call og - url1', function(done) {
 		app(options1, function(err, result){
 			expect(err).to.be(null);
@@ -84,8 +87,15 @@ describe('GET - GET OG', function (done) {
 			done();
 		});
 	});
-	it('Invalid get og - empty', function(done) {
+	it('Invalid get og - empty url', function(done) {
 		app(optionsEmpty, function(err, result){
+			expect(result.err).to.be('Invalid URL');
+			expect(result.success).to.be(false);
+			done();
+		});
+	});
+	it('Invalid get og - no url', function(done) {
+		app(optionsNoUrl, function(err, result){
 			expect(result.err).to.be('Invalid URL');
 			expect(result.success).to.be(false);
 			done();
