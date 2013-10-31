@@ -1,7 +1,7 @@
 {
-	"name": "openGraphScraper",
+	"name": "open-graph-scraper",
 	"description": "Node.js scraper service for Open Graph info",
-	"version": "1.0.0",
+	"version": "0.9.0",
 	"license": "MIT",
 	"main": "app.js",
 	"author": {
