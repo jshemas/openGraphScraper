@@ -1,26 +1,35 @@
-scraperService
+openGraphScraper
 ==============
+[![Build Status](https://travis-ci.org/jshemas/openGraphScraper.png?branch=master)](https://travis-ci.org/jshemas/openGraphScraper)
 
-A simple web service for scraping Open Graph info off a site.
+A simple node module for scraping Open Graph info off a site.
 
 ### Installation
-You need to have Node.js(v0.10.10) running.
-
 ```
-npm install
-node app
+npm install open-graph-scraper
 ```
 
-### Return JSON
-The return JSON should always have a status code of 200. Check the return for a ```success``` flag. 
-If success is set to true, then the url input was valid. Otherwise it will be set to false.
-
-Valid GET Open Graph info call
+### Usage
 ```
-http://localhost:8080/getOG?url=http://ogp.me/
+var ogs = require('open-graph-scraper');
+var options = {'url':'http://ogp.me/'};
+ogs(options, function(err, results) {
+	console.log("err:",err);
+	console.log("results:",results);
+});
+```
+You can also set a timeout flag like...
+```
+var ogs = require('open-graph-scraper');
+var options = {'url':'http://ogp.me/','timeout':'2000'};
+ogs(options, function(err, results) {
+	console.log("err:",err);
+	console.log("results:",results);
+});
 ```
 
-This will return something like...
+### Resulte JSON
+Check the return for a ```success``` flag. If success is set to true, then the url input was valid. Otherwise it will be set to false. The above eample will return something like...
 ```
 {
   data: {
@@ -34,20 +43,24 @@ This will return something like...
 }
 ```
 
-
 ### Tests
-You have to have jasmine-node running. To install it run...
+You have to have mocha running. To install it run...
 ```
-npm install jasmine-node -g
+npm install mocha -g
 ```
 Then you can run the tests by turning on the server and run...
 ```
-jasmine-node spec/
+mocha spec/
+```
+
+### Make
+This will install the all of the dependencies, then run the tests
+```
+make test
 ```
 
 ### TODO
 -Get more info from url(s) like title tags and more images
-
 
 ## License
 
