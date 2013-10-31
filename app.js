@@ -16,7 +16,7 @@ exports.getInfo = function(options, callback){
 	var error = null, returnResule = {};
 	that = this;
 	this.validateVars(options.url, options.timeout, function(inputUrlFlag, inputUrl, inputTimeoutFlag, inputTimeout){
-		if(inputUrlFlag && inputUrlFlag == true && inputTimeoutFlag && inputTimeoutFlag ==true){
+		if(inputUrlFlag && inputUrlFlag == true && inputTimeoutFlag && inputTimeoutFlag == true){
 			options.url = inputUrl;
 			options.timeout = inputTimeout;
 			that.getOG(options, function(err, results) {
@@ -26,10 +26,16 @@ exports.getInfo = function(options, callback){
 						success: true
 					};
 				}else{
-					if(err && err.code == 'ENOTFOUND'){
+					if(err && (err.code == 'ENOTFOUND' || err.code == 'EHOSTUNREACH')){
 						error = 'err';
 						returnResule = {
 							err: 'Page Not Found',
+							success: false
+						};
+					} else if(err && err.code == 'ETIMEDOUT'){
+						error = 'err';
+						returnResule = {
+							err: 'Time Out',
 							success: false
 						};
 					}else{
@@ -73,7 +79,7 @@ exports.validateVars = function(inputUrl, inputTimeout, callback) {
 			returnInputTimeoutFlag = true;
 			returnInputTimeout = inputTimeout;
 		} else {
-			eturnInputTimeoutFlag = true;
+			returnInputTimeoutFlag = true;
 			returnInputTimeout = 2000; //time default to 2000ms
 		}
 	};
@@ -98,7 +104,7 @@ exports.validateUrl = function(inputUrl) {
  * @param function callback
  */
 exports.validateTimeout = function(inputTimeout) {
-	if(!/^\d{1,10}$/test(inputUrl)) {
+	if(!/^\d{1,10}$/.test(inputTimeout)) {
 		return false;
 	};
 	return true;

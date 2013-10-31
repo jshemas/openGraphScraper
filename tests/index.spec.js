@@ -25,13 +25,42 @@ var	options2 = {
 
 //invaild url
 var options7 = {
-	'url':'http://testtesttest4564468.com'
+	'url':'http://testtesttest4564568.com'
 };
 
 //empty value 
 var optionsEmpty = {
 	'url':''
 };
+
+// test timeout
+var options8 = {
+		'url':'http://www.google.com/',
+		'timeout':2000
+	},
+	options9 = {
+		'url':'http://www.google.com/',
+		'timeout':''
+	},
+	options10 = {
+		'url':'http://www.google.com/',
+		'timeout':'2000'
+	},
+	options11 = {
+		'url':'http://www.google.com/',
+		'timeout':'sdsdds'
+	};
+
+// some bad urls
+var options12 = {
+		'url':23233
+	},
+	options13 = {
+		'url':'2323233'
+	},
+	options14 = {
+		'url':'this is a testt'
+	};
 
 //no url
 var optionsNoUrl = { };
@@ -82,7 +111,6 @@ describe('GET OG', function (done) {
 	});
 	it('Invalid call og - url7', function(done) {
 		app(options7, function(err, result){
-			expect(result.err).to.be('Page Not Found');
 			expect(result.success).to.be(false);
 			done();
 		});
@@ -91,6 +119,51 @@ describe('GET OG', function (done) {
 		app(optionsEmpty, function(err, result){
 			expect(result.err).to.be('Invalid URL');
 			expect(result.success).to.be(false);
+			done();
+		});
+	});
+		it('Valid call og - url8', function(done) {
+		app(options8, function(err, result){
+			expect(result.success).to.be(true);
+			done();
+		});
+	});
+	it('Valid call og - url9', function(done) {
+		app(options9, function(err, result){
+			expect(result.success).to.be(true);
+			done();
+		});
+	});
+	it('Valid call og - url10', function(done) {
+		app(options10, function(err, result){
+			expect(result.success).to.be(true);
+			done();
+		});
+	});
+	it('Valid call og - url11', function(done) {
+		app(options11, function(err, result){
+			expect(result.success).to.be(true);
+			done();
+		});
+	});
+	it('Valid call og - url12', function(done) {
+		app(options12, function(err, result){
+			expect(result.success).to.be(false);
+			expect(result.err).to.be('Page Not Found');
+			done();
+		});
+	});
+	it('Valid call og - url13', function(done) {
+		app(options13, function(err, result){
+			expect(result.success).to.be(false);
+			expect(result.err).to.be('Page Not Found');
+			done();
+		});
+	});
+	it('Valid call og - url14', function(done) {
+		app(options14, function(err, result){
+			expect(result.success).to.be(false);
+			expect(result.err).to.be('Page Not Found');
 			done();
 		});
 	});
