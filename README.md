@@ -50,7 +50,7 @@ npm install mocha -g
 ```
 Then you can run the tests by turning on the server and run...
 ```
-mocha spec/
+mocha tests/
 ```
 
 ### Make
