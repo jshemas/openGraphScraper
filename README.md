@@ -28,7 +28,7 @@ ogs(options, function(err, results) {
 });
 ```
 
-### Resulte JSON
+### Result JSON
 Check the return for a ```success``` flag. If success is set to true, then the url input was valid. Otherwise it will be set to false. The above eample will return something like...
 ```
 {
