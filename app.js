@@ -1,5 +1,6 @@
 var request = require('request'),
-	cheerio = require('cheerio');
+	cheerio = require('cheerio'),
+	_ = require('lodash');
 
 module.exports = function(options, callback){
 	exports.getInfo(options, function(err,results){
@@ -8,57 +9,100 @@ module.exports = function(options, callback){
 };
 
 var fieldsArray = [{
+    multiple: false,
     property: 'og:title',
     fieldName: 'ogTitle'
 }, {
+    multiple: false,
     property: 'og:type',
     fieldName: 'ogType'
 }, {
+    multiple: true,
     property: 'og:image',
     fieldName: 'ogImage'
 }, {
+    multiple: true,
     property: 'og:image:width',
     fieldName: 'ogImageWidth'
 }, {
+    multiple: true,
     property: 'og:image:height',
     fieldName: 'ogImageHeight'
 }, {
+    multiple: true,
     property: 'og:image:type',
     fieldName: 'ogImageType'
 }, {
+    multiple: false,
     property: 'og:url',
     fieldName: 'ogUrl'
 }, {
+    multiple: false,
     property: 'og:audio',
     fieldName: 'ogAudio'
 }, {
+    multiple: false,
     property: 'og:description',
     fieldName: 'ogDescription'
 }, {
+    multiple: false,
     property: 'og:determiner',
     fieldName: 'ogDeterminer'
 }, {
+    multiple: false,
     property: 'og:locale',
     fieldName: 'ogLocale'
 }, {
+    multiple: false,
     property: 'og:locale:alternate',
     fieldName: 'ogLocaleAlternate'
 }, {
+    multiple: false,
     property: 'og:site_name',
     fieldName: 'ogSiteName'
 }, {
+    multiple: true,
     property: 'og:video',
     fieldName: 'ogVideo'
 }, {
+    multiple: true,
     property: 'og:video:width',
     fieldName: 'ogVideoWidth'
 }, {
+    multiple: true,
     property: 'og:video:height',
     fieldName: 'ogVideoHeight'
 }, {
+    multiple: true,
     property: 'og:video:type',
     fieldName: 'ogVideoType'
 }];
+
+var mediaMapper = function(item) {
+    return {
+        url: item[0],
+        width: item[1],
+        height: item[2],
+        type: item[3]
+    }
+};
+
+var mediaSorter = function(a, b) {
+    if (!(a.url && b.url))
+        return 0;
+
+    var aRes = a.url.match(/\.(\w{2,5})$/),
+        aExt = (aRes && aRes[1].toLowerCase()) || null;
+    var bRes = b.url.match(/\.(\w{2,5})$/),
+        bExt = (bRes && bRes[1].toLowerCase()) || null;
+
+    if (aExt == 'gif' && bExt != 'gif')
+        return -1;
+    else if (aExt != 'gif' && bExt == 'gif')
+        return 1;
+    else
+        return Math.max(b.width, b.height) - Math.max(a.width, a.height);
+};
 
 /*
  * get info
@@ -189,10 +233,47 @@ exports.getOG = function(options, callback) {
 				content = meta[key].attribs.content;
 
 				fieldsArray.forEach(function(item){
-					if (property === item.property)
-						ogObject[item.fieldName] = content;
+					if (property === item.property){
+						if(!item.multiple)
+							ogObject[item.fieldName] = content;
+						else if(!ogObject[item.fieldName])
+							ogObject[item.fieldName] = [content];
+						else if(Array.isArray(ogObject[item.fieldName]))
+							ogObject[item.fieldName].push(content);
+					};
 				});
 			});
+
+			/* Combine image/width/height/type
+				and sort for priority */
+			var ogImages = _.zip(ogObject.ogImage,
+					ogObject.ogImageWidth,
+					ogObject.ogImageHeight,
+					ogObject.ogImageType)
+				.map(mediaMapper).sort(mediaSorter);
+
+			/* Combine video/width/height/type
+				and sort for priority */
+			var ogVideos = _.zip(ogObject.ogVideo,
+					ogObject.ogVideoWidth,
+					ogObject.ogVideoHeight,
+					ogObject.ogVideoType)
+				.map(mediaMapper).sort(mediaSorter);
+
+			// Delete temporary fields
+			fieldsArray.filter(function(item){
+				return item.multiple;
+			}).forEach(function(item) {
+				delete ogObject[item.fieldName];
+			});
+
+			// Select the best image
+			if (ogImages.length)
+				ogObject.ogImage = ogImages[0];
+
+			// Select the best video
+			if (ogVideos.length)
+				ogObject.ogVideo = ogVideos[0];
 
 			//example of how to get the title tag
 			// $('title').map(function(i, info) {
