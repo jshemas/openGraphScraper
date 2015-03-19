@@ -7,6 +7,59 @@ module.exports = function(options, callback){
 	});
 };
 
+var fieldsArray = [{
+    property: 'og:title',
+    fieldName: 'ogTitle'
+}, {
+    property: 'og:type',
+    fieldName: 'ogType'
+}, {
+    property: 'og:image',
+    fieldName: 'ogImage'
+}, {
+    property: 'og:image:width',
+    fieldName: 'ogImageWidth'
+}, {
+    property: 'og:image:height',
+    fieldName: 'ogImageHeight'
+}, {
+    property: 'og:image:type',
+    fieldName: 'ogImageType'
+}, {
+    property: 'og:url',
+    fieldName: 'ogUrl'
+}, {
+    property: 'og:audio',
+    fieldName: 'ogAudio'
+}, {
+    property: 'og:description',
+    fieldName: 'ogDescription'
+}, {
+    property: 'og:determiner',
+    fieldName: 'ogDeterminer'
+}, {
+    property: 'og:locale',
+    fieldName: 'ogLocale'
+}, {
+    property: 'og:locale:alternate',
+    fieldName: 'ogLocaleAlternate'
+}, {
+    property: 'og:site_name',
+    fieldName: 'ogSiteName'
+}, {
+    property: 'og:video',
+    fieldName: 'ogVideo'
+}, {
+    property: 'og:video:width',
+    fieldName: 'ogVideoWidth'
+}, {
+    property: 'og:video:height',
+    fieldName: 'ogVideoHeight'
+}, {
+    property: 'og:video:type',
+    fieldName: 'ogVideoType'
+}];
+
 /*
  * get info
  * @param string url - user input of url
@@ -129,41 +182,19 @@ exports.getOG = function(options, callback) {
 			ogObject.success = 'true';
 
 			keys.forEach(function(key){
-				if(meta[key].attribs && meta[key].attribs.property && meta[key].attribs.property === 'og:title'){
-					ogObject.ogTitle = meta[key].attribs.content;
-				};
-				if(meta[key].attribs && meta[key].attribs.property && meta[key].attribs.property === 'og:type'){
-					ogObject.ogType = meta[key].attribs.content;
-				};
-				if(meta[key].attribs && meta[key].attribs.property && meta[key].attribs.property === 'og:image'){
-					ogObject.ogImage = meta[key].attribs.content;
-				};
-				if(meta[key].attribs && meta[key].attribs.property && meta[key].attribs.property === 'og:url'){
-					ogObject.ogUrl = meta[key].attribs.content;
-				};
-				if(meta[key].attribs && meta[key].attribs.property && meta[key].attribs.property === 'og:audio'){
-					ogObject.ogAudio = meta[key].attribs.content;
-				};
-				if(meta[key].attribs && meta[key].attribs.property && meta[key].attribs.property === 'og:description'){
-					ogObject.ogDescription = meta[key].attribs.content;
-				};
-				if(meta[key].attribs && meta[key].attribs.property && meta[key].attribs.property === 'og:determiner'){
-					ogObject.ogDeterminer = meta[key].attribs.content;
-				};
-				if(meta[key].attribs && meta[key].attribs.property && meta[key].attribs.property === 'og:locale'){
-					ogObject.ogLocale = meta[key].attribs.content;
-				};
-				if(meta[key].attribs && meta[key].attribs.property && meta[key].attribs.property === 'og:locale:alternate'){
-					ogObject.ogLocaleAlternate = meta[key].attribs.content;
-				};
-				if(meta[key].attribs && meta[key].attribs.property && meta[key].attribs.property === 'og:site_name'){
-					ogObject.ogSiteName = meta[key].attribs.content;
-				};
-				if(meta[key].attribs && meta[key].attribs.property && meta[key].attribs.property === 'og:video'){
-					ogObject.ogVideo = meta[key].attribs.content;
-				};
+				if(!(meta[key].attribs && meta[key].attribs.property))
+					return;
+
+				var property = meta[key].attribs.property,
+				content = meta[key].attribs.content;
+
+				fieldsArray.forEach(function(item){
+					if (property === item.property)
+						ogObject[item.fieldName] = content;
+				});
 			});
-			//example of how to get the title tag 
+
+			//example of how to get the title tag
 			// $('title').map(function(i, info) {
 			// 	console.log('title:',info.children[0].data);
 			// });
