@@ -36,7 +36,12 @@ Check the return for a ```success``` flag. If success is set to true, then the u
     ogTitle: "Open Graph protocol"
     ogType: "website"
     ogUrl: "http://ogp.me/"
-    ogImage: "http://ogp.me/logo.png"
+    ogImage: {
+      url: "http://ogp.me/logo.png"
+      width: 100
+      height: 100
+      type: 'image/jpeg'
+    }
     ogDescription: "The Open Graph protocol enables any web page to become a rich object in a social graph."
   }
   success: true
