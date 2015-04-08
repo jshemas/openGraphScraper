@@ -1,7 +1,7 @@
 {
 	"name": "open-graph-scraper",
 	"description": "Node.js scraper service for Open Graph info",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "MIT",
 	"main": "app.js",
 	"author": {
@@ -10,13 +10,13 @@
 		"url" : "https://github.com/jshemas"
 	},
 	"dependencies": {
-		"request": "2.34.0",
-		"lodash": "3.5.0",
-		"cheerio": "0.15.0"
+		"request": "2.55.0",
+		"lodash": "3.6.0",
+		"cheerio": "0.19.0"
 	},
 	"devDependencies": {
 		"expect.js": "0.3.1",
-		"mocha": "1.18.2"
+		"mocha": "2.2.4"
 	},
 	"repository": {
 		"type": "git",
