@@ -28,7 +28,7 @@ var options7 = {
 	'url':'http://testtesttest4564568.com'
 };
 
-//empty value 
+//empty value
 var optionsEmpty = {
 	'url':''
 };

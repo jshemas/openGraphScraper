@@ -168,7 +168,7 @@ exports.validateVars = function(inputUrl, inputTimeout, callback) {
 		returnInputUrlFlag = true;
 		returnInputUrl = this.validateUrl(inputUrl)
 	};
-	if ( inputTimeout == null || inputTimeout.length < 1 || typeof inputTimeout === 'undefined' || !inputTimeout) {
+	if ( inputTimeout == null || inputTimeout.length < 1 || typeof inputTimeout === 'undefined' || !inputTimeout || typeof inputTimeout !== 'number' ) {
 		returnInputTimeoutFlag = true;
 		returnInputTimeout = 2000; //time default to 2000ms
 	} else {
