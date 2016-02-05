@@ -245,9 +245,6 @@ exports.getOG = function (options, callback) {
 				keys = Object.keys(meta),
 				ogObject = {};
 
-			//able to get og info
-			ogObject.success = 'true';
-
 			keys.forEach(function (key) {
 				if (!(meta[key].attribs && meta[key].attribs.property)) {
 					return;
