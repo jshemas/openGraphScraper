@@ -61,6 +61,21 @@ var fieldsArray = [
 	},
 	{
 		multiple: false,
+		property: 'og:audio:url',
+		fieldName: 'ogAudioURL'
+	},
+	{
+		multiple: false,
+		property: 'og:audio:secure_url',
+		fieldName: 'ogAudioSecureURL'
+	},
+	{
+		multiple: false,
+		property: 'og:audio:type',
+		fieldName: 'ogAudioType'
+	},
+	{
+		multiple: false,
 		property: 'og:description',
 		fieldName: 'ogDescription'
 	},
