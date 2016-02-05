@@ -14,17 +14,17 @@ npm install open-graph-scraper
 var ogs = require('open-graph-scraper');
 var options = {'url':'http://ogp.me/'};
 ogs(options, function(err, results) {
-	console.log("err:",err);
-	console.log("results:",results);
+	console.log("err:", err);
+	console.log("results:", results);
 });
 ```
 You can also set a timeout flag like...
 ```
 var ogs = require('open-graph-scraper');
-var options = {'url':'http://ogp.me/','timeout':'2000'};
+var options = {'url':'http://ogp.me/', 'timeout':2000};
 ogs(options, function(err, results) {
-	console.log("err:",err);
-	console.log("results:",results);
+	console.log("err:", err);
+	console.log("results:", results);
 });
 ```
 
@@ -44,7 +44,6 @@ Check the return for a ```success``` flag. If success is set to true, then the u
     }
     ogDescription: "The Open Graph protocol enables any web page to become a rich object in a social graph."
   }
-  success: true
 }
 ```
 
