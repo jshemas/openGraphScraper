@@ -130,33 +130,34 @@ var mediaSorter = function (a, b) {
  * @param function callback
  */
 exports.getInfo = function (options, callback) {
-	var error = null, returnResult = {},
+	var error = false,
+		returnResult = {},
 		that = this;
 	this.validateVars(options.url, options.timeout, function (inputUrlFlag, inputUrl, inputTimeoutFlag, inputTimeout) {
 		if (inputUrlFlag && inputUrlFlag === true && inputTimeoutFlag && inputTimeoutFlag === true) {
 			options.url = inputUrl;
 			options.timeout = inputTimeout;
 			that.getOG(options, function (err, results) {
-				if (results && results.success) {
+				if (results) {
 					returnResult = {
 						data: results,
 						success: true
 					};
 				} else {
 					if (err && (err.code === 'ENOTFOUND' || err.code === 'EHOSTUNREACH')) {
-						error = 'err';
+						error = true;
 						returnResult = {
 							err: 'Page Not Found',
 							success: false
 						};
 					} else if (err && err.code === 'ETIMEDOUT') {
-						error = 'err';
+						error = true;
 						returnResult = {
 							err: 'Time Out',
 							success: false
 						};
 					} else {
-						error = 'err';
+						error = true;
 						returnResult = {
 							err: 'Page Not Found',
 							success: false
@@ -166,7 +167,7 @@ exports.getInfo = function (options, callback) {
 				callback(error, returnResult);
 			});
 		} else {
-			callback('err', {
+			callback(true, {
 				success: false,
 				err: 'Invalid URL'
 			});
