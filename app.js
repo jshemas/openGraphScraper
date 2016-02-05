@@ -26,6 +26,16 @@ var fieldsArray = [
 	},
 	{
 		multiple: true,
+		property: 'og:image:url',
+		fieldName: 'ogImageURL'
+	},
+	{
+		multiple: true,
+		property: 'og:image:secure_url',
+		fieldName: 'ogImageSecureURL'
+	},
+	{
+		multiple: true,
 		property: 'og:image:width',
 		fieldName: 'ogImageWidth'
 	},
@@ -81,6 +91,16 @@ var fieldsArray = [
 	},
 	{
 		multiple: true,
+		property: 'og:video:url',
+		fieldName: 'ogVideoURL'
+	},
+	{
+		multiple: true,
+		property: 'og:video:secure_url',
+		fieldName: 'ogVideoSecureURL'
+	},
+	{
+		multiple: true,
 		property: 'og:video:width',
 		fieldName: 'ogVideoWidth'
 	},
@@ -95,6 +115,7 @@ var fieldsArray = [
 		fieldName: 'ogVideoType'
 	}
 ];
+
 
 var mediaMapper = function (item) {
 	return {
