@@ -8,19 +8,19 @@ var options1 = {
 
 // test url formats
 var	options2 = {
-		'url': 'http://www.google.com/'
+		'url': 'http://www.wikipedia.org/'
 	},
 	options3 = {
-		'url': 'https://www.google.com/'
+		'url': 'https://www.wikipedia.org/'
 	},
 	options4 = {
-		'url': 'www.google.com/'
+		'url': 'www.wikipedia.org/'
 	},
 	options5 = {
-		'url': 'google.com/'
+		'url': 'wikipedia.org/'
 	},
 	options6 = {
-		'url': 'http://google.com/'
+		'url': 'http://wikipedia.org/'
 	};
 
 // invaild url
@@ -38,19 +38,19 @@ var optionsEmpty = { };
 
 // test timeout
 var options8 = {
-		'url': 'http://www.google.com/',
+		'url': 'http://www.wikipedia.org/',
 		'timeout': 2000
 	},
 	options9 = {
-		'url': 'http://www.google.com/',
+		'url': 'http://www.wikipedia.org/',
 		'timeout': ''
 	},
 	options10 = {
-		'url': 'http://www.google.com/',
+		'url': 'http://www.wikipedia.org/',
 		'timeout': '2000'
 	},
 	options11 = {
-		'url': 'http://www.google.com/',
+		'url': 'http://www.wikipedia.org/',
 		'timeout': 'sdsdds'
 	};
 
