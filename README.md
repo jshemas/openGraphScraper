@@ -12,19 +12,19 @@ npm install open-graph-scraper
 ### Usage
 ```
 var ogs = require('open-graph-scraper');
-var options = {'url':'http://ogp.me/'};
-ogs(options, function(err, results) {
-	console.log("err:", err);
-	console.log("results:", results);
+var options = {'url': 'http://ogp.me/'};
+ogs(options, function (err, results) {
+	console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object. 
+	console.log('results:', results);
 });
 ```
 You can also set a timeout flag like...
 ```
 var ogs = require('open-graph-scraper');
-var options = {'url':'http://ogp.me/', 'timeout':2000};
-ogs(options, function(err, results) {
-	console.log("err:", err);
-	console.log("results:", results);
+var options = {'url': 'http://ogp.me/', 'timeout': 4000};
+ogs(options, function (err, results) {
+	console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object. 
+	console.log('results:', results);
 });
 ```
 
@@ -32,18 +32,19 @@ ogs(options, function(err, results) {
 Check the return for a ```success``` flag. If success is set to true, then the url input was valid. Otherwise it will be set to false. The above eample will return something like...
 ```
 {
-  data: {
-    ogTitle: "Open Graph protocol"
-    ogType: "website"
-    ogUrl: "http://ogp.me/"
-    ogImage: {
-      url: "http://ogp.me/logo.png"
-      width: 100
-      height: 100
-      type: 'image/jpeg'
-    }
-    ogDescription: "The Open Graph protocol enables any web page to become a rich object in a social graph."
-  }
+	data: {
+		ogTitle: 'Open Graph protocol',
+		ogType: 'website',
+		ogUrl: 'http://ogp.me/',
+		ogDescription: 'The Open Graph protocol enables any web page to become a rich object in a social graph.',
+		ogImage: {
+			url: 'http://ogp.me/logo.png',
+			width: '300',
+			height: '300',
+			type: 'image/png'
+		}
+	},
+	success: true
 }
 ```
 
@@ -62,6 +63,3 @@ This will install the all of the dependencies, then run the tests
 ```
 make test
 ```
-
-### TODO
--Get more info from url(s) like title tags and more images
