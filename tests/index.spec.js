@@ -65,6 +65,12 @@ var options12 = {
 		'url': 'this is a testt'
 	};
 
+// test video
+var optionsYoutube = {
+		'url': "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+	};
+
+
 describe('GET OG', function () {
 	this.timeout(3000); // should wait at least three seconds before failing
 	it('Valid Call - ogp.me should return open graph data', function (done) {
@@ -202,4 +208,19 @@ describe('GET OG', function () {
 			done();
 		});
 	});
+        it('Test Youtube Video - Should Return correct Open Graph Info', function (done) {
+		app(optionsYoutube, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.ogTitle).to.be('Rick Astley - Never Gonna Give You Up');
+			expect(result.data.ogType).to.be('video');
+			expect(result.data.ogUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+			expect(result.data.ogDescription).to.be('Music video by Rick Astley performing Never Gonna Give You Up. YouTube view counts pre-VEVO: 2,573,462 (C) 1987 PWL');
+			expect(result.data.ogImage.url).to.be('https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');
+			expect(result.data.ogVideo.type).to.be('text/html');
+			expect(result.data.ogVideo.width).to.be('480');
+			expect(result.data.ogVideo.height).to.be('360');
+			done();
+		});
+        });
 });
