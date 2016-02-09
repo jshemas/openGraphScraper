@@ -67,9 +67,13 @@ var options12 = {
 
 // test video
 var optionsYoutube = {
-		'url': "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+		'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 	};
 
+// test image
+var optionsFlickr = {
+		'url': 'https://www.flickr.com/photos/travelgraph/18791678505/in/gallery-flickr-72157663638192642/'
+	};
 
 describe('GET OG', function () {
 	this.timeout(3000); // should wait at least three seconds before failing
@@ -208,19 +212,34 @@ describe('GET OG', function () {
 			done();
 		});
 	});
-        it('Test Youtube Video - Should Return correct Open Graph Info', function (done) {
+	it('Valid Call - Test Youtube Video - Should Return correct Open Graph Info', function (done) {
 		app(optionsYoutube, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
+			expect(result.data.ogSiteName).to.be('YouTube');
 			expect(result.data.ogTitle).to.be('Rick Astley - Never Gonna Give You Up');
-			expect(result.data.ogType).to.be('video');
 			expect(result.data.ogUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 			expect(result.data.ogDescription).to.be('Music video by Rick Astley performing Never Gonna Give You Up. YouTube view counts pre-VEVO: 2,573,462 (C) 1987 PWL');
+			expect(result.data.ogType).to.be('video');
 			expect(result.data.ogImage.url).to.be('https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');
 			expect(result.data.ogVideo.type).to.be('text/html');
 			expect(result.data.ogVideo.width).to.be('480');
 			expect(result.data.ogVideo.height).to.be('360');
 			done();
 		});
-        });
+	});
+	it('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
+		app(optionsFlickr, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.ogSiteName).to.be('Flickr - Photo Sharing!');
+			expect(result.data.ogTitle).to.be('Heimgarten');
+			expect(result.data.ogUrl).to.be('https://www.flickr.com/photos/travelgraph/18791678505/');
+			expect(result.data.ogType).to.be('flickr_photos:photo');
+			expect(result.data.ogImage.url).to.be('https://c1.staticflickr.com/1/499/18791678505_5886fefcf7_b.jpg');
+			expect(result.data.ogImage.width).to.be('1024');
+			expect(result.data.ogImage.height).to.be('375');
+			done();
+		});
+	});
 });
