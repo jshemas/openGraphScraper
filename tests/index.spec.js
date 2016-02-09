@@ -65,10 +65,13 @@ var options12 = {
 		'url': 'this is a testt'
 	};
 
-// test video
+// test videos
 var optionsYoutube = {
-		'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-	};
+		'url': "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+	},
+    optionsTwitch = {
+      'url': "http://www.twitch.tv/valinor000/v/39898875"
+    };
 
 // test image
 var optionsFlickr = {
@@ -222,12 +225,21 @@ describe('GET OG', function () {
 			expect(result.data.ogDescription).to.be('Music video by Rick Astley performing Never Gonna Give You Up. YouTube view counts pre-VEVO: 2,573,462 (C) 1987 PWL');
 			expect(result.data.ogType).to.be('video');
 			expect(result.data.ogImage.url).to.be('https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');
+			expect(result.data.ogVideo.url).to.be('https://www.youtube.com/embed/dQw4w9WgXcQ');
 			expect(result.data.ogVideo.type).to.be('text/html');
 			expect(result.data.ogVideo.width).to.be('480');
 			expect(result.data.ogVideo.height).to.be('360');
 			done();
 		});
-	});
+        });
+        it('Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
+		app(optionsTwitch, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.ogVideo.url).to.be('http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf?channel=valinor000&playerType=facebook');
+			done();
+		});
+        });
 	it('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
 		app(optionsFlickr, function (err, result) {
 			expect(err).to.be(false);
