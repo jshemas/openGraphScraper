@@ -106,8 +106,8 @@ var fieldsArray = [
 	},
 	{
 		multiple: true,
-		property: 'og:video:url',
-		fieldName: 'ogVideoURL'
+		property: 'og:video:url', // An alternative to 'og:video'
+		fieldName: 'ogVideo'
 	},
 	{
 		multiple: true,
@@ -311,7 +311,7 @@ exports.getOG = function (options, callback) {
 
 			/* Combine video/width/height/type
 				and sort for priority */
-			var ogVideos = _.zip(ogObject.ogVideoURL,
+			var ogVideos = _.zip(ogObject.ogVideo,
 					ogObject.ogVideoWidth,
 					ogObject.ogVideoHeight,
 					ogObject.ogVideoType)
