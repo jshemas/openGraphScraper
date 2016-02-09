@@ -67,11 +67,11 @@ var options12 = {
 
 // test videos
 var optionsYoutube = {
-		'url': "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+		'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 	},
-    optionsTwitch = {
-      'url': "http://www.twitch.tv/valinor000/v/39898875"
-    };
+	optionsTwitch = {
+		'url': 'http://www.twitch.tv/valinor000/v/39898875'
+	};
 
 // test image
 var optionsFlickr = {
@@ -79,7 +79,7 @@ var optionsFlickr = {
 	};
 
 describe('GET OG', function () {
-	this.timeout(3000); // should wait at least three seconds before failing
+	this.timeout(10000); // should wait at least ten seconds before failing
 	it('Valid Call - ogp.me should return open graph data', function (done) {
 		app(options1, function (err, result) {
 			expect(err).to.be(false);
@@ -231,15 +231,22 @@ describe('GET OG', function () {
 			expect(result.data.ogVideo.height).to.be('360');
 			done();
 		});
-        });
-        it('Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
+	});
+	it('Valid Call - Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
 		app(optionsTwitch, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
+			expect(result.data.ogSiteName).to.be('Twitch');
+			expect(result.data.ogTitle).to.be('Valinor000');
+			expect(result.data.ogType).to.be('video.other');
+			expect(result.data.ogImage.url).to.be('https://static-cdn.jtvnw.net/jtv_user_pictures/valinor000-profile_image-79ecb6ac2a779cb1-600x600.png');
 			expect(result.data.ogVideo.url).to.be('http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf?channel=valinor000&playerType=facebook');
+			expect(result.data.ogVideo.type).to.be('application/x-shockwave-flash');
+			expect(result.data.ogVideo.width).to.be('620');
+			expect(result.data.ogVideo.height).to.be('378');
 			done();
 		});
-        });
+	});
 	it('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
 		app(optionsFlickr, function (err, result) {
 			expect(err).to.be(false);
