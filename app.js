@@ -322,10 +322,18 @@ exports.getOG = function (options, callback) {
 				ogObject.ogVideo = ogVideos[0];
 			}
 
-			//example of how to get the title tag
-			// $('title').map(function(i, info) {
-			// 	console.log('title:',info.children[0].data);
-			// });
+			// Check for 'only get open graph info'
+			if (!options.onlyGetOpenGraphInfo) {
+				// Get title tag if og title was not provided
+				if (!ogObject.ogTitle && $("title").text() && $("title").text().length > 0) {
+					ogObject.ogTitle = $("title").text();
+				}
+				// Get meta description tag if og description was not provided
+				if (!ogObject.ogDescription && $('meta[name="description"]').attr('content') && $('meta[name="description"]').attr('content').length > 0) {
+					ogObject.ogDescription = $('meta[name="description"]').attr('content');
+				}
+			}
+
 			//console.log('ogObject',ogObject);
 			callback(null, ogObject);
 		}

@@ -65,6 +65,17 @@ var options12 = {
 		'url': 'this is a testt'
 	};
 
+// test getting only open graph tags
+var options15 = {
+	'url': 'http://www.wikipedia.org/',
+	'onlyGetOpenGraphInfo': true
+};
+
+// test getting the description from meta tags
+var options16 = {
+	'url': 'https://twitter.com/',
+}
+
 // test videos
 var optionsYoutube = {
 		'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
@@ -99,7 +110,7 @@ describe('GET OG', function () {
 		app(options2, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
-			expect(result.data).to.be.empty();
+			expect(result.data.ogTitle).to.be('Wikipedia');
 			done();
 		});
 	});
@@ -107,7 +118,7 @@ describe('GET OG', function () {
 		app(options3, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
-			expect(result.data).to.be.empty();
+			expect(result.data.ogTitle).to.be('Wikipedia');
 			done();
 		});
 	});
@@ -115,7 +126,7 @@ describe('GET OG', function () {
 		app(options4, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
-			expect(result.data).to.be.empty();
+			expect(result.data.ogTitle).to.be('Wikipedia');
 			done();
 		});
 	});
@@ -123,7 +134,7 @@ describe('GET OG', function () {
 		app(options5, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
-			expect(result.data).to.be.empty();
+			expect(result.data.ogTitle).to.be('Wikipedia');
 			done();
 		});
 	});
@@ -131,7 +142,7 @@ describe('GET OG', function () {
 		app(options6, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
-			expect(result.data).to.be.empty();
+			expect(result.data.ogTitle).to.be('Wikipedia');
 			done();
 		});
 	});
@@ -163,7 +174,7 @@ describe('GET OG', function () {
 		app(options8, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
-			expect(result.data).to.be.empty();
+			expect(result.data.ogTitle).to.be('Wikipedia');
 			done();
 		});
 	});
@@ -171,7 +182,7 @@ describe('GET OG', function () {
 		app(options9, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
-			expect(result.data).to.be.empty();
+			expect(result.data.ogTitle).to.be('Wikipedia');
 			done();
 		});
 	});
@@ -179,7 +190,7 @@ describe('GET OG', function () {
 		app(options10, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
-			expect(result.data).to.be.empty();
+			expect(result.data.ogTitle).to.be('Wikipedia');
 			done();
 		});
 	});
@@ -187,7 +198,7 @@ describe('GET OG', function () {
 		app(options11, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
-			expect(result.data).to.be.empty();
+			expect(result.data.ogTitle).to.be('Wikipedia');
 			done();
 		});
 	});
@@ -212,6 +223,23 @@ describe('GET OG', function () {
 			expect(err).to.be(true);
 			expect(result.success).to.be(false);
 			expect(result.err).to.be('Page Not Found');
+			done();
+		});
+	});
+	it('Valid Call - only get open graph info', function (done) {
+		app(options15, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data).to.be.empty();
+			done();
+		});
+	});
+	it('Valid Call - test getting the description from meta tags', function (done) {
+		app(options16, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.ogTitle).to.be('Twitter');
+			expect(result.data.ogDescription).to.be('Connect with your friends &#8212; and other fascinating people. Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.');
 			done();
 		});
 	});
