@@ -14,21 +14,21 @@ npm install open-graph-scraper
 var ogs = require('open-graph-scraper');
 var options = {'url': 'http://ogp.me/'};
 ogs(options, function (err, results) {
-	console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object. 
+	console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object.
 	console.log('results:', results);
 });
 ```
-You can also set a timeout flag like...
+You can also set a timeout flag like... Example four seconds:
 ```
 var ogs = require('open-graph-scraper');
 var options = {'url': 'http://ogp.me/', 'timeout': 4000};
 ogs(options, function (err, results) {
-	console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object. 
+	console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object.
 	console.log('results:', results);
 });
 ```
 
-### Result JSON
+### Results JSON
 Check the return for a ```success``` flag. If success is set to true, then the url input was valid. Otherwise it will be set to false. The above eample will return something like...
 ```
 {

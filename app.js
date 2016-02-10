@@ -169,8 +169,8 @@ exports.getInfo = function (options, callback) {
 	var error = false,
 		returnResult = {},
 		that = this;
-	this.validateVars(options.url, options.timeout, function (inputUrlFlag, inputUrl, inputTimeoutFlag, inputTimeout) {
-		if (inputUrlFlag && inputUrlFlag === true && inputTimeoutFlag && inputTimeoutFlag === true) {
+	this.validateVars(options.url, options.timeout, function (inputUrl, inputTimeout) {
+		if (inputUrl) {
 			options.url = inputUrl;
 			options.timeout = inputTimeout;
 			that.getOG(options, function (err, results) {
@@ -217,30 +217,18 @@ exports.getInfo = function (options, callback) {
  * @param function callback
  */
 exports.validateVars = function (inputUrl, inputTimeout, callback) {
-	var returnInputUrl,
-		returnInputUrlFlag,
-		returnInputTimeout,
-		returnInputTimeoutFlag;
-	if (inputUrl === null || typeof inputUrl === 'undefined' || !inputUrl || inputUrl.length < 1) {
-		returnInputUrlFlag = false;
-		returnInputUrl = '';
-	} else {
-		returnInputUrlFlag = true;
+	var returnInputUrl = null,
+		returnInputTimeout = 2000; // time defaults to 2000ms
+
+	if (!(inputUrl === null || typeof inputUrl === 'undefined' || !inputUrl || inputUrl.length < 1)) {
 		returnInputUrl = this.validateUrl(inputUrl);
 	}
-	if (inputTimeout === null || typeof inputTimeout === 'undefined' || !inputTimeout || typeof inputTimeout !== 'number' || inputTimeout.length < 1) {
-		returnInputTimeoutFlag = true;
-		returnInputTimeout = 2000; //time default to 2000ms
-	} else {
-		if (this.validateTimeout(inputTimeout)) {
-			returnInputTimeoutFlag = true;
-			returnInputTimeout = inputTimeout;
-		} else {
-			returnInputTimeoutFlag = true;
-			returnInputTimeout = 2000; //time default to 2000ms
-		}
+
+	if (!(inputTimeout === null || typeof inputTimeout === 'undefined' || !inputTimeout || typeof inputTimeout !== 'number' || inputTimeout.length < 1) && this.validateTimeout(inputTimeout)) {
+		returnInputTimeout = inputTimeout;
 	}
-	callback(returnInputUrlFlag, returnInputUrl, returnInputTimeoutFlag, returnInputTimeout);
+
+	callback(returnInputUrl, returnInputTimeout);
 };
 
 /*
