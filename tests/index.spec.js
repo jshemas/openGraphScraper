@@ -76,6 +76,10 @@ var options16 = {
 	'url': 'https://twitter.com/',
 }
 
+var options17 = {
+	'url': 'https://github.com/jshemas/notOpenGraphScraper'
+};
+
 // test videos
 var optionsYoutube = {
 		'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
@@ -220,6 +224,14 @@ describe('GET OG', function () {
 	});
 	it('Invalid Call - url is a string of words', function (done) {
 		app(options14, function (err, result) {
+			expect(err).to.be(true);
+			expect(result.success).to.be(false);
+			expect(result.err).to.be('Page Not Found');
+			done();
+		});
+	});
+	it('Invalid Call - response code is 404', function (done) {
+		app(options17, function (err, result) {
 			expect(err).to.be(true);
 			expect(result.success).to.be(false);
 			expect(result.err).to.be('Page Not Found');
