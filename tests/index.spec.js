@@ -85,7 +85,7 @@ var optionsYoutube = {
 		'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 	},
 	optionsTwitch = {
-		'url': 'http://www.twitch.tv/valinor000/v/39898875'
+		'url': 'https://www.twitch.tv/battlefield/v/64886482'
 	};
 
 // test image
@@ -274,13 +274,13 @@ describe('GET OG', function () {
 	});
 	it('Valid Call - Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
 		app(optionsTwitch, function (err, result) {
+			console.log('result', result);
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
 			expect(result.data.ogSiteName).to.be('Twitch');
-			expect(result.data.ogTitle).to.be('Valinor000');
 			expect(result.data.ogType).to.be('video.other');
-			expect(result.data.ogImage.url).to.be('https://static-cdn.jtvnw.net/jtv_user_pictures/valinor000-profile_image-79ecb6ac2a779cb1-600x600.png');
-			expect(result.data.ogVideo.url).to.be('http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf?channel=valinor000&playerType=facebook');
+			expect(result.data.ogImage.url).to.be('https://static-cdn.jtvnw.net/v1/AUTH_system/vods_6fbe/battlefield_21175918848_448240534/thumb/customabc4420a66bb33bd-480x320.jpg');
+			expect(result.data.ogVideo.url).to.be('http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf?videoId=v64886482&playerType=facebook');
 			expect(result.data.ogVideo.type).to.be('application/x-shockwave-flash');
 			expect(result.data.ogVideo.width).to.be('620');
 			expect(result.data.ogVideo.height).to.be('378');
