@@ -264,6 +264,8 @@ exports.getOG = function (options, callback) {
 	request(options, function (err, response, body) {
 		if (err) {
 			callback(err, null);
+		} else if ( response.statusCode !== 200 ) {
+			callback(new Error('Error from server'), null);
 		} else {
 			var $ = cheerio.load(body),
 				meta = $('meta'),
