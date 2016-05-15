@@ -176,6 +176,7 @@ exports.getInfo = function (options, callback) {
 			options.headers = {
 				'user-agent': 'request.js'
 			};
+			options.gzip = true;
 			that.getOG(options, function (err, results) {
 				if (results) {
 					returnResult = {
