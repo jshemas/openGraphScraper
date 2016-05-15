@@ -63,22 +63,26 @@ var options12 = {
 	},
 	options14 = {
 		'url': 'this is a testt'
+	},
+	options15 = {
+		'url': 'https://github.com/jshemas/notOpenGraphScraper'
 	};
 
 // test getting only open graph tags
-var options15 = {
+var options16 = {
 	'url': 'http://www.wikipedia.org/',
 	'onlyGetOpenGraphInfo': true
 };
 
 // test getting the description from meta tags
-var options16 = {
-	'url': 'https://twitter.com/',
+var options17 = {
+	'url': 'https://twitter.com/'
 }
 
-var options17 = {
-	'url': 'https://github.com/jshemas/notOpenGraphScraper'
-};
+// testing 304 page
+var options18 = {
+	'url': 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut'
+}
 
 // test videos
 var optionsYoutube = {
@@ -231,7 +235,7 @@ describe('GET OG', function () {
 		});
 	});
 	it('Invalid Call - response code is 404', function (done) {
-		app(options17, function (err, result) {
+		app(options15, function (err, result) {
 			expect(err).to.be(true);
 			expect(result.success).to.be(false);
 			expect(result.err).to.be('Page Not Found');
@@ -239,7 +243,7 @@ describe('GET OG', function () {
 		});
 	});
 	it('Valid Call - only get open graph info', function (done) {
-		app(options15, function (err, result) {
+		app(options16, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
 			expect(result.data).to.be.empty();
@@ -247,11 +251,19 @@ describe('GET OG', function () {
 		});
 	});
 	it('Valid Call - test getting the description from meta tags', function (done) {
-		app(options16, function (err, result) {
+		app(options17, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
 			expect(result.data.ogTitle).to.be('Twitter');
 			expect(result.data.ogDescription).to.be('Connect with your friends &#8212; and other fascinating people. Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.');
+			done();
+		});
+	});
+	it('Valid Call - testing 304 page', function (done) {
+		app(options18, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.ogTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip & Nut');
 			done();
 		});
 	});
@@ -274,7 +286,7 @@ describe('GET OG', function () {
 	});
 	it('Valid Call - Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
 		app(optionsTwitch, function (err, result) {
-			console.log('result', result);
+			// console.log('result', result);
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
 			expect(result.data.ogSiteName).to.be('Twitch');

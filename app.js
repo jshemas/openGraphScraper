@@ -173,6 +173,9 @@ exports.getInfo = function (options, callback) {
 		if (inputUrl) {
 			options.url = inputUrl;
 			options.timeout = inputTimeout;
+			options.headers = {
+				'user-agent': 'request.js'
+			};
 			that.getOG(options, function (err, results) {
 				if (results) {
 					returnResult = {
@@ -264,7 +267,7 @@ exports.getOG = function (options, callback) {
 	request(options, function (err, response, body) {
 		if (err) {
 			callback(err, null);
-		} else if ( response.statusCode !== 200 ) {
+		} else if (response && response.statusCode && (response.statusCode.toString().substring(0, 1) === '4' || response.statusCode.toString().substring(0, 1) === '5')) {
 			callback(new Error('Error from server'), null);
 		} else {
 			var $ = cheerio.load(body),
