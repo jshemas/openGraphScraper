@@ -128,9 +128,146 @@ var fieldsArray = [
 		multiple: true,
 		property: 'og:video:type',
 		fieldName: 'ogVideoType'
+	},
+	{
+		multiple: false,
+		property: 'twitter:card',
+		fieldName: 'twitterCard'
+	},
+	{
+		multiple: false,
+		property: 'twitter:site',
+		fieldName: 'twitterSite'
+	},
+	{
+		multiple: false,
+		property: 'twitter:site:id',
+		fieldName: 'twitterSiteId'
+	},
+	{
+		multiple: false,
+		property: 'twitter:creator',
+		fieldName: 'twitterCreator'
+	},
+	{
+		multiple: false,
+		property: 'twitter:creator:id',
+		fieldName: 'twitterCreatorId'
+	},
+	{
+		multiple: false,
+		property: 'twitter:title',
+		fieldName: 'twitterTitle'
+	},
+	{
+		multiple: false,
+		property: 'twitter:description',
+		fieldName: 'twitterDescription'
+	},
+	{
+		multiple: true,
+		property: 'twitter:image',
+		fieldName: 'twitterImage'
+	},
+	{
+		multiple: true,
+		property: 'twitter:image:height',
+		fieldName: 'twitterImageHeight'
+	},
+	{
+		multiple: true,
+		property: 'twitter:image:width',
+		fieldName: 'twitterImageWidth'
+	},
+	{
+		multiple: true,
+		property: 'twitter:image:alt',
+		fieldName: 'twitterImageAlt'
+	},
+	{
+		multiple: true,
+		property: 'twitter:player',
+		fieldName: 'twitterPlayer'
+	},
+	{
+		multiple: true,
+		property: 'twitter:player:width',
+		fieldName: 'twitterPlayerWidth'
+	},
+	{
+		multiple: true,
+		property: 'twitter:player:height',
+		fieldName: 'twitterPlayerHeight'
+	},
+	{
+		multiple: true,
+		property: 'twitter:player:stream',
+		fieldName: 'twitterPlayerStream'
+	},
+	{
+		multiple: false,
+		property: 'twitter:app:name:iphone',
+		fieldName: 'twitterAppNameiPhone'
+	},
+	{
+		multiple: false,
+		property: 'twitter:app:id:iphone',
+		fieldName: 'twitterAppIdiPhone'
+	},
+	{
+		multiple: false,
+		property: 'twitter:app:url:iphone',
+		fieldName: 'twitterAppUrliPhone'
+	},
+	{
+		multiple: false,
+		property: 'twitter:app:name:ipad',
+		fieldName: 'twitterAppNameiPad'
+	},
+	{
+		multiple: false,
+		property: 'twitter:app:id:ipad',
+		fieldName: 'twitterAppIdiPad'
+	},
+	{
+		multiple: false,
+		property: 'twitter:app:url:ipad',
+		fieldName: 'twitterAppUrliPad'
+	},
+	{
+		multiple: false,
+		property: 'twitter:app:name:googleplay',
+		fieldName: 'twitterAppNameGooglePlay'
+	},
+	{
+		multiple: false,
+		property: 'twitter:app:id:googleplay',
+		fieldName: 'twitterAppIdGooglePlay'
+	},
+	{
+		multiple: false,
+		property: 'twitter:app:url:googleplay',
+		fieldName: 'twitterAppUrlGooglePlay'
 	}
 ];
 
+var mediaMapperTwitterImage = function (item) {
+	return {
+		url: item[0],
+		width: item[1],
+		height: item[2],
+		alt: item[3]
+	};
+};
+
+var mediaMapperTwitterPlayer = function (item) {
+	return {
+		url: item[0],
+		width: item[1],
+		height: item[2],
+		stream: item[3]
+	};
+};
 
 var mediaMapper = function (item) {
 	return {
@@ -311,6 +448,22 @@ exports.getOG = function (options, callback) {
 					ogObject.ogVideoType)
 				.map(mediaMapper).sort(mediaSorter);
 
+			/* Combine twitter image/width/height/alt
+				and sort for priority */
+			var twitterImages = _.zip(ogObject.twitterImage,
+					ogObject.twitterImageWidth,
+					ogObject.twitterImageHeight,
+					ogObject.twitterImageAlt)
+				.map(mediaMapperTwitterImage).sort(mediaSorter);
+
+			/* Combine twitter player/width/height/stream
+				and sort for priority */
+			var twitterPlayers = _.zip(ogObject.twitterPlayer,
+					ogObject.twitterPlayerWidth,
+					ogObject.twitterPlayerHeight,
+					ogObject.twitterPlayerStream)
+				.map(mediaMapperTwitterPlayer).sort(mediaSorter);
+
 			// Delete temporary fields
 			fieldsArray.filter(function (item) {
 				return item.multiple;
@@ -326,6 +479,16 @@ exports.getOG = function (options, callback) {
 			// Select the best video
 			if (ogVideos.length) {
 				ogObject.ogVideo = ogVideos[0];
+			}
+
+			// Select the best twitter image
+			if (twitterImages.length) {
+				ogObject.twitterImage = twitterImages[0];
+			}
+
+			// Select the best player
+			if (twitterPlayers.length) {
+				ogObject.twitterPlayer = twitterPlayers[0];
 			}
 
 			// Check for 'only get open graph info'

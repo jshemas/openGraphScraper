@@ -97,6 +97,11 @@ var optionsFlickr = {
 		'url': 'https://www.flickr.com/photos/travelgraph/18791678505/in/gallery-flickr-72157663638192642/'
 	};
 
+// test twitter tags
+var optionTwitter = {
+		'url': 'https://dev.twitter.com/'
+	};
+
 describe('GET OG', function () {
 	this.timeout(10000); // should wait at least ten seconds before failing
 	it('Valid Call - ogp.me should return open graph data', function (done) {
@@ -310,6 +315,24 @@ describe('GET OG', function () {
 			expect(result.data.ogImage.url).to.be('https://c1.staticflickr.com/1/499/18791678505_5886fefcf7_b.jpg');
 			expect(result.data.ogImage.width).to.be('1024');
 			expect(result.data.ogImage.height).to.be('375');
+			done();
+		});
+	});
+	it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info', function (done) {
+		app(optionTwitter, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.twitterTitle).to.be('Twitter Developers');
+			expect(result.data.twitterCard).to.be('summary');
+			expect(result.data.twitterDescription).to.be('The Twitter platform connects your website or application with the worldwide conversation happening on Twitter.');
+			expect(result.data.ogSiteName).to.be('Twitter Developers');
+			expect(result.data.ogTitle).to.be('Twitter Developers');
+			expect(result.data.ogUrl).to.be('https://dev.twitter.com/');
+			expect(result.data.ogType).to.be('website');
+			expect(result.data.ogImage.url).to.be('https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png');
+			expect(result.data.twitterImage.url).to.be('https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png');
+			expect(result.data.twitterImage.width).to.be('500');
+			expect(result.data.twitterImage.height).to.be('500');
 			done();
 		});
 	});
