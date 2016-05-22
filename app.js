@@ -277,10 +277,10 @@ exports.getOG = function (options, callback) {
 				ogObject = {};
 
 			keys.forEach(function (key) {
-				if (!(meta[key].attribs && meta[key].attribs.property)) {
+				if (!(meta[key].attribs && (meta[key].attribs.property || meta[key].attribs.name))) {
 					return;
 				}
-				var property = meta[key].attribs.property,
+				var property = meta[key].attribs.property || meta[key].attribs.name,
 					content = meta[key].attribs.content;
 				fieldsArray.forEach(function (item) {
 					if (property === item.property) {
