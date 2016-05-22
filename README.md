@@ -28,7 +28,7 @@ ogs(options, function (err, results) {
 });
 ```
 
-Note: By default if page dose not have something like a `og:title` tag it will try and look for it in other places and return that. If you truely only want open graph info you can use the option `onlyGetOpenGraphInfo` and set it to `true`.  
+Note: By default if page dose not have something like a `og:title` tag it will try and look for it in other places and return that. If you truely only want open graph info you can use the option `onlyGetOpenGraphInfo` and set it to `true`. In addition, this will also scrape twitter info!
 
 ### Results JSON
 Check the return for a ```success``` flag. If success is set to true, then the url input was valid. Otherwise it will be set to false. The above eample will return something like...
