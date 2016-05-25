@@ -284,8 +284,8 @@ describe('GET OG', function () {
 			expect(result.data.ogImage.url).to.be('https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');
 			expect(result.data.ogVideo.url).to.be('https://www.youtube.com/embed/dQw4w9WgXcQ');
 			expect(result.data.ogVideo.type).to.be('text/html');
-			expect(result.data.ogVideo.width).to.be('480');
-			expect(result.data.ogVideo.height).to.be('360');
+			expect(result.data.ogVideo.width).to.be('1280');
+			expect(result.data.ogVideo.height).to.be('720');
 			done();
 		});
 	});
