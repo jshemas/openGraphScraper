@@ -473,22 +473,38 @@ exports.getOG = function (options, callback) {
 
 			// Select the best image
 			if (ogImages.length) {
-				ogObject.ogImage = ogImages[0];
+				if (options.allMedia) {
+					ogObject.ogImage = ogImages;
+				} else {
+					ogObject.ogImage = ogImages[0];
+				}
 			}
 
 			// Select the best video
 			if (ogVideos.length) {
-				ogObject.ogVideo = ogVideos[0];
+				if (options.allMedia) {
+					ogObject.ogVideo = ogVideos;
+				} else {
+					ogObject.ogVideo = ogVideos[0];
+				}
 			}
 
 			// Select the best twitter image
 			if (twitterImages.length) {
-				ogObject.twitterImage = twitterImages[0];
+				if (options.allMedia) {
+					ogObject.twitterImage = twitterImages;
+				} else {
+					ogObject.twitterImage = twitterImages[0];
+				}
 			}
 
 			// Select the best player
 			if (twitterPlayers.length) {
-				ogObject.twitterPlayer = twitterPlayers[0];
+				if (options.allMedia) {
+					ogObject.twitterPlayer = twitterPlayers;
+				} else {
+					ogObject.twitterPlayer = twitterPlayers[0];
+				}
 			}
 
 			// Check for 'only get open graph info'
