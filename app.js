@@ -3,9 +3,7 @@ var request = require('request'),
 	_ = require('lodash');
 
 module.exports = function (options, callback) {
-	exports.getInfo(options, function (err, results) {
-		callback(err, results);
-	});
+	return exports.info(options, callback);
 };
 
 var fieldsArray = [
@@ -295,6 +293,32 @@ var mediaSorter = function (a, b) {
 	} else {
 		return Math.max(b.width, b.height) - Math.max(a.width, a.height);
 	}
+};
+
+/*
+ * Promised info
+ */
+exports.info = function (options, callback) {
+	var that = this;
+	return new Promise(function(complete, reject) {
+		var hasCallback = typeof callback === 'function';
+		var done = function(error, info) {
+			if (error)
+			{
+				if (hasCallback)
+					callback(error);
+
+				return reject(error, info);
+			}
+
+			if (hasCallback)
+				callback(null, info);
+
+			return complete(info);
+		};
+
+		that.getInfo(options, done);
+	});
 };
 
 /*
