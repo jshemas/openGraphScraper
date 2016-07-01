@@ -77,18 +77,18 @@ var options16 = {
 // test getting the description from meta tags
 var options17 = {
 	'url': 'https://twitter.com/'
-}
+};
 
 // testing 304 page
 var options18 = {
 	'url': 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut'
-}
+};
 
 // testing all media
 var options19 = {
 	'url': 'http://ogp.me',
-  'allMedia': true
-}
+	'allMedia': true
+};
 
 // test videos
 var optionsYoutube = {

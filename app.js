@@ -510,8 +510,8 @@ exports.getOG = function (options, callback) {
 			// Check for 'only get open graph info'
 			if (!options.onlyGetOpenGraphInfo) {
 				// Get title tag if og title was not provided
-				if (!ogObject.ogTitle && $("head > title").text() && $("head > title").text().length > 0) {
-					ogObject.ogTitle = $("head > title").text();
+				if (!ogObject.ogTitle && $('head > title').text() && $('head > title').text().length > 0) {
+					ogObject.ogTitle = $('head > title').text();
 				}
 				// Get meta description tag if og description was not provided
 				if (!ogObject.ogDescription && $('head > meta[name="description"]').attr('content') && $('head > meta[name="description"]').attr('content').length > 0) {
