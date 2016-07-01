@@ -279,7 +279,7 @@ describe('GET OG', function () {
 			expect(result.data.ogSiteName).to.be('YouTube');
 			expect(result.data.ogTitle).to.be('Rick Astley - Never Gonna Give You Up');
 			expect(result.data.ogUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-			expect(result.data.ogDescription).to.be('Music video by Rick Astley performing Never Gonna Give You Up. YouTube view counts pre-VEVO: 2,573,462 (C) 1987 PWL');
+			expect(result.data.ogDescription).to.be('Rick Astley - Never Gonna Give You Up (Official Music Video) Listen On Spotify: http://smarturl.it/AstleySpotify Buy On iTunes: http://smarturl.it/AstleyGHiT...');
 			expect(result.data.ogType).to.be('video');
 			expect(result.data.ogImage.url).to.be('https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');
 			expect(result.data.ogVideo.url).to.be('https://www.youtube.com/embed/dQw4w9WgXcQ');
