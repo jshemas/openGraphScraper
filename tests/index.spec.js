@@ -84,6 +84,12 @@ var options18 = {
 	'url': 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut'
 }
 
+// testing all media
+var options19 = {
+	'url': 'http://ogp.me',
+  'allMedia': true
+}
+
 // test videos
 var optionsYoutube = {
 		'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
@@ -269,6 +275,17 @@ describe('GET OG', function () {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
 			expect(result.data.ogTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip & Nut');
+			done();
+		});
+	});
+	it('Valid Call - should contain array of images', function (done) {
+		app(options19, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.ogImage[0].url).to.be('http://ogp.me/logo.png');
+			expect(result.data.ogImage[0].width).to.be('300');
+			expect(result.data.ogImage[0].height).to.be('300');
+			expect(result.data.ogImage[0].type).to.be('image/png');
 			done();
 		});
 	});
