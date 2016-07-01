@@ -308,7 +308,7 @@ describe('GET OG', function () {
 		app(optionsFlickr, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
-			expect(result.data.ogSiteName).to.be('Flickr - Photo Sharing!');
+			expect(result.data.ogSiteName).to.be('Flickr');
 			expect(result.data.ogTitle).to.be('Heimgarten');
 			expect(result.data.ogUrl).to.be('https://www.flickr.com/photos/travelgraph/18791678505/');
 			expect(result.data.ogType).to.be('flickr_photos:photo');
