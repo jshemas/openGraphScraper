@@ -312,7 +312,7 @@ exports.info = function (options, callback) {
 			}
 
 			if (hasCallback)
-				callback(null, info);
+				callback(error, info);
 
 			return complete(info);
 		};
