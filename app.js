@@ -306,7 +306,7 @@ exports.info = function (options, callback) {
 			if (error)
 			{
 				if (hasCallback)
-					callback(error);
+					callback(error, info);
 
 				return reject(error, info);
 			}
