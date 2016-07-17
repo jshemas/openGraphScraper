@@ -300,19 +300,19 @@ var mediaSorter = function (a, b) {
  */
 exports.info = function (options, callback) {
 	var that = this;
-	return new Promise(function(complete, reject) {
+	return new Promise(function (complete, reject) {
 		var hasCallback = typeof callback === 'function';
-		var done = function(error, info) {
-			if (error)
-			{
-				if (hasCallback)
+		var done = function (error, info) {
+			if (error) {
+				if (hasCallback) {
 					callback(error, info);
-
+				}
 				return reject(error, info);
 			}
 
-			if (hasCallback)
+			if (hasCallback) {
 				callback(error, info);
+			}
 
 			return complete(info);
 		};
