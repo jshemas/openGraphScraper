@@ -12,7 +12,9 @@
 	"dependencies": {
 		"request": "2.69.0",
 		"lodash": "4.2.1",
-		"cheerio": "0.20.0"
+		"cheerio": "0.20.0",
+		"charset": "1.0.0",
+		"iconv-lite": "0.4.13"
 	},
 	"devDependencies": {
 		"expect.js": "0.3.1",
