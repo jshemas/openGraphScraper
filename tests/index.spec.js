@@ -108,6 +108,18 @@ var optionTwitter = {
 		'url': 'https://dev.twitter.com/'
 	};
 
+// test charset utf-8
+var optionCharset1 = {
+		'url': 'http://ogp.me/',
+		'withCharset': true
+	};
+
+// test charset windows-1251
+var optionCharset2 = {
+		'url': 'http://www.gazeta.ru/',
+		'withCharset': true
+	};
+
 describe('GET OG', function () {
 	this.timeout(10000); // should wait at least ten seconds before failing
 	it('Valid Call - ogp.me should return open graph data', function (done) {
@@ -350,6 +362,22 @@ describe('GET OG', function () {
 			expect(result.data.twitterImage.url).to.be('https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png');
 			expect(result.data.twitterImage.width).to.be('500');
 			expect(result.data.twitterImage.height).to.be('500');
+			done();
+		});
+	});
+	it('Valid Call - Utf-8 charset - Should Return correct Open Graph Info + charset info', function (done) {
+		app(optionCharset1, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.charset).to.be('utf8');
+			done();
+		});
+	});
+	it('Valid Call - windows-1251 charset - Should Return correct Open Graph Info + charset info', function (done) {
+		app(optionCharset2, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.charset).to.be('windows-1251');
 			done();
 		});
 	});

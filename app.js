@@ -1,5 +1,6 @@
 var request = require('request'),
 	cheerio = require('cheerio'),
+  charset = require('charset'),
 	_ = require('lodash');
 
 module.exports = function (options, callback) {
@@ -436,6 +437,10 @@ exports.getOG = function (options, callback) {
 				meta = $('meta'),
 				keys = Object.keys(meta),
 				ogObject = {};
+
+			if (options.withCharset) {
+				ogObject.charset = charset(response.headers, body);
+			}
 
 			keys.forEach(function (key) {
 				if (!(meta[key].attribs && (meta[key].attribs.property || meta[key].attribs.name))) {
