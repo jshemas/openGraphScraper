@@ -18,7 +18,7 @@ ogs(options, function (err, results) {
 	console.log('results:', results);
 });
 ```
-You can set custom headers. For example scraping data in specific language:
+You can set custom headers. For example scraping data in a specific language:
 ```
 var ogs = require('open-graph-scraper');
 var options = {'url': 'http://ogp.me/', 'headers': { 'accept-language': 'en' }};
