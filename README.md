@@ -18,6 +18,16 @@ ogs(options, function (err, results) {
 	console.log('results:', results);
 });
 ```
+You can set custom headers. For example scraping data in specific language:
+```
+var ogs = require('open-graph-scraper');
+var options = {'url': 'http://ogp.me/', 'headers': { 'accept-language': 'en' }}};
+ogs(options, function (err, results) {
+	console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+	console.log('results:', results);
+});
+```
+
 You can also set a timeout flag like... Example four seconds:
 ```
 var ogs = require('open-graph-scraper');

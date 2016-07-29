@@ -334,9 +334,9 @@ exports.getInfo = function (options, callback) {
 		if (inputUrl) {
 			options.url = inputUrl;
 			options.timeout = inputTimeout;
-			options.headers = {
+			options.headers = Object.assign({
 				'user-agent': 'request.js'
-			};
+			}, options.headers);
 			options.gzip = true;
 			that.getOG(options, function (err, results) {
 				if (results) {
