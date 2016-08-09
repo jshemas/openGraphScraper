@@ -1,5 +1,7 @@
 var request = require('request'),
 	cheerio = require('cheerio'),
+	charset = require('charset'),
+	iconv = require('iconv-lite'),
 	_ = require('lodash');
 
 module.exports = function (options, callback) {
@@ -432,10 +434,21 @@ exports.getOG = function (options, callback) {
 		} else if (response && response.statusCode && (response.statusCode.toString().substring(0, 1) === '4' || response.statusCode.toString().substring(0, 1) === '5')) {
 			callback(new Error('Error from server'), null);
 		} else {
+			if (options.encoding === null) {
+				if (charset(response.headers)) {
+					body = iconv.decode(body, charset(response.headers));
+				} else {
+					body = body.toString();
+				}
+			}
 			var $ = cheerio.load(body),
 				meta = $('meta'),
 				keys = Object.keys(meta),
 				ogObject = {};
+
+			if (options.withCharset) {
+				ogObject.charset = charset(response.headers, body);
+			}
 
 			keys.forEach(function (key) {
 				if (!(meta[key].attribs && (meta[key].attribs.property || meta[key].attribs.name))) {
