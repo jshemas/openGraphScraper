@@ -326,7 +326,7 @@ describe('GET OG', function () {
 			expect(result.success).to.be(true);
 			expect(result.data.ogSiteName).to.be('Twitch');
 			expect(result.data.ogType).to.be('video.other');
-			expect(result.data.ogImage.url).to.be('https://static-cdn.jtvnw.net/v1/AUTH_system/vods_1138/warcraft_22339636096_485121236/thumb/thumb0-480x320.jpg');
+			expect(result.data.ogImage.url).to.be('https://static-cdn.jtvnw.net/s3_vods/294d4c5c42_warcraft_22339636096_485121236/thumb/thumb0-480x320.jpg');
 			expect(result.data.ogVideo.url).to.be('http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf?videoId=v78039967&playerType=facebook');
 			expect(result.data.ogVideo.type).to.be('application/x-shockwave-flash');
 			expect(result.data.ogVideo.width).to.be('620');
