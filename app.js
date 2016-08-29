@@ -2,6 +2,7 @@ var request = require('request'),
 	cheerio = require('cheerio'),
 	charset = require('charset'),
 	iconv = require('iconv-lite'),
+	url = require('url'),
 	_ = require('lodash');
 
 module.exports = function (options, callback) {
@@ -340,6 +341,10 @@ exports.getInfo = function (options, callback) {
 				'user-agent': 'request.js'
 			}, options.headers);
 			options.gzip = true;
+			if (process.browser) {
+				options.gzip = false;
+				options.protocol = url.parse(options.url).protocol;
+			}
 			that.getOG(options, function (err, results) {
 				if (results) {
 					returnResult = {
