@@ -559,7 +559,19 @@ exports.getOG = function (options, callback) {
 				if (!ogObject.ogDescription && $('head > meta[name="description"]').attr('content') && $('head > meta[name="description"]').attr('content').length > 0) {
 					ogObject.ogDescription = $('head > meta[name="description"]').attr('content');
 				}
-			}
+                // Get first image as og:image if there is no og:image tag.
+                if (!ogObject.ogImage) {
+                    var supportedImageExts = ['jpg', 'jpeg', 'png'];
+                    $('img').each(function(i, elem) {
+                        if ($(elem).attr('src') && $(elem).attr('src').length > 0 && supportedImageExts.indexOf($(elem).attr('src').split('.').pop()) != -1) {
+                            ogObject.ogImage = {
+                                url: $(elem).attr('src')
+                            };
+                            return false;
+                        }
+                    });
+                }
+            }
 
 			//console.log('ogObject',ogObject);
 			callback(null, ogObject);
