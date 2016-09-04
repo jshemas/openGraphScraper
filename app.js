@@ -305,7 +305,7 @@ exports.info = function (options, callback) {
 	var that = this;
 	return new Promise(function (complete, reject) {
 		var hasCallback = typeof callback === 'function';
-		var done = function (error, info) {
+		var done = function (error, info, source) {
 			if (error) {
 				if (hasCallback) {
 					callback(error, info);
@@ -313,9 +313,9 @@ exports.info = function (options, callback) {
 				return reject(error, info);
 			}
 			if (hasCallback) {
-				callback(error, info);
+				callback(error, info, source);
 			}
-			return complete(info);
+			return complete(info, source);
 		};
 		that.getInfo(options, done);
 	});
@@ -342,7 +342,7 @@ exports.getInfo = function (options, callback) {
 				options.gzip = false;
 				options.protocol = url.parse(options.url).protocol;
 			}
-			that.getOG(options, function (err, results) {
+			that.getOG(options, function (err, results, source) {
 				if (results) {
 					returnResult = {
 						data: results,
@@ -369,7 +369,7 @@ exports.getInfo = function (options, callback) {
 						};
 					}
 				}
-				callback(error, returnResult);
+				callback(error, returnResult, source);
 			});
 		} else {
 			callback(true, {
@@ -571,7 +571,7 @@ exports.getOG = function (options, callback) {
 			}
 
 			//console.log('ogObject',ogObject);
-			callback(null, ogObject);
+			callback(null, ogObject, body);
 		}
 	});
 };

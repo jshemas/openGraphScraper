@@ -124,7 +124,7 @@ var optionCharset2 = {
 describe('GET OG', function () {
 	this.timeout(10000); // should wait at least ten seconds before failing
 	it('Valid Call - ogp.me should return open graph data', function (done) {
-		app(options1, function (err, result) {
+		app(options1, function (err, result, source) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
 			expect(result.data.ogTitle).to.be('Open Graph protocol');
@@ -135,6 +135,7 @@ describe('GET OG', function () {
 			expect(result.data.ogImage.width).to.be('300');
 			expect(result.data.ogImage.height).to.be('300');
 			expect(result.data.ogImage.type).to.be('image/png');
+			expect(source.length > 0).to.be(true);
 			done();
 		});
 	});
