@@ -278,7 +278,7 @@ describe('GET OG', function () {
 		app(options17, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
-			expect(result.data.ogTitle).to.be('Twitter');
+			expect(result.data.ogTitle).to.be('Twitter. It\'s what\'s happening.');
 			expect(result.data.ogDescription).to.be('Connect with your friends &#8212; and other fascinating people. Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.');
 			done();
 		});
