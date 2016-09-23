@@ -437,8 +437,8 @@ exports.getOG = function (options, callback) {
 			callback(new Error('Error from server'), null);
 		} else {
 			if (options.encoding === null) {
-				if (charset(response.headers)) {
-					body = iconv.decode(body, charset(response.headers));
+				if (charset(response.headers, body)) {
+					body = iconv.decode(body, charset(response.headers, body));
 				} else {
 					body = body.toString();
 				}
