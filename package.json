@@ -1,41 +1,41 @@
 {
-	"name": "open-graph-scraper",
-	"description": "Node.js scraper service for Open Graph info",
-	"version": "2.3.2",
-	"license": "MIT",
-	"main": "app.js",
-	"engines" : {
-		"node" : "6.x"
-	},
-	"author": {
-		"name" : "Josh Shemas",
-		"email" : "jshemas1@gmail.com",
-		"url" : "https://github.com/jshemas"
-	},
-	"dependencies": {
-		"request": "2.69.0",
-		"lodash": "4.2.1",
-		"cheerio": "0.20.0",
-		"charset": "1.0.0",
-		"iconv-lite": "0.4.13"
-	},
-	"devDependencies": {
-		"expect.js": "0.3.1",
-		"mocha": "2.4.5"
-	},
-	"repository": {
-		"type": "git",
-		"url": "http://github.com/jshemas/openGraphScraper.git",
-		"web" : "http://github.com/jshemas/openGraphScraper"
-	},
-	"keywords": [
-		"open graph",
-		"scraper",
-		"open",
-		"graph",
-		"opengraph",
-		"og",
-		"twitter",
-		"twitter card"
-	]
+  "name": "open-graph-scraper",
+  "description": "Node.js scraper service for Open Graph info",
+  "version": "2.3.2",
+  "license": "MIT",
+  "main": "app.js",
+  "engines": {
+    "node": "6.x"
+  },
+  "author": {
+    "name": "Josh Shemas",
+    "email": "jshemas1@gmail.com",
+    "url": "https://github.com/jshemas"
+  },
+  "dependencies": {
+    "request": "2.74.0",
+    "lodash": "4.2.1",
+    "cheerio": "0.20.0",
+    "charset": "1.0.0",
+    "iconv-lite": "0.4.13"
+  },
+  "devDependencies": {
+    "expect.js": "0.3.1",
+    "mocha": "2.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jshemas/openGraphScraper.git",
+    "web": "http://github.com/jshemas/openGraphScraper"
+  },
+  "keywords": [
+    "open graph",
+    "scraper",
+    "open",
+    "graph",
+    "opengraph",
+    "og",
+    "twitter",
+    "twitter card"
+  ]
 }
