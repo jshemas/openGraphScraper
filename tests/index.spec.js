@@ -310,7 +310,7 @@ describe('GET OG', function () {
 			expect(result.data.ogSiteName).to.be('YouTube');
 			expect(result.data.ogTitle).to.be('Rick Astley - Never Gonna Give You Up');
 			expect(result.data.ogUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-			expect(result.data.ogDescription).to.be('Rick Astley - Never Gonna Give You Up (Official Music Video) Listen On Spotify: http://smarturl.it/AstleySpotify Buy On iTunes: http://smarturl.it/AstleyGHiT...');
+			expect(result.data.ogDescription).to.be('Rick Astley - Never Gonna Give You Up (Official Music Video) - Listen On Spotify: http://smarturl.it/AstleySpotify Download Rick\'s Number 1 album "50" - http...');
 			expect(result.data.ogType).to.be('video');
 			expect(result.data.ogImage.url).to.be('https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');
 			expect(result.data.ogVideo.url).to.be('https://www.youtube.com/embed/dQw4w9WgXcQ');
@@ -326,10 +326,10 @@ describe('GET OG', function () {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
 			expect(result.data.ogSiteName).to.be('Twitch');
-			expect(result.data.ogType).to.be('video.other');
+			expect(result.data.ogType).to.be('video');
 			expect(result.data.ogImage.url).to.be('https://static-cdn.jtvnw.net/s3_vods/294d4c5c42_warcraft_22339636096_485121236/thumb/thumb0-480x320.jpg');
-			expect(result.data.ogVideo.url).to.be('http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf?videoId=v78039967&playerType=facebook');
-			expect(result.data.ogVideo.type).to.be('application/x-shockwave-flash');
+			expect(result.data.ogVideo.url).to.be('http://player.twitch.tv/?video=v78039967&player=facebook');
+			expect(result.data.ogVideo.type).to.be('text/html');
 			expect(result.data.ogVideo.width).to.be('620');
 			expect(result.data.ogVideo.height).to.be('378');
 			done();
