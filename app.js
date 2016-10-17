@@ -430,6 +430,7 @@ exports.validateTimeout = function (inputTimeout) {
  * @param function callback
  */
 exports.getOG = function (options, callback) {
+	var peekSize = options.peekSize || 1024;
 	request(options, function (err, response, body) {
 		if (err) {
 			callback(err, null);
@@ -437,8 +438,8 @@ exports.getOG = function (options, callback) {
 			callback(new Error('Error from server'), null);
 		} else {
 			if (options.encoding === null) {
-				if (charset(response.headers, body, 1024)) {
-					body = iconv.decode(body, charset(response.headers, body));
+				if (charset(response.headers, body, peekSize)) {
+					body = iconv.decode(body, charset(response.headers, body, peekSize));
 				} else {
 					body = body.toString();
 				}
@@ -449,7 +450,7 @@ exports.getOG = function (options, callback) {
 				ogObject = {};
 
 			if (options.withCharset) {
-				ogObject.charset = charset(response.headers, body);
+				ogObject.charset = charset(response.headers, body, peekSize);
 			}
 
 			keys.forEach(function (key) {
