@@ -431,6 +431,7 @@ exports.validateTimeout = function (inputTimeout) {
  */
 exports.getOG = function (options, callback) {
 	var peekSize = options.peekSize || 1024;
+	var ogImageFallback = options.ogImageFallback === undefined ? true: options.ogImageFallback;
 	request(options, function (err, response, body) {
 		if (err) {
 			callback(err, null);
@@ -558,7 +559,7 @@ exports.getOG = function (options, callback) {
 					ogObject.ogDescription = $('head > meta[name="description"]').attr('content');
 				}
 				// Get first image as og:image if there is no og:image tag.
-				if (!ogObject.ogImage) {
+				if (!ogObject.ogImage && ogImageFallback) {
 					var supportedImageExts = ['jpg', 'jpeg', 'png'];
 					$('img').each(function (i, elem) {
 						if ($(elem).attr('src') && $(elem).attr('src').length > 0 && supportedImageExts.indexOf($(elem).attr('src').split('.').pop()) !== -1) {
