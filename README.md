@@ -1,6 +1,7 @@
 openGraphScraper
 ==============
 [![Build Status](https://travis-ci.org/jshemas/openGraphScraper.png?branch=master)](https://travis-ci.org/jshemas/openGraphScraper)
+[![Known Vulnerabilities](https://snyk.io/test/github/jshemas/openGraphScraper/badge.svg)](https://snyk.io/test/github/jshemas/openGraphScraper)
 
 A simple node module for scraping Open Graph info off a site.
 
