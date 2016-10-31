@@ -360,8 +360,8 @@ describe('GET OG', function () {
 			expect(result.data.ogTitle).to.be('Twitter Developers');
 			expect(result.data.ogUrl).to.be('https://dev.twitter.com/');
 			expect(result.data.ogType).to.be('website');
-			expect(result.data.ogImage.url).to.be('https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png');
-			expect(result.data.twitterImage.url).to.be('https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png');
+			expect(result.data.ogImage.url).to.be('https://ton.twimg.com/dtc/e2b4367a-bc6a-4268-b983-718deef0cb47/_static/imgs/twitterdev_gear.png');
+			expect(result.data.twitterImage.url).to.be('https://ton.twimg.com/dtc/e2b4367a-bc6a-4268-b983-718deef0cb47/_static/imgs/twitterdev_gear.png');
 			expect(result.data.twitterImage.width).to.be('500');
 			expect(result.data.twitterImage.height).to.be('500');
 			done();
