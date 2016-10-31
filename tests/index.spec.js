@@ -362,8 +362,6 @@ describe('GET OG', function () {
 			expect(result.data.ogType).to.be('website');
 			expect(result.data.ogImage.url).to.be('https://ton.twimg.com/dtc/e2b4367a-bc6a-4268-b983-718deef0cb47/_static/imgs/twitterdev_gear.png');
 			expect(result.data.twitterImage.url).to.be('https://ton.twimg.com/dtc/e2b4367a-bc6a-4268-b983-718deef0cb47/_static/imgs/twitterdev_gear.png');
-			expect(result.data.twitterImage.width).to.be('500');
-			expect(result.data.twitterImage.height).to.be('500');
 			done();
 		});
 	});
