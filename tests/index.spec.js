@@ -108,6 +108,14 @@ var optionTwitter = {
 		'url': 'https://dev.twitter.com/'
 	};
 
+// test OG and twitter tags
+var optionsGithub = {
+		'url': 'https://github.com'
+	},
+	optionsAtom = {
+		'url': 'https://atom.io'
+	};
+
 // test charset utf-8
 var optionCharset1 = {
 		'url': 'http://ogp.me/',
@@ -349,19 +357,70 @@ describe('GET OG', function () {
 			done();
 		});
 	});
-	it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info', function (done) {
+	it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Twitter Site', function (done) {
 		app(optionTwitter, function (err, result) {
 			expect(err).to.be(false);
 			expect(result.success).to.be(true);
 			expect(result.data.twitterTitle).to.be('Twitter Developers');
 			expect(result.data.twitterCard).to.be('summary');
 			expect(result.data.twitterDescription).to.be('The Twitter platform connects your website or application with the worldwide conversation happening on Twitter.');
+			expect(result.data.twitterImage.url).to.be('https://ton.twimg.com/dtc/63872735-d8f2-4570-a7d3-b5876a62cb00/_static/imgs/twitterdev_gear.png');
 			expect(result.data.ogSiteName).to.be('Twitter Developers');
 			expect(result.data.ogTitle).to.be('Twitter Developers');
 			expect(result.data.ogUrl).to.be('https://dev.twitter.com/');
 			expect(result.data.ogType).to.be('website');
-			expect(result.data.ogImage.url).to.be('https://ton.twimg.com/dtc/e2b4367a-bc6a-4268-b983-718deef0cb47/_static/imgs/twitterdev_gear.png');
-			expect(result.data.twitterImage.url).to.be('https://ton.twimg.com/dtc/e2b4367a-bc6a-4268-b983-718deef0cb47/_static/imgs/twitterdev_gear.png');
+			expect(result.data.ogImage.url).to.be('https://ton.twimg.com/dtc/63872735-d8f2-4570-a7d3-b5876a62cb00/_static/imgs/twitterdev_gear.png');
+			done();
+		});
+	});
+	it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Github Site', function (done) {
+		app(optionsGithub, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.ogUrl).to.be('https://github.com');
+			expect(result.data.ogSiteName).to.be('GitHub');
+			expect(result.data.ogTitle).to.be('Build software better, together');
+			expect(result.data.ogDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 47 million projects.');
+			expect(result.data.ogImage.url).to.be('https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
+			expect(result.data.ogImage.width).to.be('1200');
+			expect(result.data.ogImage.height).to.be('1200');
+			expect(result.data.ogImage.type).to.be('image/png');
+			expect(result.data.twitterSite).to.be('github');
+			expect(result.data.twitterSiteId).to.be('13334762');
+			expect(result.data.twitterCreator).to.be('github');
+			expect(result.data.twitterCreatorId).to.be('13334762');
+			expect(result.data.twitterCard).to.be('summary_large_image');
+			expect(result.data.twitterTitle).to.be('GitHub');
+			expect(result.data.twitterDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 47 million projects.');
+			expect(result.data.twitterImage.url).to.be('https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
+			expect(result.data.twitterImage.width).to.be('1200');
+			expect(result.data.twitterImage.height).to.be('1200');
+			expect(result.data.twitterImage.alt).to.be(null);
+			done();
+		});
+	});
+	it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Atom Site', function (done) {
+		app(optionsAtom, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.ogUrl).to.be('https://atom.io/');
+			expect(result.data.ogSiteName).to.be('Atom');
+			expect(result.data.ogTitle).to.be('A hackable text editor for the 21st Century');
+			expect(result.data.ogDescription).to.be('At GitHub, we’re building the text editor we’ve always wanted: hackable to the core, but approachable on the first day without ever touching a config file. We can’t wait to see what you build with it.');
+			expect(result.data.ogType).to.be('website');
+			expect(result.data.twitterCard).to.be('summary_large_image');
+			expect(result.data.twitterSite).to.be('@AtomEditor');
+			expect(result.data.twitterCreator).to.be('@github');
+			expect(result.data.twitterTitle).to.be('Atom');
+			expect(result.data.twitterDescription).to.be('A hackable text editor for the 21st Century');
+			expect(result.data.ogImage.url).to.be('http://og.github.com/atom-mark/atom-mark@1200x630.png');
+			expect(result.data.ogImage.width).to.be('1200');
+			expect(result.data.ogImage.height).to.be('630');
+			expect(result.data.ogImage.type).to.be(null);
+			expect(result.data.twitterImage.url).to.be('http://og.github.com/atom-logo/atom-logo@1200x630.png');
+			expect(result.data.twitterImage.width).to.be('1200');
+			expect(result.data.twitterImage.height).to.be('630');
+			expect(result.data.twitterImage.alt).to.be(null);
 			done();
 		});
 	});
