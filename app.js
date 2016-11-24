@@ -475,6 +475,12 @@ exports.getOG = function (options, callback) {
 
 			/* Combine image/width/height/type
 				and sort for priority */
+			if (ogObject.ogImage || ogObject.ogImageWidth || ogObject.twitterImageHeight || ogObject.ogImageType) {
+				ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : [null];
+				ogObject.ogImageWidth = ogObject.ogImageWidth ? ogObject.ogImageWidth : [null];
+				ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [null];
+				ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [null];
+			}
 			var ogImages = _.zip(ogObject.ogImage,
 					ogObject.ogImageWidth,
 					ogObject.ogImageHeight,
@@ -483,6 +489,12 @@ exports.getOG = function (options, callback) {
 
 			/* Combine video/width/height/type
 				and sort for priority */
+			if (ogObject.ogVideo || ogObject.ogVideoWidth || ogObject.ogVideoHeight || ogObject.ogVideoType) {
+				ogObject.ogVideo = ogObject.ogVideo ? ogObject.ogVideo : [null];
+				ogObject.ogVideoWidth = ogObject.ogVideoWidth ? ogObject.ogVideoWidth : [null];
+				ogObject.ogVideoHeight = ogObject.ogVideoHeight ? ogObject.ogVideoHeight : [null];
+				ogObject.ogVideoType = ogObject.ogVideoType ? ogObject.ogVideoType : [null];
+			}
 			var ogVideos = _.zip(ogObject.ogVideo,
 					ogObject.ogVideoWidth,
 					ogObject.ogVideoHeight,
@@ -491,6 +503,12 @@ exports.getOG = function (options, callback) {
 
 			/* Combine twitter image/width/height/alt
 				and sort for priority */
+			if (ogObject.twitterImage || ogObject.twitterImageWidth || ogObject.twitterImageHeight || ogObject.twitterImageAlt) {
+				ogObject.twitterImage = ogObject.twitterImage ? ogObject.twitterImage : [null];
+				ogObject.twitterImageWidth = ogObject.twitterImageWidth ? ogObject.twitterImageWidth : [null];
+				ogObject.twitterImageHeight = ogObject.twitterImageHeight ? ogObject.twitterImageHeight : [null];
+				ogObject.twitterImageAlt = ogObject.twitterImageAlt ? ogObject.twitterImageAlt : [null];
+			}
 			var twitterImages = _.zip(ogObject.twitterImage,
 					ogObject.twitterImageWidth,
 					ogObject.twitterImageHeight,
@@ -499,6 +517,12 @@ exports.getOG = function (options, callback) {
 
 			/* Combine twitter player/width/height/stream
 				and sort for priority */
+			if (ogObject.twitterPlayer || ogObject.twitterPlayerWidth || ogObject.twitterPlayerHeight || ogObject.twitterPlayerStream) {
+				ogObject.twitterPlayer = ogObject.twitterPlayer ? ogObject.twitterPlayer : [null];
+				ogObject.twitterPlayerWidth = ogObject.twitterPlayerWidth ? ogObject.twitterPlayerWidth : [null];
+				ogObject.twitterPlayerHeight = ogObject.twitterPlayerHeight ? ogObject.twitterPlayerHeight : [null];
+				ogObject.twitterPlayerStream = ogObject.twitterPlayerStream ? ogObject.twitterPlayerStream : [null];
+			}
 			var twitterPlayers = _.zip(ogObject.twitterPlayer,
 					ogObject.twitterPlayerWidth,
 					ogObject.twitterPlayerHeight,
