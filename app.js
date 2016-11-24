@@ -182,6 +182,11 @@ var fieldsArray = [
 	},
 	{
 		multiple: true,
+		property: 'twitter:image:src',
+		fieldName: 'twitterImageSrc'
+	},
+	{
+		multiple: true,
 		property: 'twitter:image:alt',
 		fieldName: 'twitterImageAlt'
 	},
@@ -503,7 +508,8 @@ exports.getOG = function (options, callback) {
 
 			/* Combine twitter image/width/height/alt
 				and sort for priority */
-			if (ogObject.twitterImage || ogObject.twitterImageWidth || ogObject.twitterImageHeight || ogObject.twitterImageAlt) {
+			if (ogObject.twitterImageSrc || ogObject.twitterImage || ogObject.twitterImageWidth || ogObject.twitterImageHeight || ogObject.twitterImageAlt) {
+				ogObject.twitterImage = ogObject.twitterImage ? ogObject.twitterImage : ogObject.twitterImageSrc;
 				ogObject.twitterImage = ogObject.twitterImage ? ogObject.twitterImage : [null];
 				ogObject.twitterImageWidth = ogObject.twitterImageWidth ? ogObject.twitterImageWidth : [null];
 				ogObject.twitterImageHeight = ogObject.twitterImageHeight ? ogObject.twitterImageHeight : [null];
