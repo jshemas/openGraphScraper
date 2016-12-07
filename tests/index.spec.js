@@ -336,7 +336,7 @@ describe('GET OG', function () {
 			expect(result.data.ogSiteName).to.be('Twitch');
 			expect(result.data.ogType).to.be('video');
 			expect(result.data.ogImage.url).to.be('https://static-cdn.jtvnw.net/s3_vods/294d4c5c42_warcraft_22339636096_485121236/thumb/thumb0-480x320.jpg');
-			expect(result.data.ogVideo.url).to.be('http://player.twitch.tv/?video=v78039967&player=facebook');
+			expect(result.data.ogVideo.url).to.be('http://player.twitch.tv/?video=v78039967&player=facebook&autoplay=true');
 			expect(result.data.ogVideo.type).to.be('text/html');
 			expect(result.data.ogVideo.width).to.be('620');
 			expect(result.data.ogVideo.height).to.be('378');
@@ -364,12 +364,12 @@ describe('GET OG', function () {
 			expect(result.data.twitterTitle).to.be('Twitter Developers');
 			expect(result.data.twitterCard).to.be('summary');
 			expect(result.data.twitterDescription).to.be('The Twitter platform connects your website or application with the worldwide conversation happening on Twitter.');
-			expect(result.data.twitterImage.url).to.be('https://ton.twimg.com/dtc/63872735-d8f2-4570-a7d3-b5876a62cb00/_static/imgs/twitterdev_gear.png');
+			expect(result.data.twitterImage.url).to.be('https://ton.twimg.com/dtc/f1d20a4e-7c91-40cd-8dc0-7e2b46e56d55/_static/imgs/twitterdev_gear.png');
 			expect(result.data.ogSiteName).to.be('Twitter Developers');
 			expect(result.data.ogTitle).to.be('Twitter Developers');
 			expect(result.data.ogUrl).to.be('https://dev.twitter.com/');
 			expect(result.data.ogType).to.be('website');
-			expect(result.data.ogImage.url).to.be('https://ton.twimg.com/dtc/63872735-d8f2-4570-a7d3-b5876a62cb00/_static/imgs/twitterdev_gear.png');
+			expect(result.data.ogImage.url).to.be('https://ton.twimg.com/dtc/f1d20a4e-7c91-40cd-8dc0-7e2b46e56d55/_static/imgs/twitterdev_gear.png');
 			done();
 		});
 	});
@@ -380,7 +380,7 @@ describe('GET OG', function () {
 			expect(result.data.ogUrl).to.be('https://github.com');
 			expect(result.data.ogSiteName).to.be('GitHub');
 			expect(result.data.ogTitle).to.be('Build software better, together');
-			expect(result.data.ogDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 47 million projects.');
+			expect(result.data.ogDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 48 million projects.');
 			expect(result.data.ogImage.url).to.be('https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
 			expect(result.data.ogImage.width).to.be('1200');
 			expect(result.data.ogImage.height).to.be('1200');
@@ -391,7 +391,7 @@ describe('GET OG', function () {
 			expect(result.data.twitterCreatorId).to.be('13334762');
 			expect(result.data.twitterCard).to.be('summary_large_image');
 			expect(result.data.twitterTitle).to.be('GitHub');
-			expect(result.data.twitterDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 47 million projects.');
+			expect(result.data.twitterDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 48 million projects.');
 			expect(result.data.twitterImage.url).to.be('https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
 			expect(result.data.twitterImage.width).to.be('1200');
 			expect(result.data.twitterImage.height).to.be('1200');
