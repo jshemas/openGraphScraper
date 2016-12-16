@@ -391,7 +391,7 @@ describe('GET OG', function () {
 			expect(result.data.twitterCreatorId).to.be('13334762');
 			expect(result.data.twitterCard).to.be('summary_large_image');
 			expect(result.data.twitterTitle).to.be('GitHub');
-			expect(result.data.twitterDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 48 million projects.');
+			expect(result.data.twitterDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 49 million projects.');
 			expect(result.data.twitterImage.url).to.be('https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
 			expect(result.data.twitterImage.width).to.be('1200');
 			expect(result.data.twitterImage.height).to.be('1200');
