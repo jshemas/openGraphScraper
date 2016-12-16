@@ -364,12 +364,12 @@ describe('GET OG', function () {
 			expect(result.data.twitterTitle).to.be('Twitter Developers');
 			expect(result.data.twitterCard).to.be('summary');
 			expect(result.data.twitterDescription).to.be('The Twitter platform connects your website or application with the worldwide conversation happening on Twitter.');
-			expect(result.data.twitterImage.url).to.be('https://ton.twimg.com/dtc/f1d20a4e-7c91-40cd-8dc0-7e2b46e56d55/_static/imgs/twitterdev_gear.png');
+			expect(result.data.twitterImage.url).to.be('https://ton.twimg.com/dtc/8504dc03-f045-49a7-bf81-7aa8b104c088/_static/imgs/twitterdev_gear.png');
 			expect(result.data.ogSiteName).to.be('Twitter Developers');
 			expect(result.data.ogTitle).to.be('Twitter Developers');
 			expect(result.data.ogUrl).to.be('https://dev.twitter.com/');
 			expect(result.data.ogType).to.be('website');
-			expect(result.data.ogImage.url).to.be('https://ton.twimg.com/dtc/f1d20a4e-7c91-40cd-8dc0-7e2b46e56d55/_static/imgs/twitterdev_gear.png');
+			expect(result.data.ogImage.url).to.be('https://ton.twimg.com/dtc/8504dc03-f045-49a7-bf81-7aa8b104c088/_static/imgs/twitterdev_gear.png');
 			done();
 		});
 	});
@@ -380,7 +380,7 @@ describe('GET OG', function () {
 			expect(result.data.ogUrl).to.be('https://github.com');
 			expect(result.data.ogSiteName).to.be('GitHub');
 			expect(result.data.ogTitle).to.be('Build software better, together');
-			expect(result.data.ogDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 48 million projects.');
+			expect(result.data.ogDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 49 million projects.');
 			expect(result.data.ogImage.url).to.be('https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
 			expect(result.data.ogImage.width).to.be('1200');
 			expect(result.data.ogImage.height).to.be('1200');
