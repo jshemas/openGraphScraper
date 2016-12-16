@@ -1,7 +1,7 @@
 {
 	"name": "open-graph-scraper",
 	"description": "Node.js scraper service for Open Graph info",
-	"version": "2.3.6",
+	"version": "2.3.7",
 	"license": "MIT",
 	"main": "app.js",
 	"engines": {
@@ -9,7 +9,7 @@
 	},
 	"author": {
 		"name": "Josh Shemas",
-		"email": "jshemas1@gmail.com",
+		"email": "jjs90jjs@gmail.com",
 		"url": "https://github.com/jshemas"
 	},
 	"dependencies": {
