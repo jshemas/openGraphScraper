@@ -3,7 +3,8 @@ var request = require('request'),
 	charset = require('charset'),
 	iconv = require('iconv-lite'),
 	url = require('url'),
-	_ = require('lodash');
+	_ = require('lodash'),
+	jschardet = require('jschardet');
 
 module.exports = function (options, callback) {
 	return exports.info(options, callback);
@@ -444,8 +445,9 @@ exports.getOG = function (options, callback) {
 			callback(new Error('Error from server'), null);
 		} else {
 			if (options.encoding === null) {
-				if (charset(response.headers, body, peekSize)) {
-					body = iconv.decode(body, charset(response.headers, body, peekSize));
+				var char = charset(response.headers, body, peekSize) || jschardet.detect(body).encoding;
+				if (char) {
+					body = iconv.decode(body, char);
 				} else {
 					body = body.toString();
 				}
