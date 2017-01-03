@@ -309,7 +309,7 @@ var mediaSorter = function (a, b) {
  */
 exports.info = function (options, callback) {
 	var that = this;
-	return new Promise(function (complete, reject) {
+	return new Promise(function (resolve, reject) {
 		var hasCallback = typeof callback === 'function';
 		var done = function (error, info, source) {
 			if (error) {
@@ -321,9 +321,12 @@ exports.info = function (options, callback) {
 			if (hasCallback) {
 				callback(error, info, source);
 			}
-			return complete(info, source);
+			return resolve(info, source);
 		};
 		that.getInfo(options, done);
+	})
+	.catch(function () {
+		// there was a error passed back
 	});
 };
 
