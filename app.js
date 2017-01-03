@@ -347,6 +347,7 @@ exports.getInfo = function (options, callback) {
         'user-agent': 'request.js'
       }, options.headers);
       options.gzip = true;
+      options.encoding = options.encoding || null;
       if (process.browser) {
         options.gzip = false;
         options.protocol = url.parse(options.url).protocol;
