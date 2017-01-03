@@ -139,6 +139,8 @@ describe('GET OG', function () {
   this.timeout(10000); // should wait at least ten seconds before failing
   it('Valid Call - ogp.me should return open graph data', function (done) {
     app(options1, function (err, result, source) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Open Graph protocol');
@@ -155,6 +157,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - http', function (done) {
     app(options2, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
@@ -163,6 +167,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - https', function (done) {
     app(options3, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
@@ -171,6 +177,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - no protocol', function (done) {
     app(options4, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
@@ -179,6 +187,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - no protocol and no wwww', function (done) {
     app(options5, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
@@ -187,6 +197,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - protocol with no wwww', function (done) {
     app(options6, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
@@ -195,6 +207,8 @@ describe('GET OG', function () {
   });
   it('Invalid Call - fake page', function (done) {
     app(options7, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(true);
       expect(result.success).to.be(false);
       expect(result.err).to.be('Page Not Found');
@@ -203,6 +217,8 @@ describe('GET OG', function () {
   });
   it('Invalid Call - empty url', function (done) {
     app(optionsNoUrl, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(true);
       expect(result.success).to.be(false);
       expect(result.err).to.be('Invalid URL');
@@ -211,6 +227,8 @@ describe('GET OG', function () {
   });
   it('Invalid Call - empty options', function (done) {
     app(optionsEmpty, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(true);
       expect(result.err).to.be('Invalid URL');
       expect(result.success).to.be(false);
@@ -219,6 +237,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - timeout set to 2000', function (done) {
     app(options8, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
@@ -227,6 +247,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - timeout set to empty string', function (done) {
     app(options9, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
@@ -235,6 +257,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - timeout number is a string', function (done) {
     app(options10, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
@@ -243,6 +267,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - time is just a string of chars', function (done) {
     app(options11, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
@@ -251,6 +277,8 @@ describe('GET OG', function () {
   });
   it('Invalid Call - url is just a number', function (done) {
     app(options12, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(true);
       expect(result.success).to.be(false);
       expect(result.err).to.be('Page Not Found');
@@ -259,6 +287,8 @@ describe('GET OG', function () {
   });
   it('Invalid Call - url is a string of numbers', function (done) {
     app(options13, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(true);
       expect(result.success).to.be(false);
       expect(result.err).to.be('Page Not Found');
@@ -267,6 +297,8 @@ describe('GET OG', function () {
   });
   it('Invalid Call - url is a string of words', function (done) {
     app(options14, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(true);
       expect(result.success).to.be(false);
       expect(result.err).to.be('Page Not Found');
@@ -275,6 +307,8 @@ describe('GET OG', function () {
   });
   it('Invalid Call - response code is 404', function (done) {
     app(options15, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(true);
       expect(result.success).to.be(false);
       expect(result.err).to.be('Page Not Found');
@@ -283,6 +317,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - only get open graph info', function (done) {
     app(options16, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data).to.be.empty();
@@ -291,6 +327,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - test getting the description from meta tags', function (done) {
     app(options17, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Twitter. It\'s what\'s happening.');
@@ -300,6 +338,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - testing 304 page', function (done) {
     app(options18, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip & Nut');
@@ -308,6 +348,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - should contain array of images', function (done) {
     app(options19, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogImage[0].url).to.be('http://ogp.me/logo.png');
@@ -319,6 +361,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Youtube Video - Should Return correct Open Graph Info', function (done) {
     app(optionsYoutube, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogSiteName).to.be('YouTube');
@@ -336,7 +380,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
     app(optionsTwitch, function (err, result) {
-      // console.log('result', result);
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogSiteName).to.be('Twitch');
@@ -351,6 +396,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
     app(optionsFlickr, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogSiteName).to.be('Flickr');
@@ -365,6 +412,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Twitter Site', function (done) {
     app(optionTwitter, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.twitterTitle).to.be('Twitter Developers');
@@ -381,6 +430,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Github Site', function (done) {
     app(optionsGithub, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogUrl).to.be('https://github.com');
@@ -407,6 +458,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Atom Site', function (done) {
     app(optionsAtom, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogUrl).to.be('https://atom.io/');
@@ -432,6 +485,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - Utf-8 charset - Should Return correct Open Graph Info + charset info', function (done) {
     app(optionCharset1, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.charset).to.be('utf8');
@@ -440,6 +495,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - windows-1251 charset - Should Return correct Open Graph Info + charset info', function (done) {
     app(optionCharset2, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.charset).to.be('windows-1251');
@@ -449,6 +506,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - legacy no charset - Should Return correct Open Graph Info + charset info', function (done) {
     app(optionCharset3, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('誤差拡散とは');
