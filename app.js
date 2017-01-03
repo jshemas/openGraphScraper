@@ -445,9 +445,9 @@ exports.getOG = function (options, callback) {
 			callback(new Error('Error from server'), null);
 		} else {
 			if (options.encoding === null) {
-				var char = jschardet.detect(body);
-				if (char.encoding) {
-					body = iconv.decode(body, char.encoding);
+				var char = charset(response.headers, body, peekSize) || jschardet.detect(body).encoding;
+				if (char) {
+					body = iconv.decode(body, char);
 				} else {
 					body = body.toString();
 				}
