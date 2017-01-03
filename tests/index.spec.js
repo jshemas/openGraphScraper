@@ -129,6 +129,12 @@ var optionCharset2 = {
 		'withCharset': true
 	};
 
+// test for legacy with no charset
+var optionCharset3 = {
+    'url': 'http://www.f2.dion.ne.jp/~initialt/errdiffusion.html',
+		'encoding': null
+	};
+
 describe('GET OG', function () {
 	this.timeout(10000); // should wait at least ten seconds before failing
 	it('Valid Call - ogp.me should return open graph data', function (done) {
@@ -380,7 +386,7 @@ describe('GET OG', function () {
 			expect(result.data.ogUrl).to.be('https://github.com');
 			expect(result.data.ogSiteName).to.be('GitHub');
 			expect(result.data.ogTitle).to.be('Build software better, together');
-			expect(result.data.ogDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 49 million projects.');
+			expect(result.data.ogDescription).to.be.a('string');
 			expect(result.data.ogImage.url).to.be('https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
 			expect(result.data.ogImage.width).to.be('1200');
 			expect(result.data.ogImage.height).to.be('1200');
@@ -391,7 +397,7 @@ describe('GET OG', function () {
 			expect(result.data.twitterCreatorId).to.be('13334762');
 			expect(result.data.twitterCard).to.be('summary_large_image');
 			expect(result.data.twitterTitle).to.be('GitHub');
-			expect(result.data.twitterDescription).to.be('GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 49 million projects.');
+			expect(result.data.twitterDescription).to.be.a('string');
 			expect(result.data.twitterImage.url).to.be('https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
 			expect(result.data.twitterImage.width).to.be('1200');
 			expect(result.data.twitterImage.height).to.be('1200');
@@ -438,6 +444,14 @@ describe('GET OG', function () {
 			expect(result.success).to.be(true);
 			expect(result.data.charset).to.be('windows-1251');
 			expect(result.data.ogTitle).to.be('Главные новости - Газета.Ru');
+			done();
+		});
+	});
+	it('Valid Call - legacy no charset - Should Return correct Open Graph Info + charset info', function (done) {
+		app(optionCharset3, function (err, result) {
+			expect(err).to.be(false);
+			expect(result.success).to.be(true);
+			expect(result.data.ogTitle).to.be('誤差拡散とは');
 			done();
 		});
 	});
