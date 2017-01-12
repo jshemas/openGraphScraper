@@ -371,6 +371,12 @@ exports.getInfo = function (options, callback) {
               err: 'Time Out',
               success: false
             };
+          } else if (err && err === 'Must scrape an HTML page') {
+            error = true;
+            returnResult = {
+              err: 'Must scrape an HTML page',
+              success: false
+            };
           } else {
             error = true;
             returnResult = {
@@ -447,6 +453,8 @@ exports.getOG = function (options, callback) {
       callback(err, null);
     } else if (response && response.statusCode && (response.statusCode.toString().substring(0, 1) === '4' || response.statusCode.toString().substring(0, 1) === '5')) {
       callback(new Error('Error from server'), null);
+    } else if (!(response && response.headers && response.headers['content-type'] && response.headers['content-type'].indexOf('text/html') !== -1)) {
+      callback('Must scrape an HTML page', null);
     } else {
       if (options.encoding === null) {
         var char = charset(response.headers, body, peekSize) || jschardet.detect(body).encoding;

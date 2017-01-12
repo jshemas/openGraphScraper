@@ -135,6 +135,11 @@ var optionCharset3 = {
   'encoding': null
 };
 
+// test not a html page
+var optionNotHTML = {
+  'url': 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg'
+};
+
 describe('GET OG', function () {
   this.timeout(10000); // should wait at least ten seconds before failing
   it('Valid Call - ogp.me should return open graph data', function (done) {
@@ -419,12 +424,12 @@ describe('GET OG', function () {
       expect(result.data.twitterTitle).to.be('Twitter Developers');
       expect(result.data.twitterCard).to.be('summary');
       expect(result.data.twitterDescription).to.be('The Twitter platform connects your website or application with the worldwide conversation happening on Twitter.');
-      expect(result.data.twitterImage.url).to.be('https://ton.twimg.com/dtc/8504dc03-f045-49a7-bf81-7aa8b104c088/_static/imgs/twitterdev_gear.png');
+      expect(result.data.twitterImage.url).to.contain('_static/imgs/twitterdev_gear.png');
       expect(result.data.ogSiteName).to.be('Twitter Developers');
       expect(result.data.ogTitle).to.be('Twitter Developers');
       expect(result.data.ogUrl).to.be('https://dev.twitter.com/');
       expect(result.data.ogType).to.be('website');
-      expect(result.data.ogImage.url).to.be('https://ton.twimg.com/dtc/8504dc03-f045-49a7-bf81-7aa8b104c088/_static/imgs/twitterdev_gear.png');
+      expect(result.data.ogImage.url).to.contain('_static/imgs/twitterdev_gear.png');
       done();
     });
   });
@@ -511,6 +516,16 @@ describe('GET OG', function () {
       expect(err).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('誤差拡散とは');
+      done();
+    });
+  });
+  it('Invalid Call - Not a HTML page', function (done) {
+    app(optionNotHTML, function (err, result) {
+      console.log('err:', err);
+      console.log('result:', result);
+      expect(err).to.be(true);
+      expect(result.success).to.be(false);
+      expect(result.err).to.be('Must scrape an HTML page');
       done();
     });
   });
