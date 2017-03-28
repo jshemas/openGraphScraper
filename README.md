@@ -39,14 +39,14 @@ ogs(options, function (err, results) {
 });
 ```
 
-If you would like the source of the page you scraped you can grab it as the third param:
+If you would like the response of the page you scraped you can grab it as the third param:
 ```
 var ogs = require('open-graph-scraper');
 var options = {'url': 'http://ogp.me/', 'timeout': 4000};
-ogs(options, function (err, results, source) {
+ogs(options, function (err, results, response) {
 	console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object.
 	console.log('results:', results);
-	console.log('source:', source); // Source of the page
+	console.log('response:', response); // The whole Response Object
 });
 ```
 
