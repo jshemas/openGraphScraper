@@ -326,8 +326,8 @@ exports.info = function (options, callback) {
     that.getInfo(options, done);
   })
   .catch(function (error) {
+    if (error) console.log('Open Graph Error: ', error);
     // there was a error passed back
-    //console.log(error);
   });
 };
 

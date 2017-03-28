@@ -447,19 +447,6 @@ describe('GET OG', function () {
       expect(result.data.ogImage.width).to.be('1200');
       expect(result.data.ogImage.height).to.be('1200');
       expect(result.data.ogImage.type).to.be('image/png');
-      //TODO disabled since github doesnt set this og:tag anymore
-
-      //expect(result.data.twitterSite).to.be('github');
-      //expect(result.data.twitterSiteId).to.be('13334762');
-      //expect(result.data.twitterCreator).to.be('github');
-      //expect(result.data.twitterCreatorId).to.be('13334762');
-      //expect(result.data.twitterCard).to.be('summary_large_image');
-      //expect(result.data.twitterTitle).to.be('GitHub');
-      //expect(result.data.twitterDescription).to.be.a('string');
-      //expect(result.data.twitterImage.url).to.be('https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
-      //expect(result.data.twitterImage.width).to.be('1200');
-      //expect(result.data.twitterImage.height).to.be('1200');
-      //expect(result.data.twitterImage.alt).to.be(null);
       done();
     });
   });
@@ -511,7 +498,7 @@ describe('GET OG', function () {
       done();
     });
   });
-  xit('Valid Call - legacy no charset - Should Return correct Open Graph Info + charset info', function (done) {
+  it('Valid Call - legacy no charset - Should Return correct Open Graph Info + charset info', function (done) {
     app(optionCharset3, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
