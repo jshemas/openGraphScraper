@@ -4,6 +4,9 @@
   "version": "2.4.2",
   "license": "MIT",
   "main": "app.js",
+  "scripts": {
+    "test": "mocha tests/"
+  },
   "engines": {
     "node": "6.x"
   },
@@ -16,16 +19,16 @@
     "charset": "1.0.0",
     "cheerio": "0.22.0",
     "iconv-lite": "0.4.15",
-    "jschardet": "1.4.1",
+    "jschardet": "1.4.2",
     "lodash": "4.17.4",
-    "request": "2.79.0"
+    "request": "2.81.0"
   },
   "devDependencies": {
     "expect.js": "0.3.1",
     "mocha": "3.2.0",
-    "eslint": "3.12.2",
-    "eslint-plugin-promise": "3.4.0",
-    "eslint-plugin-standard": "2.0.1"
+    "eslint": "3.18.0",
+    "eslint-plugin-promise": "3.5.0",
+    "eslint-plugin-standard": "2.1.1"
   },
   "repository": {
     "type": "git",
