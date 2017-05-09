@@ -493,6 +493,12 @@ exports.getOG = function (options, callback) {
         });
       });
 
+      // set the ogImage or fallback to ogImageURL or ogImageSecureURL
+      ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : (ogObject.ogImageURL ? ogObject.ogImageURL : (ogObject.ogImageSecureURL ? ogObject.ogImageSecureURL : []));
+      if (!ogObject.ogImage || !ogObject.ogImage.length) {
+        delete ogObject['ogImage'];
+      }
+
       /* Combine image/width/height/type
         and sort for priority */
       if (ogObject.ogImage || ogObject.ogImageWidth || ogObject.twitterImageHeight || ogObject.ogImageType) {
