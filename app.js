@@ -364,25 +364,29 @@ exports.getInfo = function (options, callback) {
             error = true;
             returnResult = {
               err: 'Page Not Found',
-              success: false
+              success: false,
+              errorDetails: err
             };
           } else if (err && err.code === 'ETIMEDOUT') {
             error = true;
             returnResult = {
               err: 'Time Out',
-              success: false
+              success: false,
+              errorDetails: err
             };
           } else if (err && err === 'Must scrape an HTML page') {
             error = true;
             returnResult = {
               err: 'Must scrape an HTML page',
-              success: false
+              success: false,
+              errorDetails: err
             };
           } else {
             error = true;
             returnResult = {
               err: 'Page Not Found',
-              success: false
+              success: false,
+              errorDetails: err
             };
           }
         }
