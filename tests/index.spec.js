@@ -131,7 +131,7 @@ var optionCharset2 = {
 
 // test for legacy with no charset
 var optionCharset3 = {
-  'url': 'http://www.f2.dion.ne.jp/~initialt/errdiffusion.html',
+  'url': 'http://www.rakuten.co.jp/',
   'encoding': null
 };
 
@@ -504,7 +504,7 @@ describe('GET OG', function () {
       console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
-      expect(result.data.ogTitle).to.be('誤差拡散とは');
+      expect(result.data.ogTitle).to.be('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
       done();
     });
   });
