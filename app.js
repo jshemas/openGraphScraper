@@ -353,6 +353,7 @@ exports.getInfo = function (options, callback) {
         options.gzip = false;
         options.protocol = url.parse(options.url).protocol;
       }
+      options.jar = request.jar();
       that.getOG(options, function (err, results, response) {
         if (results) {
           returnResult = {
