@@ -408,7 +408,7 @@ describe('GET OG', function () {
       expect(result.data.ogSiteName).to.be('Flickr');
       expect(result.data.ogTitle).to.be('Heimgarten');
       expect(result.data.ogUrl).to.be('https://www.flickr.com/photos/travelgraph/18791678505/');
-      expect(result.data.ogType).to.be('flickr_photos:photo');
+      expect(result.data.ogType).to.be('article');
       expect(result.data.ogImage.url).to.be('https://c1.staticflickr.com/1/499/18791678505_5886fefcf7_b.jpg');
       expect(result.data.ogImage.width).to.be('1024');
       expect(result.data.ogImage.height).to.be('375');
