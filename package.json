@@ -17,18 +17,18 @@
   },
   "dependencies": {
     "charset": "1.0.1",
-    "cheerio": "0.22.0",
-    "iconv-lite": "0.4.15",
-    "jschardet": "1.4.2",
+    "cheerio": "1.0.0-rc.2",
+    "iconv-lite": "0.4.19",
+    "jschardet": "1.5.1",
     "lodash": "4.17.4",
-    "request": "2.81.0"
+    "request": "2.83.0"
   },
   "devDependencies": {
     "expect.js": "0.3.1",
-    "mocha": "3.2.0",
-    "eslint": "3.18.0",
+    "mocha": "3.5.3",
+    "eslint": "4.8.0",
     "eslint-plugin-promise": "3.5.0",
-    "eslint-plugin-standard": "2.1.1"
+    "eslint-plugin-standard": "3.0.1"
   },
   "repository": {
     "type": "git",
