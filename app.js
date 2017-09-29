@@ -325,10 +325,10 @@ exports.info = function (options, callback) {
     };
     that.getInfo(options, done);
   })
-  .catch(function (error) {
-    if (error) console.log('Open Graph Error: ', error);
-    // there was a error passed back
-  });
+    .catch(function (error) {
+      if (error) console.log('Open Graph Error: ', error);
+      // there was a error passed back
+    });
 };
 
 /*
@@ -513,9 +513,9 @@ exports.getOG = function (options, callback) {
         ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [null];
       }
       var ogImages = _.zip(ogObject.ogImage,
-          ogObject.ogImageWidth,
-          ogObject.ogImageHeight,
-          ogObject.ogImageType)
+        ogObject.ogImageWidth,
+        ogObject.ogImageHeight,
+        ogObject.ogImageType)
         .map(mediaMapper).sort(mediaSorter);
 
       /* Combine video/width/height/type
@@ -527,9 +527,9 @@ exports.getOG = function (options, callback) {
         ogObject.ogVideoType = ogObject.ogVideoType ? ogObject.ogVideoType : [null];
       }
       var ogVideos = _.zip(ogObject.ogVideo,
-          ogObject.ogVideoWidth,
-          ogObject.ogVideoHeight,
-          ogObject.ogVideoType)
+        ogObject.ogVideoWidth,
+        ogObject.ogVideoHeight,
+        ogObject.ogVideoType)
         .map(mediaMapper).sort(mediaSorter);
 
       /* Combine twitter image/width/height/alt
@@ -542,9 +542,9 @@ exports.getOG = function (options, callback) {
         ogObject.twitterImageAlt = ogObject.twitterImageAlt ? ogObject.twitterImageAlt : [null];
       }
       var twitterImages = _.zip(ogObject.twitterImage,
-          ogObject.twitterImageWidth,
-          ogObject.twitterImageHeight,
-          ogObject.twitterImageAlt)
+        ogObject.twitterImageWidth,
+        ogObject.twitterImageHeight,
+        ogObject.twitterImageAlt)
         .map(mediaMapperTwitterImage).sort(mediaSorter);
 
       /* Combine twitter player/width/height/stream
@@ -556,9 +556,9 @@ exports.getOG = function (options, callback) {
         ogObject.twitterPlayerStream = ogObject.twitterPlayerStream ? ogObject.twitterPlayerStream : [null];
       }
       var twitterPlayers = _.zip(ogObject.twitterPlayer,
-          ogObject.twitterPlayerWidth,
-          ogObject.twitterPlayerHeight,
-          ogObject.twitterPlayerStream)
+        ogObject.twitterPlayerWidth,
+        ogObject.twitterPlayerHeight,
+        ogObject.twitterPlayerStream)
         .map(mediaMapperTwitterPlayer).sort(mediaSorter);
 
       // Delete temporary fields
