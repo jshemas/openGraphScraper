@@ -1,149 +1,12 @@
-var app = require('../app'),
-  expect = require('expect.js');
-
-// test url - this has alot of OG info
-var options1 = {
-  'url': 'http://ogp.me/'
-};
-
-// test url formats
-var options2 = {
-    'url': 'http://www.wikipedia.org/'
-  },
-  options3 = {
-    'url': 'https://www.wikipedia.org/'
-  },
-  options4 = {
-    'url': 'www.wikipedia.org/'
-  },
-  options5 = {
-    'url': 'wikipedia.org/'
-  },
-  options6 = {
-    'url': 'http://wikipedia.org/'
-  };
-
-// invaild url
-var options7 = {
-  'url': 'http://testtesttest4564568.com'
-};
-
-// empty value
-var optionsNoUrl = {
-  'url': ''
-};
-
-// no url
-var optionsEmpty = { };
-
-// test timeout
-var options8 = {
-    'url': 'http://www.wikipedia.org/',
-    'timeout': 2000
-  },
-  options9 = {
-    'url': 'http://www.wikipedia.org/',
-    'timeout': ''
-  },
-  options10 = {
-    'url': 'http://www.wikipedia.org/',
-    'timeout': '2000'
-  },
-  options11 = {
-    'url': 'http://www.wikipedia.org/',
-    'timeout': 'sdsdds'
-  };
-
-// some bad urls
-var options12 = {
-    'url': 23233
-  },
-  options13 = {
-    'url': '2323233'
-  },
-  options14 = {
-    'url': 'this is a testt'
-  },
-  options15 = {
-    'url': 'https://github.com/jshemas/notOpenGraphScraper'
-  };
-
-// test getting only open graph tags
-var options16 = {
-  'url': 'http://www.wikipedia.org/',
-  'onlyGetOpenGraphInfo': true
-};
-
-// test getting the description from meta tags
-var options17 = {
-  'url': 'https://twitter.com/'
-};
-
-// testing 304 page
-var options18 = {
-  'url': 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut'
-};
-
-// testing all media
-var options19 = {
-  'url': 'http://ogp.me',
-  'allMedia': true
-};
-
-// test videos
-var optionsYoutube = {
-    'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-  },
-  optionsTwitch = {
-    'url': 'https://www.twitch.tv/warcraft/v/78039967'
-  };
-
-// test image
-var optionsFlickr = {
-  'url': 'https://www.flickr.com/photos/travelgraph/18791678505/in/gallery-flickr-72157663638192642/'
-};
-
-// test twitter tags
-var optionTwitter = {
-  'url': 'https://dev.twitter.com/'
-};
-
-// test OG and twitter tags
-var optionsGithub = {
-    'url': 'https://github.com'
-  },
-  optionsAtom = {
-    'url': 'https://atom.io'
-  };
-
-// test charset utf-8
-var optionCharset1 = {
-  'url': 'http://ogp.me/',
-  'withCharset': true
-};
-
-// test charset windows-1251
-var optionCharset2 = {
-  'url': 'http://www.gazeta.ru/',
-  'encoding': null,
-  'withCharset': true
-};
-
-// test for legacy with no charset
-var optionCharset3 = {
-  'url': 'http://www.rakuten.co.jp/',
-  'encoding': null
-};
-
-// test not a html page
-var optionNotHTML = {
-  'url': 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg'
-};
+const app = require('../app');
+const expect = require('expect.js');
 
 describe('GET OG', function () {
   this.timeout(10000); // should wait at least ten seconds before failing
   it('Valid Call - ogp.me should return open graph data', function (done) {
-    app(options1, function (err, result, response) {
+    app({
+      'url': 'http://ogp.me/'
+    }, function (err, result, response) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -161,7 +24,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - http', function (done) {
-    app(options2, function (err, result) {
+    app({
+      'url': 'http://www.wikipedia.org/'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -171,7 +36,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - https', function (done) {
-    app(options3, function (err, result) {
+    app({
+      'url': 'https://www.wikipedia.org/'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -181,7 +48,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - no protocol', function (done) {
-    app(options4, function (err, result) {
+    app({
+      'url': 'www.wikipedia.org/'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -191,7 +60,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - no protocol and no wwww', function (done) {
-    app(options5, function (err, result) {
+    app({
+      'url': 'wikipedia.org/'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -201,7 +72,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - protocol with no wwww', function (done) {
-    app(options6, function (err, result) {
+    app({
+      'url': 'http://wikipedia.org/'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -211,7 +84,9 @@ describe('GET OG', function () {
     });
   });
   it('Invalid Call - fake page', function (done) {
-    app(options7, function (err, result) {
+    app({
+      'url': 'http://testtesttest4564568.com'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(true);
@@ -221,7 +96,9 @@ describe('GET OG', function () {
     });
   });
   it('Invalid Call - empty url', function (done) {
-    app(optionsNoUrl, function (err, result) {
+    app({
+      'url': ''
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(true);
@@ -231,7 +108,7 @@ describe('GET OG', function () {
     });
   });
   it('Invalid Call - empty options', function (done) {
-    app(optionsEmpty, function (err, result) {
+    app({}, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(true);
@@ -241,7 +118,10 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - timeout set to 2000', function (done) {
-    app(options8, function (err, result) {
+    app({
+      'url': 'http://www.wikipedia.org/',
+      'timeout': 2000
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -251,7 +131,10 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - timeout set to empty string', function (done) {
-    app(options9, function (err, result) {
+    app({
+      'url': 'http://www.wikipedia.org/',
+      'timeout': ''
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -261,7 +144,10 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - timeout number is a string', function (done) {
-    app(options10, function (err, result) {
+    app({
+      'url': 'http://www.wikipedia.org/',
+      'timeout': '2000'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -271,7 +157,10 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - time is just a string of chars', function (done) {
-    app(options11, function (err, result) {
+    app({
+      'url': 'http://www.wikipedia.org/',
+      'timeout': 'sdsdds'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -281,7 +170,9 @@ describe('GET OG', function () {
     });
   });
   it('Invalid Call - url is just a number', function (done) {
-    app(options12, function (err, result) {
+    app({
+      'url': 23233
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(true);
@@ -291,7 +182,9 @@ describe('GET OG', function () {
     });
   });
   it('Invalid Call - url is a string of numbers', function (done) {
-    app(options13, function (err, result) {
+    app({
+      'url': '2323233'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(true);
@@ -301,7 +194,9 @@ describe('GET OG', function () {
     });
   });
   it('Invalid Call - url is a string of words', function (done) {
-    app(options14, function (err, result) {
+    app({
+      'url': 'this is a testt'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(true);
@@ -311,7 +206,9 @@ describe('GET OG', function () {
     });
   });
   it('Invalid Call - response code is 404', function (done) {
-    app(options15, function (err, result) {
+    app({
+      'url': 'https://github.com/jshemas/notOpenGraphScraper'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(true);
@@ -321,7 +218,10 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - only get open graph info', function (done) {
-    app(options16, function (err, result) {
+    app({
+      'url': 'http://www.wikipedia.org/',
+      'onlyGetOpenGraphInfo': true
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -331,7 +231,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - test getting the description from meta tags', function (done) {
-    app(options17, function (err, result) {
+    app({
+      'url': 'https://twitter.com/'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -342,7 +244,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - testing 304 page', function (done) {
-    app(options18, function (err, result) {
+    app({
+      'url': 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -352,7 +256,10 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - should contain array of images', function (done) {
-    app(options19, function (err, result) {
+    app({
+      'url': 'http://ogp.me',
+      'allMedia': true
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -365,7 +272,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - Test Youtube Video - Should Return correct Open Graph Info', function (done) {
-    app(optionsYoutube, function (err, result) {
+    app({
+      'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -384,7 +293,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
-    app(optionsTwitch, function (err, result) {
+    app({
+      'url': 'https://www.twitch.tv/warcraft/v/78039967'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -400,7 +311,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
-    app(optionsFlickr, function (err, result) {
+    app({
+      'url': 'https://www.flickr.com/photos/travelgraph/18791678505/in/gallery-flickr-72157663638192642/'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -416,7 +329,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Twitter Site', function (done) {
-    app(optionTwitter, function (err, result) {
+    app({
+      'url': 'https://jshemas.github.io/openGraphScraperPages/twitter-dev'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -424,26 +339,28 @@ describe('GET OG', function () {
       expect(result.data.twitterTitle).to.be('Twitter Developers');
       expect(result.data.twitterCard).to.be('summary');
       expect(result.data.twitterDescription).to.be('The Twitter platform connects your website or application with the worldwide conversation happening on Twitter.');
-      expect(result.data.twitterImage.url).to.contain('_static/imgs/twitterdev_gear.png');
+      expect(result.data.twitterImage.url).to.contain('https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png');
       expect(result.data.ogSiteName).to.be('Twitter Developers');
       expect(result.data.ogTitle).to.be('Twitter Developers');
-      expect(result.data.ogUrl).to.be('https://dev.twitter.com/');
+      expect(result.data.ogUrl).to.be('https://web.archive.org/web/20160303190414im_/https://dev.twitter.com/');
       expect(result.data.ogType).to.be('website');
-      expect(result.data.ogImage.url).to.contain('_static/imgs/twitterdev_gear.png');
+      expect(result.data.ogImage.url).to.contain('https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png');
       done();
     });
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Github Site', function (done) {
-    app(optionsGithub, function (err, result) {
+    app({
+      'url': 'https://jshemas.github.io/openGraphScraperPages/github'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
       expect(result.success).to.be(true);
-      expect(result.data.ogUrl).to.be('https://github.com');
+      expect(result.data.ogUrl).to.be('https://web.archive.org/web/20170113081103/https://github.com/');
       expect(result.data.ogSiteName).to.be('GitHub');
       expect(result.data.ogTitle).to.be('Build software better, together');
       expect(result.data.ogDescription).to.be.a('string');
-      expect(result.data.ogImage.url).to.be('https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
+      expect(result.data.ogImage.url).to.be('https://web.archive.org/web/20170113081103im_/https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
       expect(result.data.ogImage.width).to.be('1200');
       expect(result.data.ogImage.height).to.be('1200');
       expect(result.data.ogImage.type).to.be('image/png');
@@ -451,7 +368,9 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Atom Site', function (done) {
-    app(optionsAtom, function (err, result) {
+    app({
+      'url': 'https://atom.io'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -478,7 +397,10 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - Utf-8 charset - Should Return correct Open Graph Info + charset info', function (done) {
-    app(optionCharset1, function (err, result) {
+    app({
+      'url': 'http://ogp.me/',
+      'withCharset': true
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -488,7 +410,11 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - windows-1251 charset - Should Return correct Open Graph Info + charset info', function (done) {
-    app(optionCharset2, function (err, result) {
+    app({
+      'url': 'http://www.gazeta.ru/',
+      'encoding': null,
+      'withCharset': true
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -499,7 +425,10 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - legacy no charset - Should Return correct Open Graph Info + charset info', function (done) {
-    app(optionCharset3, function (err, result) {
+    app({
+      'url': 'https://jshemas.github.io/openGraphScraperPages/rakuten',
+      'encoding': null
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(false);
@@ -509,7 +438,9 @@ describe('GET OG', function () {
     });
   });
   it('Invalid Call - Not a HTML page', function (done) {
-    app(optionNotHTML, function (err, result) {
+    app({
+      'url': 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg'
+    }, function (err, result) {
       console.log('err:', err);
       console.log('result:', result);
       expect(err).to.be(true);
