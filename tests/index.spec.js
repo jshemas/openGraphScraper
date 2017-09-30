@@ -1,4 +1,4 @@
-const app = require('../app');
+const app = require('../index');
 const expect = require('expect.js');
 
 describe('GET OG', function () {

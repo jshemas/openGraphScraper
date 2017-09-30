@@ -3,7 +3,7 @@
   "description": "Node.js scraper service for Open Graph info",
   "version": "2.5.5",
   "license": "MIT",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "eslint": "eslint .",
     "test": "mocha tests/"
