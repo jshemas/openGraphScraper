@@ -3,7 +3,7 @@ openGraphScraper
 [![Build Status](https://travis-ci.org/jshemas/openGraphScraper.png?branch=master)](https://travis-ci.org/jshemas/openGraphScraper)
 [![Known Vulnerabilities](https://snyk.io/test/github/jshemas/openGraphScraper/badge.svg)](https://snyk.io/test/github/jshemas/openGraphScraper)
 
-A simple node module for scraping Open Graph info off a site.
+A simple node module for scraping Open Graph and Twitter Card info off a site.
 
 ### Installation
 ```
@@ -119,7 +119,7 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 
 ### Features
 - This will also scrape twitter info!
-- There is a `allMedia` flag you can set to `true` if you want all the images/videos send back.
+- There is a `allMedia` option you can set to `true` if you want all the images/videos send back.
 
 ### Tests
 You have to have mocha running. To install it run...

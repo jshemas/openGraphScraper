@@ -1,6 +1,6 @@
 {
   "name": "open-graph-scraper",
-  "description": "Node.js scraper service for Open Graph info",
+  "description": "Node.js scraper module for Open Graph and Twitter Card info",
   "version": "2.5.5",
   "license": "MIT",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "test": "mocha tests/"
   },
   "engines": {
-    "node": ">=4.0"
+    "node": ">=4.x.x"
   },
   "author": {
     "name": "Josh Shemas",
@@ -37,13 +37,12 @@
     "web": "http://github.com/jshemas/openGraphScraper"
   },
   "keywords": [
-    "open graph",
-    "scraper",
-    "open",
-    "graph",
-    "opengraph",
     "og",
-    "twitter",
-    "twitter card"
+    "ogp",
+    "open graph",
+    "opengraph",
+    "scraper",
+    "twitter card",
+    "twitter"
   ]
 }
