@@ -487,6 +487,36 @@ describe('GET OG', function () {
       done();
     });
   });
+  it('Valid Call - Test NYTimes Article Redirect - Should Return correct Open Graph Info', function (done) {
+    app({
+      'url': 'https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.data.twitterAppNameGooglePlay).to.be('NYTimes');
+      expect(result.data.twitterAppIdGooglePlay).to.be('com.nytimes.android');
+      expect(result.data.twitterAppUrlGooglePlay).to.be('nytimes://reader/id/100000004620996');
+      expect(result.data.ogUrl).to.be('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html');
+      expect(result.data.ogType).to.be('article');
+      expect(result.data.ogTitle).to.be('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million');
+      expect(result.data.ogDescription).to.be('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
+      expect(result.data.twitterSite).to.be(undefined);
+      expect(result.data.twitterTitle).to.be('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million');
+      expect(result.data.twitterDescription).to.be('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
+      expect(result.data.twitterCard).to.be(undefined);
+      expect(result.data.ogImage.url).to.be('https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-facebookJumbo.jpg');
+      expect(result.data.ogImage.width).to.be(null);
+      expect(result.data.ogImage.height).to.be(null);
+      expect(result.data.ogImage.type).to.be(null);
+      expect(result.data.twitterImage.url).to.be('https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-videoSixteenByNineJumbo1600.jpg');
+      expect(result.data.twitterImage.width).to.be(null);
+      expect(result.data.twitterImage.height).to.be(null);
+      expect(result.data.twitterImage.alt).to.be('Kim Kardashian West at the “Famous” exhibition at Blum &amp; Poe in Los Angeles last week. The gallery is planning to sell the sculpture for a hefty price tag.');
+      done();
+    });
+  });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Twitter Site', function (done) {
     app({
       'url': 'https://jshemas.github.io/openGraphScraperPages/twitter-dev'
