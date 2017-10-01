@@ -638,12 +638,31 @@ describe('GET OG', function () {
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
-      expect(error).to.be(false);
-      expect(result.success).to.be(true);
-      expect(result.requestUrl).to.be('http://www.gazeta.ru/');
-      expect(result.data.charset).to.be('windows-1251');
-      expect(result.data.ogTitle).to.be('Главные новости - Газета.Ru');
-      done();
+      // sometimes we get ESOCKETTIMEDOUT errors, lets just try again
+      if (error === true) {
+        console.log('found error, trying agine');
+        app({
+          'url': 'http://www.gazeta.ru/',
+          'encoding': null,
+          'withCharset': true
+        }, function (error, result) {
+          console.log('error:', error);
+          console.log('result:', result);
+          expect(error).to.be(false);
+          expect(result.success).to.be(true);
+          expect(result.requestUrl).to.be('http://www.gazeta.ru/');
+          expect(result.data.charset).to.be('windows-1251');
+          expect(result.data.ogTitle).to.be('Главные новости - Газета.Ru');
+          done();
+        });
+      } else {
+        expect(error).to.be(false);
+        expect(result.success).to.be(true);
+        expect(result.requestUrl).to.be('http://www.gazeta.ru/');
+        expect(result.data.charset).to.be('windows-1251');
+        expect(result.data.ogTitle).to.be('Главные новости - Газета.Ru');
+        done();
+      }
     });
   });
   it('Valid Call - legacy no charset - Should Return correct Open Graph Info + charset info', function (done) {
