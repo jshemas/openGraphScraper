@@ -20,6 +20,17 @@ ogs(options, function (error, results) {
 });
 
 ```
+
+You can set a timeout flag like... Example four seconds:
+```
+const ogs = require('open-graph-scraper');
+const options = {'url': 'http://ogp.me/', 'timeout': 4000};
+ogs(options, function (error, results) {
+  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+  console.log('results:', results);
+});
+```
+
 You can set custom headers. For example scraping data in a specific language:
 ```
 const ogs = require('open-graph-scraper');
@@ -30,10 +41,20 @@ ogs(options, function (error, results) {
 });
 ```
 
-You can also set a timeout flag like... Example four seconds:
+Example of setting encoding(default is `null`):
 ```
 const ogs = require('open-graph-scraper');
-const options = {'url': 'http://ogp.me/', 'timeout': 4000};
+const options = {'url': 'http://ogp.me/', 'encoding': 'utf8'};
+ogs(options, function (error, results) {
+  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+  console.log('results:', results);
+});
+```
+
+There is also a followAllRedirects(default is `true`) and a maxRedirects(default is `20`) option:
+```
+const ogs = require('open-graph-scraper');
+const options = {'url': 'http://ogp.me/', 'followAllRedirects': true, 'maxRedirects': 20};
 ogs(options, function (error, results) {
   console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
