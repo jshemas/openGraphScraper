@@ -474,6 +474,19 @@ describe('GET OG', function () {
       done();
     });
   });
+  it('Valid Call - Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function (done) {
+    app({
+      'url': 'https://www.namecheap.com/'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.data.ogTitle).to.be('\n\tDomain Names - Cheap Domain Names | Namecheap.Com\n');
+      expect(result.data.ogImage.url).to.be('https://02.files.namecheap.com/cdn/324/assets/img/logos/namecheap.png');
+      done();
+    });
+  });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Twitter Site', function (done) {
     app({
       'url': 'https://jshemas.github.io/openGraphScraperPages/twitter-dev'
