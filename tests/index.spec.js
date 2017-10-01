@@ -445,6 +445,35 @@ describe('GET OG', function () {
       done();
     });
   });
+  it('Valid Call - Test Forbes Article Redirect - Should Return correct Open Graph Info', function (done) {
+    app({
+      'url': 'https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.data.ogSiteName).to.be('Forbes');
+      expect(result.data.twitterSite).to.be('@forbes');
+      expect(result.data.ogTitle).to.be('3 Stocks Like Apple Was 10 Years Ago: Tesla, Nvidia And Alibaba');
+      expect(result.data.ogUrl).to.be('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/');
+      expect(result.data.ogDescription).to.be('When Apple launched the iPhone 10 years ago the stock was at $22 and Wall Street considered it overvalued. Today it trades at $153. If you are looking for stocks like Apple for the next 10 years, take a close look at Tesla, Nvidia, and Alibaba.');
+      expect(result.data.ogType).to.be('article');
+      expect(result.data.twitterCard).to.be('summary_large_image');
+      expect(result.data.twitterTitle).to.be('3 Stocks Like Apple Was 10 Years Ago: Tesla, Nvidia And Alibaba');
+      expect(result.data.twitterDescription).to.be('When Apple launched the iPhone 10 years ago the stock was at $22 and Wall Street considered it overvalued. Today it trades at $153. If you are looking for stocks like Apple for the next 10 years, take a close look at Tesla, Nvidia, and Alibaba.');
+      expect(result.data.twitterCreator).to.be('@kenkam');
+      expect(result.data.ogImage.url).to.be('https://thumbor.forbes.com/thumbor/600x315/smart/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F825671570%2F960x0.jpg%3Ffit%3Dscale');
+      expect(result.data.ogImage.width).to.be(null);
+      expect(result.data.ogImage.height).to.be(null);
+      expect(result.data.ogImage.type).to.be(null);
+      expect(result.data.twitterImage.url).to.be('https://thumbor.forbes.com/thumbor/600x300/smart/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F825671570%2F960x0.jpg%3Ffit%3Dscale');
+      expect(result.data.twitterImage.width).to.be(null);
+      expect(result.data.twitterImage.height).to.be(null);
+      expect(result.data.twitterImage.alt).to.be(null);
+      done();
+    });
+  });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Twitter Site', function (done) {
     app({
       'url': 'https://jshemas.github.io/openGraphScraperPages/twitter-dev'
