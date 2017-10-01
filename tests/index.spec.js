@@ -502,10 +502,10 @@ describe('GET OG', function () {
       expect(result.data.ogType).to.be('article');
       expect(result.data.ogTitle).to.be('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million');
       expect(result.data.ogDescription).to.be('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
-      expect(result.data.twitterSite).to.be(undefined);
+      expect(result.data.twitterSite).to.be('@nytimes');
       expect(result.data.twitterTitle).to.be('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million');
       expect(result.data.twitterDescription).to.be('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
-      expect(result.data.twitterCard).to.be(undefined);
+      expect(result.data.twitterCard).to.be('summary_large_image');
       expect(result.data.ogImage.url).to.be('https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-facebookJumbo.jpg');
       expect(result.data.ogImage.width).to.be(null);
       expect(result.data.ogImage.height).to.be(null);
