@@ -410,12 +410,12 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.data.ogSiteName).to.be('YouTube');
       expect(result.data.ogUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-      expect(result.data.ogTitle).to.be('Rick Astley - Never Gonna Give You Up');
+      expect(result.data.ogTitle).to.be('Rick Astley - Never Gonna Give You Up' || 'Rick Astley - Never Gonna Give You Up - YouTube');
       expect(result.data.ogDescription).to.be('Rick Astley - Never Gonna Give You Up (Official Music Video) - Listen On Spotify: http://smarturl.it/AstleySpotify Download Rick\'s Number 1 album "50" - http...');
       expect(result.data.ogType).to.be('video');
       expect(result.data.twitterCard).to.be('player');
       expect(result.data.twitterSite).to.be('@youtube');
-      expect(result.data.twitterTitle).to.be('Rick Astley - Never Gonna Give You Up');
+      expect(result.data.twitterTitle).to.be('Rick Astley - Never Gonna Give You Up' || 'Rick Astley - Never Gonna Give You Up - YouTube');
       expect(result.data.twitterDescription).to.be('Rick Astley - Never Gonna Give You Up (Official Music Video) - Listen On Spotify: http://smarturl.it/AstleySpotify Download Rick\'s Number 1 album "50" - http...');
       expect(result.data.twitterAppNameiPhone).to.be('YouTube');
       expect(result.data.twitterAppIdiPhone).to.be('544007664');
