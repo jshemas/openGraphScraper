@@ -25,6 +25,26 @@ describe('GET OG', function () {
       done();
     });
   });
+  it('Valid Call - ogp.me should return open graph data - promise version', function (done) {
+    app({'url': 'http://ogp.me/'})
+      .then(function (result) {
+        console.log('result:', result);
+        expect(result.success).to.be(true);
+        expect(result.data.ogTitle).to.be('Open Graph protocol');
+        expect(result.data.ogType).to.be('website');
+        expect(result.data.ogUrl).to.be('http://ogp.me/');
+        expect(result.data.ogDescription).to.be('The Open Graph protocol enables any web page to become a rich object in a social graph.');
+        expect(result.data.ogImage.url).to.be('http://ogp.me/logo.png');
+        expect(result.data.ogImage.width).to.be('300');
+        expect(result.data.ogImage.height).to.be('300');
+        expect(result.data.ogImage.type).to.be('image/png');
+        done();
+      })
+      .catch(function (err) {
+        console.log('err:', err);
+        expect(err).to.be(false);
+      });
+  });
   it('Valid Call - http', function (done) {
     app({
       'url': 'http://www.wikipedia.org/'
