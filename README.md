@@ -41,6 +41,16 @@ ogs(options, function (error, results) {
 });
 ```
 
+You can set a blacklist. For example if you want to black list youtube.com:
+```
+const ogs = require('open-graph-scraper');
+const options = {'url': 'http://ogp.me/', 'blacklist': ['youtube.com']};
+ogs(options, function (error, results) {
+  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+  console.log('results:', results);
+});
+```
+
 Example of setting encoding(default is `null`):
 ```
 const ogs = require('open-graph-scraper');

@@ -122,6 +122,52 @@ describe('GET OG', function () {
       done();
     });
   });
+  it('Valid Call - blacklist', function (done) {
+    app({
+      'url': 'https://www.wikipedia.org/',
+      'blacklist': ['www.test.com', 'www.wikipedia.org']
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(true);
+      expect(result.success).to.be(false);
+      expect(result.requestUrl).to.be('https://www.wikipedia.org/');
+      expect(result.error).to.be('Host Name Has Been Black Listed');
+      done();
+    });
+  });
+  it('Valid Call - blacklist with no match', function (done) {
+    app({
+      'url': 'https://www.wikipedia.org/',
+      'blacklist': ['www.test.com', 'www.google.org']
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://www.wikipedia.org/');
+      expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
+      done();
+    });
+  });
+  it('Valid Call - blacklist empty', function (done) {
+    app({
+      'url': 'https://www.wikipedia.org/',
+      'blacklist': []
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://www.wikipedia.org/');
+      expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
+      done();
+    });
+  });
   it('Invalid Call - fake page', function (done) {
     app({
       'url': 'http://testtesttest4564568.com'
