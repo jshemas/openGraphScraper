@@ -419,7 +419,7 @@ describe('GET OG', function () {
       done();
     });
   });
-  it.only('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
+  it('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
     app({
       'url': 'https://jshemas.github.io/openGraphScraperPages/flickr'
     }, function (error, result) {
