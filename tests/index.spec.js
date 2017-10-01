@@ -419,9 +419,9 @@ describe('GET OG', function () {
       done();
     });
   });
-  it('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
+  it.only('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
     app({
-      'url': 'https://www.flickr.com/photos/travelgraph/18791678505/in/gallery-flickr-72157663638192642/'
+      'url': 'https://jshemas.github.io/openGraphScraperPages/flickr'
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
