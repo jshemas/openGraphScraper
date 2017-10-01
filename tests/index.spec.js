@@ -8,10 +8,10 @@ describe('GET OG', function () {
   it('Valid Call - ogp.me should return open graph data', function (done) {
     app({
       'url': 'http://ogp.me/'
-    }, function (err, result, response) {
-      console.log('err:', err);
+    }, function (error, result, response) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Open Graph protocol');
       expect(result.data.ogType).to.be('website');
@@ -40,18 +40,18 @@ describe('GET OG', function () {
         expect(result.data.ogImage.type).to.be('image/png');
         done();
       })
-      .catch(function (err) {
-        console.log('err:', err);
-        expect(err).to.be(false);
+      .catch(function (error) {
+        console.log('error:', error);
+        expect(error).to.be(false);
       });
   });
   it('Valid Call - http', function (done) {
     app({
       'url': 'http://www.wikipedia.org/'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
@@ -62,10 +62,10 @@ describe('GET OG', function () {
   it('Valid Call - https', function (done) {
     app({
       'url': 'https://www.wikipedia.org/'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
@@ -76,10 +76,10 @@ describe('GET OG', function () {
   it('Valid Call - no protocol', function (done) {
     app({
       'url': 'www.wikipedia.org/'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
@@ -90,10 +90,10 @@ describe('GET OG', function () {
   it('Valid Call - no protocol and no wwww', function (done) {
     app({
       'url': 'wikipedia.org/'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
@@ -104,10 +104,10 @@ describe('GET OG', function () {
   it('Valid Call - protocol with no wwww', function (done) {
     app({
       'url': 'http://wikipedia.org/'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
@@ -118,33 +118,33 @@ describe('GET OG', function () {
   it('Invalid Call - fake page', function (done) {
     app({
       'url': 'http://testtesttest4564568.com'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Page Not Found');
+      expect(result.error).to.be('Page Not Found');
       done();
     });
   });
   it('Invalid Call - empty url', function (done) {
     app({
       'url': ''
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Invalid URL');
+      expect(result.error).to.be('Invalid URL');
       done();
     });
   });
   it('Invalid Call - empty options', function (done) {
-    app({}, function (err, result) {
-      console.log('err:', err);
+    app({}, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
-      expect(result.err).to.be('Invalid URL');
+      expect(error).to.be(true);
+      expect(result.error).to.be('Invalid URL');
       expect(result.success).to.be(false);
       done();
     });
@@ -153,10 +153,10 @@ describe('GET OG', function () {
     app({
       'url': 'http://www.wikipedia.org/',
       'timeout': 2000
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
@@ -168,10 +168,10 @@ describe('GET OG', function () {
     app({
       'url': 'http://www.wikipedia.org/',
       'timeout': ''
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
@@ -183,10 +183,10 @@ describe('GET OG', function () {
     app({
       'url': 'http://www.wikipedia.org/',
       'timeout': '2000'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
@@ -198,10 +198,10 @@ describe('GET OG', function () {
     app({
       'url': 'http://www.wikipedia.org/',
       'timeout': 'sdsdds'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
@@ -212,48 +212,48 @@ describe('GET OG', function () {
   it('Invalid Call - url is just a number', function (done) {
     app({
       'url': 23233
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Page Not Found');
+      expect(result.error).to.be('Page Not Found');
       done();
     });
   });
   it('Invalid Call - url is a string of numbers', function (done) {
     app({
       'url': '2323233'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Page Not Found');
+      expect(result.error).to.be('Page Not Found');
       done();
     });
   });
   it('Invalid Call - url is a string of words', function (done) {
     app({
       'url': 'this is a testt'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Page Not Found');
+      expect(result.error).to.be('Page Not Found');
       done();
     });
   });
   it('Invalid Call - response code is 404', function (done) {
     app({
       'url': 'https://github.com/jshemas/notOpenGraphScraper'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Page Not Found');
+      expect(result.error).to.be('Page Not Found');
       done();
     });
   });
@@ -261,10 +261,10 @@ describe('GET OG', function () {
     app({
       'url': 'http://www.wikipedia.org/',
       'onlyGetOpenGraphInfo': true
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data).to.be.empty();
       done();
@@ -273,10 +273,10 @@ describe('GET OG', function () {
   it('Valid Call - test getting the description from meta tags', function (done) {
     app({
       'url': 'https://jshemas.github.io/openGraphScraperPages/twitter.html'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Twitter. It\'s what\'s happening.');
       expect(result.data.ogDescription).to.be('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
@@ -287,10 +287,10 @@ describe('GET OG', function () {
   it('Valid Call - testing 304 page', function (done) {
     app({
       'url': 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogSiteName).to.be('We Mean Business | London');
       expect(result.data.ogTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip & Nut');
@@ -315,10 +315,10 @@ describe('GET OG', function () {
     app({
       'url': 'http://ogp.me',
       'allMedia': true
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Open Graph protocol');
       expect(result.data.ogType).to.be('website');
@@ -334,10 +334,10 @@ describe('GET OG', function () {
   it('Valid Call - Test Youtube Video - Should Return correct Open Graph Info', function (done) {
     app({
       'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogSiteName).to.be('YouTube');
       expect(result.data.ogUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
@@ -379,10 +379,10 @@ describe('GET OG', function () {
   it('Valid Call - Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
     app({
       'url': 'https://www.twitch.tv/warcraft/v/78039967'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogSiteName).to.be('Twitch');
       expect(result.data.ogTitle).to.be('World Quests and Demon Invasions Q&A with Jeremy Feasel');
@@ -422,10 +422,10 @@ describe('GET OG', function () {
   it('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
     app({
       'url': 'https://www.flickr.com/photos/travelgraph/18791678505/in/gallery-flickr-72157663638192642/'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogSiteName).to.be('Flickr');
       expect(result.data.twitterAppNameiPhone).to.be('Flickr');
@@ -448,10 +448,10 @@ describe('GET OG', function () {
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Twitter Site', function (done) {
     app({
       'url': 'https://jshemas.github.io/openGraphScraperPages/twitter-dev'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.twitterTitle).to.be('Twitter Developers');
       expect(result.data.twitterCard).to.be('summary');
@@ -468,10 +468,10 @@ describe('GET OG', function () {
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Github Site', function (done) {
     app({
       'url': 'https://jshemas.github.io/openGraphScraperPages/github'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogUrl).to.be('https://web.archive.org/web/20170113081103/https://github.com/');
       expect(result.data.ogSiteName).to.be('GitHub');
@@ -487,10 +487,10 @@ describe('GET OG', function () {
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Atom Site', function (done) {
     app({
       'url': 'https://atom.io'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogUrl).to.be('https://atom.io/');
       expect(result.data.ogSiteName).to.be('Atom');
@@ -517,10 +517,10 @@ describe('GET OG', function () {
     app({
       'url': 'http://ogp.me/',
       'withCharset': true
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.charset).to.be('utf8');
       done();
@@ -531,10 +531,10 @@ describe('GET OG', function () {
       'url': 'http://www.gazeta.ru/',
       'encoding': null,
       'withCharset': true
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.charset).to.be('windows-1251');
       expect(result.data.ogTitle).to.be('Главные новости - Газета.Ru');
@@ -545,10 +545,10 @@ describe('GET OG', function () {
     app({
       'url': 'https://jshemas.github.io/openGraphScraperPages/rakuten',
       'encoding': null
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
       done();
@@ -557,12 +557,12 @@ describe('GET OG', function () {
   it('Invalid Call - Not a HTML page', function (done) {
     app({
       'url': 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg'
-    }, function (err, result) {
-      console.log('err:', err);
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Must scrape an HTML page');
+      expect(result.error).to.be('Must scrape an HTML page');
       done();
     });
   });

@@ -14,8 +14,8 @@ npm install open-graph-scraper
 ```
 const ogs = require('open-graph-scraper');
 const options = {'url': 'http://ogp.me/'};
-ogs(options, function (err, results) {
-  console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+ogs(options, function (error, results) {
+  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
 });
 
@@ -24,8 +24,8 @@ You can set custom headers. For example scraping data in a specific language:
 ```
 const ogs = require('open-graph-scraper');
 const options = {'url': 'http://ogp.me/', 'headers': { 'accept-language': 'en' }};
-ogs(options, function (err, results) {
-  console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+ogs(options, function (error, results) {
+  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
 });
 ```
@@ -34,8 +34,8 @@ You can also set a timeout flag like... Example four seconds:
 ```
 const ogs = require('open-graph-scraper');
 const options = {'url': 'http://ogp.me/', 'timeout': 4000};
-ogs(options, function (err, results) {
-  console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+ogs(options, function (error, results) {
+  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
 });
 ```
@@ -44,8 +44,8 @@ If you would like the response of the page you scraped you can grab it as the th
 ```
 const ogs = require('open-graph-scraper');
 const options = {'url': 'http://ogp.me/', 'timeout': 4000};
-ogs(options, function (err, results, response) {
-  console.log('err:', err); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+ogs(options, function (error, results, response) {
+  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
   console.log('response:', response); // The whole Response Object
 });
@@ -59,8 +59,8 @@ ogs(options)
   .then(function (result) {
     console.log('result:', result);
   })
-  .catch(function (err) {
-    console.log('err:', err);
+  .catch(function (error) {
+    console.log('error:', error);
   });
 ```
 
