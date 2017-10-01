@@ -9,7 +9,7 @@
     "test": "mocha tests/"
   },
   "engines": {
-    "node": ">=6.0"
+    "node": ">=4.0"
   },
   "author": {
     "name": "Josh Shemas",
