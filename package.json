@@ -7,7 +7,7 @@
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "eslint": "eslint .",
-    "test": "nyc --reporter=html --reporter=text --exclude=tests/ mocha tests/**/*.js"
+    "test": "nyc --reporter=html --reporter=text --exclude=tests/ mocha tests/*.js tests/**/*.js"
   },
   "engines": {
     "node": ">=4.x.x"
