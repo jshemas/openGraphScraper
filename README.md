@@ -2,6 +2,7 @@ openGraphScraper
 ==============
 [![Build Status](https://travis-ci.org/jshemas/openGraphScraper.png?branch=master)](https://travis-ci.org/jshemas/openGraphScraper)
 [![Known Vulnerabilities](https://snyk.io/test/github/jshemas/openGraphScraper/badge.svg)](https://snyk.io/test/github/jshemas/openGraphScraper)
+[![Coverage Status](https://coveralls.io/repos/github/jshemas/openGraphScraper/badge.svg?branch=master)](https://coveralls.io/github/jshemas/openGraphScraper?branch=master)
 
 A simple node module for scraping Open Graph and Twitter Card info off a site.
 

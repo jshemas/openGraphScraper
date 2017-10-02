@@ -45,6 +45,7 @@ describe('GET OG', function () {
       .catch(function (error) {
         console.log('error:', error);
         expect(error).to.be(false);
+        done();
       });
   });
   it('Valid Call - http', function (done) {

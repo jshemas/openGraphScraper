@@ -5,8 +5,9 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "eslint": "eslint .",
-    "test": "mocha tests/"
+    "test": "nyc --reporter=html --reporter=text --exclude=tests/ mocha tests/**/*.js"
   },
   "engines": {
     "node": ">=4.x.x"
@@ -25,11 +26,15 @@
     "request": "2.83.0"
   },
   "devDependencies": {
-    "expect.js": "0.3.1",
-    "mocha": "3.5.3",
+    "coveralls": "3.0.0",
     "eslint": "4.8.0",
     "eslint-plugin-promise": "3.5.0",
-    "eslint-plugin-standard": "3.0.1"
+    "eslint-plugin-standard": "3.0.1",
+    "expect.js": "0.3.1",
+    "mocha": "3.5.3",
+    "mockery": "2.1.0",
+    "nyc": "11.2.1",
+    "sinon": "4.0.0"
   },
   "repository": {
     "type": "git",
