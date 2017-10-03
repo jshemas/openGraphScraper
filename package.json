@@ -1,14 +1,16 @@
 {
   "name": "open-graph-scraper",
-  "description": "Node.js scraper service for Open Graph info",
-  "version": "2.5.5",
+  "description": "Node.js scraper module for Open Graph and Twitter Card info",
+  "version": "3.0.0",
   "license": "MIT",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha tests/"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "eslint": "eslint .",
+    "test": "nyc --reporter=html --reporter=text --exclude=tests/ mocha tests/*.js tests/**/*.js"
   },
   "engines": {
-    "node": ">=6.0"
+    "node": ">=4.x.x"
   },
   "author": {
     "name": "Josh Shemas",
@@ -17,18 +19,22 @@
   },
   "dependencies": {
     "charset": "1.0.1",
-    "cheerio": "0.22.0",
-    "iconv-lite": "0.4.15",
-    "jschardet": "1.4.2",
+    "cheerio": "1.0.0-rc.2",
+    "iconv-lite": "0.4.19",
+    "jschardet": "1.5.1",
     "lodash": "4.17.4",
-    "request": "2.81.0"
+    "request": "2.83.0"
   },
   "devDependencies": {
-    "expect.js": "0.3.1",
-    "mocha": "3.2.0",
-    "eslint": "3.18.0",
+    "coveralls": "3.0.0",
+    "eslint": "4.8.0",
     "eslint-plugin-promise": "3.5.0",
-    "eslint-plugin-standard": "2.1.1"
+    "eslint-plugin-standard": "3.0.1",
+    "expect.js": "0.3.1",
+    "mocha": "3.5.3",
+    "mockery": "2.1.0",
+    "nyc": "11.2.1",
+    "sinon": "4.0.0"
   },
   "repository": {
     "type": "git",
@@ -36,13 +42,12 @@
     "web": "http://github.com/jshemas/openGraphScraper"
   },
   "keywords": [
-    "open graph",
-    "scraper",
-    "open",
-    "graph",
-    "opengraph",
     "og",
-    "twitter",
-    "twitter card"
+    "ogp",
+    "open graph",
+    "opengraph",
+    "scraper",
+    "twitter card",
+    "twitter"
   ]
 }

@@ -1,153 +1,19 @@
-var app = require('../app'),
-  expect = require('expect.js');
+'use strict';
 
-// test url - this has alot of OG info
-var options1 = {
-  'url': 'http://ogp.me/'
-};
-
-// test url formats
-var options2 = {
-    'url': 'http://www.wikipedia.org/'
-  },
-  options3 = {
-    'url': 'https://www.wikipedia.org/'
-  },
-  options4 = {
-    'url': 'www.wikipedia.org/'
-  },
-  options5 = {
-    'url': 'wikipedia.org/'
-  },
-  options6 = {
-    'url': 'http://wikipedia.org/'
-  };
-
-// invaild url
-var options7 = {
-  'url': 'http://testtesttest4564568.com'
-};
-
-// empty value
-var optionsNoUrl = {
-  'url': ''
-};
-
-// no url
-var optionsEmpty = { };
-
-// test timeout
-var options8 = {
-    'url': 'http://www.wikipedia.org/',
-    'timeout': 2000
-  },
-  options9 = {
-    'url': 'http://www.wikipedia.org/',
-    'timeout': ''
-  },
-  options10 = {
-    'url': 'http://www.wikipedia.org/',
-    'timeout': '2000'
-  },
-  options11 = {
-    'url': 'http://www.wikipedia.org/',
-    'timeout': 'sdsdds'
-  };
-
-// some bad urls
-var options12 = {
-    'url': 23233
-  },
-  options13 = {
-    'url': '2323233'
-  },
-  options14 = {
-    'url': 'this is a testt'
-  },
-  options15 = {
-    'url': 'https://github.com/jshemas/notOpenGraphScraper'
-  };
-
-// test getting only open graph tags
-var options16 = {
-  'url': 'http://www.wikipedia.org/',
-  'onlyGetOpenGraphInfo': true
-};
-
-// test getting the description from meta tags
-var options17 = {
-  'url': 'https://twitter.com/'
-};
-
-// testing 304 page
-var options18 = {
-  'url': 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut'
-};
-
-// testing all media
-var options19 = {
-  'url': 'http://ogp.me',
-  'allMedia': true
-};
-
-// test videos
-var optionsYoutube = {
-    'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-  },
-  optionsTwitch = {
-    'url': 'https://www.twitch.tv/warcraft/v/78039967'
-  };
-
-// test image
-var optionsFlickr = {
-  'url': 'https://www.flickr.com/photos/travelgraph/18791678505/in/gallery-flickr-72157663638192642/'
-};
-
-// test twitter tags
-var optionTwitter = {
-  'url': 'https://dev.twitter.com/'
-};
-
-// test OG and twitter tags
-var optionsGithub = {
-    'url': 'https://github.com'
-  },
-  optionsAtom = {
-    'url': 'https://atom.io'
-  };
-
-// test charset utf-8
-var optionCharset1 = {
-  'url': 'http://ogp.me/',
-  'withCharset': true
-};
-
-// test charset windows-1251
-var optionCharset2 = {
-  'url': 'http://www.gazeta.ru/',
-  'encoding': null,
-  'withCharset': true
-};
-
-// test for legacy with no charset
-var optionCharset3 = {
-  'url': 'http://www.rakuten.co.jp/',
-  'encoding': null
-};
-
-// test not a html page
-var optionNotHTML = {
-  'url': 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg'
-};
+const app = require('../index');
+const expect = require('expect.js');
 
 describe('GET OG', function () {
   this.timeout(10000); // should wait at least ten seconds before failing
   it('Valid Call - ogp.me should return open graph data', function (done) {
-    app(options1, function (err, result, response) {
-      console.log('err:', err);
+    app({
+      'url': 'http://ogp.me/'
+    }, function (error, result, response) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://ogp.me/');
       expect(result.data.ogTitle).to.be('Open Graph protocol');
       expect(result.data.ogType).to.be('website');
       expect(result.data.ogUrl).to.be('http://ogp.me/');
@@ -160,203 +26,373 @@ describe('GET OG', function () {
       done();
     });
   });
+  it('Valid Call - ogp.me should return open graph data - promise version', function (done) {
+    app({'url': 'http://ogp.me/'})
+      .then(function (result) {
+        console.log('result:', result);
+        expect(result.success).to.be(true);
+        expect(result.requestUrl).to.be('http://ogp.me/');
+        expect(result.data.ogTitle).to.be('Open Graph protocol');
+        expect(result.data.ogType).to.be('website');
+        expect(result.data.ogUrl).to.be('http://ogp.me/');
+        expect(result.data.ogDescription).to.be('The Open Graph protocol enables any web page to become a rich object in a social graph.');
+        expect(result.data.ogImage.url).to.be('http://ogp.me/logo.png');
+        expect(result.data.ogImage.width).to.be('300');
+        expect(result.data.ogImage.height).to.be('300');
+        expect(result.data.ogImage.type).to.be('image/png');
+        done();
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect(error).to.be(false);
+        done();
+      });
+  });
   it('Valid Call - http', function (done) {
-    app(options2, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://www.wikipedia.org/'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
       done();
     });
   });
   it('Valid Call - https', function (done) {
-    app(options3, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'https://www.wikipedia.org/'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
       done();
     });
   });
   it('Valid Call - no protocol', function (done) {
-    app(options4, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'www.wikipedia.org/'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
       done();
     });
   });
   it('Valid Call - no protocol and no wwww', function (done) {
-    app(options5, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'wikipedia.org/'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
       done();
     });
   });
   it('Valid Call - protocol with no wwww', function (done) {
-    app(options6, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://wikipedia.org/'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
+      done();
+    });
+  });
+  it('Valid Call - blacklist', function (done) {
+    app({
+      'url': 'https://www.wikipedia.org/',
+      'blacklist': ['www.test.com', 'www.wikipedia.org']
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(true);
+      expect(result.success).to.be(false);
+      expect(result.requestUrl).to.be('https://www.wikipedia.org/');
+      expect(result.error).to.be('Host Name Has Been Black Listed');
+      done();
+    });
+  });
+  it('Valid Call - blacklist with no match', function (done) {
+    app({
+      'url': 'https://www.wikipedia.org/',
+      'blacklist': ['www.test.com', 'www.google.org']
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://www.wikipedia.org/');
+      expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
+      done();
+    });
+  });
+  it('Valid Call - blacklist empty', function (done) {
+    app({
+      'url': 'https://www.wikipedia.org/',
+      'blacklist': []
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://www.wikipedia.org/');
+      expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
       done();
     });
   });
   it('Invalid Call - fake page', function (done) {
-    app(options7, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://testtesttest4564568.com'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Page Not Found');
+      expect(result.requestUrl).to.be('http://testtesttest4564568.com');
+      expect(result.error).to.be('Page Not Found');
       done();
     });
   });
   it('Invalid Call - empty url', function (done) {
-    app(optionsNoUrl, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': ''
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Invalid URL');
+      expect(result.requestUrl).to.be('');
+      expect(result.error).to.be('Invalid URL');
       done();
     });
   });
   it('Invalid Call - empty options', function (done) {
-    app(optionsEmpty, function (err, result) {
-      console.log('err:', err);
+    app({}, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
-      expect(result.err).to.be('Invalid URL');
+      expect(error).to.be(true);
+      expect(result.error).to.be('Invalid URL');
       expect(result.success).to.be(false);
+      expect(result.requestUrl).to.be(undefined);
       done();
     });
   });
   it('Valid Call - timeout set to 2000', function (done) {
-    app(options8, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://www.wikipedia.org/',
+      'timeout': 2000
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
       done();
     });
   });
   it('Valid Call - timeout set to empty string', function (done) {
-    app(options9, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://www.wikipedia.org/',
+      'timeout': ''
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
       done();
     });
   });
   it('Valid Call - timeout number is a string', function (done) {
-    app(options10, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://www.wikipedia.org/',
+      'timeout': '2000'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
       done();
     });
   });
   it('Valid Call - time is just a string of chars', function (done) {
-    app(options11, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://www.wikipedia.org/',
+      'timeout': 'sdsdds'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
+      expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia_wordmark.png');
       done();
     });
   });
   it('Invalid Call - url is just a number', function (done) {
-    app(options12, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 23233
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Page Not Found');
+      expect(result.requestUrl).to.be('http://23233');
+      expect(result.error).to.be('Page Not Found');
       done();
     });
   });
   it('Invalid Call - url is a string of numbers', function (done) {
-    app(options13, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': '2323233'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Page Not Found');
+      expect(result.requestUrl).to.be('http://2323233');
+      expect(result.error).to.be('Page Not Found');
       done();
     });
   });
   it('Invalid Call - url is a string of words', function (done) {
-    app(options14, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'this is a test'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Page Not Found');
+      expect(result.requestUrl).to.be('http://this is a test');
+      expect(result.error).to.be('Page Not Found');
       done();
     });
   });
   it('Invalid Call - response code is 404', function (done) {
-    app(options15, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'https://github.com/jshemas/notOpenGraphScraper'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Page Not Found');
+      expect(result.requestUrl).to.be('https://github.com/jshemas/notOpenGraphScraper');
+      expect(result.error).to.be('Page Not Found');
       done();
     });
   });
   it('Valid Call - only get open graph info', function (done) {
-    app(options16, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://www.wikipedia.org/',
+      'onlyGetOpenGraphInfo': true
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data).to.be.empty();
       done();
     });
   });
   it('Valid Call - test getting the description from meta tags', function (done) {
-    app(options17, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'https://jshemas.github.io/openGraphScraperPages/twitter.html'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
-      expect(result.data.ogTitle.length > 0).to.be(true);
-      expect(result.data.ogDescription.length > 0).to.be(true);
+      expect(result.requestUrl).to.be('https://jshemas.github.io/openGraphScraperPages/twitter.html');
+      expect(result.data.ogTitle).to.be('Twitter. It\'s what\'s happening.');
+      expect(result.data.ogDescription).to.be('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
+      expect(result.data.ogImage.url).to.be('/static/images/toolbar/wayback-toolbar-logo.png');
       done();
     });
   });
   it('Valid Call - testing 304 page', function (done) {
-    app(options18, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
+      expect(result.data.ogSiteName).to.be('We Mean Business | London');
       expect(result.data.ogTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip & Nut');
+      expect(result.data.ogUrl).to.be('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
+      expect(result.data.ogType).to.be('article');
+      expect(result.data.ogDescription).to.be('This month, we popped over to The Nest in Hackney Downs Studios to meet the \nlovely Pip Murray, founder of exciting new nut butter brand Pip & Nut. \n\nOur aim was to learn more about how this new and rather exciting range of \nhigh protein, all natural nut butters that has taken the grocery an');
+      expect(result.data.twitterTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip & Nut');
+      expect(result.data.twitterCard).to.be('summary');
+      expect(result.data.twitterDescription).to.be('This month, we popped over to The Nest in Hackney Downs Studios to meet the \nlovely Pip Murray, founder of exciting new nut butter brand Pip & Nut. \n\nOur aim was to learn more about how this new and rather exciting range of \nhigh protein, all natural nut butters that has taken the grocery an');
+      expect(result.data.ogImage.url).to.be('http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1462962779564/unnamed.jpg?format=1000w');
+      expect(result.data.ogImage.width).to.be('1000');
+      expect(result.data.ogImage.height).to.be('608');
+      expect(result.data.ogImage.type).to.be(null);
+      expect(result.data.twitterImage.url).to.be('http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1462962779564/unnamed.jpg?format=1000w');
+      expect(result.data.twitterImage.width).to.be(null);
+      expect(result.data.twitterImage.height).to.be(null);
+      expect(result.data.twitterImage.alt).to.be(null);
       done();
     });
   });
   it('Valid Call - should contain array of images', function (done) {
-    app(options19, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://ogp.me',
+      'allMedia': true
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://ogp.me');
+      expect(result.data.ogTitle).to.be('Open Graph protocol');
+      expect(result.data.ogType).to.be('website');
+      expect(result.data.ogUrl).to.be('http://ogp.me/');
+      expect(result.data.ogDescription).to.be('The Open Graph protocol enables any web page to become a rich object in a social graph.');
       expect(result.data.ogImage[0].url).to.be('http://ogp.me/logo.png');
       expect(result.data.ogImage[0].width).to.be('300');
       expect(result.data.ogImage[0].height).to.be('300');
@@ -365,85 +401,231 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - Test Youtube Video - Should Return correct Open Graph Info', function (done) {
-    app(optionsYoutube, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.data.ogSiteName).to.be('YouTube');
-      expect(result.data.ogTitle).to.be('Rick Astley - Never Gonna Give You Up');
       expect(result.data.ogUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+      expect(result.data.ogTitle).to.be('Rick Astley - Never Gonna Give You Up' || 'Rick Astley - Never Gonna Give You Up - YouTube');
       expect(result.data.ogDescription).to.be('Rick Astley - Never Gonna Give You Up (Official Music Video) - Listen On Spotify: http://smarturl.it/AstleySpotify Download Rick\'s Number 1 album "50" - http...');
       expect(result.data.ogType).to.be('video');
+      expect(result.data.twitterCard).to.be('player');
+      expect(result.data.twitterSite).to.be('@youtube');
+      expect(result.data.twitterTitle).to.be('Rick Astley - Never Gonna Give You Up' || 'Rick Astley - Never Gonna Give You Up - YouTube');
+      expect(result.data.twitterDescription).to.be('Rick Astley - Never Gonna Give You Up (Official Music Video) - Listen On Spotify: http://smarturl.it/AstleySpotify Download Rick\'s Number 1 album "50" - http...');
+      expect(result.data.twitterAppNameiPhone).to.be('YouTube');
+      expect(result.data.twitterAppIdiPhone).to.be('544007664');
+      expect(result.data.twitterAppNameiPad).to.be('YouTube');
+      expect(result.data.twitterAppIdiPad).to.be('544007664');
+      expect(result.data.twitterAppUrliPhone).to.be('vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
+      expect(result.data.twitterAppUrliPad).to.be('vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
+      expect(result.data.twitterAppNameGooglePlay).to.be('YouTube');
+      expect(result.data.twitterAppIdGooglePlay).to.be('com.google.android.youtube');
+      expect(result.data.twitterAppUrlGooglePlay).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.data.ogImage.url).to.be('https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');
+      expect(result.data.ogImage.width).to.be(null);
+      expect(result.data.ogImage.height).to.be(null);
+      expect(result.data.ogImage.type).to.be(null);
       expect(result.data.ogVideo.url).to.be('https://www.youtube.com/embed/dQw4w9WgXcQ');
-      expect(result.data.ogVideo.type).to.be('text/html');
       expect(result.data.ogVideo.width).to.be('1280');
       expect(result.data.ogVideo.height).to.be('720');
+      expect(result.data.ogVideo.type).to.be('text/html');
+      expect(result.data.twitterImage.url).to.be('https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');
+      expect(result.data.twitterImage.width).to.be(null);
+      expect(result.data.twitterImage.height).to.be(null);
+      expect(result.data.twitterImage.alt).to.be(null);
+      expect(result.data.twitterPlayer.url).to.be('https://www.youtube.com/embed/dQw4w9WgXcQ');
+      expect(result.data.twitterPlayer.width).to.be('1280');
+      expect(result.data.twitterPlayer.height).to.be('720');
+      expect(result.data.twitterPlayer.stream).to.be(null);
       done();
     });
   });
   it('Valid Call - Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
-    app(optionsTwitch, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'https://www.twitch.tv/warcraft/v/78039967'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://www.twitch.tv/warcraft/v/78039967');
       expect(result.data.ogSiteName).to.be('Twitch');
+      expect(result.data.ogTitle).to.be('World Quests and Demon Invasions Q&A with Jeremy Feasel');
+      expect(result.data.ogDescription).to.be('Warcraft - Twitch');
+      expect(result.data.ogUrl).to.be('https://www.twitch.tv/videos/78039967');
       expect(result.data.ogType).to.be('video');
+      expect(result.data.twitterTitle).to.be('World Quests and Demon Invasions Q&A with Jeremy Feasel');
+      expect(result.data.twitterDescription).to.be('Warcraft - Twitch');
+      expect(result.data.twitterCard).to.be('player');
+      expect(result.data.twitterAppNameGooglePlay).to.be('Twitch');
+      expect(result.data.twitterAppIdGooglePlay).to.be('tv.twitch.android.app');
+      expect(result.data.twitterAppNameiPhone).to.be('Twitch');
+      expect(result.data.twitterAppIdiPhone).to.be('id460177396');
+      expect(result.data.twitterAppUrliPhone).to.be('twitch://stream/warcraft');
+      expect(result.data.twitterAppNameiPad).to.be('Twitch');
+      expect(result.data.twitterAppIdiPad).to.be(undefined);
+      expect(result.data.twitterAppUrliPad).to.be('twitch://stream/warcraft');
       expect(result.data.ogImage.url).to.be('https://static-cdn.jtvnw.net/s3_vods/294d4c5c42_warcraft_22339636096_485121236/thumb/thumb0-480x320.jpg');
+      expect(result.data.ogImage.width).to.be(null);
+      expect(result.data.ogImage.height).to.be(null);
+      expect(result.data.ogImage.type).to.be(null);
       expect(result.data.ogVideo.url).to.be('http://player.twitch.tv/?video=v78039967&player=facebook&autoplay=true');
-      expect(result.data.ogVideo.type).to.be('text/html');
       expect(result.data.ogVideo.width).to.be('620');
       expect(result.data.ogVideo.height).to.be('378');
+      expect(result.data.ogVideo.type).to.be('text/html');
+      expect(result.data.twitterImage.url).to.be('https://static-cdn.jtvnw.net/s3_vods/294d4c5c42_warcraft_22339636096_485121236/thumb/thumb0-480x320.jpg');
+      expect(result.data.twitterImage.width).to.be(null);
+      expect(result.data.twitterImage.height).to.be(null);
+      expect(result.data.twitterImage.alt).to.be(null);
+      expect(result.data.twitterPlayer.url).to.be('https://player.twitch.tv/?video=v78039967&player=twitter&autoplay=false');
+      expect(result.data.twitterPlayer.width).to.be('640');
+      expect(result.data.twitterPlayer.height).to.be('360');
+      expect(result.data.twitterPlayer.stream).to.be(null);
       done();
     });
   });
   it('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
-    app(optionsFlickr, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'https://jshemas.github.io/openGraphScraperPages/flickr'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://jshemas.github.io/openGraphScraperPages/flickr');
       expect(result.data.ogSiteName).to.be('Flickr');
+      expect(result.data.twitterAppNameiPhone).to.be('Flickr');
+      expect(result.data.twitterAppIdiPhone).to.be('328407587');
+      expect(result.data.twitterSite).to.be('@flickr');
       expect(result.data.ogTitle).to.be('Heimgarten');
-      expect(result.data.ogUrl).to.be('https://www.flickr.com/photos/travelgraph/18791678505/');
+      expect(result.data.ogDescription).to.be('____________________ Press "L" to view on black Press "F" to favor Share, if you like :)    You can leave a comment, if you like :)    Not to use or publish without permission! © Christoph Wagner Photographie');
       expect(result.data.ogType).to.be('article');
+      expect(result.data.ogUrl).to.be('https://www.flickr.com/photos/travelgraph/18791678505/');
+      expect(result.data.twitterCard).to.be('photo');
+      expect(result.data.twitterDescription).to.be('____________________ Press "L" to view on black Press "F" to favor Share, if you like :)    You can leave a comment, if you like :)    Not to use or publish without permission! © Christoph Wagner Photographie');
+      expect(result.data.twitterAppUrliPhone).to.be('flickr://flickr.com/photos/travelgraph/18791678505/');
       expect(result.data.ogImage.url).to.be('https://c1.staticflickr.com/1/499/18791678505_5886fefcf7_b.jpg');
       expect(result.data.ogImage.width).to.be('1024');
       expect(result.data.ogImage.height).to.be('375');
+      expect(result.data.ogImage.type).to.be(null);
+      done();
+    });
+  });
+  it('Valid Call - Test Forbes Article Redirect - Should Return correct Open Graph Info', function (done) {
+    app({
+      'url': 'https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa');
+      expect(result.data.ogSiteName).to.be('Forbes');
+      expect(result.data.twitterSite).to.be('@forbes');
+      expect(result.data.ogTitle).to.be('3 Stocks Like Apple Was 10 Years Ago: Tesla, Nvidia And Alibaba');
+      expect(result.data.ogUrl).to.be('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/');
+      expect(result.data.ogDescription).to.be('When Apple launched the iPhone 10 years ago the stock was at $22 and Wall Street considered it overvalued. Today it trades at $153. If you are looking for stocks like Apple for the next 10 years, take a close look at Tesla, Nvidia, and Alibaba.');
+      expect(result.data.ogType).to.be('article');
+      expect(result.data.twitterCard).to.be('summary_large_image');
+      expect(result.data.twitterTitle).to.be('3 Stocks Like Apple Was 10 Years Ago: Tesla, Nvidia And Alibaba');
+      expect(result.data.twitterDescription).to.be('When Apple launched the iPhone 10 years ago the stock was at $22 and Wall Street considered it overvalued. Today it trades at $153. If you are looking for stocks like Apple for the next 10 years, take a close look at Tesla, Nvidia, and Alibaba.');
+      expect(result.data.twitterCreator).to.be('@kenkam');
+      expect(result.data.ogImage.url).to.be('https://thumbor.forbes.com/thumbor/600x315/smart/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F825671570%2F960x0.jpg%3Ffit%3Dscale');
+      expect(result.data.ogImage.width).to.be(null);
+      expect(result.data.ogImage.height).to.be(null);
+      expect(result.data.ogImage.type).to.be(null);
+      expect(result.data.twitterImage.url).to.be('https://thumbor.forbes.com/thumbor/600x300/smart/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F825671570%2F960x0.jpg%3Ffit%3Dscale');
+      expect(result.data.twitterImage.width).to.be(null);
+      expect(result.data.twitterImage.height).to.be(null);
+      expect(result.data.twitterImage.alt).to.be(null);
+      done();
+    });
+  });
+  it('Valid Call - Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function (done) {
+    app({
+      'url': 'https://www.namecheap.com/'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://www.namecheap.com/');
+      expect(result.data.ogTitle).to.be('\n\tDomain Names - Cheap Domain Names | Namecheap.Com\n');
+      done();
+    });
+  });
+  it('Valid Call - Test NYTimes Article Redirect - Should Return correct Open Graph Info', function (done) {
+    app({
+      'url': 'https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0');
+      expect(result.data.twitterAppNameGooglePlay).to.be('NYTimes');
+      expect(result.data.twitterAppIdGooglePlay).to.be('com.nytimes.android');
+      expect(result.data.twitterAppUrlGooglePlay).to.be('nytimes://reader/id/100000004620996');
+      expect(result.data.ogUrl).to.be('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html');
+      expect(result.data.ogType).to.be('article');
+      expect(result.data.ogTitle).to.be('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million');
+      expect(result.data.ogDescription).to.be('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
+      expect(result.data.twitterSite).to.be('@nytimes');
+      expect(result.data.twitterTitle).to.be('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million');
+      expect(result.data.twitterDescription).to.be('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
+      expect(result.data.twitterCard).to.be('summary_large_image');
+      expect(result.data.ogImage.url).to.be('https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-facebookJumbo.jpg');
+      expect(result.data.ogImage.width).to.be(null);
+      expect(result.data.ogImage.height).to.be(null);
+      expect(result.data.ogImage.type).to.be(null);
+      expect(result.data.twitterImage.url).to.be('https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-videoSixteenByNineJumbo1600.jpg');
+      expect(result.data.twitterImage.width).to.be(null);
+      expect(result.data.twitterImage.height).to.be(null);
+      expect(result.data.twitterImage.alt).to.be('Kim Kardashian West at the “Famous” exhibition at Blum &amp; Poe in Los Angeles last week. The gallery is planning to sell the sculpture for a hefty price tag.');
       done();
     });
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Twitter Site', function (done) {
-    app(optionTwitter, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'https://jshemas.github.io/openGraphScraperPages/twitter-dev'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://jshemas.github.io/openGraphScraperPages/twitter-dev');
       expect(result.data.twitterTitle).to.be('Twitter Developers');
       expect(result.data.twitterCard).to.be('summary');
       expect(result.data.twitterDescription).to.be('The Twitter platform connects your website or application with the worldwide conversation happening on Twitter.');
-      expect(result.data.twitterImage.url).to.contain('_static/imgs/twitterdev_gear.png');
+      expect(result.data.twitterImage.url).to.contain('https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png');
       expect(result.data.ogSiteName).to.be('Twitter Developers');
       expect(result.data.ogTitle).to.be('Twitter Developers');
-      expect(result.data.ogUrl).to.be('https://dev.twitter.com/');
+      expect(result.data.ogUrl).to.be('https://web.archive.org/web/20160303190414im_/https://dev.twitter.com/');
       expect(result.data.ogType).to.be('website');
-      expect(result.data.ogImage.url).to.contain('_static/imgs/twitterdev_gear.png');
+      expect(result.data.ogImage.url).to.contain('https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png');
       done();
     });
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Github Site', function (done) {
-    app(optionsGithub, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'https://jshemas.github.io/openGraphScraperPages/github'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
-      expect(result.data.ogUrl).to.be('https://github.com');
+      expect(result.requestUrl).to.be('https://jshemas.github.io/openGraphScraperPages/github');
+      expect(result.data.ogUrl).to.be('https://web.archive.org/web/20170113081103/https://github.com/');
       expect(result.data.ogSiteName).to.be('GitHub');
       expect(result.data.ogTitle).to.be('Build software better, together');
       expect(result.data.ogDescription).to.be.a('string');
-      expect(result.data.ogImage.url).to.be('https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
+      expect(result.data.ogImage.url).to.be('https://web.archive.org/web/20170113081103im_/https://assets-cdn.github.com/images/modules/open_graph/github-logo.png');
       expect(result.data.ogImage.width).to.be('1200');
       expect(result.data.ogImage.height).to.be('1200');
       expect(result.data.ogImage.type).to.be('image/png');
@@ -451,12 +633,15 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Atom Site', function (done) {
-    app(optionsAtom, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'https://jshemas.github.io/openGraphScraperPages/atom.html'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
-      expect(result.data.ogUrl).to.be('https://atom.io/');
+      expect(result.requestUrl).to.be('https://jshemas.github.io/openGraphScraperPages/atom.html');
+      expect(result.data.ogUrl).to.be('https://web.archive.org/web/20170913111314/https://atom.io/');
       expect(result.data.ogSiteName).to.be('Atom');
       expect(result.data.ogTitle).to.be('A hackable text editor for the 21st Century');
       expect(result.data.ogDescription).to.be('At GitHub, we’re building the text editor we’ve always wanted: hackable to the core, but approachable on the first day without ever touching a config file. We can’t wait to see what you build with it.');
@@ -466,11 +651,11 @@ describe('GET OG', function () {
       expect(result.data.twitterCreator).to.be('@github');
       expect(result.data.twitterTitle).to.be('Atom');
       expect(result.data.twitterDescription).to.be('A hackable text editor for the 21st Century');
-      expect(result.data.ogImage.url).to.be('http://og.github.com/atom-mark/atom-mark@1200x630.png');
+      expect(result.data.ogImage.url).to.be('https://web.archive.org/web/20170913111314im_/http://og.github.com/atom-mark/atom-mark@1200x630.png');
       expect(result.data.ogImage.width).to.be('1200');
       expect(result.data.ogImage.height).to.be('630');
       expect(result.data.ogImage.type).to.be(null);
-      expect(result.data.twitterImage.url).to.be('http://og.github.com/atom-logo/atom-logo@1200x630.png');
+      expect(result.data.twitterImage.url).to.be('https://web.archive.org/web/20170913111314im_/http://og.github.com/atom-logo/atom-logo@1200x630.png');
       expect(result.data.twitterImage.width).to.be('1200');
       expect(result.data.twitterImage.height).to.be('630');
       expect(result.data.twitterImage.alt).to.be(null);
@@ -478,43 +663,78 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - Utf-8 charset - Should Return correct Open Graph Info + charset info', function (done) {
-    app(optionCharset1, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://ogp.me/',
+      'withCharset': true
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://ogp.me/');
       expect(result.data.charset).to.be('utf8');
       done();
     });
   });
   it('Valid Call - windows-1251 charset - Should Return correct Open Graph Info + charset info', function (done) {
-    app(optionCharset2, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'http://www.gazeta.ru/',
+      'encoding': null,
+      'withCharset': true
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
-      expect(result.success).to.be(true);
-      expect(result.data.charset).to.be('windows-1251');
-      expect(result.data.ogTitle).to.be('Главные новости - Газета.Ru');
-      done();
+      // sometimes we get ESOCKETTIMEDOUT errors, lets just try again
+      if (error === true) {
+        console.log('found error, trying agine');
+        app({
+          'url': 'http://www.gazeta.ru/',
+          'encoding': null,
+          'withCharset': true
+        }, function (error, result) {
+          console.log('error:', error);
+          console.log('result:', result);
+          expect(error).to.be(false);
+          expect(result.success).to.be(true);
+          expect(result.requestUrl).to.be('http://www.gazeta.ru/');
+          expect(result.data.charset).to.be('windows-1251');
+          expect(result.data.ogTitle).to.be('Главные новости - Газета.Ru');
+          done();
+        });
+      } else {
+        expect(error).to.be(false);
+        expect(result.success).to.be(true);
+        expect(result.requestUrl).to.be('http://www.gazeta.ru/');
+        expect(result.data.charset).to.be('windows-1251');
+        expect(result.data.ogTitle).to.be('Главные новости - Газета.Ru');
+        done();
+      }
     });
   });
   it('Valid Call - legacy no charset - Should Return correct Open Graph Info + charset info', function (done) {
-    app(optionCharset3, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'https://jshemas.github.io/openGraphScraperPages/rakuten',
+      'encoding': null
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(false);
+      expect(error).to.be(false);
       expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://jshemas.github.io/openGraphScraperPages/rakuten');
       expect(result.data.ogTitle).to.be('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
       done();
     });
   });
   it('Invalid Call - Not a HTML page', function (done) {
-    app(optionNotHTML, function (err, result) {
-      console.log('err:', err);
+    app({
+      'url': 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg'
+    }, function (error, result) {
+      console.log('error:', error);
       console.log('result:', result);
-      expect(err).to.be(true);
+      expect(error).to.be(true);
       expect(result.success).to.be(false);
-      expect(result.err).to.be('Must scrape an HTML page');
+      expect(result.requestUrl).to.be('https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg');
+      expect(result.error).to.be('Must scrape an HTML page');
       done();
     });
   });
