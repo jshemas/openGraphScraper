@@ -635,14 +635,14 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Atom Site', function (done) {
     app({
-      'url': 'https://atom.io'
+      'url': 'https://jshemas.github.io/openGraphScraperPages/atom.html'
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be(false);
       expect(result.success).to.be(true);
-      expect(result.requestUrl).to.be('https://atom.io');
-      expect(result.data.ogUrl).to.be('https://atom.io/');
+      expect(result.requestUrl).to.be('https://jshemas.github.io/openGraphScraperPages/atom.html');
+      expect(result.data.ogUrl).to.be('https://web.archive.org/web/20170913111314/https://atom.io/');
       expect(result.data.ogSiteName).to.be('Atom');
       expect(result.data.ogTitle).to.be('A hackable text editor for the 21st Century');
       expect(result.data.ogDescription).to.be('At GitHub, we’re building the text editor we’ve always wanted: hackable to the core, but approachable on the first day without ever touching a config file. We can’t wait to see what you build with it.');
@@ -652,11 +652,11 @@ describe('GET OG', function () {
       expect(result.data.twitterCreator).to.be('@github');
       expect(result.data.twitterTitle).to.be('Atom');
       expect(result.data.twitterDescription).to.be('A hackable text editor for the 21st Century');
-      expect(result.data.ogImage.url).to.be('http://og.github.com/atom-mark/atom-mark@1200x630.png');
+      expect(result.data.ogImage.url).to.be('https://web.archive.org/web/20170913111314im_/http://og.github.com/atom-mark/atom-mark@1200x630.png');
       expect(result.data.ogImage.width).to.be('1200');
       expect(result.data.ogImage.height).to.be('630');
       expect(result.data.ogImage.type).to.be(null);
-      expect(result.data.twitterImage.url).to.be('http://og.github.com/atom-logo/atom-logo@1200x630.png');
+      expect(result.data.twitterImage.url).to.be('https://web.archive.org/web/20170913111314im_/http://og.github.com/atom-logo/atom-logo@1200x630.png');
       expect(result.data.twitterImage.width).to.be('1200');
       expect(result.data.twitterImage.height).to.be('630');
       expect(result.data.twitterImage.alt).to.be(null);
