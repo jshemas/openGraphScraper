@@ -12,4 +12,4 @@ script:
   - "npm install"
   - "npm run eslint"
   - "npm run test"
-after_script: "cat ./coverage/lcov.info | coveralls"
+after_script: "npm run coverage"
