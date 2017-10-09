@@ -446,7 +446,8 @@ describe('GET OG', function () {
       done();
     });
   });
-  it('Valid Call - Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
+  // it looks like Twitch removed all of open graph, skip test for now
+  it.skip('Valid Call - Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
     app({
       'url': 'https://www.twitch.tv/warcraft/v/78039967'
     }, function (error, result) {
