@@ -591,6 +591,51 @@ describe('GET OG', function () {
       done();
     });
   });
+  it('Valid Call - vimeo.com should return open graph data', function (done) {
+    app({
+      'url': 'https://vimeo.com/232889838'
+    }, function (error, result, response) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.data.ogSiteName).to.be('Vimeo');
+      expect(result.data.ogUrl).to.be('https://vimeo.com/232889838');
+      expect(result.data.ogType).to.be('video');
+      expect(result.data.ogTitle).to.be('Heroin');
+      expect(result.data.ogDescription).to.be('A painter with dozens of pieces but only one subject—his ex-wife.   From our Rashomon issue: https://go.topic.com/2xkCAtR  Directed by Jessica Beshir.');
+      expect(result.data.twitterCard).to.be('player');
+      expect(result.data.twitterSite).to.be('@vimeo');
+      expect(result.data.twitterTitle).to.be('Heroin');
+      expect(result.data.twitterDescription).to.be('A painter with dozens of pieces but only one subject—his ex-wife.   From our Rashomon issue: https://go.topic.com/2xkCAtR  Directed by Jessica Beshir.');
+      expect(result.data.twitterAppNameiPhone).to.be('Vimeo');
+      expect(result.data.twitterAppIdiPhone).to.be('425194759');
+      expect(result.data.twitterAppUrliPhone).to.be('vimeo://app.vimeo.com/videos/232889838');
+      expect(result.data.twitterAppNameiPad).to.be('Vimeo');
+      expect(result.data.twitterAppIdiPad).to.be('425194759');
+      expect(result.data.twitterAppUrliPad).to.be('vimeo://app.vimeo.com/videos/232889838');
+      expect(result.data.twitterAppNameGooglePlay).to.be('Vimeo');
+      expect(result.data.twitterAppIdGooglePlay).to.be('com.vimeo.android.videoapp');
+      expect(result.data.twitterAppUrlGooglePlay).to.be('vimeo://app.vimeo.com/videos/232889838');
+      expect(result.data.ogImage.url).to.be('https://i.vimeocdn.com/video/659221704_1280x720.jpg');
+      expect(result.data.ogImage.width).to.be('1280');
+      expect(result.data.ogImage.height).to.be('720');
+      expect(result.data.ogImage.type).to.be('image/jpg');
+      expect(result.data.ogVideo.url).to.be('https://player.vimeo.com/video/232889838?autoplay=1');
+      expect(result.data.ogVideo.width).to.be('1280');
+      expect(result.data.ogVideo.height).to.be('720');
+      expect(result.data.ogVideo.type).to.be('text/html');
+      expect(result.data.twitterImage.url).to.be('https://i.vimeocdn.com/video/659221704_1280x720.jpg');
+      expect(result.data.twitterImage.width).to.be(null);
+      expect(result.data.twitterImage.height).to.be(null);
+      expect(result.data.twitterImage.alt).to.be(null);
+      expect(result.data.twitterPlayer.url).to.be('https://player.vimeo.com/video/232889838');
+      expect(result.data.twitterPlayer.width).to.be('1280');
+      expect(result.data.twitterPlayer.height).to.be('720');
+      expect(result.data.twitterPlayer.stream).to.be(null);
+      done();
+    });
+  });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Twitter Site', function (done) {
     app({
       'url': 'https://jshemas.github.io/openGraphScraperPages/twitter-dev'
