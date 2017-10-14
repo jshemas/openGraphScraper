@@ -2,6 +2,14 @@
 
 const app = require('../index');
 const expect = require('expect.js');
+const HTML_STRING = `
+<html>
+<head>
+  <meta property="og:title" content="Test page"/>
+</head>
+<body></body>
+</html>
+`;
 
 describe('GET OG', function () {
   this.timeout(10000); // should wait at least ten seconds before failing
@@ -781,6 +789,32 @@ describe('GET OG', function () {
       expect(result.success).to.be(false);
       expect(result.requestUrl).to.be('https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg');
       expect(result.error).to.be('Must scrape an HTML page');
+      done();
+    });
+  });
+  it('Invalid Call - Can\'t request URL and pass in HTML string', function (done) {
+    app({
+      'url': 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg',
+      'html': HTML_STRING
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(true);
+      expect(result.success).to.be(false);
+      expect(result.requestUrl).to.be('https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg');
+      expect(result.error).to.be('Must specify either `url` or `html`, not both');
+      done();
+    });
+  });
+  it('Valid Call - pass in HTML string', function (done) {
+    app({
+      'html': HTML_STRING
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.data.ogTitle).to.be('Test page');
       done();
     });
   });
