@@ -1,3 +1,6 @@
+### 3.1.0
+- Adding ability to extract meta from HTML string
+
 ### 3.0.2
 - Adding CHANGELOG.md
 
