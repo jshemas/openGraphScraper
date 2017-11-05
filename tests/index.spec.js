@@ -645,6 +645,29 @@ describe('GET OG', function () {
       done();
     });
   });
+  it('Valid Call - michaelkors should return open graph data', function (done) {
+    app({
+      'url': 'https://jshemas.github.io/openGraphScraperPages/michaelkors'
+    }, function (error, result, response) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.data.ogType).to.be('product');
+      expect(result.data.ogTitle).to.be('Mirabel Suede Sandal  | Michael Kors');
+      expect(result.data.ogDescription).to.be('Exclusively Ours in Michael Kors stores and on michaelkors.com until 7/30/16. Geometric cutouts lend captivating flair to our Mirabel sandals in sumptuous suede. Anchored by a block heel and swingy tassel laces, they look especially chic grounding midi hemlines and cropped denim.');
+      expect(result.data.ogUrl).to.be('https://web.archive.org/web/20161126090544/http://www.michaelkors.com/mirabel-suede-sandal/_/R-US_40T6MBMS1S');
+      expect(result.data.ogSiteName).to.be('Michael Kors');
+      expect(result.data.ogPriceAmount).to.be('80.00');
+      expect(result.data.ogPriceCurrency).to.be('USD');
+      expect(result.data.ogAvailability).to.be('InStock');
+      expect(result.data.ogImage.url).to.be('http://michaelkors.scene7.com/is/image/MichaelKors/40T6MBMS1S-0001_IS');
+      expect(result.data.ogImage.width).to.be('400');
+      expect(result.data.ogImage.height).to.be('400');
+      expect(result.data.ogImage.type).to.be(null);
+      done();
+    });
+  });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Twitter Site', function (done) {
     app({
       'url': 'https://jshemas.github.io/openGraphScraperPages/twitter-dev'

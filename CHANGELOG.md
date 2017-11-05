@@ -1,3 +1,6 @@
+### 3.1.2
+- Checking for Open Graph price and availability info
+
 ### 3.1.1
 - Updating packages
 
