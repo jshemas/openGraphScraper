@@ -21,20 +21,20 @@
     "charset": "1.0.1",
     "cheerio": "1.0.0-rc.2",
     "iconv-lite": "0.4.19",
-    "jschardet": "1.5.1",
+    "jschardet": "1.6.0",
     "lodash": "4.17.4",
     "request": "2.83.0"
   },
   "devDependencies": {
     "coveralls": "3.0.0",
-    "eslint": "4.8.0",
-    "eslint-plugin-promise": "3.5.0",
+    "eslint": "4.10.0",
+    "eslint-plugin-promise": "3.6.0",
     "eslint-plugin-standard": "3.0.1",
     "expect.js": "0.3.1",
-    "mocha": "3.5.3",
+    "mocha": "4.0.1",
     "mockery": "2.1.0",
-    "nyc": "11.2.1",
-    "sinon": "4.0.0"
+    "nyc": "11.3.0",
+    "sinon": "4.1.1"
   },
   "repository": {
     "type": "git",
