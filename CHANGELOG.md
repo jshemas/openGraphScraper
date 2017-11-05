@@ -1,3 +1,6 @@
+### 3.1.1
+- Updating packages
+
 ### 3.1.0
 - Adding ability to extract meta from HTML string
 
