@@ -1,3 +1,6 @@
+### 3.1.3
+- Catch iconv exception to prevent unexpected charset 
+
 ### 3.1.2
 - Checking for Open Graph price and availability info
 
