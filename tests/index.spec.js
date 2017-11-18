@@ -802,6 +802,20 @@ describe('GET OG', function () {
       done();
     });
   });
+  it.only('Invalid Call - Encoding not recognized', function (done) {
+    app({
+      'url': 'http://www.tnnbar.org.tw/'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(true);
+      expect(result.success).to.be(false);
+      expect(result.requestUrl).to.be('http://www.tnnbar.org.tw/');
+      expect(result.error).to.be('Page Not Found');
+      // expect(result.errorDetails).to.be('Error: Encoding not recognized: \'zh_tw\' (searched as: \'zhtw\')');
+      done();
+    });
+  });
   it('Invalid Call - Not a HTML page', function (done) {
     app({
       'url': 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg'
