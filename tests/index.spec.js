@@ -802,18 +802,35 @@ describe('GET OG', function () {
       done();
     });
   });
-  it.only('Invalid Call - Encoding not recognized', function (done) {
+  it('Invalid Call - Encoding not recognized', function (done) {
     app({
       'url': 'http://www.tnnbar.org.tw/'
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
-      expect(error).to.be(true);
-      expect(result.success).to.be(false);
-      expect(result.requestUrl).to.be('http://www.tnnbar.org.tw/');
-      expect(result.error).to.be('Page Not Found');
-      // expect(result.errorDetails).to.be('Error: Encoding not recognized: \'zh_tw\' (searched as: \'zhtw\')');
-      done();
+      // sometimes we get ESOCKETTIMEDOUT errors, lets just try again
+      if (error === true) {
+        console.log('found error, trying agine');
+        app({
+          'url': 'http://www.tnnbar.org.tw/'
+        }, function (error, result) {
+          console.log('error:', error);
+          console.log('result:', result);
+          expect(error).to.be(true);
+          expect(result.success).to.be(false);
+          expect(result.requestUrl).to.be('http://www.tnnbar.org.tw/');
+          expect(result.error).to.be('Page Not Found');
+          // expect(result.errorDetails).to.be('Error: Encoding not recognized: \'zh_tw\' (searched as: \'zhtw\')');
+          done();
+        });
+      } else {
+        expect(error).to.be(true);
+        expect(result.success).to.be(false);
+        expect(result.requestUrl).to.be('http://www.tnnbar.org.tw/');
+        expect(result.error).to.be('Page Not Found');
+        // expect(result.errorDetails).to.be('Error: Encoding not recognized: \'zh_tw\' (searched as: \'zhtw\')');
+        done();
+      }
     });
   });
   it('Invalid Call - Not a HTML page', function (done) {
