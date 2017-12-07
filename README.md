@@ -112,7 +112,7 @@ ogs(options, function (error, results) {
 
 ### Results JSON
 Check the return for a ```success``` flag. If success is set to true, then the url input was valid. Otherwise it will be set to false. The above example will return something like...
-```json
+```javascript
 {
   data: {
     ogTitle: 'Open Graph protocol',
