@@ -1,3 +1,6 @@
+### 3.1.4
+- Returns more info on the error occurred when using promises
+
 ### 3.1.3
 - Catch iconv exception to prevent unexpected charset 
 
