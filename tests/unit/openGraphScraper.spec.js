@@ -12,7 +12,7 @@ describe('openGraphScraper', function () {
   describe('run', function () {
     let requestStub;
     let openGraphScraper;
-    beforeEach(function () {
+    beforeEach(function (done) {
       mockery.enable({
         warnOnReplace: false,
         warnOnUnregistered: false,
@@ -21,9 +21,11 @@ describe('openGraphScraper', function () {
       requestStub = sinon.stub();
       mockery.registerMock('request', requestStub);
       openGraphScraper = require('../../lib/openGraphScraper');
+      done();
     });
-    after(function () {
+    afterEach(function (done) {
       mockery.disable();
+      done();
     });
     it('should be able to hit site and find OG info', function (done) {
       process.browser = true;
@@ -37,18 +39,37 @@ describe('openGraphScraper', function () {
         done();
       });
     });
-    it('should be able to hit site and find OG info - promise version', function (done) {
+    it('should be able to hit site and find OG info - promise version', function () {
       process.browser = false;
       requestStub.yields(null, {statusCode: 200}, Buffer.from('<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>', 'utf8'));
-      openGraphScraper({'url': 'www.test.com'})
+      return openGraphScraper({'url': 'www.test.com'})
         .then(function (result) {
           expect(result.success).to.be(true);
           expect(result.data.ogTitle).to.be('test page');
-          done();
         })
         .catch(function (error) {
-          console.log('error:', error);
           expect(error).to.be(false);
+        });
+    });
+    it('should return the response data when an error occurred - promise version', function () {
+      process.browser = false;
+      requestStub.yields({ error: 'some error' }, { statusCode: 404 }, Buffer.from('<html><head><title>error page</title></head><body><h1>is no good</h2></body></html>', 'utf8'));
+      return openGraphScraper({'url': 'www.test.com'})
+        .then(function (result) {
+          expect().fail('this should not happen');
+        })
+        .catch(function (error) {
+          expect(error).to.eql({
+            error: 'Page Not Found',
+            errorDetails: {
+              error: 'some error'
+            },
+            requestUrl: 'http://www.test.com',
+            response: {
+              statusCode: 404
+            },
+            success: false
+          });
         });
     });
     it('should not be able to hit non html pages', function (done) {
@@ -61,15 +82,18 @@ describe('openGraphScraper', function () {
         done();
       });
     });
-    it('should not be able to hit non html pages - promise version', function (done) {
-      openGraphScraper({'url': 'www.test.com.png'})
+    it('should not be able to hit non html pages - promise version', function () {
+      return openGraphScraper({'url': 'www.test.com.png'})
         .then(function (result) {
-          expect(result.success).to.be(false);
-          done();
+          expect().fail('this should not happen');
         })
         .catch(function (error) {
-          expect(error).to.be(true);
-          done();
+          expect(error).to.eql({
+            error: 'Must scrape an HTML page',
+            success: false,
+            requestUrl: 'http://www.test.com.png',
+            errorDetails: 'Must scrape an HTML page'
+          });
         });
     });
     it('should not be able to hit a black list site', function (done) {
