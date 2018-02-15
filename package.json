@@ -22,7 +22,7 @@
     "cheerio": "1.0.0-rc.2",
     "iconv-lite": "0.4.19",
     "jschardet": "1.6.0",
-    "lodash": "4.17.4",
+    "lodash": "4.17.5",
     "request": "2.83.0"
   },
   "devDependencies": {
