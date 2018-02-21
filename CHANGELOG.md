@@ -1,3 +1,6 @@
+### 3.1.5
+- Updating lodash to fix vulnerable
+
 ### 3.1.4
 - Returns more info on the error occurred when using promises
 
