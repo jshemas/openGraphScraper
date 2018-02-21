@@ -368,7 +368,7 @@ describe('GET OG', function () {
       expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.requestUrl).to.be('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
-      expect(result.data.ogSiteName).to.be('We Mean Business | London');
+      expect(result.data.ogSiteName).to.be('WE MEAN BUSINESS | LONDON');
       expect(result.data.ogTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip & Nut');
       expect(result.data.ogUrl).to.be('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
       expect(result.data.ogType).to.be('article');
@@ -421,7 +421,7 @@ describe('GET OG', function () {
       expect(result.data.ogUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       // expect(result.data.ogTitle).to.be('Rick Astley - Never Gonna Give You Up' || 'Rick Astley - Never Gonna Give You Up - YouTube');
       // expect(result.data.ogDescription).to.be('Rick Astley - Never Gonna Give You Up (Official Music Video) - Listen On Spotify: http://smarturl.it/AstleySpotify Download Rick\'s Number 1 album "50" - http...');
-      expect(result.data.ogType).to.be('video');
+      expect(result.data.ogType).to.be('video.other');
       expect(result.data.twitterCard).to.be('player');
       expect(result.data.twitterSite).to.be.a('string');
       // expect(result.data.twitterTitle).to.be('Rick Astley - Never Gonna Give You Up' || 'Rick Astley - Never Gonna Give You Up - YouTube');
