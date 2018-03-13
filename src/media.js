@@ -1,7 +1,7 @@
 'use strict';
 
-var _ = require('lodash');
-var fields = require('./fields');
+const _ = require('lodash');
+const fields = require('./fields');
 
 /*
  * media setup
@@ -18,7 +18,11 @@ exports.mediaSetup = function (ogObject, options) {
     ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [null];
     ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [null];
   }
-  var ogImages = _.zip(ogObject.ogImage, ogObject.ogImageWidth, ogObject.ogImageHeight, ogObject.ogImageType).map(mediaMapper).sort(mediaSorter);
+  var ogImages = _.zip(ogObject.ogImage,
+    ogObject.ogImageWidth,
+    ogObject.ogImageHeight,
+    ogObject.ogImageType)
+    .map(mediaMapper).sort(mediaSorter);
 
   /* Combine video/width/height/type
     and sort for priority */
@@ -28,7 +32,11 @@ exports.mediaSetup = function (ogObject, options) {
     ogObject.ogVideoHeight = ogObject.ogVideoHeight ? ogObject.ogVideoHeight : [null];
     ogObject.ogVideoType = ogObject.ogVideoType ? ogObject.ogVideoType : [null];
   }
-  var ogVideos = _.zip(ogObject.ogVideo, ogObject.ogVideoWidth, ogObject.ogVideoHeight, ogObject.ogVideoType).map(mediaMapper).sort(mediaSorter);
+  var ogVideos = _.zip(ogObject.ogVideo,
+    ogObject.ogVideoWidth,
+    ogObject.ogVideoHeight,
+    ogObject.ogVideoType)
+    .map(mediaMapper).sort(mediaSorter);
 
   /* Combine twitter image/width/height/alt
     and sort for priority */
@@ -38,7 +46,11 @@ exports.mediaSetup = function (ogObject, options) {
     ogObject.twitterImageHeight = ogObject.twitterImageHeight ? ogObject.twitterImageHeight : [null];
     ogObject.twitterImageAlt = ogObject.twitterImageAlt ? ogObject.twitterImageAlt : [null];
   }
-  var twitterImages = _.zip(ogObject.twitterImage, ogObject.twitterImageWidth, ogObject.twitterImageHeight, ogObject.twitterImageAlt).map(mediaMapperTwitterImage).sort(mediaSorter);
+  var twitterImages = _.zip(ogObject.twitterImage,
+    ogObject.twitterImageWidth,
+    ogObject.twitterImageHeight,
+    ogObject.twitterImageAlt)
+    .map(mediaMapperTwitterImage).sort(mediaSorter);
 
   /* Combine twitter player/width/height/stream
     and sort for priority */
@@ -48,7 +60,11 @@ exports.mediaSetup = function (ogObject, options) {
     ogObject.twitterPlayerHeight = ogObject.twitterPlayerHeight ? ogObject.twitterPlayerHeight : [null];
     ogObject.twitterPlayerStream = ogObject.twitterPlayerStream ? ogObject.twitterPlayerStream : [null];
   }
-  var twitterPlayers = _.zip(ogObject.twitterPlayer, ogObject.twitterPlayerWidth, ogObject.twitterPlayerHeight, ogObject.twitterPlayerStream).map(mediaMapperTwitterPlayer).sort(mediaSorter);
+  var twitterPlayers = _.zip(ogObject.twitterPlayer,
+    ogObject.twitterPlayerWidth,
+    ogObject.twitterPlayerHeight,
+    ogObject.twitterPlayerStream)
+    .map(mediaMapperTwitterPlayer).sort(mediaSorter);
 
   // Delete temporary fields
   fields.filter(function (item) {
@@ -96,7 +112,7 @@ exports.mediaSetup = function (ogObject, options) {
   return ogObject;
 };
 
-var mediaMapperTwitterImage = function mediaMapperTwitterImage(item) {
+const mediaMapperTwitterImage = function (item) {
   return {
     url: item[0],
     width: item[1],
@@ -105,7 +121,7 @@ var mediaMapperTwitterImage = function mediaMapperTwitterImage(item) {
   };
 };
 
-var mediaMapperTwitterPlayer = function mediaMapperTwitterPlayer(item) {
+const mediaMapperTwitterPlayer = function (item) {
   return {
     url: item[0],
     width: item[1],
@@ -114,7 +130,7 @@ var mediaMapperTwitterPlayer = function mediaMapperTwitterPlayer(item) {
   };
 };
 
-var mediaMapper = function mediaMapper(item) {
+const mediaMapper = function (item) {
   return {
     url: item[0],
     width: item[1],
@@ -123,15 +139,15 @@ var mediaMapper = function mediaMapper(item) {
   };
 };
 
-var mediaSorter = function mediaSorter(a, b) {
+const mediaSorter = function (a, b) {
   if (!(a.url && b.url)) {
     return 0;
   }
 
   var aRes = a.url.match(/\.(\w{2,5})$/),
-      aExt = aRes && aRes[1].toLowerCase() || null;
+    aExt = (aRes && aRes[1].toLowerCase()) || null;
   var bRes = b.url.match(/\.(\w{2,5})$/),
-      bExt = bRes && bRes[1].toLowerCase() || null;
+    bExt = (bRes && bRes[1].toLowerCase()) || null;
 
   if (aExt === 'gif' && bExt !== 'gif') {
     return -1;

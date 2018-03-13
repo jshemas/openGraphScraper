@@ -5,6 +5,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "make": "babel src -d lib",
+    "clean": "rm -rf lib",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "eslint": "eslint .",
     "test": "nyc --reporter=html --reporter=text --exclude=tests/ mocha tests/*.js tests/**/*.js"
@@ -26,6 +28,9 @@
     "request": "2.83.0"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "coveralls": "3.0.0",
     "eslint": "4.10.0",
     "eslint-plugin-promise": "3.6.0",

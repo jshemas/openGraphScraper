@@ -1,14 +1,14 @@
 'use strict';
 
-var charset = require('charset');
-var cheerio = require('cheerio');
-var fields = require('./fields');
-var iconv = require('iconv-lite');
-var jschardet = require('jschardet');
-var media = require('./media');
-var request = require('request');
-var url = require('url');
-var utils = require('./utils');
+const charset = require('charset');
+const cheerio = require('cheerio');
+const fields = require('./fields');
+const iconv = require('iconv-lite');
+const jschardet = require('jschardet');
+const media = require('./media');
+const request = require('request');
+const url = require('url');
+const utils = require('./utils');
 
 /*
  * run
@@ -16,7 +16,7 @@ var utils = require('./utils');
  * @param function callback and promise
  */
 exports.run = function (options, callback) {
-  var hasCallback = typeof callback === 'function';
+  const hasCallback = typeof callback === 'function';
   return new Promise(function (resolve, reject) {
     setOptionsAndReturnOpenGraphResults(options, function (error, info, response) {
       if (error) {
@@ -34,16 +34,16 @@ exports.run = function (options, callback) {
  * @param string options - options the user has set
  * @param function callback
  */
-var setOptionsAndReturnOpenGraphResults = function setOptionsAndReturnOpenGraphResults(options, callback) {
+const setOptionsAndReturnOpenGraphResults = function (options, callback) {
   if (options.html) {
     if (options.url) {
       return callback(true, { error: 'Must specify either `url` or `html`, not both', success: false, requestUrl: options.url, errorDetails: 'Must specify either `url` or `html`, not both' }, null);
     }
-    var ogObject = extractMetaTags(options.html, options);
+    const ogObject = extractMetaTags(options.html, options);
     return callback(false, { data: ogObject, success: true }, null);
   }
 
-  var validate = utils.validate(options.url, options.timeout);
+  let validate = utils.validate(options.url, options.timeout);
 
   if (validate.returnInputUrl) {
     options.url = validate.returnInputUrl;
@@ -63,13 +63,17 @@ var setOptionsAndReturnOpenGraphResults = function setOptionsAndReturnOpenGraphR
     }
 
     // trying to limit non html pages
-    if (utils.endsWith(validate.returnInputUrl, '.jpg') || utils.endsWith(validate.returnInputUrl, '.jpeg') || utils.endsWith(validate.returnInputUrl, '.png') || utils.endsWith(validate.returnInputUrl, '.zip') || utils.endsWith(validate.returnInputUrl, '.pdf')) {
+    if (utils.endsWith(validate.returnInputUrl, '.jpg') ||
+      utils.endsWith(validate.returnInputUrl, '.jpeg') ||
+      utils.endsWith(validate.returnInputUrl, '.png') ||
+      utils.endsWith(validate.returnInputUrl, '.zip') ||
+      utils.endsWith(validate.returnInputUrl, '.pdf')) {
       return callback(true, { error: 'Must scrape an HTML page', success: false, requestUrl: options.url, errorDetails: 'Must scrape an HTML page' }, null);
     }
 
     // see if site is black listed
     if (options.blacklist && options.blacklist.length > 0) {
-      for (var i = 0; i < options.blacklist.length; i++) {
+      for (let i = 0; i < options.blacklist.length; i++) {
         if (options.url.indexOf(options.blacklist[i]) !== -1) {
           return callback(true, { error: 'Host Name Has Been Black Listed', success: false, requestUrl: options.url, errorDetails: 'Host Name Has Been Black Listed' }, null);
         }
@@ -81,11 +85,11 @@ var setOptionsAndReturnOpenGraphResults = function setOptionsAndReturnOpenGraphR
         return callback(false, { data: results, success: true, requestUrl: options.url }, response);
       } else {
         if (error && (error.code === 'ENOTFOUND' || error.code === 'EHOSTUNREACH')) {
-          return callback(true, { error: 'Page Not Found', success: false, requestUrl: options.url, errorDetails: error, response: response }, response);
+          return callback(true, { error: 'Page Not Found', success: false, requestUrl: options.url, errorDetails: error, response }, response);
         } else if (error && error.code === 'ETIMEDOUT') {
-          return callback(true, { error: 'Time Out', success: false, requestUrl: options.url, errorDetails: error, response: response }, response);
+          return callback(true, { error: 'Time Out', success: false, requestUrl: options.url, errorDetails: error, response }, response);
         } else {
-          return callback(true, { error: 'Page Not Found', success: false, requestUrl: options.url, errorDetails: error, response: response }, response);
+          return callback(true, { error: 'Page Not Found', success: false, requestUrl: options.url, errorDetails: error, response }, response);
         }
       }
     });
@@ -99,8 +103,8 @@ var setOptionsAndReturnOpenGraphResults = function setOptionsAndReturnOpenGraphR
  * @param string options - options the user has set
  * @param function callback
  */
-var requestAndResultsFormatter = function requestAndResultsFormatter(options, callback) {
-  var peekSize = options.peekSize || 1024;
+const requestAndResultsFormatter = function (options, callback) {
+  const peekSize = options.peekSize || 1024;
 
   request(options, function (error, response, body) {
     if (error) {
@@ -109,7 +113,7 @@ var requestAndResultsFormatter = function requestAndResultsFormatter(options, ca
       return callback('Server Has Ran Into A Error', null, response);
     } else {
       if (options.encoding === null) {
-        var char = charset(response.headers, body, peekSize) || jschardet.detect(body).encoding;
+        const char = charset(response.headers, body, peekSize) || jschardet.detect(body).encoding;
         if (char) {
           try {
             body = iconv.decode(body, char);
@@ -121,7 +125,7 @@ var requestAndResultsFormatter = function requestAndResultsFormatter(options, ca
         }
       }
 
-      var ogObject = extractMetaTags(body, options);
+      let ogObject = extractMetaTags(body, options);
       if (options.withCharset) {
         ogObject.charset = charset(response.headers, body, peekSize);
       }
@@ -135,18 +139,18 @@ var requestAndResultsFormatter = function requestAndResultsFormatter(options, ca
  * @param string body - html string
  * @param string options - options the user has set
  */
-var extractMetaTags = function extractMetaTags(body, options) {
-  var ogObject = {};
-  var $ = cheerio.load(body);
-  var meta = $('meta');
-  var keys = Object.keys(meta);
+const extractMetaTags = (body, options) => {
+  let ogObject = {};
+  const $ = cheerio.load(body);
+  const meta = $('meta');
+  const keys = Object.keys(meta);
 
   keys.forEach(function (key) {
     if (!(meta[key].attribs && (meta[key].attribs.property || meta[key].attribs.name))) {
       return;
     }
-    var property = meta[key].attribs.property || meta[key].attribs.name;
-    var content = meta[key].attribs.content || meta[key].attribs.value;
+    const property = meta[key].attribs.property || meta[key].attribs.name;
+    const content = meta[key].attribs.content || meta[key].attribs.value;
     fields.forEach(function (item) {
       if (property === item.property) {
         if (!item.multiple) {
@@ -161,7 +165,7 @@ var extractMetaTags = function extractMetaTags(body, options) {
   });
 
   // set the ogImage or fallback to ogImageURL or ogImageSecureURL
-  ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : ogObject.ogImageURL ? ogObject.ogImageURL : ogObject.ogImageSecureURL ? ogObject.ogImageSecureURL : [];
+  ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : (ogObject.ogImageURL ? ogObject.ogImageURL : (ogObject.ogImageSecureURL ? ogObject.ogImageSecureURL : []));
   if (!ogObject.ogImage || !ogObject.ogImage.length) {
     delete ogObject['ogImage'];
   }
@@ -180,9 +184,9 @@ var extractMetaTags = function extractMetaTags(body, options) {
       ogObject.ogDescription = $('head > meta[name="description"]').attr('content');
     }
     // Get first image as og:image if there is no og:image tag.
-    var ogImageFallback = options.ogImageFallback === undefined ? true : options.ogImageFallback;
+    const ogImageFallback = options.ogImageFallback === undefined ? true : options.ogImageFallback;
     if (!ogObject.ogImage && ogImageFallback) {
-      var supportedImageExts = ['jpg', 'jpeg', 'png'];
+      const supportedImageExts = ['jpg', 'jpeg', 'png'];
       $('img').each(function (i, elem) {
         if ($(elem).attr('src') && $(elem).attr('src').length > 0 && supportedImageExts.indexOf($(elem).attr('src').split('.').pop()) !== -1) {
           ogObject.ogImage = {
