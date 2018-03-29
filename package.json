@@ -18,7 +18,6 @@
     "url": "https://github.com/jshemas"
   },
   "dependencies": {
-    "charset": "1.0.1",
     "cheerio": "1.0.0-rc.2",
     "iconv-lite": "0.4.19",
     "jschardet": "1.6.0",
