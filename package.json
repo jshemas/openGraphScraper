@@ -22,19 +22,19 @@
     "iconv-lite": "0.4.19",
     "jschardet": "1.6.0",
     "lodash": "4.17.5",
-    "request": "2.83.0"
+    "request": "2.85.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
     "coveralls": "3.0.0",
-    "eslint": "4.10.0",
+    "eslint": "4.19.1",
     "eslint-config-airbnb-es5": "1.2.0",
     "eslint-plugin-react": "7.7.0",
     "expect.js": "0.3.1",
     "mocha": "4.0.1",
     "mockery": "2.1.0",
-    "nyc": "11.3.0",
-    "sinon": "4.1.1"
+    "nyc": "11.6.0",
+    "sinon": "4.4.10"
   },
   "repository": {
     "type": "git",
