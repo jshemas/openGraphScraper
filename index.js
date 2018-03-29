@@ -1,5 +1,5 @@
 'use strict';
 
-const openGraphScraper = require('./lib/openGraphScraper');
+var openGraphScraper = require('./lib/openGraphScraper');
 
 module.exports = openGraphScraper;

@@ -1,17 +1,17 @@
 'use strict';
 
-const expect = require('expect.js');
-const sinon = require('sinon');
-const mockery = require('mockery');
-const sandbox = sinon.sandbox.create();
+var expect = require('expect.js');
+var sinon = require('sinon');
+var mockery = require('mockery');
+var sandbox = sinon.sandbox.create();
 
 describe('openGraphScraper', function () {
   afterEach(function () {
     sandbox.restore();
   });
   describe('run', function () {
-    let requestStub;
-    let openGraphScraper;
+    var requestStub;
+    var openGraphScraper;
     beforeEach(function (done) {
       mockery.enable({
         warnOnReplace: false,
@@ -32,7 +32,7 @@ describe('openGraphScraper', function () {
       requestStub.yields(null, {statusCode: 200}, Buffer.from('<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>', 'utf8'));
       openGraphScraper({
         'url': 'www.test.com'
-      }, function (error, result, response) {
+      }, function (error, result) {
         expect(error).to.be(false);
         expect(result.success).to.be(true);
         expect(result.data.ogTitle).to.be('test page');
@@ -55,7 +55,7 @@ describe('openGraphScraper', function () {
       process.browser = false;
       requestStub.yields({ error: 'some error' }, { statusCode: 404 }, Buffer.from('<html><head><title>error page</title></head><body><h1>is no good</h2></body></html>', 'utf8'));
       return openGraphScraper({'url': 'www.test.com'})
-        .then(function (result) {
+        .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (error) {
@@ -75,7 +75,7 @@ describe('openGraphScraper', function () {
     it('should not be able to hit non html pages', function (done) {
       openGraphScraper({
         'url': 'www.test.com/test.png'
-      }, function (error, result, response) {
+      }, function (error, result) {
         expect(error).to.be(true);
         expect(result.success).to.be(false);
         expect(result.error).to.be('Must scrape an HTML page');
@@ -84,7 +84,7 @@ describe('openGraphScraper', function () {
     });
     it('should not be able to hit non html pages - promise version', function () {
       return openGraphScraper({'url': 'www.test.com.png'})
-        .then(function (result) {
+        .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (error) {
@@ -100,7 +100,7 @@ describe('openGraphScraper', function () {
       openGraphScraper({
         'url': 'www.test.com/test',
         'blacklist': ['test.com']
-      }, function (error, result, response) {
+      }, function (error, result) {
         expect(error).to.be(true);
         expect(result.success).to.be(false);
         expect(result.error).to.be('Host Name Has Been Black Listed');
@@ -112,7 +112,7 @@ describe('openGraphScraper', function () {
       openGraphScraper({
         'url': 'www.test.com/test',
         'blacklist': ['testtest.com']
-      }, function (error, result, response) {
+      }, function (error, result) {
         expect(error).to.be(false);
         expect(result.success).to.be(true);
         expect(result.data.ogTitle).to.be('test page');
@@ -122,7 +122,7 @@ describe('openGraphScraper', function () {
     it('should not be able to hit a bad url', function (done) {
       openGraphScraper({
         'url': ''
-      }, function (error, result, response) {
+      }, function (error, result) {
         expect(error).to.be(true);
         expect(result.success).to.be(false);
         expect(result.error).to.be('Invalid URL');
