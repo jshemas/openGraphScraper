@@ -67,7 +67,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+      expect(result.data.ogImage[0].url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
       done();
     });
   });
@@ -82,7 +82,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('https://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+      expect(result.data.ogImage[0].url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
       done();
     });
   });
@@ -97,7 +97,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+      expect(result.data.ogImage[0].url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
       done();
     });
   });
@@ -112,7 +112,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('http://wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+      expect(result.data.ogImage[0].url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
       done();
     });
   });
@@ -127,7 +127,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('http://wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+      expect(result.data.ogImage[0].url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
       done();
     });
   });
@@ -157,7 +157,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('https://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+      expect(result.data.ogImage[0].url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
       done();
     });
   });
@@ -173,7 +173,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('https://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+      expect(result.data.ogImage[0].url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
       done();
     });
   });
@@ -226,7 +226,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+      expect(result.data.ogImage[0].url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
       done();
     });
   });
@@ -242,7 +242,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+      expect(result.data.ogImage[0].url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
       done();
     });
   });
@@ -258,7 +258,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+      expect(result.data.ogImage[0].url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
       done();
     });
   });
@@ -274,7 +274,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('http://www.wikipedia.org/');
       expect(result.data.ogTitle).to.be('Wikipedia');
       expect(result.data.ogDescription).to.be('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.data.ogImage.url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
+      expect(result.data.ogImage[0].url).to.be('portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png');
       done();
     });
   });
@@ -355,7 +355,13 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('https://jshemas.github.io/openGraphScraperPages/twitter.html');
       expect(result.data.ogTitle).to.be('Twitter. It\'s what\'s happening.');
       expect(result.data.ogDescription).to.be('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
-      expect(result.data.ogImage.url).to.be('/static/images/toolbar/wayback-toolbar-logo.png');
+      var imageFound = false;
+      for (var i = 0; i < result.data.ogImage.length; i++) {
+        if (result.data.ogImage[i].url === '/static/images/toolbar/wayback-toolbar-logo.png') {
+          imageFound = true;
+        };
+      }
+      expect(imageFound).to.be(true);
       done();
     });
   });
@@ -565,7 +571,7 @@ describe('GET OG', function () {
       expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.requestUrl).to.be('https://www.namecheap.com/');
-      expect(result.data.ogTitle).to.be('\n\tDomain Names - Cheap Domain Names | Namecheap.Com\n');
+      expect(result.data.ogTitle).to.be('\n\tDomain Names Starting at $0.48 - Namecheap.com\n');
       done();
     });
   });
@@ -869,6 +875,25 @@ describe('GET OG', function () {
       expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogTitle).to.be('Test page');
+      done();
+    });
+  });
+  it('Valid Call - should get array of images back', function (done) {
+    app({
+      'url': 'https://amzn.to/2Is8sCR'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.data.ogImage.length).to.be.above(10);
+      var imageFound = false;
+      for (var i = 0; i < result.data.ogImage.length; i++) {
+        if (result.data.ogImage[i].url === 'https://images-eu.ssl-images-amazon.com/images/G/02/kindle-apps/buttons/sendMeLinkMedium._CB339601353_.png') {
+          imageFound = true;
+        };
+      }
+      expect(imageFound).to.be(true);
       done();
     });
   });
