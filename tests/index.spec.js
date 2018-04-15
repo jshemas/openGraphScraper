@@ -361,7 +361,7 @@ describe('GET OG', function () {
       for (var i = 0; i < result.data.ogImage.length; i++) {
         if (result.data.ogImage[i].url === '/static/images/toolbar/wayback-toolbar-logo.png') {
           imageFound = true;
-        };
+        }
       }
       expect(imageFound).to.be(true);
       done();
@@ -893,7 +893,7 @@ describe('GET OG', function () {
       for (var i = 0; i < result.data.ogImage.length; i++) {
         if (result.data.ogImage[i].url === 'https://images-eu.ssl-images-amazon.com/images/G/02/kindle-apps/buttons/sendMeLinkMedium._CB339601353_.png') {
           imageFound = true;
-        };
+        }
       }
       expect(imageFound).to.be(true);
       done();
