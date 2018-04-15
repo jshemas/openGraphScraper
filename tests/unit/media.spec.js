@@ -1,12 +1,14 @@
+/* eslint  no-undefined: 0 */
+
 'use strict';
 
-const media = require('../../lib/media');
-const expect = require('expect.js');
+var media = require('../../lib/media');
+var expect = require('expect.js');
 
 describe('media', function () {
   describe('media', function () {
     it('media setup', function (done) {
-      let ogMedia = media.mediaSetup({
+      var ogMedia = media.mediaSetup({
         ogTitle: 'test site',
         ogType: 'website',
         ogUrl: 'http://test.com/',
@@ -37,7 +39,7 @@ describe('media', function () {
       done();
     });
     it('media setup - no image or video', function (done) {
-      let ogMedia = media.mediaSetup({
+      var ogMedia = media.mediaSetup({
         ogTitle: 'test site',
         ogType: 'website',
         ogUrl: 'http://test.com/',
@@ -52,7 +54,7 @@ describe('media', function () {
       done();
     });
     it('media setup - has video', function (done) {
-      let ogMedia = media.mediaSetup({
+      var ogMedia = media.mediaSetup({
         ogTitle: 'test site',
         ogType: 'website',
         ogUrl: 'http://test.com/',
@@ -83,7 +85,7 @@ describe('media', function () {
       done();
     });
     it('media setup - allMedia set to true', function (done) {
-      let ogMedia = media.mediaSetup({
+      var ogMedia = media.mediaSetup({
         ogTitle: 'test site',
         ogType: 'website',
         ogUrl: 'http://test.com/',

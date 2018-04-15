@@ -1,7 +1,7 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
@@ -18,23 +18,23 @@
     "url": "https://github.com/jshemas"
   },
   "dependencies": {
-    "charset": "1.0.1",
     "cheerio": "1.0.0-rc.2",
-    "iconv-lite": "0.4.19",
+    "iconv-lite": "0.4.21",
     "jschardet": "1.6.0",
     "lodash": "4.17.5",
-    "request": "2.83.0"
+    "request": "2.85.0"
   },
   "devDependencies": {
+    "babel-eslint": "8.2.3",
     "coveralls": "3.0.0",
-    "eslint": "4.10.0",
-    "eslint-plugin-promise": "3.6.0",
-    "eslint-plugin-standard": "3.0.1",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb-es5": "1.2.0",
+    "eslint-plugin-react": "7.7.0",
     "expect.js": "0.3.1",
     "mocha": "4.0.1",
     "mockery": "2.1.0",
-    "nyc": "11.3.0",
-    "sinon": "4.1.1"
+    "nyc": "11.6.0",
+    "sinon": "4.5.0"
   },
   "repository": {
     "type": "git",

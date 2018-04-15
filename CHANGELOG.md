@@ -1,3 +1,6 @@
+### 3.3.0
+- Code refactor to work in a es5 environment!
+
 ### 3.2.0
 - website that don't have Open Graph images will now return an array of all of the images on the site
 

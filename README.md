@@ -13,8 +13,8 @@ npm install open-graph-scraper
 
 ### Usage
 ```javascript
-const ogs = require('open-graph-scraper');
-const options = {'url': 'http://ogp.me/'};
+var ogs = require('open-graph-scraper');
+var options = {'url': 'http://ogp.me/'};
 ogs(options, function (error, results) {
   console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
@@ -24,8 +24,8 @@ ogs(options, function (error, results) {
 
 You can set a timeout flag like... Example four seconds:
 ```javascript
-const ogs = require('open-graph-scraper');
-const options = {'url': 'http://ogp.me/', 'timeout': 4000};
+var ogs = require('open-graph-scraper');
+var options = {'url': 'http://ogp.me/', 'timeout': 4000};
 ogs(options, function (error, results) {
   console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
@@ -34,8 +34,8 @@ ogs(options, function (error, results) {
 
 You can set custom headers. For example scraping data in a specific language:
 ```javascript
-const ogs = require('open-graph-scraper');
-const options = {'url': 'http://ogp.me/', 'headers': { 'accept-language': 'en' }};
+var ogs = require('open-graph-scraper');
+var options = {'url': 'http://ogp.me/', 'headers': { 'accept-language': 'en' }};
 ogs(options, function (error, results) {
   console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
@@ -44,8 +44,8 @@ ogs(options, function (error, results) {
 
 You can set a blacklist. For example if you want to black list youtube.com:
 ```javascript
-const ogs = require('open-graph-scraper');
-const options = {'url': 'http://ogp.me/', 'blacklist': ['youtube.com']};
+var ogs = require('open-graph-scraper');
+var options = {'url': 'http://ogp.me/', 'blacklist': ['youtube.com']};
 ogs(options, function (error, results) {
   console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
@@ -54,8 +54,8 @@ ogs(options, function (error, results) {
 
 Example of setting encoding(default is `null`):
 ```javascript
-const ogs = require('open-graph-scraper');
-const options = {'url': 'http://ogp.me/', 'encoding': 'utf8'};
+var ogs = require('open-graph-scraper');
+var options = {'url': 'http://ogp.me/', 'encoding': 'utf8'};
 ogs(options, function (error, results) {
   console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
@@ -64,8 +64,8 @@ ogs(options, function (error, results) {
 
 There is also a followAllRedirects(default is `true`) and a maxRedirects(default is `20`) option:
 ```javascript
-const ogs = require('open-graph-scraper');
-const options = {'url': 'http://ogp.me/', 'followAllRedirects': true, 'maxRedirects': 20};
+var ogs = require('open-graph-scraper');
+var options = {'url': 'http://ogp.me/', 'followAllRedirects': true, 'maxRedirects': 20};
 ogs(options, function (error, results) {
   console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
@@ -74,8 +74,8 @@ ogs(options, function (error, results) {
 
 If you would like the response of the page you scraped you can grab it as the third param:
 ```javascript
-const ogs = require('open-graph-scraper');
-const options = {'url': 'http://ogp.me/', 'timeout': 4000};
+var ogs = require('open-graph-scraper');
+var options = {'url': 'http://ogp.me/', 'timeout': 4000};
 ogs(options, function (error, results, response) {
   console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
@@ -85,8 +85,8 @@ ogs(options, function (error, results, response) {
 
 Promise Example:
 ```javascript
-const ogs = require('open-graph-scraper');
-const options = {'url': 'http://ogp.me/'};
+var ogs = require('open-graph-scraper');
+var options = {'url': 'http://ogp.me/'};
 ogs(options)
   .then(function (result) {
     console.log('result:', result);
@@ -100,9 +100,9 @@ Note: By default if page dose not have something like a `og:title` tag it will t
 
 It's possible to pass in an HTML string instead of a URL. There won't be a resonse object.
 ```javascript
-const htmlString = /* html string goes here */;
-const ogs = require('open-graph-scraper');
-const options = {'html': htmlString};
+var htmlString = /* html string goes here */;
+var ogs = require('open-graph-scraper');
+var options = {'html': htmlString};
 ogs(options, function (error, results) {
   console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
   console.log('results:', results);
