@@ -19,13 +19,13 @@
   },
   "dependencies": {
     "cheerio": "1.0.0-rc.2",
-    "iconv-lite": "0.4.19",
+    "iconv-lite": "0.4.21",
     "jschardet": "1.6.0",
     "lodash": "4.17.5",
     "request": "2.85.0"
   },
   "devDependencies": {
-    "babel-eslint": "8.2.2",
+    "babel-eslint": "8.2.3",
     "coveralls": "3.0.0",
     "eslint": "4.19.1",
     "eslint-config-airbnb-es5": "1.2.0",
@@ -34,7 +34,7 @@
     "mocha": "4.0.1",
     "mockery": "2.1.0",
     "nyc": "11.6.0",
-    "sinon": "4.4.10"
+    "sinon": "4.5.0"
   },
   "repository": {
     "type": "git",
