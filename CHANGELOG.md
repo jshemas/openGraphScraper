@@ -1,3 +1,6 @@
+### 3.2.0
+- website that don't have Open Graph images will now return an array of all of the images on the site
+
 ### 3.1.5
 - Updating lodash to fix vulnerable
 
