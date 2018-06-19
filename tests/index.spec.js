@@ -899,4 +899,71 @@ describe('GET OG', function () {
       done();
     });
   });
+  it('Valid Call - spotify album should return music:album and associated tags', function (done) {
+    app({
+      'url': 'https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
+      expect(result.data.ogType).to.be('music.album');
+      expect(result.data.musicMusician[0]).to.be('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
+      expect(result.data.musicReleaseDate).to.be('2018-06-01');
+      expect(result.data.musicSong).to.be.an('object');
+      expect(result.data.musicSong.url).to.be.an('string');
+      expect(result).to.be.an('object');
+      done();
+    });
+  });
+  it('Valid Call - spotify artist should return music:musician', function (done) {
+    app({
+      'url': 'https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
+      expect(result.data.ogType).to.be('music.musician');
+      expect(result).to.be.an('object');
+      done();
+    });
+  });
+  it('Valid Call - spotify track should return music:song and associated tags', function (done) {
+    app({
+      'url': 'https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm');
+      expect(result.data.ogType).to.be('music.song');
+      expect(result.data.musicMusician[0]).to.be('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
+      expect(result.data.musicDuration).to.be('196');
+      expect(result.data.musicReleaseDate).to.be('2016-06-10');
+      expect(result.data.musicAlbum[0]).to.be('https://open.spotify.com/album/4xM1pUHZp9HsuKNxyOQDR0');
+      expect(result.data.musicAlbumTrack).to.be('4');
+      expect(result).to.be.an('object');
+      done();
+    });
+  });
+  it('Valid Call - spotify playlist should return music:playlist and associated tags', function (done) {
+    app({
+      'url': 'https://open.spotify.com/user/mjaschmidt/playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg'
+    }, function (error, result) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be(false);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('https://open.spotify.com/user/mjaschmidt/playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg');
+      expect(result.data.ogType).to.be('music.playlist');
+      expect(result.data.musicSong).to.be.an('object');
+      expect(result.data.musicSong.url).to.be.an('string');
+      expect(result).to.be.an('object');
+      done();
+    });
+  });
 });
