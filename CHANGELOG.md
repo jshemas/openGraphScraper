@@ -1,3 +1,6 @@
+### 3.4.0
+- adding a new option for the 'jar' setting for requests. It will now be turned off by default.
+
 ### 3.3.0
 - Code refactor to work in a es5 environment!
 
