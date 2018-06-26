@@ -84,6 +84,55 @@ describe('media', function () {
       });
       done();
     });
+    it('media setup - has music:song', function (done) {
+      var ogMedia = media.mediaSetup({
+        ogTitle: 'test site',
+        ogType: 'website',
+        ogUrl: 'http://test.com/',
+        musicSong: [ 'http://test.com/songurl' ],
+        musicSongTrack: [ '1' ],
+        musicSongDisc: [ '1' ],
+        ogDescription: 'stuff'
+      }, {
+        url: 'http://test.com/'
+      });
+      expect(ogMedia.musicSong).to.eql({
+        url: 'http://test.com/songurl',
+        track: '1',
+        disc: '1'
+      });
+      done();
+    });
+    it('media setup - has multiple music:songs with allMedia set to true', function (done) {
+      var ogMedia = media.mediaSetup({
+        ogTitle: 'test site',
+        ogType: 'website',
+        ogUrl: 'http://test.com/',
+        musicSong: [ 'http://test.com/songurl', 'http://test.com/songurl3', 'http://test.com/songurl2' ],
+        musicSongTrack: [ '1', '2', '4' ],
+        musicSongDisc: [ '1', '2', '1' ],
+        ogDescription: 'stuff'
+      }, {
+        url: 'http://test.com/',
+        allMedia: true
+      });
+      expect(ogMedia.musicSong).to.eql([{
+        url: 'http://test.com/songurl',
+        track: '1',
+        disc: '1'
+      },
+      {
+        url: 'http://test.com/songurl2',
+        track: '4',
+        disc: '1'
+      },
+      {
+        url: 'http://test.com/songurl3',
+        track: '2',
+        disc: '2'
+      }]);
+      done();
+    });
     it('media setup - allMedia set to true', function (done) {
       var ogMedia = media.mediaSetup({
         ogTitle: 'test site',
