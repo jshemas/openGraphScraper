@@ -1,3 +1,6 @@
+### 3.5.0
+- Adding Open Graph music tags!
+
 ### 3.4.0
 - adding a new option for the 'jar' setting for requests. It will now be turned off by default.
 
