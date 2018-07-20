@@ -22,7 +22,7 @@
     "iconv-lite": "0.4.21",
     "jschardet": "1.6.0",
     "lodash": "4.17.5",
-    "request": "2.85.0"
+    "request": "2.87.0"
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",
