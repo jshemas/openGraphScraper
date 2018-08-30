@@ -1,3 +1,6 @@
+### 3.5.1
+- Updating dependencies.
+
 ### 3.5.0
 - Adding Open Graph music tags!
 
