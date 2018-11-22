@@ -21,7 +21,6 @@
     "chardet": "^0.7.0",
     "cheerio": "1.0.0-rc.2",
     "iconv-lite": "0.4.24",
-    "jschardet": "1.6.0",
     "lodash": "4.17.10",
     "request": "2.88.0"
   },
