@@ -384,11 +384,11 @@ describe('GET OG', function () {
       expect(result.data.twitterTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip & Nut');
       expect(result.data.twitterCard).to.be('summary');
       expect(result.data.twitterDescription).to.be.a('string');
-      expect(result.data.ogImage.url).to.be('http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1462962779564/unnamed.jpg?format=1000w');
-      expect(result.data.ogImage.width).to.be('1000');
-      expect(result.data.ogImage.height).to.be('608');
+      expect(result.data.ogImage.url).to.be('http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1462962779564/unnamed.jpg?format=1500w');
+      expect(result.data.ogImage.width).to.be('1280');
+      expect(result.data.ogImage.height).to.be('779');
       expect(result.data.ogImage.type).to.be(null);
-      expect(result.data.twitterImage.url).to.be('http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1462962779564/unnamed.jpg?format=1000w');
+      expect(result.data.twitterImage.url).to.be('http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1462962779564/unnamed.jpg?format=1500w');
       expect(result.data.twitterImage.width).to.be(null);
       expect(result.data.twitterImage.height).to.be(null);
       expect(result.data.twitterImage.alt).to.be(null);
@@ -573,7 +573,7 @@ describe('GET OG', function () {
       expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.requestUrl).to.be('https://www.namecheap.com/');
-      expect(result.data.ogTitle).to.be('\n\tDomain Names Starting at $0.88 - Namecheap.com\n');
+      expect(result.data.ogTitle).to.be('\n\tCheap Domain Names - Buy Domain Names from $0.88 - Namecheap\n');
       done();
     });
   });
