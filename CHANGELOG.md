@@ -1,3 +1,6 @@
+### 3.6.0
+- Replaced jschardet with charde
+
 ### 3.5.1
 - Updating dependencies.
 
