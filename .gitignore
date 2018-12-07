@@ -18,3 +18,4 @@ package-lock.json
 coverage/
 
 npm-debug.log
+.idea/
