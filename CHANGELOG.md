@@ -1,3 +1,6 @@
+### 3.6.1
+- Updating dependencies to vulnerabilities.
+
 ### 3.6.0
 - Replaced jschardet with charde
 
