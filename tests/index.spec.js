@@ -573,7 +573,7 @@ describe('GET OG', function () {
       expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.requestUrl).to.be('https://www.namecheap.com/');
-      expect(result.data.ogTitle).to.be('\n\tCheap Domain Names - Buy Domain Names from $0.88 - Namecheap\n');
+      expect(result.data.ogTitle).to.be('\n\tCheap Domain Names - Buy Domain Names from $1.37 - Namecheap\n');
       done();
     });
   });
