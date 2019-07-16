@@ -1,3 +1,6 @@
+### 3.6.2
+- Updating lodash.
+
 ### 3.6.1
 - Updating dependencies to vulnerabilities.
 
