@@ -377,18 +377,18 @@ describe('GET OG', function () {
       expect(result.success).to.be(true);
       expect(result.requestUrl).to.be('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
       expect(result.data.ogSiteName).to.be('WE MEAN BUSINESS | LONDON');
-      expect(result.data.ogTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip & Nut');
+      expect(result.data.ogTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip & Nut — WE MEAN BUSINESS | LONDON');
       expect(result.data.ogUrl).to.be('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
       expect(result.data.ogType).to.be('article');
       expect(result.data.ogDescription).to.be.a('string');
-      expect(result.data.twitterTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip & Nut');
+      expect(result.data.twitterTitle).to.be('The Entrepreneur-spiration Series: Going nuts for Pip &amp; Nut — WE MEAN BUSINESS | LONDON');
       expect(result.data.twitterCard).to.be('summary');
       expect(result.data.twitterDescription).to.be.a('string');
-      expect(result.data.ogImage.url).to.be('http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1462962779564/unnamed.jpg?format=1500w');
+      expect(result.data.ogImage.url).to.be('http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1584829128507/unnamed.jpg?format=1500w');
       expect(result.data.ogImage.width).to.be('1280');
       expect(result.data.ogImage.height).to.be('779');
       expect(result.data.ogImage.type).to.be(null);
-      expect(result.data.twitterImage.url).to.be('http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1462962779564/unnamed.jpg?format=1500w');
+      expect(result.data.twitterImage.url).to.be('http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1584829128507/unnamed.jpg?format=1500w');
       expect(result.data.twitterImage.width).to.be(null);
       expect(result.data.twitterImage.height).to.be(null);
       expect(result.data.twitterImage.alt).to.be(null);
@@ -444,8 +444,8 @@ describe('GET OG', function () {
       expect(result.data.twitterAppIdGooglePlay).to.be('com.google.android.youtube');
       expect(result.data.twitterAppUrlGooglePlay).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.data.ogImage.url).to.be('https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg');
-      expect(result.data.ogImage.width).to.be(null);
-      expect(result.data.ogImage.height).to.be(null);
+      expect(result.data.ogImage.width).to.be('1280');
+      expect(result.data.ogImage.height).to.be('720');
       expect(result.data.ogImage.type).to.be(null);
       expect(result.data.ogVideo.url).to.be('https://www.youtube.com/embed/dQw4w9WgXcQ');
       expect(result.data.ogVideo.width).to.be('1280');
@@ -552,7 +552,7 @@ describe('GET OG', function () {
       expect(result.data.twitterCard).to.be('summary_large_image');
       expect(result.data.twitterTitle).to.be('3 Stocks Like Apple Was 10 Years Ago: Tesla, Nvidia And Alibaba');
       expect(result.data.twitterDescription).to.be('When Apple launched the iPhone 10 years ago the stock was at $22 and Wall Street considered it overvalued. Today it trades at $153. If you are looking for stocks like Apple for the next 10 years, take a close look at Tesla, Nvidia, and Alibaba.');
-      expect(result.data.twitterCreator).to.be('@kenkam');
+      expect(result.data.twitterCreator).to.be('@MarketocracyInc');
       expect(result.data.ogImage.url).to.be.a('string');
       expect(result.data.ogImage.width).to.be(null);
       expect(result.data.ogImage.height).to.be(null);
@@ -573,7 +573,7 @@ describe('GET OG', function () {
       expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.requestUrl).to.be('https://www.namecheap.com/');
-      expect(result.data.ogTitle).to.be('\n\tCheap Domain Names - Buy Domain Names from $1.37 - Namecheap\n');
+      expect(result.data.ogTitle).to.be('Buy domain name - Cheap domain names from $1.37 - Namecheap');
       done();
     });
   });
@@ -588,7 +588,7 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0');
       expect(result.data.twitterAppNameGooglePlay).to.be('NYTimes');
       expect(result.data.twitterAppIdGooglePlay).to.be('com.nytimes.android');
-      expect(result.data.twitterAppUrlGooglePlay).to.be('nytimes://reader/id/100000004620996');
+      expect(result.data.twitterAppUrlGooglePlay).to.be('nyt://article/d07123d7-f6dc-5370-97cb-86dd6aa0b0de');
       expect(result.data.ogUrl).to.be('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html');
       expect(result.data.ogType).to.be('article');
       expect(result.data.ogTitle).to.be('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million');
@@ -883,7 +883,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - should get array of images back', function (done) {
     app({
-      'url': 'https://amzn.to/2Is8sCR'
+      'url': 'https://www.amazon.com/Anatomy-Story-Becoming-Master-Storyteller/dp/0865479933'
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -892,7 +892,7 @@ describe('GET OG', function () {
       expect(result.data.ogImage.length).to.be.above(10);
       var imageFound = false;
       for (var i = 0; i < result.data.ogImage.length; i++) {
-        if (result.data.ogImage[i].url === 'https://images-eu.ssl-images-amazon.com/images/G/02/kindle-apps/buttons/sendMeLinkMedium._CB339601353_.png') {
+        if (result.data.ogImage[i].url === 'https://images-na.ssl-images-amazon.com/images/G/01/vse/Discovery/vse_play_icon_2x.png') {
           imageFound = true;
         }
       }
