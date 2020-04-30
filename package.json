@@ -7,7 +7,9 @@
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "eslint": "eslint .",
-    "test": "nyc --reporter=html --reporter=text --exclude=tests/ mocha tests/*.js tests/**/*.js"
+    "test": "nyc --reporter=html --reporter=text --exclude=tests/ mocha tests/*.js tests/**/*.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "engines": {
     "node": ">=4.x.x"
@@ -22,7 +24,8 @@
     "cheerio": "1.0.0-rc.2",
     "iconv-lite": "0.4.24",
     "lodash": "4.17.14",
-    "request": "2.88.0"
+    "request": "2.88.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",
@@ -50,5 +53,6 @@
     "scraper",
     "twitter card",
     "twitter"
-  ]
+  ],
+  "snyk": true
 }
