@@ -1,7 +1,7 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
@@ -25,16 +25,16 @@
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",
-    "coveralls": "3.0.0",
+    "coveralls": "3.1.0",
     "eslint": "4.19.1",
     "eslint-config-airbnb-es5": "1.2.0",
-    "eslint-plugin-react": "7.7.0",
-    "esquery": "1.0.0",
+    "eslint-plugin-react": "7.20.0",
+    "esquery": "1.3.1",
     "expect.js": "0.3.1",
     "mocha": "4.0.1",
     "mockery": "2.1.0",
-    "nyc": "11.6.0",
-    "sinon": "4.5.0"
+    "nyc": "15.0.1",
+    "sinon": "9.0.2"
   },
   "repository": {
     "type": "git",

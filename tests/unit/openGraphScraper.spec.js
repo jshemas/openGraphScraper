@@ -3,7 +3,7 @@
 var expect = require('expect.js');
 var sinon = require('sinon');
 var mockery = require('mockery');
-var sandbox = sinon.sandbox.create();
+var sandbox = sinon.createSandbox();
 
 describe('openGraphScraper', function () {
   afterEach(function () {
