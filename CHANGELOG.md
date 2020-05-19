@@ -1,3 +1,6 @@
+### 4.0.0
+- Replacing request with node-fetch.
+
 ### 3.6.2
 - Updating lodash.
 

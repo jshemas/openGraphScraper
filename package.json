@@ -1,7 +1,7 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "3.6.2",
+  "version": "4.0.0",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "test": "nyc --reporter=html --reporter=text --exclude=tests/ mocha tests/*.js tests/**/*.js"
   },
   "engines": {
-    "node": ">=4.x.x"
+    "node": ">=10"
   },
   "author": {
     "name": "Josh Shemas",
@@ -18,11 +18,10 @@
     "url": "https://github.com/jshemas"
   },
   "dependencies": {
-    "chardet": "0.7.0",
     "cheerio": "1.0.0-rc.2",
-    "iconv-lite": "0.4.24",
+    "encoding": "^0.1.12",
     "lodash": "4.17.14",
-    "request": "2.88.0"
+    "node-fetch": "2.6.0"
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",

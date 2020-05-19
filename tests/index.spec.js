@@ -883,7 +883,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - should get array of images back', function (done) {
     app({
-      'url': 'https://www.amazon.com/Anatomy-Story-Becoming-Master-Storyteller/dp/0865479933'
+      'url': 'https://www.amazon.com/Anatomy-Story-Becoming-Master-Storyteller/dp/0865479933',
+      timeout: '5000'
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
