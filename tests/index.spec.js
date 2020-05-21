@@ -4,6 +4,8 @@
 
 var app = require('../index');
 var expect = require('expect.js');
+const ogs = require('../lib/ogs');
+
 var HTML_STRING = `
 <html>
 <head>
@@ -12,6 +14,25 @@ var HTML_STRING = `
 <body></body>
 </html>
 `;
+
+describe('GET OGS', async function () {
+  this.timeout(10000);
+  it('Valid Call - ogp.me should return open graph data', async function () {
+    return ogs({'url': 'http://ogp.me/'}).then(result => {
+      console.log('result', result);
+      expect(result.success).to.be(true);
+      expect(result.requestUrl).to.be('http://ogp.me/');
+      expect(result.data.ogTitle).to.be('Open Graph protocol');
+      expect(result.data.ogType).to.be('website');
+      expect(result.data.ogUrl).to.be('http://ogp.me/');
+      expect(result.data.ogDescription).to.be('The Open Graph protocol enables any web page to become a rich object in a social graph.');
+      expect(result.data.ogImage.url).to.be('http://ogp.me/logo.png');
+      expect(result.data.ogImage.width).to.be('300');
+      expect(result.data.ogImage.height).to.be('300');
+      expect(result.data.ogImage.type).to.be('image/png');
+    });
+  });
+});
 
 describe('GET OG', function () {
   this.timeout(10000); // should wait at least ten seconds before failing

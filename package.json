@@ -7,7 +7,7 @@
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "eslint": "eslint .",
-    "test": "nyc --reporter=html --reporter=text --exclude=tests/ mocha tests/*.js tests/**/*.js"
+    "test": "mocha tests/*.js tests/**/*.js"
   },
   "engines": {
     "node": ">=4.x.x"
@@ -22,6 +22,7 @@
     "cheerio": "1.0.0-rc.2",
     "iconv-lite": "0.4.24",
     "lodash": "4.17.14",
+    "puppeteer": "3.0.4",
     "request": "2.88.0"
   },
   "devDependencies": {
