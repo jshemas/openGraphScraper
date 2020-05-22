@@ -1,10 +1,8 @@
-/* eslint no-console: 0, no-undefined: 0 */
+/* eslint-disable promise/no-callback-in-promise */
+const expect = require('expect.js');
+const app = require('../index');
 
-'use strict';
-
-var app = require('../index');
-var expect = require('expect.js');
-var HTML_STRING = `
+const HTML_STRING = `
 <html>
 <head>
   <meta property="og:title" content="Test page"/>
@@ -17,7 +15,7 @@ describe('GET OG', function () {
   this.timeout(10000); // should wait at least ten seconds before failing
   it('Valid Call - ogp.me should return open graph data', function (done) {
     app({
-      'url': 'http://ogp.me/'
+      url: 'http://ogp.me/',
     }, function (error, result, response) {
       console.log('error:', error);
       console.log('result:', result);
@@ -37,7 +35,7 @@ describe('GET OG', function () {
     });
   });
   it('Valid Call - ogp.me should return open graph data - promise version', function (done) {
-    app({'url': 'http://ogp.me/'})
+    app({ url: 'http://ogp.me/' })
       .then(function (result) {
         console.log('result:', result);
         expect(result.success).to.be(true);
@@ -60,7 +58,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - http', function (done) {
     app({
-      'url': 'http://www.wikipedia.org/'
+      url: 'http://www.wikipedia.org/',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -75,7 +73,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - https', function (done) {
     app({
-      'url': 'https://www.wikipedia.org/'
+      url: 'https://www.wikipedia.org/',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -90,7 +88,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - no protocol', function (done) {
     app({
-      'url': 'www.wikipedia.org/'
+      url: 'www.wikipedia.org/',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -105,7 +103,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - no protocol and no wwww', function (done) {
     app({
-      'url': 'wikipedia.org/'
+      url: 'wikipedia.org/',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -120,7 +118,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - protocol with no wwww', function (done) {
     app({
-      'url': 'http://wikipedia.org/'
+      url: 'http://wikipedia.org/',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -135,8 +133,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - blacklist', function (done) {
     app({
-      'url': 'https://www.wikipedia.org/',
-      'blacklist': ['www.test.com', 'www.wikipedia.org']
+      url: 'https://www.wikipedia.org/',
+      blacklist: ['www.test.com', 'www.wikipedia.org'],
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -149,8 +147,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - blacklist with no match', function (done) {
     app({
-      'url': 'https://www.wikipedia.org/',
-      'blacklist': ['www.test.com', 'www.google.org']
+      url: 'https://www.wikipedia.org/',
+      blacklist: ['www.test.com', 'www.google.org'],
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -165,8 +163,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - blacklist empty', function (done) {
     app({
-      'url': 'https://www.wikipedia.org/',
-      'blacklist': []
+      url: 'https://www.wikipedia.org/',
+      blacklist: [],
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -181,7 +179,7 @@ describe('GET OG', function () {
   });
   it('Invalid Call - fake page', function (done) {
     app({
-      'url': 'http://testtesttest4564568.com'
+      url: 'http://testtesttest4564568.com',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -194,7 +192,7 @@ describe('GET OG', function () {
   });
   it('Invalid Call - empty url', function (done) {
     app({
-      'url': ''
+      url: '',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -218,8 +216,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - timeout set to 2000', function (done) {
     app({
-      'url': 'http://www.wikipedia.org/',
-      'timeout': 2000
+      url: 'http://www.wikipedia.org/',
+      timeout: 2000,
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -234,8 +232,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - timeout set to empty string', function (done) {
     app({
-      'url': 'http://www.wikipedia.org/',
-      'timeout': ''
+      url: 'http://www.wikipedia.org/',
+      timeout: '',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -250,8 +248,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - timeout number is a string', function (done) {
     app({
-      'url': 'http://www.wikipedia.org/',
-      'timeout': '2000'
+      url: 'http://www.wikipedia.org/',
+      timeout: '2000',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -266,8 +264,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - time is just a string of chars', function (done) {
     app({
-      'url': 'http://www.wikipedia.org/',
-      'timeout': 'sdsdds'
+      url: 'http://www.wikipedia.org/',
+      timeout: 'sdsdds',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -282,7 +280,7 @@ describe('GET OG', function () {
   });
   it('Invalid Call - url is just a number', function (done) {
     app({
-      'url': 23233
+      url: 23233,
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -295,7 +293,7 @@ describe('GET OG', function () {
   });
   it('Invalid Call - url is a string of numbers', function (done) {
     app({
-      'url': '2323233'
+      url: '2323233',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -308,7 +306,7 @@ describe('GET OG', function () {
   });
   it('Invalid Call - url is a string of words', function (done) {
     app({
-      'url': 'this is a test'
+      url: 'this is a test',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -321,7 +319,7 @@ describe('GET OG', function () {
   });
   it('Invalid Call - response code is 404', function (done) {
     app({
-      'url': 'https://github.com/jshemas/notOpenGraphScraper'
+      url: 'https://github.com/jshemas/notOpenGraphScraper',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -334,8 +332,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - only get open graph info', function (done) {
     app({
-      'url': 'http://www.wikipedia.org/',
-      'onlyGetOpenGraphInfo': true
+      url: 'http://www.wikipedia.org/',
+      onlyGetOpenGraphInfo: true,
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -348,7 +346,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - test getting the description from meta tags', function (done) {
     app({
-      'url': 'https://jshemas.github.io/openGraphScraperPages/twitter.html'
+      url: 'https://jshemas.github.io/openGraphScraperPages/twitter.html',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -357,8 +355,8 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('https://jshemas.github.io/openGraphScraperPages/twitter.html');
       expect(result.data.ogTitle).to.be('Twitter. It\'s what\'s happening.');
       expect(result.data.ogDescription).to.be('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
-      var imageFound = false;
-      for (var i = 0; i < result.data.ogImage.length; i++) {
+      let imageFound = false;
+      for (let i = 0; i < result.data.ogImage.length; i += 1) {
         if (result.data.ogImage[i].url === '/static/images/toolbar/wayback-toolbar-logo.png') {
           imageFound = true;
         }
@@ -369,7 +367,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - testing 304 page', function (done) {
     app({
-      'url': 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut'
+      url: 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -397,8 +395,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - should contain array of images', function (done) {
     app({
-      'url': 'http://ogp.me',
-      'allMedia': true
+      url: 'http://ogp.me',
+      allMedia: true,
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -418,7 +416,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Youtube Video - Should Return correct Open Graph Info', function (done) {
     app({
-      'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+      url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -427,19 +425,13 @@ describe('GET OG', function () {
       expect(result.requestUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.data.ogSiteName).to.be('YouTube');
       expect(result.data.ogUrl).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-      // expect(result.data.ogTitle).to.be('Rick Astley - Never Gonna Give You Up' || 'Rick Astley - Never Gonna Give You Up - YouTube');
-      // expect(result.data.ogDescription).to.be('Rick Astley - Never Gonna Give You Up (Official Music Video) - Listen On Spotify: http://smarturl.it/AstleySpotify Download Rick\'s Number 1 album "50" - http...');
       expect(result.data.ogType).to.be('video.other');
       expect(result.data.twitterCard).to.be('player');
       expect(result.data.twitterSite).to.be.a('string');
-      // expect(result.data.twitterTitle).to.be('Rick Astley - Never Gonna Give You Up' || 'Rick Astley - Never Gonna Give You Up - YouTube');
-      // expect(result.data.twitterDescription).to.be('Rick Astley - Never Gonna Give You Up (Official Music Video) - Listen On Spotify: http://smarturl.it/AstleySpotify Download Rick\'s Number 1 album "50" - http...');
       expect(result.data.twitterAppNameiPhone).to.be('YouTube');
       expect(result.data.twitterAppIdiPhone).to.be('544007664');
       expect(result.data.twitterAppNameiPad).to.be('YouTube');
       expect(result.data.twitterAppIdiPad).to.be('544007664');
-      // expect(result.data.twitterAppUrliPhone).to.be('vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
-      // expect(result.data.twitterAppUrliPad).to.be('vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
       expect(result.data.twitterAppNameGooglePlay).to.be('YouTube');
       expect(result.data.twitterAppIdGooglePlay).to.be('com.google.android.youtube');
       expect(result.data.twitterAppUrlGooglePlay).to.be('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
@@ -465,7 +457,7 @@ describe('GET OG', function () {
   // it looks like Twitch removed all of open graph, skip test for now
   it.skip('Valid Call - Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
     app({
-      'url': 'https://www.twitch.tv/warcraft/v/78039967'
+      url: 'https://www.twitch.tv/warcraft/v/78039967',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -509,7 +501,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Flickr Image - Should Return correct Open Graph Info', function (done) {
     app({
-      'url': 'https://jshemas.github.io/openGraphScraperPages/flickr'
+      url: 'https://jshemas.github.io/openGraphScraperPages/flickr',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -536,7 +528,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Forbes Article Redirect - Should Return correct Open Graph Info', function (done) {
     app({
-      'url': 'https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa'
+      url: 'https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -566,7 +558,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function (done) {
     app({
-      'url': 'https://www.namecheap.com/'
+      url: 'https://www.namecheap.com/',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -579,7 +571,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test NYTimes Article Redirect - Should Return correct Open Graph Info', function (done) {
     app({
-      'url': 'https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0'
+      url: 'https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -604,14 +596,13 @@ describe('GET OG', function () {
       expect(result.data.twitterImage.url).to.be('https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-videoSixteenByNineJumbo1600.jpg');
       expect(result.data.twitterImage.width).to.be(null);
       expect(result.data.twitterImage.height).to.be(null);
-      // expect(result.data.twitterImage.alt).to.be('Kim Kardashian West at the “Famous” exhibition at Blum &amp; Poe in Los Angeles last week. The gallery is planning to sell the sculpture for a hefty price tag.');
       done();
     });
   });
   // TODO: for some reason this is failing in travis-ci but not locally
   it.skip('Valid Call - vimeo.com should return open graph data', function (done) {
     app({
-      'url': 'https://vimeo.com/232889838'
+      url: 'https://vimeo.com/232889838',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -656,7 +647,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - michaelkors should return open graph data', function (done) {
     app({
-      'url': 'https://jshemas.github.io/openGraphScraperPages/michaelkors'
+      url: 'https://jshemas.github.io/openGraphScraperPages/michaelkors',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -679,7 +670,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Twitter Site', function (done) {
     app({
-      'url': 'https://jshemas.github.io/openGraphScraperPages/twitter-dev'
+      url: 'https://jshemas.github.io/openGraphScraperPages/twitter-dev',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -700,7 +691,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Github Site', function (done) {
     app({
-      'url': 'https://jshemas.github.io/openGraphScraperPages/github'
+      url: 'https://jshemas.github.io/openGraphScraperPages/github',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -720,7 +711,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - Test Twitter Tags - Should Return correct Open Graph Info + Some Twitter Info - Atom Site', function (done) {
     app({
-      'url': 'https://jshemas.github.io/openGraphScraperPages/atom.html'
+      url: 'https://jshemas.github.io/openGraphScraperPages/atom.html',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -750,8 +741,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - Utf-8 charset - Should Return correct Open Graph Info + charset info', function (done) {
     app({
-      'url': 'http://ogp.me/',
-      'withCharset': true
+      url: 'http://ogp.me/',
+      withCharset: true,
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -764,9 +755,9 @@ describe('GET OG', function () {
   });
   it('Valid Call - windows-1251 charset - Should Return correct Open Graph Info + charset info', function (done) {
     app({
-      'url': 'http://www.gazeta.ru/',
-      'encoding': null,
-      'withCharset': true
+      url: 'http://www.gazeta.ru/',
+      encoding: null,
+      withCharset: true,
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -774,9 +765,9 @@ describe('GET OG', function () {
       if (error === true) {
         console.log('found error, trying agine');
         app({
-          'url': 'http://www.gazeta.ru/',
-          'encoding': null,
-          'withCharset': true
+          url: 'http://www.gazeta.ru/',
+          encoding: null,
+          withCharset: true,
         }, function (callTwoError, callTwoResult) {
           console.log('error:', callTwoError);
           console.log('result:', callTwoResult);
@@ -799,8 +790,8 @@ describe('GET OG', function () {
   });
   it('Valid Call - legacy no charset - Should Return correct Open Graph Info + charset info', function (done) {
     app({
-      'url': 'https://jshemas.github.io/openGraphScraperPages/rakuten',
-      'encoding': null
+      url: 'https://jshemas.github.io/openGraphScraperPages/rakuten',
+      encoding: null,
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -813,7 +804,7 @@ describe('GET OG', function () {
   });
   it('Invalid Call - Encoding not recognized', function (done) {
     app({
-      'url': 'http://www.tnnbar.org.tw/'
+      url: 'http://www.tnnbar.org.tw/',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -821,7 +812,7 @@ describe('GET OG', function () {
       if (error === true) {
         console.log('found error, trying agine');
         app({
-          'url': 'http://www.tnnbar.org.tw/'
+          url: 'http://www.tnnbar.org.tw/',
         }, function (callTwoError, callTwoResult) {
           console.log('error:', callTwoError);
           console.log('result:', callTwoResult);
@@ -829,7 +820,6 @@ describe('GET OG', function () {
           expect(callTwoResult.success).to.be(false);
           expect(callTwoResult.requestUrl).to.be('http://www.tnnbar.org.tw/');
           expect(callTwoResult.error).to.be('Page Not Found');
-          // expect(callTwoResult.errorDetails).to.be('Error: Encoding not recognized: \'zh_tw\' (searched as: \'zhtw\')');
           done();
         });
       } else {
@@ -837,14 +827,13 @@ describe('GET OG', function () {
         expect(result.success).to.be(false);
         expect(result.requestUrl).to.be('http://www.tnnbar.org.tw/');
         expect(result.error).to.be('Page Not Found');
-        // expect(result.errorDetails).to.be('Error: Encoding not recognized: \'zh_tw\' (searched as: \'zhtw\')');
         done();
       }
     });
   });
   it('Invalid Call - Not a HTML page', function (done) {
     app({
-      'url': 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg'
+      url: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -857,8 +846,8 @@ describe('GET OG', function () {
   });
   it('Invalid Call - Can\'t request URL and pass in HTML string', function (done) {
     app({
-      'url': 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg',
-      'html': HTML_STRING
+      url: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Overlook_Hong_Kong_Island_north_coast,_Victoria_Harbour_and_Kowloon_from_middle_section_of_Lugard_Road_at_daytime_(enlarged_version_and_better_contrast,_revised).jpg',
+      html: HTML_STRING,
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -871,7 +860,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - pass in HTML string', function (done) {
     app({
-      'html': HTML_STRING
+      html: HTML_STRING,
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -884,15 +873,15 @@ describe('GET OG', function () {
   // TODO: looks like amazon is now blocking these kinds of calls... getting a robot check page
   it.skip('Valid Call - should get array of images back', function (done) {
     app({
-      'url': 'https://www.amazon.com/Anatomy-Story-Becoming-Master-Storyteller/dp/0865479933'
+      url: 'https://www.amazon.com/Anatomy-Story-Becoming-Master-Storyteller/dp/0865479933',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be(false);
       expect(result.success).to.be(true);
       expect(result.data.ogImage.length).to.be.above(10);
-      var imageFound = false;
-      for (var i = 0; i < result.data.ogImage.length; i++) {
+      let imageFound = false;
+      for (let i = 0; i < result.data.ogImage.length; i += 1) {
         if (result.data.ogImage[i].url === 'https://images-na.ssl-images-amazon.com/images/G/01/vse/Discovery/vse_play_icon_2x.png') {
           imageFound = true;
         }
@@ -903,7 +892,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - spotify album should return music:album and associated tags', function (done) {
     app({
-      'url': 'https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9'
+      url: 'https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -921,7 +910,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - spotify artist should return music:musician', function (done) {
     app({
-      'url': 'https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x'
+      url: 'https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -935,7 +924,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - spotify track should return music:song and associated tags', function (done) {
     app({
-      'url': 'https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm'
+      url: 'https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);
@@ -954,7 +943,7 @@ describe('GET OG', function () {
   });
   it('Valid Call - spotify playlist should return music:playlist and associated tags', function (done) {
     app({
-      'url': 'https://open.spotify.com/user/mjaschmidt/playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg'
+      url: 'https://open.spotify.com/user/mjaschmidt/playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg',
     }, function (error, result) {
       console.log('error:', error);
       console.log('result:', result);

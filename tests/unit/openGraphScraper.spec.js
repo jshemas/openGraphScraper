@@ -1,10 +1,10 @@
-'use strict';
 
-var expect = require('expect.js');
-var sinon = require('sinon');
-var got = require('got');
-var openGraphScraper = require('../../lib/openGraphScraper');
-var sandbox = sinon.sandbox.create();
+const expect = require('expect.js');
+const sinon = require('sinon');
+const got = require('got');
+const openGraphScraper = require('../../lib/openGraphScraper');
+
+const sandbox = sinon.sandbox.create();
 
 describe('openGraphScraper', function () {
   afterEach(function () {
@@ -12,10 +12,10 @@ describe('openGraphScraper', function () {
   });
   describe('run', function () {
     it('should be able to hit site and find OG info', function (done) {
-      sandbox.stub(got, 'get').resolves({body: '<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>'});
+      sandbox.stub(got, 'get').resolves({ body: '<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>' });
       process.browser = true;
       openGraphScraper({
-        'url': 'www.test.com'
+        url: 'www.test.com',
       }, function (error, result) {
         expect(error).to.be(false);
         expect(result.success).to.be(true);
@@ -24,9 +24,9 @@ describe('openGraphScraper', function () {
       });
     });
     it('should be able to hit site and find OG info - promise version', function () {
-      sandbox.stub(got, 'get').resolves({body: '<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>'});
+      sandbox.stub(got, 'get').resolves({ body: '<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>' });
       process.browser = false;
-      return openGraphScraper({'url': 'www.test.com'})
+      return openGraphScraper({ url: 'www.test.com' })
         .then(function (result) {
           expect(result.success).to.be(true);
           expect(result.data.ogTitle).to.be('test page');
@@ -37,8 +37,8 @@ describe('openGraphScraper', function () {
     });
     it('should return the response data when an error occurred - promise version', function () {
       process.browser = false;
-      sandbox.stub(got, 'get').resolves({statusCode: 404});
-      return openGraphScraper({'url': 'www.test.com'})
+      sandbox.stub(got, 'get').resolves({ statusCode: 404 });
+      return openGraphScraper({ url: 'www.test.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -48,15 +48,15 @@ describe('openGraphScraper', function () {
             errorDetails: 'Server Has Ran Into A Error',
             requestUrl: 'http://www.test.com',
             response: {
-              statusCode: 404
+              statusCode: 404,
             },
-            success: false
+            success: false,
           });
         });
     });
     it('should not be able to hit non html pages', function (done) {
       openGraphScraper({
-        'url': 'www.test.com/test.png'
+        url: 'www.test.com/test.png',
       }, function (error, result) {
         expect(error).to.be(true);
         expect(result.success).to.be(false);
@@ -65,7 +65,7 @@ describe('openGraphScraper', function () {
       });
     });
     it('should not be able to hit non html pages - promise version', function () {
-      return openGraphScraper({'url': 'www.test.com.png'})
+      return openGraphScraper({ url: 'www.test.com.png' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -74,14 +74,14 @@ describe('openGraphScraper', function () {
             error: 'Must scrape an HTML page',
             success: false,
             requestUrl: 'http://www.test.com.png',
-            errorDetails: 'Must scrape an HTML page'
+            errorDetails: 'Must scrape an HTML page',
           });
         });
     });
     it('should not be able to hit a black list site', function (done) {
       openGraphScraper({
-        'url': 'www.test.com/test',
-        'blacklist': ['test.com']
+        url: 'www.test.com/test',
+        blacklist: ['test.com'],
       }, function (error, result) {
         expect(error).to.be(true);
         expect(result.success).to.be(false);
@@ -90,10 +90,10 @@ describe('openGraphScraper', function () {
       });
     });
     it('should be able hit when site is not on blacklist', function (done) {
-      sandbox.stub(got, 'get').resolves({body: '<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>'});
+      sandbox.stub(got, 'get').resolves({ body: '<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>' });
       openGraphScraper({
-        'url': 'www.test.com/test',
-        'blacklist': ['testtest.com']
+        url: 'www.test.com/test',
+        blacklist: ['testtest.com'],
       }, function (error, result) {
         expect(error).to.be(false);
         expect(result.success).to.be(true);
@@ -103,7 +103,7 @@ describe('openGraphScraper', function () {
     });
     it('should not be able to hit a bad url', function (done) {
       openGraphScraper({
-        'url': ''
+        url: '',
       }, function (error, result) {
         expect(error).to.be(true);
         expect(result.success).to.be(false);
