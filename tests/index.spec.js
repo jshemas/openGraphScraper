@@ -881,7 +881,8 @@ describe('GET OG', function () {
       done();
     });
   });
-  it('Valid Call - should get array of images back', function (done) {
+  // TODO: looks like amazon is now blocking these kinds of calls... getting a robot check page
+  it.skip('Valid Call - should get array of images back', function (done) {
     app({
       'url': 'https://www.amazon.com/Anatomy-Story-Becoming-Master-Storyteller/dp/0865479933'
     }, function (error, result) {

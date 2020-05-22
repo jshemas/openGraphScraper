@@ -1,3 +1,9 @@
+### 4.0.0
+- Shifting module from request.js to got.js
+- options.gzip is now options.decompress
+- drop support for options.jar
+- options.timeout has to be a int now
+
 ### 3.6.2
 - Updating lodash.
 

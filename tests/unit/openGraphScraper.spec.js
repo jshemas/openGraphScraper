@@ -2,7 +2,8 @@
 
 var expect = require('expect.js');
 var sinon = require('sinon');
-var mockery = require('mockery');
+var got = require('got');
+var openGraphScraper = require('../../lib/openGraphScraper');
 var sandbox = sinon.sandbox.create();
 
 describe('openGraphScraper', function () {
@@ -10,26 +11,9 @@ describe('openGraphScraper', function () {
     sandbox.restore();
   });
   describe('run', function () {
-    var requestStub;
-    var openGraphScraper;
-    beforeEach(function (done) {
-      mockery.enable({
-        warnOnReplace: false,
-        warnOnUnregistered: false,
-        useCleanCache: true
-      });
-      requestStub = sinon.stub();
-      mockery.registerMock('request', requestStub);
-      openGraphScraper = require('../../lib/openGraphScraper');
-      done();
-    });
-    afterEach(function (done) {
-      mockery.disable();
-      done();
-    });
     it('should be able to hit site and find OG info', function (done) {
+      sandbox.stub(got, 'get').resolves({body: '<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>'});
       process.browser = true;
-      requestStub.yields(null, {statusCode: 200}, Buffer.from('<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>', 'utf8'));
       openGraphScraper({
         'url': 'www.test.com'
       }, function (error, result) {
@@ -40,8 +24,8 @@ describe('openGraphScraper', function () {
       });
     });
     it('should be able to hit site and find OG info - promise version', function () {
+      sandbox.stub(got, 'get').resolves({body: '<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>'});
       process.browser = false;
-      requestStub.yields(null, {statusCode: 200}, Buffer.from('<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>', 'utf8'));
       return openGraphScraper({'url': 'www.test.com'})
         .then(function (result) {
           expect(result.success).to.be(true);
@@ -53,7 +37,7 @@ describe('openGraphScraper', function () {
     });
     it('should return the response data when an error occurred - promise version', function () {
       process.browser = false;
-      requestStub.yields({ error: 'some error' }, { statusCode: 404 }, Buffer.from('<html><head><title>error page</title></head><body><h1>is no good</h2></body></html>', 'utf8'));
+      sandbox.stub(got, 'get').resolves({statusCode: 404});
       return openGraphScraper({'url': 'www.test.com'})
         .then(function () {
           expect().fail('this should not happen');
@@ -61,9 +45,7 @@ describe('openGraphScraper', function () {
         .catch(function (error) {
           expect(error).to.eql({
             error: 'Page Not Found',
-            errorDetails: {
-              error: 'some error'
-            },
+            errorDetails: 'Server Has Ran Into A Error',
             requestUrl: 'http://www.test.com',
             response: {
               statusCode: 404
@@ -108,7 +90,7 @@ describe('openGraphScraper', function () {
       });
     });
     it('should be able hit when site is not on blacklist', function (done) {
-      requestStub.yields(null, {statusCode: 200}, Buffer.from('<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>', 'utf8'));
+      sandbox.stub(got, 'get').resolves({body: '<html><head><title>test page</title></head><body><h1>hello test page</h2></body></html>'});
       openGraphScraper({
         'url': 'www.test.com/test',
         'blacklist': ['testtest.com']
