@@ -19,16 +19,14 @@
     "url": "https://github.com/jshemas"
   },
   "dependencies": {
-    "chardet": "0.7.0",
-    "cheerio": "1.0.0-rc.2",
-    "got": "11.1.4",
-    "iconv-lite": "0.4.24",
-    "lodash": "4.17.14",
-    "request": "2.88.0"
+    "chardet": "^1.1.0",
+    "cheerio": "^1.0.0-rc.3",
+    "got": "^11.1.4",
+    "iconv-lite": "^0.5.1",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "babel-eslint": "8.2.3",
-    "coveralls": "3.0.0",
+    "coveralls": "^3.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -38,11 +36,10 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.5.0",
-    "esquery": "1.0.0",
-    "expect.js": "0.3.1",
-    "mocha": "4.0.1",
-    "nyc": "11.6.0",
-    "sinon": "4.5.0"
+    "expect.js": "^0.3.1",
+    "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
+    "sinon": "^9.0.2"
   },
   "repository": {
     "type": "git",

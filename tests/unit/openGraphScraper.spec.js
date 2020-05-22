@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const got = require('got');
 const openGraphScraper = require('../../lib/openGraphScraper');
 
-const sandbox = sinon.sandbox.create();
+const sandbox = sinon.createSandbox();
 
 describe('openGraphScraper', function () {
   afterEach(function () {

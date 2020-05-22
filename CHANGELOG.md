@@ -3,6 +3,7 @@
 - options.gzip is now options.decompress
 - drop support for options.jar
 - options.timeout has to be a int now
+- updating dependencies
 
 ### 3.6.2
 - Updating lodash.
