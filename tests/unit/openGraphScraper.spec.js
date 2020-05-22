@@ -1,6 +1,3 @@
-
-const expect = require('expect.js');
-const sinon = require('sinon');
 const got = require('got');
 const openGraphScraper = require('../../lib/openGraphScraper');
 
@@ -17,9 +14,9 @@ describe('openGraphScraper', function () {
       openGraphScraper({
         url: 'www.test.com',
       }, function (error, result) {
-        expect(error).to.be(false);
-        expect(result.success).to.be(true);
-        expect(result.data.ogTitle).to.be('test page');
+        expect(error).to.be.eql(false);
+        expect(result.success).to.be.eql(true);
+        expect(result.data.ogTitle).to.be.eql('test page');
         done();
       });
     });
@@ -28,11 +25,11 @@ describe('openGraphScraper', function () {
       process.browser = false;
       return openGraphScraper({ url: 'www.test.com' })
         .then(function (result) {
-          expect(result.success).to.be(true);
-          expect(result.data.ogTitle).to.be('test page');
+          expect(result.success).to.be.eql(true);
+          expect(result.data.ogTitle).to.be.eql('test page');
         })
         .catch(function (error) {
-          expect(error).to.be(false);
+          expect(error).to.be.eql(false);
         });
     });
     it('should return the response data when an error occurred - promise version', function () {
@@ -58,9 +55,9 @@ describe('openGraphScraper', function () {
       openGraphScraper({
         url: 'www.test.com/test.png',
       }, function (error, result) {
-        expect(error).to.be(true);
-        expect(result.success).to.be(false);
-        expect(result.error).to.be('Must scrape an HTML page');
+        expect(error).to.be.eql(true);
+        expect(result.success).to.be.eql(false);
+        expect(result.error).to.be.eql('Must scrape an HTML page');
         done();
       });
     });
@@ -83,9 +80,9 @@ describe('openGraphScraper', function () {
         url: 'www.test.com/test',
         blacklist: ['test.com'],
       }, function (error, result) {
-        expect(error).to.be(true);
-        expect(result.success).to.be(false);
-        expect(result.error).to.be('Host Name Has Been Black Listed');
+        expect(error).to.be.eql(true);
+        expect(result.success).to.be.eql(false);
+        expect(result.error).to.be.eql('Host Name Has Been Black Listed');
         done();
       });
     });
@@ -95,9 +92,9 @@ describe('openGraphScraper', function () {
         url: 'www.test.com/test',
         blacklist: ['testtest.com'],
       }, function (error, result) {
-        expect(error).to.be(false);
-        expect(result.success).to.be(true);
-        expect(result.data.ogTitle).to.be('test page');
+        expect(error).to.be.eql(false);
+        expect(result.success).to.be.eql(true);
+        expect(result.data.ogTitle).to.be.eql('test page');
         done();
       });
     });
@@ -105,9 +102,9 @@ describe('openGraphScraper', function () {
       openGraphScraper({
         url: '',
       }, function (error, result) {
-        expect(error).to.be(true);
-        expect(result.success).to.be(false);
-        expect(result.error).to.be('Invalid URL');
+        expect(error).to.be.eql(true);
+        expect(result.success).to.be.eql(false);
+        expect(result.error).to.be.eql('Invalid URL');
         done();
       });
     });

@@ -1,7 +1,5 @@
 /* eslint  no-undefined: 0 */
 
-
-const expect = require('expect.js');
 const media = require('../../lib/media');
 
 describe('media', function () {

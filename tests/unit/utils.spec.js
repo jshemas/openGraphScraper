@@ -1,5 +1,3 @@
-
-const expect = require('expect.js');
 const utils = require('../../lib/utils');
 
 describe('utils', function () {
