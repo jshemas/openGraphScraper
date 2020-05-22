@@ -34,21 +34,16 @@ describe('openGraphScraper', function () {
     });
     it('should return the response data when an error occurred - promise version', function () {
       process.browser = false;
-      sandbox.stub(got, 'get').resolves({ statusCode: 404 });
+      sandbox.stub(got, 'get').resolves({ statusCode: 500 });
       return openGraphScraper({ url: 'www.test.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (error) {
-          expect(error).to.eql({
-            error: 'Page Not Found',
-            errorDetails: 'Server Has Ran Into A Error',
-            requestUrl: 'http://www.test.com',
-            response: {
-              statusCode: 404,
-            },
-            success: false,
-          });
+          expect(error.error).to.eql('Page Not Found');
+          expect(error.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(error.requestUrl).to.eql('http://www.test.com');
+          expect(error.success).to.eql(false);
         });
     });
     it('should not be able to hit non html pages', function (done) {
