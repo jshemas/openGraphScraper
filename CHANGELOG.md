@@ -4,6 +4,7 @@
 - drop support for options.jar
 - options.timeout has to be a int now
 - updating dependencies
+- dropping support for any node version under 10
 
 ### 3.6.2
 - Updating lodash.

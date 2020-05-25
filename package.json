@@ -11,7 +11,7 @@
     "test": "mocha --require ./tests/bootstrap.js --recursive \"./tests/**/*.spec.js\" --timeout 10000"
   },
   "engines": {
-    "node": ">=4.x.x"
+    "node": ">=10.x.x"
   },
   "author": {
     "name": "Josh Shemas",
