@@ -91,8 +91,8 @@ Promise Example:
 var ogs = require('open-graph-scraper');
 var options = {'url': 'http://ogp.me/'};
 ogs(options)
-  .then(function (result) {
-    console.log('result:', result);
+  .then(function (data) {
+    console.log('result:', data.result);
   })
   .catch(function (error) {
     console.log('error:', error);

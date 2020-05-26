@@ -3,7 +3,9 @@
 ## 4.0.0 (has breaking changes!)
 
 - Dropping support for any node version under 10
+- Open Graph values are no longer nested in a data object.
 - Stop using request.js(deprecated) and start using got.js
+- Using promises will now send the error/result/response back in one object.
 - Options.gzip is now options.decompress
 - Drop support for options.jar
 - Options.timeout must be a number value
