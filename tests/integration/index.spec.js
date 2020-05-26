@@ -1,5 +1,5 @@
 /* eslint-disable promise/no-callback-in-promise */
-const app = require('../index');
+const app = require('../../index');
 
 const HTML_STRING = `
 <html>

@@ -8,7 +8,9 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "eslint:fix": "eslint . --ext .js --fix",
     "eslint": "eslint . --ext .js",
-    "test": "mocha --require ./tests/bootstrap.js --recursive \"./tests/**/*.spec.js\" --timeout 10000",
+    "mocha:unit": "mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\"",
+    "mocha:int": "mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",
+    "test": "npm run mocha:unit && npm run mocha:int" ,
     "markdown:lint": "markdownlint **/*.md --ignore node_modules",
     "markdown:lint:fix": "markdownlint **/*.md --ignore node_modules"
   },
