@@ -8,7 +8,9 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "eslint:fix": "eslint . --ext .js --fix",
     "eslint": "eslint . --ext .js",
-    "test": "mocha --require ./tests/bootstrap.js --recursive \"./tests/**/*.spec.js\" --timeout 10000"
+    "test": "mocha --require ./tests/bootstrap.js --recursive \"./tests/**/*.spec.js\" --timeout 10000",
+    "markdown:lint": "markdownlint **/*.md --ignore node_modules",
+    "markdown:lint:fix": "markdownlint **/*.md --ignore node_modules"
   },
   "engines": {
     "node": ">=10.x.x"
@@ -28,15 +30,16 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
-    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-mocha": "^6.2.2",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react-hooks": "^2.5.0",
     "eslint-plugin-react": "^7.17.0",
-    "eslint": "^6.8.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "markdownlint-cli": "^0.23.1",
     "mocha": "^7.1.2",
     "nyc": "^15.0.1",
     "sinon": "^9.0.2"
