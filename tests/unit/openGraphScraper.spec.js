@@ -56,7 +56,7 @@ describe('openGraphScraper', function () {
       });
     });
     it('using promises', function () {
-      return openGraphScraper({ url: 'www.test.com', blacklist: ['testtest.com']})
+      return openGraphScraper({ url: 'www.test.com', blacklist: ['testtest.com'] })
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogImage).to.be.eql([]);
