@@ -11,8 +11,8 @@ describe('blacklist', function () {
       expect(error).to.be.eql(true);
       expect(result.success).to.be.eql(false);
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
-      expect(result.error).to.eql('Host Name Has Been Black Listed');
-      expect(result.errorDetails.toString()).to.eql('Error: Host Name Has Been Black Listed');
+      expect(result.error).to.eql('Host name has been black listed');
+      expect(result.errorDetails.toString()).to.eql('Error: Host name has been black listed');
       expect(response).to.eql(undefined);
       done();
     });

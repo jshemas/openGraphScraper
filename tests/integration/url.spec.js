@@ -90,8 +90,8 @@ describe('url', function () {
       expect(error).to.be.eql(true);
       expect(result.success).to.be.eql(false);
       expect(result.requestUrl).to.be.eql('http://testtesttest4564568.com');
-      expect(result.error).to.eql('Page Not Found');
-      expect(result.errorDetails.toString()).to.eql('Error: Page Not Found');
+      expect(result.error).to.eql('Page not found');
+      expect(result.errorDetails.toString()).to.eql('Error: Page not found');
       expect(response).to.eql(undefined);
       done();
     });
@@ -133,8 +133,8 @@ describe('url', function () {
       expect(error).to.be.eql(true);
       expect(result.success).to.be.eql(false);
       expect(result.requestUrl).to.be.eql('http://23233');
-      expect(result.error).to.eql('Page Not Found');
-      expect(result.errorDetails.toString()).to.eql('Error: Page Not Found');
+      expect(result.error).to.eql('Page not found');
+      expect(result.errorDetails.toString()).to.eql('Error: Page not found');
       expect(response).to.eql(undefined);
       done();
     });
@@ -148,8 +148,8 @@ describe('url', function () {
       expect(error).to.be.eql(true);
       expect(result.success).to.be.eql(false);
       expect(result.requestUrl).to.be.eql('http://2323233');
-      expect(result.error).to.eql('Page Not Found');
-      expect(result.errorDetails.toString()).to.eql('Error: Page Not Found');
+      expect(result.error).to.eql('Page not found');
+      expect(result.errorDetails.toString()).to.eql('Error: Page not found');
       expect(response).to.eql(undefined);
       done();
     });
@@ -163,8 +163,8 @@ describe('url', function () {
       expect(error).to.be.eql(true);
       expect(result.success).to.be.eql(false);
       expect(result.requestUrl).to.be.eql('http://this is a test');
-      expect(result.error).to.eql('Page Not Found');
-      expect(result.errorDetails.toString()).to.eql('Error: Page Not Found');
+      expect(result.error).to.eql('Page not found');
+      expect(result.errorDetails.toString()).to.eql('Error: Page not found');
       expect(response).to.eql(undefined);
       done();
     });

@@ -273,8 +273,8 @@ describe('openGraphScraper', function () {
         openGraphScraper({ url: 'www.test.com/test', blacklist: ['test.com'] }, function (error, result, response) {
           expect(error).to.be.eql(true);
           expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Host Name Has Been Black Listed');
-          expect(result.errorDetails.toString()).to.eql('Error: Host Name Has Been Black Listed');
+          expect(result.error).to.eql('Host name has been black listed');
+          expect(result.errorDetails.toString()).to.eql('Error: Host name has been black listed');
           expect(result.requestUrl).to.be.eql('http://www.test.com/test');
           expect(response).to.be.eql(undefined);
           done();
@@ -288,8 +288,8 @@ describe('openGraphScraper', function () {
           .catch(function (data) {
             expect(data.error).to.be.eql(true);
             expect(data.result.success).to.be.eql(false);
-            expect(data.result.error).to.eql('Host Name Has Been Black Listed');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Host Name Has Been Black Listed');
+            expect(data.result.error).to.eql('Host name has been black listed');
+            expect(data.result.errorDetails.toString()).to.eql('Error: Host name has been black listed');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com/test');
             expect(data.response).to.be.eql(undefined);
           });

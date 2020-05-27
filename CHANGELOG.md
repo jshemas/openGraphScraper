@@ -9,6 +9,7 @@
 - Options.gzip is now options.decompress
 - Drop support for options.jar
 - Options.timeout must be a number value
+- Updating error messesing
 - Updating dependencies
 
 ## 3.6.2

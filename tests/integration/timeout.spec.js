@@ -28,8 +28,8 @@ describe('timeout', function () {
       expect(error).to.be.eql(true);
       expect(result.success).to.be.eql(false);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
-      expect(result.error).to.eql('Time Out');
-      expect(result.errorDetails.toString()).to.eql('Error: Time Out');
+      expect(result.error).to.eql('Time out');
+      expect(result.errorDetails.toString()).to.eql('Error: Time out');
       expect(response).to.eql(undefined);
       done();
     });
