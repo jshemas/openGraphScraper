@@ -24,7 +24,7 @@ describe('basic', function () {
       done();
     });
   });
-  it.only('using promises should retrun valid data', function (done) {
+  it('using promises should retrun valid data', function (done) {
     ogs({ url: 'http://ogp.me/' })
       .then(function (data) {
         const { error, result, response } = data;
