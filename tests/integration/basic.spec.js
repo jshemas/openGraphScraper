@@ -24,7 +24,7 @@ describe('basic', function () {
       done();
     });
   });
-  it('using promises should retrun valid data', function (done) {
+  it.only('using promises should retrun valid data', function (done) {
     ogs({ url: 'http://ogp.me/' })
       .then(function (data) {
         const { error, result, response } = data;
@@ -49,7 +49,7 @@ describe('basic', function () {
       })
       .catch(function (error) {
         console.log('error:', error);
-        expect(error).to.be.eql(false);
+        expect().fail('this should not happen');
         // eslint-disable-next-line promise/no-callback-in-promise
         done();
       });
