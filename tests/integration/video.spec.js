@@ -67,7 +67,7 @@ describe('video', function () {
       expect(result.ogTitle).to.be.oneOf(['Twitch', 'AI Soundscapes, Trials of Mana']);
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogUrl).to.be.eql('https://www.twitch.tv/videos/632214184');
-      expect(result.ogType).to.be.eql('website');
+      expect(result.ogType).to.be.oneOf(['website', 'video.other']);
       expect(result.ogImage).to.be.eql({
         url: 'https://static-cdn.jtvnw.net/ttv-static-metadata/twitch_logo3.jpg',
         width: null,
