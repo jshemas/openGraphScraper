@@ -55,7 +55,7 @@ describe('video', function () {
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
-  it.only('Test Twitch.tv Video - Should Return correct Open Graph Info', function () {
+  it('Test Twitch.tv Video - Should Return correct Open Graph Info', function () {
     return ogs({
       url: 'https://www.twitch.tv/videos/632214184',
     }, function (error, result, response) {
