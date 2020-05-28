@@ -14,102 +14,28 @@ npm install open-graph-scraper
 
 ## Usage
 
+Callback Example:
 ```javascript
-var ogs = require('open-graph-scraper');
-var options = {'url': 'http://ogp.me/'};
-ogs(options, function (error, results) {
+const ogs = require('open-graph-scraper');
+const options = { url: 'http://ogp.me/' };
+ogs(options, (error, results, response) => {
   console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-  console.log('results:', results);
-});
-
-```
-
-You can set a timeout flag like... Example four seconds:
-```javascript
-
-var ogs = require('open-graph-scraper');
-var options = {'url': 'http://ogp.me/', 'timeout': 4000};
-ogs(options, function (error, results) {
-  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-  console.log('results:', results);
-});
-```
-
-You can set custom headers. For example scraping data in a specific language:
-```javascript
-var ogs = require('open-graph-scraper');
-var options = {'url': 'http://ogp.me/', 'headers': { 'accept-language': 'en' }};
-ogs(options, function (error, results) {
-  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-  console.log('results:', results);
-});
-```
-
-You can set a blacklist. For example if you want to black list youtube.com:
-```javascript
-var ogs = require('open-graph-scraper');
-var options = {'url': 'http://ogp.me/', 'blacklist': ['youtube.com']};
-ogs(options, function (error, results) {
-  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-  console.log('results:', results);
-});
-```
-
-Example of setting encoding(default is `null`):
-```javascript
-var ogs = require('open-graph-scraper');
-var options = {'url': 'http://ogp.me/', 'encoding': 'utf8'};
-ogs(options, function (error, results) {
-  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-  console.log('results:', results);
-});
-```
-
-There is also a followAllRedirects(default is `true`) and a maxRedirects(default is `20`) option:
-```javascript
-var ogs = require('open-graph-scraper');
-var options = {'url': 'http://ogp.me/', 'followAllRedirects': true, 'maxRedirects': 20};
-ogs(options, function (error, results) {
-  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-  console.log('results:', results);
-});
-```
-
-If you would like the response of the page you scraped you can grab it as the third param:
-```javascript
-var ogs = require('open-graph-scraper');
-var options = {'url': 'http://ogp.me/', 'timeout': 4000};
-ogs(options, function (error, results, response) {
-  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-  console.log('results:', results);
-  console.log('response:', response); // The whole Response Object
+  console.log('results:', results); // This contains all of the Open Graph results
+  console.log('response:', response); // This contains the HTML of page
 });
 ```
 
 Promise Example:
 ```javascript
-var ogs = require('open-graph-scraper');
-var options = {'url': 'http://ogp.me/'};
+const ogs = require('open-graph-scraper');
+const options = { url: 'http://ogp.me/' };
 ogs(options)
-  .then(function (data) {
-    console.log('result:', data.result);
+  .then((data) => {
+    const { error, result, response } = data;
+    console.log('error:', error);  // This is returns true or false. True if there was a error. The error it self is inside the results object.
+    console.log('results:', results); // This contains all of the Open Graph results
+    console.log('response:', response); // This contains the HTML of page
   })
-  .catch(function (error) {
-    console.log('error:', error);
-  });
-```
-
-Note: By default if page dose not have something like a `og:title` tag it will try and look for it in other places and return that. If you truly only want open graph info you can use the option `onlyGetOpenGraphInfo` and set it to `true`.
-
-It's possible to pass in an HTML string instead of a URL. There won't be a response object.
-```javascript
-var htmlString = /* html string goes here */;
-var ogs = require('open-graph-scraper');
-var options = {'html': htmlString};
-ogs(options, function (error, results) {
-  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
-  console.log('results:', results);
-});
 ```
 
 ## Results JSON
@@ -133,10 +59,23 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 }
 ```
 
-## Features
-
-- This will also scrape twitter info!
-- There is a `allMedia` option you can set to `true` if you want all the images/videos send back.
+## Options
+| Name                 | Info                                                                       | Default Value | Required |
+|----------------------|----------------------------------------------------------------------------|---------------|----------|
+| url                  | URL of the site.                                                           |               | x        |
+| timeout              | Timeout of the request                                                     | 2000 ms       |          |
+| html                 | You can pass in an HTML string to run ogs on it. (use without options.url) |               |          |
+| blacklist            | Pass in an array of sites you don't want ogs to run on.                    | []            |          |
+| onlyGetOpenGraphInfo | Only fetch open graph info and don't fall back on anything else.           | false         |          |
+| ogImageFallback      | Fetch other images if no open graph ones are found.                        | true          |          |
+| decompress           | Set the accept-encoding to gzip/deflate                                    | true          |          |
+| followRedirect       | Defines if redirect responses should be followed automatically.            | true          |          |
+| maxRedirects         | Max number of redirects ogs will follow.                                   | 10            |          |
+| retry                | Number of times ogs will retry the request.                                | 2             |          |
+| encoding             | Setting this to `null` might help with running ogs on non english websites | utf8          |          |
+| peekSize             | Sets the peekSize for the request                                          | 1024          |          |
+| runChar              | Runs charset and icons on the request payload.                             | false         |          |
+| withCharset          | Returns the charset in the ogs payload.                                    | false         |          |
 
 ## Tests
 

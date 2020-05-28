@@ -7,6 +7,7 @@
 - Stop using request.js(deprecated) and start using got.js
 - Using promises will now send the error/result/response back in one object.
 - Options.gzip is now options.decompress
+- Options.followAllRedirects is now options.followRedirect
 - Drop support for options.jar
 - Options.timeout must be a number value
 - Updating error messesing
