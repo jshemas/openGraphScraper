@@ -97,7 +97,28 @@ describe('encoding', function () {
         return expect(response).to.be.an('object').and.to.not.be.empty;
       });
     });
-    it('when charset is utf-8', function () {
+    it('when charset is utf-8 - signanthealth', function () {
+      return ogs({
+        url: 'https://signanthealth.com/careers/',
+      }, function (error, result, response) {
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.ogLocale).to.be.eql('en_US');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogTitle).to.be.eql('Careers | Signant Health');
+        expect(result.ogDescription).to.be.eql('If you’re looking to join an exciting and fast-paced organization, consider Signant Health. We offer rewarding personal and career advancement as well as competitive compensation and benefits.');
+        expect(result.ogUrl).to.be.eql('https://www.signanthealth.com/company/careers/');
+        expect(result.ogSiteName).to.be.eql('Signant Health');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterCreator).to.be.eql('@SignantHealth');
+        expect(result.twitterSite).to.be.eql('@SignantHealth');
+        expect(result.requestUrl).to.be.eql('https://signanthealth.com/careers/');
+        expect(result.success).to.be.eql(true);
+        return expect(response).to.be.an('object').and.to.not.be.empty;
+      });
+    });
+    it('when charset is utf-8 - ogp', function () {
       return ogs({
         url: 'http://ogp.me/',
         withCharset: true,
