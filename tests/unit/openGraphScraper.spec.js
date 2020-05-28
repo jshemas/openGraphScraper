@@ -1,5 +1,5 @@
 const got = require('got');
-const openGraphScraper = require('../../lib/openGraphScraper');
+const openGraphScraper = require('../../index');
 
 const basicHTML = `
   <html>
