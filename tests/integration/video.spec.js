@@ -64,7 +64,7 @@ describe('video', function () {
       expect(error).to.be.eql(false);
       expect(result.ogSiteName).to.be.eql('Twitch');
       expect(result.twitterSite).to.be.eql('@twitch');
-      expect(result.ogTitle).to.be.eql('Twitch');
+      expect(result.ogTitle).to.be.eql('Twitch' || 'AI Soundscapes, Trials of Mana');
       expect(result.ogDescription).to.be.eql("Twitch is the world's leading video platform and community for gamers.");
       expect(result.ogUrl).to.be.eql('https://www.twitch.tv/videos/632214184');
       expect(result.ogType).to.be.eql('website');
