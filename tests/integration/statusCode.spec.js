@@ -5,6 +5,7 @@ describe('statusCode', function () {
     it('200', function () {
       return ogs({
         url: 'http://httpstat.us/200',
+        timeout: 10000,
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
@@ -17,6 +18,7 @@ describe('statusCode', function () {
     it('403', function () {
       return ogs({
         url: 'http://httpstat.us/403',
+        timeout: 10000,
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
@@ -31,6 +33,7 @@ describe('statusCode', function () {
     it('500', function () {
       return ogs({
         url: 'http://httpstat.us/500',
+        timeout: 10000,
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
