@@ -158,4 +158,18 @@ describe('url', function () {
       expect(response).to.eql(undefined);
     });
   });
+  it('url is to a pdf', function () {
+    return ogs({
+      url: 'test.pdf?123',
+    }, function (error, result, response) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be.eql(true);
+      expect(result.success).to.be.eql(false);
+      expect(result.requestUrl).to.be.eql('http://test.pdf?123');
+      expect(result.error).to.eql('Must scrape an HTML page');
+      expect(result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
+      expect(response).to.eql(undefined);
+    });
+  });
 });

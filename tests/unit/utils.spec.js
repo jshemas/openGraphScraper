@@ -1,17 +1,6 @@
 const utils = require('../../lib/utils');
 
 describe('utils', function () {
-  describe('endsWith', function () {
-    it('should ends with', function () {
-      const endsWith = utils.endsWith('test', '.jpg');
-      expect(endsWith).to.eql(false);
-    });
-    it('should not ends with', function () {
-      const endsWith = utils.endsWith('test.jpg', '.jpg');
-      expect(endsWith).to.eql(true);
-    });
-  });
-
   describe('validate', function () {
     it('should be valid', function () {
       const validate = utils.validate('www.test.com', 2000);

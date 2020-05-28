@@ -260,6 +260,33 @@ describe('openGraphScraper', function () {
       });
     });
 
+    context('when trying to hit a non html pages and has params', function () {
+      it('using callbacks', function () {
+        openGraphScraper({ url: 'www.test.com/test.pdf?123' }, function (error, result, response) {
+          expect(error).to.be.eql(true);
+          expect(result.success).to.be.eql(false);
+          expect(result.error).to.eql('Must scrape an HTML page');
+          expect(result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
+          expect(result.requestUrl).to.be.eql('http://www.test.com/test.pdf?123');
+          expect(response).to.be.eql(undefined);
+        });
+      });
+      it('using promises', function () {
+        return openGraphScraper({ url: 'http://www.test.com/test.pdf?123' })
+          .then(function () {
+            expect().fail('this should not happen');
+          })
+          .catch(function (data) {
+            expect(data.error).to.be.eql(true);
+            expect(data.result.success).to.be.eql(false);
+            expect(data.result.error).to.eql('Must scrape an HTML page');
+            expect(data.result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
+            expect(data.result.requestUrl).to.be.eql('http://www.test.com/test.pdf?123');
+            expect(data.response).to.be.eql(undefined);
+          });
+      });
+    });
+
     context('when trying to hit a blacklist site', function () {
       it('using callbacks', function () {
         openGraphScraper({ url: 'www.test.com/test', blacklist: ['test.com'] }, function (error, result, response) {
