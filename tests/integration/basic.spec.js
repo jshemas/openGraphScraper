@@ -1,8 +1,8 @@
 const ogs = require('../../index');
 
 describe('basic', function () {
-  it('using callbacks should return valid data', function (done) {
-    ogs({
+  it('using callbacks should return valid data', function () {
+    return ogs({
       url: 'http://ogp.me/',
     }, function (error, result, response) {
       console.log('error:', error);
@@ -21,11 +21,10 @@ describe('basic', function () {
       expect(result.requestUrl).to.be.eql('http://ogp.me/');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('using promises should retrun valid data', function (done) {
-    ogs({ url: 'http://ogp.me/' })
+  it('using promises should retrun valid data', function () {
+    return ogs({ url: 'http://ogp.me/' })
       .then(function (data) {
         const { error, result, response } = data;
         console.log('error:', error);
@@ -44,18 +43,14 @@ describe('basic', function () {
         expect(result.requestUrl).to.be.eql('http://ogp.me/');
         expect(result.success).to.be.eql(true);
         expect(response).to.be.an('object').and.to.not.be.empty;
-        // eslint-disable-next-line promise/no-callback-in-promise
-        done();
       })
       .catch(function (error) {
         console.log('error:', error);
         expect().fail('this should not happen');
-        // eslint-disable-next-line promise/no-callback-in-promise
-        done();
       });
   });
-  it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function (done) {
-    ogs({
+  it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {
+    return ogs({
       url: 'https://www.namecheap.com/',
     }, function (error, result, response) {
       console.log('error:', error);
@@ -71,12 +66,11 @@ describe('basic', function () {
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
   // travis will return a 'Response code 403 (Forbidden)' error on this page
-  it.skip('vimeo.com should return open graph data', function (done) {
-    ogs({
+  it.skip('vimeo.com should return open graph data', function () {
+    return ogs({
       url: 'https://vimeo.com/232889838',
     }, function (error, result, response) {
       console.log('error:', error);
@@ -127,11 +121,10 @@ describe('basic', function () {
       expect(result.requestUrl).to.be.eql('https://vimeo.com/232889838');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('michaelkors should return open graph data', function (done) {
-    ogs({
+  it('michaelkors should return open graph data', function () {
+    return ogs({
       url: 'https://jshemas.github.io/openGraphScraperPages/michaelkors',
     }, function (error, result, response) {
       console.log('error:', error);
@@ -154,7 +147,6 @@ describe('basic', function () {
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/michaelkors');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
 });

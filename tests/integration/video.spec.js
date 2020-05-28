@@ -1,8 +1,8 @@
 const ogs = require('../../index');
 
 describe('video', function () {
-  it('Test Youtube Video - Should Return correct Open Graph Info', function (done) {
-    ogs({
+  it('Test Youtube Video - Should Return correct Open Graph Info', function () {
+    return ogs({
       url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     }, function (error, result, response) {
       console.log('error:', error);
@@ -53,11 +53,10 @@ describe('video', function () {
       expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('Test Twitch.tv Video - Should Return correct Open Graph Info', function (done) {
-    ogs({
+  it('Test Twitch.tv Video - Should Return correct Open Graph Info', function () {
+    return ogs({
       url: 'https://www.twitch.tv/videos/632214184',
     }, function (error, result, response) {
       console.log('error:', error);
@@ -78,7 +77,6 @@ describe('video', function () {
       expect(result.requestUrl).to.be.eql('https://www.twitch.tv/videos/632214184');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
 });

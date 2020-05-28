@@ -1,8 +1,8 @@
 const ogs = require('../../index');
 
 describe('timeout', function () {
-  it('set to 2000', function (done) {
-    ogs({
+  it('set to 2000', function () {
+    return ogs({
       url: 'http://www.wikipedia.org/',
       timeout: 2000,
     }, function (error, result, response) {
@@ -15,11 +15,10 @@ describe('timeout', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('set to 20', function (done) {
-    ogs({
+  it('set to 20', function () {
+    return ogs({
       url: 'http://www.wikipedia.org/',
       timeout: 20,
     }, function (error, result, response) {
@@ -31,11 +30,10 @@ describe('timeout', function () {
       expect(result.error).to.eql('Time out');
       expect(result.errorDetails.toString()).to.eql('Error: Time out');
       expect(response).to.eql(undefined);
-      done();
     });
   });
-  it('set to empty string', function (done) {
-    ogs({
+  it('set to empty string', function () {
+    return ogs({
       url: 'http://www.wikipedia.org/',
       timeout: '',
     }, function (error, result, response) {
@@ -48,11 +46,10 @@ describe('timeout', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('set to a number string', function (done) {
-    ogs({
+  it('set to a number string', function () {
+    return ogs({
       url: 'http://www.wikipedia.org/',
       timeout: '2000',
     }, function (error, result, response) {
@@ -65,11 +62,10 @@ describe('timeout', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('set to some random chars', function (done) {
-    ogs({
+  it('set to some random chars', function () {
+    return ogs({
       url: 'http://www.wikipedia.org/',
       timeout: 'sdsdds',
     }, function (error, result, response) {
@@ -82,7 +78,6 @@ describe('timeout', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
 });

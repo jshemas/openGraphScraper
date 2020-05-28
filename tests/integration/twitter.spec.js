@@ -2,8 +2,8 @@ const ogs = require('../../index');
 
 describe('twitter', function () {
   context('Should Return correct Open Graph Info + Some Twitter Info ', function () {
-    it('On Twitter Site', function (done) {
-      ogs({
+    it('On Twitter Site', function () {
+      return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/twitter-dev',
       }, function (error, result, response) {
         console.log('error:', error);
@@ -31,11 +31,10 @@ describe('twitter', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitter-dev');
         expect(result.success).to.be.eql(true);
         expect(response).to.be.an('object').and.to.not.be.empty;
-        done();
       });
     });
-    it('On Github Site', function (done) {
-      ogs({
+    it('On Github Site', function () {
+      return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/github',
       }, function (error, result, response) {
         console.log('error:', error);
@@ -67,11 +66,10 @@ describe('twitter', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/github');
         expect(result.success).to.be.eql(true);
         expect(response).to.be.an('object').and.to.not.be.empty;
-        done();
       });
     });
-    it('On Atom Site', function (done) {
-      ogs({
+    it('On Atom Site', function () {
+      return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/atom.html',
       }, function (error, result, response) {
         console.log('error:', error);
@@ -102,7 +100,6 @@ describe('twitter', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/atom.html');
         expect(result.success).to.be.eql(true);
         expect(response).to.be.an('object').and.to.not.be.empty;
-        done();
       });
     });
   });

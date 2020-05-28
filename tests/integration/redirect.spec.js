@@ -2,8 +2,8 @@ const ogs = require('../../index');
 
 describe('redirect', function () {
   context('should return correct Open Graph Info', function () {
-    it('wemeanbusinesslondon page', function (done) {
-      ogs({
+    it('wemeanbusinesslondon page', function () {
+      return ogs({
         url: 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut',
       }, function (error, result, response) {
         console.log('error:', error);
@@ -32,11 +32,10 @@ describe('redirect', function () {
         expect(result.requestUrl).to.be.eql('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
         expect(result.success).to.be.eql(true);
         expect(response).to.be.an('object').and.to.not.be.empty;
-        done();
       });
     });
-    it('nytimes page', function (done) {
-      ogs({
+    it('nytimes page', function () {
+      return ogs({
         url: 'https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0',
       }, function (error, result, response) {
         console.log('error:', error);
@@ -68,11 +67,10 @@ describe('redirect', function () {
         expect(result.requestUrl).to.be.eql('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0');
         expect(result.success).to.be.eql(true);
         expect(response).to.be.an('object').and.to.not.be.empty;
-        done();
       });
     });
-    it('forbes page', function (done) {
-      ogs({
+    it('forbes page', function () {
+      return ogs({
         url: 'https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa',
       }, function (error, result, response) {
         console.log('error:', error);
@@ -103,7 +101,6 @@ describe('redirect', function () {
         expect(result.requestUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa');
         expect(result.success).to.be.eql(true);
         expect(response).to.be.an('object').and.to.not.be.empty;
-        done();
       });
     });
   });

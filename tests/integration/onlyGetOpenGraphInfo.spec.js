@@ -1,8 +1,8 @@
 const ogs = require('../../index');
 
 describe('onlyGetOpenGraphInfo', function () {
-  it('should only get open graph info', function (done) {
-    ogs({
+  it('should only get open graph info', function () {
+    return ogs({
       url: 'http://www.wikipedia.org/',
       onlyGetOpenGraphInfo: true,
     }, function (error, result, response) {
@@ -15,11 +15,10 @@ describe('onlyGetOpenGraphInfo', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('should get all open graph info', function (done) {
-    ogs({
+  it('should get all open graph info', function () {
+    return ogs({
       url: 'http://www.wikipedia.org/',
       onlyGetOpenGraphInfo: false,
     }, function (error, result, response) {
@@ -32,7 +31,6 @@ describe('onlyGetOpenGraphInfo', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
 });

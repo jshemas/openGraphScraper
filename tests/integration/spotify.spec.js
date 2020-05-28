@@ -1,8 +1,8 @@
 const ogs = require('../../index');
 
 describe('spotify', function () {
-  it('album should return music:album and associated tags', function (done) {
-    ogs({
+  it('album should return music:album and associated tags', function () {
+    return ogs({
       url: 'https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9',
     }, function (error, result, response) {
       console.log('error:', error);
@@ -47,11 +47,10 @@ describe('spotify', function () {
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('artist should return music:musician', function (done) {
-    ogs({
+  it('artist should return music:musician', function () {
+    return ogs({
       url: 'https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x',
     }, function (error, result, response) {
       console.log('error:', error);
@@ -89,11 +88,10 @@ describe('spotify', function () {
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('track should return music:song and associated tags', function (done) {
-    ogs({
+  it('track should return music:song and associated tags', function () {
+    return ogs({
       url: 'https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm',
     }, function (error, result, response) {
       console.log('error:', error);
@@ -108,7 +106,7 @@ describe('spotify', function () {
       expect(result.musicAlbumTrack).to.be.eql('4');
       expect(result.musicMusician).to.be.eql(['https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x']);
       expect(result.musicReleaseDate).to.be.eql('2016-06-10');
-      expect(result.ogAudio).to.be.eql('https://p.scdn.co/mp3-preview/fb87602292db6f4daac5c9d77f64ae730f843f92?cid=a46f5c5745a14fbf826186da8da5ecc3&utm_medium=facebook');
+      expect(result.ogAudio).to.be.an('string').and.to.not.be.empty;
       expect(result.ogAudioType).to.be.eql('audio/vnd.facebook.bridge');
       expect(result.twitterTitle).to.be.eql('Famous');
       expect(result.twitterAppIdiPhone).to.be.eql('324684580');
@@ -138,11 +136,10 @@ describe('spotify', function () {
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('playlist should return music:playlist and associated tags', function (done) {
-    ogs({
+  it('playlist should return music:playlist and associated tags', function () {
+    return ogs({
       url: 'https://open.spotify.com/user/mjaschmidt/playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg',
     }, function (error, result, response) {
       console.log('error:', error);
@@ -186,7 +183,6 @@ describe('spotify', function () {
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/user/mjaschmidt/playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
 });

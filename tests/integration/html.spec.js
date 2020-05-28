@@ -10,8 +10,8 @@ const HTML_STRING = `
 `;
 
 describe('html', function () {
-  it('pass in HTML string', function (done) {
-    ogs({
+  it('pass in HTML string', function () {
+    return ogs({
       html: HTML_STRING,
     }, function (error, result, response) {
       console.log('error:', error);
@@ -21,11 +21,10 @@ describe('html', function () {
       expect(result.ogTitle).to.be.eql('Test page');
       expect(result.requestUrl).to.be.eql(null);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('Invalid Call - Can\'t request URL and pass in HTML string', function (done) {
-    ogs({
+  it('Invalid Call - Can\'t request URL and pass in HTML string', function () {
+    return ogs({
       url: 'https://upload.wikimedia.org/wikipedia/commons.jpg',
       html: HTML_STRING,
     }, function (error, result, response) {
@@ -37,11 +36,10 @@ describe('html', function () {
       expect(result.error).to.eql('Must specify either `url` or `html`, not both');
       expect(result.errorDetails.toString()).to.eql('Error: Must specify either `url` or `html`, not both');
       expect(response).to.eql(undefined);
-      done();
     });
   });
-  it('Invalid Call - Not a HTML page', function (done) {
-    ogs({
+  it('Invalid Call - Not a HTML page', function () {
+    return ogs({
       url: 'https://upload.wikimedia.org/wikipedia/commons.jpg',
     }, function (error, result, response) {
       console.log('error:', error);
@@ -52,7 +50,6 @@ describe('html', function () {
       expect(result.error).to.eql('Must scrape an HTML page');
       expect(result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
       expect(response).to.eql(undefined);
-      done();
     });
   });
 });

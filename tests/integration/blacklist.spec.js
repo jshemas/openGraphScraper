@@ -1,8 +1,8 @@
 const ogs = require('../../index');
 
 describe('blacklist', function () {
-  it('when website is on the blacklist', function (done) {
-    ogs({
+  it('when website is on the blacklist', function () {
+    return ogs({
       url: 'https://www.wikipedia.org/',
       blacklist: ['www.test.com', 'www.wikipedia.org'],
     }, function (error, result, response) {
@@ -14,11 +14,10 @@ describe('blacklist', function () {
       expect(result.error).to.eql('Host name has been black listed');
       expect(result.errorDetails.toString()).to.eql('Error: Host name has been black listed');
       expect(response).to.eql(undefined);
-      done();
     });
   });
-  it('when website is not on the blacklist', function (done) {
-    ogs({
+  it('when website is not on the blacklist', function () {
+    return ogs({
       url: 'https://www.wikipedia.org/',
       blacklist: ['www.test.com', 'www.google.org'],
     }, function (error, result, response) {
@@ -31,11 +30,10 @@ describe('blacklist', function () {
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
-  it('when blacklist empty', function (done) {
-    ogs({
+  it('when blacklist empty', function () {
+    return ogs({
       url: 'https://www.wikipedia.org/',
       blacklist: [],
     }, function (error, result, response) {
@@ -48,7 +46,6 @@ describe('blacklist', function () {
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
-      done();
     });
   });
 });

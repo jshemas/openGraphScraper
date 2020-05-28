@@ -2,8 +2,8 @@ const ogs = require('../../index');
 
 describe('encoding', function () {
   context('should return correct Open Graph Info + charset info', function () {
-    it('when charset is windows-1251', function (done) {
-      ogs({
+    it('when charset is windows-1251', function () {
+      return ogs({
         url: 'http://www.gazeta.ru/',
         encoding: null,
         withCharset: true,
@@ -13,7 +13,7 @@ describe('encoding', function () {
         // sometimes we get ESOCKETTIMEDOUT errors, vars just try again
         if (error === true) {
           console.log('found error, trying agine');
-          ogs({
+          return ogs({
             url: 'http://www.gazeta.ru/',
             encoding: null,
             withCharset: true,
@@ -57,7 +57,6 @@ describe('encoding', function () {
             expect(result.requestUrl).to.be.eql('http://www.gazeta.ru/');
             expect(result.success).to.be.eql(true);
             expect(response).to.be.an('object').and.to.not.be.empty;
-            done();
           });
         } else {
           expect(error).to.be.eql(false);
@@ -96,12 +95,11 @@ describe('encoding', function () {
           expect(result.requestUrl).to.be.eql('http://www.gazeta.ru/');
           expect(result.success).to.be.eql(true);
           expect(response).to.be.an('object').and.to.not.be.empty;
-          done();
         }
       });
     });
-    it('when charset is utf-8', function (done) {
-      ogs({
+    it('when charset is utf-8', function () {
+      return ogs({
         url: 'http://ogp.me/',
         withCharset: true,
       }, function (error, result, response) {
@@ -122,11 +120,10 @@ describe('encoding', function () {
         expect(result.requestUrl).to.be.eql('http://ogp.me/');
         expect(result.success).to.be.eql(true);
         expect(response).to.be.an('object').and.to.not.be.empty;
-        done();
       });
     });
-    it('legacy no charset', function (done) {
-      ogs({
+    it('legacy no charset', function () {
+      return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/rakuten',
         encoding: null,
       }, function (error, result, response) {
@@ -157,11 +154,10 @@ describe('encoding', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rakuten');
         expect(result.success).to.be.eql(true);
         expect(response).to.be.an('object').and.to.not.be.empty;
-        done();
       });
     });
-    it('encoding not recognized', function (done) {
-      ogs({
+    it('encoding not recognized', function () {
+      return ogs({
         url: 'http://www.tnnbar.org.tw/',
         encoding: null,
         withCharset: true,
@@ -171,7 +167,7 @@ describe('encoding', function () {
         // sometimes we get ESOCKETTIMEDOUT errors, vars just try again
         if (error === false) {
           console.log('error not found, trying again');
-          ogs({
+          return ogs({
             url: 'http://www.tnnbar.org.tw/',
             encoding: null,
             withCharset: true,
@@ -185,7 +181,6 @@ describe('encoding', function () {
             expect(result.error).to.eql("Encoding not recognized: 'zh_tw' (searched as: 'zhtw')");
             expect(result.errorDetails.toString()).to.eql("Error: Encoding not recognized: 'zh_tw' (searched as: 'zhtw')");
             expect(response).to.eql(undefined);
-            done();
           });
         } else {
           expect(error).to.be.eql(true);
@@ -194,7 +189,6 @@ describe('encoding', function () {
           expect(result.error).to.eql("Encoding not recognized: 'zh_tw' (searched as: 'zhtw')");
           expect(result.errorDetails.toString()).to.eql("Error: Encoding not recognized: 'zh_tw' (searched as: 'zhtw')");
           expect(response).to.eql(undefined);
-          done();
         }
       });
     });

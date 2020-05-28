@@ -37,14 +37,13 @@ describe('openGraphScraper', function () {
       beforeEach(async function () {
         sandbox.stub(got, 'get').resolves({ body: basicHTML });
       });
-      it('using callbacks', function (done) {
+      it('using callbacks', function () {
         openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
           expect(result.ogTitle).to.be.eql('test page');
           expect(result.requestUrl).to.be.eql('http://www.test.com');
           expect(response.body).to.be.eql(basicHTML);
-          done();
         });
       });
       it('using promises', function () {
@@ -65,14 +64,13 @@ describe('openGraphScraper', function () {
       beforeEach(async function () {
         sandbox.stub(got, 'get').resolves({ body: basicHTML });
       });
-      it('using callbacks', function (done) {
+      it('using callbacks', function () {
         openGraphScraper({ html: basicHTML }, function (error, result, response) {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
           expect(result.ogTitle).to.be.eql('test page');
           expect(result.requestUrl).to.be.eql(null);
           expect(response.body).to.be.eql(basicHTML);
-          done();
         });
       });
       it('using promises', function () {
@@ -93,14 +91,13 @@ describe('openGraphScraper', function () {
       beforeEach(async function () {
         sandbox.stub(got, 'get').resolves({ body: basicHTML });
       });
-      it('using callbacks', function (done) {
+      it('using callbacks', function () {
         openGraphScraper({ url: 'www.test.com', blacklist: ['testtest.com'] }, function (error, result, response) {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
           expect(result.ogTitle).to.be.eql('test page');
           expect(result.requestUrl).to.be.eql('http://www.test.com');
           expect(response.body).to.be.eql(basicHTML);
-          done();
         });
       });
       it('using promises', function () {
@@ -121,7 +118,7 @@ describe('openGraphScraper', function () {
       beforeEach(async function () {
         sandbox.stub(got, 'get').resolves({ body: Buffer.from(encodingHTML, 'utf8') });
       });
-      it('using callbacks', function (done) {
+      it('using callbacks', function () {
         openGraphScraper({ url: 'www.test.com', encoding: null, withCharset: true }, function (error, result, response) {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
@@ -130,7 +127,6 @@ describe('openGraphScraper', function () {
           expect(result.ogDescription).to.be.eql('привет тестовая страница<');
           expect(result.requestUrl).to.be.eql('http://www.test.com');
           expect(response.body).to.be.eql(Buffer.from(encodingHTML, 'utf8'));
-          done();
         });
       });
       it('using promises', function () {
@@ -153,14 +149,13 @@ describe('openGraphScraper', function () {
       beforeEach(async function () {
         sandbox.stub(got, 'get').resolves({ body: basicHTML });
       });
-      it('using callbacks', function (done) {
+      it('using callbacks', function () {
         openGraphScraper({ url: 'www.test.com', withCharset: true }, function (error, result, response) {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
           expect(result.ogTitle).to.be.eql('test page');
           expect(result.requestUrl).to.be.eql('http://www.test.com');
           expect(response.body).to.be.eql(basicHTML);
-          done();
         });
       });
       it('using promises', function () {
@@ -181,7 +176,7 @@ describe('openGraphScraper', function () {
       beforeEach(async function () {
         sandbox.stub(got, 'get').resolves({ body: basicHTML });
       });
-      it('using callbacks', function (done) {
+      it('using callbacks', function () {
         process.browser = true;
         openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
           expect(error).to.be.eql(false);
@@ -189,7 +184,6 @@ describe('openGraphScraper', function () {
           expect(result.ogTitle).to.be.eql('test page');
           expect(result.requestUrl).to.be.eql('http://www.test.com');
           expect(response.body).to.be.eql(basicHTML);
-          done();
         });
       });
       it('using promises', function () {
@@ -213,7 +207,7 @@ describe('openGraphScraper', function () {
       beforeEach(async function () {
         sandbox.stub(got, 'get').resolves({ statusCode: 500 });
       });
-      it('using callbacks', function (done) {
+      it('using callbacks', function () {
         openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
           expect(error).to.be.eql(true);
           expect(result.success).to.be.eql(false);
@@ -221,7 +215,6 @@ describe('openGraphScraper', function () {
           expect(result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(result.requestUrl).to.be.eql('http://www.test.com');
           expect(response).to.be.eql(undefined);
-          done();
         });
       });
       it('using promises', function () {
@@ -241,7 +234,7 @@ describe('openGraphScraper', function () {
     });
 
     context('when trying to hit a non html pages', function () {
-      it('using callbacks', function (done) {
+      it('using callbacks', function () {
         openGraphScraper({ url: 'www.test.com/test.png' }, function (error, result, response) {
           expect(error).to.be.eql(true);
           expect(result.success).to.be.eql(false);
@@ -249,7 +242,6 @@ describe('openGraphScraper', function () {
           expect(result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
           expect(result.requestUrl).to.be.eql('http://www.test.com/test.png');
           expect(response).to.be.eql(undefined);
-          done();
         });
       });
       it('using promises', function () {
@@ -269,7 +261,7 @@ describe('openGraphScraper', function () {
     });
 
     context('when trying to hit a blacklist site', function () {
-      it('using callbacks', function (done) {
+      it('using callbacks', function () {
         openGraphScraper({ url: 'www.test.com/test', blacklist: ['test.com'] }, function (error, result, response) {
           expect(error).to.be.eql(true);
           expect(result.success).to.be.eql(false);
@@ -277,7 +269,6 @@ describe('openGraphScraper', function () {
           expect(result.errorDetails.toString()).to.eql('Error: Host name has been black listed');
           expect(result.requestUrl).to.be.eql('http://www.test.com/test');
           expect(response).to.be.eql(undefined);
-          done();
         });
       });
       it('using promises', function () {
@@ -297,7 +288,7 @@ describe('openGraphScraper', function () {
     });
 
     context('when trying to hit a empty url', function () {
-      it('using callbacks', function (done) {
+      it('using callbacks', function () {
         openGraphScraper({ url: '' }, function (error, result, response) {
           expect(error).to.be.eql(true);
           expect(result.success).to.be.eql(false);
@@ -305,7 +296,6 @@ describe('openGraphScraper', function () {
           expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
           expect(result.requestUrl).to.be.eql('');
           expect(response).to.be.eql(undefined);
-          done();
         });
       });
       it('using promises', function () {
@@ -325,7 +315,7 @@ describe('openGraphScraper', function () {
     });
 
     context('when trying to hit a URL and you are passing in a HTML page', function () {
-      it('using callbacks', function (done) {
+      it('using callbacks', function () {
         openGraphScraper({ url: 'www.test.com', html: basicHTML }, function (error, result, response) {
           expect(error).to.be.eql(true);
           expect(result.success).to.be.eql(false);
@@ -333,7 +323,6 @@ describe('openGraphScraper', function () {
           expect(result.errorDetails.toString()).to.eql('Error: Must specify either `url` or `html`, not both');
           expect(result.requestUrl).to.be.eql('www.test.com');
           expect(response).to.be.eql(undefined);
-          done();
         });
       });
       it('using promises', function () {
