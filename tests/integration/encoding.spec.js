@@ -10,55 +10,6 @@ describe('encoding', function () {
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
-        // sometimes we get ESOCKETTIMEDOUT errors, vars just try again
-        if (error === true) {
-          console.log('found error, trying agine');
-          return ogs({
-            url: 'http://www.gazeta.ru/',
-            encoding: null,
-            withCharset: true,
-          // eslint-disable-next-line no-shadow
-          }, function (error, result, response) {
-            console.log('error:', error);
-            console.log('result:', result);
-            expect(error).to.be.eql(false);
-            expect(result.ogDescription).to.be.eql('Главные новости дня из Москвы и регионов, информационная лента новостей, новости России и мира, события дня и последнего часа, аналитика, комментарии, видео.');
-            expect(result.twitterDescription).to.be.eql('Главные новости дня из Москвы и регионов, информационная лента новостей, новости России и мира, события дня и последнего часа, аналитика, комментарии, видео.');
-            expect(result.ogTitle).to.be.eql('Главные новости - Газета.Ru');
-            expect(result.ogType).to.be.eql('website');
-            expect(result.ogSiteName).to.be.eql('Газета.Ru');
-            expect(result.ogUrl).to.be.eql('https://www.gazeta.ru/');
-            expect(result.twitterCard).to.be.eql('summary_large_image');
-            expect(result.twitterTitle).to.be.eql('Первая полоса');
-            expect(result.twitterSite).to.be.eql('@gazetaru');
-            expect(result.twitterCreator).to.be.eql('@gazetaru');
-            expect(result.twitterAppNameiPhone).to.be.eql('Газета.Ru');
-            expect(result.twitterAppIdiPhone).to.be.eql('401707326');
-            expect(result.twitterAppUrliPhone).to.be.eql('https://www.gazeta.ru/');
-            expect(result.twitterAppNameiPad).to.be.eql('Газета.Ru HD');
-            expect(result.twitterAppIdiPad).to.be.eql('486481873');
-            expect(result.twitterAppUrliPad).to.be.eql('https://www.gazeta.ru/');
-            expect(result.twitterAppNameGooglePlay).to.be.eql('Газета.Ru');
-            expect(result.twitterAppIdGooglePlay).to.be.eql('ru.ideast.gazeta');
-            expect(result.twitterAppUrlGooglePlay).to.be.eql('https://www.gazeta.ru/');
-            expect(result.ogImage).to.be.eql({
-              url: 'https://www.gazeta.ru/nm2015/i/Logo_red_sqare_250.png',
-              width: '250',
-              height: '250',
-              type: null,
-            });
-            expect(result.twitterImage).to.be.eql({
-              url: 'https://www.gazeta.ru/nm2015/i/Logo_red_sqare_250.png',
-              width: null,
-              height: null,
-              alt: null,
-            });
-            expect(result.charset).to.be.eql('windows-1251');
-            expect(result.requestUrl).to.be.eql('http://www.gazeta.ru/');
-            expect(result.success).to.be.eql(true);
-            return expect(response).to.be.an('object').and.to.not.be.empty;
-          });
-        }
         expect(error).to.be.eql(false);
         expect(result.ogDescription).to.be.eql('Главные новости дня из Москвы и регионов, информационная лента новостей, новости России и мира, события дня и последнего часа, аналитика, комментарии, видео.');
         expect(result.twitterDescription).to.be.eql('Главные новости дня из Москвы и регионов, информационная лента новостей, новости России и мира, события дня и последнего часа, аналитика, комментарии, видео.');
