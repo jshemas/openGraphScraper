@@ -43,18 +43,17 @@ ogs(options)
 Check the return for a ```success``` flag. If success is set to true, then the url input was valid. Otherwise it will be set to false. The above example will return something like...
 ```javascript
 {
-  data: {
-    ogTitle: 'Open Graph protocol',
-    ogType: 'website',
-    ogUrl: 'http://ogp.me/',
-    ogDescription: 'The Open Graph protocol enables any web page to become a rich object in a social graph.',
-    ogImage: {
-      url: 'http://ogp.me/logo.png',
-      width: '300',
-      height: '300',
-      type: 'image/png'
-    }
+  ogTitle: 'Open Graph protocol',
+  ogType: 'website',
+  ogUrl: 'http://ogp.me/',
+  ogDescription: 'The Open Graph protocol enables any web page to become a rich object in a social graph.',
+  ogImage: {
+    url: 'http://ogp.me/logo.png',
+    width: '300',
+    height: '300',
+    type: 'image/png'
   },
+  requestUrl: 'http://ogp.me/',
   success: true
 }
 ```
