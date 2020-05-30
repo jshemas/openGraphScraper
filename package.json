@@ -10,9 +10,11 @@
     "eslint": "eslint . --ext .js",
     "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\"",
     "mocha:int": "mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",
-    "test": "npm run mocha:unit && npm run mocha:int" ,
+    "test": "npm run mocha:unit && npm run mocha:int",
     "markdown:lint": "markdownlint **/*.md --ignore node_modules",
-    "markdown:lint:fix": "markdownlint **/*.md --ignore node_modules"
+    "markdown:lint:fix": "markdownlint **/*.md --ignore node_modules",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "engines": {
     "node": ">=10.x.x"
@@ -27,7 +29,8 @@
     "cheerio": "^1.0.0-rc.3",
     "got": "^11.1.4",
     "iconv-lite": "^0.5.1",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "snyk": "^1.332.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -59,5 +62,6 @@
     "scraper",
     "twitter card",
     "twitter"
-  ]
+  ],
+  "snyk": true
 }
