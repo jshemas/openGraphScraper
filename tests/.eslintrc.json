@@ -1,0 +1,15 @@
+{
+  "extends": "../.eslintrc.json",
+  "rules": {
+    "func-names": 0,
+    "import/no-extraneous-dependencies": 0,
+    "mocha/no-exclusive-tests": "error",
+    "mocha/no-mocha-arrows": "error",
+    "mocha/no-return-and-callback": "error",
+    "no-undef": 0,
+    "no-console": 0,
+    "no-unused-expressions": 0,
+    "prefer-arrow-callback": 0,
+    "promise/always-return": 0
+  }
+}

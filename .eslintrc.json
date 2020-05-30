@@ -1,20 +1,37 @@
 {
-  "extends": [
-    "eslint-config-airbnb-es5"
-  ],
-
-  "globals": {
-    "Promise"    : false,
-    /* MOCHA */
-    "describe"   : false,
-    "it"         : false,
-    "before"     : false,
-    "beforeEach" : false,
-    "after"      : false,
-    "afterEach"  : false
+  "settings": {
+    "react": {
+      "version": "latest"
+    }
   },
-
+  "extends": "airbnb",
+  "plugins": [
+    "mocha",
+    "promise"
+  ],
   "rules": {
-    "func-names": 0
+    "max-len": [
+      "error",
+      120,
+      {
+        "ignoreStrings": true
+      }
+    ],
+    "promise/always-return": "error",
+    "promise/avoid-new": "warn",
+    "promise/catch-or-return": "error",
+    "promise/no-callback-in-promise": [
+      "error",
+      {
+        "exceptions": [
+          "next"
+        ]
+      }
+    ],
+    "promise/no-native": "off",
+    "promise/no-nesting": "warn",
+    "promise/no-promise-in-callback": "off",
+    "promise/no-return-wrap": "error",
+    "promise/param-names": "error"
   }
 }

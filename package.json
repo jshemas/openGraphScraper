@@ -1,16 +1,21 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "3.6.2",
+  "version": "4.0.0",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "eslint": "eslint .",
-    "test": "nyc --reporter=html --reporter=text --exclude=tests/ mocha tests/*.js tests/**/*.js"
+    "eslint:fix": "eslint . --ext .js --fix",
+    "eslint": "eslint . --ext .js",
+    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\"",
+    "mocha:int": "mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",
+    "test": "npm run mocha:unit && npm run mocha:int" ,
+    "markdown:lint": "markdownlint **/*.md --ignore node_modules",
+    "markdown:lint:fix": "markdownlint **/*.md --ignore node_modules"
   },
   "engines": {
-    "node": ">=4.x.x"
+    "node": ">=10.x.x"
   },
   "author": {
     "name": "Josh Shemas",
@@ -18,24 +23,28 @@
     "url": "https://github.com/jshemas"
   },
   "dependencies": {
-    "chardet": "0.7.0",
-    "cheerio": "1.0.0-rc.2",
-    "iconv-lite": "0.4.24",
-    "lodash": "4.17.14",
-    "request": "2.88.0"
+    "chardet": "^1.1.0",
+    "cheerio": "^1.0.0-rc.3",
+    "got": "^11.1.4",
+    "iconv-lite": "^0.5.1",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "babel-eslint": "8.2.3",
-    "coveralls": "3.0.0",
-    "eslint": "4.19.1",
-    "eslint-config-airbnb-es5": "1.2.0",
-    "eslint-plugin-react": "7.7.0",
-    "esquery": "1.0.0",
-    "expect.js": "0.3.1",
-    "mocha": "4.0.1",
-    "mockery": "2.1.0",
-    "nyc": "11.6.0",
-    "sinon": "4.5.0"
+    "chai": "^4.2.0",
+    "coveralls": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-mocha": "^6.2.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "markdownlint-cli": "^0.23.1",
+    "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
+    "sinon": "^9.0.2"
   },
   "repository": {
     "type": "git",
