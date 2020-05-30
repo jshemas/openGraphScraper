@@ -78,14 +78,9 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 
 ## Tests
 
-You have to have mocha running. To install it run...
+Then you can run the tests by running...
 ```bash
-npm install mocha -g
-```
-
-Then you can run the tests by turning on the server and run...
-```bash
-mocha tests/
+npm run test
 ```
 
 ## Make
