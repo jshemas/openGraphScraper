@@ -11,22 +11,28 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [10.x, 12.x, 14.x]
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run eslint
-    - run: npm run test
-    - run: npm run coverage
+    - name: Install Dependencies
+      run: npm ci
+    - name: Lining
+      run: npm run eslint
+    - name: Testing
+      run: npm run test
+
+  finish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Running Coveralls
+      run: npm run coverage
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
