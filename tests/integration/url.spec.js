@@ -124,9 +124,9 @@ describe('url', function () {
       console.log('result:', result);
       expect(error).to.be.eql(true);
       expect(result.success).to.be.eql(false);
-      expect(result.requestUrl).to.be.eql('http://23233');
-      expect(result.error).to.eql('Page not found');
-      expect(result.errorDetails.toString()).to.eql('Error: Page not found');
+      expect(result.requestUrl).to.be.eql(23233);
+      expect(result.error).to.eql('Invalid URL');
+      expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
       expect(response).to.eql(undefined);
     });
   });
@@ -138,9 +138,9 @@ describe('url', function () {
       console.log('result:', result);
       expect(error).to.be.eql(true);
       expect(result.success).to.be.eql(false);
-      expect(result.requestUrl).to.be.eql('http://2323233');
-      expect(result.error).to.eql('Page not found');
-      expect(result.errorDetails.toString()).to.eql('Error: Page not found');
+      expect(result.requestUrl).to.be.eql('2323233');
+      expect(result.error).to.eql('Invalid URL');
+      expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
       expect(response).to.eql(undefined);
     });
   });
@@ -152,9 +152,9 @@ describe('url', function () {
       console.log('result:', result);
       expect(error).to.be.eql(true);
       expect(result.success).to.be.eql(false);
-      expect(result.requestUrl).to.be.eql('http://this is a test');
-      expect(result.error).to.eql('Page not found');
-      expect(result.errorDetails.toString()).to.eql('Error: Page not found');
+      expect(result.requestUrl).to.be.eql('this is a test');
+      expect(result.error).to.eql('Invalid URL');
+      expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
       expect(response).to.eql(undefined);
     });
   });
