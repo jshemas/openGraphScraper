@@ -32,7 +32,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Running Coveralls
-      run: npm run coverage
-      env:
-        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel-finished: true
