@@ -32,6 +32,8 @@ jobs:
     needs: buildAndTest
     runs-on: ubuntu-latest
     steps:
+    - name: Running coverage reports
+      run: npm run coverage
     - name: Coveralls Finished
       uses: coverallsapp/github-action@master
       with:

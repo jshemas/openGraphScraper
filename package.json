@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "npm run mocha:unit && nyc report --reporter=text-lcov | coveralls",
     "eslint:fix": "eslint . --ext .js --fix",
     "eslint": "eslint . --ext .js",
     "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\"",
