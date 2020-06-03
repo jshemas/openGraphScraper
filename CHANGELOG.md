@@ -1,5 +1,10 @@
 # Change Log
 
+## 4.1.0
+
+- Updating to use `validators.js`'s `isURL` to check user input URLs
+- Moving snyk to be under devDependencies
+
 ## 4.0.0 (has breaking changes!)
 
 - Dropping support for any node version under 10
