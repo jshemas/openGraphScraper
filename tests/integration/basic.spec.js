@@ -23,7 +23,7 @@ describe('basic', function () {
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
-  it('using promises should retrun valid data', function () {
+  it('using promises should return valid data', function () {
     return ogs({ url: 'http://ogp.me/' })
       .then(function (data) {
         const { error, result, response } = data;
@@ -58,11 +58,7 @@ describe('basic', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Buy domain name - Cheap domain names from $1.37 - Namecheap');
       expect(result.ogDescription).to.be.eql('Namecheap offers cheap domain names with the most reliable service. Buy domain names with Namecheap and see why over 2 million customers trust us with over 10 million domains!');
-      expect(result.ogImage).to.be.eql([
-        {
-          url: 'https://static.nc-img.com/pp/home-page/client/assets/images/support-red.99d2bbe1.png',
-        },
-      ]);
+      expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
       expect(result.success).to.be.eql(true);
       expect(response).to.be.an('object').and.to.not.be.empty;
