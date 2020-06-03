@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.1.1
+
+- Updating to use github actions for CI!
+
 ## 4.1.0
 
 - Updating to use `validators.js`'s `isURL` to check user input URLs
