@@ -28,3 +28,5 @@ jobs:
     - run: npm run eslint
     - run: npm run test
     - run: npm run coverage
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
