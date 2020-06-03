@@ -23,7 +23,7 @@ describe('basic', function () {
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
-  it('using promises should retrun valid data', function () {
+  it('using promises should return valid data', function () {
     return ogs({ url: 'http://ogp.me/' })
       .then(function (data) {
         const { error, result, response } = data;
