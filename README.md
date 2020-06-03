@@ -2,7 +2,6 @@
 
 ![Node.js CI](https://github.com/jshemas/openGraphScraper/workflows/Node.js%20CI/badge.svg)
 [![Known Vulnerabilities](https://snyk.io/test/github/jshemas/openGraphScraper/badge.svg)](https://snyk.io/test/github/jshemas/openGraphScraper)
-[![Coverage Status](https://coveralls.io/repos/github/jshemas/openGraphScraper/badge.svg?branch=master)](https://coveralls.io/github/jshemas/openGraphScraper?branch=master)
 
 A simple node module for scraping Open Graph and Twitter Card info off a site.
 

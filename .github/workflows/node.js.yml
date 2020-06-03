@@ -27,15 +27,3 @@ jobs:
       run: npm run eslint
     - name: Testing
       run: npm run test
-
-  finish:
-    needs: buildAndTest
-    runs-on: ubuntu-latest
-    steps:
-    # - name: Running coverage reports
-    #   run: npm run coverage
-    - name: Coveralls Finished
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.github_token }}
-        parallel-finished: true
