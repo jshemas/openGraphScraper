@@ -29,8 +29,7 @@
     "cheerio": "^1.0.0-rc.3",
     "got": "^11.1.4",
     "iconv-lite": "^0.5.1",
-    "lodash": "^4.17.15",
-    "snyk": "^1.332.1"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -47,7 +46,8 @@
     "markdownlint-cli": "^0.23.1",
     "mocha": "^7.1.2",
     "nyc": "^15.0.1",
-    "sinon": "^9.0.2"
+    "sinon": "^9.0.2",
+    "snyk": "^1.332.1"
   },
   "repository": {
     "type": "git",
