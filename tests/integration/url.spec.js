@@ -119,6 +119,7 @@ describe('url', function () {
   it('url is just a number', function () {
     return ogs({
       url: 23233,
+      timeout: 10000,
     }, function (error, result, response) {
       console.log('error:', error);
       console.log('result:', result);
@@ -133,6 +134,7 @@ describe('url', function () {
   it('url is a string of numbers', function () {
     return ogs({
       url: '2323233',
+      timeout: 10000,
     }, function (error, result, response) {
       console.log('error:', error);
       console.log('result:', result);
