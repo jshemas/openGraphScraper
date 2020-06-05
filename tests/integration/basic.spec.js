@@ -8,6 +8,7 @@ describe('basic', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.description).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
       expect(result.ogTitle).to.be.eql('Open Graph protocol');
       expect(result.ogType).to.be.eql('website');
       expect(result.ogUrl).to.be.eql('http://ogp.me/');
@@ -20,6 +21,7 @@ describe('basic', function () {
       });
       expect(result.requestUrl).to.be.eql('http://ogp.me/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys('description', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'success');
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -30,6 +32,7 @@ describe('basic', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
         expect(result.ogTitle).to.be.eql('Open Graph protocol');
         expect(result.ogType).to.be.eql('website');
         expect(result.ogUrl).to.be.eql('http://ogp.me/');
@@ -42,6 +45,7 @@ describe('basic', function () {
         });
         expect(result.requestUrl).to.be.eql('http://ogp.me/');
         expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys('description', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'success');
         expect(response).to.be.an('object').and.to.not.be.empty;
       })
       .catch(function (error) {
@@ -56,11 +60,13 @@ describe('basic', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogTitle).to.be.eql('Buy domain name - Cheap domain names from $1.37 - Namecheap');
       expect(result.ogDescription).to.be.eql('Namecheap offers cheap domain names with the most reliable service. Buy domain names with Namecheap and see why over 2 million customers trust us with over 10 million domains!');
       expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys('description', 'ogTitle', 'ogDescription', 'ogImage', 'requestUrl', 'success');
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -72,6 +78,7 @@ describe('basic', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.description).to.be.eql('A painter with dozens of pieces but only one subject—his ex-wife.   From our Rashomon issue: https://go.topic.com/2xkCAtR  Directed by Jessica Beshir.  •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••  Topic…');
       expect(result.ogSiteName).to.be.eql('Vimeo');
       expect(result.ogUrl).to.be.eql('https://vimeo.com/232889838');
       expect(result.ogType).to.be.eql('video');
@@ -116,6 +123,33 @@ describe('basic', function () {
       });
       expect(result.requestUrl).to.be.eql('https://vimeo.com/232889838');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'description',
+        'ogDescription',
+        'ogImage',
+        'ogSiteName',
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'ogVideo',
+        'requestUrl',
+        'success',
+        'twitterAppIdGooglePlay',
+        'twitterAppIdiPad',
+        'twitterAppIdiPhone',
+        'twitterAppNameGooglePlay',
+        'twitterAppNameiPad',
+        'twitterAppNameiPhone',
+        'twitterAppUrlGooglePlay',
+        'twitterAppUrliPad',
+        'twitterAppUrliPhone',
+        'twitterCard',
+        'twitterDescription',
+        'twitterImage',
+        'twitterPlayer',
+        'twitterSite',
+        'twitterTitle',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -126,6 +160,8 @@ describe('basic', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.author).to.be.eql('Michael Kors');
+      expect(result.description).to.be.eql('Exclusively Ours in Michael Kors stores and on michaelkors.com until 7/30/16. Geometric cutouts lend captivating flair to our Mirabel sandals in sumptuous suede. Anchored by a block heel and swingy tassel laces, they look especially chic grounding midi hemlines and cropped denim.');
       expect(result.ogType).to.be.eql('product');
       expect(result.ogTitle).to.be.eql('Mirabel Suede Sandal  | Michael Kors');
       expect(result.ogDescription).to.be.eql('Exclusively Ours in Michael Kors stores and on michaelkors.com until 7/30/16. Geometric cutouts lend captivating flair to our Mirabel sandals in sumptuous suede. Anchored by a block heel and swingy tassel laces, they look especially chic grounding midi hemlines and cropped denim.');
@@ -142,6 +178,7 @@ describe('basic', function () {
       });
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/michaelkors');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys('author', 'description', 'ogAvailability', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogPriceAmount', 'ogPriceCurrency', 'ogSiteName', 'ogImage', 'requestUrl', 'success');
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });

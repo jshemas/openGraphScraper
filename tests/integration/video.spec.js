@@ -11,6 +11,7 @@ describe('video', function () {
       expect(result.ogSiteName).to.be.eql('YouTube');
       expect(result.ogUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.ogTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');
+      expect(result.description).to.be.eql("Rick Astley's official music video for “Never Gonna Give You Up” Listen to Rick Astley: https://RickAstley.lnk.to/_listenYD Subscribe to the official Rick As...");
       expect(result.ogDescription).to.be.eql("Rick Astley's official music video for “Never Gonna Give You Up” Listen to Rick Astley: https://RickAstley.lnk.to/_listenYD Subscribe to the official Rick As...");
       expect(result.ogType).to.be.eql('video.other');
       expect(result.twitterCard).to.be.eql('player');
@@ -52,6 +53,33 @@ describe('video', function () {
       });
       expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'description',
+        'ogDescription',
+        'ogImage',
+        'ogSiteName',
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'ogVideo',
+        'requestUrl',
+        'success',
+        'twitterAppIdGooglePlay',
+        'twitterAppIdiPad',
+        'twitterAppIdiPhone',
+        'twitterAppNameGooglePlay',
+        'twitterAppNameiPad',
+        'twitterAppNameiPhone',
+        'twitterAppUrlGooglePlay',
+        'twitterAppUrliPad',
+        'twitterAppUrliPhone',
+        'twitterCard',
+        'twitterDescription',
+        'twitterImage',
+        'twitterPlayer',
+        'twitterSite',
+        'twitterTitle',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -71,6 +99,17 @@ describe('video', function () {
       expect(result.ogImage).to.be.to.be.an('object').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.twitch.tv/videos/632214184');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'ogDescription',
+        'ogImage',
+        'ogSiteName',
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'requestUrl',
+        'success',
+        'twitterSite',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });

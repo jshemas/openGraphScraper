@@ -14,6 +14,14 @@ describe('timeout', function () {
       expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'description',
+        'ogDescription',
+        'ogImage',
+        'ogTitle',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -29,6 +37,12 @@ describe('timeout', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.error).to.eql('Time out');
       expect(result.errorDetails.toString()).to.eql('Error: Time out');
+      expect(result).to.have.all.keys(
+        'error',
+        'errorDetails',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.eql(undefined);
     });
   });
@@ -45,6 +59,14 @@ describe('timeout', function () {
       expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'description',
+        'ogDescription',
+        'ogImage',
+        'ogTitle',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -61,6 +83,14 @@ describe('timeout', function () {
       expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'description',
+        'ogDescription',
+        'ogImage',
+        'ogTitle',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -77,6 +107,14 @@ describe('timeout', function () {
       expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'description',
+        'ogDescription',
+        'ogImage',
+        'ogTitle',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });

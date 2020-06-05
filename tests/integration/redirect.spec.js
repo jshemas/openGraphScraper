@@ -13,6 +13,7 @@ describe('redirect', function () {
         expect(result.ogTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip & Nut — WE MEAN BUSINESS | LONDON');
         expect(result.ogUrl).to.be.eql('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
         expect(result.ogType).to.be.eql('article');
+        expect(result.description).to.be.an('string').and.to.not.be.empty;
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.twitterTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip &amp; Nut — WE MEAN BUSINESS | LONDON');
         expect(result.twitterCard).to.be.eql('summary');
@@ -31,6 +32,21 @@ describe('redirect', function () {
         });
         expect(result.requestUrl).to.be.eql('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
         expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterTitle',
+        );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
     });
@@ -43,7 +59,11 @@ describe('redirect', function () {
         expect(error).to.be.eql(false);
         expect(result.ogUrl).to.be.eql('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html');
         expect(result.ogType).to.be.eql('article');
+        expect(result.articleSection).to.be.eql('Arts');
+        expect(result.articleTag).to.be.eql('Blum & Poe (Los Angeles, Calif)');
+        expect(result.robots).to.be.eql('noarchive');
         expect(result.ogTitle).to.be.eql('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million');
+        expect(result.description).to.be.eql('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
         expect(result.ogDescription).to.be.eql('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
         expect(result.twitterTitle).to.be.eql('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million');
         expect(result.twitterDescription).to.be.eql('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
@@ -66,6 +86,27 @@ describe('redirect', function () {
         });
         expect(result.requestUrl).to.be.eql('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0');
         expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleSection',
+          'articleTag',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
+          'twitterAppIdGooglePlay',
+          'twitterAppNameGooglePlay',
+          'twitterAppUrlGooglePlay',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
     });
@@ -78,9 +119,13 @@ describe('redirect', function () {
         expect(error).to.be.eql(false);
         expect(result.ogTitle).to.be.eql('3 Stocks Like Apple Was 10 Years Ago: Tesla, Nvidia And Alibaba');
         expect(result.ogSiteName).to.be.eql('Forbes');
+        expect(result.articleAuthor).to.be.eql('Ken Kam');
+        expect(result.articleSection).to.be.eql('Investing');
+        expect(result.author).to.be.eql('Ken Kam');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/');
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
+        expect(result.description).to.be.an('string').and.to.not.be.empty;
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@forbes');
         expect(result.twitterCreator).to.be.eql('@MarketocracyInc');
@@ -100,6 +145,26 @@ describe('redirect', function () {
         });
         expect(result.requestUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa');
         expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleAuthor',
+          'articleSection',
+          'author',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
     });
