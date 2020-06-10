@@ -25,10 +25,10 @@ describe('timeout', function () {
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
-  it('set to 20', function () {
+  it('set to 2', function () {
     return ogs({
       url: 'http://www.wikipedia.org/',
-      timeout: 20,
+      timeout: 2,
     }, function (error, result, response) {
       console.log('error:', error);
       console.log('result:', result);
