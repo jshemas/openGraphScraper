@@ -33,7 +33,14 @@ describe('blacklist', function () {
       expect(result.description).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
+      expect(result.ogImage).to.be.eql([
+        {
+          height: '183',
+          type: 'png',
+          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
+          width: '200',
+        },
+      ]);
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
@@ -58,7 +65,14 @@ describe('blacklist', function () {
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.description).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
+      expect(result.ogImage).to.be.eql([
+        {
+          height: '183',
+          type: 'png',
+          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
+          width: '200',
+        },
+      ]);
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(

@@ -12,8 +12,9 @@ const basicHTML = `
     </head>
     <body>
       <h1>hello test page</h1>
-      <img width="360" src="fallback.png" alt="test1">
-      <img alt="test2">
+      <img height="200" width="300" src="fallback.png" alt="test1">
+      <img src="fallback2.png" alt="test2">
+      <img alt="test3">
     </body>
   </html>`;
 
@@ -24,7 +25,14 @@ describe('fall backs', function () {
     const $ = cheerio.load(basicHTML);
     ogObject = fallback(ogObject, options, $);
 
-    expect(ogObject.ogImage).to.be.eql([{ url: 'fallback.png' }]);
+    expect(ogObject.ogImage).to.be.eql([
+      {
+        url: 'fallback.png', width: '300', height: '200', type: 'png',
+      },
+      {
+        url: 'fallback2.png', width: null, height: null, type: 'png',
+      },
+    ]);
     expect(ogObject.ogTitle).to.be.eql('fall back title');
     expect(ogObject.ogDescription).to.be.eql('fall back description');
     expect(ogObject).to.have.all.keys(
@@ -40,7 +48,7 @@ describe('fall backs', function () {
     const $ = cheerio.load(basicHTML);
     ogObject = fallback(ogObject, options, $);
 
-    console.log('ogObject', ogObject);
+
     expect(ogObject.ogImage).to.be.eql('test.png');
     expect(ogObject.ogTitle).to.be.eql('test page');
     expect(ogObject.ogDescription).to.be.eql('test description');
