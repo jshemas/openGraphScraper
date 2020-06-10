@@ -92,7 +92,7 @@ describe('video', function () {
       expect(error).to.be.eql(false);
       expect(result.ogSiteName).to.be.eql('Twitch');
       expect(result.twitterSite).to.be.eql('@twitch');
-      expect(result.ogTitle).to.be.oneOf(['Twitch', 'AI Soundscapes, Trials of Mana']);
+      expect(result.ogTitle).to.be.oneOf(['Twitch', 'AI Soundscapes, Trials of Mana', 'AI Soundscapes, Trials of Mana - Vinesauce on Twitch']);
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogUrl).to.be.eql('https://www.twitch.tv/videos/632214184');
       expect(result.ogType).to.be.oneOf(['website', 'video.other']);
