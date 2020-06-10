@@ -11,13 +11,13 @@ describe('video', function () {
       expect(result.ogSiteName).to.be.eql('YouTube');
       expect(result.ogUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.ogTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');
-      expect(result.description).to.be.eql("Rick Astley's official music video for “Never Gonna Give You Up” Listen to Rick Astley: https://RickAstley.lnk.to/_listenYD Subscribe to the official Rick As...");
-      expect(result.ogDescription).to.be.eql("Rick Astley's official music video for “Never Gonna Give You Up” Listen to Rick Astley: https://RickAstley.lnk.to/_listenYD Subscribe to the official Rick As...");
+      expect(result.description).to.be.an('string').and.to.not.be.empty;
+      expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogType).to.be.eql('video.other');
       expect(result.twitterCard).to.be.eql('player');
       expect(result.twitterSite).to.be.eql('@youtube');
       expect(result.twitterTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');
-      expect(result.twitterDescription).to.be.eql("Rick Astley's official music video for “Never Gonna Give You Up” Listen to Rick Astley: https://RickAstley.lnk.to/_listenYD Subscribe to the official Rick As...");
+      expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.twitterAppNameiPhone).to.be.eql('YouTube');
       expect(result.twitterAppIdiPhone).to.be.eql('544007664');
       expect(result.twitterAppNameiPad).to.be.eql('YouTube');
