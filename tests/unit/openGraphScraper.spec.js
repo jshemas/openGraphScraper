@@ -321,6 +321,88 @@ describe('return openGraphScraper', function () {
           });
       });
     });
+
+    context('when there is a og:image:secure_url tag', function () {
+      const secureUrlHTML = `
+        <html>
+          <head>
+            <meta property="og:image:secure_url" content="test1.png">
+          </head>
+          <body></body>
+        </html>`;
+      beforeEach(async function () {
+        sandbox.stub(got, 'get').resolves({ body: secureUrlHTML });
+      });
+      it('using callbacks', function () {
+        process.browser = true;
+        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
+          expect(error).to.be.eql(false);
+          console.log('result', result);
+          expect(result.success).to.be.eql(true);
+          expect(result.ogImage).to.be.eql({
+            url: 'test1.png', width: null, height: null, type: null,
+          });
+          expect(result.requestUrl).to.be.eql('http://www.test.com');
+          expect(response.body).to.be.eql(secureUrlHTML);
+        });
+      });
+      it('using promises', function () {
+        process.browser = true;
+        return openGraphScraper({ url: 'www.test.com' })
+          .then(function (data) {
+            expect(data.result.success).to.be.eql(true);
+            expect(data.result.ogImage).to.be.eql({
+              url: 'test1.png', width: null, height: null, type: null,
+            });
+            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+            expect(data.response.body).to.be.eql(secureUrlHTML);
+          })
+          .catch(function () {
+            expect().fail('this should not happen');
+          });
+      });
+    });
+
+    context('when there is a og:image:url tag', function () {
+      const secureUrlHTML = `
+        <html>
+          <head>
+            <meta property="og:image:url" content="test1.png">
+          </head>
+          <body></body>
+        </html>`;
+      beforeEach(async function () {
+        sandbox.stub(got, 'get').resolves({ body: secureUrlHTML });
+      });
+      it('using callbacks', function () {
+        process.browser = true;
+        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
+          expect(error).to.be.eql(false);
+          console.log('result', result);
+          expect(result.success).to.be.eql(true);
+          expect(result.ogImage).to.be.eql({
+            url: 'test1.png', width: null, height: null, type: null,
+          });
+          expect(result.requestUrl).to.be.eql('http://www.test.com');
+          expect(response.body).to.be.eql(secureUrlHTML);
+        });
+      });
+      it('using promises', function () {
+        process.browser = true;
+        return openGraphScraper({ url: 'www.test.com' })
+          .then(function (data) {
+            expect(data.result.success).to.be.eql(true);
+            expect(data.result.ogImage).to.be.eql({
+              url: 'test1.png', width: null, height: null, type: null,
+            });
+            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+            expect(data.response.body).to.be.eql(secureUrlHTML);
+          })
+          .catch(function () {
+            expect().fail('this should not happen');
+          });
+      });
+    });
   });
 
   context('should return the proper error data', function () {
