@@ -21,7 +21,7 @@ const basicHTML = `
 describe('fall backs', function () {
   it('should use fall backs when there is no og info found', function () {
     let ogObject = {};
-    const options = {};
+    const options = { ogImageFallback: true };
     const $ = cheerio.load(basicHTML);
     ogObject = fallback(ogObject, options, $);
 
@@ -47,7 +47,6 @@ describe('fall backs', function () {
     const options = {};
     const $ = cheerio.load(basicHTML);
     ogObject = fallback(ogObject, options, $);
-
 
     expect(ogObject.ogImage).to.be.eql('test.png');
     expect(ogObject.ogTitle).to.be.eql('test page');
