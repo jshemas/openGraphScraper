@@ -204,7 +204,6 @@ describe('return openGraphScraper', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
-          console.log('result', result);
           expect(result.ogTitle).to.be.eql('test page');
           expect(result.ogImage).to.be.eql({
             url: 'test1.png',
