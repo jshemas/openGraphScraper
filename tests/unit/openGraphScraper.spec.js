@@ -340,7 +340,6 @@ describe('return openGraphScraper', function () {
         process.browser = true;
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
           expect(error).to.be.eql(false);
-          console.log('result', result);
           expect(result.success).to.be.eql(true);
           expect(result.ogImage).to.be.eql({
             url: 'test1.png', width: null, height: null, type: null,
@@ -381,7 +380,6 @@ describe('return openGraphScraper', function () {
         process.browser = true;
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
           expect(error).to.be.eql(false);
-          console.log('result', result);
           expect(result.success).to.be.eql(true);
           expect(result.ogImage).to.be.eql({
             url: 'test1.png', width: null, height: null, type: null,
