@@ -316,6 +316,228 @@ describe('static', function () {
         expect().fail('this should not happen');
       });
   });
+  it('bloomberg', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bloomberg' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('Sony Corp. unveiled the PlayStation 5 game console and an array of new games from the virtual stage Thursday, showcasing for the first time what its next-generation software will look like ahead of a holiday season showdown against Microsoft Corp.’s Xbox.');
+        expect(result.ogDescription).to.be.eql('Sony Corp. unveiled the PlayStation 5 game console and an array of new games from the virtual stage Thursday, showcasing for the first time what its next-generation software will look like ahead of a holiday season showdown against Microsoft Corp.’s Xbox.');
+        expect(result.ogSiteName).to.be.eql('Bloomberg.com');
+        expect(result.ogTitle).to.be.eql('Sony Reveals PlayStation 5 Games Ahead of Holiday Release');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogUrl).to.be.eql('https://www.bloomberg.com/news/articles/2020-06-11/sony-reveals-playstation-5-games-ahead-of-holiday-release');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterDescription).to.be.eql('Sony Corp. unveiled the PlayStation 5 game console and an array of new games from the virtual stage Thursday, showcasing for the first time what its next-generation software will look like ahead of a holiday season showdown against Microsoft Corp.’s Xbox.');
+        expect(result.twitterSite).to.be.eql('@technology');
+        expect(result.twitterTitle).to.be.eql('Sony Reveals PlayStation 5 Games Ahead of Holiday Release');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://assets.bwbx.io/images/users/iqjWHBFdfxIU/igYmwLRm2sYw/v0/1200x800.jpg',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://assets.bwbx.io/images/users/iqjWHBFdfxIU/igYmwLRm2sYw/v0/1200x800.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bloomberg');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('businesstoday', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/businesstoday' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql("Madhu Kapur in her suit had sought various reliefs including recognition of the family's right to participate in the management of the bank");
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterSite).to.be.eql('@BT_India');
+        expect(result.twitterCreator).to.be.eql('@BT_India');
+        expect(result.twitterTitle).to.be.eql('Madhu Kapur, family withdraw case against Yes Bank');
+        expect(result.twitterDescription).to.be.eql("Madhu Kapur in her suit had sought various reliefs including recognition of the family's right to participate in the management of the bank");
+        expect(result.ogImage).to.be.eql({
+          url: 'https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/yesbankoffice_505_101918105940_051519023753_160320102938_170320101641_100620101027.jpg',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/yesbankoffice_505_101918105940_051519023753_160320102938_170320101641_100620101027.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.ogTitle).to.be.eql('Madhu Kapur, family withdraw case against Yes Bank');
+        expect(result.ogDescription).to.be.eql("Madhu Kapur in her suit had sought various reliefs including recognition of the family's right to participate in the management of the bank");
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/businesstoday');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogTitle',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('cbronline', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cbronline' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql("Robust cyber security due diligence ahead of M&A activity can save huge headaches down the line, notes Bitglass's CTO.");
+        expect(result.ogLocale).to.be.eql('en_GB');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogTitle).to.be.eql('Undertaking Cyber Security Due Diligence in M&A Transactions');
+        expect(result.ogDescription).to.be.eql('“Undertaking a detailed evaluation of all IT systems and network endpoints in the target enterprise will be vital for enabling the M&A team to identify how to effectively operationalise the');
+        expect(result.ogUrl).to.be.eql('https://www.cbronline.com/opinion/cyber-security-due-diligence-in-mergers');
+        expect(result.ogSiteName).to.be.eql('Computer Business Review');
+        expect(result.articleTag).to.be.eql("Sidebar Editor's Pick");
+        expect(result.articleSection).to.be.eql('Business');
+        expect(result.articlePublishedTime).to.be.eql('2020-06-04T13:14:28+01:00');
+        expect(result.articleModifiedTime).to.be.eql('2020-06-04T13:32:55+01:00');
+        expect(result.twitterCard).to.be.eql('summary');
+        expect(result.twitterDescription).to.be.eql("Robust cyber security due diligence ahead of M&A activity can save huge headaches down the line, notes Bitglass's CTO.");
+        expect(result.twitterTitle).to.be.eql('Undertaking Cyber Security Due Diligence in M&A Transactions');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://www.cbronline.com/wp-content/uploads/2020/06/technology-4256272_1920.jpg',
+          width: '1920',
+          height: '1281',
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://www.cbronline.com/wp-content/uploads/2020/06/technology-4256272_1920.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cbronline');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleModifiedTime',
+          'articlePublishedTime',
+          'articleSection',
+          'articleTag',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogLocale',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('cio', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cio' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('As cloud adoption hits another growth spurt, companies are discovering the power of mixing and matching cloud services into solutions that address almost any business need');
+        expect(result.ogTitle).to.be.eql('The state of cloud computing in 2020');
+        expect(result.ogDescription).to.be.eql('As cloud adoption hits another growth spurt, companies are discovering the power of mixing and matching cloud services into solutions that address almost any business need');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.author).to.be.eql('Eric Knorr');
+        expect(result.ogSiteName).to.be.eql('InfoWorld');
+        expect(result.ogUrl).to.be.eql('https://www.infoworld.com/article/3561329/the-state-of-cloud-computing-in-2020.html');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterSite).to.be.eql('@infoworld');
+        expect(result.twitterDescription).to.be.eql('As cloud adoption hits another growth spurt, companies are discovering the power of mixing and matching cloud services into solutions that address almost any business need');
+        expect(result.robots).to.be.eql('NOODP,NOYDIR');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://images.idgesg.net/images/article/2020/06/intro_ts_cloud__by-akinbostanci-getty-images-100847825-large.jpg',
+          width: '1200',
+          height: '800',
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://images.idgesg.net/images/article/2020/06/intro_ts_cloud__by-akinbostanci-getty-images-100847825-large.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cio');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'author',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
   it('cloudinary', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cloudinary' })
       .then(function (data) {
@@ -433,6 +655,62 @@ describe('static', function () {
           'ogTitle',
           'requestUrl',
           'success',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('cloudpro', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cloudpro' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('How a cash strapped recruitment company became a unicorn with a new business model');
+        expect(result.ogSiteName).to.be.eql('Cloud Pro');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogUrl).to.be.eql('https://www.cloudpro.co.uk/go/8550');
+        expect(result.ogTitle).to.be.eql('Outreach: The startup that came back from the brink');
+        expect(result.ogDescription).to.be.eql('How a cash strapped recruitment company became a unicorn with a new business model');
+        expect(result.twitterCard).to.be.eql('photo');
+        expect(result.twitterSite).to.be.eql('@cloudprouk');
+        expect(result.twitterSiteId).to.be.eql('267718709');
+        expect(result.twitterTitle).to.be.eql('Outreach: The startup that came back from the brink');
+        expect(result.twitterDescription).to.be.eql('How a cash strapped recruitment company became a unicorn with a new business model');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://cdn1.cloudpro.co.uk/sites/cloudprod7/files/2020/05/outreach_founding_members.jpg',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://cdn1.cloudpro.co.uk/sites/cloudprod7/files/2020/05/outreach_founding_members.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cloudpro');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterSiteId',
+          'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       })
@@ -585,6 +863,78 @@ describe('static', function () {
         expect().fail('this should not happen');
       });
   });
+  it('economictimes', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/economictimes' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('Placement firm TeamLease Services has received 22,367 resumes in May from hospitality sectors alone, up a staggering 444 per cent from 4,109 in the previous month. Professionals who are proactively looking out have either been handed out pink slips or are facing job threats as their companies take the restructuring route, said executives aware of the matter.');
+        expect(result.ogTitle).to.be.eql('Lockdown led to 30% surge in resumes from job seekers: Recruitment firms');
+        expect(result.ogSiteName).to.be.eql('The Economic Times');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogUrl).to.be.eql('https://economictimes.indiatimes.com/jobs/lockdown-led-to-30-surge-in-resumes-from-job-seekers-recruitment-firms/articleshow/76152443.cms');
+        expect(result.ogDescription).to.be.eql('Placement firm TeamLease Services has received 22,367 resumes in May from hospitality sectors alone, up a staggering 444 per cent from 4,109 in the previous month. Professionals who are proactively looking out have either been handed out pink slips or are facing job threats as their companies take the restructuring route, said executives aware of the matter.');
+        expect(result.articlePublishedTime).to.be.eql('2020-06-02T14:05:00.000Z');
+        expect(result.articleTag).to.be.eql('Corona');
+        expect(result.articleModifiedTime).to.be.eql('2020-06-03T12:41:00.000Z');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterSite).to.be.eql('@EconomicTimes');
+        expect(result.twitterTitle).to.be.eql('Lockdown led to 30% surge in resumes from job seekers: Recruitment firms');
+        expect(result.twitterDescription).to.be.eql('Placement firm TeamLease Services has received 22,367 resumes in May from hospitality sectors alone, up a staggering 444 per cent from 4,109 in the previous month. Professionals who are proactively looking out have either been handed out pink slips or are facing job threats as their companies take the restructuring route, said executives aware of the matter.');
+        expect(result.twitterAppNameiPhone).to.be.eql('The Economic Times App');
+        expect(result.twitterAppIdiPhone).to.be.eql('474766725');
+        expect(result.twitterAppUrliPhone).to.be.eql('etapp://articleshow/76152443');
+        expect(result.twitterAppNameGooglePlay).to.be.eql('The Economic Times App');
+        expect(result.twitterAppIdGooglePlay).to.be.eql('com.et.reader.activities');
+        expect(result.twitterAppUrlGooglePlay).to.be.eql('etandroidapp://articleshow/76152443');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://img.etimg.com/thumb/msid-76152431,width-1070,height-580,imgsize-380461,overlay-economictimes/photo.jpg',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://img.etimg.com/thumb/msid-76152431,width-1070,height-580,imgsize-380461,overlay-economictimes/photo.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/economictimes');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleModifiedTime',
+          'articlePublishedTime',
+          'articleTag',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterAppIdGooglePlay',
+          'twitterAppIdiPhone',
+          'twitterAppNameGooglePlay',
+          'twitterAppNameiPhone',
+          'twitterAppUrlGooglePlay',
+          'twitterAppUrliPhone',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
   it('etsy', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/etsy' })
       .then(function (data) {
@@ -692,6 +1042,58 @@ describe('static', function () {
           'requestUrl',
           'robots',
           'success',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('fortune', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/fortune' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('COVID-19 has claimed 112,311 U.S. lives. That’s higher than the 104,404 troops who died in every war since the start of the Korean War in 1950.');
+        expect(result.ogUrl).to.be.eql('https://fortune.com/2020/06/10/coronavirus-deaths-us-covid-19-killed-more-americans-korean-war-vietnam-iraq-persian-gulf-combined-how-many-died/');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogTitle).to.be.eql('The coronavirus has now killed more Americans than every war since the start of the Korean War—combined');
+        expect(result.ogDescription).to.be.eql('COVID-19 has claimed 112,311 U.S. lives. That’s higher than the 104,404 troops who died in every war since the start of the Korean War in 1950.');
+        expect(result.ogSiteName).to.be.eql('Fortune');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterTitle).to.be.eql('The coronavirus has now killed more Americans than every war since the start of the Korean War—combined');
+        expect(result.twitterDescription).to.be.eql('COVID-19 has claimed 112,311 U.S. lives. That’s higher than the 104,404 troops who died in every war since the start of the Korean War in 1950.');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://content.fortune.com/wp-content/uploads/2020/06/nolvi-u-s-deaths-from-wars-and-major-pandemics-4.png?resize=1200,600',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://content.fortune.com/wp-content/uploads/2020/06/nolvi-u-s-deaths-from-wars-and-major-pandemics-4.png?resize=1200,600',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/fortune');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       })
@@ -865,6 +1267,74 @@ describe('static', function () {
         expect().fail('this should not happen');
       });
   });
+  it('jewishbusinessnews', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/jewishbusinessnews' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('Technion doctoral Muhammad Khatib, inspired biological healing process of the human skin, decided to adapt his elastomer into an autonomous self-healing system.');
+        expect(result.ogLocale).to.be.eql('en_US');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogTitle).to.be.eql('Israeli Student At The Technion Develops Self-Healing Artificial Electronic Skin - Jewish Business News');
+        expect(result.ogDescription).to.be.eql('Technion doctoral Muhammad Khatib, inspired biological healing process of the human skin, decided to adapt his elastomer into an autonomous self-healing system.');
+        expect(result.ogUrl).to.be.eql('https://jewishbusinessnews.com/2020/06/11/israeli-student-at-the-technion-develops-self-healing-artificial-electronic-skin/');
+        expect(result.ogSiteName).to.be.eql('Jewish Business News');
+        expect(result.articleTag).to.be.eql('Technion – Israel Institute of Technology');
+        expect(result.articleSection).to.be.eql('World');
+        expect(result.articlePublishedTime).to.be.eql('2020-06-11T15:51:41+03:00');
+        expect(result.articleModifiedTime).to.be.eql('2020-06-11T20:29:48+03:00');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterDescription).to.be.eql('Technion doctoral Muhammad Khatib, inspired biological healing process of the human skin, decided to adapt his elastomer into an autonomous self-healing system.');
+        expect(result.twitterTitle).to.be.eql('Israeli Student At The Technion Develops Self-Healing Artificial Electronic Skin - Jewish Business News');
+        expect(result.twitterSite).to.be.eql('@JewishBusinessNews');
+        expect(result.twitterCreator).to.be.eql('@JewishBusinessNews');
+        expect(result.robots).to.be.eql('index, follow');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://jewishbusinessnews.com/wp-content/uploads/2020/06/Technion-skin-like-material-the-heal-itself-e1591896385138.jpg',
+          width: '640',
+          height: '628',
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://jewishbusinessnews.com/wp-content/uploads/2020/06/Technion-skin-like-material-the-heal-itself-e1591896385138.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/jewishbusinessnews');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleModifiedTime',
+          'articlePublishedTime',
+          'articleSection',
+          'articleTag',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogLocale',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
+          'twitterCard',
+          'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
   it('kickstarter', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/kickstarter' })
       .then(function (data) {
@@ -1010,6 +1480,68 @@ describe('static', function () {
           'twitterCard',
           'twitterImage',
           'twitterSite',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('mashable', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mashable' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.ogUrl).to.be.eql('https://mashable.com/article/biden-open-letter-facebook-mark-zuckerberg-election/');
+        expect(result.ogTitle).to.be.eql('Indignant Joe Biden pens strongly worded letter to Mark Zuckerberg');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogSiteName).to.be.eql('Mashable');
+        expect(result.ogDescription).to.be.eql("Biden wants to talk to Facebook's manager. ");
+        expect(result.description).to.be.eql('In an open letter to Mark Zuckerberg and Facebook, Joe Biden demanded action intended to stop the spread of fake news ahead of the 2020 election. ');
+        expect(result.twitterTitle).to.be.eql('Indignant Joe Biden pens strongly worded letter to Mark Zuckerberg');
+        expect(result.twitterDescription).to.be.eql("Biden wants to talk to Facebook's manager. ");
+        expect(result.twitterSite).to.be.eql('@mashable');
+        expect(result.twitterCreator).to.be.eql('@mashable');
+        expect(result.twitterCard).to.be.eql('player');
+        expect(result.author).to.be.eql('Jack Morse');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://mondrian.mashable.com/2020%252F06%252F11%252Ffe%252Fc525cae5298a4f55a62c603880b80465.d3c99.png%252F1200x630.png?signature=4ujkwZwJuqUP8Yu5IGDifLN0rbA=',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://mondrian.mashable.com/uploads%252Fstory%252Fthumbnail%252F115752%252Fc525cae5-298a-4f55-a62c-603880b80465.png%252F640x360.png?signature=76mpWTpXEQXAcTrYyJprDKjClwg=&source=https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.twitterPlayer).to.be.eql({
+          url: undefined, width: '435', height: '245', stream: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mashable');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'author',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
+          'twitterPlayer',
+          'twitterSite',
+          'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       })
@@ -2288,6 +2820,62 @@ describe('static', function () {
           'ogTitle',
           'requestUrl',
           'success',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('techcrunch', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/techcrunch' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.ogSiteName).to.be.eql('TechCrunch');
+        expect(result.ogTitle).to.be.eql('HackerRank Makes Technical Recruiting More Transparent – TechCrunch');
+        expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
+        expect(result.ogUrl).to.be.eql('https://social.techcrunch.com/2016/01/12/hackerrank-jobs-takes-the-mystery-out-of-technical-recruiting/');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.description).to.be.an('string').and.to.not.be.empty;
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterSite).to.be.eql('@techcrunch');
+        expect(result.twitterTitle).to.be.eql('HackerRank Makes Technical Recruiting More Transparent');
+        expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
+        expect(result.twitterCreator).to.be.eql('@fredericl');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://techcrunch.com/wp-content/uploads/2015/08/10-interviewed.png?w=720',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://techcrunch.com/wp-content/uploads/2015/08/10-interviewed.png?w=720',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/techcrunch');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       })
