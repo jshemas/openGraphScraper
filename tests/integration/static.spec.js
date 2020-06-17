@@ -300,7 +300,7 @@ describe('static', function () {
             type: 'jpg',
           },
         ]);
-        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bjango.html');
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bjango');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'description',
