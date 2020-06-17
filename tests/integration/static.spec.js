@@ -67,7 +67,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('arstechnica', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/arstechnica' })
@@ -119,7 +119,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('battlefield', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/battlefield' })
@@ -171,7 +171,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('bestbuy', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bestbuy' })
@@ -223,7 +223,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('bjango', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bjango' })
@@ -294,7 +294,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('bloomberg', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bloomberg' })
@@ -344,7 +344,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('businesstoday', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/businesstoday' })
@@ -390,7 +390,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('cbronline', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cbronline' })
@@ -448,7 +448,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('cio', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cio' })
@@ -500,7 +500,7 @@ describe('static', function () {
           'twitterSite',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('cloudinary', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cloudinary' })
@@ -621,7 +621,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('cloudpro', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cloudpro' })
@@ -673,7 +673,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('cnet', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cnet' })
@@ -727,7 +727,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('computerworld', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/crn' })
@@ -766,7 +766,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('crn', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/computerworld' })
@@ -818,7 +818,7 @@ describe('static', function () {
           'twitterSite',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('darkreading', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/darkreading' })
@@ -870,7 +870,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('discourse', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/discourse' })
@@ -920,7 +920,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('docs', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/docs' })
@@ -952,7 +952,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('ebay', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/ebay' })
@@ -1002,7 +1002,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('economictimes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/economictimes' })
@@ -1070,7 +1070,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('entrepreneur', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/entrepreneur' })
@@ -1132,7 +1132,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('etsy', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/etsy' })
@@ -1202,7 +1202,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('facebook', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/facebook' })
@@ -1239,7 +1239,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('fastcompany', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/fastcompany' })
@@ -1301,7 +1301,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('forbes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/forbes' })
@@ -1359,7 +1359,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('fortune', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/fortune' })
@@ -1407,7 +1407,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('foursquare', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/foursquare' })
@@ -1477,7 +1477,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('geektime', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/geektime' })
@@ -1531,7 +1531,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('inc', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/inc' })
@@ -1591,7 +1591,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('insta', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/insta' })
@@ -1628,7 +1628,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('itunes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/itunes' })
@@ -1674,7 +1674,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('jewishbusinessnews', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/jewishbusinessnews' })
@@ -1738,7 +1738,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('kickstarter', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/kickstarter' })
@@ -1802,7 +1802,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('latimes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/latimes' })
@@ -1858,7 +1858,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('leandata', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/leandata' })
@@ -1904,7 +1904,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('learnxinyminutes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/learnxinyminutes' })
@@ -1933,7 +1933,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('lifehacker', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/lifehacker' })
@@ -1981,7 +1981,7 @@ describe('static', function () {
           'twitterSite',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('macrumors', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/macrumors' })
@@ -2037,7 +2037,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('mashable', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mashable' })
@@ -2095,7 +2095,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('medium', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/medium' })
@@ -2159,7 +2159,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('mulesoft', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mulesoft' })
@@ -2274,7 +2274,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('newegg', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/newegg' })
@@ -2613,7 +2613,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('npm', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/npm' })
@@ -2652,7 +2652,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('prnewswire', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/prnewswire' })
@@ -2704,7 +2704,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('reddit', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/reddit' })
@@ -2741,7 +2741,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('reuters', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/reuters' })
@@ -2797,7 +2797,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('rottentomatoes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/rottentomatoes' })
@@ -3288,7 +3288,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('smile', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/smile' })
@@ -3521,7 +3521,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('techcrunch', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/techcrunch' })
@@ -3573,7 +3573,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('ted', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/ted' })
@@ -3635,7 +3635,7 @@ describe('static', function () {
           'twitterSite',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('thinkgeek', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/thinkgeek' })
@@ -3689,7 +3689,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('vox', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/vox' })
@@ -3745,7 +3745,7 @@ describe('static', function () {
           'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('w3', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/w3' })
@@ -3778,7 +3778,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('xkcd', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/xkcd' })
@@ -3817,7 +3817,7 @@ describe('static', function () {
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
   it('yelp', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/yelp' })
@@ -3881,6 +3881,6 @@ describe('static', function () {
           'twitterSite',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
-      })
+      });
   });
 });
