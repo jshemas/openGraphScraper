@@ -242,7 +242,7 @@ describe('static', function () {
       });
   });
   it('bjango', function () {
-    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bjango.html' })
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bjango' })
       .then(function (data) {
         const { error, result, response } = data;
         console.log('error:', error);
@@ -719,6 +719,219 @@ describe('static', function () {
         expect().fail('this should not happen');
       });
   });
+  it('cnet', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cnet' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.author).to.be.eql('Roger Cheng');
+        expect(result.description).to.be.eql("Here's what you need to at least sound like you know what you're talking about when it comes to the next-gen mobile network.");
+        expect(result.ogSiteName).to.be.eql('CNET');
+        expect(result.ogTitle).to.be.eql('5G glossary: From spectrum to small cell to MIMO');
+        expect(result.ogDescription).to.be.eql("Here's what you need to at least sound like you know what you're talking about when it comes to the next-gen mobile network.");
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogUrl).to.be.eql('https://www.cnet.com/how-to/5g-glossary-everything-from-spectrum-to-small-cell-to-mimo/');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterTitle).to.be.eql('5G glossary: From spectrum to small cell to MIMO');
+        expect(result.twitterDescription).to.be.eql("Here's what you need to at least sound like you know what you're talking about when it comes to the next-gen mobile network.");
+        expect(result.twitterSite).to.be.eql('@CNET');
+        expect(result.twitterCreator).to.be.eql('@RogerWCheng');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://cnet3.cbsistatic.com/img/0IjS4wIUDkC77PSDb-eyF0aZNw8=/756x567/2020/01/22/931a3fa2-4e0e-4def-bdc2-448926f8da02/5g-phone-2.jpg',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://cnet3.cbsistatic.com/img/0IjS4wIUDkC77PSDb-eyF0aZNw8=/756x567/2020/01/22/931a3fa2-4e0e-4def-bdc2-448926f8da02/5g-phone-2.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cnet');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'author',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('computerworld', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/crn' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('The acquisition brings NetApp cloud compute optimization technology to go with its storage optimization capabilities.');
+        expect(result.ogDescription).to.be.eql('The acquisition brings NetApp cloud compute optimization technology to go with its storage optimization capabilities.');
+        expect(result.author).to.be.eql('Joseph F. Kovar');
+        expect(result.ogUrl).to.be.eql('https://www.crn.com/news/cloud/netapp-buying-spot-to-tie-public-cloud-compute-storage-optimization');
+        expect(result.articlePublishedTime).to.be.eql('June 03, 2020, 06:46 PM EDT');
+        expect(result.ogSiteName).to.be.eql('CRN');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogTitle).to.be.eql('NetApp Buying Spot To Tie Public Cloud Compute, Storage Optimization');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://www.crn.com/resources/025e-0f90fd4ccc09-53e1753b72f0-1000/netapp_anthony_lye.jpg',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/crn');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articlePublishedTime',
+          'author',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('crn', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/computerworld' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('My healthcare data is what I want protected the most (intimate details about my family’s health, where we live, and financial information). Anything and everything a hacker could want! It is safe? As a data security professional and citizen, I know the answer is not good.');
+        expect(result.ogTitle).to.be.eql('Healthcare Data Protection and Privacy Prognosis—Still Critical but New Treatment is Available');
+        expect(result.ogDescription).to.be.eql('My healthcare data is what I want protected the most (intimate details about my family’s health, where we live, and financial information). Anything and everything a hacker could want! It is safe? As a data security professional and citizen, I know the answer is not good.');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.author).to.be.eql('Robert Shields');
+        expect(result.robots).to.be.eql('NOODP,NOYDIR');
+        expect(result.ogSiteName).to.be.eql('Computerworld');
+        expect(result.ogUrl).to.be.eql('https://www.computerworld.com/article/3057179/healthcare-data-protection-and-privacy-prognosis-still-critical-but-new-treatment-is-available.html');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterSite).to.be.eql('@computerworld');
+        expect(result.twitterDescription).to.be.eql('My healthcare data is what I want protected the most (intimate details about my family’s health, where we live, and financial information). Anything and everything a hacker could want! It is safe? As a data security professional and citizen, I know the answer is not good.');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://images.techhive.com/images/article/2016/04/blog-31_apr15_image-1-100656409-orig.jpg',
+          width: '1000',
+          height: '667',
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://images.techhive.com/images/article/2016/04/blog-31_apr15_image-1-100656409-orig.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/computerworld');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'author',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('darkreading', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/darkreading' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.robots).to.be.eql('INDEX, FOLLOW');
+        expect(result.description).to.be.eql("Why common strategies for stopping DDoS attacks sometimes cause the same slowdowns they're trying to prevent.");
+        expect(result.ogTitle).to.be.eql("DDoS Attack Mitigation: Don't Sacrifice Speed for Security");
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogUrl).to.be.eql('https://www.darkreading.com/attacks-breaches/ddos-attack-mitigation-dont-sacrifice-speed-for-security/d/d-id/1337917');
+        expect(result.ogSiteName).to.be.eql('Dark Reading');
+        expect(result.ogDescription).to.be.eql("Why common strategies for stopping DDoS attacks sometimes cause the same slowdowns they're trying to prevent.");
+        expect(result.twitterCard).to.be.eql('summary');
+        expect(result.twitterSite).to.be.eql('@DarkReading');
+        expect(result.twitterTitle).to.be.eql("DDoS Attack Mitigation: Don't Sacrifice Speed for Security");
+        expect(result.twitterDescription).to.be.eql("Why common strategies for stopping DDoS attacks sometimes cause the same slowdowns they're trying to prevent.");
+        expect(result.ogImage).to.be.eql({
+          url: 'https://twimgs.com/nojitter/darkreading/dr-logo.jpg',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://twimgs.com/nojitter/darkreading/dr-logo.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/darkreading');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
   it('discourse', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/discourse' })
       .then(function (data) {
@@ -935,6 +1148,72 @@ describe('static', function () {
         expect().fail('this should not happen');
       });
   });
+  it('entrepreneur', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/entrepreneur' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.robots).to.be.eql('index,follow,NOODP');
+        expect(result.ogSiteName).to.be.eql('Entrepreneur');
+        expect(result.description).to.be.eql('By taking inspiration from origami, this robot gripper can safely pick up and hold delicate objects while at the same time lift more than 100x its own weight.');
+        expect(result.articleAuthor).to.be.eql('Matthew Humphries');
+        expect(result.ogTitle).to.be.eql('Origami-Inspired Robot Gripper Could Pack Your Groceries');
+        expect(result.ogDescription).to.be.eql('By taking inspiration from origami, this robot gripper can safely pick up and hold delicate objects while at the same time lift more than 100x its own weight.');
+        expect(result.ogUrl).to.be.eql('https://www.entrepreneur.com/article/330171');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.articlePublishedTime).to.be.eql('2019-03-14T14:35:12Z');
+        expect(result.articleModifiedTime).to.be.eql('2019-03-14@14:35:13 UTC');
+        expect(result.articleSection).to.be.eql(undefined);
+        expect(result.articleTag).to.be.eql('Technology,Robots');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterSite).to.be.eql('@Entrepreneur');
+        expect(result.twitterTitle).to.be.eql('Origami-Inspired Robot Gripper Could Pack Your Groceries');
+        expect(result.twitterDescription).to.be.eql('By taking inspiration from origami, this robot gripper can safely pick up and hold delicate objects while at the same time lift more than 100x its own weight.');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://assets.entrepreneur.com/content/3x2/2000/20190314142224-origami-inspired-robot.jpeg',
+          width: '2000',
+          height: '1333',
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://assets.entrepreneur.com/content/3x2/2000/20190314142224-origami-inspired-robot.jpeg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/entrepreneur');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleAuthor',
+          'articleModifiedTime',
+          'articlePublishedTime',
+          'articleSection',
+          'articleTag',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
   it('etsy', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/etsy' })
       .then(function (data) {
@@ -1042,6 +1321,134 @@ describe('static', function () {
           'requestUrl',
           'robots',
           'success',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('fastcompany', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/fastcompany' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('Renowned psychiatrist Dr. Jessica Clemons, MD gained popularity for helping to normalize the conversation around mental health, particularly in the black community.\n');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogTitle).to.be.eql('The internet’s favorite psychiatrist has a game plan for your mental health');
+        expect(result.ogUrl).to.be.eql('https://www.fastcompany.com/90514725/the-internets-favorite-psychiatrist-has-a-game-plan-for-your-mental-health');
+        expect(result.ogLocale).to.be.eql('en_US');
+        expect(result.ogDescription).to.be.eql('Renowned psychiatrist Dr. Jessica Clemons, MD gained popularity for helping to normalize the conversation around mental health, particularly in the black community.\n');
+        expect(result.ogSiteName).to.be.eql('Fast Company');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterTitle).to.be.eql('The internet’s favorite psychiatrist has a game plan for your mental health');
+        expect(result.twitterDescription).to.be.eql('Renowned psychiatrist Dr. Jessica Clemons, MD gained popularity for helping to normalize the conversation around mental health, particularly in the black community.\n');
+        expect(result.twitterSite).to.be.eql('@fastcompany');
+        expect(result.robots).to.be.eql('max-image-preview:large');
+        expect(result.articlePublishedTime).to.be.eql('2020-06-11T06:00:03');
+        expect(result.articleModifiedTime).to.be.eql('2020-06-11T09:47:11');
+        expect(result.author).to.be.eql('KC Ifeanyi');
+        expect(result.articleTag).to.be.eql('audio');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2020/06/p-2-dr-jess-clemons-creative-conversation.jpg',
+          width: '1280',
+          height: '720',
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2020/06/p-2-dr-jess-clemons-creative-conversation.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/fastcompany');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleModifiedTime',
+          'articlePublishedTime',
+          'articleTag',
+          'author',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogLocale',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('forbes', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/forbes' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql("The best scents for gifting — even if it's a gift to yourself — are universally appealing but also unique. ");
+        expect(result.author).to.be.eql('Adam Hurly');
+        expect(result.articleSection).to.be.eql('Shopping');
+        expect(result.articleAuthor).to.be.eql('Adam Hurly');
+        expect(result.ogTitle).to.be.eql('The Best Men’s Colognes For Gifting');
+        expect(result.ogSiteName).to.be.eql('Forbes');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogUrl).to.be.eql('https://www.forbes.com/sites/forbes-personal-shopper/2020/06/10/best-mens-colognes-and-fragrances/');
+        expect(result.ogDescription).to.be.eql("The best scents for gifting — even if it's a gift to yourself — are universally appealing but also unique. ");
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterSite).to.be.eql('@forbes');
+        expect(result.twitterCreator).to.be.eql(undefined); // TODO: look into
+        expect(result.twitterTitle).to.be.eql('The Best Men’s Colognes For Gifting');
+        expect(result.twitterDescription).to.be.eql("The best scents for gifting — even if it's a gift to yourself — are universally appealing but also unique. ");
+        expect(result.ogImage).to.be.eql({
+          url: 'https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5ee10f96298ad300068f3c9a%2F0x0.jpg%3FcropX1%3D0%26cropX2%3D1080%26cropY1%3D326%26cropY2%3D933',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5ee10f96298ad300068f3c9a%2F0x0.jpg%3FcropX1%3D0%26cropX2%3D1080%26cropY1%3D326%26cropY2%3D933',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/forbes');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleAuthor',
+          'articleSection',
+          'author',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       })
@@ -1162,6 +1569,128 @@ describe('static', function () {
           'twitterAppUrlGooglePlay',
           'twitterAppUrliPad',
           'twitterAppUrliPhone',
+          'twitterCard',
+          'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('geektime', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/geektime' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.ogSiteName).to.be.eql('GeekTime');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogTitle).to.be.eql('Duckface can saves lives: Binah.ai raises $13.5M to monitor health condition through selfies');
+        expect(result.ogDescription).to.be.eql('Israeli startup Binah.ai technology tracks vital-sign measurements from selfies. As the pandemic calls for more remote everything, the company’s tech is already being used in a Canadian hospital');
+        expect(result.ogUrl).to.be.eql('https://www.geektime.com/duckface-can-saves-lives-binah-ai-raises-13-5m-to-monitor-health-condition-through-selfies/');
+        expect(result.articlePublishedTime).to.be.eql('2020-06-11T15:58:33.000Z');
+        expect(result.articleModifiedTime).to.be.eql('2020-06-11T15:58:33.000Z');
+        expect(result.articleTag).to.be.eql('startups');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterTitle).to.be.eql('Duckface can saves lives: Binah.ai raises $13.5M to monitor health condition through selfies');
+        expect(result.twitterDescription).to.be.eql('Israeli startup Binah.ai technology tracks vital-sign measurements from selfies. As the pandemic calls for more remote everything, the company’s tech is already being used in a Canadian hospital');
+        expect(result.twitterSite).to.be.eql('@geektimecoil');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://www.geektime.com/content/images/2020/06/binah-1578304795.png',
+          width: '940',
+          height: '626',
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://www.geektime.com/content/images/2020/06/binah-1578304795.png',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/geektime');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleModifiedTime',
+          'articlePublishedTime',
+          'articleTag',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('inc', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/inc' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogSiteName).to.be.eql('Inc.com');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterSite).to.be.eql('@Inc');
+        expect(result.robots).to.be.eql('noarchive');
+        expect(result.description).to.be.eql("You can provide all the PPE you want, but it's also crucial that your employees are emotionally secure in their workplace.");
+        expect(result.ogTitle).to.be.eql('Reopening? Learn How to Help Your Employees Feel  Safe Psychologically');
+        expect(result.ogDescription).to.be.eql("You can provide all the PPE you want, but it's also crucial that your employees are emotionally secure in their workplace.");
+        expect(result.ogUrl).to.be.eql('https://www.inc.com/brit-morse/reopening-workplace-help-employees-feel-safe-psychologically.html');
+        expect(result.twitterCreator).to.be.eql('britnmorse');
+        expect(result.twitterTitle).to.be.eql('Reopening? Learn How to Help Your Employees Feel  Safe Psychologically');
+        expect(result.twitterDescription).to.be.eql("You can provide all the PPE you want, but it's also crucial that your employees are emotionally secure in their workplace.");
+        expect(result.articlePublishedTime).to.be.eql('2020-06-11 05:00:00');
+        expect(result.articleSection).to.be.eql('Safeguards');
+        expect(result.articleAuthor).to.be.eql('Brit Morse');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://www.incimages.com/uploaded_files/image/1024x576/GettyImages-1223427650_430893.jpg',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://www.incimages.com/uploaded_files/image/1024x576/GettyImages-1223427650_430893.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/inc');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleAuthor',
+          'articlePublishedTime',
+          'articleSection',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -1403,6 +1932,116 @@ describe('static', function () {
         expect().fail('this should not happen');
       });
   });
+  it('latimes', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/latimes' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.ogTitle).to.be.eql('Dow sinks 1,800 as virus cases rise, deflating optimism');
+        expect(result.ogUrl).to.be.eql('https://www.latimes.com/business/story/2020-06-11/stocks-wall-street-coronavirus');
+        expect(result.ogDescription).to.be.eql("The Dow Jones industrial average sank more than 1,800 points and the Standard & Poor's 500 dropped 5.9% in its worst day since mid-March, when stocks had a number of harrowing falls as the virus lockdowns began.");
+        expect(result.ogSiteName).to.be.eql('Los Angeles Times');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.articleAuthor).to.be.eql('https://www.latimes.com/people/associated-press');
+        expect(result.articlePublishedTime).to.be.eql('2020-06-11T14:26:01.674');
+        expect(result.articleSection).to.be.eql('Business');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterDescription).to.be.eql("The Dow Jones industrial average sank more than 1,800 points and the Standard & Poor's 500 dropped 5.9% in its worst day since mid-March, when stocks had a number of harrowing falls as the virus lockdowns began.");
+        expect(result.twitterSite).to.be.eql('@latimes');
+        expect(result.twitterTitle).to.be.eql('Dow sinks 1,800 as virus cases rise, deflating optimism');
+        expect(result.description).to.be.eql("The Dow Jones industrial average sank more than 1,800 points and the Standard & Poor's 500 dropped 5.9% in its worst day since mid-March, when stocks had a number of harrowing falls as the virus lockdowns began.");
+        expect(result.ogImage).to.be.eql({
+          url: 'https://ca-times.brightspotcdn.com/dims4/default/f10ff16/2147483647/strip/true/crop/2048x1075+0+89/resize/1200x630!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff2%2F6c%2F8f7e89b7eb2a7ecc01f245e3ec0b%2Fla-1502459693-4svslqel7u-snap-image',
+          width: '1200',
+          height: '630',
+          type: 'image/jpeg',
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://ca-times.brightspotcdn.com/dims4/default/3d21428/2147483647/strip/true/crop/2048x1152+0+51/resize/1200x675!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff2%2F6c%2F8f7e89b7eb2a7ecc01f245e3ec0b%2Fla-1502459693-4svslqel7u-snap-image',
+          width: null,
+          height: null,
+          alt: 'FILE - In this Oct. 8, 2014, file photo, a Wall Street address is carved in the side of a building in New York. Stocks are opening modestly higher on Wall Street, Friday, Aug. 11, 2017, led by gains in technology companies and banks. (AP Photo/Mark Lennihan, File)',
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/latimes');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleAuthor',
+          'articlePublishedTime',
+          'articleSection',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('leandata', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/leandata' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('Thinking in terms of revenue operations can dramatically accelerate growth. Here are four companies that have leveraged revenue operations for revenue growth.');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogTitle).to.be.eql('Accelerate Growth with Revenue Operations ');
+        expect(result.ogUrl).to.be.eql('https://learn.leandata.com/routing-rules-leandatas-sales-and-marketing-blog/accelerate-growth-with-revenue-operations');
+        expect(result.ogDescription).to.be.eql('Thinking in terms of revenue operations can dramatically accelerate growth. Here are four companies that have leveraged revenue operations for revenue growth.');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterTitle).to.be.eql('Accelerate Growth with Revenue Operations ');
+        expect(result.twitterDescription).to.be.eql('Thinking in terms of revenue operations can dramatically accelerate growth. Here are four companies that have leveraged revenue operations for revenue growth.');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://content.cdntwrk.com/files/aHViPTYzMTAyJmNtZD1pdGVtZWRpdG9yaW1hZ2UmZmlsZW5hbWU9aXRlbWVkaXRvcmltYWdlXzVlZTBmZjM3ODNiOTUucG5nJnZlcnNpb249MDAwMCZzaWc9MjYxMjQxMTVmOGViODcwMzE4YzVkYjkyZTUzNWRiZDE%253D',
+          width: '500',
+          height: '272',
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://content.cdntwrk.com/files/aHViPTYzMTAyJmNtZD1pdGVtZWRpdG9yaW1hZ2UmZmlsZW5hbWU9aXRlbWVkaXRvcmltYWdlXzVlZTBmZjM3ODNiOTUucG5nJnZlcnNpb249MDAwMCZzaWc9MjYxMjQxMTVmOGViODcwMzE4YzVkYjkyZTUzNWRiZDE%253D',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/leandata');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
   it('learnxinyminutes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/learnxinyminutes' })
       .then(function (data) {
@@ -1488,6 +2127,66 @@ describe('static', function () {
         expect().fail('this should not happen');
       });
   });
+  it('macrumors', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/macrumors' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.robots).to.be.eql('max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+        expect(result.description).to.be.eql('Apple today shared the first trailer for "Greyhound," a WWII movie that stars Tom Hanks as George Krause, a career naval officer given...');
+        expect(result.ogLocale).to.be.eql('en_US');
+        expect(result.ogSiteName).to.be.eql('MacRumors');
+        expect(result.ogTitle).to.be.eql("Apple Announces July 10 Release Date for Upcoming Tom Hanks WWII Film 'Greyhound'");
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogUrl).to.be.eql('https://www.macrumors.com/2020/06/11/apple-tv-plus-greyhound-july-10/');
+        expect(result.ogDescription).to.be.eql('Apple today shared the first trailer for "Greyhound," a WWII movie that stars Tom Hanks as George Krause, a career naval officer given...');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterSite).to.be.eql('@macrumors');
+        expect(result.twitterCreator).to.be.eql('@julipuli');
+        expect(result.twitterTitle).to.be.eql("Apple Announces July 10 Release Date for Upcoming Tom Hanks WWII Film 'Greyhound'");
+        expect(result.twitterDescription).to.be.eql('Apple today shared the first trailer for "Greyhound," a WWII movie that stars Tom Hanks as George Krause, a career naval officer given...');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://images.macrumors.com/article-new/2020/05/greyhoundappletvplus.jpg',
+          width: '1920',
+          height: '795',
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://images.macrumors.com/article-new/2020/05/greyhoundappletvplus.jpg',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/macrumors');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogLocale',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
+          'twitterCard',
+          'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
   it('mashable', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mashable' })
       .then(function (data) {
@@ -1540,6 +2239,74 @@ describe('static', function () {
           'twitterDescription',
           'twitterImage',
           'twitterPlayer',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('medium', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/medium' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.twitterAppNameiPhone).to.be.eql('Medium');
+        expect(result.twitterAppIdiPhone).to.be.eql('828256236');
+        expect(result.ogSiteName).to.be.eql('Medium');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.robots).to.be.eql('index,follow');
+        expect(result.articlePublishedTime).to.be.eql('2019-10-23T17:16:52.729Z');
+        expect(result.ogTitle).to.be.eql('A Brief History of Robotics');
+        expect(result.twitterTitle).to.be.eql('A Brief History of Robotics');
+        expect(result.twitterSite).to.be.eql('@beyond1435');
+        expect(result.twitterAppUrliPhone).to.be.eql('medium://p/105fc835a170');
+        expect(result.description).to.be.eql('When we first started looking into robotics, we were wondering about its history. After all, this relatively new field of technology didn’t just fall off the wagon (no pun intended). So, we came up…');
+        expect(result.ogDescription).to.be.eql('How the automotive industry bankrolled robotics development');
+        expect(result.twitterDescription).to.be.eql('How the automotive industry bankrolled robotics development');
+        expect(result.ogUrl).to.be.eql('https://medium.com/mobility-insights/a-brief-history-of-robotics-105fc835a170');
+        expect(result.articleAuthor).to.be.eql('https://medium.com/@christiansaur');
+        expect(result.author).to.be.eql('Christian Saur');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://miro.medium.com/freeze/max/480/1*11wZiPlVMyZkQhkFlv3GpQ.gif',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://miro.medium.com/freeze/max/480/1*11wZiPlVMyZkQhkFlv3GpQ.gif',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/medium');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleAuthor',
+          'articlePublishedTime',
+          'author',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
+          'twitterAppIdiPhone',
+          'twitterAppNameiPhone',
+          'twitterAppUrliPhone',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
           'twitterSite',
           'twitterTitle',
         );
@@ -2055,6 +2822,62 @@ describe('static', function () {
         expect().fail('this should not happen');
       });
   });
+  it('prnewswire', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/prnewswire' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.description).to.be.eql('/PRNewswire/ -- Ideanomics (NASDAQ: IDEX) ("Ideanomics" or the "Company") is pleased to announce the second-stage of debt conversion, with the noteholders of...');
+        expect(result.author).to.be.eql('Ideanomics');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterSite).to.be.eql('@PRNewswire');
+        expect(result.twitterTitle).to.be.eql('Ideanomics Announces Reduction of Debt Holders as Part of Growth Plans');
+        expect(result.twitterDescription).to.be.eql('/PRNewswire/ -- Ideanomics (NASDAQ: IDEX) ("Ideanomics" or the "Company") is pleased to announce the second-stage of debt conversion, with the noteholders of...');
+        expect(result.ogTitle).to.be.eql('Ideanomics Announces Reduction of Debt Holders as Part of Growth Plans');
+        expect(result.ogType).to.be.eql('website');
+        expect(result.ogDescription).to.be.eql('/PRNewswire/ -- Ideanomics (NASDAQ: IDEX) ("Ideanomics" or the "Company") is pleased to announce the second-stage of debt conversion, with the noteholders of...');
+        expect(result.ogUrl).to.be.eql('https://www.prnewswire.com/news-releases/ideanomics-announces-reduction-of-debt-holders-as-part-of-growth-plans-301074797.html');
+        expect(result.robots).to.be.eql('index, follow');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://mma.prnewswire.com/media/738482/Ideanomics_Logo.jpg?p=facebook',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://mma.prnewswire.com/media/738482/Ideanomics_Logo.jpg?p=twitter',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/prnewswire');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'author',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
   it('reddit', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/reddit' })
       .then(function (data) {
@@ -2086,6 +2909,66 @@ describe('static', function () {
           'requestUrl',
           'success',
           'twitterCard',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('reuters', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/reuters' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.robots).to.be.eql('index, follow');
+        expect(result.description).to.be.eql('Data mining firm Palantir Technologies Inc is aiming to file confidentially with U.S. regulators to go public in the coming weeks, emboldened by the strong performance of other initial public offerings (IPOs), people familiar with the matter said.');
+        expect(result.ogLocale).to.be.eql('en_US');
+        expect(result.ogSiteName).to.be.eql('U.S.');
+        expect(result.ogTitle).to.be.eql('Palantir close to registering for stock market debut: sources');
+        expect(result.ogUrl).to.be.eql('https://www.reuters.com/article/us-palantir-ipo-exclusive-idUSKBN23I3GB');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogDescription).to.be.eql('Data mining firm Palantir Technologies Inc is aiming to file confidentially with U.S. regulators to go public in the coming weeks, emboldened by the strong performance of other initial public offerings (IPOs), people familiar with the matter said.');
+        expect(result.twitterSite).to.be.eql('@Reuters');
+        expect(result.twitterCreator).to.be.eql('@Reuters');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterTitle).to.be.eql('Palantir close to registering for stock market debut: sources');
+        expect(result.twitterDescription).to.be.eql('Data mining firm Palantir Technologies Inc is aiming to file confidentially with U.S. regulators to go public in the coming weeks, emboldened by the strong performance of other initial public offerings (IPOs), people familiar with the matter said.');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://s2.reutersmedia.net/resources/r/?m=02&d=20200611&t=2&i=1521971063&w=1200&r=LYNXMPEG5A254',
+          width: null,
+          height: null,
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://s2.reutersmedia.net/resources/r/?m=02&d=20200611&t=2&i=1521971063&w=1200&r=LYNXMPEG5A254',
+          width: null,
+          height: null,
+          alt: null,
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/reuters');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogLocale',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'robots',
+          'success',
+          'twitterCard',
+          'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
           'twitterSite',
           'twitterTitle',
         );
@@ -2996,6 +3879,66 @@ describe('static', function () {
           'success',
           'twitterCard',
           'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('object').and.to.not.be.empty;
+      })
+      .catch(function (error) {
+        console.log('error:', error);
+        expect().fail('this should not happen');
+      });
+  });
+  it('vox', function () {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/vox' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.author).to.be.eql('Theodore Schleifer');
+        expect(result.articlePublishedTime).to.be.eql('2020-06-11T17:03:32-04:00');
+        expect(result.articleModifiedTime).to.be.eql('2020-06-11T17:03:32-04:00');
+        expect(result.description).to.be.eql('The Twitter CEO’s plan to give away $1 billion shows charity is not as hard as billionaires say it is.');
+        expect(result.ogDescription).to.be.eql('The Twitter CEO’s plan to give away $1 billion shows charity is not as hard as billionaires say it is.');
+        expect(result.ogSiteName).to.be.eql('Vox');
+        expect(result.ogTitle).to.be.eql('Inside Jack Dorsey’s radical experiment for billionaires to give away their money');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogUrl).to.be.eql('https://www.vox.com/recode/2020/6/11/21287395/jack-dorsey-start-small-billionaire-philanthropy-coronavirus-twitter-square-kaepernick-rihanna');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterTitle).to.be.eql('Inside Jack Dorsey’s radical experiment for billionaires to give away their money');
+        expect(result.twitterDescription).to.be.eql('The Twitter CEO’s plan to give away $1 billion shows charity is not as hard as billionaires say it is.');
+        expect(result.twitterSite).to.be.eql('voxdotcom');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://cdn.vox-cdn.com/thumbor/PP5h21sGbjyDt0BoZYKpdNUsFFs=/0x0:4746x2485/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/20030444/524250960.jpg.jpg',
+          width: '1200',
+          height: '630',
+          type: null,
+        });
+        expect(result.twitterImage).to.be.eql({
+          url: 'https://cdn.vox-cdn.com/thumbor/OR6JkRz2SCfX5Ecx6JSCVWk5vs0=/0x0:4746x2373/fit-in/1200x600/cdn.vox-cdn.com/uploads/chorus_asset/file/20030444/524250960.jpg.jpg',
+          width: null,
+          height: null,
+          alt: 'Jack Dorsey Sydney Photo Shoot',
+        });
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/vox');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'articleModifiedTime',
+          'articlePublishedTime',
+          'author',
+          'description',
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
           'twitterDescription',
           'twitterImage',
           'twitterSite',
