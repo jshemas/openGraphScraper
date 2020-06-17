@@ -48,10 +48,6 @@ describe('basic', function () {
         expect(result).to.have.all.keys('description', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'success');
         expect(response).to.be.an('object').and.to.not.be.empty;
       })
-      .catch(function (error) {
-        console.log('error:', error);
-        expect().fail('this should not happen');
-      });
   });
   it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {
     return ogs({
