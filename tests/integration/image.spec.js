@@ -25,7 +25,7 @@ describe('image', function () {
         url: 'https://c1.staticflickr.com/1/499/18791678505_5886fefcf7_b.jpg',
         width: '1024',
         height: '375',
-        type: null,
+        type: 'jpg',
       });
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/flickr');
       expect(result.success).to.be.eql(true);

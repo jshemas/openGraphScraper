@@ -212,7 +212,7 @@ describe('return openGraphScraper', function () {
             url: 'test1.png',
             width: null,
             height: null,
-            type: null,
+            type: 'png',
           });
           expect(result.requestUrl).to.be.eql('http://www.test.com');
           expect(response.body).to.be.eql(multipleImageHTML);
@@ -227,13 +227,10 @@ describe('return openGraphScraper', function () {
               url: 'test1.png',
               width: null,
               height: null,
-              type: null,
+              type: 'png',
             });
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(multipleImageHTML);
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });
@@ -342,7 +339,7 @@ describe('return openGraphScraper', function () {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
           expect(result.ogImage).to.be.eql({
-            url: 'test1.png', width: null, height: null, type: null,
+            url: 'test1.png', width: null, height: null, type: 'png',
           });
           expect(result.requestUrl).to.be.eql('http://www.test.com');
           expect(response.body).to.be.eql(secureUrlHTML);
@@ -354,13 +351,10 @@ describe('return openGraphScraper', function () {
           .then(function (data) {
             expect(data.result.success).to.be.eql(true);
             expect(data.result.ogImage).to.be.eql({
-              url: 'test1.png', width: null, height: null, type: null,
+              url: 'test1.png', width: null, height: null, type: 'png',
             });
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(secureUrlHTML);
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });
@@ -382,7 +376,7 @@ describe('return openGraphScraper', function () {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
           expect(result.ogImage).to.be.eql({
-            url: 'test1.png', width: null, height: null, type: null,
+            url: 'test1.png', width: null, height: null, type: 'png',
           });
           expect(result.requestUrl).to.be.eql('http://www.test.com');
           expect(response.body).to.be.eql(secureUrlHTML);
@@ -394,13 +388,10 @@ describe('return openGraphScraper', function () {
           .then(function (data) {
             expect(data.result.success).to.be.eql(true);
             expect(data.result.ogImage).to.be.eql({
-              url: 'test1.png', width: null, height: null, type: null,
+              url: 'test1.png', width: null, height: null, type: 'png',
             });
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(secureUrlHTML);
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });

@@ -31,7 +31,7 @@ describe('video', function () {
         url: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
         width: '1280',
         height: '720',
-        type: null,
+        type: 'jpg',
       });
       expect(result.ogVideo).to.be.eql({
         url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',

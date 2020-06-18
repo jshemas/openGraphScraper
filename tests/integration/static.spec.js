@@ -31,7 +31,7 @@ describe('static', function () {
           url: 'https://a1.muscache.com/im/pictures/43670185/606e6e19_original.jpg?aki_policy=x_large',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://a1.muscache.com/im/pictures/43670185/606e6e19_original.jpg?aki_policy=x_large',
@@ -91,7 +91,7 @@ describe('static', function () {
           url: 'https://cdn.arstechnica.net/wp-content/uploads/2016/10/pixel-feature-640x320.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://cdn.arstechnica.net/wp-content/uploads/2016/10/pixel-feature-640x320.jpg',
@@ -143,7 +143,7 @@ describe('static', function () {
           url: 'http://media-www-battlefieldwebcore.spark.ea.com/content/battlefield-portal/en_US/_global_/_jcr_content/ccm/componentwrapper_1/components/opengraph/ogImage.img.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'http://media-www-battlefieldwebcore.spark.ea.com/content/battlefield-portal/en_US/_global_/_jcr_content/ccm/componentwrapper_1/components/opengraph/ogImage.img.jpg',
@@ -317,7 +317,7 @@ describe('static', function () {
           url: 'https://assets.bwbx.io/images/users/iqjWHBFdfxIU/igYmwLRm2sYw/v0/1200x800.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://assets.bwbx.io/images/users/iqjWHBFdfxIU/igYmwLRm2sYw/v0/1200x800.jpg',
@@ -363,7 +363,7 @@ describe('static', function () {
           url: 'https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/yesbankoffice_505_101918105940_051519023753_160320102938_170320101641_100620101027.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/yesbankoffice_505_101918105940_051519023753_160320102938_170320101641_100620101027.jpg',
@@ -417,7 +417,7 @@ describe('static', function () {
           url: 'https://www.cbronline.com/wp-content/uploads/2020/06/technology-4256272_1920.jpg',
           width: '1920',
           height: '1281',
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://www.cbronline.com/wp-content/uploads/2020/06/technology-4256272_1920.jpg',
@@ -472,7 +472,7 @@ describe('static', function () {
           url: 'https://images.idgesg.net/images/article/2020/06/intro_ts_cloud__by-akinbostanci-getty-images-100847825-large.jpg',
           width: '1200',
           height: '800',
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://images.idgesg.net/images/article/2020/06/intro_ts_cloud__by-akinbostanci-getty-images-100847825-large.jpg',
@@ -645,7 +645,7 @@ describe('static', function () {
           url: 'https://cdn1.cloudpro.co.uk/sites/cloudprod7/files/2020/05/outreach_founding_members.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://cdn1.cloudpro.co.uk/sites/cloudprod7/files/2020/05/outreach_founding_members.jpg',
@@ -698,7 +698,7 @@ describe('static', function () {
           url: 'https://cnet3.cbsistatic.com/img/0IjS4wIUDkC77PSDb-eyF0aZNw8=/756x567/2020/01/22/931a3fa2-4e0e-4def-bdc2-448926f8da02/5g-phone-2.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://cnet3.cbsistatic.com/img/0IjS4wIUDkC77PSDb-eyF0aZNw8=/756x567/2020/01/22/931a3fa2-4e0e-4def-bdc2-448926f8da02/5g-phone-2.jpg',
@@ -748,7 +748,7 @@ describe('static', function () {
           url: 'https://www.crn.com/resources/025e-0f90fd4ccc09-53e1753b72f0-1000/netapp_anthony_lye.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/crn');
         expect(result.success).to.be.eql(true);
@@ -790,7 +790,7 @@ describe('static', function () {
           url: 'https://images.techhive.com/images/article/2016/04/blog-31_apr15_image-1-100656409-orig.jpg',
           width: '1000',
           height: '667',
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://images.techhive.com/images/article/2016/04/blog-31_apr15_image-1-100656409-orig.jpg',
@@ -842,7 +842,7 @@ describe('static', function () {
           url: 'https://twimgs.com/nojitter/darkreading/dr-logo.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://twimgs.com/nojitter/darkreading/dr-logo.jpg',
@@ -894,7 +894,7 @@ describe('static', function () {
           url: 'https://discourse-cdn.codinghorror.com/user_avatar/discourse.codinghorror.com/adam_sommer/100/74278_1.png',
           width: null,
           height: null,
-          type: null,
+          type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://discourse-cdn.codinghorror.com/user_avatar/discourse.codinghorror.com/adam_sommer/100/74278_1.png',
@@ -975,7 +975,7 @@ describe('static', function () {
           url: 'http://i.ebayimg.com/images/i/381228738769-0-1/s-l1000.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'http://i.ebayimg.com/images/i/381228738769-0-1/s-l1000.jpg',
@@ -1034,7 +1034,7 @@ describe('static', function () {
           url: 'https://img.etimg.com/thumb/msid-76152431,width-1070,height-580,imgsize-380461,overlay-economictimes/photo.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://img.etimg.com/thumb/msid-76152431,width-1070,height-580,imgsize-380461,overlay-economictimes/photo.jpg',
@@ -1099,7 +1099,7 @@ describe('static', function () {
           url: 'https://assets.entrepreneur.com/content/3x2/2000/20190314142224-origami-inspired-robot.jpeg',
           width: '2000',
           height: '1333',
-          type: null,
+          type: 'jpeg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://assets.entrepreneur.com/content/3x2/2000/20190314142224-origami-inspired-robot.jpeg',
@@ -1165,7 +1165,7 @@ describe('static', function () {
           url: 'https://img0.etsystatic.com/058/0/10499963/il_570xN.759424778_ojd8.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://img0.etsystatic.com/058/0/10499963/il_570xN.759424778_ojd8.jpg',
@@ -1220,7 +1220,7 @@ describe('static', function () {
           url: 'https://www.facebook.com/images/fb_icon_325x325.png',
           width: null,
           height: null,
-          type: null,
+          type: 'png',
         });
         expect(result.ogTitle).to.be.eql('Facebook - Log In or Sign Up');
         expect(result.ogDescription).to.be.eql('Create an account or log into Facebook. Connect with friends, family and other people you know. Share photos and videos, send messages and get updates.');
@@ -1268,7 +1268,7 @@ describe('static', function () {
           url: 'https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2020/06/p-2-dr-jess-clemons-creative-conversation.jpg',
           width: '1280',
           height: '720',
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2020/06/p-2-dr-jess-clemons-creative-conversation.jpg',
@@ -1381,7 +1381,7 @@ describe('static', function () {
           url: 'https://content.fortune.com/wp-content/uploads/2020/06/nolvi-u-s-deaths-from-wars-and-major-pandemics-4.png?resize=1200,600',
           width: null,
           height: null,
-          type: null,
+          type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://content.fortune.com/wp-content/uploads/2020/06/nolvi-u-s-deaths-from-wars-and-major-pandemics-4.png?resize=1200,600',
@@ -1440,7 +1440,7 @@ describe('static', function () {
           url: 'https://irs2.4sqi.net/img/general/600x600/13692844_gLU3tu6y4S6bcPDyiS1y9GU9ZkghXDaMJE9xFnPuVmo.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://irs2.4sqi.net/img/general/600x600/13692844_gLU3tu6y4S6bcPDyiS1y9GU9ZkghXDaMJE9xFnPuVmo.jpg',
@@ -1502,7 +1502,7 @@ describe('static', function () {
           url: 'https://www.geektime.com/content/images/2020/06/binah-1578304795.png',
           width: '940',
           height: '626',
-          type: null,
+          type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://www.geektime.com/content/images/2020/06/binah-1578304795.png',
@@ -1559,7 +1559,7 @@ describe('static', function () {
           url: 'https://www.incimages.com/uploaded_files/image/1024x576/GettyImages-1223427650_430893.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://www.incimages.com/uploaded_files/image/1024x576/GettyImages-1223427650_430893.jpg',
@@ -1704,7 +1704,7 @@ describe('static', function () {
           url: 'https://jewishbusinessnews.com/wp-content/uploads/2020/06/Technion-skin-like-material-the-heal-itself-e1591896385138.jpg',
           width: '640',
           height: '628',
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://jewishbusinessnews.com/wp-content/uploads/2020/06/Technion-skin-like-material-the-heal-itself-e1591896385138.jpg',
@@ -1769,7 +1769,7 @@ describe('static', function () {
           url: 'https://ksr-ugc.imgix.net/assets/013/622/325/ba3e0c3ba83ec7a7f6621d52f78773b9_original.jpg?w=1536&h=864&fit=fill&bg=000000&v=1473713981&auto=format&q=92&s=06bc55ef9203f6b52b87f7bf978ae915',
           width: '1536',
           height: '1152',
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://ksr-ugc.imgix.net/assets/013/622/325/ba3e0c3ba83ec7a7f6621d52f78773b9_original.jpg?w=640&h=360&fit=fill&bg=000000&v=1473713981&auto=format&q=92&s=468b71562ed1d30cbf4aa9f9a1d7be1a',
@@ -1955,7 +1955,7 @@ describe('static', function () {
           url: 'https://i.kinja-img.com/gawker-media/image/upload/t_original/ittdz6udygdrrkbv8eey.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://i.kinja-img.com/gawker-media/image/upload/t_original/ittdz6udygdrrkbv8eey.jpg',
@@ -2007,7 +2007,7 @@ describe('static', function () {
           url: 'https://images.macrumors.com/article-new/2020/05/greyhoundappletvplus.jpg',
           width: '1920',
           height: '795',
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://images.macrumors.com/article-new/2020/05/greyhoundappletvplus.jpg',
@@ -2062,7 +2062,7 @@ describe('static', function () {
           url: 'https://mondrian.mashable.com/2020%252F06%252F11%252Ffe%252Fc525cae5298a4f55a62c603880b80465.d3c99.png%252F1200x630.png?signature=4ujkwZwJuqUP8Yu5IGDifLN0rbA=',
           width: null,
           height: null,
-          type: null,
+          type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://mondrian.mashable.com/uploads%252Fstory%252Fthumbnail%252F115752%252Fc525cae5-298a-4f55-a62c-603880b80465.png%252F640x360.png?signature=76mpWTpXEQXAcTrYyJprDKjClwg=&source=https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com',
@@ -2125,7 +2125,7 @@ describe('static', function () {
           url: 'https://miro.medium.com/freeze/max/480/1*11wZiPlVMyZkQhkFlv3GpQ.gif',
           width: null,
           height: null,
-          type: null,
+          type: 'gif',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://miro.medium.com/freeze/max/480/1*11wZiPlVMyZkQhkFlv3GpQ.gif',
@@ -2634,7 +2634,7 @@ describe('static', function () {
           url: 'https://www.npmjs.com/static/images/touch-icons/open-graph.png',
           width: null,
           height: null,
-          type: null,
+          type: 'png',
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/npm');
         expect(result.success).to.be.eql(true);
@@ -2676,7 +2676,7 @@ describe('static', function () {
           url: 'https://mma.prnewswire.com/media/738482/Ideanomics_Logo.jpg?p=facebook',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://mma.prnewswire.com/media/738482/Ideanomics_Logo.jpg?p=twitter',
@@ -2724,7 +2724,7 @@ describe('static', function () {
           url: 'https://www.redditstatic.com/icon.png',
           width: null,
           height: null,
-          type: null,
+          type: 'png',
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/reddit');
         expect(result.success).to.be.eql(true);
@@ -3545,7 +3545,7 @@ describe('static', function () {
           url: 'https://techcrunch.com/wp-content/uploads/2015/08/10-interviewed.png?w=720',
           width: null,
           height: null,
-          type: null,
+          type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://techcrunch.com/wp-content/uploads/2015/08/10-interviewed.png?w=720',
@@ -3602,7 +3602,7 @@ describe('static', function () {
           url: 'https://pi.tedcdn.com/r/pf.tedcdn.com/images/playlists/talks_to_form_better_habits_1200x627.jpg?c=1050%2C550&w=1050',
           width: '1050',
           height: '550',
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://pi.tedcdn.com/r/pf.tedcdn.com/images/playlists/talks_to_form_better_habits_1200x627.jpg?c=1050%2C550&w=1050',
@@ -3660,7 +3660,7 @@ describe('static', function () {
           url: 'http://www.thinkgeek.com/images/products/zoom/jjip_citizen_playing_cards.jpg',
           width: null,
           height: null,
-          type: null, // TODO: why isn't type set here?
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'http://www.thinkgeek.com/images/products/zoom/jjip_citizen_playing_cards.jpg',
@@ -3715,7 +3715,7 @@ describe('static', function () {
           url: 'https://cdn.vox-cdn.com/thumbor/PP5h21sGbjyDt0BoZYKpdNUsFFs=/0x0:4746x2485/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/20030444/524250960.jpg.jpg',
           width: '1200',
           height: '630',
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://cdn.vox-cdn.com/thumbor/OR6JkRz2SCfX5Ecx6JSCVWk5vs0=/0x0:4746x2373/fit-in/1200x600/cdn.vox-cdn.com/uploads/chorus_asset/file/20030444/524250960.jpg.jpg',
@@ -3847,7 +3847,7 @@ describe('static', function () {
           url: 'https://s3-media2.fl.yelpcdn.com/bphoto/FE1lCskaigmVupQGk86T4g/o.jpg',
           width: '2000',
           height: '1300',
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://s3-media1.fl.yelpcdn.com/bphoto/FE1lCskaigmVupQGk86T4g/258s.jpg',

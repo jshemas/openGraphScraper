@@ -20,7 +20,7 @@ describe('twitter', function () {
           url: 'https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png',
           width: null,
           height: null,
-          type: null,
+          type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png',
@@ -120,7 +120,7 @@ describe('twitter', function () {
           url: 'https://web.archive.org/web/20170913111314im_/http://og.github.com/atom-mark/atom-mark@1200x630.png',
           width: '1200',
           height: '630',
-          type: null,
+          type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://web.archive.org/web/20170913111314im_/http://og.github.com/atom-logo/atom-logo@1200x630.png',

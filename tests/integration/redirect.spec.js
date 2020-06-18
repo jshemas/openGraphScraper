@@ -22,7 +22,7 @@ describe('redirect', function () {
           url: 'http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1584829128507/unnamed.jpg?format=1500w',
           width: '1280',
           height: '779',
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1584829128507/unnamed.jpg?format=1500w',
@@ -76,7 +76,7 @@ describe('redirect', function () {
           url: 'https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-facebookJumbo.jpg',
           width: null,
           height: null,
-          type: null,
+          type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-videoSixteenByNineJumbo1600.jpg',

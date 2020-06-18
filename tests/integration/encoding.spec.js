@@ -35,7 +35,7 @@ describe('encoding', function () {
           url: 'https://www.gazeta.ru/nm2015/i/Logo_red_sqare_250.png',
           width: '250',
           height: '250',
-          type: null,
+          type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://www.gazeta.ru/nm2015/i/Logo_red_sqare_250.png',
@@ -175,7 +175,7 @@ describe('encoding', function () {
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
           width: null,
           height: null,
-          type: null,
+          type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
