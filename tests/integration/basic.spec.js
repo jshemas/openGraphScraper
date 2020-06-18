@@ -66,8 +66,7 @@ describe('basic', function () {
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
-  // travis will return a 'Response code 403 (Forbidden)' error on this page
-  it.skip('vimeo.com should return open graph data', function () {
+  it('vimeo.com should return open graph data', function () {
     return ogs({
       url: 'https://vimeo.com/232889838',
     }, function (error, result, response) {
