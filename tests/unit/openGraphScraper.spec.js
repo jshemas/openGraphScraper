@@ -80,9 +80,6 @@ describe('return openGraphScraper', function () {
             expect(data.result.ogTitle).to.be.eql('test page');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(basicHTML);
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });
@@ -107,9 +104,6 @@ describe('return openGraphScraper', function () {
             expect(data.result.ogTitle).to.be.eql('test page');
             expect(data.result.requestUrl).to.be.eql(null);
             expect(data.response.body).to.be.eql(basicHTML);
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });
@@ -134,9 +128,6 @@ describe('return openGraphScraper', function () {
             expect(data.result.ogTitle).to.be.eql('test page');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(basicHTML);
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });
@@ -165,9 +156,6 @@ describe('return openGraphScraper', function () {
             expect(data.result.ogDescription).to.be.eql('привет тестовая страница<');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(Buffer.from(encodingHTML, 'utf8'));
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });
@@ -192,9 +180,6 @@ describe('return openGraphScraper', function () {
             expect(data.result.ogTitle).to.be.eql('test page');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(basicHTML);
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });
@@ -257,9 +242,6 @@ describe('return openGraphScraper', function () {
             expect(data.result.ogDescription).to.be.eql('test description from meta');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(metaDescriptionHTML);
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });
@@ -286,9 +268,6 @@ describe('return openGraphScraper', function () {
             expect(data.result.ogTitle).to.be.eql('test page');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(basicHTML);
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });
@@ -315,9 +294,6 @@ describe('return openGraphScraper', function () {
             expect(data.result.describe).to.be.eql(undefined);
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(metaDescriptionHTML);
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });
@@ -418,9 +394,6 @@ describe('return openGraphScraper', function () {
             expect(data.result.ogTitle).to.be.eql('test page');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(basicHTML);
-          })
-          .catch(function () {
-            expect().fail('this should not happen');
           });
       });
     });
