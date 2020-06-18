@@ -131,3 +131,33 @@ describe('validate utils', function () {
     });
   });
 });
+
+describe('findImageTypeFromUrl', function () {
+  it('foobar.com/image.png?test=true', function () {
+    const type = utils.findImageTypeFromUrl('foobar.com/image.png?test=true');
+    expect(type).to.eql('png');
+  });
+  it('foobar.com/image.png', function () {
+    const type = utils.findImageTypeFromUrl('foobar.com/image.png');
+    expect(type).to.eql('png');
+  });
+  it('image.png', function () {
+    const type = utils.findImageTypeFromUrl('image.png');
+    expect(type).to.eql('png');
+  });
+  it('image', function () {
+    const type = utils.findImageTypeFromUrl('image');
+    expect(type).to.eql('image');
+  });
+});
+
+describe('isImageTypeValid', function () {
+  it('when type is png', function () {
+    const valid = utils.isImageTypeValid('png');
+    expect(valid).to.eql(true);
+  });
+  it('when type is foo', function () {
+    const valid = utils.isImageTypeValid('foo');
+    expect(valid).to.eql(false);
+  });
+});
