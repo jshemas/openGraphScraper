@@ -469,6 +469,7 @@ describe('static', function () {
         expect(result.author).to.be.eql('Eric Knorr');
         expect(result.ogSiteName).to.be.eql('InfoWorld');
         expect(result.dcDateIssued).to.be.eql('2020-06-08T03:00-05:00');
+        expect(result.date).to.be.eql('2020-06-08');
         expect(result.ogUrl).to.be.eql('https://www.infoworld.com/article/3561329/the-state-of-cloud-computing-in-2020.html');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@infoworld');
@@ -490,6 +491,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
+          'date',
           'dcDateIssued',
           'description',
           'ogDescription',
@@ -702,6 +704,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Healthcare Data Protection and Privacy Prognosis—Still Critical but New Treatment is Available');
         expect(result.ogDescription).to.be.eql('My healthcare data is what I want protected the most (intimate details about my family’s health, where we live, and financial information). Anything and everything a hacker could want! It is safe? As a data security professional and citizen, I know the answer is not good.');
         expect(result.ogType).to.be.eql('article');
+        expect(result.date).to.be.eql('2016-04-15');
         expect(result.dcDateIssued).to.be.eql('2016-04-15T13:52-05:00');
         expect(result.author).to.be.eql('Robert Shields');
         expect(result.robots).to.be.eql('NOODP,NOYDIR');
@@ -725,6 +728,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/computerworld');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'date',
           'author',
           'dcDateIssued',
           'description',
@@ -1975,6 +1979,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Indignant Joe Biden pens strongly worded letter to Mark Zuckerberg');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogSiteName).to.be.eql('Mashable');
+        expect(result.date).to.be.eql('2020-06-11 17:50:52 UTC');
         expect(result.ogDescription).to.be.eql("Biden wants to talk to Facebook's manager. ");
         expect(result.description).to.be.eql('In an open letter to Mark Zuckerberg and Facebook, Joe Biden demanded action intended to stop the spread of fake news ahead of the 2020 election. ');
         expect(result.twitterTitle).to.be.eql('Indignant Joe Biden pens strongly worded letter to Mark Zuckerberg');
@@ -2002,6 +2007,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
+          'date',
           'description',
           'ogDescription',
           'ogImage',
@@ -2510,6 +2516,7 @@ describe('static', function () {
         expect(error).to.be.eql(false);
         expect(result.description).to.be.eql('/PRNewswire/ -- Ideanomics (NASDAQ: IDEX) ("Ideanomics" or the "Company") is pleased to announce the second-stage of debt conversion, with the noteholders of...');
         expect(result.author).to.be.eql('Ideanomics');
+        expect(result.date).to.be.eql('2020-06-11T16:25:00-04:00');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@PRNewswire');
         expect(result.twitterTitle).to.be.eql('Ideanomics Announces Reduction of Debt Holders as Part of Growth Plans');
@@ -2535,6 +2542,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
+          'date',
           'description',
           'ogDescription',
           'ogImage',
