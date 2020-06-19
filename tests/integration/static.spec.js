@@ -468,6 +468,7 @@ describe('static', function () {
         expect(result.ogType).to.be.eql('article');
         expect(result.author).to.be.eql('Eric Knorr');
         expect(result.ogSiteName).to.be.eql('InfoWorld');
+        expect(result.dcDateIssued).to.be.eql('2020-06-08T03:00-05:00');
         expect(result.ogUrl).to.be.eql('https://www.infoworld.com/article/3561329/the-state-of-cloud-computing-in-2020.html');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@infoworld');
@@ -489,6 +490,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
+          'dcDateIssued',
           'description',
           'ogDescription',
           'ogImage',
@@ -700,6 +702,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Healthcare Data Protection and Privacy Prognosis—Still Critical but New Treatment is Available');
         expect(result.ogDescription).to.be.eql('My healthcare data is what I want protected the most (intimate details about my family’s health, where we live, and financial information). Anything and everything a hacker could want! It is safe? As a data security professional and citizen, I know the answer is not good.');
         expect(result.ogType).to.be.eql('article');
+        expect(result.dcDateIssued).to.be.eql('2016-04-15T13:52-05:00');
         expect(result.author).to.be.eql('Robert Shields');
         expect(result.robots).to.be.eql('NOODP,NOYDIR');
         expect(result.ogSiteName).to.be.eql('Computerworld');
@@ -723,6 +726,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
+          'dcDateIssued',
           'description',
           'ogDescription',
           'ogImage',
@@ -2594,6 +2598,7 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.robots).to.be.eql('index, follow');
+        expect(result.dcDateIssued).to.be.eql('Joshua Franklin');
         expect(result.description).to.be.eql('Data mining firm Palantir Technologies Inc is aiming to file confidentially with U.S. regulators to go public in the coming weeks, emboldened by the strong performance of other initial public offerings (IPOs), people familiar with the matter said.');
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogSiteName).to.be.eql('U.S.');
@@ -2621,6 +2626,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/reuters');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'author',
           'description',
           'ogDescription',
           'ogImage',
