@@ -233,7 +233,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql(undefined); // TODO: look into this
         expect(result.ogTitle).to.be.eql('iStat Menus');
         expect(result.ogImage).to.be.eql([
           {
@@ -288,7 +287,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bjango');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogImage',
           'ogTitle',
           'requestUrl',
@@ -813,7 +811,6 @@ describe('static', function () {
         expect(result.description).to.be.eql('Every geek goes through a phase where they discover emulation. It&#39;s practically a rite of passage. \n'
           + '\n'
           + 'This is a companion discussion topic for the original entry at https://blog.codinghorror.com/the-raspberry-pi-has-revol&hellip;'); // TODO: look into this
-        expect(result.author).to.be.eql(undefined); // TODO: look into this
         expect(result.ogSiteName).to.be.eql('Coding Horror Discussion');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.ogUrl).to.be.eql('https://discourse.codinghorror.com/t/the-raspberry-pi-has-revolutionized-emulation/4462/29');
@@ -836,7 +833,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/discourse');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'author',
           'description',
           'ogDescription',
           'ogImage',
@@ -1020,7 +1016,6 @@ describe('static', function () {
         expect(result.ogType).to.be.eql('article');
         expect(result.articlePublishedTime).to.be.eql('2019-03-14T14:35:12Z');
         expect(result.articleModifiedTime).to.be.eql('2019-03-14@14:35:13 UTC');
-        expect(result.articleSection).to.be.eql(undefined);
         expect(result.articleTag).to.be.eql('Technology,Robots');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@Entrepreneur');
@@ -1046,7 +1041,6 @@ describe('static', function () {
           'articleModifiedTime',
           'articlePublishedTime',
           'articlePublisher',
-          'articleSection',
           'articleTag',
           'description',
           'ogDescription',
@@ -1257,7 +1251,6 @@ describe('static', function () {
         expect(result.ogDescription).to.be.eql("The best scents for gifting — even if it's a gift to yourself — are universally appealing but also unique. ");
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@forbes');
-        expect(result.twitterCreator).to.be.eql(undefined); // TODO: look into
         expect(result.twitterTitle).to.be.eql('The Best Men’s Colognes For Gifting');
         expect(result.twitterDescription).to.be.eql("The best scents for gifting — even if it's a gift to yourself — are universally appealing but also unique. ");
         expect(result.ogImage).to.be.eql({
@@ -1289,7 +1282,6 @@ describe('static', function () {
           'requestUrl',
           'success',
           'twitterCard',
-          'twitterCreator',
           'twitterDescription',
           'twitterImage',
           'twitterSite',
@@ -1854,7 +1846,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql(undefined); // TODO: look into this
         expect(result.ogTitle).to.be.eql('Learn Standard ML in Y Minutes');
         expect(result.ogImage).to.be.eql([
           {
@@ -1867,7 +1858,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/learnxinyminutes');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogImage',
           'ogTitle',
           'requestUrl',
@@ -2018,7 +2008,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.twitterPlayer).to.be.eql({
-          url: undefined, width: '435', height: '245', stream: null,
+          width: '435', height: '245', stream: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mashable');
         expect(result.success).to.be.eql(true);
@@ -2698,11 +2688,9 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Inception');
         expect(result.ogType).to.be.eql('video.movie');
         expect(result.ogUrl).to.be.eql('https://www.rottentomatoes.com/m/inception/');
-        expect(result.ogDescription).to.be.eql(undefined);
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterSite).to.be.eql('@rottentomatoes');
         expect(result.twitterTitle).to.be.eql('Inception');
-        expect(result.twitterDescription).to.be.eql(undefined);
         expect(result.ogImage).to.be.eql([
           {
             url: 'https://staticv2.rottentomatoes.com/static/images/logos/rtlogo.png',
@@ -2930,7 +2918,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rottentomatoes');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'ogDescription',
           'ogImage',
           'ogTitle',
           'ogType',
@@ -2938,7 +2925,6 @@ describe('static', function () {
           'requestUrl',
           'success',
           'twitterCard',
-          'twitterDescription',
           'twitterSite',
           'twitterTitle',
         );
