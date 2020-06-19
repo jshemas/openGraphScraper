@@ -1,3 +1,4 @@
+const { expect } = require('chai');
 const ogs = require('../../index');
 
 describe('static', function () {
@@ -325,10 +326,14 @@ describe('static', function () {
           height: null,
           alt: null,
         });
+        expect(result.ogAudioSecureURL).to.be.eql('https://assets.bwbx.io/s3/readings/QBS8ZSDWRGG71591924612662.mp3');
+        expect(result.ogAudioType).to.be.eql('audio/mpeg');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bloomberg');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'description',
+          'ogAudioSecureURL',
+          'ogAudioType',
           'ogDescription',
           'ogImage',
           'ogSiteName',
