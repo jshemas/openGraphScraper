@@ -88,6 +88,7 @@ describe('encoding', function () {
         expect(result.robots).to.be.eql('index, follow');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('Careers | Signant Health');
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/signanthealth/');
         expect(result.description).to.be.eql('If you’re looking to join an exciting and fast-paced organization, consider Signant Health. We offer rewarding personal and career advancement as well as competitive compensation and benefits.');
         expect(result.ogDescription).to.be.eql('If you’re looking to join an exciting and fast-paced organization, consider Signant Health. We offer rewarding personal and career advancement as well as competitive compensation and benefits.');
         expect(result.ogUrl).to.be.eql('https://www.signanthealth.com/company/careers/');
@@ -99,6 +100,7 @@ describe('encoding', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleModifiedTime',
+          'articlePublisher',
           'description',
           'ogDescription',
           'ogLocale',

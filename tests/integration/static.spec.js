@@ -619,6 +619,7 @@ describe('static', function () {
         expect(result.twitterDescription).to.be.eql("Here's what you need to at least sound like you know what you're talking about when it comes to the next-gen mobile network.");
         expect(result.twitterSite).to.be.eql('@CNET');
         expect(result.twitterCreator).to.be.eql('@RogerWCheng');
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/cnet');
         expect(result.ogImage).to.be.eql({
           url: 'https://cnet3.cbsistatic.com/img/0IjS4wIUDkC77PSDb-eyF0aZNw8=/756x567/2020/01/22/931a3fa2-4e0e-4def-bdc2-448926f8da02/5g-phone-2.jpg',
           width: null,
@@ -637,6 +638,7 @@ describe('static', function () {
           'author',
           'description',
           'ogDescription',
+          'articlePublisher',
           'ogImage',
           'ogSiteName',
           'ogTitle',
@@ -1036,12 +1038,14 @@ describe('static', function () {
           height: null,
           alt: null,
         });
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/EntMagazine');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/entrepreneur');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleAuthor',
           'articleModifiedTime',
           'articlePublishedTime',
+          'articlePublisher',
           'articleSection',
           'articleTag',
           'description',
@@ -1205,11 +1209,13 @@ describe('static', function () {
           height: null,
           alt: null,
         });
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/FastCompany');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/fastcompany');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleModifiedTime',
           'articlePublishedTime',
+          'articlePublisher',
           'articleTag',
           'author',
           'description',
@@ -1243,6 +1249,7 @@ describe('static', function () {
         expect(result.author).to.be.eql('Adam Hurly');
         expect(result.articleSection).to.be.eql('Shopping');
         expect(result.articleAuthor).to.be.eql('Adam Hurly');
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/forbes');
         expect(result.ogTitle).to.be.eql('The Best Men’s Colognes For Gifting');
         expect(result.ogSiteName).to.be.eql('Forbes');
         expect(result.ogType).to.be.eql('article');
@@ -1270,6 +1277,7 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'articleAuthor',
           'articleSection',
+          'articlePublisher',
           'author',
           'description',
           'ogDescription',
@@ -1423,6 +1431,7 @@ describe('static', function () {
         expect(result.articlePublishedTime).to.be.eql('2020-06-11T15:58:33.000Z');
         expect(result.articleModifiedTime).to.be.eql('2020-06-11T15:58:33.000Z');
         expect(result.articleTag).to.be.eql('startups');
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/geektimecoil');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterTitle).to.be.eql('Duckface can saves lives: Binah.ai raises $13.5M to monitor health condition through selfies');
         expect(result.twitterDescription).to.be.eql('Israeli startup Binah.ai technology tracks vital-sign measurements from selfies. As the pandemic calls for more remote everything, the company’s tech is already being used in a Canadian hospital');
@@ -1444,6 +1453,7 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'articleModifiedTime',
           'articlePublishedTime',
+          'articlePublisher',
           'articleTag',
           'ogDescription',
           'ogImage',
@@ -1615,6 +1625,7 @@ describe('static', function () {
         expect(result.description).to.be.eql('Technion doctoral Muhammad Khatib, inspired biological healing process of the human skin, decided to adapt his elastomer into an autonomous self-healing system.');
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogType).to.be.eql('article');
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/jbusinessnews/?ref=bookmarks');
         expect(result.ogTitle).to.be.eql('Israeli Student At The Technion Develops Self-Healing Artificial Electronic Skin - Jewish Business News');
         expect(result.ogDescription).to.be.eql('Technion doctoral Muhammad Khatib, inspired biological healing process of the human skin, decided to adapt his elastomer into an autonomous self-healing system.');
         expect(result.ogUrl).to.be.eql('https://jewishbusinessnews.com/2020/06/11/israeli-student-at-the-technion-develops-self-healing-artificial-electronic-skin/');
@@ -1646,6 +1657,7 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'articleModifiedTime',
           'articlePublishedTime',
+          'articlePublisher',
           'articleSection',
           'articleTag',
           'description',
@@ -1925,6 +1937,7 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('MacRumors');
         expect(result.ogTitle).to.be.eql("Apple Announces July 10 Release Date for Upcoming Tom Hanks WWII Film 'Greyhound'");
         expect(result.ogType).to.be.eql('article');
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/MacRumors/');
         expect(result.ogUrl).to.be.eql('https://www.macrumors.com/2020/06/11/apple-tv-plus-greyhound-july-10/');
         expect(result.ogDescription).to.be.eql('Apple today shared the first trailer for "Greyhound," a WWII movie that stars Tom Hanks as George Krause, a career naval officer given...');
         expect(result.twitterCard).to.be.eql('summary_large_image');
@@ -1947,6 +1960,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/macrumors');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'articlePublisher',
           'description',
           'ogDescription',
           'ogImage',
@@ -1980,6 +1994,9 @@ describe('static', function () {
         expect(result.ogType).to.be.eql('article');
         expect(result.ogSiteName).to.be.eql('Mashable');
         expect(result.date).to.be.eql('2020-06-11 17:50:52 UTC');
+        expect(result.ogArticleModifiedTime).to.be.eql('2020-06-11T19:14:58Z');
+        expect(result.ogArticlePublishedTime).to.be.eql('2020-06-11T17:50:52Z');
+        expect(result.ogArticlePublisher).to.be.eql('https://www.facebook.com/mashable');
         expect(result.ogDescription).to.be.eql("Biden wants to talk to Facebook's manager. ");
         expect(result.description).to.be.eql('In an open letter to Mark Zuckerberg and Facebook, Joe Biden demanded action intended to stop the spread of fake news ahead of the 2020 election. ');
         expect(result.twitterTitle).to.be.eql('Indignant Joe Biden pens strongly worded letter to Mark Zuckerberg');
@@ -2017,6 +2034,9 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'ogArticleModifiedTime',
+          'ogArticlePublishedTime',
+          'ogArticlePublisher',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -2607,9 +2627,15 @@ describe('static', function () {
         expect(error).to.be.eql(false);
         expect(result.robots).to.be.eql('index, follow');
         expect(result.author).to.be.eql('Joshua Franklin');
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/Reuters');
         expect(result.description).to.be.eql('Data mining firm Palantir Technologies Inc is aiming to file confidentially with U.S. regulators to go public in the coming weeks, emboldened by the strong performance of other initial public offerings (IPOs), people familiar with the matter said.');
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogSiteName).to.be.eql('U.S.');
+        expect(result.ogArticleAuthor).to.be.eql('Joshua Franklin');
+        expect(result.ogArticleModifiedTime).to.be.eql('2020-06-12T00:17:43+0000');
+        expect(result.ogArticlePublishedTime).to.be.eql('2020-06-12T00:17:43+0000');
+        expect(result.ogArticleSection).to.be.eql('Business');
+        expect(result.ogArticleTag).to.be.eql('US,PALANTIR,IPO,EXCLUSIVE,Security Listings / Delistings,Company News,Software and IT Services (TRBC),Exclusive,Initial Public Offerings,New Issues,Equity Financing,Software (TRBC),Major News,Enterprise Reporting,Technology / Media / Telecoms,United States');
         expect(result.ogTitle).to.be.eql('Palantir close to registering for stock market debut: sources');
         expect(result.ogUrl).to.be.eql('https://www.reuters.com/article/us-palantir-ipo-exclusive-idUSKBN23I3GB');
         expect(result.ogType).to.be.eql('article');
@@ -2635,6 +2661,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
+          'articlePublisher',
           'description',
           'ogDescription',
           'ogImage',
@@ -2646,6 +2673,11 @@ describe('static', function () {
           'requestUrl',
           'robots',
           'success',
+          'ogArticleAuthor',
+          'ogArticleModifiedTime',
+          'ogArticlePublishedTime',
+          'ogArticleSection',
+          'ogArticleTag',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -3126,6 +3158,7 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogSiteName).to.be.eql('TechCrunch');
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/techcrunch');
         expect(result.ogTitle).to.be.eql('HackerRank Makes Technical Recruiting More Transparent – TechCrunch');
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.ogUrl).to.be.eql('https://social.techcrunch.com/2016/01/12/hackerrank-jobs-takes-the-mystery-out-of-technical-recruiting/');
@@ -3151,6 +3184,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/techcrunch');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'articlePublisher',
           'description',
           'ogDescription',
           'ogImage',
@@ -3243,6 +3277,7 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('ThinkGeek');
         expect(result.ogType).to.be.eql('product');
         expect(result.ogTitle).to.be.eql('Citizen Playing Cards');
+        expect(result.articlePublisher).to.be.eql('ThinkGeek');
         expect(result.ogDescription).to.be.eql('Whether you perform with them or just break out the occasional flourish in a friendly poker game, Citizen Playing Cards will impress people with their elegance. The tuck case features a combination of gold foil, hot stamping, and bronze foil.');
         expect(result.ogUrl).to.be.eql('http://www.thinkgeek.com/product/jjip/?cpg=fbl_jjip');
         expect(result.articleAuthor).to.be.eql('ThinkGeek');
@@ -3267,6 +3302,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleAuthor',
+          'articlePublisher',
           'description',
           'ogDescription',
           'ogImage',
@@ -3295,6 +3331,7 @@ describe('static', function () {
         expect(error).to.be.eql(false);
         expect(result.author).to.be.eql('Theodore Schleifer');
         expect(result.articlePublishedTime).to.be.eql('2020-06-11T17:03:32-04:00');
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/Vox');
         expect(result.articleModifiedTime).to.be.eql('2020-06-11T17:03:32-04:00');
         expect(result.description).to.be.eql('The Twitter CEO’s plan to give away $1 billion shows charity is not as hard as billionaires say it is.');
         expect(result.ogDescription).to.be.eql('The Twitter CEO’s plan to give away $1 billion shows charity is not as hard as billionaires say it is.');
@@ -3323,6 +3360,7 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'articleModifiedTime',
           'articlePublishedTime',
+          'articlePublisher',
           'author',
           'description',
           'ogDescription',

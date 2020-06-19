@@ -131,6 +131,7 @@ describe('redirect', function () {
         expect(result.twitterCreator).to.be.eql('@MarketocracyInc');
         expect(result.twitterTitle).to.be.eql('3 Stocks Like Apple Was 10 Years Ago: Tesla, Nvidia And Alibaba');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
+        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/forbes');
         expect(result.ogImage).to.be.eql({
           url: 'https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F825671570%2F0x0.jpg%3Ffit%3Dscale',
           width: null,
@@ -148,6 +149,7 @@ describe('redirect', function () {
         expect(result).to.have.all.keys(
           'articleAuthor',
           'articleSection',
+          'articlePublisher',
           'author',
           'description',
           'ogDescription',
