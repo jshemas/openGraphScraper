@@ -2598,7 +2598,7 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.robots).to.be.eql('index, follow');
-        expect(result.dcDateIssued).to.be.eql('Joshua Franklin');
+        expect(result.author).to.be.eql('Joshua Franklin');
         expect(result.description).to.be.eql('Data mining firm Palantir Technologies Inc is aiming to file confidentially with U.S. regulators to go public in the coming weeks, emboldened by the strong performance of other initial public offerings (IPOs), people familiar with the matter said.');
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogSiteName).to.be.eql('U.S.');
