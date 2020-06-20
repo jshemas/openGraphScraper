@@ -28,7 +28,6 @@
     "cheerio": "^1.0.0-rc.3",
     "got": "^11.3.0",
     "iconv-lite": "^0.6.0",
-    "lodash": "^4.17.15",
     "validator": "^13.0.0"
   },
   "devDependencies": {
