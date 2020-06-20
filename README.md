@@ -66,6 +66,7 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | blacklist            | Pass in an array of sites you don't want ogs to run on.                    | []            |          |
 | onlyGetOpenGraphInfo | Only fetch open graph info and don't fall back on anything else.           | false         |          |
 | ogImageFallback      | Fetch other images if no open graph ones are found.                        | true          |          |
+| allMedia             | By default, OGS will only send back the first image/video it finds         | false         |          |
 | decompress           | Set the accept-encoding to gzip/deflate                                    | true          |          |
 | followRedirect       | Defines if redirect responses should be followed automatically.            | true          |          |
 | maxRedirects         | Max number of redirects ogs will follow.                                   | 10            |          |
