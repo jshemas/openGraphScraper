@@ -56,12 +56,13 @@ describe('basic', function () {
       expect(error).to.be.eql(false);
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogLocale).to.be.eql('en');
+      expect(result.ogUrl).to.be.eql('https://www.namecheap.com/');
       expect(result.ogTitle).to.be.eql('Buy domain name - Cheap domain names from $1.37 - Namecheap');
       expect(result.ogDescription).to.be.eql('Namecheap offers cheap domain names with the most reliable service. Buy domain names with Namecheap and see why over 2 million customers trust us with over 10 million domains!');
       expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
       expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys('ogTitle', 'ogDescription', 'ogImage', 'ogLocale', 'requestUrl', 'success');
+      expect(result).to.have.all.keys('ogTitle', 'ogDescription', 'ogImage', 'ogLocale', 'ogUrl', 'requestUrl', 'success');
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });

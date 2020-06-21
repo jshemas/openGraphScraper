@@ -19,6 +19,7 @@ describe('redirect', function () {
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.ogLocale).to.be.eql('en-US');
+        expect(result.twitterUrl).to.be.eql('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
         expect(result.ogImage).to.be.eql({
           url: 'http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1584829128507/unnamed.jpg?format=1500w',
           width: '1280',
@@ -45,6 +46,7 @@ describe('redirect', function () {
           'requestUrl',
           'success',
           'twitterCard',
+          'twitterUrl',
           'twitterDescription',
           'twitterImage',
           'twitterTitle',
@@ -73,6 +75,7 @@ describe('redirect', function () {
         expect(result.twitterAppUrlGooglePlay).to.be.eql('nyt://article/d07123d7-f6dc-5370-97cb-86dd6aa0b0de');
         expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterSite).to.be.eql('@nytimes');
+        expect(result.twitterUrl).to.be.eql('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html');
         expect(result.ogImage).to.be.eql({
           url: 'https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-facebookJumbo.jpg',
           width: null,
@@ -107,6 +110,7 @@ describe('redirect', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });

@@ -27,6 +27,7 @@ describe('static', function () {
         expect(result.twitterAppUrliPhone).to.be.eql('airbnb://rooms/2250401');
         expect(result.twitterAppUrliPad).to.be.eql('airbnb://rooms/2250401');
         expect(result.twitterAppUrlGooglePlay).to.be.eql('airbnb://rooms/2250401');
+        expect(result.twitterUrl).to.be.eql('https://www.airbnb.com/rooms/2250401');
         expect(result.ogImage).to.be.eql({
           url: 'https://a1.muscache.com/im/pictures/43670185/606e6e19_original.jpg?aki_policy=x_large',
           width: null,
@@ -64,6 +65,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -84,6 +86,7 @@ describe('static', function () {
         expect(result.ogUrl).to.be.eql('http://arstechnica.com/gadgets/2016/10/google-pixel-review-bland-pricey-but-still-best-android-phone/');
         expect(result.ogTitle).to.be.eql('Google Pixel review: The best Android phone, even if it is a little pricey');
         expect(result.ogDescription).to.be.eql('Unbeatable software and support with a great camera, wrapped in a familiar exterior.');
+        expect(result.twitterUrl).to.be.eql('http://arstechnica.com/gadgets/2016/10/google-pixel-review-bland-pricey-but-still-best-android-phone/');
         expect(result.ogLocale).to.be.eql('en-us');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogImage).to.be.eql({
@@ -116,6 +119,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -363,6 +367,8 @@ describe('static', function () {
         expect(result.ogDate).to.be.eql('2020-06-10T10:13:00+05:30');
         expect(result.twitterCreator).to.be.eql('@BT_India');
         expect(result.twitterTitle).to.be.eql('Madhu Kapur, family withdraw case against Yes Bank');
+        expect(result.ogUrl).to.be.eql('https://www.businesstoday.in/current/corporate/madhu-kapur-family-withdraw-case-against-yes-bank/story/406469.html');
+        expect(result.twitterUrl).to.be.eql('https://www.businesstoday.in/current/corporate/madhu-kapur-family-withdraw-case-against-yes-bank/story/406469.html');
         expect(result.twitterDescription).to.be.eql("Madhu Kapur in her suit had sought various reliefs including recognition of the family's right to participate in the management of the bank");
         expect(result.ogImage).to.be.eql({
           url: 'https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/yesbankoffice_505_101918105940_051519023753_160320102938_170320101641_100620101027.jpg',
@@ -385,6 +391,7 @@ describe('static', function () {
           'ogDescription',
           'ogImage',
           'ogTitle',
+          'ogUrl',
           'requestUrl',
           'success',
           'twitterCard',
@@ -393,6 +400,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -564,6 +572,7 @@ describe('static', function () {
         expect(result.twitterTitle).to.be.eql('Outreach: The startup that came back from the brink');
         expect(result.twitterDescription).to.be.eql('How a cash strapped recruitment company became a unicorn with a new business model');
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.twitterUrl).to.be.eql('https://www.cloudpro.co.uk/hr/8550/outreach-the-startup-that-came-back-from-the-brink');
         expect(result.ogImage).to.be.eql({
           url: 'https://cdn1.cloudpro.co.uk/sites/cloudprod7/files/2020/05/outreach_founding_members.jpg',
           width: null,
@@ -594,6 +603,7 @@ describe('static', function () {
           'twitterSite',
           'twitterSiteId',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -619,6 +629,7 @@ describe('static', function () {
         expect(result.twitterCreator).to.be.eql('@RogerWCheng');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/cnet');
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.twitterUrl).to.be.eql('https://www.cnet.com/how-to/5g-glossary-everything-from-spectrum-to-small-cell-to-mimo/');
         expect(result.ogImage).to.be.eql({
           url: 'https://cnet3.cbsistatic.com/img/0IjS4wIUDkC77PSDb-eyF0aZNw8=/756x567/2020/01/22/931a3fa2-4e0e-4def-bdc2-448926f8da02/5g-phone-2.jpg',
           width: null,
@@ -652,6 +663,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -814,6 +826,7 @@ describe('static', function () {
         expect(result.ogDescription).to.be.eql('Check out Pico-8 for new "fantasy console" goodness.  Works great with Raspberry Pi Zero, 2, 3, etc.');
         expect(result.twitterDescription).to.be.eql('Check out Pico-8 for new "fantasy console" goodness.  Works great with Raspberry Pi Zero, 2, 3, etc.');
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.twitterUrl).to.be.eql('https://discourse.codinghorror.com/t/the-raspberry-pi-has-revolutionized-emulation/4462/29');
         expect(result.ogImage).to.be.eql({
           url: 'https://discourse-cdn.codinghorror.com/user_avatar/discourse.codinghorror.com/adam_sommer/100/74278_1.png',
           width: null,
@@ -841,6 +854,7 @@ describe('static', function () {
           'twitterDescription',
           'twitterImage',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -955,6 +969,7 @@ describe('static', function () {
         expect(result.twitterAppIdGooglePlay).to.be.eql('com.et.reader.activities');
         expect(result.twitterAppUrlGooglePlay).to.be.eql('etandroidapp://articleshow/76152443');
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.twitterUrl).to.be.eql('https://economictimes.indiatimes.com/jobs/lockdown-led-to-30-surge-in-resumes-from-job-seekers-recruitment-firms/articleshow/76152443.cms');
         expect(result.ogImage).to.be.eql({
           url: 'https://img.etimg.com/thumb/msid-76152431,width-1070,height-580,imgsize-380461,overlay-economictimes/photo.jpg',
           width: null,
@@ -993,6 +1008,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1019,6 +1035,7 @@ describe('static', function () {
         expect(result.twitterTitle).to.be.eql('Origami-Inspired Robot Gripper Could Pack Your Groceries');
         expect(result.twitterDescription).to.be.eql('By taking inspiration from origami, this robot gripper can safely pick up and hold delicate objects while at the same time lift more than 100x its own weight.');
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.twitterUrl).to.be.eql('https://www.entrepreneur.com/article/330171');
         expect(result.ogImage).to.be.eql({
           url: 'https://assets.entrepreneur.com/content/3x2/2000/20190314142224-origami-inspired-robot.jpeg',
           width: '2000',
@@ -1055,6 +1072,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1182,6 +1200,7 @@ describe('static', function () {
         expect(result.articleModifiedTime).to.be.eql('2020-06-11T09:47:11');
         expect(result.author).to.be.eql('KC Ifeanyi');
         expect(result.articleTag).to.be.eql('audio');
+        expect(result.twitterUrl).to.be.eql('https://www.fastcompany.com/90514725/the-internets-favorite-psychiatrist-has-a-game-plan-for-your-mental-health');
         expect(result.ogImage).to.be.eql({
           url: 'https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2020/06/p-2-dr-jess-clemons-creative-conversation.jpg',
           width: '1280',
@@ -1218,6 +1237,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1299,6 +1319,7 @@ describe('static', function () {
         expect(result.twitterTitle).to.be.eql('The coronavirus has now killed more Americans than every war since the start of the Korean War—combined');
         expect(result.twitterDescription).to.be.eql('COVID-19 has claimed 112,311 U.S. lives. That’s higher than the 104,404 troops who died in every war since the start of the Korean War in 1950.');
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.twitterUrl).to.be.eql('https://fortune.com/2020/06/10/coronavirus-deaths-us-covid-19-killed-more-americans-korean-war-vietnam-iraq-persian-gulf-combined-how-many-died/');
         expect(result.ogImage).to.be.eql({
           url: 'https://content.fortune.com/wp-content/uploads/2020/06/nolvi-u-s-deaths-from-wars-and-major-pandemics-4.png?resize=1200,600',
           width: null,
@@ -1328,6 +1349,7 @@ describe('static', function () {
           'twitterDescription',
           'twitterImage',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1370,6 +1392,7 @@ describe('static', function () {
           height: null,
           alt: null,
         });
+        expect(result.twitterUrl).to.be.eql('https://foursquare.com/v/the-baxter-inn/4ed4896c775b45f6ed7b0182');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/foursquare');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
@@ -1396,6 +1419,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1434,6 +1458,7 @@ describe('static', function () {
           height: null,
           alt: null,
         });
+        expect(result.twitterUrl).to.be.eql('https://www.geektime.com/duckface-can-saves-lives-binah-ai-raises-13-5m-to-monitor-health-condition-through-selfies/');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/geektime');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
@@ -1456,6 +1481,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1477,6 +1503,7 @@ describe('static', function () {
         expect(result.twitterCreator).to.be.eql('britnmorse');
         expect(result.twitterTitle).to.be.eql('Reopening? Learn How to Help Your Employees Feel  Safe Psychologically');
         expect(result.twitterDescription).to.be.eql("You can provide all the PPE you want, but it's also crucial that your employees are emotionally secure in their workplace.");
+        expect(result.twitterUrl).to.be.eql('https://www.inc.com/brit-morse/reopening-workplace-help-employees-feel-safe-psychologically.html');
         expect(result.articlePublishedTime).to.be.eql('2020-06-11 05:00:00');
         expect(result.articleSection).to.be.eql('Safeguards');
         expect(result.articleAuthor).to.be.eql('Brit Morse');
@@ -1512,6 +1539,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1567,6 +1595,7 @@ describe('static', function () {
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.twitterSite).to.be.eql('@AppStore');
         expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.ogUrl).to.be.eql('https://itunes.apple.com/us/app/pokemon-go/id1094591345?mt=8');
         expect(result.ogImage).to.be.eql({
           url: 'http://is5.mzstatic.com/image/thumb/Purple71/v4/97/0a/71/970a71f1-9c94-cc61-c960-304191a8dc42/source/1200x630bf.jpg',
           width: '1200',
@@ -1588,6 +1617,7 @@ describe('static', function () {
           'ogLocale',
           'ogSiteName',
           'ogTitle',
+          'ogUrl',
           'requestUrl',
           'success',
           'twitterCard',
@@ -1623,6 +1653,7 @@ describe('static', function () {
         expect(result.twitterTitle).to.be.eql('Israeli Student At The Technion Develops Self-Healing Artificial Electronic Skin - Jewish Business News');
         expect(result.twitterSite).to.be.eql('@JewishBusinessNews');
         expect(result.twitterCreator).to.be.eql('@JewishBusinessNews');
+        expect(result.twitterUrl).to.be.eql('https://jewishbusinessnews.com/2020/06/11/israeli-student-at-the-technion-develops-self-healing-artificial-electronic-skin/');
         expect(result.ogImage).to.be.eql({
           url: 'https://jewishbusinessnews.com/wp-content/uploads/2020/06/Technion-skin-like-material-the-heal-itself-e1591896385138.jpg',
           width: '640',
@@ -1659,6 +1690,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1685,6 +1717,7 @@ describe('static', function () {
         expect(result.twitterDescription).to.be.eql('LVL is a wearable hydration monitor that gives you the complete picture of your health by also tracking activity, sleep, mood and HR.');
         expect(result.twitterAppIdiPhone).to.be.eql('596961532');
         expect(result.twitterAppNameiPhone).to.be.eql('Kickstarter');
+        expect(result.twitterUrl).to.be.eql('https://www.kickstarter.com/projects/lactate-threshold/lvl-the-first-wearable-hydration-monitor');
         expect(result.twitterAppUrliPhone).to.be.eql('ksr://www.kickstarter.com/projects/1655571865/361230638?app_banner=1&ref=category_featured');
         expect(result.ogImage).to.be.eql({
           url: 'https://ksr-ugc.imgix.net/assets/013/622/325/ba3e0c3ba83ec7a7f6621d52f78773b9_original.jpg?w=1536&h=864&fit=fill&bg=000000&v=1473713981&auto=format&q=92&s=06bc55ef9203f6b52b87f7bf978ae915',
@@ -1721,6 +1754,7 @@ describe('static', function () {
           'twitterSite',
           'twitterSiteId',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1834,6 +1868,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.ogUrl).to.be.eql('https://learnxinyminutes.com/docs/standard-ml/');
         expect(result.ogTitle).to.be.eql('Learn Standard ML in Y Minutes');
         expect(result.ogImage).to.be.eql([
           {
@@ -1848,6 +1883,7 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'ogImage',
           'ogTitle',
+          'ogUrl',
           'requestUrl',
           'success',
         );
@@ -1980,6 +2016,7 @@ describe('static', function () {
         expect(result.twitterCreator).to.be.eql('@mashable');
         expect(result.twitterCard).to.be.eql('player');
         expect(result.author).to.be.eql('Jack Morse');
+        expect(result.twitterUrl).to.be.eql('https://mashable.com/article/biden-open-letter-facebook-mark-zuckerberg-election/');
         expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://mondrian.mashable.com/2020%252F06%252F11%252Ffe%252Fc525cae5298a4f55a62c603880b80465.d3c99.png%252F1200x630.png?signature=4ujkwZwJuqUP8Yu5IGDifLN0rbA=',
@@ -2020,6 +2057,7 @@ describe('static', function () {
           'twitterPlayer',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -2131,6 +2169,7 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.ogUrl).to.be.eql('http://www.newegg.com/Product/Product.aspx?Item=N82E16828840014');
         expect(result.ogTitle).to.be.eql('XYZprinting da Vinci 2.0 Duo FFF (Fused Filament Fabrication) ABS/PLA Dual Nozzle 3D Printer-Newegg.com');
         expect(result.ogDescription).to.be.eql('Buy XYZprinting da Vinci 2.0 Duo FFF &#40;Fused Filament Fabrication&#41; ABS&#47;PLA Dual Nozzle 3D Printer with fast shipping and top-rated customer service.Once you know, you Newegg&#33;');
         expect(result.ogImage).to.be.eql([
@@ -2454,6 +2493,7 @@ describe('static', function () {
           'ogImage',
           'ogLocale',
           'ogTitle',
+          'ogUrl',
           'requestUrl',
           'success',
         );
@@ -2474,6 +2514,7 @@ describe('static', function () {
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterTitle).to.be.eql('npm: filenamify');
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.twitterUrl).to.be.eql('https://www.npmjs.com/package/filenamify');
         expect(result.twitterDescription).to.be.eql('Convert a string to a valid safe filename');
         expect(result.ogImage).to.be.eql({
           url: 'https://www.npmjs.com/static/images/touch-icons/open-graph.png',
@@ -2495,6 +2536,7 @@ describe('static', function () {
           'twitterCard',
           'twitterDescription',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -2559,6 +2601,7 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogSiteName).to.be.eql('reddit');
+        expect(result.ogUrl).to.be.eql('https://www.reddit.com/r/news/comments/4p1enj/uk_man_tried_to_kill_trump_court_papers/');
         expect(result.ogDescription).to.be.eql('4910 points and 7055 comments so far on reddit');
         expect(result.ogTitle).to.be.eql("'UK man' tried to kill Trump: court papers • /r/news");
         expect(result.twitterSite).to.be.eql('reddit');
@@ -2581,6 +2624,7 @@ describe('static', function () {
           'ogLocale',
           'ogSiteName',
           'ogTitle',
+          'ogUrl',
           'requestUrl',
           'success',
           'twitterCard',
@@ -2920,6 +2964,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.ogUrl).to.be.eql('https://www.amazon.com/Node-js-Right-Way-Server-Side-JavaScript/dp/1937785734');
         expect(result.ogTitle).to.be.eql('Node.js the Right Way: Practical, Server-Side JavaScript That Scales: Jim Wilson: 9781937785734: Amazon.com: Books');
         expect(result.ogDescription).to.be.eql('Node.js the Right Way: Practical, Server-Side JavaScript That Scales [Jim Wilson] on Amazon.com. *FREE* shipping on qualifying offers. Get to the forefront of server-side JavaScript programming by writing compact, robust, fast, networked Node applications that scale. Ready to take JavaScript beyond the browser');
         expect(result.ogImage).to.be.eql([
@@ -3110,6 +3155,7 @@ describe('static', function () {
           'ogDescription',
           'ogImage',
           'ogTitle',
+          'ogUrl',
           'requestUrl',
           'success',
         );
@@ -3253,6 +3299,7 @@ describe('static', function () {
         expect(result.twitterTitle).to.be.eql('Citizen Playing Cards');
         expect(result.twitterDescription).to.be.eql('Whether you perform with them or just break out the occasional flourish in a friendly poker game, Citizen Playing Cards will impress people with their elegance. The tuck case features a combination of gold foil, hot stamping, and bronze foil.');
         expect(result.twitterCard).to.be.eql('product');
+        expect(result.twitterUrl).to.be.eql('http://www.thinkgeek.com/product/jjip');
         expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'http://www.thinkgeek.com/images/products/zoom/jjip_citizen_playing_cards.jpg',
@@ -3286,6 +3333,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -3312,6 +3360,7 @@ describe('static', function () {
         expect(result.twitterDescription).to.be.eql('The Twitter CEO’s plan to give away $1 billion shows charity is not as hard as billionaires say it is.');
         expect(result.twitterSite).to.be.eql('voxdotcom');
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.twitterUrl).to.be.eql('https://www.vox.com/recode/2020/6/11/21287395/jack-dorsey-start-small-billionaire-philanthropy-coronavirus-twitter-square-kaepernick-rihanna');
         expect(result.ogImage).to.be.eql({
           url: 'https://cdn.vox-cdn.com/thumbor/PP5h21sGbjyDt0BoZYKpdNUsFFs=/0x0:4746x2485/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/20030444/524250960.jpg.jpg',
           width: '1200',
@@ -3346,6 +3395,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });

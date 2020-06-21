@@ -60,6 +60,7 @@ describe('image', function () {
       expect(result.ogTitle).to.be.eql('Twitter. It\'s what\'s happening.');
       expect(result.ogDescription).to.be.eql('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
       expect(result.ogLocale).to.be.eql('en');
+      expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20170608000236/https://twitter.com/i/hello');
       expect(result.ogImage.length).to.be.eql(48);
       let imageFound = false;
       for (let i = 0; i < result.ogImage.length; i += 1) {
@@ -74,6 +75,7 @@ describe('image', function () {
         'ogTitle',
         'ogLocale',
         'requestUrl',
+        'ogUrl',
         'success',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;

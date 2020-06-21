@@ -32,6 +32,7 @@ describe('encoding', function () {
         expect(result.twitterAppNameGooglePlay).to.be.eql('Газета.Ru');
         expect(result.twitterAppIdGooglePlay).to.be.eql('ru.ideast.gazeta');
         expect(result.twitterAppUrlGooglePlay).to.be.eql('https://www.gazeta.ru/');
+        expect(result.twitterUrl).to.be.eql('https://www.gazeta.ru/');
         expect(result.ogImage).to.be.eql({
           url: 'https://www.gazeta.ru/nm2015/i/Logo_red_sqare_250.png',
           width: '250',
@@ -74,6 +75,7 @@ describe('encoding', function () {
           'twitterImage',
           'twitterSite',
           'twitterTitle',
+          'twitterUrl',
         );
         return expect(response).to.be.an('object').and.to.not.be.empty;
       });

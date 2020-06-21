@@ -16,6 +16,7 @@ describe('twitter', function () {
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.ogSiteName).to.be.eql('Twitter Developers');
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.twitterUrl).to.be.eql('https://web.archive.org/web/20160303190414im_/https://dev.twitter.com/');
         expect(result.twitterDescription).to.be.eql('The Twitter platform connects your website or application with the worldwide conversation happening on Twitter.');
         expect(result.ogImage).to.be.eql({
           url: 'https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png',
@@ -44,6 +45,7 @@ describe('twitter', function () {
           'twitterDescription',
           'twitterImage',
           'twitterTitle',
+          'twitterUrl',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });

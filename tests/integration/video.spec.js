@@ -22,6 +22,7 @@ describe('video', function () {
       expect(result.twitterAppIdiPhone).to.be.eql('544007664');
       expect(result.twitterAppNameiPad).to.be.eql('YouTube');
       expect(result.twitterAppIdiPad).to.be.eql('544007664');
+      expect(result.twitterUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.ogDate).to.be.eql('2009-10-24');
       expect(result.twitterAppUrliPhone).to.be.eql('vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
       expect(result.twitterAppUrliPad).to.be.eql('vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
@@ -81,6 +82,7 @@ describe('video', function () {
         'twitterPlayer',
         'twitterSite',
         'twitterTitle',
+        'twitterUrl',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
