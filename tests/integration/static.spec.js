@@ -466,6 +466,7 @@ describe('static', function () {
         expect(result.twitterSite).to.be.eql('@infoworld');
         expect(result.twitterDescription).to.be.eql('As cloud adoption hits another growth spurt, companies are discovering the power of mixing and matching cloud services into solutions that address almost any business need');
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.ogLogo).to.be.eql('https://idge.staticworld.net/ifw/IFW_logo_social_300x300.png');
         expect(result.ogImage).to.be.eql({
           url: 'https://images.idgesg.net/images/article/2020/06/intro_ts_cloud__by-akinbostanci-getty-images-100847825-large.jpg',
           width: '1200',
@@ -486,6 +487,7 @@ describe('static', function () {
           'dcDateIssued',
           'ogDescription',
           'ogImage',
+          'ogLogo',
           'ogSiteName',
           'ogTitle',
           'ogLocale',
