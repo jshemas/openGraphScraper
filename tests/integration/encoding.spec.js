@@ -18,7 +18,7 @@ describe('encoding', function () {
         expect(result.ogSiteName).to.be.eql('Газета.Ru');
         expect(result.ogLocale).to.be.eql('ru');
         expect(result.ogUrl).to.be.eql('https://www.gazeta.ru/');
-        expect(result.ogDate).to.be.eql('2020-06-21T03:10:58+03:00');
+        expect(result.ogDate).to.be.an('string').and.to.not.be.empty;
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterTitle).to.be.eql('Первая полоса');
         expect(result.twitterSite).to.be.eql('@gazetaru');
