@@ -184,6 +184,7 @@ describe('static', function () {
         expect(result.ogDescription).to.be.eql('4.7-inch (diagonal) Retina HD display with 1334-by-750 resolution; 3D Touch; A9 chip with M9 motion coprocessor');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@BestBuy');
+        expect(result.ogDate).to.be.eql('08/10/2016');
         expect(result.twitterCreator).to.be.eql('@BestBuy');
         expect(result.twitterTitle).to.be.eql('Apple - iPhone 6s 64GB - Space Gray (Verizon)');
         expect(result.ogLocale).to.be.eql('en-us');
@@ -203,6 +204,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bestbuy');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -304,6 +306,7 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('Bloomberg.com');
         expect(result.ogTitle).to.be.eql('Sony Reveals PlayStation 5 Games Ahead of Holiday Release');
         expect(result.ogType).to.be.eql('article');
+        expect(result.ogDate).to.be.eql('2020-06-11T20:21:29.693Z');
         expect(result.ogUrl).to.be.eql('https://www.bloomberg.com/news/articles/2020-06-11/sony-reveals-playstation-5-games-ahead-of-holiday-release');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterDescription).to.be.eql('Sony Corp. unveiled the PlayStation 5 game console and an array of new games from the virtual stage Thursday, showcasing for the first time what its next-generation software will look like ahead of a holiday season showdown against Microsoft Corp.’s Xbox.');
@@ -327,6 +330,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bloomberg');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogAudioSecureURL',
           'ogAudioType',
           'ogDescription',
@@ -356,6 +360,7 @@ describe('static', function () {
         expect(error).to.be.eql(false);
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@BT_India');
+        expect(result.ogDate).to.be.eql('2020-06-10T10:13:00+05:30');
         expect(result.twitterCreator).to.be.eql('@BT_India');
         expect(result.twitterTitle).to.be.eql('Madhu Kapur, family withdraw case against Yes Bank');
         expect(result.twitterDescription).to.be.eql("Madhu Kapur in her suit had sought various reliefs including recognition of the family's right to participate in the management of the bank");
@@ -376,6 +381,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/businesstoday');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogTitle',
@@ -400,6 +406,7 @@ describe('static', function () {
         expect(error).to.be.eql(false);
         expect(result.ogLocale).to.be.eql('en_GB');
         expect(result.ogType).to.be.eql('article');
+        expect(result.ogDate).to.be.eql('June 04, 2020 1:32 pm');
         expect(result.ogTitle).to.be.eql('Undertaking Cyber Security Due Diligence in M&A Transactions');
         expect(result.ogDescription).to.be.eql('“Undertaking a detailed evaluation of all IT systems and network endpoints in the target enterprise will be vital for enabling the M&A team to identify how to effectively operationalise the');
         expect(result.ogUrl).to.be.eql('https://www.cbronline.com/opinion/cyber-security-due-diligence-in-mergers');
@@ -430,6 +437,7 @@ describe('static', function () {
           'articlePublishedTime',
           'articleSection',
           'articleTag',
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -460,7 +468,7 @@ describe('static', function () {
         expect(result.author).to.be.eql('Eric Knorr');
         expect(result.ogSiteName).to.be.eql('InfoWorld');
         expect(result.dcDateIssued).to.be.eql('2020-06-08T03:00-05:00');
-        expect(result.date).to.be.eql('2020-06-08');
+        expect(result.ogDate).to.be.eql('2020-06-08T03:00-0700');
         expect(result.ogUrl).to.be.eql('https://www.infoworld.com/article/3561329/the-state-of-cloud-computing-in-2020.html');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@infoworld');
@@ -483,7 +491,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
-          'date',
+          'ogDate',
           'dcDateIssued',
           'ogDescription',
           'ogImage',
@@ -604,6 +612,7 @@ describe('static', function () {
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.cnet.com/how-to/5g-glossary-everything-from-spectrum-to-small-cell-to-mimo/');
         expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.ogDate).to.be.eql('2020-06-01T05:00:00-0700');
         expect(result.twitterTitle).to.be.eql('5G glossary: From spectrum to small cell to MIMO');
         expect(result.twitterDescription).to.be.eql("Here's what you need to at least sound like you know what you're talking about when it comes to the next-gen mobile network.");
         expect(result.twitterSite).to.be.eql('@CNET');
@@ -628,6 +637,7 @@ describe('static', function () {
           'author',
           'ogDescription',
           'articlePublisher',
+          'ogDate',
           'ogImage',
           'ogSiteName',
           'ogTitle',
@@ -658,6 +668,7 @@ describe('static', function () {
         expect(result.ogUrl).to.be.eql('https://www.crn.com/news/cloud/netapp-buying-spot-to-tie-public-cloud-compute-storage-optimization');
         expect(result.articlePublishedTime).to.be.eql('June 03, 2020, 06:46 PM EDT');
         expect(result.ogSiteName).to.be.eql('CRN');
+        expect(result.ogDate).to.be.eql('PT0H0M188.565S'); // TODO: look into this
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('NetApp Buying Spot To Tie Public Cloud Compute, Storage Optimization');
         expect(result.ogImage).to.be.eql({
@@ -671,6 +682,7 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'articlePublishedTime',
           'author',
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -693,7 +705,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Healthcare Data Protection and Privacy Prognosis—Still Critical but New Treatment is Available');
         expect(result.ogDescription).to.be.eql('My healthcare data is what I want protected the most (intimate details about my family’s health, where we live, and financial information). Anything and everything a hacker could want! It is safe? As a data security professional and citizen, I know the answer is not good.');
         expect(result.ogType).to.be.eql('article');
-        expect(result.date).to.be.eql('2016-04-15');
+        expect(result.ogDate).to.be.eql('2016-04-15T13:52-0700');
         expect(result.dcDateIssued).to.be.eql('2016-04-15T13:52-05:00');
         expect(result.author).to.be.eql('Robert Shields');
         expect(result.ogSiteName).to.be.eql('Computerworld');
@@ -717,7 +729,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/computerworld');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'date',
+          'ogDate',
           'author',
           'dcDateIssued',
           'ogDescription',
@@ -877,6 +889,7 @@ describe('static', function () {
         expect(result.ogType).to.be.eql('ebay-objects:item');
         expect(result.twitterDescription).to.be.eql('Add style without losing comfort with this 3-person outdoor sofa. Made out of weather resistant wicker on an aluminum frame, it will endure in any of your outdoor spaces. The synthetic resin wicker provides a durable exterior, while still preserving its classic yet modern appearance. | eBay!');
         expect(result.twitterSite).to.be.eql('@eBay');
+        expect(result.ogDate).to.be.eql('Aug 24, 2016');
         expect(result.ogSiteName).to.be.eql('eBay');
         expect(result.ogUrl).to.be.eql('http://www.ebay.com/itm/Outdoor-Wicker-Patio-Furniture-Sofa-3-Seater-Luxury-Comfort-Brown-Wicker-Couch-/381228738769');
         expect(result.twitterTitle).to.be.eql('Outdoor Wicker Patio Furniture Sofa 3 Seater Luxury Comfort Brown Wicker Couch');
@@ -897,6 +910,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/ebay');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -999,6 +1013,7 @@ describe('static', function () {
         expect(result.articlePublishedTime).to.be.eql('2019-03-14T14:35:12Z');
         expect(result.articleModifiedTime).to.be.eql('2019-03-14@14:35:13 UTC');
         expect(result.articleTag).to.be.eql('Technology,Robots');
+        expect(result.ogDate).to.be.eql('2019-03-14@14:35:13 UTC');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@Entrepreneur');
         expect(result.twitterTitle).to.be.eql('Origami-Inspired Robot Gripper Could Pack Your Groceries');
@@ -1025,6 +1040,7 @@ describe('static', function () {
           'articlePublishedTime',
           'articlePublisher',
           'articleTag',
+          'ogDate',
           'ogDescription',
           'ogLocale',
           'ogImage',
@@ -1157,6 +1173,7 @@ describe('static', function () {
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogDescription).to.be.eql('Renowned psychiatrist Dr. Jessica Clemons, MD gained popularity for helping to normalize the conversation around mental health, particularly in the black community.\n');
         expect(result.ogSiteName).to.be.eql('Fast Company');
+        expect(result.ogDate).to.be.eql('2020-06-11T10:00:03Z');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterTitle).to.be.eql('The internet’s favorite psychiatrist has a game plan for your mental health');
         expect(result.twitterDescription).to.be.eql('Renowned psychiatrist Dr. Jessica Clemons, MD gained popularity for helping to normalize the conversation around mental health, particularly in the black community.\n');
@@ -1186,6 +1203,7 @@ describe('static', function () {
           'articlePublisher',
           'articleTag',
           'author',
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1222,6 +1240,7 @@ describe('static', function () {
         expect(result.ogDescription).to.be.eql("The best scents for gifting — even if it's a gift to yourself — are universally appealing but also unique. ");
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@forbes');
+        expect(result.ogDate).to.be.eql('2020-06-10');
         expect(result.twitterTitle).to.be.eql('The Best Men’s Colognes For Gifting');
         expect(result.twitterDescription).to.be.eql("The best scents for gifting — even if it's a gift to yourself — are universally appealing but also unique. ");
         expect(result.ogLocale).to.be.eql('en');
@@ -1244,6 +1263,7 @@ describe('static', function () {
           'articleSection',
           'articlePublisher',
           'author',
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -1274,6 +1294,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('The coronavirus has now killed more Americans than every war since the start of the Korean War—combined');
         expect(result.ogDescription).to.be.eql('COVID-19 has claimed 112,311 U.S. lives. That’s higher than the 104,404 troops who died in every war since the start of the Korean War in 1950.');
         expect(result.ogSiteName).to.be.eql('Fortune');
+        expect(result.ogDate).to.be.eql('2020-06-10T19:30:00-04:00');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterTitle).to.be.eql('The coronavirus has now killed more Americans than every war since the start of the Korean War—combined');
         expect(result.twitterDescription).to.be.eql('COVID-19 has claimed 112,311 U.S. lives. That’s higher than the 104,404 troops who died in every war since the start of the Korean War in 1950.');
@@ -1293,6 +1314,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/fortune');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -1393,6 +1415,7 @@ describe('static', function () {
         expect(result.articlePublishedTime).to.be.eql('2020-06-11T15:58:33.000Z');
         expect(result.articleModifiedTime).to.be.eql('2020-06-11T15:58:33.000Z');
         expect(result.articleTag).to.be.eql('startups');
+        expect(result.ogDate).to.be.eql('2020-06-11');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/geektimecoil');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterTitle).to.be.eql('Duckface can saves lives: Binah.ai raises $13.5M to monitor health condition through selfies');
@@ -1414,6 +1437,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/geektime');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'articleModifiedTime',
           'articlePublishedTime',
           'articlePublisher',
@@ -1538,6 +1562,7 @@ describe('static', function () {
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.ogSiteName).to.be.eql('App Store');
         expect(result.ogLocale).to.be.eql('en');
+        expect(result.ogDate).to.be.eql('2016-07-07 00:39:49 Etc/GMT');
         expect(result.twitterTitle).to.be.eql('Pokémon GO on the App Store');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.twitterSite).to.be.eql('@AppStore');
@@ -1557,6 +1582,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/itunes');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1589,6 +1615,7 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('Jewish Business News');
         expect(result.articleTag).to.be.eql('Technion – Israel Institute of Technology');
         expect(result.articleSection).to.be.eql('World');
+        expect(result.ogDate).to.be.eql('2020-06-11T20:29:48+03:00');
         expect(result.articlePublishedTime).to.be.eql('2020-06-11T15:51:41+03:00');
         expect(result.articleModifiedTime).to.be.eql('2020-06-11T20:29:48+03:00');
         expect(result.twitterCard).to.be.eql('summary_large_image');
@@ -1616,6 +1643,7 @@ describe('static', function () {
           'articlePublisher',
           'articleSection',
           'articleTag',
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1650,6 +1678,7 @@ describe('static', function () {
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogLocaleAlternate).to.be.eql('fr_FR');
         expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.ogDate).to.be.eql('2016-10-26T23:00:00-04:00');
         expect(result.twitterSite).to.be.eql('@kickstarter');
         expect(result.twitterSiteId).to.be.eql('16186995');
         expect(result.twitterTitle).to.be.eql('LVL – The First Wearable Hydration Monitor');
@@ -1672,6 +1701,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/kickstarter');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1759,6 +1789,7 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogType).to.be.eql('article');
+        expect(result.ogDate).to.be.eql('2020-06-10');
         expect(result.ogTitle).to.be.eql('Accelerate Growth with Revenue Operations ');
         expect(result.ogUrl).to.be.eql('https://learn.leandata.com/routing-rules-leandatas-sales-and-marketing-blog/accelerate-growth-with-revenue-operations');
         expect(result.ogDescription).to.be.eql('Thinking in terms of revenue operations can dramatically accelerate growth. Here are four companies that have leveraged revenue operations for revenue growth.');
@@ -1780,6 +1811,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/leandata');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogTitle',
@@ -1831,6 +1863,7 @@ describe('static', function () {
         expect(error).to.be.eql(false);
         expect(result.author).to.be.eql('Kristin Wong');
         expect(result.ogType).to.be.eql('article');
+        expect(result.ogDate).to.be.eql('2016-08-16T17:00:00+10:00');
         expect(result.ogTitle).to.be.eql('Some Bill Providers Automatically Update Your Credit Card When You Get A New One');
         expect(result.ogDescription).to.be.eql('When you get a new credit card, you typically have to go through the process of updating your automatic bill pay information. Some services, though, will update automatically. So how do they know your new credit card number?...');
         expect(result.ogUrl).to.be.eql('http://www.lifehacker.com.au/2016/08/some-bill-providers-automatically-update-your-credit-card-when-you-get-a-new-one/');
@@ -1853,6 +1886,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
+          'ogDate',
           'ogDescription',
           'ogLocale',
           'ogImage',
@@ -1879,6 +1913,7 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('MacRumors');
         expect(result.ogTitle).to.be.eql("Apple Announces July 10 Release Date for Upcoming Tom Hanks WWII Film 'Greyhound'");
         expect(result.ogType).to.be.eql('article');
+        expect(result.ogDate).to.be.eql('2020-06-11T13:06:23-07:00');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/MacRumors/');
         expect(result.ogUrl).to.be.eql('https://www.macrumors.com/2020/06/11/apple-tv-plus-greyhound-july-10/');
         expect(result.ogDescription).to.be.eql('Apple today shared the first trailer for "Greyhound," a WWII movie that stars Tom Hanks as George Krause, a career naval officer given...');
@@ -1903,6 +1938,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articlePublisher',
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1933,7 +1969,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Indignant Joe Biden pens strongly worded letter to Mark Zuckerberg');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogSiteName).to.be.eql('Mashable');
-        expect(result.date).to.be.eql('2020-06-11 17:50:52 UTC');
+        expect(result.ogDate).to.be.eql('2020-06-11 17:50:52 UTC');
         expect(result.ogArticleModifiedTime).to.be.eql('2020-06-11T19:14:58Z');
         expect(result.ogArticlePublishedTime).to.be.eql('2020-06-11T17:50:52Z');
         expect(result.ogArticlePublisher).to.be.eql('https://www.facebook.com/mashable');
@@ -1965,7 +2001,7 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'ogLocale',
           'author',
-          'date',
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -2471,7 +2507,7 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.author).to.be.eql('Ideanomics');
-        expect(result.date).to.be.eql('2020-06-11T16:25:00-04:00');
+        expect(result.ogDate).to.be.eql('2020-06-11T16:25:00-04:00');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@PRNewswire');
         expect(result.twitterTitle).to.be.eql('Ideanomics Announces Reduction of Debt Holders as Part of Growth Plans');
@@ -2497,7 +2533,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
-          'date',
+          'ogDate',
           'ogDescription',
           'ogLocale',
           'ogImage',
@@ -2527,6 +2563,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql("'UK man' tried to kill Trump: court papers • /r/news");
         expect(result.twitterSite).to.be.eql('reddit');
         expect(result.twitterCard).to.be.eql('summary');
+        expect(result.ogDate).to.be.eql('2016-06-20T22:36:28+00:00');
         expect(result.twitterTitle).to.be.eql("'UK man' tried to kill Trump: court papers • /r/news");
         expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
@@ -2538,6 +2575,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/reddit');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -2628,6 +2666,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Inception');
         expect(result.ogType).to.be.eql('video.movie');
         expect(result.ogUrl).to.be.eql('https://www.rottentomatoes.com/m/inception/');
+        expect(result.ogDate).to.be.eql('2010-07-15T17:00:00-07:00');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterSite).to.be.eql('@rottentomatoes');
         expect(result.twitterTitle).to.be.eql('Inception');
@@ -2859,6 +2898,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rottentomatoes');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogImage',
           'ogTitle',
           'ogLocale',
@@ -3091,6 +3131,7 @@ describe('static', function () {
         expect(result.ogType).to.be.eql('article');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@techcrunch');
+        expect(result.ogDate).to.be.eql('2020-06-12T00:21:20');
         expect(result.twitterTitle).to.be.eql('HackerRank Makes Technical Recruiting More Transparent');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.ogLocale).to.be.eql('en-US');
@@ -3111,6 +3152,7 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articlePublisher',
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -3261,6 +3303,7 @@ describe('static', function () {
         expect(result.articleModifiedTime).to.be.eql('2020-06-11T17:03:32-04:00');
         expect(result.ogDescription).to.be.eql('The Twitter CEO’s plan to give away $1 billion shows charity is not as hard as billionaires say it is.');
         expect(result.ogSiteName).to.be.eql('Vox');
+        expect(result.ogDate).to.be.eql('2020-06-11T21:03:32');
         expect(result.ogTitle).to.be.eql('Inside Jack Dorsey’s radical experiment for billionaires to give away their money');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.vox.com/recode/2020/6/11/21287395/jack-dorsey-start-small-billionaire-philanthropy-coronavirus-twitter-square-kaepernick-rihanna');
@@ -3288,6 +3331,7 @@ describe('static', function () {
           'articlePublishedTime',
           'articlePublisher',
           'author',
+          'ogDate',
           'ogLocale',
           'ogDescription',
           'ogImage',
@@ -3314,6 +3358,7 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogTitle).to.be.eql('JSON-LD 1.0');
+        expect(result.ogDate).to.be.eql('2014-01-16');
         expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql([
           {
@@ -3326,6 +3371,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/w3');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogImage',
           'ogTitle',
           'ogLocale',
@@ -3385,6 +3431,7 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('Yelp');
         expect(result.ogTitle).to.be.eql('Boba Guys - Mission - San Francisco, CA');
         expect(result.ogType).to.be.eql('yelpyelp:business');
+        expect(result.ogDate).to.be.eql('2016-10-09');
         expect(result.ogUrl).to.be.eql('https://www.yelp.com/biz/boba-guys-san-francisco-4');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterSite).to.be.eql('@yelp');
@@ -3413,6 +3460,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/yelp');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogLocale',

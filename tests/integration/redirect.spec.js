@@ -14,6 +14,7 @@ describe('redirect', function () {
         expect(result.ogUrl).to.be.eql('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
+        expect(result.ogDate).to.be.eql('2016-05-11T11:32:03+0100');
         expect(result.twitterTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip &amp; Nut — WE MEAN BUSINESS | LONDON');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
@@ -33,6 +34,7 @@ describe('redirect', function () {
         expect(result.requestUrl).to.be.eql('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -88,6 +90,7 @@ describe('redirect', function () {
         expect(result).to.have.all.keys(
           'articleSection',
           'articleTag',
+          'ogDate',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -145,6 +148,7 @@ describe('redirect', function () {
         expect(result.requestUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogDate',
           'articleAuthor',
           'articleSection',
           'articlePublisher',
