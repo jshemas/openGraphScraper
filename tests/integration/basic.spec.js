@@ -57,12 +57,13 @@ describe('basic', function () {
       console.log('result:', result);
       expect(error).to.be.eql(false);
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogTitle).to.be.eql('Buy domain name - Cheap domain names from $1.37 - Namecheap');
       expect(result.ogDescription).to.be.eql('Namecheap offers cheap domain names with the most reliable service. Buy domain names with Namecheap and see why over 2 million customers trust us with over 10 million domains!');
       expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
       expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys('description', 'ogTitle', 'ogDescription', 'ogImage', 'requestUrl', 'success');
+      expect(result).to.have.all.keys('description', 'ogTitle', 'ogDescription', 'ogImage', 'ogLocale', 'requestUrl', 'success');
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -92,6 +93,7 @@ describe('basic', function () {
       expect(result.twitterAppNameGooglePlay).to.be.eql('Vimeo');
       expect(result.twitterAppIdGooglePlay).to.be.eql('com.vimeo.android.videoapp');
       expect(result.twitterAppUrlGooglePlay).to.be.eql('vimeo://app.vimeo.com/videos/232889838');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704_1280x720.jpg&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
         width: '1280',
@@ -122,6 +124,7 @@ describe('basic', function () {
         'description',
         'ogDescription',
         'ogImage',
+        'ogLocale',
         'ogSiteName',
         'ogTitle',
         'ogType',
@@ -162,6 +165,7 @@ describe('basic', function () {
       expect(result.ogDescription).to.be.eql('Exclusively Ours in Michael Kors stores and on michaelkors.com until 7/30/16. Geometric cutouts lend captivating flair to our Mirabel sandals in sumptuous suede. Anchored by a block heel and swingy tassel laces, they look especially chic grounding midi hemlines and cropped denim.');
       expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20161126090544/http://www.michaelkors.com/mirabel-suede-sandal/_/R-US_40T6MBMS1S');
       expect(result.ogSiteName).to.be.eql('Michael Kors');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogPriceAmount).to.be.eql('80.00');
       expect(result.ogPriceCurrency).to.be.eql('USD');
       expect(result.ogAvailability).to.be.eql('InStock');
@@ -173,7 +177,7 @@ describe('basic', function () {
       });
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/michaelkors');
       expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys('author', 'description', 'ogAvailability', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogPriceAmount', 'ogPriceCurrency', 'ogSiteName', 'ogImage', 'requestUrl', 'success');
+      expect(result).to.have.all.keys('author', 'description', 'ogLocale', 'ogAvailability', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogPriceAmount', 'ogPriceCurrency', 'ogSiteName', 'ogImage', 'requestUrl', 'success');
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });

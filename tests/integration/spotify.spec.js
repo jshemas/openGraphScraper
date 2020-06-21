@@ -21,6 +21,7 @@ describe('spotify', function () {
       expect(result.twitterSite).to.be.eql('@spotify');
       expect(result.twitterDescription).to.be.eql('ye, an album by Kanye West on Spotify');
       expect(result.twitterCard).to.be.eql('audio');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67616d0000b27397508a4b756763370510bd44',
@@ -54,6 +55,7 @@ describe('spotify', function () {
         'musicSong',
         'ogDescription',
         'ogImage',
+        'ogLocale',
         'ogSiteName',
         'ogTitle',
         'ogType',
@@ -91,6 +93,7 @@ describe('spotify', function () {
       expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.twitterCard).to.be.eql('audio');
       expect(result.ogSiteName).to.be.eql('Spotify');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/bd1c6fdf3705cf9b7d0c8ac8e7bbed98e31a1559',
         width: null,
@@ -115,6 +118,7 @@ describe('spotify', function () {
         'description',
         'ogDescription',
         'ogImage',
+        'ogLocale',
         'ogSiteName',
         'ogTitle',
         'ogType',
@@ -159,6 +163,7 @@ describe('spotify', function () {
       expect(result.twitterDescription).to.be.eql('Famous, a song by Kanye West on Spotify');
       expect(result.twitterCard).to.be.eql('audio');
       expect(result.ogSiteName).to.be.eql('Spotify');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67616d0000b2730939dadf614e70aeffc6710c',
         width: null,
@@ -190,6 +195,7 @@ describe('spotify', function () {
         'ogAudioType',
         'ogDescription',
         'ogImage',
+        'ogLocale',
         'ogSiteName',
         'ogTitle',
         'ogType',
@@ -228,6 +234,7 @@ describe('spotify', function () {
       expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.twitterCard).to.be.eql('audio');
       expect(result.ogSiteName).to.be.eql('Spotify');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67706c0000da845a535b3001ccf567ddef2927',
         width: null,
@@ -259,6 +266,7 @@ describe('spotify', function () {
         'musicSong',
         'ogDescription',
         'ogImage',
+        'ogLocale',
         'ogSiteName',
         'ogTitle',
         'ogType',

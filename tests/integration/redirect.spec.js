@@ -18,6 +18,7 @@ describe('redirect', function () {
         expect(result.twitterTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip &amp; Nut — WE MEAN BUSINESS | LONDON');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
+        expect(result.ogLocale).to.be.eql('en-US');
         expect(result.ogImage).to.be.eql({
           url: 'http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1584829128507/unnamed.jpg?format=1500w',
           width: '1280',
@@ -38,6 +39,7 @@ describe('redirect', function () {
           'ogImage',
           'ogSiteName',
           'ogTitle',
+          'ogLocale',
           'ogType',
           'ogUrl',
           'requestUrl',
@@ -71,6 +73,7 @@ describe('redirect', function () {
         expect(result.twitterAppNameGooglePlay).to.be.eql('NYTimes');
         expect(result.twitterAppIdGooglePlay).to.be.eql('com.nytimes.android');
         expect(result.twitterAppUrlGooglePlay).to.be.eql('nyt://article/d07123d7-f6dc-5370-97cb-86dd6aa0b0de');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterSite).to.be.eql('@nytimes');
         expect(result.ogImage).to.be.eql({
           url: 'https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-facebookJumbo.jpg',
@@ -92,6 +95,7 @@ describe('redirect', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogTitle',
           'ogType',
           'ogUrl',
@@ -129,6 +133,7 @@ describe('redirect', function () {
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@forbes');
         expect(result.twitterCreator).to.be.eql('@MarketocracyInc');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterTitle).to.be.eql('3 Stocks Like Apple Was 10 Years Ago: Tesla, Nvidia And Alibaba');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/forbes');
@@ -154,6 +159,7 @@ describe('redirect', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'ogType',

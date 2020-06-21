@@ -17,6 +17,7 @@ describe('encoding', function () {
         expect(result.ogTitle).to.be.eql('Главные новости - Газета.Ru');
         expect(result.ogType).to.be.eql('website');
         expect(result.ogSiteName).to.be.eql('Газета.Ru');
+        expect(result.ogLocale).to.be.eql('ru');
         expect(result.ogUrl).to.be.eql('https://www.gazeta.ru/');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterTitle).to.be.eql('Первая полоса');
@@ -53,6 +54,7 @@ describe('encoding', function () {
           'ogImage',
           'ogSiteName',
           'ogTitle',
+          'ogLocale',
           'ogType',
           'ogUrl',
           'requestUrl',
@@ -166,6 +168,7 @@ describe('encoding', function () {
         expect(result.description).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
         expect(result.ogDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
         expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20170913045814/https://www.rakuten.co.jp/');
+        expect(result.ogLocale).to.be.eql('ja');
         expect(result.ogType).to.be.eql('website');
         expect(result.ogSiteName).to.be.eql('楽天市場');
         expect(result.robots).to.be.eql('NOODP');
@@ -194,6 +197,7 @@ describe('encoding', function () {
           'ogSiteName',
           'ogTitle',
           'ogType',
+          'ogLocale',
           'ogUrl',
           'requestUrl',
           'robots',

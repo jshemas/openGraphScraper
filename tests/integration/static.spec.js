@@ -87,6 +87,7 @@ describe('static', function () {
         expect(result.ogUrl).to.be.eql('http://arstechnica.com/gadgets/2016/10/google-pixel-review-bland-pricey-but-still-best-android-phone/');
         expect(result.ogTitle).to.be.eql('Google Pixel review: The best Android phone, even if it is a little pricey');
         expect(result.ogDescription).to.be.eql('Unbeatable software and support with a great camera, wrapped in a familiar exterior.');
+        expect(result.ogLocale).to.be.eql('en-us');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogImage).to.be.eql({
           url: 'https://cdn.arstechnica.net/wp-content/uploads/2016/10/pixel-feature-640x320.jpg',
@@ -106,6 +107,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'ogType',
@@ -191,6 +193,7 @@ describe('static', function () {
         expect(result.twitterSite).to.be.eql('@BestBuy');
         expect(result.twitterCreator).to.be.eql('@BestBuy');
         expect(result.twitterTitle).to.be.eql('Apple - iPhone 6s 64GB - Space Gray (Verizon)');
+        expect(result.ogLocale).to.be.eql('en-us');
         expect(result.twitterDescription).to.be.eql('4.7-inch (diagonal) Retina HD display with 1334-by-750 resolution; 3D Touch; A9 chip with M9 motion coprocessor');
         expect(result.ogImage).to.be.eql({
           url: 'http://pisces.bbystatic.com//image2/BestBuy_US/images/products/4447/4447801_sa.jpg;maxHeight=210;maxWidth=210',
@@ -210,6 +213,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'ogType',
@@ -234,6 +238,7 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogTitle).to.be.eql('iStat Menus');
+        expect(result.ogLocale).to.be.eql('en-us');
         expect(result.ogImage).to.be.eql([
           {
             url: '/images/mac/istatmenus5/header-text.svg',
@@ -289,6 +294,7 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'ogImage',
           'ogTitle',
+          'ogLocale',
           'requestUrl',
           'success',
         );
@@ -312,6 +318,7 @@ describe('static', function () {
         expect(result.twitterDescription).to.be.eql('Sony Corp. unveiled the PlayStation 5 game console and an array of new games from the virtual stage Thursday, showcasing for the first time what its next-generation software will look like ahead of a holiday season showdown against Microsoft Corp.’s Xbox.');
         expect(result.twitterSite).to.be.eql('@technology');
         expect(result.twitterTitle).to.be.eql('Sony Reveals PlayStation 5 Games Ahead of Holiday Release');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://assets.bwbx.io/images/users/iqjWHBFdfxIU/igYmwLRm2sYw/v0/1200x800.jpg',
           width: null,
@@ -335,6 +342,7 @@ describe('static', function () {
           'ogDescription',
           'ogImage',
           'ogSiteName',
+          'ogLocale',
           'ogTitle',
           'ogType',
           'ogUrl',
@@ -473,6 +481,7 @@ describe('static', function () {
         expect(result.twitterSite).to.be.eql('@infoworld');
         expect(result.twitterDescription).to.be.eql('As cloud adoption hits another growth spurt, companies are discovering the power of mixing and matching cloud services into solutions that address almost any business need');
         expect(result.robots).to.be.eql('NOODP,NOYDIR');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://images.idgesg.net/images/article/2020/06/intro_ts_cloud__by-akinbostanci-getty-images-100847825-large.jpg',
           width: '1200',
@@ -496,6 +505,7 @@ describe('static', function () {
           'ogImage',
           'ogSiteName',
           'ogTitle',
+          'ogLocale',
           'ogType',
           'ogUrl',
           'requestUrl',
@@ -564,6 +574,7 @@ describe('static', function () {
         expect(result.twitterSiteId).to.be.eql('267718709');
         expect(result.twitterTitle).to.be.eql('Outreach: The startup that came back from the brink');
         expect(result.twitterDescription).to.be.eql('How a cash strapped recruitment company became a unicorn with a new business model');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://cdn1.cloudpro.co.uk/sites/cloudprod7/files/2020/05/outreach_founding_members.jpg',
           width: null,
@@ -585,6 +596,7 @@ describe('static', function () {
           'ogSiteName',
           'ogTitle',
           'ogType',
+          'ogLocale',
           'ogUrl',
           'requestUrl',
           'success',
@@ -618,6 +630,7 @@ describe('static', function () {
         expect(result.twitterSite).to.be.eql('@CNET');
         expect(result.twitterCreator).to.be.eql('@RogerWCheng');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/cnet');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://cnet3.cbsistatic.com/img/0IjS4wIUDkC77PSDb-eyF0aZNw8=/756x567/2020/01/22/931a3fa2-4e0e-4def-bdc2-448926f8da02/5g-phone-2.jpg',
           width: null,
@@ -640,6 +653,7 @@ describe('static', function () {
           'ogImage',
           'ogSiteName',
           'ogTitle',
+          'ogLocale',
           'ogType',
           'ogUrl',
           'requestUrl',
@@ -712,6 +726,7 @@ describe('static', function () {
         expect(result.ogUrl).to.be.eql('https://www.computerworld.com/article/3057179/healthcare-data-protection-and-privacy-prognosis-still-critical-but-new-treatment-is-available.html');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@computerworld');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterDescription).to.be.eql('My healthcare data is what I want protected the most (intimate details about my family’s health, where we live, and financial information). Anything and everything a hacker could want! It is safe? As a data security professional and citizen, I know the answer is not good.');
         expect(result.ogImage).to.be.eql({
           url: 'https://images.techhive.com/images/article/2016/04/blog-31_apr15_image-1-100656409-orig.jpg',
@@ -735,6 +750,7 @@ describe('static', function () {
           'ogDescription',
           'ogImage',
           'ogSiteName',
+          'ogLocale',
           'ogTitle',
           'ogType',
           'ogUrl',
@@ -767,6 +783,7 @@ describe('static', function () {
         expect(result.twitterSite).to.be.eql('@DarkReading');
         expect(result.twitterTitle).to.be.eql("DDoS Attack Mitigation: Don't Sacrifice Speed for Security");
         expect(result.twitterDescription).to.be.eql("Why common strategies for stopping DDoS attacks sometimes cause the same slowdowns they're trying to prevent.");
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://twimgs.com/nojitter/darkreading/dr-logo.jpg',
           width: null,
@@ -788,6 +805,7 @@ describe('static', function () {
           'ogSiteName',
           'ogTitle',
           'ogType',
+          'ogLocale',
           'ogUrl',
           'requestUrl',
           'robots',
@@ -818,6 +836,7 @@ describe('static', function () {
         expect(result.twitterTitle).to.be.eql('The Raspberry Pi Has Revolutionized Emulation');
         expect(result.ogDescription).to.be.eql('Check out Pico-8 for new "fantasy console" goodness.  Works great with Raspberry Pi Zero, 2, 3, etc.');
         expect(result.twitterDescription).to.be.eql('Check out Pico-8 for new "fantasy console" goodness.  Works great with Raspberry Pi Zero, 2, 3, etc.');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://discourse-cdn.codinghorror.com/user_avatar/discourse.codinghorror.com/adam_sommer/100/74278_1.png',
           width: null,
@@ -839,6 +858,7 @@ describe('static', function () {
           'ogSiteName',
           'ogTitle',
           'ogUrl',
+          'ogLocale',
           'requestUrl',
           'success',
           'twitterCard',
@@ -898,6 +918,7 @@ describe('static', function () {
         expect(result.ogUrl).to.be.eql('http://www.ebay.com/itm/Outdoor-Wicker-Patio-Furniture-Sofa-3-Seater-Luxury-Comfort-Brown-Wicker-Couch-/381228738769');
         expect(result.twitterTitle).to.be.eql('Outdoor Wicker Patio Furniture Sofa 3 Seater Luxury Comfort Brown Wicker Couch');
         expect(result.ogTitle).to.be.eql('Outdoor Wicker Patio Furniture Sofa 3 Seater Luxury Comfort Brown Wicker Couch  | eBay');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'http://i.ebayimg.com/images/i/381228738769-0-1/s-l1000.jpg',
           width: null,
@@ -919,6 +940,7 @@ describe('static', function () {
           'ogSiteName',
           'ogTitle',
           'ogType',
+          'ogLocale',
           'ogUrl',
           'requestUrl',
           'success',
@@ -957,6 +979,7 @@ describe('static', function () {
         expect(result.twitterAppNameGooglePlay).to.be.eql('The Economic Times App');
         expect(result.twitterAppIdGooglePlay).to.be.eql('com.et.reader.activities');
         expect(result.twitterAppUrlGooglePlay).to.be.eql('etandroidapp://articleshow/76152443');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://img.etimg.com/thumb/msid-76152431,width-1070,height-580,imgsize-380461,overlay-economictimes/photo.jpg',
           width: null,
@@ -979,6 +1002,7 @@ describe('static', function () {
           'ogDescription',
           'ogImage',
           'ogSiteName',
+          'ogLocale',
           'ogTitle',
           'ogType',
           'ogUrl',
@@ -1021,6 +1045,7 @@ describe('static', function () {
         expect(result.twitterSite).to.be.eql('@Entrepreneur');
         expect(result.twitterTitle).to.be.eql('Origami-Inspired Robot Gripper Could Pack Your Groceries');
         expect(result.twitterDescription).to.be.eql('By taking inspiration from origami, this robot gripper can safely pick up and hold delicate objects while at the same time lift more than 100x its own weight.');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://assets.entrepreneur.com/content/3x2/2000/20190314142224-origami-inspired-robot.jpeg',
           width: '2000',
@@ -1044,6 +1069,7 @@ describe('static', function () {
           'articleTag',
           'description',
           'ogDescription',
+          'ogLocale',
           'ogImage',
           'ogSiteName',
           'ogTitle',
@@ -1253,6 +1279,7 @@ describe('static', function () {
         expect(result.twitterSite).to.be.eql('@forbes');
         expect(result.twitterTitle).to.be.eql('The Best Men’s Colognes For Gifting');
         expect(result.twitterDescription).to.be.eql("The best scents for gifting — even if it's a gift to yourself — are universally appealing but also unique. ");
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5ee10f96298ad300068f3c9a%2F0x0.jpg%3FcropX1%3D0%26cropX2%3D1080%26cropY1%3D326%26cropY2%3D933',
           width: null,
@@ -1276,6 +1303,7 @@ describe('static', function () {
           'ogDescription',
           'ogImage',
           'ogSiteName',
+          'ogLocale',
           'ogTitle',
           'ogType',
           'ogUrl',
@@ -1306,6 +1334,7 @@ describe('static', function () {
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterTitle).to.be.eql('The coronavirus has now killed more Americans than every war since the start of the Korean War—combined');
         expect(result.twitterDescription).to.be.eql('COVID-19 has claimed 112,311 U.S. lives. That’s higher than the 104,404 troops who died in every war since the start of the Korean War in 1950.');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://content.fortune.com/wp-content/uploads/2020/06/nolvi-u-s-deaths-from-wars-and-major-pandemics-4.png?resize=1200,600',
           width: null,
@@ -1326,6 +1355,7 @@ describe('static', function () {
           'ogImage',
           'ogSiteName',
           'ogTitle',
+          'ogLocale',
           'ogType',
           'ogUrl',
           'requestUrl',
@@ -1428,6 +1458,7 @@ describe('static', function () {
         expect(result.twitterTitle).to.be.eql('Duckface can saves lives: Binah.ai raises $13.5M to monitor health condition through selfies');
         expect(result.twitterDescription).to.be.eql('Israeli startup Binah.ai technology tracks vital-sign measurements from selfies. As the pandemic calls for more remote everything, the company’s tech is already being used in a Canadian hospital');
         expect(result.twitterSite).to.be.eql('@geektimecoil');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://www.geektime.com/content/images/2020/06/binah-1578304795.png',
           width: '940',
@@ -1451,6 +1482,7 @@ describe('static', function () {
           'ogImage',
           'ogSiteName',
           'ogTitle',
+          'ogLocale',
           'ogType',
           'ogUrl',
           'requestUrl',
@@ -1537,6 +1569,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Instagram photo by Minaal • Jun 19, 2016 at 4:04am UTC');
         expect(result.ogDescription).to.be.eql('See this Instagram photo by @minaalofficial • 105 likes');
         expect(result.ogUrl).to.be.eql('https://www.instagram.com/p/BG0m4IDGaqk/');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogType).to.be.eql('instapp:photo');
         expect(result.ogImage).to.be.eql({
           url: 'https://scontent-lax3-1.cdninstagram.com/t51.2885-15/e35/13355676_1724260121146276_372407195_n.jpg?ig_cache_key=MTI3NTgxNTU3NzE1Mjc2MDQ4NA%3D%3D.2',
@@ -1550,6 +1583,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'ogType',
@@ -1572,6 +1606,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Pokémon GO on the App Store');
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.ogSiteName).to.be.eql('App Store');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterTitle).to.be.eql('Pokémon GO on the App Store');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.twitterSite).to.be.eql('@AppStore');
@@ -1594,6 +1629,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'requestUrl',
@@ -1756,6 +1792,7 @@ describe('static', function () {
         expect(result.twitterDescription).to.be.eql("The Dow Jones industrial average sank more than 1,800 points and the Standard & Poor's 500 dropped 5.9% in its worst day since mid-March, when stocks had a number of harrowing falls as the virus lockdowns began.");
         expect(result.twitterSite).to.be.eql('@latimes');
         expect(result.twitterTitle).to.be.eql('Dow sinks 1,800 as virus cases rise, deflating optimism');
+        expect(result.ogLocale).to.be.eql('en-US');
         expect(result.description).to.be.eql("The Dow Jones industrial average sank more than 1,800 points and the Standard & Poor's 500 dropped 5.9% in its worst day since mid-March, when stocks had a number of harrowing falls as the virus lockdowns began.");
         expect(result.ogImage).to.be.eql({
           url: 'https://ca-times.brightspotcdn.com/dims4/default/f10ff16/2147483647/strip/true/crop/2048x1075+0+89/resize/1200x630!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff2%2F6c%2F8f7e89b7eb2a7ecc01f245e3ec0b%2Fla-1502459693-4svslqel7u-snap-image',
@@ -1778,6 +1815,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'ogType',
@@ -1880,6 +1918,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Some Bill Providers Automatically Update Your Credit Card When You Get A New One');
         expect(result.ogDescription).to.be.eql('When you get a new credit card, you typically have to go through the process of updating your automatic bill pay information. Some services, though, will update automatically. So how do they know your new credit card number?...');
         expect(result.ogUrl).to.be.eql('http://www.lifehacker.com.au/2016/08/some-bill-providers-automatically-update-your-credit-card-when-you-get-a-new-one/');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@LifehackerAU');
         expect(result.ogImage).to.be.eql({
@@ -1900,6 +1939,7 @@ describe('static', function () {
           'author',
           'description',
           'ogDescription',
+          'ogLocale',
           'ogImage',
           'ogTitle',
           'ogType',
@@ -1995,6 +2035,7 @@ describe('static', function () {
         expect(result.twitterCreator).to.be.eql('@mashable');
         expect(result.twitterCard).to.be.eql('player');
         expect(result.author).to.be.eql('Jack Morse');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://mondrian.mashable.com/2020%252F06%252F11%252Ffe%252Fc525cae5298a4f55a62c603880b80465.d3c99.png%252F1200x630.png?signature=4ujkwZwJuqUP8Yu5IGDifLN0rbA=',
           width: null,
@@ -2013,6 +2054,7 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mashable');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'ogLocale',
           'author',
           'date',
           'description',
@@ -2053,6 +2095,7 @@ describe('static', function () {
         expect(result.robots).to.be.eql('index,follow');
         expect(result.articlePublishedTime).to.be.eql('2019-10-23T17:16:52.729Z');
         expect(result.ogTitle).to.be.eql('A Brief History of Robotics');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterTitle).to.be.eql('A Brief History of Robotics');
         expect(result.twitterSite).to.be.eql('@beyond1435');
         expect(result.twitterAppUrliPhone).to.be.eql('medium://p/105fc835a170');
@@ -2085,6 +2128,7 @@ describe('static', function () {
           'ogImage',
           'ogSiteName',
           'ogTitle',
+          'ogLocale',
           'ogType',
           'ogUrl',
           'requestUrl',
@@ -2114,6 +2158,7 @@ describe('static', function () {
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.mulesoft.com/contact');
         expect(result.ogTitle).to.be.eql('1-415-229-2009');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogDescription).to.be.eql('Contact us to see how we can help transform your company with the agility to unlock data, unleash innovation and connect with success.');
         expect(result.ogImage).to.be.eql([
           {
@@ -2129,6 +2174,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'ogType',
@@ -2148,6 +2194,7 @@ describe('static', function () {
         expect(error).to.be.eql(false);
         expect(result.description).to.be.eql('Buy XYZprinting da Vinci 2.0 Duo FFF &#40;Fused Filament Fabrication&#41; ABS&#47;PLA Dual Nozzle 3D Printer with fast shipping and top-rated customer service.Once you know, you Newegg&#33;');
         expect(result.robots).to.be.eql('index,follow');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogTitle).to.be.eql('XYZprinting da Vinci 2.0 Duo FFF (Fused Filament Fabrication) ABS/PLA Dual Nozzle 3D Printer-Newegg.com');
         expect(result.ogDescription).to.be.eql('Buy XYZprinting da Vinci 2.0 Duo FFF &#40;Fused Filament Fabrication&#41; ABS&#47;PLA Dual Nozzle 3D Printer with fast shipping and top-rated customer service.Once you know, you Newegg&#33;');
         expect(result.ogImage).to.be.eql([
@@ -2470,6 +2517,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogTitle',
           'requestUrl',
           'robots',
@@ -2492,6 +2540,7 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('npm');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterTitle).to.be.eql('npm: filenamify');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterDescription).to.be.eql('Convert a string to a valid safe filename');
         expect(result.ogImage).to.be.eql({
           url: 'https://www.npmjs.com/static/images/touch-icons/open-graph.png',
@@ -2504,6 +2553,7 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'description',
           'ogDescription',
+          'ogLocale',
           'ogImage',
           'ogSiteName',
           'ogTitle',
@@ -2536,6 +2586,7 @@ describe('static', function () {
         expect(result.ogDescription).to.be.eql('/PRNewswire/ -- Ideanomics (NASDAQ: IDEX) ("Ideanomics" or the "Company") is pleased to announce the second-stage of debt conversion, with the noteholders of...');
         expect(result.ogUrl).to.be.eql('https://www.prnewswire.com/news-releases/ideanomics-announces-reduction-of-debt-holders-as-part-of-growth-plans-301074797.html');
         expect(result.robots).to.be.eql('index, follow');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://mma.prnewswire.com/media/738482/Ideanomics_Logo.jpg?p=facebook',
           width: null,
@@ -2555,6 +2606,7 @@ describe('static', function () {
           'date',
           'description',
           'ogDescription',
+          'ogLocale',
           'ogImage',
           'ogTitle',
           'ogType',
@@ -2585,6 +2637,7 @@ describe('static', function () {
         expect(result.twitterSite).to.be.eql('reddit');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterTitle).to.be.eql("'UK man' tried to kill Trump: court papers • /r/news");
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://www.redditstatic.com/icon.png',
           width: null,
@@ -2597,6 +2650,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'requestUrl',
@@ -2691,6 +2745,7 @@ describe('static', function () {
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterSite).to.be.eql('@rottentomatoes');
         expect(result.twitterTitle).to.be.eql('Inception');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql([
           {
             url: 'https://staticv2.rottentomatoes.com/static/images/logos/rtlogo.png',
@@ -2920,6 +2975,7 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'ogImage',
           'ogTitle',
+          'ogLocale',
           'ogType',
           'ogUrl',
           'requestUrl',
@@ -3154,6 +3210,7 @@ describe('static', function () {
         expect(result.twitterSite).to.be.eql('@techcrunch');
         expect(result.twitterTitle).to.be.eql('HackerRank Makes Technical Recruiting More Transparent');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
+        expect(result.ogLocale).to.be.eql('en-US');
         expect(result.twitterCreator).to.be.eql('@fredericl');
         expect(result.ogImage).to.be.eql({
           url: 'https://techcrunch.com/wp-content/uploads/2015/08/10-interviewed.png?w=720',
@@ -3174,6 +3231,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'ogType',
@@ -3212,6 +3270,7 @@ describe('static', function () {
         expect(result.twitterAppNameGooglePlay).to.be.eql('TED');
         expect(result.twitterAppUrliPad).to.be.eql('ted://playlists/321/talks_to_form_better_habits?source=twitter');
         expect(result.twitterAppUrliPhone).to.be.eql('ted://playlists/321/talks_to_form_better_habits?source=twitter');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogUrl).to.be.eql('https://www.ted.com/playlists/321/talks_to_form_better_habits?utm_campaign=social&utm_medium=referral&utm_source=facebook.com&utm_content=playlist&utm_term=social-science');
         expect(result.ogImage).to.be.eql({
           url: 'https://pi.tedcdn.com/r/pf.tedcdn.com/images/playlists/talks_to_form_better_habits_1200x627.jpg?c=1050%2C550&w=1050',
@@ -3232,6 +3291,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogTitle',
           'ogType',
           'ogUrl',
@@ -3272,6 +3332,7 @@ describe('static', function () {
         expect(result.twitterTitle).to.be.eql('Citizen Playing Cards');
         expect(result.twitterDescription).to.be.eql('Whether you perform with them or just break out the occasional flourish in a friendly poker game, Citizen Playing Cards will impress people with their elegance. The tuck case features a combination of gold foil, hot stamping, and bronze foil.');
         expect(result.twitterCard).to.be.eql('product');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'http://www.thinkgeek.com/images/products/zoom/jjip_citizen_playing_cards.jpg',
           width: null,
@@ -3292,6 +3353,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'ogType',
@@ -3329,6 +3391,7 @@ describe('static', function () {
         expect(result.twitterTitle).to.be.eql('Inside Jack Dorsey’s radical experiment for billionaires to give away their money');
         expect(result.twitterDescription).to.be.eql('The Twitter CEO’s plan to give away $1 billion shows charity is not as hard as billionaires say it is.');
         expect(result.twitterSite).to.be.eql('voxdotcom');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://cdn.vox-cdn.com/thumbor/PP5h21sGbjyDt0BoZYKpdNUsFFs=/0x0:4746x2485/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/20030444/524250960.jpg.jpg',
           width: '1200',
@@ -3348,6 +3411,7 @@ describe('static', function () {
           'articlePublishedTime',
           'articlePublisher',
           'author',
+          'ogLocale',
           'description',
           'ogDescription',
           'ogImage',
@@ -3374,6 +3438,7 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogTitle).to.be.eql('JSON-LD 1.0');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql([
           {
             url: 'linked-data-graph.png',
@@ -3387,6 +3452,7 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'ogImage',
           'ogTitle',
+          'ogLocale',
           'requestUrl',
           'success',
         );
@@ -3456,6 +3522,7 @@ describe('static', function () {
         expect(result.twitterAppUrliPhone).to.be.eql('yelp:///biz/18TtLS_JtiS2OH30FLqNrw?utm_campaign=default&utm_source=twitter-card');
         expect(result.twitterAppUrliPad).to.be.eql('yelp:///biz/18TtLS_JtiS2OH30FLqNrw?utm_campaign=default&utm_source=twitter-card');
         expect(result.twitterAppUrlGooglePlay).to.be.eql('intent://yelp.com/biz/18TtLS_JtiS2OH30FLqNrw?utm_source=twitter-card#Intent;scheme=http;package=com.yelp.android;end;');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://s3-media2.fl.yelpcdn.com/bphoto/FE1lCskaigmVupQGk86T4g/o.jpg',
           width: '2000',
@@ -3474,6 +3541,7 @@ describe('static', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'ogType',

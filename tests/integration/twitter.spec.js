@@ -15,6 +15,7 @@ describe('twitter', function () {
         expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20160303190414im_/https://dev.twitter.com/');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.ogSiteName).to.be.eql('Twitter Developers');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterDescription).to.be.eql('The Twitter platform connects your website or application with the worldwide conversation happening on Twitter.');
         expect(result.ogImage).to.be.eql({
           url: 'https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png',
@@ -34,6 +35,7 @@ describe('twitter', function () {
           'ogImage',
           'ogSiteName',
           'ogTitle',
+          'ogLocale',
           'ogType',
           'ogUrl',
           'requestUrl',
@@ -63,6 +65,7 @@ describe('twitter', function () {
         expect(result.twitterCreatorId).to.be.eql('13334762');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterTitle).to.be.eql('GitHub');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterDescription).to.be.eql('GitHub is where people build software. More than 19 million people use GitHub to discover, fork, and contribute to over 50 million projects.');
         expect(result.ogImage).to.be.eql({
           url: 'https://web.archive.org/web/20170113081103im_/https://assets-cdn.github.com/images/modules/open_graph/github-logo.png',
@@ -82,6 +85,7 @@ describe('twitter', function () {
           'ogDescription',
           'ogImage',
           'ogSiteName',
+          'ogLocale',
           'ogTitle',
           'ogUrl',
           'requestUrl',
@@ -108,6 +112,7 @@ describe('twitter', function () {
         expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20170913111314/https://atom.io/');
         expect(result.ogSiteName).to.be.eql('Atom');
         expect(result.ogTitle).to.be.eql('A hackable text editor for the 21st Century');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.description).to.be.eql('At GitHub, we’re building the text editor we’ve always wanted: hackable to the core, but approachable on the first day without ever touching a config file. We can’t wait to see what you build with it.');
         expect(result.ogDescription).to.be.eql('At GitHub, we’re building the text editor we’ve always wanted: hackable to the core, but approachable on the first day without ever touching a config file. We can’t wait to see what you build with it.');
         expect(result.ogType).to.be.eql('website');
@@ -134,6 +139,7 @@ describe('twitter', function () {
           'description',
           'ogDescription',
           'ogImage',
+          'ogLocale',
           'ogSiteName',
           'ogTitle',
           'ogType',

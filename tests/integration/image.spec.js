@@ -18,6 +18,7 @@ describe('image', function () {
       expect(result.ogDescription).to.be.eql('____________________ Press "L" to view on black Press "F" to favor Share, if you like :)    You can leave a comment, if you like :)    Not to use or publish without permission! © Christoph Wagner Photographie');
       expect(result.ogType).to.be.eql('article');
       expect(result.ogUrl).to.be.eql('https://www.flickr.com/photos/travelgraph/18791678505/');
+      expect(result.ogLocale).to.be.eql('en-us');
       expect(result.twitterCard).to.be.eql('photo');
       expect(result.twitterDescription).to.be.eql('____________________ Press "L" to view on black Press "F" to favor Share, if you like :)    You can leave a comment, if you like :)    Not to use or publish without permission! © Christoph Wagner Photographie');
       expect(result.twitterAppUrliPhone).to.be.eql('flickr://flickr.com/photos/travelgraph/18791678505/');
@@ -33,6 +34,7 @@ describe('image', function () {
         'description',
         'ogDescription',
         'ogImage',
+        'ogLocale',
         'ogSiteName',
         'ogTitle',
         'ogType',
@@ -63,6 +65,7 @@ describe('image', function () {
       expect(result.ogTitle).to.be.eql('Twitter. It\'s what\'s happening.');
       expect(result.description).to.be.eql('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
       expect(result.ogDescription).to.be.eql('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage.length).to.be.eql(48);
       let imageFound = false;
       for (let i = 0; i < result.ogImage.length; i += 1) {
@@ -76,6 +79,7 @@ describe('image', function () {
         'ogDescription',
         'ogImage',
         'ogTitle',
+        'ogLocale',
         'requestUrl',
         'robots',
         'success',

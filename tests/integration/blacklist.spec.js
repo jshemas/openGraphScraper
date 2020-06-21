@@ -33,6 +33,7 @@ describe('blacklist', function () {
       expect(result.description).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.ogLocale).to.be.eql('mul');
       expect(result.ogImage).to.be.eql([
         {
           height: '183',
@@ -46,6 +47,7 @@ describe('blacklist', function () {
       expect(result).to.have.all.keys(
         'description',
         'ogDescription',
+        'ogLocale',
         'ogImage',
         'ogTitle',
         'requestUrl',
@@ -65,6 +67,7 @@ describe('blacklist', function () {
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.description).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.ogLocale).to.be.eql('mul');
       expect(result.ogImage).to.be.eql([
         {
           height: '183',
@@ -80,6 +83,7 @@ describe('blacklist', function () {
         'ogDescription',
         'ogImage',
         'ogTitle',
+        'ogLocale',
         'requestUrl',
         'success',
       );

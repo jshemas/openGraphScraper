@@ -10,6 +10,7 @@ describe('url', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.ogLocale).to.be.eql('mul');
       expect(result.ogImage).to.be.eql([
         {
           height: '183',
@@ -24,6 +25,7 @@ describe('url', function () {
         'description',
         'ogDescription',
         'ogImage',
+        'ogLocale',
         'ogTitle',
         'requestUrl',
         'success',
@@ -40,6 +42,7 @@ describe('url', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.ogLocale).to.be.eql('mul');
       expect(result.ogImage).to.be.eql([
         {
           height: '183',
@@ -54,6 +57,7 @@ describe('url', function () {
         'description',
         'ogDescription',
         'ogImage',
+        'ogLocale',
         'ogTitle',
         'requestUrl',
         'success',
@@ -70,6 +74,7 @@ describe('url', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.ogLocale).to.be.eql('mul');
       expect(result.ogImage).to.be.eql([
         {
           height: '183',
@@ -83,6 +88,7 @@ describe('url', function () {
       expect(result).to.have.all.keys(
         'description',
         'ogDescription',
+        'ogLocale',
         'ogImage',
         'ogTitle',
         'requestUrl',
@@ -100,6 +106,7 @@ describe('url', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
+      expect(result.ogLocale).to.be.eql('mul');
       expect(result.ogImage).to.be.eql([
         {
           height: '183',
@@ -114,6 +121,7 @@ describe('url', function () {
         'description',
         'ogDescription',
         'ogImage',
+        'ogLocale',
         'ogTitle',
         'requestUrl',
         'success',
@@ -129,6 +137,7 @@ describe('url', function () {
       console.log('result:', result);
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
+      expect(result.ogLocale).to.be.eql('mul');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogImage).to.be.eql([
         {
@@ -144,6 +153,7 @@ describe('url', function () {
         'description',
         'ogDescription',
         'ogImage',
+        'ogLocale',
         'ogTitle',
         'requestUrl',
         'success',
