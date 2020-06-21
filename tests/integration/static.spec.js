@@ -9,7 +9,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Entire home/apt for $220. A cute boutique studio located on arguably the best street in Chelsea. A block from the Highline, endless Galleries and Restaurants, the wonderful ...');
         expect(result.ogSiteName).to.be.eql('Airbnb');
         expect(result.ogTitle).to.be.eql('Bright, Chelsea Studio - Apartments for Rent in New York');
         expect(result.ogType).to.be.eql('airbedandbreakfast:listing');
@@ -43,7 +42,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/airbnb');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -77,7 +75,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Unbeatable software and support with a great camera, wrapped in a familiar exterior.');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterTitle).to.be.eql('Google Pixel review: The best Android phone, even if it is a little pricey');
         expect(result.twitterDescription).to.be.eql('Unbeatable software and support with a great camera, wrapped in a familiar exterior.');
@@ -104,7 +101,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/arstechnica');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -131,7 +127,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Buy Battlefield 1 on Xbox One, PlayStation 4, or Origin for PC. ');
         expect(result.ogUrl).to.be.eql('https://www.battlefield.com/buy/battlefield-1');
         expect(result.ogSiteName).to.be.eql('Battlefield');
         expect(result.ogType).to.be.eql('article');
@@ -157,7 +152,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/battlefield');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -183,7 +177,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('4.7-inch (diagonal) Retina HD display with 1334-by-750 resolution; 3D Touch; A9 chip with M9 motion coprocessor');
         expect(result.ogTitle).to.be.eql('Apple - iPhone 6s 64GB - Space Gray (Verizon)');
         expect(result.ogType).to.be.eql('product');
         expect(result.ogUrl).to.be.eql('/site/apple-iphone-6s-64gb-space-gray-verizon/4447801.p?skuId=4447801');
@@ -210,7 +203,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bestbuy');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -308,7 +300,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Sony Corp. unveiled the PlayStation 5 game console and an array of new games from the virtual stage Thursday, showcasing for the first time what its next-generation software will look like ahead of a holiday season showdown against Microsoft Corp.’s Xbox.');
         expect(result.ogDescription).to.be.eql('Sony Corp. unveiled the PlayStation 5 game console and an array of new games from the virtual stage Thursday, showcasing for the first time what its next-generation software will look like ahead of a holiday season showdown against Microsoft Corp.’s Xbox.');
         expect(result.ogSiteName).to.be.eql('Bloomberg.com');
         expect(result.ogTitle).to.be.eql('Sony Reveals PlayStation 5 Games Ahead of Holiday Release');
@@ -336,7 +327,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bloomberg');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogAudioSecureURL',
           'ogAudioType',
           'ogDescription',
@@ -364,7 +354,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql("Madhu Kapur in her suit had sought various reliefs including recognition of the family's right to participate in the management of the bank");
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@BT_India');
         expect(result.twitterCreator).to.be.eql('@BT_India');
@@ -387,7 +376,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/businesstoday');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogTitle',
@@ -410,7 +398,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql("Robust cyber security due diligence ahead of M&A activity can save huge headaches down the line, notes Bitglass's CTO.");
         expect(result.ogLocale).to.be.eql('en_GB');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('Undertaking Cyber Security Due Diligence in M&A Transactions');
@@ -443,7 +430,6 @@ describe('static', function () {
           'articlePublishedTime',
           'articleSection',
           'articleTag',
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -468,7 +454,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('As cloud adoption hits another growth spurt, companies are discovering the power of mixing and matching cloud services into solutions that address almost any business need');
         expect(result.ogTitle).to.be.eql('The state of cloud computing in 2020');
         expect(result.ogDescription).to.be.eql('As cloud adoption hits another growth spurt, companies are discovering the power of mixing and matching cloud services into solutions that address almost any business need');
         expect(result.ogType).to.be.eql('article');
@@ -480,7 +465,6 @@ describe('static', function () {
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@infoworld');
         expect(result.twitterDescription).to.be.eql('As cloud adoption hits another growth spurt, companies are discovering the power of mixing and matching cloud services into solutions that address almost any business need');
-        expect(result.robots).to.be.eql('NOODP,NOYDIR');
         expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://images.idgesg.net/images/article/2020/06/intro_ts_cloud__by-akinbostanci-getty-images-100847825-large.jpg',
@@ -500,7 +484,6 @@ describe('static', function () {
           'author',
           'date',
           'dcDateIssued',
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -509,7 +492,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterDescription',
@@ -526,7 +508,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Cloudinary');
         expect(result.ogTitle).to.be.eql('Cloudinary - Pricing');
         expect(result.ogDescription).to.be.eql('Cloudinary');
         expect(result.ogImage).to.be.eql([
@@ -546,7 +527,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cloudinary');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogTitle',
@@ -563,7 +543,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('How a cash strapped recruitment company became a unicorn with a new business model');
         expect(result.ogSiteName).to.be.eql('Cloud Pro');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.cloudpro.co.uk/go/8550');
@@ -590,7 +569,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cloudpro');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -618,7 +596,6 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.author).to.be.eql('Roger Cheng');
-        expect(result.description).to.be.eql("Here's what you need to at least sound like you know what you're talking about when it comes to the next-gen mobile network.");
         expect(result.ogSiteName).to.be.eql('CNET');
         expect(result.ogTitle).to.be.eql('5G glossary: From spectrum to small cell to MIMO');
         expect(result.ogDescription).to.be.eql("Here's what you need to at least sound like you know what you're talking about when it comes to the next-gen mobile network.");
@@ -647,7 +624,6 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
-          'description',
           'ogDescription',
           'articlePublisher',
           'ogImage',
@@ -675,7 +651,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('The acquisition brings NetApp cloud compute optimization technology to go with its storage optimization capabilities.');
         expect(result.ogDescription).to.be.eql('The acquisition brings NetApp cloud compute optimization technology to go with its storage optimization capabilities.');
         expect(result.author).to.be.eql('Joseph F. Kovar');
         expect(result.ogUrl).to.be.eql('https://www.crn.com/news/cloud/netapp-buying-spot-to-tie-public-cloud-compute-storage-optimization');
@@ -694,7 +669,6 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'articlePublishedTime',
           'author',
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -714,14 +688,12 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('My healthcare data is what I want protected the most (intimate details about my family’s health, where we live, and financial information). Anything and everything a hacker could want! It is safe? As a data security professional and citizen, I know the answer is not good.');
         expect(result.ogTitle).to.be.eql('Healthcare Data Protection and Privacy Prognosis—Still Critical but New Treatment is Available');
         expect(result.ogDescription).to.be.eql('My healthcare data is what I want protected the most (intimate details about my family’s health, where we live, and financial information). Anything and everything a hacker could want! It is safe? As a data security professional and citizen, I know the answer is not good.');
         expect(result.ogType).to.be.eql('article');
         expect(result.date).to.be.eql('2016-04-15');
         expect(result.dcDateIssued).to.be.eql('2016-04-15T13:52-05:00');
         expect(result.author).to.be.eql('Robert Shields');
-        expect(result.robots).to.be.eql('NOODP,NOYDIR');
         expect(result.ogSiteName).to.be.eql('Computerworld');
         expect(result.ogUrl).to.be.eql('https://www.computerworld.com/article/3057179/healthcare-data-protection-and-privacy-prognosis-still-critical-but-new-treatment-is-available.html');
         expect(result.twitterCard).to.be.eql('summary_large_image');
@@ -746,7 +718,6 @@ describe('static', function () {
           'date',
           'author',
           'dcDateIssued',
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -755,7 +726,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterDescription',
@@ -772,8 +742,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.robots).to.be.eql('INDEX, FOLLOW');
-        expect(result.description).to.be.eql("Why common strategies for stopping DDoS attacks sometimes cause the same slowdowns they're trying to prevent.");
         expect(result.ogTitle).to.be.eql("DDoS Attack Mitigation: Don't Sacrifice Speed for Security");
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.darkreading.com/attacks-breaches/ddos-attack-mitigation-dont-sacrifice-speed-for-security/d/d-id/1337917');
@@ -799,7 +767,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/darkreading');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -808,7 +775,6 @@ describe('static', function () {
           'ogLocale',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterDescription',
@@ -826,9 +792,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Every geek goes through a phase where they discover emulation. It&#39;s practically a rite of passage. \n'
-          + '\n'
-          + 'This is a companion discussion topic for the original entry at https://blog.codinghorror.com/the-raspberry-pi-has-revol&hellip;'); // TODO: look into this
         expect(result.ogSiteName).to.be.eql('Coding Horror Discussion');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.ogUrl).to.be.eql('https://discourse.codinghorror.com/t/the-raspberry-pi-has-revolutionized-emulation/4462/29');
@@ -852,7 +815,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/discourse');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -909,7 +871,6 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogDescription).to.be.eql('Add style without losing comfort with this 3-person outdoor sofa. Made out of weather resistant wicker on an aluminum frame, it will endure in any of your outdoor spaces. The synthetic resin wicker provides a durable exterior, while still preserving its classic yet modern appearance. | eBay!');
-        expect(result.description).to.be.eql('Add style without losing comfort with this 3-person outdoor sofa. Made out of weather resistant wicker on an aluminum frame, it will endure in any of your outdoor spaces. The synthetic resin wicker provides a durable exterior, while still preserving its classic yet modern appearance. | eBay!');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.ogType).to.be.eql('ebay-objects:item');
         expect(result.twitterDescription).to.be.eql('Add style without losing comfort with this 3-person outdoor sofa. Made out of weather resistant wicker on an aluminum frame, it will endure in any of your outdoor spaces. The synthetic resin wicker provides a durable exterior, while still preserving its classic yet modern appearance. | eBay!');
@@ -934,7 +895,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/ebay');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -960,7 +920,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Placement firm TeamLease Services has received 22,367 resumes in May from hospitality sectors alone, up a staggering 444 per cent from 4,109 in the previous month. Professionals who are proactively looking out have either been handed out pink slips or are facing job threats as their companies take the restructuring route, said executives aware of the matter.');
         expect(result.ogTitle).to.be.eql('Lockdown led to 30% surge in resumes from job seekers: Recruitment firms');
         expect(result.ogSiteName).to.be.eql('The Economic Times');
         expect(result.ogType).to.be.eql('article');
@@ -998,7 +957,6 @@ describe('static', function () {
           'articleModifiedTime',
           'articlePublishedTime',
           'articleTag',
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -1030,9 +988,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.robots).to.be.eql('index,follow,NOODP');
         expect(result.ogSiteName).to.be.eql('Entrepreneur');
-        expect(result.description).to.be.eql('By taking inspiration from origami, this robot gripper can safely pick up and hold delicate objects while at the same time lift more than 100x its own weight.');
         expect(result.articleAuthor).to.be.eql('Matthew Humphries');
         expect(result.ogTitle).to.be.eql('Origami-Inspired Robot Gripper Could Pack Your Groceries');
         expect(result.ogDescription).to.be.eql('By taking inspiration from origami, this robot gripper can safely pick up and hold delicate objects while at the same time lift more than 100x its own weight.');
@@ -1067,7 +1023,6 @@ describe('static', function () {
           'articlePublishedTime',
           'articlePublisher',
           'articleTag',
-          'description',
           'ogDescription',
           'ogLocale',
           'ogImage',
@@ -1076,7 +1031,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterDescription',
@@ -1096,7 +1050,6 @@ describe('static', function () {
         expect(error).to.be.eql(false);
         expect(result.ogSiteName).to.be.eql('Etsy');
         expect(result.ogLocale).to.be.eql('en_US');
-        expect(result.description).to.be.eql('Die cut sticker is cut in the shape of the graphic with no background and all one color.  Available in several colors and a variety of sizes. Please rely on dimensions listed or measure area where you will be applying the decal. Select options from drop down menus. Agents of Shield Hydra logo also available: https://www.etsy.com/your/shops/InfernoDecals/tools/listings/230718253  Sizes listed are in inches. (1 inch = 2.54 centimeters)  Made from quality outdoor vinyl that is water proof, UV resistant and rated to last 6 years outdoors and longer indoors. Self adhesive vinyl is removable and does not damage hard surfaces or vehicle paint. Not reuseable or repositionable. Can be applied to any clean smooth surface such as vehicle body, window, laptop, water bottle, mirror, helmet, guitar etc.  Ships in cardboard mailer or with cardboard inside envelope to protect from damage during shipping. Easy to install, comes with full instructions included. How to install vinyl decals: 1. Clean the area thoroughly with rubbing alcohol or soap and water. Do not use Windex or similar products, it will leave a residue behind that will prevent the sticker from adhering well. 2. Prepare the sticker for application by firmly rubbing a squeegee or credit card across the clear transfer tape. This removes any air bubbles that may have formed and makes the sticker cling to the transfer tape. 3. Peel the white paper backing off the sticker. If the sticker clings to the backing, slowly replace the paper backing and repeat Step 2. 4. Slowly lower the sticker onto the surface and rub it in place firmly with a squeegee or credit card. Wait 10 minutes or more. For best results, wait 24 hours before moving to the next step. 5. Slowly peel the clear transfer tape off at an angle. Be careful not to pull the sticker off the surface. If sticker pulls away from the surface repeat Step 4.  *Use a pin to poke any air bubbles in the center and push the air out through the hole. *For best results do not apply a sticker in extreme hot or cold temperatures.');
         expect(result.ogTitle).to.be.eql('Agents of Shield decal sticker for car, truck, laptop in ANY COLOR die cut vinyl');
         expect(result.ogType).to.be.eql('etsymarketplace:item');
         expect(result.ogUrl).to.be.eql('https://www.etsy.com/listing/230389421/agents-of-shield-decal-sticker-for-car?utm_source=OpenGraph&utm_medium=PageTools&utm_campaign=Share');
@@ -1129,7 +1082,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/etsy');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1167,8 +1119,6 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('Facebook');
         expect(result.ogUrl).to.be.eql('https://www.facebook.com/');
         expect(result.ogLocale).to.be.eql('en_US');
-        expect(result.description).to.be.eql('Create an account or log into Facebook. Connect with friends, family and other people you know. Share photos and videos, send messages and get updates.');
-        expect(result.robots).to.be.eql('noodp,noydir');
         expect(result.ogImage).to.be.eql({
           url: 'https://www.facebook.com/images/fb_icon_325x325.png',
           width: null,
@@ -1180,7 +1130,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/facebook');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1188,7 +1137,6 @@ describe('static', function () {
           'ogTitle',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
@@ -1201,7 +1149,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Renowned psychiatrist Dr. Jessica Clemons, MD gained popularity for helping to normalize the conversation around mental health, particularly in the black community.\n');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('The internet’s favorite psychiatrist has a game plan for your mental health');
         expect(result.ogUrl).to.be.eql('https://www.fastcompany.com/90514725/the-internets-favorite-psychiatrist-has-a-game-plan-for-your-mental-health');
@@ -1212,7 +1159,6 @@ describe('static', function () {
         expect(result.twitterTitle).to.be.eql('The internet’s favorite psychiatrist has a game plan for your mental health');
         expect(result.twitterDescription).to.be.eql('Renowned psychiatrist Dr. Jessica Clemons, MD gained popularity for helping to normalize the conversation around mental health, particularly in the black community.\n');
         expect(result.twitterSite).to.be.eql('@fastcompany');
-        expect(result.robots).to.be.eql('max-image-preview:large');
         expect(result.articlePublishedTime).to.be.eql('2020-06-11T06:00:03');
         expect(result.articleModifiedTime).to.be.eql('2020-06-11T09:47:11');
         expect(result.author).to.be.eql('KC Ifeanyi');
@@ -1238,7 +1184,6 @@ describe('static', function () {
           'articlePublisher',
           'articleTag',
           'author',
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1247,7 +1192,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterDescription',
@@ -1265,7 +1209,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql("The best scents for gifting — even if it's a gift to yourself — are universally appealing but also unique. ");
         expect(result.author).to.be.eql('Adam Hurly');
         expect(result.articleSection).to.be.eql('Shopping');
         expect(result.articleAuthor).to.be.eql('Adam Hurly');
@@ -1299,7 +1242,6 @@ describe('static', function () {
           'articleSection',
           'articlePublisher',
           'author',
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -1325,7 +1267,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('COVID-19 has claimed 112,311 U.S. lives. That’s higher than the 104,404 troops who died in every war since the start of the Korean War in 1950.');
         expect(result.ogUrl).to.be.eql('https://fortune.com/2020/06/10/coronavirus-deaths-us-covid-19-killed-more-americans-korean-war-vietnam-iraq-persian-gulf-combined-how-many-died/');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('The coronavirus has now killed more Americans than every war since the start of the Korean War—combined');
@@ -1350,7 +1291,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/fortune');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -1375,7 +1315,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Read 111 tips and reviews from 2517 visitors about whiskey, scotch and alley. "Best collection of cocktails in Sydney. Very crowded and extremely..."');
         expect(result.ogTitle).to.be.eql('The Baxter Inn');
         expect(result.ogDescription).to.be.eql('Whisky Bar in Sydney, NSW');
         expect(result.ogUrl).to.be.eql('https://foursquare.com/v/the-baxter-inn/4ed4896c775b45f6ed7b0182');
@@ -1410,7 +1349,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/foursquare');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -1507,8 +1445,6 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('Inc.com');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@Inc');
-        expect(result.robots).to.be.eql('noarchive');
-        expect(result.description).to.be.eql("You can provide all the PPE you want, but it's also crucial that your employees are emotionally secure in their workplace.");
         expect(result.ogTitle).to.be.eql('Reopening? Learn How to Help Your Employees Feel  Safe Psychologically');
         expect(result.ogDescription).to.be.eql("You can provide all the PPE you want, but it's also crucial that your employees are emotionally secure in their workplace.");
         expect(result.ogUrl).to.be.eql('https://www.inc.com/brit-morse/reopening-workplace-help-employees-feel-safe-psychologically.html');
@@ -1536,7 +1472,6 @@ describe('static', function () {
           'articleAuthor',
           'articlePublishedTime',
           'articleSection',
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -1544,7 +1479,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterCreator',
@@ -1563,8 +1497,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.robots).to.be.eql('noimageindex');
-        expect(result.description).to.be.eql('See this Instagram photo by @minaalofficial • 105 likes');
         expect(result.ogSiteName).to.be.eql('Instagram');
         expect(result.ogTitle).to.be.eql('Instagram photo by Minaal • Jun 19, 2016 at 4:04am UTC');
         expect(result.ogDescription).to.be.eql('See this Instagram photo by @minaalofficial • 105 likes');
@@ -1580,7 +1512,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/insta');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1589,7 +1520,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
@@ -1602,7 +1532,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.an('string').and.to.not.be.empty;
         expect(result.ogTitle).to.be.eql('Pokémon GO on the App Store');
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.ogSiteName).to.be.eql('App Store');
@@ -1626,7 +1555,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/itunes');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1650,7 +1578,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Technion doctoral Muhammad Khatib, inspired biological healing process of the human skin, decided to adapt his elastomer into an autonomous self-healing system.');
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogType).to.be.eql('article');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/jbusinessnews/?ref=bookmarks');
@@ -1667,7 +1594,6 @@ describe('static', function () {
         expect(result.twitterTitle).to.be.eql('Israeli Student At The Technion Develops Self-Healing Artificial Electronic Skin - Jewish Business News');
         expect(result.twitterSite).to.be.eql('@JewishBusinessNews');
         expect(result.twitterCreator).to.be.eql('@JewishBusinessNews');
-        expect(result.robots).to.be.eql('index, follow');
         expect(result.ogImage).to.be.eql({
           url: 'https://jewishbusinessnews.com/wp-content/uploads/2020/06/Technion-skin-like-material-the-heal-itself-e1591896385138.jpg',
           width: '640',
@@ -1688,7 +1614,6 @@ describe('static', function () {
           'articlePublisher',
           'articleSection',
           'articleTag',
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1697,7 +1622,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterCreator',
@@ -1716,9 +1640,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('BSX Athletics is raising funds for LVL – The First Wearable Hydration Monitor on Kickstarter! \n'
-        + '\n'
-        + ' LVL is a wearable hydration monitor that gives you the complete picture of your health by also tracking activity, sleep, mood and HR.'); // TODO: look into this
         expect(result.ogTitle).to.be.eql('LVL – The First Wearable Hydration Monitor');
         expect(result.ogType).to.be.eql('kickstarter:project');
         expect(result.ogUrl).to.be.eql('https://www.kickstarter.com/projects/lactate-threshold/lvl-the-first-wearable-hydration-monitor');
@@ -1749,7 +1670,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/kickstarter');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1793,7 +1713,6 @@ describe('static', function () {
         expect(result.twitterSite).to.be.eql('@latimes');
         expect(result.twitterTitle).to.be.eql('Dow sinks 1,800 as virus cases rise, deflating optimism');
         expect(result.ogLocale).to.be.eql('en-US');
-        expect(result.description).to.be.eql("The Dow Jones industrial average sank more than 1,800 points and the Standard & Poor's 500 dropped 5.9% in its worst day since mid-March, when stocks had a number of harrowing falls as the virus lockdowns began.");
         expect(result.ogImage).to.be.eql({
           url: 'https://ca-times.brightspotcdn.com/dims4/default/f10ff16/2147483647/strip/true/crop/2048x1075+0+89/resize/1200x630!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff2%2F6c%2F8f7e89b7eb2a7ecc01f245e3ec0b%2Fla-1502459693-4svslqel7u-snap-image',
           width: '1200',
@@ -1812,7 +1731,6 @@ describe('static', function () {
           'articleAuthor',
           'articlePublishedTime',
           'articleSection',
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1838,7 +1756,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Thinking in terms of revenue operations can dramatically accelerate growth. Here are four companies that have leveraged revenue operations for revenue growth.');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('Accelerate Growth with Revenue Operations ');
         expect(result.ogUrl).to.be.eql('https://learn.leandata.com/routing-rules-leandatas-sales-and-marketing-blog/accelerate-growth-with-revenue-operations');
@@ -1861,7 +1778,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/leandata');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogTitle',
@@ -1911,8 +1827,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('When you get a new credit card, you typically have to go through the process of updating your automatic bill pay information. Some services, though, w...');
-        expect(result.robots).to.be.eql('noarchive');
         expect(result.author).to.be.eql('Kristin Wong');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('Some Bill Providers Automatically Update Your Credit Card When You Get A New One');
@@ -1937,7 +1851,6 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
-          'description',
           'ogDescription',
           'ogLocale',
           'ogImage',
@@ -1945,7 +1858,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterImage',
@@ -1961,8 +1873,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.robots).to.be.eql('max-snippet:-1, max-image-preview:large, max-video-preview:-1');
-        expect(result.description).to.be.eql('Apple today shared the first trailer for "Greyhound," a WWII movie that stars Tom Hanks as George Krause, a career naval officer given...');
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogSiteName).to.be.eql('MacRumors');
         expect(result.ogTitle).to.be.eql("Apple Announces July 10 Release Date for Upcoming Tom Hanks WWII Film 'Greyhound'");
@@ -1991,7 +1901,6 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articlePublisher',
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -2000,7 +1909,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterCreator',
@@ -2028,7 +1936,6 @@ describe('static', function () {
         expect(result.ogArticlePublishedTime).to.be.eql('2020-06-11T17:50:52Z');
         expect(result.ogArticlePublisher).to.be.eql('https://www.facebook.com/mashable');
         expect(result.ogDescription).to.be.eql("Biden wants to talk to Facebook's manager. ");
-        expect(result.description).to.be.eql('In an open letter to Mark Zuckerberg and Facebook, Joe Biden demanded action intended to stop the spread of fake news ahead of the 2020 election. ');
         expect(result.twitterTitle).to.be.eql('Indignant Joe Biden pens strongly worded letter to Mark Zuckerberg');
         expect(result.twitterDescription).to.be.eql("Biden wants to talk to Facebook's manager. ");
         expect(result.twitterSite).to.be.eql('@mashable');
@@ -2057,7 +1964,6 @@ describe('static', function () {
           'ogLocale',
           'author',
           'date',
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -2092,14 +1998,12 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('Medium');
         expect(result.ogType).to.be.eql('article');
         expect(result.twitterCard).to.be.eql('summary_large_image');
-        expect(result.robots).to.be.eql('index,follow');
         expect(result.articlePublishedTime).to.be.eql('2019-10-23T17:16:52.729Z');
         expect(result.ogTitle).to.be.eql('A Brief History of Robotics');
         expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterTitle).to.be.eql('A Brief History of Robotics');
         expect(result.twitterSite).to.be.eql('@beyond1435');
         expect(result.twitterAppUrliPhone).to.be.eql('medium://p/105fc835a170');
-        expect(result.description).to.be.eql('When we first started looking into robotics, we were wondering about its history. After all, this relatively new field of technology didn’t just fall off the wagon (no pun intended). So, we came up…');
         expect(result.ogDescription).to.be.eql('How the automotive industry bankrolled robotics development');
         expect(result.twitterDescription).to.be.eql('How the automotive industry bankrolled robotics development');
         expect(result.ogUrl).to.be.eql('https://medium.com/mobility-insights/a-brief-history-of-robotics-105fc835a170');
@@ -2123,7 +2027,6 @@ describe('static', function () {
           'articleAuthor',
           'articlePublishedTime',
           'author',
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -2132,7 +2035,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterAppIdiPhone',
           'twitterAppNameiPhone',
@@ -2153,7 +2055,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Contact us to see how we can help transform your company with the agility to unlock data, unleash innovation and connect with success.');
         expect(result.ogSiteName).to.be.eql('MuleSoft');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.mulesoft.com/contact');
@@ -2171,7 +2072,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mulesoft');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -2192,8 +2092,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Buy XYZprinting da Vinci 2.0 Duo FFF &#40;Fused Filament Fabrication&#41; ABS&#47;PLA Dual Nozzle 3D Printer with fast shipping and top-rated customer service.Once you know, you Newegg&#33;');
-        expect(result.robots).to.be.eql('index,follow');
         expect(result.ogLocale).to.be.eql('en');
         expect(result.ogTitle).to.be.eql('XYZprinting da Vinci 2.0 Duo FFF (Fused Filament Fabrication) ABS/PLA Dual Nozzle 3D Printer-Newegg.com');
         expect(result.ogDescription).to.be.eql('Buy XYZprinting da Vinci 2.0 Duo FFF &#40;Fused Filament Fabrication&#41; ABS&#47;PLA Dual Nozzle 3D Printer with fast shipping and top-rated customer service.Once you know, you Newegg&#33;');
@@ -2514,13 +2412,11 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/newegg');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
           'ogTitle',
           'requestUrl',
-          'robots',
           'success',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
@@ -2533,7 +2429,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Convert a string to a valid safe filename');
         expect(result.ogDescription).to.be.eql('Convert a string to a valid safe filename');
         expect(result.ogTitle).to.be.eql('filenamify');
         expect(result.ogUrl).to.be.eql('https://www.npmjs.com/package/filenamify');
@@ -2551,7 +2446,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/npm');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogLocale',
           'ogImage',
@@ -2574,7 +2468,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('/PRNewswire/ -- Ideanomics (NASDAQ: IDEX) ("Ideanomics" or the "Company") is pleased to announce the second-stage of debt conversion, with the noteholders of...');
         expect(result.author).to.be.eql('Ideanomics');
         expect(result.date).to.be.eql('2020-06-11T16:25:00-04:00');
         expect(result.twitterCard).to.be.eql('summary_large_image');
@@ -2585,7 +2478,6 @@ describe('static', function () {
         expect(result.ogType).to.be.eql('website');
         expect(result.ogDescription).to.be.eql('/PRNewswire/ -- Ideanomics (NASDAQ: IDEX) ("Ideanomics" or the "Company") is pleased to announce the second-stage of debt conversion, with the noteholders of...');
         expect(result.ogUrl).to.be.eql('https://www.prnewswire.com/news-releases/ideanomics-announces-reduction-of-debt-holders-as-part-of-growth-plans-301074797.html');
-        expect(result.robots).to.be.eql('index, follow');
         expect(result.ogLocale).to.be.eql('en');
         expect(result.ogImage).to.be.eql({
           url: 'https://mma.prnewswire.com/media/738482/Ideanomics_Logo.jpg?p=facebook',
@@ -2604,7 +2496,6 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'author',
           'date',
-          'description',
           'ogDescription',
           'ogLocale',
           'ogImage',
@@ -2612,7 +2503,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterDescription',
@@ -2630,7 +2520,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('reddit: the front page of the internet');
         expect(result.ogSiteName).to.be.eql('reddit');
         expect(result.ogDescription).to.be.eql('4910 points and 7055 comments so far on reddit');
         expect(result.ogTitle).to.be.eql("'UK man' tried to kill Trump: court papers • /r/news");
@@ -2647,7 +2536,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/reddit');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -2669,10 +2557,8 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.robots).to.be.eql('index, follow');
         expect(result.author).to.be.eql('Joshua Franklin');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/Reuters');
-        expect(result.description).to.be.eql('Data mining firm Palantir Technologies Inc is aiming to file confidentially with U.S. regulators to go public in the coming weeks, emboldened by the strong performance of other initial public offerings (IPOs), people familiar with the matter said.');
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogSiteName).to.be.eql('U.S.');
         expect(result.ogArticleAuthor).to.be.eql('Joshua Franklin');
@@ -2706,7 +2592,6 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'author',
           'articlePublisher',
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -2715,7 +2600,6 @@ describe('static', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'ogArticleAuthor',
           'ogArticleModifiedTime',
@@ -2994,7 +2878,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Node.js the Right Way: Practical, Server-Side JavaScript That Scales [Jim Wilson] on Amazon.com. *FREE* shipping on qualifying offers. Get to the forefront of server-side JavaScript programming by writing compact, robust, fast, networked Node applications that scale. Ready to take JavaScript beyond the browser');
         expect(result.ogTitle).to.be.eql('Node.js the Right Way: Practical, Server-Side JavaScript That Scales: Jim Wilson: 9781937785734: Amazon.com: Books');
         expect(result.ogDescription).to.be.eql('Node.js the Right Way: Practical, Server-Side JavaScript That Scales [Jim Wilson] on Amazon.com. *FREE* shipping on qualifying offers. Get to the forefront of server-side JavaScript programming by writing compact, robust, fast, networked Node applications that scale. Ready to take JavaScript beyond the browser');
         expect(result.ogImage).to.be.eql([
@@ -3182,7 +3065,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/smile');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogTitle',
@@ -3205,7 +3087,6 @@ describe('static', function () {
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.ogUrl).to.be.eql('https://social.techcrunch.com/2016/01/12/hackerrank-jobs-takes-the-mystery-out-of-technical-recruiting/');
         expect(result.ogType).to.be.eql('article');
-        expect(result.description).to.be.an('string').and.to.not.be.empty;
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@techcrunch');
         expect(result.twitterTitle).to.be.eql('HackerRank Makes Technical Recruiting More Transparent');
@@ -3228,7 +3109,6 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articlePublisher',
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -3255,7 +3135,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql("There's never a bad time to start a good habit. Let these talks set the framework for a healthier, happier life.");
         expect(result.author).to.be.eql('TED');
         expect(result.ogTitle).to.be.eql('8 TED Talks to form better habits');
         expect(result.ogDescription).to.be.eql("There's never a bad time to start a good habit. Let these talks set the framework for a healthier, happier life.");
@@ -3288,7 +3167,6 @@ describe('static', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -3319,7 +3197,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Whether you perform with them or just break out the occasional flourish in a friendly poker game, Citizen Playing Cards will impress people with their elegance. The tuck case features a combination of gold foil, hot stamping, and bronze foil.');
         expect(result.ogSiteName).to.be.eql('ThinkGeek');
         expect(result.ogType).to.be.eql('product');
         expect(result.ogTitle).to.be.eql('Citizen Playing Cards');
@@ -3350,7 +3227,6 @@ describe('static', function () {
         expect(result).to.have.all.keys(
           'articleAuthor',
           'articlePublisher',
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -3381,7 +3257,6 @@ describe('static', function () {
         expect(result.articlePublishedTime).to.be.eql('2020-06-11T17:03:32-04:00');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/Vox');
         expect(result.articleModifiedTime).to.be.eql('2020-06-11T17:03:32-04:00');
-        expect(result.description).to.be.eql('The Twitter CEO’s plan to give away $1 billion shows charity is not as hard as billionaires say it is.');
         expect(result.ogDescription).to.be.eql('The Twitter CEO’s plan to give away $1 billion shows charity is not as hard as billionaires say it is.');
         expect(result.ogSiteName).to.be.eql('Vox');
         expect(result.ogTitle).to.be.eql('Inside Jack Dorsey’s radical experiment for billionaires to give away their money');
@@ -3412,7 +3287,6 @@ describe('static', function () {
           'articlePublisher',
           'author',
           'ogLocale',
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -3505,7 +3379,6 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('906 reviews of Boba Guys "Boba guys like a lot of the stores on Valencia, has great ingredients like Strauss milk and grade A tea. You really get what you pay for!   My favorites are the lychee milk tea, lavender-rose milk tea, and currently my…');
         expect(result.ogDescription).to.be.eql('Specialties: High-quality bubble milk teas made with next-level quality ingredients like organic milk, homemade syrup, and homemade almond jelly. Home of the original Horchata Boba and Tea Frescas. Established in 2011.  We started Boba Guys…');
         expect(result.ogSiteName).to.be.eql('Yelp');
         expect(result.ogTitle).to.be.eql('Boba Guys - Mission - San Francisco, CA');
@@ -3538,7 +3411,6 @@ describe('static', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/yelp');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',

@@ -8,7 +8,6 @@ describe('basic', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.description).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
       expect(result.ogTitle).to.be.eql('Open Graph protocol');
       expect(result.ogType).to.be.eql('website');
       expect(result.ogUrl).to.be.eql('http://ogp.me/');
@@ -21,7 +20,7 @@ describe('basic', function () {
       });
       expect(result.requestUrl).to.be.eql('http://ogp.me/');
       expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys('description', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'success');
+      expect(result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'success');
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -32,7 +31,6 @@ describe('basic', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
         expect(result.ogTitle).to.be.eql('Open Graph protocol');
         expect(result.ogType).to.be.eql('website');
         expect(result.ogUrl).to.be.eql('http://ogp.me/');
@@ -45,7 +43,7 @@ describe('basic', function () {
         });
         expect(result.requestUrl).to.be.eql('http://ogp.me/');
         expect(result.success).to.be.eql(true);
-        expect(result).to.have.all.keys('description', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'success');
+        expect(result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'success');
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
   });
@@ -63,7 +61,7 @@ describe('basic', function () {
       expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
       expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys('description', 'ogTitle', 'ogDescription', 'ogImage', 'ogLocale', 'requestUrl', 'success');
+      expect(result).to.have.all.keys('ogTitle', 'ogDescription', 'ogImage', 'ogLocale', 'requestUrl', 'success');
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -74,7 +72,6 @@ describe('basic', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.description).to.be.an('string').and.to.not.be.empty;
       expect(result.ogSiteName).to.be.eql('Vimeo');
       expect(result.ogUrl).to.be.eql('https://vimeo.com/232889838');
       expect(result.ogType).to.be.eql('video');
@@ -121,7 +118,6 @@ describe('basic', function () {
       expect(result.requestUrl).to.be.eql('https://vimeo.com/232889838');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
-        'description',
         'ogDescription',
         'ogImage',
         'ogLocale',
@@ -159,7 +155,6 @@ describe('basic', function () {
       console.log('result:', result);
       expect(error).to.be.eql(false);
       expect(result.author).to.be.eql('Michael Kors');
-      expect(result.description).to.be.eql('Exclusively Ours in Michael Kors stores and on michaelkors.com until 7/30/16. Geometric cutouts lend captivating flair to our Mirabel sandals in sumptuous suede. Anchored by a block heel and swingy tassel laces, they look especially chic grounding midi hemlines and cropped denim.');
       expect(result.ogType).to.be.eql('product');
       expect(result.ogTitle).to.be.eql('Mirabel Suede Sandal  | Michael Kors');
       expect(result.ogDescription).to.be.eql('Exclusively Ours in Michael Kors stores and on michaelkors.com until 7/30/16. Geometric cutouts lend captivating flair to our Mirabel sandals in sumptuous suede. Anchored by a block heel and swingy tassel laces, they look especially chic grounding midi hemlines and cropped denim.');
@@ -177,7 +172,7 @@ describe('basic', function () {
       });
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/michaelkors');
       expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys('author', 'description', 'ogLocale', 'ogAvailability', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogPriceAmount', 'ogPriceCurrency', 'ogSiteName', 'ogImage', 'requestUrl', 'success');
+      expect(result).to.have.all.keys('author', 'ogLocale', 'ogAvailability', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogPriceAmount', 'ogPriceCurrency', 'ogSiteName', 'ogImage', 'requestUrl', 'success');
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });

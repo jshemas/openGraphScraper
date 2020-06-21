@@ -113,7 +113,6 @@ describe('twitter', function () {
         expect(result.ogSiteName).to.be.eql('Atom');
         expect(result.ogTitle).to.be.eql('A hackable text editor for the 21st Century');
         expect(result.ogLocale).to.be.eql('en');
-        expect(result.description).to.be.eql('At GitHub, we’re building the text editor we’ve always wanted: hackable to the core, but approachable on the first day without ever touching a config file. We can’t wait to see what you build with it.');
         expect(result.ogDescription).to.be.eql('At GitHub, we’re building the text editor we’ve always wanted: hackable to the core, but approachable on the first day without ever touching a config file. We can’t wait to see what you build with it.');
         expect(result.ogType).to.be.eql('website');
         expect(result.twitterCard).to.be.eql('summary_large_image');
@@ -136,7 +135,6 @@ describe('twitter', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/atom.html');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',

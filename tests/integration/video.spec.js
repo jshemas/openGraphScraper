@@ -11,7 +11,6 @@ describe('video', function () {
       expect(result.ogSiteName).to.be.eql('YouTube');
       expect(result.ogUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.ogTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');
-      expect(result.description).to.be.an('string').and.to.not.be.empty;
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogType).to.be.eql('video.other');
       expect(result.ogLocale).to.be.oneOf(['en', 'en-US']);
@@ -55,7 +54,6 @@ describe('video', function () {
       expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
-        'description',
         'ogDescription',
         'ogImage',
         'ogLocale',

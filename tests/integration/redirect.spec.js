@@ -13,7 +13,6 @@ describe('redirect', function () {
         expect(result.ogTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip & Nut — WE MEAN BUSINESS | LONDON');
         expect(result.ogUrl).to.be.eql('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
         expect(result.ogType).to.be.eql('article');
-        expect(result.description).to.be.an('string').and.to.not.be.empty;
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.twitterTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip &amp; Nut — WE MEAN BUSINESS | LONDON');
         expect(result.twitterCard).to.be.eql('summary');
@@ -34,7 +33,6 @@ describe('redirect', function () {
         expect(result.requestUrl).to.be.eql('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -63,9 +61,7 @@ describe('redirect', function () {
         expect(result.ogType).to.be.eql('article');
         expect(result.articleSection).to.be.eql('Arts');
         expect(result.articleTag).to.be.eql('Blum & Poe (Los Angeles, Calif)');
-        expect(result.robots).to.be.eql('noarchive');
         expect(result.ogTitle).to.be.eql('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million');
-        expect(result.description).to.be.eql('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
         expect(result.ogDescription).to.be.eql('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
         expect(result.twitterTitle).to.be.eql('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million');
         expect(result.twitterDescription).to.be.eql('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
@@ -92,7 +88,6 @@ describe('redirect', function () {
         expect(result).to.have.all.keys(
           'articleSection',
           'articleTag',
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -100,7 +95,6 @@ describe('redirect', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterAppIdGooglePlay',
           'twitterAppNameGooglePlay',
@@ -129,7 +123,6 @@ describe('redirect', function () {
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/');
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
-        expect(result.description).to.be.an('string').and.to.not.be.empty;
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@forbes');
         expect(result.twitterCreator).to.be.eql('@MarketocracyInc');
@@ -156,7 +149,6 @@ describe('redirect', function () {
           'articleSection',
           'articlePublisher',
           'author',
-          'description',
           'ogDescription',
           'ogImage',
           'ogLocale',

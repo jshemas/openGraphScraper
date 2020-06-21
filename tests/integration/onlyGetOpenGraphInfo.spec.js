@@ -9,14 +9,12 @@ describe('onlyGetOpenGraphInfo', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.description).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogTitle).to.eql(undefined);
       expect(result.ogDescription).to.eql(undefined);
       expect(result.ogImage).to.eql(undefined);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
-        'description',
         'requestUrl',
         'success',
       );
@@ -31,7 +29,6 @@ describe('onlyGetOpenGraphInfo', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.description).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('mul');
@@ -46,7 +43,6 @@ describe('onlyGetOpenGraphInfo', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
-        'description',
         'ogDescription',
         'ogLocale',
         'ogImage',

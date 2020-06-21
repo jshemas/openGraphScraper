@@ -11,7 +11,6 @@ describe('encoding', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.description).to.be.eql('Главные новости дня из Москвы и регионов, информационная лента новостей, новости России и мира, события дня и последнего часа, аналитика, комментарии, видео.');
         expect(result.ogDescription).to.be.eql('Главные новости дня из Москвы и регионов, информационная лента новостей, новости России и мира, события дня и последнего часа, аналитика, комментарии, видео.');
         expect(result.twitterDescription).to.be.eql('Главные новости дня из Москвы и регионов, информационная лента новостей, новости России и мира, события дня и последнего часа, аналитика, комментарии, видео.');
         expect(result.ogTitle).to.be.eql('Главные новости - Газета.Ru');
@@ -49,7 +48,6 @@ describe('encoding', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'charset',
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -87,11 +85,9 @@ describe('encoding', function () {
         expect(error).to.be.eql(false);
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.articleModifiedTime).to.be.eql('2020-05-14T14:04:23+00:00');
-        expect(result.robots).to.be.eql('index, follow');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('Careers | Signant Health');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/signanthealth/');
-        expect(result.description).to.be.eql('If you’re looking to join an exciting and fast-paced organization, consider Signant Health. We offer rewarding personal and career advancement as well as competitive compensation and benefits.');
         expect(result.ogDescription).to.be.eql('If you’re looking to join an exciting and fast-paced organization, consider Signant Health. We offer rewarding personal and career advancement as well as competitive compensation and benefits.');
         expect(result.ogUrl).to.be.eql('https://www.signanthealth.com/company/careers/');
         expect(result.ogSiteName).to.be.eql('Signant Health');
@@ -103,7 +99,6 @@ describe('encoding', function () {
         expect(result).to.have.all.keys(
           'articleModifiedTime',
           'articlePublisher',
-          'description',
           'ogDescription',
           'ogLocale',
           'ogSiteName',
@@ -111,7 +106,6 @@ describe('encoding', function () {
           'ogType',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterCreator',
@@ -131,7 +125,6 @@ describe('encoding', function () {
         expect(result.ogTitle).to.be.eql('Open Graph protocol');
         expect(result.ogType).to.be.eql('website');
         expect(result.ogUrl).to.be.eql('http://ogp.me/');
-        expect(result.description).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
         expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
         expect(result.ogImage).to.be.eql({
           url: 'http://ogp.me/logo.png',
@@ -144,7 +137,6 @@ describe('encoding', function () {
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'charset',
-          'description',
           'ogDescription',
           'ogImage',
           'ogTitle',
@@ -165,13 +157,11 @@ describe('encoding', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
-        expect(result.description).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
         expect(result.ogDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
         expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20170913045814/https://www.rakuten.co.jp/');
         expect(result.ogLocale).to.be.eql('ja');
         expect(result.ogType).to.be.eql('website');
         expect(result.ogSiteName).to.be.eql('楽天市場');
-        expect(result.robots).to.be.eql('NOODP');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterSite).to.be.eql('@RakutenJP');
         expect(result.twitterTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
@@ -191,7 +181,6 @@ describe('encoding', function () {
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rakuten');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'description',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -200,7 +189,6 @@ describe('encoding', function () {
           'ogLocale',
           'ogUrl',
           'requestUrl',
-          'robots',
           'success',
           'twitterCard',
           'twitterDescription',

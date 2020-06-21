@@ -8,13 +8,11 @@ describe('image', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.robots).to.be.eql('noindex,follow');
       expect(result.ogSiteName).to.be.eql('Flickr');
       expect(result.twitterAppNameiPhone).to.be.eql('Flickr');
       expect(result.twitterAppIdiPhone).to.be.eql('328407587');
       expect(result.twitterSite).to.be.eql('@flickr');
       expect(result.ogTitle).to.be.eql('Heimgarten');
-      expect(result.description).to.be.an('string').and.to.not.be.empty;
       expect(result.ogDescription).to.be.eql('____________________ Press "L" to view on black Press "F" to favor Share, if you like :)    You can leave a comment, if you like :)    Not to use or publish without permission! © Christoph Wagner Photographie');
       expect(result.ogType).to.be.eql('article');
       expect(result.ogUrl).to.be.eql('https://www.flickr.com/photos/travelgraph/18791678505/');
@@ -31,7 +29,6 @@ describe('image', function () {
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/flickr');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
-        'description',
         'ogDescription',
         'ogImage',
         'ogLocale',
@@ -40,7 +37,6 @@ describe('image', function () {
         'ogType',
         'ogUrl',
         'requestUrl',
-        'robots',
         'success',
         'twitterAppIdiPhone',
         'twitterAppNameiPhone',
@@ -60,10 +56,8 @@ describe('image', function () {
       console.log('result:', result);
       expect(error).to.be.eql(false);
       expect(result.success).to.be.eql(true);
-      expect(result.robots).to.be.eql('NOODP');
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitter.html');
       expect(result.ogTitle).to.be.eql('Twitter. It\'s what\'s happening.');
-      expect(result.description).to.be.eql('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
       expect(result.ogDescription).to.be.eql('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage.length).to.be.eql(48);
@@ -75,13 +69,11 @@ describe('image', function () {
       }
       expect(imageFound).to.be.eql(true);
       expect(result).to.have.all.keys(
-        'description',
         'ogDescription',
         'ogImage',
         'ogTitle',
         'ogLocale',
         'requestUrl',
-        'robots',
         'success',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;

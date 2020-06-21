@@ -23,7 +23,6 @@ describe('timeout', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
-        'description',
         'ogDescription',
         'ogImage',
         'ogLocale',
@@ -77,7 +76,6 @@ describe('timeout', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
-        'description',
         'ogDescription',
         'ogImage',
         'ogLocale',
@@ -110,7 +108,6 @@ describe('timeout', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
-        'description',
         'ogDescription',
         'ogImage',
         'ogLocale',
@@ -143,7 +140,6 @@ describe('timeout', function () {
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
-        'description',
         'ogDescription',
         'ogImage',
         'ogLocale',
