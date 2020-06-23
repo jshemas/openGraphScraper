@@ -1,5 +1,15 @@
 # Change Log
 
+## 4.2.0
+
+- Checking for new tags like article, book, profile, business and restaurant
+- Adding support for Dublin Core tags!
+- Updating image fallback to send back width/height/type
+- Adding more title/description/locale/audio/other fallbacks
+- Fixed bug where if there was a weird casing on a meta, ogs would skip it
+- Will no longer return undefined values in some cases
+- Updating dependencies and removed lodash
+
 ## 4.1.1
 
 - Updating to use github actions for CI!
