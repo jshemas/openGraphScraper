@@ -30,6 +30,10 @@
     "iconv-lite": "^0.6.0",
     "validator": "^13.0.0"
   },
+  "files": [
+    "CHANGELOG.md",
+    "/lib"
+  ],
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
