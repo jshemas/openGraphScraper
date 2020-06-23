@@ -13,6 +13,12 @@ describe('blacklist', function () {
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
       expect(result.error).to.eql('Host name has been black listed');
       expect(result.errorDetails.toString()).to.eql('Error: Host name has been black listed');
+      expect(result).to.have.all.keys(
+        'error',
+        'errorDetails',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.eql(undefined);
     });
   });
@@ -24,11 +30,28 @@ describe('blacklist', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
+      expect(result.ogLocale).to.be.eql('mul');
+      expect(result.ogImage).to.be.eql([
+        {
+          height: '183',
+          type: 'png',
+          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
+          width: '200',
+        },
+      ]);
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'ogDescription',
+        'ogLocale',
+        'ogImage',
+        'ogTitle',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -42,9 +65,25 @@ describe('blacklist', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
+      expect(result.ogLocale).to.be.eql('mul');
+      expect(result.ogImage).to.be.eql([
+        {
+          height: '183',
+          type: 'png',
+          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
+          width: '200',
+        },
+      ]);
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'ogDescription',
+        'ogImage',
+        'ogTitle',
+        'ogLocale',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });

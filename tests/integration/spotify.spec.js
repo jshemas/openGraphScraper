@@ -20,6 +20,7 @@ describe('spotify', function () {
       expect(result.twitterSite).to.be.eql('@spotify');
       expect(result.twitterDescription).to.be.eql('ye, an album by Kanye West on Spotify');
       expect(result.twitterCard).to.be.eql('audio');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67616d0000b27397508a4b756763370510bd44',
@@ -46,6 +47,28 @@ describe('spotify', function () {
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'musicMusician',
+        'musicReleaseDate',
+        'musicSong',
+        'ogDescription',
+        'ogImage',
+        'ogLocale',
+        'ogSiteName',
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'requestUrl',
+        'success',
+        'twitterAppIdGooglePlay',
+        'twitterAppIdiPhone',
+        'twitterCard',
+        'twitterDescription',
+        'twitterImage',
+        'twitterPlayer',
+        'twitterSite',
+        'twitterTitle',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -67,6 +90,7 @@ describe('spotify', function () {
       expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.twitterCard).to.be.eql('audio');
       expect(result.ogSiteName).to.be.eql('Spotify');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/bd1c6fdf3705cf9b7d0c8ac8e7bbed98e31a1559',
         width: null,
@@ -87,6 +111,25 @@ describe('spotify', function () {
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'ogDescription',
+        'ogImage',
+        'ogLocale',
+        'ogSiteName',
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'requestUrl',
+        'success',
+        'twitterAppIdGooglePlay',
+        'twitterAppIdiPhone',
+        'twitterCard',
+        'twitterDescription',
+        'twitterImage',
+        'twitterPlayer',
+        'twitterSite',
+        'twitterTitle',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -115,6 +158,7 @@ describe('spotify', function () {
       expect(result.twitterDescription).to.be.eql('Famous, a song by Kanye West on Spotify');
       expect(result.twitterCard).to.be.eql('audio');
       expect(result.ogSiteName).to.be.eql('Spotify');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67616d0000b2730939dadf614e70aeffc6710c',
         width: null,
@@ -135,6 +179,32 @@ describe('spotify', function () {
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'musicAlbum',
+        'musicAlbumTrack',
+        'musicDuration',
+        'musicMusician',
+        'musicReleaseDate',
+        'ogAudio',
+        'ogAudioType',
+        'ogDescription',
+        'ogImage',
+        'ogLocale',
+        'ogSiteName',
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'requestUrl',
+        'success',
+        'twitterAppIdGooglePlay',
+        'twitterAppIdiPhone',
+        'twitterCard',
+        'twitterDescription',
+        'twitterImage',
+        'twitterPlayer',
+        'twitterSite',
+        'twitterTitle',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -157,6 +227,7 @@ describe('spotify', function () {
       expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.twitterCard).to.be.eql('audio');
       expect(result.ogSiteName).to.be.eql('Spotify');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67706c0000da845a535b3001ccf567ddef2927',
         width: null,
@@ -176,12 +247,33 @@ describe('spotify', function () {
         stream: null,
       });
       expect(result.musicSong).to.be.eql({
-        url: 'https://open.spotify.com/track/5TCBWmEBrin7etRa4Lswr1',
+        url: 'https://open.spotify.com/track/1oOEkBNp4zWnkD7nWjJdog',
         track: '1',
         disc: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/user/mjaschmidt/playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'musicCreator',
+        'musicSong',
+        'ogDescription',
+        'ogImage',
+        'ogLocale',
+        'ogSiteName',
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'requestUrl',
+        'success',
+        'twitterAppIdGooglePlay',
+        'twitterAppIdiPhone',
+        'twitterCard',
+        'twitterDescription',
+        'twitterImage',
+        'twitterPlayer',
+        'twitterSite',
+        'twitterTitle',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });

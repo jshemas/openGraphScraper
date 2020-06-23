@@ -12,6 +12,10 @@ describe('statusCode', function () {
         expect(error).to.be.eql(false);
         expect(result.success).to.be.eql(true);
         expect(result.requestUrl).to.be.eql('http://httpstat.us/200');
+        expect(result).to.have.all.keys(
+          'requestUrl',
+          'success',
+        );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
     });
@@ -27,6 +31,12 @@ describe('statusCode', function () {
         expect(result.requestUrl).to.be.eql('http://httpstat.us/403');
         expect(result.error).to.eql('Page not found');
         expect(result.errorDetails.toString()).to.eql('Error: Page not found');
+        expect(result).to.have.all.keys(
+          'error',
+          'errorDetails',
+          'requestUrl',
+          'success',
+        );
         expect(response).to.eql(undefined);
       });
     });
@@ -42,6 +52,12 @@ describe('statusCode', function () {
         expect(result.requestUrl).to.be.eql('http://httpstat.us/500');
         expect(result.error).to.eql('Web server is returning error');
         expect(result.errorDetails.toString()).to.eql('Error: Web server is returning error');
+        expect(result).to.have.all.keys(
+          'error',
+          'errorDetails',
+          'requestUrl',
+          'success',
+        );
         expect(response).to.eql(undefined);
       });
     });

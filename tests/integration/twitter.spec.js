@@ -15,12 +15,14 @@ describe('twitter', function () {
         expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20160303190414im_/https://dev.twitter.com/');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.ogSiteName).to.be.eql('Twitter Developers');
+        expect(result.ogLocale).to.be.eql('en');
+        expect(result.twitterUrl).to.be.eql('https://web.archive.org/web/20160303190414im_/https://dev.twitter.com/');
         expect(result.twitterDescription).to.be.eql('The Twitter platform connects your website or application with the worldwide conversation happening on Twitter.');
         expect(result.ogImage).to.be.eql({
           url: 'https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png',
           width: null,
           height: null,
-          type: null,
+          type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png',
@@ -30,6 +32,21 @@ describe('twitter', function () {
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitter-dev');
         expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'ogImage',
+          'ogSiteName',
+          'ogTitle',
+          'ogLocale',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterTitle',
+          'twitterUrl',
+        );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
     });
@@ -50,6 +67,7 @@ describe('twitter', function () {
         expect(result.twitterCreatorId).to.be.eql('13334762');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterTitle).to.be.eql('GitHub');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterDescription).to.be.eql('GitHub is where people build software. More than 19 million people use GitHub to discover, fork, and contribute to over 50 million projects.');
         expect(result.ogImage).to.be.eql({
           url: 'https://web.archive.org/web/20170113081103im_/https://assets-cdn.github.com/images/modules/open_graph/github-logo.png',
@@ -65,6 +83,24 @@ describe('twitter', function () {
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/github');
         expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'ogDescription',
+          'ogImage',
+          'ogSiteName',
+          'ogLocale',
+          'ogTitle',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterCreator',
+          'twitterCreatorId',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterSiteId',
+          'twitterTitle',
+        );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
     });
@@ -78,6 +114,7 @@ describe('twitter', function () {
         expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20170913111314/https://atom.io/');
         expect(result.ogSiteName).to.be.eql('Atom');
         expect(result.ogTitle).to.be.eql('A hackable text editor for the 21st Century');
+        expect(result.ogLocale).to.be.eql('en');
         expect(result.ogDescription).to.be.eql('At GitHub, we’re building the text editor we’ve always wanted: hackable to the core, but approachable on the first day without ever touching a config file. We can’t wait to see what you build with it.');
         expect(result.ogType).to.be.eql('website');
         expect(result.twitterCard).to.be.eql('summary_large_image');
@@ -89,7 +126,7 @@ describe('twitter', function () {
           url: 'https://web.archive.org/web/20170913111314im_/http://og.github.com/atom-mark/atom-mark@1200x630.png',
           width: '1200',
           height: '630',
-          type: null,
+          type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://web.archive.org/web/20170913111314im_/http://og.github.com/atom-logo/atom-logo@1200x630.png',
@@ -99,6 +136,23 @@ describe('twitter', function () {
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/atom.html');
         expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'ogDescription',
+          'ogImage',
+          'ogLocale',
+          'ogSiteName',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterCreator',
+          'twitterDescription',
+          'twitterImage',
+          'twitterSite',
+          'twitterTitle',
+        );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
     });

@@ -10,9 +10,25 @@ describe('url', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
+      expect(result.ogLocale).to.be.eql('mul');
+      expect(result.ogImage).to.be.eql([
+        {
+          height: '183',
+          type: 'png',
+          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
+          width: '200',
+        },
+      ]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'ogDescription',
+        'ogImage',
+        'ogLocale',
+        'ogTitle',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -25,9 +41,25 @@ describe('url', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
+      expect(result.ogLocale).to.be.eql('mul');
+      expect(result.ogImage).to.be.eql([
+        {
+          height: '183',
+          type: 'png',
+          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
+          width: '200',
+        },
+      ]);
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'ogDescription',
+        'ogImage',
+        'ogLocale',
+        'ogTitle',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -40,9 +72,25 @@ describe('url', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
+      expect(result.ogLocale).to.be.eql('mul');
+      expect(result.ogImage).to.be.eql([
+        {
+          height: '183',
+          type: 'png',
+          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
+          width: '200',
+        },
+      ]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'ogDescription',
+        'ogLocale',
+        'ogImage',
+        'ogTitle',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -55,9 +103,25 @@ describe('url', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
+      expect(result.ogLocale).to.be.eql('mul');
+      expect(result.ogImage).to.be.eql([
+        {
+          height: '183',
+          type: 'png',
+          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
+          width: '200',
+        },
+      ]);
       expect(result.requestUrl).to.be.eql('http://wikipedia.org/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'ogDescription',
+        'ogImage',
+        'ogLocale',
+        'ogTitle',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -69,10 +133,26 @@ describe('url', function () {
       console.log('result:', result);
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
+      expect(result.ogLocale).to.be.eql('mul');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogImage).to.be.eql([{ url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png' }]);
+      expect(result.ogImage).to.be.eql([
+        {
+          height: '183',
+          type: 'png',
+          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
+          width: '200',
+        },
+      ]);
       expect(result.requestUrl).to.be.eql('http://wikipedia.org/');
       expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'ogDescription',
+        'ogImage',
+        'ogLocale',
+        'ogTitle',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -87,6 +167,12 @@ describe('url', function () {
       expect(result.requestUrl).to.be.eql('http://testtesttest4564568.com');
       expect(result.error).to.eql('Page not found');
       expect(result.errorDetails.toString()).to.eql('Error: Page not found');
+      expect(result).to.have.all.keys(
+        'error',
+        'errorDetails',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.eql(undefined);
     });
   });
@@ -101,6 +187,12 @@ describe('url', function () {
       expect(result.requestUrl).to.be.eql('');
       expect(result.error).to.eql('Invalid URL');
       expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
+      expect(result).to.have.all.keys(
+        'error',
+        'errorDetails',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.eql(undefined);
     });
   });
@@ -113,6 +205,12 @@ describe('url', function () {
       expect(result.requestUrl).to.eql(undefined);
       expect(result.error).to.eql('Invalid URL');
       expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
+      expect(result).to.have.all.keys(
+        'error',
+        'errorDetails',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.eql(undefined);
     });
   });
@@ -127,6 +225,12 @@ describe('url', function () {
       expect(result.requestUrl).to.be.eql(23233);
       expect(result.error).to.eql('Invalid URL');
       expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
+      expect(result).to.have.all.keys(
+        'error',
+        'errorDetails',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.eql(undefined);
     });
   });
@@ -141,6 +245,12 @@ describe('url', function () {
       expect(result.requestUrl).to.be.eql('2323233');
       expect(result.error).to.eql('Invalid URL');
       expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
+      expect(result).to.have.all.keys(
+        'error',
+        'errorDetails',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.eql(undefined);
     });
   });
@@ -155,6 +265,12 @@ describe('url', function () {
       expect(result.requestUrl).to.be.eql('this is a test');
       expect(result.error).to.eql('Invalid URL');
       expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
+      expect(result).to.have.all.keys(
+        'error',
+        'errorDetails',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.eql(undefined);
     });
   });
@@ -169,6 +285,12 @@ describe('url', function () {
       expect(result.requestUrl).to.be.eql('http://test.pdf?123');
       expect(result.error).to.eql('Must scrape an HTML page');
       expect(result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
+      expect(result).to.have.all.keys(
+        'error',
+        'errorDetails',
+        'requestUrl',
+        'success',
+      );
       expect(response).to.eql(undefined);
     });
   });
