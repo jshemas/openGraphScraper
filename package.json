@@ -36,20 +36,20 @@
   ],
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.3.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-mocha": "^6.2.2",
+    "eslint-plugin-mocha": "^7.0.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-hooks": "^2.5.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
     "markdownlint-cli": "^0.23.1",
-    "mocha": "^7.1.2",
+    "mocha": "^8.0.1",
     "nyc": "^15.0.1",
     "sinon": "^9.0.2",
-    "snyk": "^1.337.0"
+    "snyk": "^1.348.1"
   },
   "repository": {
     "type": "git",
