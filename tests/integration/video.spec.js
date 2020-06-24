@@ -55,7 +55,6 @@ describe('video', function () {
       });
       expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.success).to.be.eql(true);
-      // eslint-disable-next-line no-param-reassign
       if (result.ogDate === undefined) result.ogDate = 'hack because sometimes this does not come back for some reason';
       expect(result).to.have.all.keys(
         'ogDate',

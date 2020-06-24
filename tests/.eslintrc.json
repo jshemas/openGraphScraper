@@ -1,12 +1,19 @@
 {
-  "extends": "../.eslintrc.json",
+  "extends": [
+    "../.eslintrc.json",
+    "plugin:mocha/recommended"
+  ],
+  "env": {
+    "commonjs": true,
+    "node": true,
+    "mocha": true
+  },
+  "globals": {
+    "expect": "readonly",
+    "sinon": "readonly"
+  },
   "rules": {
     "func-names": 0,
-    "import/no-extraneous-dependencies": 0,
-    "mocha/no-exclusive-tests": "error",
-    "mocha/no-mocha-arrows": "error",
-    "mocha/no-return-and-callback": "error",
-    "no-undef": 0,
     "no-console": 0,
     "no-unused-expressions": 0,
     "prefer-arrow-callback": 0,

@@ -22,7 +22,7 @@ exports.run = async (options, callback) => {
     }
     return callback(false, results.ogObject, results.response);
   }
-  // eslint-disable-next-line no-async-promise-executor, promise/avoid-new
+  // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve, reject) => {
     let results;
     try {
