@@ -2124,6 +2124,35 @@ describe('static', function () {
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
   });
+  it('michaelkors', function () {
+    return ogs({
+      url: 'https://jshemas.github.io/openGraphScraperPages/michaelkors',
+    }, function (error, result, response) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be.eql(false);
+      expect(result.author).to.be.eql('Michael Kors');
+      expect(result.ogType).to.be.eql('product');
+      expect(result.ogTitle).to.be.eql('Mirabel Suede Sandal  | Michael Kors');
+      expect(result.ogDescription).to.be.eql('Exclusively Ours in Michael Kors stores and on michaelkors.com until 7/30/16. Geometric cutouts lend captivating flair to our Mirabel sandals in sumptuous suede. Anchored by a block heel and swingy tassel laces, they look especially chic grounding midi hemlines and cropped denim.');
+      expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20161126090544/http://www.michaelkors.com/mirabel-suede-sandal/_/R-US_40T6MBMS1S');
+      expect(result.ogSiteName).to.be.eql('Michael Kors');
+      expect(result.ogLocale).to.be.eql('en');
+      expect(result.ogPriceAmount).to.be.eql('80.00');
+      expect(result.ogPriceCurrency).to.be.eql('USD');
+      expect(result.ogAvailability).to.be.eql('InStock');
+      expect(result.ogImage).to.be.eql({
+        url: 'http://michaelkors.scene7.com/is/image/MichaelKors/40T6MBMS1S-0001_IS',
+        width: '400',
+        height: '400',
+        type: null,
+      });
+      expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/michaelkors');
+      expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys('author', 'ogLocale', 'ogAvailability', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogPriceAmount', 'ogPriceCurrency', 'ogSiteName', 'ogImage', 'requestUrl', 'success');
+      expect(response).to.be.an('object').and.to.not.be.empty;
+    });
+  });
   it('mulesoft', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mulesoft' })
       .then(function (data) {
