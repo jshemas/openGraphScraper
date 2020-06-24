@@ -668,7 +668,7 @@ describe('static', function () {
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
   });
-  it('computerworld', function () {
+  it('crn', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/crn' })
       .then(function (data) {
         const { error, result, response } = data;
@@ -707,7 +707,7 @@ describe('static', function () {
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
   });
-  it('crn', function () {
+  it('computerworld', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/computerworld' })
       .then(function (data) {
         const { error, result, response } = data;
