@@ -4,34 +4,24 @@
       "version": "latest"
     }
   },
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "plugin:promise/recommended"
+  ],
   "plugins": [
     "mocha",
     "promise"
   ],
+  "env": {
+    "commonjs": true,
+    "node": true
+  },
   "rules": {
-    "max-len": [
-      "error",
-      120,
-      {
-        "ignoreStrings": true
-      }
-    ],
-    "promise/always-return": "error",
-    "promise/avoid-new": "warn",
-    "promise/catch-or-return": "error",
-    "promise/no-callback-in-promise": [
-      "error",
-      {
-        "exceptions": [
-          "next"
-        ]
-      }
-    ],
-    "promise/no-native": "off",
-    "promise/no-nesting": "warn",
-    "promise/no-promise-in-callback": "off",
-    "promise/no-return-wrap": "error",
-    "promise/param-names": "error"
+    "max-len": ["error", {
+      "code": 120,
+      "ignoreStrings": true,
+      "ignoreTrailingComments": true
+    }],
+    "no-param-reassign": "off"
   }
 }

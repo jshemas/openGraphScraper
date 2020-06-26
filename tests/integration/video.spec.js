@@ -55,7 +55,6 @@ describe('video', function () {
       });
       expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.success).to.be.eql(true);
-      // eslint-disable-next-line no-param-reassign
       if (result.ogDate === undefined) result.ogDate = 'hack because sometimes this does not come back for some reason';
       expect(result).to.have.all.keys(
         'ogDate',
@@ -89,26 +88,27 @@ describe('video', function () {
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
-  // TODO: fix this, sometimes it has twitter info
-  it.skip('Test Twitch.tv Video - Should Return correct Open Graph Info', function () {
+  it('Test Twitch.tv Video - Should Return correct Open Graph Info', function () {
     return ogs({
-      url: 'https://www.twitch.tv/videos/632214184',
+      url: 'https://jshemas.github.io/openGraphScraperPages/twitch.html',
     }, function (error, result, response) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
       expect(result.ogSiteName).to.be.eql('Twitch');
       expect(result.twitterSite).to.be.eql('@twitch');
+      expect(result.ogLocale).to.be.eql('en-US');
       expect(result.ogTitle).to.be.oneOf(['Twitch', 'AI Soundscapes, Trials of Mana', 'AI Soundscapes, Trials of Mana - Vinesauce on Twitch']);
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogUrl).to.be.eql('https://www.twitch.tv/videos/632214184');
       expect(result.ogType).to.be.oneOf(['website', 'video.other']);
       expect(result.ogImage).to.be.to.be.an('object').and.to.not.be.empty;
-      expect(result.requestUrl).to.be.eql('https://www.twitch.tv/videos/632214184');
+      expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitch.html');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
         'ogImage',
+        'ogLocale',
         'ogSiteName',
         'ogTitle',
         'ogType',
