@@ -1,5 +1,12 @@
 # Change Log
 
+## 4.2.1
+
+- Make sure item.fieldName exists before trying to use it
+- Updating devDependencies
+- Updating eslint rule set to be more simple
+- Fixed the badge icon in the readme
+
 ## 4.2.0
 
 - Checking for new tags like article, book, profile, business and restaurant
