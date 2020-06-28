@@ -1,5 +1,8 @@
 # Change Log
 
+## 4.3.0
+- Adding support for request headers
+
 ## 4.2.1
 
 - Make sure item.fieldName exists before trying to use it
