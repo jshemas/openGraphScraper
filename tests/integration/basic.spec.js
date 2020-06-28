@@ -47,32 +47,6 @@ describe('basic', function () {
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
   });
-  it('example of how to set the user-agent', function () {
-    return ogs({
-      url: 'http://ogp.me/',
-      headers: {
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
-      },
-    }, function (error, result, response) {
-      console.log('error:', error);
-      console.log('result:', result);
-      expect(error).to.be.eql(false);
-      expect(result.ogTitle).to.be.eql('Open Graph protocol');
-      expect(result.ogType).to.be.eql('website');
-      expect(result.ogUrl).to.be.eql('http://ogp.me/');
-      expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
-      expect(result.ogImage).to.be.eql({
-        url: 'http://ogp.me/logo.png',
-        width: '300',
-        height: '300',
-        type: 'image/png',
-      });
-      expect(result.requestUrl).to.be.eql('http://ogp.me/');
-      expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'success');
-      expect(response).to.be.an('object').and.to.not.be.empty;
-    });
-  });
   it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {
     return ogs({
       url: 'https://www.namecheap.com/',
