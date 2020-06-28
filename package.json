@@ -27,7 +27,9 @@
     "chardet": "^1.1.0",
     "cheerio": "^1.0.0-rc.3",
     "got": "^11.3.0",
+    "http-proxy-agent": "^4.0.1",
     "iconv-lite": "^0.6.0",
+    "tunnel": "0.0.6",
     "validator": "^13.0.0"
   },
   "files": [
