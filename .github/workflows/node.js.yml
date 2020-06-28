@@ -23,7 +23,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install Dependencies
       run: npm ci
-    - name: Lining
+    - name: Linting
       run: npm run eslint
     - name: Testing
       run: npm run test
