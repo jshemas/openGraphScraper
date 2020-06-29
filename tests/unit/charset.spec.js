@@ -54,4 +54,26 @@ describe('charset', function () {
 
     expect(results).to.eql('utf8');
   });
+
+  it('find charset when there is no data', function () {
+    const results = charset.find({
+      'content-type': 'text/html; charset=windows-1251',
+    }, null, 1024);
+
+    expect(results).to.eql('windows-1251');
+  });
+
+  it('find charset when obj param is a sting', function () {
+    const results = charset.find('text/html; charset=windows-1251', '<html><head><title>тестовая страница</title></head><body><h1>привет тестовая страница</h2></body></html>', 1024);
+
+    expect(results).to.eql('windows-1251');
+  });
+
+  it('find charset when peeksize is small then data', function () {
+    const results = charset.find({
+      'content-type': 'text/html; charset=windows-1251',
+    }, '<html><head><title>тестовая страница</title></head><body><h1>привет тестовая страница</h2></body></html>', 1);
+
+    expect(results).to.eql('windows-1251');
+  });
 });
