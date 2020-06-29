@@ -15,7 +15,7 @@ const validateUrl = (urls, valid, message) => {
 };
 
 describe('utils', function () {
-  context('validate', function () {
+  describe('validate', function () {
     context('validing URLs', function () {
       validateUrl([
         'foobar.com',
@@ -161,6 +161,21 @@ describe('utils', function () {
     it('when type is foo', function () {
       const valid = utils.isImageTypeValid('foo');
       expect(valid).to.eql(false);
+    });
+  });
+
+  describe('removeNestedUndefinedValues', function () {
+    it('when there is no undef values', function () {
+      const object = utils.removeNestedUndefinedValues({ one: 1 });
+      expect(object).to.eql({ one: 1 });
+    });
+    it('when there is undef values', function () {
+      const object = utils.removeNestedUndefinedValues({ one: 1, two: undefined });
+      expect(object).to.eql({ one: 1 });
+    });
+    it('when there is a nested undef value', function () {
+      const object = utils.removeNestedUndefinedValues({ one: 1, two: { three: undefined } });
+      expect(object).to.eql({ one: 1, two: {} });
     });
   });
 });
