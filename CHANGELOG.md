@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.3.1
+- Small code clean up and adding tests
+- Updating Dependencies
+
 ## 4.3.0
 - Adding support for request headers
 
