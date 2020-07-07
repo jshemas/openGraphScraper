@@ -19,8 +19,9 @@ describe('basic', function () {
         type: 'image/png',
       });
       expect(result.requestUrl).to.be.eql('http://ogp.me/');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'success');
+      expect(result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'success');
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -42,8 +43,18 @@ describe('basic', function () {
           type: 'image/png',
         });
         expect(result.requestUrl).to.be.eql('http://ogp.me/');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
-        expect(result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'success');
+        expect(result).to.have.all.keys(
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'ogDescription',
+          'ogImage',
+          'requestUrl',
+          'charset',
+          'success',
+        );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
   });
@@ -61,8 +72,18 @@ describe('basic', function () {
       expect(result.ogDescription).to.be.eql('Namecheap offers cheap domain names with the most reliable service. Buy domain names with Namecheap and see why over 2 million customers trust us with over 10 million domains!');
       expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys('ogTitle', 'ogDescription', 'ogImage', 'ogLocale', 'ogUrl', 'requestUrl', 'success');
+      expect(result).to.have.all.keys(
+        'ogTitle',
+        'ogDescription',
+        'ogImage',
+        'ogLocale',
+        'ogUrl',
+        'requestUrl',
+        'charset',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -117,6 +138,7 @@ describe('basic', function () {
         stream: null,
       });
       expect(result.requestUrl).to.be.eql('https://vimeo.com/232889838');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
@@ -129,6 +151,7 @@ describe('basic', function () {
         'ogVideo',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdGooglePlay',
         'twitterAppIdiPad',
         'twitterAppIdiPhone',

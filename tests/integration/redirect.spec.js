@@ -33,6 +33,7 @@ describe('redirect', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -45,6 +46,7 @@ describe('redirect', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterUrl',
           'twitterDescription',
@@ -89,6 +91,7 @@ describe('redirect', function () {
           alt: 'Kim Kardashian West at the “Famous” exhibition at Blum & Poe in Los Angeles last week. The gallery is planning to sell the sculpture for a hefty price tag.',
         });
         expect(result.requestUrl).to.be.eql('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleSection',
@@ -102,6 +105,7 @@ describe('redirect', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterAppIdGooglePlay',
           'twitterAppNameGooglePlay',
           'twitterAppUrlGooglePlay',
@@ -150,6 +154,7 @@ describe('redirect', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -166,6 +171,7 @@ describe('redirect', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',

@@ -27,6 +27,7 @@ describe('image', function () {
         type: 'jpg',
       });
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/flickr');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
@@ -38,6 +39,7 @@ describe('image', function () {
         'ogUrl',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdiPhone',
         'twitterAppNameiPhone',
         'twitterAppUrliPhone',
@@ -55,6 +57,7 @@ describe('image', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitter.html');
       expect(result.ogTitle).to.be.eql('Twitter. It\'s what\'s happening.');
@@ -77,6 +80,7 @@ describe('image', function () {
         'requestUrl',
         'ogUrl',
         'success',
+        'charset',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });

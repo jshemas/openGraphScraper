@@ -21,6 +21,7 @@ describe('timeout', function () {
         },
       ]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
@@ -29,6 +30,7 @@ describe('timeout', function () {
         'ogTitle',
         'requestUrl',
         'success',
+        'charset',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
@@ -74,6 +76,7 @@ describe('timeout', function () {
         },
       ]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
@@ -82,6 +85,7 @@ describe('timeout', function () {
         'ogTitle',
         'requestUrl',
         'success',
+        'charset',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
@@ -106,6 +110,7 @@ describe('timeout', function () {
         },
       ]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
@@ -114,6 +119,7 @@ describe('timeout', function () {
         'ogTitle',
         'requestUrl',
         'success',
+        'charset',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
@@ -138,6 +144,7 @@ describe('timeout', function () {
         },
       ]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
@@ -146,6 +153,7 @@ describe('timeout', function () {
         'ogTitle',
         'requestUrl',
         'success',
+        'charset',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });

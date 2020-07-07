@@ -75,7 +75,6 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | headers              | An object containing request headers. Useful for setting the user-agent    | {}            |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
 | runChar              | Runs charset and icons on the request payload.                             | false         |          |
-| withCharset          | Returns the charset in the ogs payload.                                    | false         |          |
 
 ## Tests
 

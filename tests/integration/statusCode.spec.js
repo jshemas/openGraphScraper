@@ -10,11 +10,13 @@ describe('statusCode', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.charset).to.be.eql(null);
         expect(result.success).to.be.eql(true);
         expect(result.requestUrl).to.be.eql('http://httpstat.us/200');
         expect(result).to.have.all.keys(
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });

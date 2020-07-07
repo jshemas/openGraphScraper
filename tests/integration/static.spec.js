@@ -41,6 +41,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/airbnb');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -52,6 +53,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterAppIdGooglePlay',
           'twitterAppIdiPad',
           'twitterAppIdiPhone',
@@ -102,6 +104,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/arstechnica');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -113,6 +116,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -154,6 +158,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/battlefield');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -164,6 +169,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -206,6 +212,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bestbuy');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -218,6 +225,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -288,6 +296,7 @@ describe('static', function () {
           },
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bjango');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogImage',
@@ -295,6 +304,7 @@ describe('static', function () {
           'ogLocale',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -332,6 +342,7 @@ describe('static', function () {
         expect(result.ogAudioSecureURL).to.be.eql('https://assets.bwbx.io/s3/readings/QBS8ZSDWRGG71591924612662.mp3');
         expect(result.ogAudioType).to.be.eql('audio/mpeg');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bloomberg');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -346,6 +357,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -385,6 +397,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Madhu Kapur, family withdraw case against Yes Bank');
         expect(result.ogDescription).to.be.eql("Madhu Kapur in her suit had sought various reliefs including recognition of the family's right to participate in the management of the bank");
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/businesstoday');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -394,6 +407,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -439,6 +453,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cbronline');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleModifiedTime',
@@ -455,6 +470,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -496,6 +512,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cio');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
@@ -511,6 +528,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -543,6 +561,7 @@ describe('static', function () {
           },
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cloudinary');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -550,6 +569,7 @@ describe('static', function () {
           'ogTitle',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -586,6 +606,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cloudpro');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -597,6 +618,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -643,6 +665,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cnet');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
@@ -657,6 +680,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -690,6 +714,7 @@ describe('static', function () {
           type: 'jpg',
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/crn');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articlePublishedTime',
@@ -703,6 +728,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -739,6 +765,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/computerworld');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -753,6 +780,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -791,6 +819,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/darkreading');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -802,6 +831,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -840,6 +870,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/discourse');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -850,6 +881,7 @@ describe('static', function () {
           'ogLocale',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -877,6 +909,7 @@ describe('static', function () {
           height: '630',
           type: null,
         });
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -887,6 +920,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -922,6 +956,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/ebay');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -934,6 +969,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -983,6 +1019,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/economictimes');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleModifiedTime',
@@ -997,6 +1034,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterAppIdGooglePlay',
           'twitterAppIdiPhone',
           'twitterAppNameGooglePlay',
@@ -1050,6 +1088,7 @@ describe('static', function () {
         });
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/EntMagazine');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/entrepreneur');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleAuthor',
@@ -1067,6 +1106,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -1116,6 +1156,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/etsy');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -1127,6 +1168,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterAppIdGooglePlay',
           'twitterAppIdiPad',
           'twitterAppIdiPhone',
@@ -1164,6 +1206,7 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('Facebook - Log In or Sign Up');
         expect(result.ogDescription).to.be.eql('Create an account or log into Facebook. Connect with friends, family and other people you know. Share photos and videos, send messages and get updates.');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/facebook');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -1174,6 +1217,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1215,6 +1259,7 @@ describe('static', function () {
         });
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/FastCompany');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/fastcompany');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleModifiedTime',
@@ -1232,6 +1277,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -1277,6 +1323,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/forbes');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleAuthor',
@@ -1293,6 +1340,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -1333,6 +1381,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/fortune');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -1345,6 +1394,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -1394,6 +1444,7 @@ describe('static', function () {
         });
         expect(result.twitterUrl).to.be.eql('https://foursquare.com/v/the-baxter-inn/4ed4896c775b45f6ed7b0182');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/foursquare');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -1404,6 +1455,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterAppIdGooglePlay',
           'twitterAppIdiPad',
           'twitterAppIdiPhone',
@@ -1460,6 +1512,7 @@ describe('static', function () {
         });
         expect(result.twitterUrl).to.be.eql('https://www.geektime.com/duckface-can-saves-lives-binah-ai-raises-13-5m-to-monitor-health-condition-through-selfies/');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/geektime');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -1476,6 +1529,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -1520,6 +1574,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/inc');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleAuthor',
@@ -1533,6 +1588,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -1564,6 +1620,7 @@ describe('static', function () {
           type: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/insta');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -1575,6 +1632,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1609,6 +1667,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/itunes');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -1620,6 +1679,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -1667,6 +1727,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/jewishbusinessnews');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleModifiedTime',
@@ -1684,6 +1745,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -1732,6 +1794,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/kickstarter');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -1745,6 +1808,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterAppIdiPhone',
           'twitterAppNameiPhone',
           'twitterAppUrliPhone',
@@ -1792,6 +1856,7 @@ describe('static', function () {
           alt: 'FILE - In this Oct. 8, 2014, file photo, a Wall Street address is carved in the side of a building in New York. Stocks are opening modestly higher on Wall Street, Friday, Aug. 11, 2017, led by gains in technology companies and banks. (AP Photo/Mark Lennihan, File)',
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/latimes');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleAuthor',
@@ -1806,6 +1871,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -1843,6 +1909,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/leandata');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -1853,6 +1920,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -1879,6 +1947,7 @@ describe('static', function () {
           },
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/learnxinyminutes');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogImage',
@@ -1886,6 +1955,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -1919,6 +1989,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/lifehacker');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
@@ -1931,6 +2002,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterImage',
           'twitterSite',
@@ -1971,6 +2043,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/macrumors');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articlePublisher',
@@ -1984,6 +2057,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -2034,6 +2108,7 @@ describe('static', function () {
           width: '435', height: '245', stream: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mashable');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogLocale',
@@ -2047,6 +2122,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'ogArticleModifiedTime',
           'ogArticlePublishedTime',
           'ogArticlePublisher',
@@ -2098,6 +2174,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/medium');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleAuthor',
@@ -2112,6 +2189,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterAppIdiPhone',
           'twitterAppNameiPhone',
           'twitterAppUrliPhone',
@@ -2148,8 +2226,24 @@ describe('static', function () {
         type: null,
       });
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/michaelkors');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys('author', 'ogLocale', 'ogAvailability', 'ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogPriceAmount', 'ogPriceCurrency', 'ogSiteName', 'ogImage', 'requestUrl', 'success');
+      expect(result).to.have.all.keys(
+        'author',
+        'ogLocale',
+        'ogAvailability',
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'ogDescription',
+        'ogPriceAmount',
+        'ogPriceCurrency',
+        'ogSiteName',
+        'ogImage',
+        'requestUrl',
+        'charset',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
@@ -2175,6 +2269,7 @@ describe('static', function () {
           },
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mulesoft');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -2186,6 +2281,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -2516,6 +2612,7 @@ describe('static', function () {
           },
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/newegg');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -2525,6 +2622,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -2552,6 +2650,7 @@ describe('static', function () {
           type: 'png',
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/npm');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -2562,6 +2661,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterTitle',
@@ -2601,6 +2701,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/prnewswire');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
@@ -2613,6 +2714,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -2645,6 +2747,7 @@ describe('static', function () {
           type: 'png',
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/reddit');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -2656,6 +2759,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterSite',
           'twitterTitle',
@@ -2701,6 +2805,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/reuters');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
@@ -2714,6 +2819,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'ogArticleAuthor',
           'ogArticleModifiedTime',
           'ogArticlePublishedTime',
@@ -2969,6 +3075,7 @@ describe('static', function () {
           },
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rottentomatoes');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -2979,6 +3086,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterSite',
           'twitterTitle',
@@ -3179,6 +3287,7 @@ describe('static', function () {
           },
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/smile');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -3187,6 +3296,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -3224,6 +3334,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/techcrunch');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articlePublisher',
@@ -3237,6 +3348,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -3283,6 +3395,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/ted');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'author',
@@ -3294,6 +3407,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterAppIdGooglePlay',
           'twitterAppIdiPad',
           'twitterAppIdiPhone',
@@ -3343,6 +3457,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/thinkgeek');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleAuthor',
@@ -3356,6 +3471,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',
@@ -3403,6 +3519,7 @@ describe('static', function () {
           alt: 'Jack Dorsey Sydney Photo Shoot',
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/vox');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleModifiedTime',
@@ -3419,6 +3536,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -3448,6 +3566,7 @@ describe('static', function () {
           },
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/w3');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -3456,6 +3575,7 @@ describe('static', function () {
           'ogLocale',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -3489,12 +3609,14 @@ describe('static', function () {
           },
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/xkcd');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogImage',
           'ogTitle',
           'requestUrl',
           'success',
+          'charset',
         );
         expect(response).to.be.an('object').and.to.not.be.empty;
       });
@@ -3537,6 +3659,7 @@ describe('static', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/yelp');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -3549,6 +3672,7 @@ describe('static', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterAppIdGooglePlay',
           'twitterAppIdiPad',
           'twitterAppIdiPhone',

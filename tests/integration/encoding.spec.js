@@ -6,7 +6,6 @@ describe('encoding', function () {
       return ogs({
         url: 'http://www.gazeta.ru/',
         encoding: null,
-        withCharset: true,
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
@@ -47,6 +46,7 @@ describe('encoding', function () {
         });
         expect(result.charset).to.be.eql('windows-1251');
         expect(result.requestUrl).to.be.eql('http://www.gazeta.ru/');
+        expect(result.charset).to.be.eql('windows-1251');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'charset',
@@ -99,6 +99,7 @@ describe('encoding', function () {
         expect(result.twitterCreator).to.be.eql('@SignantHealth');
         expect(result.twitterSite).to.be.eql('@SignantHealth');
         expect(result.requestUrl).to.be.eql('https://signanthealth.com/careers/');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'articleModifiedTime',
@@ -111,6 +112,7 @@ describe('encoding', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterSite',
@@ -121,7 +123,6 @@ describe('encoding', function () {
     it('when charset is utf-8 - ogp', function () {
       return ogs({
         url: 'http://ogp.me/',
-        withCharset: true,
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
@@ -138,6 +139,7 @@ describe('encoding', function () {
         });
         expect(result.charset).to.be.eql('utf8');
         expect(result.requestUrl).to.be.eql('http://ogp.me/');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'charset',
@@ -183,6 +185,7 @@ describe('encoding', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rakuten');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -194,6 +197,7 @@ describe('encoding', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -209,7 +213,6 @@ describe('encoding', function () {
       return ogs({
         url: 'http://www.tnnbar.org.tw/',
         encoding: null,
-        withCharset: true,
         timeout: 30000,
       }, function (error, result, response) {
         console.log('error:', error);
@@ -225,6 +228,7 @@ describe('encoding', function () {
             'errorDetails',
             'requestUrl',
             'success',
+            'charset',
           );
           return expect(response).to.eql(undefined);
         }
@@ -253,6 +257,7 @@ describe('encoding', function () {
         expect(result.ogLocale).to.be.eql('zh-TW');
         expect(result.charset).to.be.eql('utf8');
         expect(result.requestUrl).to.be.eql('http://www.tnnbar.org.tw/');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'charset',

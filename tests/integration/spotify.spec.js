@@ -46,6 +46,7 @@ describe('spotify', function () {
         disc: '1',
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'musicMusician',
@@ -60,6 +61,7 @@ describe('spotify', function () {
         'ogUrl',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdGooglePlay',
         'twitterAppIdiPhone',
         'twitterCard',
@@ -110,6 +112,7 @@ describe('spotify', function () {
         stream: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
@@ -121,6 +124,7 @@ describe('spotify', function () {
         'ogUrl',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdGooglePlay',
         'twitterAppIdiPhone',
         'twitterCard',
@@ -178,6 +182,7 @@ describe('spotify', function () {
         stream: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'musicAlbum',
@@ -196,6 +201,7 @@ describe('spotify', function () {
         'ogUrl',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdGooglePlay',
         'twitterAppIdiPhone',
         'twitterCard',
@@ -252,6 +258,7 @@ describe('spotify', function () {
         disc: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/user/mjaschmidt/playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'musicCreator',
@@ -265,6 +272,7 @@ describe('spotify', function () {
         'ogUrl',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdGooglePlay',
         'twitterAppIdiPhone',
         'twitterCard',
