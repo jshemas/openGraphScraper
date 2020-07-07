@@ -204,10 +204,12 @@ describe('encoding', function () {
       });
     });
     it('encoding not recognized', function () {
+      this.timeout(30000);
       return ogs({
         url: 'http://www.tnnbar.org.tw/',
         encoding: null,
         withCharset: true,
+        timeout: 30000,
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
