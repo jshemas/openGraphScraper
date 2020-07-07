@@ -24,10 +24,10 @@
     "url": "https://github.com/jshemas"
   },
   "dependencies": {
-    "chardet": "^1.1.0",
+    "chardet": "^1.2.1",
     "cheerio": "^1.0.0-rc.3",
-    "got": "^11.3.0",
-    "iconv-lite": "^0.6.0",
+    "got": "^11.4.0",
+    "iconv-lite": "^0.6.1",
     "validator": "^13.0.0"
   },
   "files": [
@@ -36,19 +36,19 @@
   ],
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^7.3.1",
+    "eslint": "^7.4.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-mocha": "^7.0.1",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-hooks": "^4.0.4",
-    "markdownlint-cli": "^0.23.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.5",
+    "markdownlint-cli": "^0.23.2",
     "mocha": "^8.0.1",
     "nyc": "^15.0.1",
     "sinon": "^9.0.2",
-    "snyk": "^1.348.1"
+    "snyk": "^1.360.0"
   },
   "repository": {
     "type": "git",

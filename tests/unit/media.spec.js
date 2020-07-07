@@ -161,7 +161,6 @@ describe('media', function () {
       disc: '',
     }]);
   });
-
   it('allMedia set to true', function () {
     const ogMedia = media.mediaSetup({
       ogImage: ['http://test.com/logo.png'],
