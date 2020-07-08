@@ -71,7 +71,6 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | followRedirect       | Defines if redirect responses should be followed automatically.            | true          |          |
 | maxRedirects         | Max number of redirects ogs will follow.                                   | 10            |          |
 | retry                | Number of times ogs will retry the request.                                | 2             |          |
-| encoding             | Setting this to `null` might help with running ogs on non english websites | utf8          |          |
 | headers              | An object containing request headers. Useful for setting the user-agent    | {}            |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
 | runChar              | Runs charset and icons on the request payload.                             | false         |          |

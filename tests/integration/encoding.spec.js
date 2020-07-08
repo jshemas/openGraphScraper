@@ -5,7 +5,6 @@ describe('encoding', function () {
     it('when charset is windows-1251', function () {
       return ogs({
         url: 'http://www.gazeta.ru/',
-        encoding: null,
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
@@ -157,7 +156,6 @@ describe('encoding', function () {
     it('legacy no charset', function () {
       return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/rakuten',
-        encoding: null,
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
@@ -212,7 +210,6 @@ describe('encoding', function () {
       this.timeout(30000);
       return ogs({
         url: 'http://www.tnnbar.org.tw/',
-        encoding: null,
         timeout: 30000,
       }, function (error, result, response) {
         console.log('error:', error);
@@ -236,7 +233,7 @@ describe('encoding', function () {
         expect(result.ogTitle).to.be.eql('台南律師公會');
         expect(result.ogImage).to.be.eql([
           {
-            url: 'https://tnnbar.org.tw/wp-content/uploads/2020/07/index_01.jpg',
+            url: 'https://tnnbar.org.tw/wp-content/uploads/2020/07/index_01-e1594114450984.jpg',
             width: null,
             height: null,
             type: 'jpg',
