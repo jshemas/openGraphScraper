@@ -74,6 +74,8 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | headers              | An object containing request headers. Useful for setting the user-agent    | {}            |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
 
+Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got#options) should work as `open-graph-scraper` options.
+
 ## Tests
 
 Then you can run the tests by running...
