@@ -316,7 +316,7 @@ describe('return openGraphScraper', function () {
         sandbox.stub(charset, 'find').returns(false);
       });
       it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com', runChar: true }, function (error, result, response) {
+        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
           expect(result.ogTitle).to.be.eql('test page');
@@ -325,7 +325,7 @@ describe('return openGraphScraper', function () {
         });
       });
       it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com', runChar: true })
+        return openGraphScraper({ url: 'www.test.com' })
           .then(function (data) {
             expect(data.result.success).to.be.eql(true);
             expect(data.result.ogTitle).to.be.eql('test page');
@@ -777,7 +777,7 @@ describe('return openGraphScraper', function () {
         sandbox.stub(iconv, 'decode').throws(error);
       });
       it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com', runChar: true }, function (error, result, response) {
+        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
           expect(error).to.be.eql(true);
           expect(result.success).to.be.eql(false);
           expect(result.error).to.eql('Page not found');
@@ -786,7 +786,7 @@ describe('return openGraphScraper', function () {
         });
       });
       it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com', runChar: true })
+        return openGraphScraper({ url: 'www.test.com' })
           .then(function () {
             expect().fail('this should not happen');
           })

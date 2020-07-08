@@ -13,7 +13,7 @@ describe('video', function () {
       expect(result.ogTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogType).to.be.eql('video.other');
-      expect(result.ogLocale).to.be.oneOf(['en', 'en-US']);
+      expect(result.ogLocale).to.be.oneOf(['en', 'en-US', 'nl-NL']);
       expect(result.twitterCard).to.be.eql('player');
       expect(result.twitterSite).to.be.eql('@youtube');
       expect(result.twitterTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');
