@@ -41,6 +41,17 @@ const metaDescriptionHTML = `
     </body>
   </html>`;
 
+const encodingHTML = `
+  <html>
+    <head>
+      <title>тестовая страница</title>
+      <meta property="og:description" content="привет тестовая страница<">
+    </head>
+    <body>
+      <h1>привет тестовая страница<</h1>
+    </body>
+  </html>`;
+
 const sandbox = sinon.createSandbox();
 
 describe('return openGraphScraper', function () {
@@ -117,6 +128,34 @@ describe('return openGraphScraper', function () {
             expect(data.result.ogTitle).to.be.eql('test page');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(basicHTML);
+          });
+      });
+    });
+
+    context('with encoding set to null (this has been deprecated, but should still work)', function () {
+      beforeEach(async function () {
+        sandbox.stub(got, 'get').resolves({ body: Buffer.from(encodingHTML, 'utf8') });
+      });
+      it('using callbacks', function () {
+        return openGraphScraper({ url: 'www.test.com', encoding: null }, function (error, result, response) {
+          expect(error).to.be.eql(false);
+          expect(result.success).to.be.eql(true);
+          expect(result.charset).to.be.eql(null);
+          expect(result.ogTitle).to.be.eql('тестовая страница');
+          expect(result.ogDescription).to.be.eql('привет тестовая страница<');
+          expect(result.requestUrl).to.be.eql('http://www.test.com');
+          expect(response.body).to.be.eql(Buffer.from(encodingHTML, 'utf8'));
+        });
+      });
+      it('using promises', function () {
+        return openGraphScraper({ url: 'www.test.com', encoding: null })
+          .then(function (data) {
+            expect(data.result.success).to.be.eql(true);
+            expect(data.result.charset).to.be.eql(null);
+            expect(data.result.ogTitle).to.be.eql('тестовая страница');
+            expect(data.result.ogDescription).to.be.eql('привет тестовая страница<');
+            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+            expect(data.response.body).to.be.eql(Buffer.from(encodingHTML, 'utf8'));
           });
       });
     });
