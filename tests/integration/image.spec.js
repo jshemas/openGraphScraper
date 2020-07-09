@@ -64,10 +64,10 @@ describe('image', function () {
       expect(result.ogDescription).to.be.eql('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20170608000236/https://twitter.com/i/hello');
-      expect(result.ogImage.length).to.be.eql(48);
+      expect(result.ogImage.length).to.be.eql(45);
       let imageFound = false;
       for (let i = 0; i < result.ogImage.length; i += 1) {
-        if (result.ogImage[i].url === '/static/images/toolbar/wayback-toolbar-logo.png') {
+        if (result.ogImage[i].url === 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/media/DBwS1I_W0AACC8s.jpg') {
           imageFound = true;
         }
       }

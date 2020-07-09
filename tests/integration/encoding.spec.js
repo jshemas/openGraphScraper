@@ -231,26 +231,7 @@ describe('encoding', function () {
         }
         expect(error).to.be.eql(false);
         expect(result.ogTitle).to.be.eql('台南律師公會');
-        expect(result.ogImage).to.be.eql([
-          {
-            url: 'https://tnnbar.org.tw/wp-content/uploads/2020/07/index_01-e1594114450984.jpg',
-            width: null,
-            height: null,
-            type: 'jpg',
-          },
-          {
-            url: 'https://tnnber.tw-no1.com/wp-content/uploads/2020/03/Banner-02.png',
-            width: '609',
-            height: '129',
-            type: 'png',
-          },
-          {
-            url: 'https://tnnber.tw-no1.com/wp-content/uploads/2020/03/Banner-09.png',
-            width: '608',
-            height: '129',
-            type: 'png',
-          },
-        ]);
+        expect(result.ogImage.length).to.be.eql(3);
         expect(result.ogLocale).to.be.eql('zh-TW');
         expect(result.charset).to.be.eql('utf8');
         expect(result.requestUrl).to.be.eql('http://www.tnnbar.org.tw/');

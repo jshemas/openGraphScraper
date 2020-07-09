@@ -245,61 +245,10 @@ describe('static', function () {
         expect(error).to.be.eql(false);
         expect(result.ogTitle).to.be.eql('iStat Menus');
         expect(result.ogLocale).to.be.eql('en-us');
-        expect(result.ogImage).to.be.eql([
-          {
-            url: '/images/mac/istatmenus5/header-text.svg',
-            width: null,
-            height: null,
-            type: 'svg',
-          },
-          {
-            url: '/images/mac/istatmenus5/header-text-simple.svg',
-            width: null,
-            height: null,
-            type: 'svg',
-          },
-          {
-            url: '/images/mac/istatmenus5/heading-istatmenus.svg',
-            width: null,
-            height: null,
-            type: 'svg',
-          },
-          {
-            url: '/images/mac/istatmenus5/header-network.jpg',
-            width: null,
-            height: null,
-            type: 'jpg',
-          },
-          {
-            url: '/images/mac/istatmenus5/header-cpu.jpg',
-            width: null,
-            height: null,
-            type: 'jpg',
-          },
-          {
-            url: '/images/mac/istatmenus5/image-newdesign.jpg',
-            width: null,
-            height: null,
-            type: 'jpg',
-          },
-          {
-            url: '/images/mac/istatmenus5/image-perapp.jpg',
-            width: null,
-            height: null,
-            type: 'jpg',
-          },
-          {
-            url: '/images/mac/istatmenus5/image-lightmap.jpg',
-            width: null,
-            height: null,
-            type: 'jpg',
-          },
-        ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bjango');
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'ogImage',
           'ogTitle',
           'ogLocale',
           'requestUrl',
@@ -2260,20 +2209,11 @@ describe('static', function () {
         expect(result.ogTitle).to.be.eql('1-415-229-2009');
         expect(result.ogLocale).to.be.eql('en');
         expect(result.ogDescription).to.be.eql('Contact us to see how we can help transform your company with the agility to unlock data, unleash innovation and connect with success.');
-        expect(result.ogImage).to.be.eql([
-          {
-            url: '/sites/default/files/3C_mulesoft_logo_updated.svg',
-            width: null,
-            height: null,
-            type: 'svg',
-          },
-        ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mulesoft');
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
-          'ogImage',
           'ogLocale',
           'ogSiteName',
           'ogTitle',
@@ -2309,12 +2249,6 @@ describe('static', function () {
             width: null,
             height: null,
             type: 'png',
-          },
-          {
-            url: '//promotions.newegg.com/marketplace/2016/16-6127_flash_tech/nav_160x360.jpg',
-            width: '156px',
-            height: '360px',
-            type: 'jpg',
           },
           {
             url: 'http://images10.newegg.com/Marketing_Place/Seller_logo/Seller_A68V_8a313a86-01bb-4eb1-84a0-3d85263980ed.gif',
@@ -2387,12 +2321,6 @@ describe('static', function () {
             width: null,
             height: null,
             type: 'gif',
-          },
-          {
-            url: '//promotions.newegg.com/marketplace/2016/16-6849/nav_160x360.jpg',
-            width: '156px',
-            height: '360px',
-            type: 'jpg',
           },
           {
             url: 'http://images10.newegg.com/WebResource/Themes/2005/Nest/whiteEgg.gif',
@@ -3588,31 +3516,10 @@ describe('static', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogTitle).to.be.eql('xkcd: Regular Expressions');
-        expect(result.ogImage).to.be.eql([
-          {
-            url: '//imgs.xkcd.com/static/terrible_small_logo.png',
-            width: '185',
-            height: '83',
-            type: 'png',
-          },
-          {
-            url: '//imgs.xkcd.com/comics/regular_expressions.png',
-            width: null,
-            height: null,
-            type: 'png',
-          },
-          {
-            url: '//imgs.xkcd.com/s/a899e84.jpg',
-            width: '520',
-            height: '100',
-            type: 'jpg',
-          },
-        ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/xkcd');
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'ogImage',
           'ogTitle',
           'requestUrl',
           'success',

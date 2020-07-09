@@ -11,20 +11,11 @@ describe('url', function () {
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('mul');
-      expect(result.ogImage).to.be.eql([
-        {
-          height: '183',
-          type: 'png',
-          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
-          width: '200',
-        },
-      ]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
-        'ogImage',
         'ogLocale',
         'ogTitle',
         'requestUrl',
@@ -44,20 +35,11 @@ describe('url', function () {
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('mul');
-      expect(result.ogImage).to.be.eql([
-        {
-          height: '183',
-          type: 'png',
-          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
-          width: '200',
-        },
-      ]);
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
-        'ogImage',
         'ogLocale',
         'ogTitle',
         'requestUrl',
@@ -77,21 +59,12 @@ describe('url', function () {
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('mul');
-      expect(result.ogImage).to.be.eql([
-        {
-          height: '183',
-          type: 'png',
-          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
-          width: '200',
-        },
-      ]);
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
         'ogLocale',
-        'ogImage',
         'ogTitle',
         'requestUrl',
         'success',
@@ -110,20 +83,11 @@ describe('url', function () {
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('mul');
-      expect(result.ogImage).to.be.eql([
-        {
-          height: '183',
-          type: 'png',
-          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
-          width: '200',
-        },
-      ]);
       expect(result.requestUrl).to.be.eql('http://wikipedia.org/');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
-        'ogImage',
         'ogLocale',
         'ogTitle',
         'requestUrl',
@@ -143,20 +107,11 @@ describe('url', function () {
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogLocale).to.be.eql('mul');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogImage).to.be.eql([
-        {
-          height: '183',
-          type: 'png',
-          url: 'portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
-          width: '200',
-        },
-      ]);
       expect(result.requestUrl).to.be.eql('http://wikipedia.org/');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
-        'ogImage',
         'ogLocale',
         'ogTitle',
         'requestUrl',
