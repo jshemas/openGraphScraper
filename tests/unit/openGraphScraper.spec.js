@@ -132,12 +132,12 @@ describe('return openGraphScraper', function () {
       });
     });
 
-    context('with encoding set to null and withCharset set to true', function () {
+    context('with encoding set to null (this has been deprecated, but should still work)', function () {
       beforeEach(async function () {
         sandbox.stub(got, 'get').resolves({ body: Buffer.from(encodingHTML, 'utf8') });
       });
       it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com', encoding: null, withCharset: true }, function (error, result, response) {
+        return openGraphScraper({ url: 'www.test.com', encoding: null }, function (error, result, response) {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
           expect(result.charset).to.be.eql(null);
@@ -148,7 +148,7 @@ describe('return openGraphScraper', function () {
         });
       });
       it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com', encoding: null, withCharset: true })
+        return openGraphScraper({ url: 'www.test.com', encoding: null })
           .then(function (data) {
             expect(data.result.success).to.be.eql(true);
             expect(data.result.charset).to.be.eql(null);
@@ -156,30 +156,6 @@ describe('return openGraphScraper', function () {
             expect(data.result.ogDescription).to.be.eql('привет тестовая страница<');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(Buffer.from(encodingHTML, 'utf8'));
-          });
-      });
-    });
-
-    context('with withCharset set to true', function () {
-      beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: basicHTML });
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com', withCharset: true }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.ogTitle).to.be.eql('test page');
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(basicHTML);
-        });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com', withCharset: true })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.ogTitle).to.be.eql('test page');
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(basicHTML);
           });
       });
     });
@@ -379,7 +355,7 @@ describe('return openGraphScraper', function () {
         sandbox.stub(charset, 'find').returns(false);
       });
       it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com', runChar: true }, function (error, result, response) {
+        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
           expect(result.ogTitle).to.be.eql('test page');
@@ -388,7 +364,7 @@ describe('return openGraphScraper', function () {
         });
       });
       it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com', runChar: true })
+        return openGraphScraper({ url: 'www.test.com' })
           .then(function (data) {
             expect(data.result.success).to.be.eql(true);
             expect(data.result.ogTitle).to.be.eql('test page');
@@ -836,11 +812,11 @@ describe('return openGraphScraper', function () {
     context('when iconv throws a error', function () {
       beforeEach(async function () {
         const error = new Error('Page not found');
-        sandbox.stub(got, 'get').resolves({ body: basicHTML });
+        sandbox.stub(got, 'get').resolves({ body: Buffer.from(basicHTML, 'utf8') });
         sandbox.stub(iconv, 'decode').throws(error);
       });
       it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com', runChar: true }, function (error, result, response) {
+        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
           expect(error).to.be.eql(true);
           expect(result.success).to.be.eql(false);
           expect(result.error).to.eql('Page not found');
@@ -849,7 +825,7 @@ describe('return openGraphScraper', function () {
         });
       });
       it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com', runChar: true })
+        return openGraphScraper({ url: 'www.test.com' })
           .then(function () {
             expect().fail('this should not happen');
           })

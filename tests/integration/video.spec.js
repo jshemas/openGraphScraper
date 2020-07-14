@@ -8,12 +8,19 @@ describe('video', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.alAndroidAppName).to.be.eql('YouTube');
+      expect(result.alAndroidPackage).to.be.eql('com.google.android.youtube');
+      expect(result.alAndroidUrl).to.be.eql('vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
+      expect(result.alIosAppName).to.be.eql('YouTube');
+      expect(result.alIosAppStoreId).to.be.eql('544007664');
+      expect(result.alIosUrl).to.be.eql('vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
+      expect(result.alWebUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
       expect(result.ogSiteName).to.be.eql('YouTube');
       expect(result.ogUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.ogTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogType).to.be.eql('video.other');
-      expect(result.ogLocale).to.be.oneOf(['en', 'en-US']);
+      expect(result.ogLocale).to.be.oneOf(['en', 'en-US', 'nl-NL']);
       expect(result.twitterCard).to.be.eql('player');
       expect(result.twitterSite).to.be.eql('@youtube');
       expect(result.twitterTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');
@@ -54,9 +61,17 @@ describe('video', function () {
         stream: null,
       });
       expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       if (result.ogDate === undefined) result.ogDate = 'hack because sometimes this does not come back for some reason';
       expect(result).to.have.all.keys(
+        'alAndroidAppName',
+        'alAndroidPackage',
+        'alAndroidUrl',
+        'alIosAppName',
+        'alIosAppStoreId',
+        'alIosUrl',
+        'alWebUrl',
         'ogDate',
         'ogDescription',
         'ogImage',
@@ -68,6 +83,7 @@ describe('video', function () {
         'ogVideo',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdGooglePlay',
         'twitterAppIdiPad',
         'twitterAppIdiPhone',
@@ -104,6 +120,7 @@ describe('video', function () {
       expect(result.ogType).to.be.oneOf(['website', 'video.other']);
       expect(result.ogImage).to.be.to.be.an('object').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitch.html');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogDescription',
@@ -115,6 +132,7 @@ describe('video', function () {
         'ogUrl',
         'requestUrl',
         'success',
+        'charset',
         'twitterSite',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;

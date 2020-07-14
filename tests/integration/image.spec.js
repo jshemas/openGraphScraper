@@ -8,6 +8,9 @@ describe('image', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.alIosAppName).to.be.eql('Flickr');
+      expect(result.alIosAppStoreId).to.be.eql('328407587');
+      expect(result.alIosUrl).to.be.eql('flickr://flickr.com/photos/travelgraph/18791678505');
       expect(result.ogSiteName).to.be.eql('Flickr');
       expect(result.twitterAppNameiPhone).to.be.eql('Flickr');
       expect(result.twitterAppIdiPhone).to.be.eql('328407587');
@@ -27,8 +30,12 @@ describe('image', function () {
         type: 'jpg',
       });
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/flickr');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'alIosAppName',
+        'alIosAppStoreId',
+        'alIosUrl',
         'ogDescription',
         'ogImage',
         'ogLocale',
@@ -38,6 +45,7 @@ describe('image', function () {
         'ogUrl',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdiPhone',
         'twitterAppNameiPhone',
         'twitterAppUrliPhone',
@@ -55,16 +63,17 @@ describe('image', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitter.html');
       expect(result.ogTitle).to.be.eql('Twitter. It\'s what\'s happening.');
       expect(result.ogDescription).to.be.eql('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20170608000236/https://twitter.com/i/hello');
-      expect(result.ogImage.length).to.be.eql(48);
+      expect(result.ogImage.length).to.be.eql(45);
       let imageFound = false;
       for (let i = 0; i < result.ogImage.length; i += 1) {
-        if (result.ogImage[i].url === '/static/images/toolbar/wayback-toolbar-logo.png') {
+        if (result.ogImage[i].url === 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/media/DBwS1I_W0AACC8s.jpg') {
           imageFound = true;
         }
       }
@@ -77,6 +86,7 @@ describe('image', function () {
         'requestUrl',
         'ogUrl',
         'success',
+        'charset',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });

@@ -8,6 +8,12 @@ describe('spotify', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.alAndroidAppName).to.be.eql('Spotify');
+      expect(result.alAndroidPackage).to.be.eql('com.spotify.music');
+      expect(result.alAndroidUrl).to.be.eql('spotify://album/5EBGCvO6upi3GNknMVe9x9');
+      expect(result.alIosAppName).to.be.eql('Spotify');
+      expect(result.alIosAppStoreId).to.be.eql('324684580');
+      expect(result.alIosUrl).to.be.eql('spotify://album/5EBGCvO6upi3GNknMVe9x9');
       expect(result.ogTitle).to.be.eql('ye');
       expect(result.ogDescription).to.be.eql('ye, an album by Kanye West on Spotify');
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
@@ -46,8 +52,15 @@ describe('spotify', function () {
         disc: '1',
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'alAndroidAppName',
+        'alAndroidPackage',
+        'alAndroidUrl',
+        'alIosAppName',
+        'alIosAppStoreId',
+        'alIosUrl',
         'musicMusician',
         'musicReleaseDate',
         'musicSong',
@@ -60,6 +73,7 @@ describe('spotify', function () {
         'ogUrl',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdGooglePlay',
         'twitterAppIdiPhone',
         'twitterCard',
@@ -79,6 +93,12 @@ describe('spotify', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.alAndroidAppName).to.be.eql('Spotify');
+      expect(result.alAndroidPackage).to.be.eql('com.spotify.music');
+      expect(result.alAndroidUrl).to.be.eql('spotify://artist/5K4W6rqBFWDnAN6FQUkS6x');
+      expect(result.alIosAppName).to.be.eql('Spotify');
+      expect(result.alIosAppStoreId).to.be.eql('324684580');
+      expect(result.alIosUrl).to.be.eql('spotify://artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.ogTitle).to.be.eql('Kanye West');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
@@ -110,8 +130,15 @@ describe('spotify', function () {
         stream: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'alAndroidAppName',
+        'alAndroidPackage',
+        'alAndroidUrl',
+        'alIosAppName',
+        'alIosAppStoreId',
+        'alIosUrl',
         'ogDescription',
         'ogImage',
         'ogLocale',
@@ -121,6 +148,7 @@ describe('spotify', function () {
         'ogUrl',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdGooglePlay',
         'twitterAppIdiPhone',
         'twitterCard',
@@ -140,6 +168,12 @@ describe('spotify', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.alAndroidAppName).to.be.eql('Spotify');
+      expect(result.alAndroidPackage).to.be.eql('com.spotify.music');
+      expect(result.alAndroidUrl).to.be.eql('spotify://track/19a3JfW8BQwqHWUMbcqSx8');
+      expect(result.alIosAppName).to.be.eql('Spotify');
+      expect(result.alIosAppStoreId).to.be.eql('324684580');
+      expect(result.alIosUrl).to.be.eql('spotify://track/19a3JfW8BQwqHWUMbcqSx8');
       expect(result.ogTitle).to.be.eql('Famous');
       expect(result.ogDescription).to.be.eql('Famous, a song by Kanye West on Spotify');
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm');
@@ -178,8 +212,15 @@ describe('spotify', function () {
         stream: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'alAndroidAppName',
+        'alAndroidPackage',
+        'alAndroidUrl',
+        'alIosAppName',
+        'alIosAppStoreId',
+        'alIosUrl',
         'musicAlbum',
         'musicAlbumTrack',
         'musicDuration',
@@ -196,6 +237,7 @@ describe('spotify', function () {
         'ogUrl',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdGooglePlay',
         'twitterAppIdiPhone',
         'twitterCard',
@@ -215,6 +257,12 @@ describe('spotify', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.alAndroidAppName).to.be.eql('Spotify');
+      expect(result.alAndroidPackage).to.be.eql('com.spotify.music');
+      expect(result.alAndroidUrl).to.be.eql('spotify://playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg');
+      expect(result.alIosAppName).to.be.eql('Spotify');
+      expect(result.alIosAppStoreId).to.be.eql('324684580');
+      expect(result.alIosUrl).to.be.eql('spotify://playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg');
       expect(result.ogTitle).to.be.eql('Calm Hip Hop Mindset, a playlist by mjaschmidt on Spotify');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/playlist/4BSIiLTu7qzDZLDdkHaty9');
@@ -247,13 +295,20 @@ describe('spotify', function () {
         stream: null,
       });
       expect(result.musicSong).to.be.eql({
-        url: 'https://open.spotify.com/track/1oOEkBNp4zWnkD7nWjJdog',
+        url: 'https://open.spotify.com/track/3IvMYBE7A3c7to1aEcfFJk',
         track: '1',
         disc: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/user/mjaschmidt/playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg');
+      expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'alAndroidAppName',
+        'alAndroidPackage',
+        'alAndroidUrl',
+        'alIosAppName',
+        'alIosAppStoreId',
+        'alIosUrl',
         'musicCreator',
         'musicSong',
         'ogDescription',
@@ -265,6 +320,7 @@ describe('spotify', function () {
         'ogUrl',
         'requestUrl',
         'success',
+        'charset',
         'twitterAppIdGooglePlay',
         'twitterAppIdiPhone',
         'twitterCard',
