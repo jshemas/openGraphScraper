@@ -94,6 +94,13 @@ describe('basic', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.alAndroidAppName).to.be.eql('Vimeo');
+      expect(result.alAndroidPackage).to.be.eql('com.vimeo.android.videoapp');
+      expect(result.alAndroidUrl).to.be.eql('vimeo://app.vimeo.com/videos/232889838');
+      expect(result.alIosAppName).to.be.eql('Vimeo');
+      expect(result.alIosAppStoreId).to.be.eql('425194759');
+      expect(result.alIosUrl).to.be.eql('vimeo://app.vimeo.com/videos/232889838');
+      expect(result.alWebShouldFallback).to.be.eql('true');
       expect(result.ogSiteName).to.be.eql('Vimeo');
       expect(result.ogUrl).to.be.eql('https://vimeo.com/232889838');
       expect(result.ogType).to.be.eql('video');
@@ -141,6 +148,13 @@ describe('basic', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'alAndroidAppName',
+        'alAndroidPackage',
+        'alAndroidUrl',
+        'alIosAppName',
+        'alIosAppStoreId',
+        'alIosUrl',
+        'alWebShouldFallback',
         'ogDescription',
         'ogImage',
         'ogLocale',

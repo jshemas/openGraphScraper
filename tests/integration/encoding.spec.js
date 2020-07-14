@@ -3,8 +3,10 @@ const ogs = require('../../index');
 describe('encoding', function () {
   context('should return correct Open Graph Info + charset info', function () {
     it('when charset is windows-1251', function () {
+      this.timeout(30000);
       return ogs({
         url: 'http://www.gazeta.ru/',
+        timeout: 30000,
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
@@ -87,7 +89,7 @@ describe('encoding', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogLocale).to.be.eql('en_US');
-        expect(result.articleModifiedTime).to.be.eql('2020-05-14T14:04:23+00:00');
+        expect(result.articleModifiedTime).to.be.eql('2020-07-13T18:21:57+00:00');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('Careers | Signant Health');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/signanthealth/');
@@ -300,6 +302,12 @@ describe('encoding', function () {
           console.log('error:', error);
           console.log('result:', result);
           expect(error).to.be.eql(false);
+          expect(result.alAndroidUrl).to.be.eql('aliexpress://product/detail?productId=32993251330&fbsrc=fbapplink_www_detail_android&sk=&aff_platform=&aff_trace_key=&af=&cv=&cn=&dp=');
+          expect(result.alAndroidPackage).to.be.eql('com.alibaba.aliexpresshd');
+          expect(result.alAndroidAppName).to.be.eql('AliExpress');
+          expect(result.alIphoneUrl).to.be.eql('aliexpress://product/detail?productId=32993251330&fbsrc=fbapplink_www_detail_ios&sk=&aff_platform=&aff_trace_key=&af=&cv=&cn=&dp=');
+          expect(result.alIphoneAppStoreId).to.be.eql('436672029');
+          expect(result.alIphoneAppName).to.be.eql('AliExpress');
           expect(result.ogUrl).to.be.eql('//he.aliexpress.com/item/32993251330.html?src=ibdm_d03p0558e02r02&sk=&aff_platform=&aff_trace_key=&af=&cv=&cn=&dp=');
           expect(result.ogTitle).to.be.eql("€97.39 40% OFF|מקורי Apple iPhone SE סמארטפון נייד טלפון A9 Dual Core 2GB RAM 16/64GB ROM 4.0 ''12MP טביעות אצבע 4G LTE Smartphone|טלפונים ניידים|   - AliExpress");
           expect(result.ogType).to.be.eql('product');
@@ -315,6 +323,12 @@ describe('encoding', function () {
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/aliexpress');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
+            'alAndroidAppName',
+            'alAndroidPackage',
+            'alAndroidUrl',
+            'alIphoneAppName',
+            'alIphoneAppStoreId',
+            'alIphoneUrl',
             'charset',
             'ogDescription',
             'ogImage',

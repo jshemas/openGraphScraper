@@ -63,6 +63,15 @@ describe('redirect', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.alAndroidUrl).to.be.eql('nyt://article/d07123d7-f6dc-5370-97cb-86dd6aa0b0de');
+        expect(result.alAndroidPackage).to.be.eql('com.nytimes.android');
+        expect(result.alAndroidAppName).to.be.eql('NYTimes');
+        expect(result.alIphoneUrl).to.be.eql('nytimes://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html');
+        expect(result.alIphoneAppStoreId).to.be.eql('284862083');
+        expect(result.alIphoneAppName).to.be.eql('NYTimes');
+        expect(result.alIpadUrl).to.be.eql('nytimes://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html');
+        expect(result.alIpadAppStoreId).to.be.eql('357066198');
+        expect(result.alIpadAppName).to.be.eql('NYTimes');
         expect(result.ogUrl).to.be.eql('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html');
         expect(result.ogType).to.be.eql('article');
         expect(result.articleSection).to.be.eql('Arts');
@@ -94,6 +103,15 @@ describe('redirect', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'alAndroidAppName',
+          'alAndroidPackage',
+          'alAndroidUrl',
+          'alIpadAppName',
+          'alIpadAppStoreId',
+          'alIpadUrl',
+          'alIphoneAppName',
+          'alIphoneAppStoreId',
+          'alIphoneUrl',
           'articleSection',
           'articleTag',
           'ogDate',

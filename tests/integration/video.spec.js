@@ -8,6 +8,13 @@ describe('video', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.alAndroidAppName).to.be.eql('YouTube');
+      expect(result.alAndroidPackage).to.be.eql('com.google.android.youtube');
+      expect(result.alAndroidUrl).to.be.eql('vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
+      expect(result.alIosAppName).to.be.eql('YouTube');
+      expect(result.alIosAppStoreId).to.be.eql('544007664');
+      expect(result.alIosUrl).to.be.eql('vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
+      expect(result.alWebUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
       expect(result.ogSiteName).to.be.eql('YouTube');
       expect(result.ogUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.ogTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');
@@ -58,6 +65,13 @@ describe('video', function () {
       expect(result.success).to.be.eql(true);
       if (result.ogDate === undefined) result.ogDate = 'hack because sometimes this does not come back for some reason';
       expect(result).to.have.all.keys(
+        'alAndroidAppName',
+        'alAndroidPackage',
+        'alAndroidUrl',
+        'alIosAppName',
+        'alIosAppStoreId',
+        'alIosUrl',
+        'alWebUrl',
         'ogDate',
         'ogDescription',
         'ogImage',

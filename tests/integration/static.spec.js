@@ -9,6 +9,13 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.alAndroidAppName).to.be.eql('Airbnb');
+        expect(result.alAndroidPackage).to.be.eql('com.airbnb.android');
+        expect(result.alAndroidUrl).to.be.eql('airbnb://d/listing?id=2250401&ref=monorail_deep_link');
+        expect(result.alIosAppName).to.be.eql('Airbnb');
+        expect(result.alIosAppStoreId).to.be.eql('401626263');
+        expect(result.alIosUrl).to.be.eql('airbnb://d/listing?id=2250401&ref=monorail_deep_link');
+        expect(result.alWebUrl).to.be.eql('https://www.airbnb.com/rooms/2250401');
         expect(result.ogSiteName).to.be.eql('Airbnb');
         expect(result.ogTitle).to.be.eql('Bright, Chelsea Studio - Apartments for Rent in New York');
         expect(result.ogType).to.be.eql('airbedandbreakfast:listing');
@@ -44,6 +51,13 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'alAndroidAppName',
+          'alAndroidPackage',
+          'alAndroidUrl',
+          'alIosAppName',
+          'alIosAppStoreId',
+          'alIosUrl',
+          'alWebUrl',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -265,6 +279,9 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.alAndroidAppName).to.be.eql('Bloomberg');
+        expect(result.alAndroidPackage).to.be.eql('com.bloomberg.android.plus');
+        expect(result.alAndroidUrl).to.be.eql('bloomberg://www.bloomberg.com/news/articles/2020-06-11/sony-reveals-playstation-5-games-ahead-of-holiday-release?utm_medium=applink&utm_source=facebook');
         expect(result.ogDescription).to.be.eql('Sony Corp. unveiled the PlayStation 5 game console and an array of new games from the virtual stage Thursday, showcasing for the first time what its next-generation software will look like ahead of a holiday season showdown against Microsoft Corp.’s Xbox.');
         expect(result.ogSiteName).to.be.eql('Bloomberg.com');
         expect(result.ogTitle).to.be.eql('Sony Reveals PlayStation 5 Games Ahead of Holiday Release');
@@ -294,6 +311,9 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'alAndroidAppName',
+          'alAndroidPackage',
+          'alAndroidUrl',
           'ogDate',
           'ogAudioSecureURL',
           'ogAudioType',
@@ -935,6 +955,11 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.alAndroidAppName).to.be.eql('The Economic Times');
+        expect(result.alAndroidUrl).to.be.eql('etandroidapp://articleshow/76152443');
+        expect(result.alIosAppName).to.be.eql(' The Economic Times App');
+        expect(result.alIosAppStoreId).to.be.eql('474766725');
+        expect(result.alIosUrl).to.be.eql('etapp://articleshow/76152443');
         expect(result.ogTitle).to.be.eql('Lockdown led to 30% surge in resumes from job seekers: Recruitment firms');
         expect(result.ogSiteName).to.be.eql('The Economic Times');
         expect(result.ogType).to.be.eql('article');
@@ -971,6 +996,11 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'alAndroidAppName',
+          'alAndroidUrl',
+          'alIosAppName',
+          'alIosAppStoreId',
+          'alIosUrl',
           'articleModifiedTime',
           'articlePublishedTime',
           'articleTag',
@@ -1073,6 +1103,12 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.alAndroidAppName).to.be.eql('Etsy');
+        expect(result.alAndroidPackage).to.be.eql('com.etsy.android');
+        expect(result.alAndroidUrl).to.be.eql('etsy://listing/230389421?ref=applinks_android');
+        expect(result.alIosAppName).to.be.eql('Etsy');
+        expect(result.alIosAppStoreId).to.be.eql('477128284');
+        expect(result.alIosUrl).to.be.eql('etsy://listing/230389421?ref=applinks_ios');
         expect(result.ogSiteName).to.be.eql('Etsy');
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogTitle).to.be.eql('Agents of Shield decal sticker for car, truck, laptop in ANY COLOR die cut vinyl');
@@ -1108,6 +1144,12 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'alAndroidAppName',
+          'alAndroidPackage',
+          'alAndroidUrl',
+          'alIosAppName',
+          'alIosAppStoreId',
+          'alIosUrl',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1360,6 +1402,19 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.alAndroidAppName).to.be.eql('Foursquare');
+        expect(result.alAndroidPackage).to.be.eql('com.joelapenna.foursquared');
+        expect(result.alAndroidUrl).to.be.eql('foursquare://venues/4ed4896c775b45f6ed7b0182');
+        expect(result.alIpadAppName).to.be.eql('Foursquare');
+        expect(result.alIpadAppStoreId).to.be.eql('306934924');
+        expect(result.alIpadUrl).to.be.eql('foursquare://venues/4ed4896c775b45f6ed7b0182');
+        expect(result.alIphoneAppName).to.be.eql('Foursquare');
+        expect(result.alIphoneAppStoreId).to.be.eql('306934924');
+        expect(result.alIphoneUrl).to.be.eql('foursquare://venues/4ed4896c775b45f6ed7b0182');
+        expect(result.alWebShouldFallback).to.be.eql('false');
+        expect(result.alWindowsPhoneAppId).to.be.eql('26cf3302-469f-e011-986b-78e7d1fa76f8');
+        expect(result.alWindowsPhoneAppName).to.be.eql('Foursquare');
+        expect(result.alWindowsPhoneUrl).to.be.eql('foursquare://venues/4ed4896c775b45f6ed7b0182');
         expect(result.ogTitle).to.be.eql('The Baxter Inn');
         expect(result.ogDescription).to.be.eql('Whisky Bar in Sydney, NSW');
         expect(result.ogUrl).to.be.eql('https://foursquare.com/v/the-baxter-inn/4ed4896c775b45f6ed7b0182');
@@ -1396,6 +1451,19 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'alAndroidAppName',
+          'alAndroidPackage',
+          'alAndroidUrl',
+          'alIpadAppName',
+          'alIpadAppStoreId',
+          'alIpadUrl',
+          'alIphoneAppName',
+          'alIphoneAppStoreId',
+          'alIphoneUrl',
+          'alWebShouldFallback',
+          'alWindowsPhoneAppId',
+          'alWindowsPhoneAppName',
+          'alWindowsPhoneUrl',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -1556,6 +1624,12 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.alAndroidAppName).to.be.eql('Instagram');
+        expect(result.alAndroidPackage).to.be.eql('com.instagram.android');
+        expect(result.alAndroidUrl).to.be.eql('https://www.instagram.com/p/BG0m4IDGaqk/');
+        expect(result.alIosAppName).to.be.eql('Instagram');
+        expect(result.alIosAppStoreId).to.be.eql('389801252');
+        expect(result.alIosUrl).to.be.eql('instagram://media?id=1275815577152760484');
         expect(result.ogSiteName).to.be.eql('Instagram');
         expect(result.ogTitle).to.be.eql('Instagram photo by Minaal • Jun 19, 2016 at 4:04am UTC');
         expect(result.ogDescription).to.be.eql('See this Instagram photo by @minaalofficial • 105 likes');
@@ -1572,6 +1646,12 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'alAndroidAppName',
+          'alAndroidPackage',
+          'alAndroidUrl',
+          'alIosAppName',
+          'alIosAppStoreId',
+          'alIosUrl',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -2094,6 +2174,13 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.alAndroidAppName).to.be.eql('Medium');
+        expect(result.alAndroidPackage).to.be.eql('com.medium.reader');
+        expect(result.alAndroidUrl).to.be.eql('medium://p/105fc835a170');
+        expect(result.alIosAppName).to.be.eql('Medium');
+        expect(result.alIosAppStoreId).to.be.eql('828256236');
+        expect(result.alIosUrl).to.be.eql('medium://p/105fc835a170');
+        expect(result.alWebUrl).to.be.eql('https://medium.com/mobility-insights/a-brief-history-of-robotics-105fc835a170');
         expect(result.twitterAppNameiPhone).to.be.eql('Medium');
         expect(result.twitterAppIdiPhone).to.be.eql('828256236');
         expect(result.ogSiteName).to.be.eql('Medium');
@@ -2126,6 +2213,13 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'alAndroidAppName',
+          'alAndroidPackage',
+          'alAndroidUrl',
+          'alIosAppName',
+          'alIosAppStoreId',
+          'alIosUrl',
+          'alWebUrl',
           'articleAuthor',
           'articlePublishedTime',
           'author',
@@ -3294,6 +3388,12 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.alAndroidAppName).to.be.eql('TED');
+        expect(result.alAndroidPackage).to.be.eql('com.ted.android');
+        expect(result.alAndroidUrl).to.be.eql('ted://playlists/321/talks_to_form_better_habits?source=facebook');
+        expect(result.alIosAppName).to.be.eql('TED');
+        expect(result.alIosAppStoreId).to.be.eql('376183339');
+        expect(result.alIosUrl).to.be.eql('ted://playlists/321/talks_to_form_better_habits?source=facebook');
         expect(result.author).to.be.eql('TED');
         expect(result.ogTitle).to.be.eql('8 TED Talks to form better habits');
         expect(result.ogDescription).to.be.eql("There's never a bad time to start a good habit. Let these talks set the framework for a healthier, happier life.");
@@ -3326,6 +3426,12 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'alAndroidAppName',
+          'alAndroidPackage',
+          'alAndroidUrl',
+          'alIosAppName',
+          'alIosAppStoreId',
+          'alIosUrl',
           'author',
           'ogDescription',
           'ogImage',
@@ -3535,6 +3641,9 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.alIosAppName).to.be.eql('Yelp');
+        expect(result.alIosAppStoreId).to.be.eql('284910350');
+        expect(result.alIosUrl).to.be.eql('https://www.yelp.com/biz/boba-guys-san-francisco-4?utm_campaign=biz_details&utm_medium=organic&utm_source=apple');
         expect(result.ogDescription).to.be.eql('Specialties: High-quality bubble milk teas made with next-level quality ingredients like organic milk, homemade syrup, and homemade almond jelly. Home of the original Horchata Boba and Tea Frescas. Established in 2011.  We started Boba Guys…');
         expect(result.ogSiteName).to.be.eql('Yelp');
         expect(result.ogTitle).to.be.eql('Boba Guys - Mission - San Francisco, CA');
@@ -3569,6 +3678,9 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'alIosAppName',
+          'alIosAppStoreId',
+          'alIosUrl',
           'ogDate',
           'ogDescription',
           'ogImage',

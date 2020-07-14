@@ -8,6 +8,9 @@ describe('image', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.alIosAppName).to.be.eql('Flickr');
+      expect(result.alIosAppStoreId).to.be.eql('328407587');
+      expect(result.alIosUrl).to.be.eql('flickr://flickr.com/photos/travelgraph/18791678505');
       expect(result.ogSiteName).to.be.eql('Flickr');
       expect(result.twitterAppNameiPhone).to.be.eql('Flickr');
       expect(result.twitterAppIdiPhone).to.be.eql('328407587');
@@ -30,6 +33,9 @@ describe('image', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'alIosAppName',
+        'alIosAppStoreId',
+        'alIosUrl',
         'ogDescription',
         'ogImage',
         'ogLocale',
