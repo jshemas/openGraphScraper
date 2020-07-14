@@ -1,5 +1,13 @@
 # Change Log
 
+## 4.4.0
+- Adding support for app links meta data
+- Removed the `withCharset` option, you can use `onlyGetOpenGraphInfo` now if you do not want charset
+- Removed the `runChar` option, this will always be turned on
+- `options.encoding === null` is now deprecated
+- Updating image fallback to only send back valid URLs
+- Updating Dependencies
+
 ## 4.3.1
 - Small code clean up and adding tests
 - Updating Dependencies
