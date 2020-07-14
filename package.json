@@ -26,8 +26,8 @@
   "dependencies": {
     "chardet": "^1.2.1",
     "cheerio": "^1.0.0-rc.3",
-    "got": "^11.4.0",
-    "iconv-lite": "^0.6.1",
+    "got": "^11.5.0",
+    "iconv-lite": "^0.6.2",
     "validator": "^13.0.0"
   },
   "files": [
@@ -43,12 +43,12 @@
     "eslint-plugin-mocha": "^7.0.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "markdownlint-cli": "^0.23.2",
     "mocha": "^8.0.1",
     "nyc": "^15.0.1",
     "sinon": "^9.0.2",
-    "snyk": "^1.360.0"
+    "snyk": "^1.361.3"
   },
   "repository": {
     "type": "git",
