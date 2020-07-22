@@ -164,6 +164,17 @@ describe('utils', function () {
     });
   });
 
+  describe('isThisANonHTMLUrl', function () {
+    it('when url is type .png', function () {
+      const valid = utils.isThisANonHTMLUrl('www.foo.com/bar.png');
+      expect(valid).to.eql(true);
+    });
+    it('when url is type .html', function () {
+      const valid = utils.isThisANonHTMLUrl('www.foo.com/bar.html');
+      expect(valid).to.eql(false);
+    });
+  });
+
   describe('removeNestedUndefinedValues', function () {
     it('when there is no undef values', function () {
       const object = utils.removeNestedUndefinedValues({ one: 1 });
