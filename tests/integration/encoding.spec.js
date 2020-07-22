@@ -121,7 +121,8 @@ describe('encoding', function () {
         return expect(response).to.be.an('object').and.to.not.be.empty;
       });
     });
-    it('when charset is utf-8 - ogp', function () {
+    // TODO: ogp.me has a bad cert at the moment, will need to update the test soon
+    it.skip('when charset is utf-8 - ogp', function () {
       return ogs({
         url: 'http://ogp.me/',
       }, function (error, result, response) {
