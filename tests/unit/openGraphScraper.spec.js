@@ -385,8 +385,8 @@ describe('return openGraphScraper', function () {
           customMetaTags: [{
             multiple: false,
             property: 'foo',
-            fieldName: 'fooTag'
-          }]
+            fieldName: 'fooTag',
+          }],
         }, function (error, result, response) {
           expect(error).to.be.eql(false);
           expect(result.success).to.be.eql(true);
@@ -402,8 +402,8 @@ describe('return openGraphScraper', function () {
           customMetaTags: [{
             multiple: false,
             property: 'foo',
-            fieldName: 'fooTag'
-          }] 
+            fieldName: 'fooTag',
+          }],
         })
           .then(function (data) {
             expect(data.result.success).to.be.eql(true);
