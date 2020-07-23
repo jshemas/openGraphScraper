@@ -26,7 +26,7 @@
   "dependencies": {
     "chardet": "^1.2.1",
     "cheerio": "^1.0.0-rc.3",
-    "got": "^11.5.0",
+    "got": "^11.5.1",
     "iconv-lite": "^0.6.2",
     "validator": "^13.0.0"
   },
@@ -36,7 +36,7 @@
   ],
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^7.4.0",
+    "eslint": "^7.5.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -48,7 +48,7 @@
     "mocha": "^8.0.1",
     "nyc": "^15.0.1",
     "sinon": "^9.0.2",
-    "snyk": "^1.361.3"
+    "snyk": "^1.364.2"
   },
   "repository": {
     "type": "git",

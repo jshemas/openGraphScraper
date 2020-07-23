@@ -1,7 +1,8 @@
 const ogs = require('../../index');
 
 describe('basic', function () {
-  it('using callbacks should return valid data', function () {
+  // TODO: ogp.me has a bad cert at the moment, will need to update the test soon
+  it.skip('using callbacks should return valid data', function () {
     return ogs({
       url: 'http://ogp.me/',
     }, function (error, result, response) {
@@ -25,7 +26,8 @@ describe('basic', function () {
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
-  it('using promises should return valid data', function () {
+  // TODO: ogp.me has a bad cert at the moment, will need to update the test soon
+  it.skip('using promises should return valid data', function () {
     return ogs({ url: 'http://ogp.me/' })
       .then(function (data) {
         const { error, result, response } = data;

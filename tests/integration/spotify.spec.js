@@ -277,13 +277,13 @@ describe('spotify', function () {
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
-        url: 'https://i.scdn.co/image/ab67706c0000da845a535b3001ccf567ddef2927',
+        url: 'https://i.scdn.co/image/ab67706c0000bebb5a535b3001ccf567ddef2927',
         width: null,
         height: null,
         type: null,
       });
       expect(result.twitterImage).to.be.eql({
-        url: 'https://i.scdn.co/image/ab67706c0000da845a535b3001ccf567ddef2927',
+        url: 'https://i.scdn.co/image/ab67706c0000bebb5a535b3001ccf567ddef2927',
         width: null,
         height: null,
         alt: null,
@@ -295,7 +295,7 @@ describe('spotify', function () {
         stream: null,
       });
       expect(result.musicSong).to.be.eql({
-        url: 'https://open.spotify.com/track/3IvMYBE7A3c7to1aEcfFJk',
+        url: 'https://open.spotify.com/track/5LyK4EaVofQjOvJ4OGhdfv',
         track: '1',
         disc: null,
       });

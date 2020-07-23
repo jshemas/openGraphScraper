@@ -10,6 +10,7 @@ const basicHTML = `
       <meta charset="utf-8">
       <meta property="og:description" content="test description">
       <meta property="og:title" content="test page">
+      <meta property="foo" content="bar">
     </head>
     <body>
       <h1>hello test page</h1>
@@ -367,6 +368,46 @@ describe('return openGraphScraper', function () {
         return openGraphScraper({ url: 'www.test.com' })
           .then(function (data) {
             expect(data.result.success).to.be.eql(true);
+            expect(data.result.ogTitle).to.be.eql('test page');
+            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+            expect(data.response.body).to.be.eql(basicHTML);
+          });
+      });
+    });
+
+    context('when passing in a custom tag', function () {
+      beforeEach(async function () {
+        sandbox.stub(got, 'get').resolves({ body: basicHTML });
+      });
+      it('using callbacks', function () {
+        return openGraphScraper({
+          url: 'www.test.com',
+          customMetaTags: [{
+            multiple: false,
+            property: 'foo',
+            fieldName: 'fooTag',
+          }],
+        }, function (error, result, response) {
+          expect(error).to.be.eql(false);
+          expect(result.success).to.be.eql(true);
+          expect(result.fooTag).to.be.eql('bar');
+          expect(result.ogTitle).to.be.eql('test page');
+          expect(result.requestUrl).to.be.eql('http://www.test.com');
+          expect(response.body).to.be.eql(basicHTML);
+        });
+      });
+      it('using promises', function () {
+        return openGraphScraper({
+          url: 'www.test.com',
+          customMetaTags: [{
+            multiple: false,
+            property: 'foo',
+            fieldName: 'fooTag',
+          }],
+        })
+          .then(function (data) {
+            expect(data.result.success).to.be.eql(true);
+            expect(data.result.fooTag).to.be.eql('bar');
             expect(data.result.ogTitle).to.be.eql('test page');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
             expect(data.response.body).to.be.eql(basicHTML);
