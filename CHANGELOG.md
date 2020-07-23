@@ -1,5 +1,10 @@
 # Change Log
 
+## 4.5.0
+- Adding support for custom meta tags you want to scrape
+- If ogs thinks the URL isn't a HTML page, it will return a 'Must scrape an HTML page' error.
+- Updating Dependencies
+
 ## 4.4.0
 - Adding support for app links meta data
 - Removed the `withCharset` option, you can use `onlyGetOpenGraphInfo` now if you do not want charset
