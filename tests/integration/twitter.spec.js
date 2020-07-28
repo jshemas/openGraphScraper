@@ -31,6 +31,7 @@ describe('twitter', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitter-dev');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogImage',
@@ -41,6 +42,7 @@ describe('twitter', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterDescription',
           'twitterImage',
@@ -82,6 +84,7 @@ describe('twitter', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/github');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -92,6 +95,7 @@ describe('twitter', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterCreatorId',
@@ -135,6 +139,7 @@ describe('twitter', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/atom.html');
+        expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDescription',
@@ -146,6 +151,7 @@ describe('twitter', function () {
           'ogUrl',
           'requestUrl',
           'success',
+          'charset',
           'twitterCard',
           'twitterCreator',
           'twitterDescription',

@@ -1,7 +1,7 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "4.2.1",
+  "version": "4.5.0",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
@@ -24,11 +24,11 @@
     "url": "https://github.com/jshemas"
   },
   "dependencies": {
-    "chardet": "^1.1.0",
+    "chardet": "^1.2.1",
     "cheerio": "^1.0.0-rc.3",
-    "got": "^11.3.0",
+    "got": "^11.5.1",
     "http-proxy-agent": "^4.0.1",
-    "iconv-lite": "^0.6.0",
+    "iconv-lite": "^0.6.2",
     "tunnel": "0.0.6",
     "validator": "^13.0.0"
   },
@@ -38,19 +38,19 @@
   ],
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^7.3.1",
+    "eslint": "^7.5.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-mocha": "^7.0.1",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-hooks": "^4.0.4",
-    "markdownlint-cli": "^0.23.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "markdownlint-cli": "^0.23.2",
     "mocha": "^8.0.1",
     "nyc": "^15.0.1",
     "sinon": "^9.0.2",
-    "snyk": "^1.348.1"
+    "snyk": "^1.364.2"
   },
   "repository": {
     "type": "git",
@@ -58,6 +58,10 @@
     "web": "http://github.com/jshemas/openGraphScraper"
   },
   "keywords": [
+    "app links",
+    "dublin core",
+    "meta tags",
+    "metadata",
     "og",
     "ogp",
     "open graph",

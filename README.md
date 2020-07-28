@@ -66,16 +66,34 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | blacklist            | Pass in an array of sites you don't want ogs to run on.                    | []            |          |
 | onlyGetOpenGraphInfo | Only fetch open graph info and don't fall back on anything else.           | false         |          |
 | ogImageFallback      | Fetch other images if no open graph ones are found.                        | true          |          |
+| customMetaTags       | Here you can define custom meta tags you want to scrape.                   | []            |          |
 | allMedia             | By default, OGS will only send back the first image/video it finds         | false         |          |
 | decompress           | Set the accept-encoding to gzip/deflate                                    | true          |          |
 | followRedirect       | Defines if redirect responses should be followed automatically.            | true          |          |
 | maxRedirects         | Max number of redirects ogs will follow.                                   | 10            |          |
 | retry                | Number of times ogs will retry the request.                                | 2             |          |
-| encoding             | Setting this to `null` might help with running ogs on non english websites | utf8          |          |
-| headers              | Header for the request, is a object and be used for setting the user-agent | {}            |          |
+| headers              | An object containing request headers. Useful for setting the user-agent    | {}            |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
-| runChar              | Runs charset and icons on the request payload.                             | false         |          |
-| withCharset          | Returns the charset in the ogs payload.                                    | false         |          |
+
+Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got#options) should work as `open-graph-scraper` options.
+
+Custom Meta Tag Example:
+```javascript
+const ogs = require('open-graph-scraper');
+const options = {
+  url: 'https://github.com/jshemas/openGraphScraper',
+  customMetaTags: [{
+    multiple: false, // is there more then one of these tags on a page (normally this is false)
+    property: 'hostname', // meta tag name/property attribute
+    fieldName: 'hostnameMetaTag', // name of the result variable
+  }],
+};
+ogs(options)
+  .then((data) => {
+    const { error, result, response } = data;
+    console.log('hostnameMetaTag:', result.hostnameMetaTag); // hostnameMetaTag: github.com
+  })
+```
 
 ## Tests
 
