@@ -295,7 +295,7 @@ describe('spotify', function () {
         stream: null,
       });
       expect(result.musicSong).to.be.eql({
-        url: 'https://open.spotify.com/track/5LyK4EaVofQjOvJ4OGhdfv',
+        url: 'https://open.spotify.com/track/6GHLjWwiztcn2MR9qXU53U',
         track: '1',
         disc: null,
       });
