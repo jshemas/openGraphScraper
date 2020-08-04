@@ -1,34 +1,32 @@
 const ogs = require('../../index');
 
 describe('basic', function () {
-  // TODO: ogp.me has a bad cert at the moment, will need to update the test soon
   it('using callbacks should return valid data', function () {
     return ogs({
-      url: 'http://ogp.me/',
+      url: 'https://ogp.me/',
     }, function (error, result, response) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Open Graph protocol');
       expect(result.ogType).to.be.eql('website');
-      expect(result.ogUrl).to.be.eql('http://ogp.me/');
+      expect(result.ogUrl).to.be.eql('https://ogp.me/');
       expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
       expect(result.ogImage).to.be.eql({
-        url: 'http://ogp.me/logo.png',
+        url: 'https://ogp.me/logo.png',
         width: '300',
         height: '300',
         type: 'image/png',
       });
-      expect(result.requestUrl).to.be.eql('http://ogp.me/');
+      expect(result.requestUrl).to.be.eql('https://ogp.me/');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'success');
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
-  // TODO: ogp.me has a bad cert at the moment, will need to update the test soon
   it('using promises should return valid data', function () {
-    return ogs({ url: 'http://ogp.me/' })
+    return ogs({ url: 'https://ogp.me/' })
       .then(function (data) {
         const { error, result, response } = data;
         console.log('error:', error);
@@ -36,15 +34,15 @@ describe('basic', function () {
         expect(error).to.be.eql(false);
         expect(result.ogTitle).to.be.eql('Open Graph protocol');
         expect(result.ogType).to.be.eql('website');
-        expect(result.ogUrl).to.be.eql('http://ogp.me/');
+        expect(result.ogUrl).to.be.eql('https://ogp.me/');
         expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
         expect(result.ogImage).to.be.eql({
-          url: 'http://ogp.me/logo.png',
+          url: 'https://ogp.me/logo.png',
           width: '300',
           height: '300',
           type: 'image/png',
         });
-        expect(result.requestUrl).to.be.eql('http://ogp.me/');
+        expect(result.requestUrl).to.be.eql('https://ogp.me/');
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
