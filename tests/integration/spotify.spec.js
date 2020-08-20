@@ -252,18 +252,18 @@ describe('spotify', function () {
   });
   it('playlist should return music:playlist and associated tags', function () {
     return ogs({
-      url: 'https://open.spotify.com/user/mjaschmidt/playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg',
+      url: 'https://jshemas.github.io/openGraphScraperPages/spotifyPlayList',
     }, function (error, result, response) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
       expect(result.alAndroidAppName).to.be.eql('Spotify');
       expect(result.alAndroidPackage).to.be.eql('com.spotify.music');
-      expect(result.alAndroidUrl).to.be.eql('spotify://playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg');
+      expect(result.alAndroidUrl).to.be.eql('spotify://playlist/4BSIiLTu7qzDZLDdkHaty9');
       expect(result.alIosAppName).to.be.eql('Spotify');
       expect(result.alIosAppStoreId).to.be.eql('324684580');
-      expect(result.alIosUrl).to.be.eql('spotify://playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg');
-      expect(result.ogTitle).to.be.eql('Calm Hip Hop Mindset, a playlist by mjaschmidt on Spotify');
+      expect(result.alIosUrl).to.be.eql('spotify://playlist/4BSIiLTu7qzDZLDdkHaty9');
+      expect(result.ogTitle).to.be.eql('Calm Hip Hop Mindset');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/playlist/4BSIiLTu7qzDZLDdkHaty9');
       expect(result.ogType).to.be.eql('music.playlist');
@@ -289,17 +289,17 @@ describe('spotify', function () {
         alt: null,
       });
       expect(result.twitterPlayer).to.be.eql({
-        url: 'https://open.spotify.com/embed/playlist/4BSIiLTu7qzDZLDdkHaty9?utm_campaign=twitter-player&utm_source=open&utm_medium=twitter&si=9UCDOCPGQZKf9jkCBwDOMg',
-        width: '300',
-        height: '380',
+        url: 'https://open.spotify.com/embed/playlist/4BSIiLTu7qzDZLDdkHaty9?utm_campaign=twitter-player&utm_source=open&utm_medium=twitter',
+        width: '504',
+        height: '584',
         stream: null,
       });
       expect(result.musicSong).to.be.eql({
-        url: 'https://open.spotify.com/track/6GHLjWwiztcn2MR9qXU53U',
+        url: 'https://open.spotify.com/track/2LTlO3NuNVN70lp2ZbVswF',
         track: '1',
         disc: null,
       });
-      expect(result.requestUrl).to.be.eql('https://open.spotify.com/user/mjaschmidt/playlist/4BSIiLTu7qzDZLDdkHaty9?si=9UCDOCPGQZKf9jkCBwDOMg');
+      expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/spotifyPlayList');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
