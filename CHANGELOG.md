@@ -1,5 +1,10 @@
 # Change Log
 
+## 4.6.0
+- Fixing issue where you would get a false positive errors with pages that have `.tar` in it like `www.target.com`
+- Split extract and request into their own files
+- Updating Dependencies
+
 ## 4.5.1
 - Fixing issue where you couldn't set the `ogImageFallback` option to false
 - Fixing image type fallback so it works with arrays

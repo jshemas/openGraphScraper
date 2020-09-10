@@ -173,6 +173,10 @@ describe('utils', function () {
       const valid = utils.isThisANonHTMLUrl('www.foo.com/bar.html');
       expect(valid).to.eql(false);
     });
+    it('when url is type .pdf and has params', function () {
+      const valid = utils.isThisANonHTMLUrl('www.foo.com/bar.pdf?123');
+      expect(valid).to.eql(true);
+    });
     it('when domain in url contains a non HTML string (.txt)', function () {
       const valid = utils.isThisANonHTMLUrl('www.txt.com/bar.html');
       expect(valid).to.eql(false);
