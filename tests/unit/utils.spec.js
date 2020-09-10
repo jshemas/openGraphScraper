@@ -173,6 +173,14 @@ describe('utils', function () {
       const valid = utils.isThisANonHTMLUrl('www.foo.com/bar.html');
       expect(valid).to.eql(false);
     });
+    it('when domain in url contains a non HTML string (.txt)', function () {
+      const valid = utils.isThisANonHTMLUrl('www.txt.com/bar.html');
+      expect(valid).to.eql(false);
+    });
+    it('when domain in url contains a non HTML string (.mov) no extension on path', function () {
+      const valid = utils.isThisANonHTMLUrl('www.mov.com/bar');
+      expect(valid).to.eql(false);
+    });
   });
 
   describe('removeNestedUndefinedValues', function () {
