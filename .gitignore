@@ -12,7 +12,6 @@ pids
 logs
 results
 node_modules
-package-lock.json
 
 .nyc_output/
 coverage/

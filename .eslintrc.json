@@ -1,20 +1,27 @@
 {
-  "extends": [
-    "eslint-config-airbnb-es5"
-  ],
-
-  "globals": {
-    "Promise"    : false,
-    /* MOCHA */
-    "describe"   : false,
-    "it"         : false,
-    "before"     : false,
-    "beforeEach" : false,
-    "after"      : false,
-    "afterEach"  : false
+  "settings": {
+    "react": {
+      "version": "latest"
+    }
   },
-
+  "extends": [
+    "airbnb",
+    "plugin:promise/recommended"
+  ],
+  "plugins": [
+    "mocha",
+    "promise"
+  ],
+  "env": {
+    "commonjs": true,
+    "node": true
+  },
   "rules": {
-    "func-names": 0
+    "max-len": ["error", {
+      "code": 120,
+      "ignoreStrings": true,
+      "ignoreTrailingComments": true
+    }],
+    "no-param-reassign": "off"
   }
 }
