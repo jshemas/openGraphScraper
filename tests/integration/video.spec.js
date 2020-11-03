@@ -14,7 +14,7 @@ describe('video', function () {
       expect(result.alIosAppName).to.be.eql('YouTube');
       expect(result.alIosAppStoreId).to.be.eql('544007664');
       expect(result.alIosUrl).to.be.eql('vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
-      expect(result.alWebUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks');
+      expect(result.alWebUrl).to.be.oneOf(['https://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks', 'http://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks']);
       expect(result.ogSiteName).to.be.eql('YouTube');
       expect(result.ogUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.ogTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');

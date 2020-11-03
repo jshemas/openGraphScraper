@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.7.0
+- Adding `options.urlValidatorSettings`, it sets the options used by validator.js for testing the URL
+- Updating Dependencies
+
 ## 4.6.0
 - Fixing issue where you would get a false positive errors with pages that have `.tar` in it like `www.target.com`
 - Split extract and request into their own files
