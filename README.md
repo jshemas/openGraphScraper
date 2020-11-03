@@ -74,6 +74,7 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | retry                | Number of times ogs will retry the request.                                | 2             |          |
 | headers              | An object containing request headers. Useful for setting the user-agent    | {}            |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
+| urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/openGraphScraper.js#L21-L36)          |          |
 
 Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got#options) should work as `open-graph-scraper` options.
 
