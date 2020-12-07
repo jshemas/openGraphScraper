@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const chardet = require('chardet');
 const iconv = require('iconv-lite');
 const request = require('ky-universal');
