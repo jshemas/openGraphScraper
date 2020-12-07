@@ -103,7 +103,7 @@ describe('basic', function () {
       expect(result.alWebShouldFallback).to.be.eql('true');
       expect(result.ogSiteName).to.be.eql('Vimeo');
       expect(result.ogUrl).to.be.eql('https://vimeo.com/232889838');
-      expect(result.ogType).to.be.eql('video');
+      expect(result.ogType).to.be.eql('video.other');
       expect(result.ogTitle).to.be.eql('Heroin');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.twitterCard).to.be.eql('player');

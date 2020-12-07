@@ -76,6 +76,8 @@ describe('redirect', function () {
         expect(result.ogType).to.be.eql('article');
         expect(result.articleSection).to.be.eql('Arts');
         expect(result.articleTag).to.be.eql('Blum & Poe (Los Angeles, Calif)');
+        expect(result.articleModifiedTime).to.be.eql('2016-09-01T17:37:39.000Z');
+        expect(result.articlePublishedTime).to.be.eql('2016-09-01T01:34:35.000Z');
         expect(result.ogTitle).to.be.eql('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million (Published 2016)');
         expect(result.ogDescription).to.be.eql('The Los Angeles gallery Blum & Poe, which hosted the ‘Famous’ exhibition, is projecting a hefty price tag for the work.');
         expect(result.twitterTitle).to.be.eql('Gallery Hopes to Sell Kanye West’s ‘Famous’ Sculpture for $4 Million (Published 2016)');
@@ -112,6 +114,8 @@ describe('redirect', function () {
           'alIphoneAppName',
           'alIphoneAppStoreId',
           'alIphoneUrl',
+          'articleModifiedTime',
+          'articlePublishedTime',
           'articleSection',
           'articleTag',
           'ogDate',
@@ -147,7 +151,7 @@ describe('redirect', function () {
         expect(result.ogTitle).to.be.eql('3 Stocks Like Apple Was 10 Years Ago: Tesla, Nvidia And Alibaba');
         expect(result.ogSiteName).to.be.eql('Forbes');
         expect(result.articleAuthor).to.be.eql('Ken Kam');
-        expect(result.articleSection).to.be.eql('Investing');
+        expect(result.articleSection).to.be.eql('Markets');
         expect(result.author).to.be.eql('Ken Kam');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/');
