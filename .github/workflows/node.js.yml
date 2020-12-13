@@ -29,9 +29,7 @@ jobs:
       run: npm run mocha:unit
     - name: Integration Testing
       run: npm run mocha:int
-    - name: Testing open-graph-scraper-lite
-      run: cd openGraphScraperLite/
     - name: Unit Testing (lite)
-      run: npm run mocha:unit
+      run: cd openGraphScraperLite/ && npm run mocha:unit
     - name: Integration Testing (lite)
-      run: npm run mocha:int
+      run: cd openGraphScraperLite/ && npm run mocha:int
