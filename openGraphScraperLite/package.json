@@ -47,7 +47,7 @@
   "repository": {
     "type": "git",
     "url": "http://github.com/jshemas/openGraphScraper.git",
-    "web": "http://github.com/jshemas/openGraphScraper"
+    "web": "http://github.com/jshemas/openGraphScraper/openGraphScraperLite"
   },
   "keywords": [
     "app links",
