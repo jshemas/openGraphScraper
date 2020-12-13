@@ -1,5 +1,8 @@
 # Change Log
 
+## 4.7.1
+- Updating Dependencies to fix a security vulnerability
+
 ## 4.7.0
 - Adding `options.urlValidatorSettings`, it sets the options used by validator.js for testing the URL
 - Updating Dependencies
