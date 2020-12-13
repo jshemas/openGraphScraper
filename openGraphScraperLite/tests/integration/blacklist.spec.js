@@ -30,7 +30,7 @@ describe('blacklist', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.ogTitle).to.be.eql('Wikipedia');
+      expect(result.ogTitle).to.be.eql('WikipediaCloseCloseCloseCloseCloseClose');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('mul');
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
@@ -55,7 +55,7 @@ describe('blacklist', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.ogTitle).to.be.eql('Wikipedia');
+      expect(result.ogTitle).to.be.eql('WikipediaCloseCloseCloseCloseCloseClose');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('mul');
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
