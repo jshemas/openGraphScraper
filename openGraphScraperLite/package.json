@@ -23,9 +23,9 @@
     "chardet": "^1.3.0",
     "cheerio": "^1.0.0-rc.3",
     "ky-universal": "^0.8.2",
-    "ky": "^0.25.0",
+    "ky": "^0.25.1",
     "iconv-lite": "^0.6.2",
-    "validator": "^13.5.1"
+    "validator": "^13.5.2"
   },
   "files": [
     "../lib/charset.js",
@@ -41,8 +41,8 @@
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
     "nyc": "^15.0.1",
-    "sinon": "^9.2.1",
-    "snyk": "^1.434.2"
+    "sinon": "^9.2.2",
+    "snyk": "^1.436.0"
   },
   "repository": {
     "type": "git",
