@@ -29,6 +29,8 @@ jobs:
       run: npm run mocha:unit
     - name: Integration Testing
       run: npm run mocha:int
+    - name: Install Dependencies (lite)
+      run: cd openGraphScraperLite/ && npm ci
     - name: Unit Testing (lite)
       run: cd openGraphScraperLite/ && npm run mocha:unit
     - name: Integration Testing (lite)
