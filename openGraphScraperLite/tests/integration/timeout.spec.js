@@ -23,7 +23,7 @@ describe('timeout', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
   it('set to 2', function () {
@@ -69,7 +69,7 @@ describe('timeout', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
   it('set to a number string', function () {
@@ -94,7 +94,7 @@ describe('timeout', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
   it('set to some random chars', function () {
@@ -119,7 +119,7 @@ describe('timeout', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
 });

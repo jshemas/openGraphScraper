@@ -1,21 +1,21 @@
-# openGraphScraper
+# openGraphScraperLite
 
 [![Node.js CI](https://github.com/jshemas/openGraphScraper/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/jshemas/openGraphScraper/actions?query=branch%3Amaster)
 [![Known Vulnerabilities](https://snyk.io/test/github/jshemas/openGraphScraper/badge.svg)](https://snyk.io/test/github/jshemas/openGraphScraper)
 
-A simple node module for scraping Open Graph and Twitter Card info off a site. For browser usage, we recommend `open-graph-scraper-lite` by the same people.
+A simple javascript module for scraping Open Graph and Twitter Card info off a site. For Node.js usage, we recommend `open-graph-scraper` by the same people.
 
 ## Installation
 
 ```bash
-npm install open-graph-scraper
+npm install open-graph-scraper-lite
 ```
 
 ## Usage
 
 Callback Example:
 ```javascript
-const ogs = require('open-graph-scraper');
+const ogs = require('open-graph-scraper-lite');
 const options = { url: 'http://ogp.me/' };
 ogs(options, (error, results, response) => {
   console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
@@ -26,7 +26,7 @@ ogs(options, (error, results, response) => {
 
 Promise Example:
 ```javascript
-const ogs = require('open-graph-scraper');
+const ogs = require('open-graph-scraper-lite');
 const options = { url: 'http://ogp.me/' };
 ogs(options)
   .then((data) => {
@@ -68,19 +68,16 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | ogImageFallback      | Fetch other images if no open graph ones are found.                        | true          |          |
 | customMetaTags       | Here you can define custom meta tags you want to scrape.                   | []            |          |
 | allMedia             | By default, OGS will only send back the first image/video it finds         | false         |          |
-| decompress           | Set the accept-encoding to gzip/deflate                                    | true          |          |
-| followRedirect       | Defines if redirect responses should be followed automatically.            | true          |          |
-| maxRedirects         | Max number of redirects ogs will follow.                                   | 10            |          |
 | retry                | Number of times ogs will retry the request.                                | 2             |          |
 | headers              | An object containing request headers. Useful for setting the user-agent    | {}            |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
 | urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/openGraphScraper.js#L21-L36)          |          |
 
-Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got#options) should work as `open-graph-scraper` options.
+Note: `open-graph-scraper-lite` uses [ky](https://github.com/sindresorhus/ky) for requests and most of [ky's options](https://github.com/sindresorhus/ky#api) should work as `open-graph-scraper-lite` options.
 
 Custom Meta Tag Example:
 ```javascript
-const ogs = require('open-graph-scraper');
+const ogs = require('open-graph-scraper-lite');
 const options = {
   url: 'https://github.com/jshemas/openGraphScraper',
   customMetaTags: [{

@@ -22,7 +22,7 @@ describe('basic', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'success');
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
   it('using promises should return valid data', function () {
@@ -55,7 +55,7 @@ describe('basic', function () {
           'charset',
           'success',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response').and.to.not.be.empty;
       });
   });
   it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {
@@ -84,7 +84,7 @@ describe('basic', function () {
         'charset',
         'success',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
   it('vimeo.com should return open graph data', function () {
@@ -182,7 +182,7 @@ describe('basic', function () {
         'twitterSite',
         'twitterTitle',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
 });

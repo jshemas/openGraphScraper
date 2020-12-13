@@ -22,7 +22,7 @@ describe('url', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
   it('https', function () {
@@ -46,7 +46,7 @@ describe('url', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
   it('no protocol', function () {
@@ -70,7 +70,7 @@ describe('url', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
   it('no protocol and no wwww', function () {
@@ -94,7 +94,7 @@ describe('url', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
   it('protocol with no wwww', function () {
@@ -118,7 +118,7 @@ describe('url', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response').and.to.not.be.empty;
     });
   });
   it('fake page', function () {

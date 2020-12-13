@@ -53,7 +53,7 @@ describe('redirect', function () {
           'twitterImage',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response').and.to.not.be.empty;
       });
     });
     it('nytimes page', function () {
@@ -102,7 +102,7 @@ describe('redirect', function () {
           alt: 'Kim Kardashian West at the “Famous” exhibition at Blum & Poe in Los Angeles last week. The gallery is planning to sell the sculpture for a hefty price tag.',
         });
         expect(result.requestUrl).to.be.eql('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0');
-        expect(result.charset).to.be.eql('utf8');
+        expect(result.charset).to.be.eql('UTF-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'alAndroidAppName',
@@ -138,7 +138,7 @@ describe('redirect', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response').and.to.not.be.empty;
       });
     });
     it('forbes page', function () {
@@ -201,7 +201,7 @@ describe('redirect', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response').and.to.not.be.empty;
       });
     });
   });
