@@ -1,5 +1,21 @@
 # Change Log
 
+## 4.7.1
+- Updating Dependencies to fix a security vulnerability
+
+## 4.7.0
+- Adding `options.urlValidatorSettings`, it sets the options used by validator.js for testing the URL
+- Updating Dependencies
+
+## 4.6.0
+- Fixing issue where you would get a false positive errors with pages that have `.tar` in it like `www.target.com`
+- Split extract and request into their own files
+- Updating Dependencies
+
+## 4.5.1
+- Fixing issue where you couldn't set the `ogImageFallback` option to false
+- Fixing image type fallback so it works with arrays
+
 ## 4.5.0
 - Adding support for custom meta tags you want to scrape
 - If ogs thinks the URL isn't a HTML page, it will return a 'Must scrape an HTML page' error.

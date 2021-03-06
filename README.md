@@ -3,7 +3,7 @@
 [![Node.js CI](https://github.com/jshemas/openGraphScraper/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/jshemas/openGraphScraper/actions?query=branch%3Amaster)
 [![Known Vulnerabilities](https://snyk.io/test/github/jshemas/openGraphScraper/badge.svg)](https://snyk.io/test/github/jshemas/openGraphScraper)
 
-A simple node module for scraping Open Graph and Twitter Card info off a site.
+A simple node module for scraping Open Graph and Twitter Card info off a site. For browser usage, we recommend `open-graph-scraper-lite` by the same people.
 
 ## Installation
 
@@ -74,6 +74,7 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | retry                | Number of times ogs will retry the request.                                | 2             |          |
 | headers              | An object containing request headers. Useful for setting the user-agent    | {}            |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
+| urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/openGraphScraper.js#L21-L36)          |          |
 
 Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got#options) should work as `open-graph-scraper` options.
 
@@ -100,12 +101,4 @@ ogs(options)
 Then you can run the tests by running...
 ```bash
 npm run test
-```
-
-## Make
-
-This will install the all of the dependencies, then run the tests
-
-```bash
-make test
 ```

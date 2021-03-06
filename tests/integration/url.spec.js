@@ -8,7 +8,7 @@ describe('url', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.ogTitle).to.be.eql('Wikipedia');
+      expect(result.ogTitle).to.be.eql('WikipediaCloseCloseCloseCloseCloseClose');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('mul');
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
@@ -32,7 +32,7 @@ describe('url', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.ogTitle).to.be.eql('Wikipedia');
+      expect(result.ogTitle).to.be.eql('WikipediaCloseCloseCloseCloseCloseClose');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('mul');
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
@@ -56,7 +56,7 @@ describe('url', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.ogTitle).to.be.eql('Wikipedia');
+      expect(result.ogTitle).to.be.eql('WikipediaCloseCloseCloseCloseCloseClose');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('mul');
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
@@ -80,7 +80,7 @@ describe('url', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.ogTitle).to.be.eql('Wikipedia');
+      expect(result.ogTitle).to.be.eql('WikipediaCloseCloseCloseCloseCloseClose');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('mul');
       expect(result.requestUrl).to.be.eql('http://wikipedia.org/');
@@ -104,7 +104,7 @@ describe('url', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.ogTitle).to.be.eql('Wikipedia');
+      expect(result.ogTitle).to.be.eql('WikipediaCloseCloseCloseCloseCloseClose');
       expect(result.ogLocale).to.be.eql('mul');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.requestUrl).to.be.eql('http://wikipedia.org/');
@@ -228,6 +228,39 @@ describe('url', function () {
       expect(error).to.be.eql(true);
       expect(result.success).to.be.eql(false);
       expect(result.requestUrl).to.be.eql('this is a test');
+      expect(result.error).to.eql('Invalid URL');
+      expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
+      expect(result).to.have.all.keys(
+        'error',
+        'errorDetails',
+        'requestUrl',
+        'success',
+      );
+      expect(response).to.eql(undefined);
+    });
+  });
+  it('url is invalid because user disallows https with urlValidatorSettings', function () {
+    return ogs({
+      url: 'https://www.wikipedia.org/',
+      urlValidatorSettings: {
+        protocols: ['http'],
+        require_tld: true,
+        require_protocol: false,
+        require_host: true,
+        require_valid_protocol: true,
+        allow_underscores: false,
+        host_whitelist: false,
+        host_blacklist: false,
+        allow_trailing_dot: false,
+        allow_protocol_relative_urls: false,
+        disallow_auth: false,
+      },
+    }, function (error, result, response) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be.eql(true);
+      expect(result.success).to.be.eql(false);
+      expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
       expect(result.error).to.eql('Invalid URL');
       expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
       expect(result).to.have.all.keys(

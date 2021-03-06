@@ -1,13 +1,13 @@
 /* eslint-disable mocha/no-setup-in-describe */
 const utils = require('../../lib/utils');
 
-const validateUrl = (urls, valid, message) => {
+const validateUrl = (urls, valid, message, urlValidatorSettings) => {
   for (let index = 0; index < urls.length; index += 1) {
     // eslint-disable-next-line no-loop-func
     it(`${urls[index]} ${message}`, function () {
-      const validate = utils.validate(urls[index], 2000);
+      const validate = utils.validate(urls[index], 2000, urlValidatorSettings);
       if (valid) {
-        return expect(validate.url).to.not.be.empty;
+        return expect(validate.url).to.not.be.eql(null);
       }
       return expect(validate.url).to.be.eql(null);
     });
@@ -17,6 +17,20 @@ const validateUrl = (urls, valid, message) => {
 describe('utils', function () {
   describe('validate', function () {
     context('validing URLs', function () {
+      const defaultUrlValidatorSettings = {
+        protocols: ['http', 'https'],
+        require_tld: true,
+        require_protocol: false,
+        require_host: true,
+        require_valid_protocol: true,
+        allow_underscores: false,
+        host_whitelist: false,
+        host_blacklist: false,
+        allow_trailing_dot: false,
+        allow_protocol_relative_urls: false,
+        disallow_auth: false,
+      };
+
       validateUrl([
         'foobar.com',
         'foobar.com/',
@@ -57,7 +71,7 @@ describe('utils', function () {
         'test.com?ref=http://test2.com',
         'valid.au',
         'www.foobar.com',
-      ], true, 'should be valid');
+      ], true, 'should be valid', defaultUrlValidatorSettings);
 
       validateUrl([
         '!.foo.com',
@@ -99,7 +113,35 @@ describe('utils', function () {
         'rtmp://foobar.com',
         'xyz://foobar.com',
         `http://foobar.com/${new Array(2083).join('f')}`,
-      ], false, 'should be invalid');
+      ], false, 'should be invalid', defaultUrlValidatorSettings);
+    });
+
+    context('validing URLs with options.urlValidatorSettings (https is invalid)', function () {
+      const noHTTPSUrlValidatorSettings = {
+        protocols: ['http'],
+        require_tld: true,
+        require_protocol: false,
+        require_host: true,
+        require_valid_protocol: true,
+        allow_underscores: false,
+        host_whitelist: false,
+        host_blacklist: false,
+        allow_trailing_dot: false,
+        allow_protocol_relative_urls: false,
+        disallow_auth: false,
+      };
+
+      validateUrl([
+        'http://www.foobar.com/',
+        'http://www.foobar.com/',
+        'HTTP://WWW.FOOBAR.COM/',
+      ], true, 'should be valid', noHTTPSUrlValidatorSettings);
+
+      validateUrl([
+        'https://www.foobar.com/',
+        'https://www.foobar.com/',
+        'HTTPS://WWW.FOOBAR.COM/',
+      ], false, 'should be invalid', noHTTPSUrlValidatorSettings);
     });
 
     context('validing Timeouts', function () {
@@ -171,6 +213,18 @@ describe('utils', function () {
     });
     it('when url is type .html', function () {
       const valid = utils.isThisANonHTMLUrl('www.foo.com/bar.html');
+      expect(valid).to.eql(false);
+    });
+    it('when url is type .pdf and has params', function () {
+      const valid = utils.isThisANonHTMLUrl('www.foo.com/bar.pdf?123');
+      expect(valid).to.eql(true);
+    });
+    it('when domain in url contains a non HTML string (.txt)', function () {
+      const valid = utils.isThisANonHTMLUrl('www.txt.com/bar.html');
+      expect(valid).to.eql(false);
+    });
+    it('when domain in url contains a non HTML string (.mov) no extension on path', function () {
+      const valid = utils.isThisANonHTMLUrl('www.mov.com/bar');
       expect(valid).to.eql(false);
     });
   });
