@@ -24,8 +24,8 @@ describe('proxy', function () {
           https: tunnel.httpsOverHttp({
             // proxy was found here: https://hidemy.name/en/proxy-list/?country=US&type=h#list
             proxy: {
-              host: '45.82.245.34',
-              port: 3128,
+              host: '67.205.190.164',
+              port: 8080,
               rejectUnauthorized: false,
             },
           }),
