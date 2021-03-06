@@ -83,23 +83,22 @@ describe('encoding', function () {
     });
     it('when charset is utf-8 - signanthealth', function () {
       return ogs({
-        url: 'https://signanthealth.com/careers/',
+        url: 'https://www.signanthealth.com/career/',
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogLocale).to.be.eql('en_US');
-        expect(result.articleModifiedTime).to.be.eql('2020-09-15T13:50:38+00:00');
+        expect(result.articleModifiedTime).to.be.eql('2021-02-18T14:01:35+00:00');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('Careers | Signant Health');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/signanthealth/');
         expect(result.ogDescription).to.be.eql('If you’re looking to join an exciting and fast-paced organization, consider Signant Health. We offer rewarding personal and career advancement as well as competitive compensation and benefits.');
-        expect(result.ogUrl).to.be.eql('https://www.signanthealth.com/company/careers/');
+        expect(result.ogUrl).to.be.eql('https://www.signanthealth.com/career/');
         expect(result.ogSiteName).to.be.eql('Signant Health');
         expect(result.twitterCard).to.be.eql('summary_large_image');
-        expect(result.twitterCreator).to.be.eql('@SignantHealth');
         expect(result.twitterSite).to.be.eql('@SignantHealth');
-        expect(result.requestUrl).to.be.eql('https://signanthealth.com/careers/');
+        expect(result.requestUrl).to.be.eql('https://www.signanthealth.com/career/');
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
@@ -115,7 +114,6 @@ describe('encoding', function () {
           'success',
           'charset',
           'twitterCard',
-          'twitterCreator',
           'twitterSite',
         );
         return expect(response).to.be.an('object').and.to.not.be.empty;
