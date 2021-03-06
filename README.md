@@ -3,7 +3,7 @@
 [![Node.js CI](https://github.com/jshemas/openGraphScraper/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/jshemas/openGraphScraper/actions?query=branch%3Amaster)
 [![Known Vulnerabilities](https://snyk.io/test/github/jshemas/openGraphScraper/badge.svg)](https://snyk.io/test/github/jshemas/openGraphScraper)
 
-A simple node module for scraping Open Graph and Twitter Card info off a site. For browser usage, we recommend `open-graph-scraper-lite` by the same people.
+A simple node module for scraping Open Graph and Twitter Card info off a site. For browser usage, we recommend using `open-graph-scraper-lite`.
 
 ## Installation
 
@@ -79,7 +79,7 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 
 Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got#options) should work as `open-graph-scraper` options.
 
-Custom Meta Tag Example:
+## Custom Meta Tag Example:
 ```javascript
 const ogs = require('open-graph-scraper');
 const options = {
@@ -97,7 +97,7 @@ ogs(options)
   })
 ```
 
-Proxy Example:
+## Proxy Example:
 [Look here](https://github.com/sindresorhus/got#proxies) for more info on how to use proxies.
 ```javascript
 const ogs = require('open-graph-scraper');
@@ -124,7 +124,7 @@ ogs(options)
   })
 ```
 
-User Agent Example:
+## User Agent Example:
 ```javascript
 const ogs = require("open-graph-scraper");
 const options = {
