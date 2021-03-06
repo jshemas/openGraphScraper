@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.8.0
+- Adding support for Proxies
+- Updating Dependencies
+
 ## 4.7.1
 - Updating Dependencies to fix a security vulnerability
 

@@ -15,7 +15,7 @@ describe('spotify', function () {
       expect(result.alIosAppStoreId).to.be.eql('324684580');
       expect(result.alIosUrl).to.be.eql('spotify://album/5EBGCvO6upi3GNknMVe9x9');
       expect(result.ogTitle).to.be.eql('ye');
-      expect(result.ogDescription).to.be.eql('ye, an album by Kanye West on Spotify');
+      expect(result.ogDescription).to.be.eql('Kanye West · Album · 2018 · 7 songs.');
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
       expect(result.ogType).to.be.eql('music.album');
       expect(result.musicMusician).to.be.eql(['https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x']);
@@ -24,7 +24,7 @@ describe('spotify', function () {
       expect(result.twitterAppIdiPhone).to.be.eql('324684580');
       expect(result.twitterAppIdGooglePlay).to.be.eql('com.spotify.music');
       expect(result.twitterSite).to.be.eql('@spotify');
-      expect(result.twitterDescription).to.be.eql('ye, an album by Kanye West on Spotify');
+      expect(result.twitterDescription).to.be.eql('Kanye West · Album · 2018 · 7 songs.');
       expect(result.twitterCard).to.be.eql('audio');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogSiteName).to.be.eql('Spotify');
@@ -42,8 +42,8 @@ describe('spotify', function () {
       });
       expect(result.twitterPlayer).to.be.eql({
         url: 'https://open.spotify.com/embed/album/5EBGCvO6upi3GNknMVe9x9?utm_campaign=twitter-player&utm_source=open&utm_medium=twitter',
-        width: '300',
-        height: '380',
+        width: '504',
+        height: '584',
         stream: null,
       });
       expect(result.musicSong).to.be.eql({
@@ -102,7 +102,7 @@ describe('spotify', function () {
       expect(result.ogTitle).to.be.eql('Kanye West');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
-      expect(result.ogType).to.be.eql('music.musician');
+      expect(result.ogType).to.be.eql('profile');
       expect(result.twitterTitle).to.be.eql('Kanye West');
       expect(result.twitterAppIdiPhone).to.be.eql('324684580');
       expect(result.twitterAppIdGooglePlay).to.be.eql('com.spotify.music');
@@ -126,7 +126,7 @@ describe('spotify', function () {
       expect(result.twitterPlayer).to.be.eql({
         url: 'https://open.spotify.com/embed/artist/5K4W6rqBFWDnAN6FQUkS6x?utm_campaign=twitter-player&utm_source=open&utm_medium=twitter',
         width: '504',
-        height: '532',
+        height: '584',
         stream: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
@@ -175,8 +175,8 @@ describe('spotify', function () {
       expect(result.alIosAppStoreId).to.be.eql('324684580');
       expect(result.alIosUrl).to.be.eql('spotify://track/19a3JfW8BQwqHWUMbcqSx8');
       expect(result.ogTitle).to.be.eql('Famous');
-      expect(result.ogDescription).to.be.eql('Famous, a song by Kanye West on Spotify');
-      expect(result.ogUrl).to.be.eql('https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm');
+      expect(result.ogDescription).to.be.eql('Kanye West · Song · 2016');
+      expect(result.ogUrl).to.be.eql('https://open.spotify.com/track/19a3JfW8BQwqHWUMbcqSx8');
       expect(result.ogType).to.be.eql('music.song');
       expect(result.musicDuration).to.be.eql('196');
       expect(result.musicAlbum).to.be.eql(['https://open.spotify.com/album/4xM1pUHZp9HsuKNxyOQDR0']);
@@ -189,7 +189,7 @@ describe('spotify', function () {
       expect(result.twitterAppIdiPhone).to.be.eql('324684580');
       expect(result.twitterAppIdGooglePlay).to.be.eql('com.spotify.music');
       expect(result.twitterSite).to.be.eql('@spotify');
-      expect(result.twitterDescription).to.be.eql('Famous, a song by Kanye West on Spotify');
+      expect(result.twitterDescription).to.be.eql('Kanye West · Song · 2016');
       expect(result.twitterCard).to.be.eql('audio');
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogLocale).to.be.eql('en');
@@ -206,7 +206,7 @@ describe('spotify', function () {
         alt: null,
       });
       expect(result.twitterPlayer).to.be.eql({
-        url: 'https://open.spotify.com/embed/track/19a3JfW8BQwqHWUMbcqSx8?utm_campaign=twitter-player&utm_source=open&utm_medium=twitter',
+        url: 'https://open.spotify.com/embed/track/3p6fkbeZDIVqapfdgQe6fm?utm_campaign=twitter-player&utm_source=open&utm_medium=twitter',
         width: '504',
         height: '584',
         stream: null,
