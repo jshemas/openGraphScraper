@@ -74,6 +74,7 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | retry                | Number of times ogs will retry the request.                                | 2             |          |
 | headers              | An object containing request headers. Useful for setting the user-agent    | {}            |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
+| agent                | Used for Proxies, Look below for notes on how to use.                      | null          |          |
 | urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/openGraphScraper.js#L21-L36)          |          |
 
 Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got#options) should work as `open-graph-scraper` options.
@@ -94,6 +95,48 @@ ogs(options)
     const { error, result, response } = data;
     console.log('hostnameMetaTag:', result.hostnameMetaTag); // hostnameMetaTag: github.com
   })
+```
+
+Proxy Example:
+[Look here](https://github.com/sindresorhus/got#proxies) for more info on how to use proxies.
+```javascript
+const ogs = require('open-graph-scraper');
+const tunnel = require('tunnel');
+const options = {
+  url: 'https://whatismyipaddress.com/',
+  timeout: 15000,
+  agent: {
+    // setting proxy agent for https requests
+    https: tunnel.httpsOverHttp({
+      // test proxies can be found here: https://hidemy.name/en/proxy-list/?country=US&type=h#list
+      proxy: {
+        host: 'proxy_ip',
+        port: proxyPort,
+        rejectUnauthorized: false,
+      }
+    })
+  }
+};
+ogs(options)
+  .then((data) => {
+    const { error, result, response } = data;
+    console.log('response:', response); // you should see the proxy IP in here
+  })
+```
+
+User Agent Example:
+```javascript
+const ogs = require("open-graph-scraper");
+const options = {
+  url: "https://twitter.com/elonmusk/status/1364826301027115008",
+  headers: {
+    "user-agent": "Googlebot/2.1 (+http://www.google.com/bot.html)",
+  },
+};
+ogs(options, (error, results) => {
+  console.log("error:", error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+  console.log("results:", results); // This contains all of the Open Graph results
+});
 ```
 
 ## Tests
