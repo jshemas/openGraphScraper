@@ -2,7 +2,7 @@ const cheerio = require('cheerio');
 const tunnel = require('tunnel');
 const ogs = require('../../index');
 
-describe('proxy', function () {
+describe.skip('proxy', function () {
   it('example of how to use a proxy', function () {
     this.timeout(30000);
     // first do a normal request to get the local IP
