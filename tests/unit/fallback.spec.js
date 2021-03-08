@@ -18,6 +18,13 @@ describe('fallback', function () {
       expect(ogObject.ogTitle).to.be.eql('foo');
       expect(ogObject).to.have.all.keys('ogTitle');
     });
+    it('when there are multiple title tags', function () {
+      let ogObject = {};
+      const $ = cheerio.load('<html><head><title>foo</title></head><body><svg><title>bar</title></svg><svg><title>baz</title></svg></body></html>');
+      ogObject = fallback(ogObject, {}, $);
+      expect(ogObject.ogTitle).to.be.eql('foo');
+      expect(ogObject).to.have.all.keys('ogTitle');
+    });
     it('when there is a meta title tag', function () {
       const $ = cheerio.load('<html><head><meta name="title" content="foo"></head></html>');
       const ogObject = fallback({}, {}, $);
