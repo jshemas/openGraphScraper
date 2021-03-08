@@ -193,7 +193,6 @@ describe('basic', function () {
       console.log('result:', result);
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Date.prototype.toLocaleString() - JavaScript | MDN');
-      expect(result.ogDescription).to.be.eql('The toLocaleString() method returns a string with a\n' +'  language sensitive representation of this date.');
       expect(result.ogLocale).to.be.eql('en-US');
       expect(result.ogUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
       expect(result.ogDate).to.be.eql('2021-02-19T19:57:02.000Z');
