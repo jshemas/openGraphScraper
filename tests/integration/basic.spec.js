@@ -185,4 +185,32 @@ describe('basic', function () {
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
+  it('mozilla.org should return open graph data with one title', function () {
+    return ogs({
+      url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString',
+    }, function (error, result, response) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be.eql(false);
+      expect(result.ogTitle).to.be.eql('Date.prototype.toLocaleString() - JavaScript | MDN');
+      expect(result.ogDescription).to.be.eql('The toLocaleString() method returns a string with a\n' +'  language sensitive representation of this date.');
+      expect(result.ogLocale).to.be.eql('en-US');
+      expect(result.ogUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
+      expect(result.ogDate).to.be.eql('2021-02-19T19:57:02.000Z');
+      expect(result.charset).to.be.eql('utf8');
+      expect(result.requestUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
+      expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'charset',
+        'ogDate',
+        'ogDescription',
+        'ogLocale',
+        'ogTitle',
+        'ogUrl',
+        'requestUrl',
+        'success',
+      );
+      expect(response).to.be.an('object').and.to.not.be.empty;
+    });
+  });
 });
