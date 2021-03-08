@@ -108,7 +108,7 @@ const options = {
   agent: {
     // setting proxy agent for https requests
     https: tunnel.httpsOverHttp({
-      // test proxies can be found here: https://hidemy.name/en/proxy-list/?country=US&type=h#list
+      // test proxies can be found here: https://hidemy.name/en/proxy-list/?country=US&type=h#list or http://free-proxy.cz/en/proxylist/country/US/https/ping/all
       proxy: {
         host: 'proxy_ip',
         port: proxyPort,
