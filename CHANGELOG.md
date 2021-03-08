@@ -1,5 +1,8 @@
 # Change Log
 
+## 4.8.1
+- Fixing bug where the title fallback would return multiple titles
+
 ## 4.8.0
 - Adding support for Proxies
 - Updating Dependencies
