@@ -28,7 +28,7 @@
     "cheerio": "^1.0.0-rc.3",
     "got": "^11.8.2",
     "iconv-lite": "^0.6.2",
-    "validator": "^13.5.2"
+    "validator": "^13.6.0"
   },
   "files": [
     "CHANGELOG.md",
