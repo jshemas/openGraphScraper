@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.8.2
+- Adding support for Node16
+- Updating Dependencies
+
 ## 4.8.1
 - Fixing bug where the title fallback would return multiple titles
 
