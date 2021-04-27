@@ -195,7 +195,7 @@ describe('basic', function () {
       expect(result.ogTitle).to.be.eql('Date.prototype.toLocaleString() - JavaScript | MDN');
       expect(result.ogLocale).to.be.eql('en-US');
       expect(result.ogUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
-      expect(result.ogDate).to.be.eql('2021-02-19T19:57:02.000Z');
+      expect(result.ogDate).to.be.eql('2021-04-23T07:46:31.000Z');
       expect(result.charset).to.be.eql('utf8');
       expect(result.requestUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
       expect(result.success).to.be.eql(true);

@@ -89,7 +89,7 @@ describe('encoding', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogLocale).to.be.eql('en_US');
-        expect(result.articleModifiedTime).to.be.eql('2021-02-18T14:01:35+00:00');
+        expect(result.articleModifiedTime).to.be.eql('2021-04-20T14:26:59+00:00');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('Careers | Signant Health');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/signanthealth/');

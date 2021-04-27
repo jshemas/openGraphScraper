@@ -11,7 +11,7 @@ describe('timeout', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogLocale).to.be.eql('mul');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
@@ -57,7 +57,7 @@ describe('timeout', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogLocale).to.be.eql('mul');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
@@ -82,7 +82,7 @@ describe('timeout', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogLocale).to.be.eql('mul');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
@@ -107,7 +107,7 @@ describe('timeout', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Wikipedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
-      expect(result.ogLocale).to.be.eql('mul');
+      expect(result.ogLocale).to.be.eql('en');
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
