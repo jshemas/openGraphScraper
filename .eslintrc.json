@@ -1,21 +1,11 @@
 {
-  "settings": {
-    "react": {
-      "version": "latest"
-    }
-  },
   "extends": [
-    "airbnb",
+    "airbnb-base",
     "plugin:promise/recommended"
   ],
   "plugins": [
-    "mocha",
     "promise"
   ],
-  "env": {
-    "commonjs": true,
-    "node": true
-  },
   "rules": {
     "max-len": ["error", {
       "code": 120,

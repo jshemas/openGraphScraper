@@ -3,9 +3,10 @@
     "../.eslintrc.json",
     "plugin:mocha/recommended"
   ],
+  "plugins": [
+    "mocha"
+  ],
   "env": {
-    "commonjs": true,
-    "node": true,
     "mocha": true
   },
   "globals": {
