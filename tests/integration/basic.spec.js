@@ -224,42 +224,59 @@ describe('basic', function () {
   it('tiktok.com should return open graph data', function () {
     return ogs({
       url: 'https://vt.tiktok.com/ZSJ9GXELc/',
+      headers: {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+      },
     }, function (error, result, response) {
       console.log('error:', error);
       console.log('result:', result);
-      console.log('response', response.body);
       expect(error).to.be.eql(false);
       expect(result.ogSiteName).to.be.eql('TikTok');
-      expect(result.twitterSite).to.be.eql('TikTok');
-      expect(result.twitterCard).to.be.eql('summary');
-      expect(result.ogUrl).to.be.eql('https://t.tiktok.com/i18n/share/video/6970730555012812033/?_r=1');
-      expect(result.ogType).to.be.eql('website');
-      expect(result.ogTitle).to.be.eql('TikTok의 Canart');
-      expect(result.ogDescription).to.be.eql('진짜 이건 만드는 법 더이상 쉽게 만드는 법 하면 뇌절이라서 올려요 다같이 만들어서 친구에게 자랑합시다 #캔 #캔아트 #추천 #추천떠라 #추천좀 #추천추천 #추천떠랑 #추천뜨게해주세요 #추천안뜨면삐짐 #고2 #04 #손기술 #편의점 #토레타 #광고였으면좋겠다');
-      expect(result.twitterTitle).to.be.eql('TikTok의 Canart');
-      expect(result.twitterDescription).to.be.eql('진짜 이건 만드는 법 더이상 쉽게 만드는 법 하면 뇌절이라서 올려요 다같이 만들어서 친구에게 자랑합시다 #캔 #캔아트 #추천 #추천떠라 #추천좀 #추천추천 #추천떠랑 #추천뜨게해주세요 #추천안뜨면삐짐 #고2 #04 #손기술 #편의점 #토레타 #광고였으면좋겠다');
-      expect(result.alIosUrl).to.be.eql('snssdk1233://aweme/detail/6970730555012812033?refer=facebook&_d=secCgYIASAHKAESMgowOF60jLVp1ZIxMhyBheaGq00aFZaMQFI3s%2B9x9QJxwg5hXYEX9AapajtdxeejPJDkGgA%3D&checksum=87eb4e60a45d45f5ea4b80d8c7f64d04c4a3a3e3585d1e85e8651978c7262c1d&language=ko&mid=6819019962259081218&preview_pb=0&region=KR&sec_user_id=MS4wLjABAAAAtzvBHtjXm-tPQMOgilr8RWGrBVAgXGP_Io2yVF-B_FnLba1x__i2rP-zVAcyXNya&share_app_id=1180&share_item_id=6970730555012812033&share_link_id=A65F51C4-9691-4B73-AD65-69CA290480E9&source=h5_t&timestamp=1623141698&tt_from=copy&u_code=d3ffh7fhif419b&user_id=6633161343988285442&utm_campaign=client_share&utm_medium=ios&utm_source=copy');
-      expect(result.alAndroidUrl).to.be.eql('snssdk1233://aweme/detail/6970730555012812033?refer=facebook&_d=secCgYIASAHKAESMgowOF60jLVp1ZIxMhyBheaGq00aFZaMQFI3s%2B9x9QJxwg5hXYEX9AapajtdxeejPJDkGgA%3D&checksum=87eb4e60a45d45f5ea4b80d8c7f64d04c4a3a3e3585d1e85e8651978c7262c1d&language=ko&mid=6819019962259081218&preview_pb=0&region=KR&sec_user_id=MS4wLjABAAAAtzvBHtjXm-tPQMOgilr8RWGrBVAgXGP_Io2yVF-B_FnLba1x__i2rP-zVAcyXNya&share_app_id=1180&share_item_id=6970730555012812033&share_link_id=A65F51C4-9691-4B73-AD65-69CA290480E9&source=h5_t&timestamp=1623141698&tt_from=copy&u_code=d3ffh7fhif419b&user_id=6633161343988285442&utm_campaign=client_share&utm_medium=ios&utm_source=copy');
+      expect(result.twitterSite).to.be.eql('@TikTok.com');
+      expect(result.twitterCard).to.be.eql('player');
+      expect(result.ogUrl).to.be.eql('https://www.tiktok.com/@dbsckd0510/video/6970730555012812033?_d=secCgYIASAHKAESMgowOF60jLVp1ZIxMhyBheaGq00aFZaMQFI3s%2B9x9QJxwg5hXYEX9AapajtdxeejPJDkGgA%3D&checksum=87eb4e60a45d45f5ea4b80d8c7f64d04c4a3a3e3585d1e85e8651978c7262c1d&language=ko&mid=6819019962259081218&preview_pb=0&region=KR&sec_user_id=MS4wLjABAAAAtzvBHtjXm-tPQMOgilr8RWGrBVAgXGP_Io2yVF-B_FnLba1x__i2rP-zVAcyXNya&share_app_id=1180&share_item_id=6970730555012812033&share_link_id=A65F51C4-9691-4B73-AD65-69CA290480E9&source=h5_t&timestamp=1623141698&tt_from=copy&u_code=d3ffh7fhif419b&user_id=6633161343988285442&utm_campaign=client_share&utm_medium=ios&utm_source=copy&_r=1');
+      expect(result.ogType).to.be.eql('video.other');
+      expect(result.ogTitle).to.be.eql('진짜 이건 만드는 법 더이상 쉽게 만드는 법 하면 뇌절이라서 올려요 다같이 만들어서 친구에게 자랑합시다 #캔 #캔아트 #추천 #추천떠라 #추천좀 #추천추천 #추천떠랑 #추천뜨게해주세요 #추천안뜨면삐짐 #고2 #04 #손기술 #편의점 #토레타 #광고였으면좋겠다');
+      expect(result.ogDescription).to.be.eql('Canart (@dbsckd0510) 님이 グッバイ宣言 음악을 사용하여 TikTok (틱톡) 에서 쇼트 비디오를 만들었습니다. | 진짜 이건 만드는 법 더이상 쉽게 만드는 법 하면 뇌절이라서 올려요 다같이 만들어서 친구에게 자랑합시다 #캔 #캔아트 #추천 #추천떠라 #추천좀 #추천추천 #추천떠랑 #추천뜨게해주세요 #추천안뜨면삐짐 #고2 #04 #손기술 #편의점 #토레타 #광고였으면좋겠다');
+      expect(result.twitterTitle).to.be.eql('진짜 이건 만드는 법 더이상 쉽게 만드는 법 하면 뇌절이라서 올려요 다같이 만들어서 친구에게 자랑합시다 #캔 #캔아트 #추천 #추천떠라 #추천좀 #추천추천 #추천떠랑 #추천뜨게해주세요 #추천안뜨면삐짐 #고2 #04 #손기술 #편의점 #토레타 #광고였으면좋겠다');
+      expect(result.twitterDescription).to.be.eql('Canart (@dbsckd0510) 님이 グッバイ宣言 음악을 사용하여 TikTok (틱톡) 에서 쇼트 비디오를 만들었습니다. | 진짜 이건 만드는 법 더이상 쉽게 만드는 법 하면 뇌절이라서 올려요 다같이 만들어서 친구에게 자랑합시다 #캔 #캔아트 #추천 #추천떠라 #추천좀 #추천추천 #추천떠랑 #추천뜨게해주세요 #추천안뜨면삐짐 #고2 #04 #손기술 #편의점 #토레타 #광고였으면좋겠다');
+      expect(result.alIosUrl).to.be.eql('snssdk1233://aweme/detail/6970730555012812033?refer=facebook');
+      expect(result.alAndroidUrl).to.be.eql('snssdk1233://aweme/detail/6970730555012812033?refer=facebook');
       expect(result.alIosAppStoreId).to.be.eql('835599320');
       expect(result.alIosAppName).to.be.eql('musical.ly');
       expect(result.alAndroidAppName).to.be.eql('musical.ly');
       expect(result.alAndroidPackage).to.be.eql('com.zhiliaoapp.musically');
-      expect(result.ogImage).to.be.eql({
-        url: 'https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/f37b9343e8054c33802fcb9a8c0f15e6_1622999687~tplv-tiktok-play2.jpeg?x-expires=1623222000&x-signature=TcSyY5dL2bL5y327WSrwGl2Ektg%3D',
-        width: '576',
-        height: '1024',
-        type: 'jpeg',
-      });
+      // "expires" in the URL changes alot
+      // expect(result.ogImage).to.be.eql({
+      //   url: 'https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/f37b9343e8054c33802fcb9a8c0f15e6_1622999687~tplv-tiktok-play.jpeg?x-expires=1623225600&x-signature=5Ag5ZUCX0QCc7qy05WvuGqbQWTY%3D',
+      //   width: '576',
+      //   height: '1024',
+      //   type: 'jpeg',
+      // });
       expect(result.twitterImage).to.be.eql({
-        url: 'https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/f37b9343e8054c33802fcb9a8c0f15e6_1622999687~tplv-tiktok-play2.jpeg?x-expires=1623222000&x-signature=TcSyY5dL2bL5y327WSrwGl2Ektg%3D',
+        url: null,
         width: null,
         height: null,
-        alt: null,
+        alt: '진짜 이건 만드는 법 더이상 쉽게 만드는 법 하면 뇌절이라서 올려요 다같이 만들어서 친구에게 자랑합시다 #캔 #캔아트 #추천 #추천떠라 #추천좀 #추천추천 #추천떠랑 #추천뜨게해주세요 #추천안뜨면삐짐 #고2 #04 #손기술 #편의점 #토레타 #광고였으면좋겠다',
       });
       expect(result.charset).to.be.eql('utf8');
       expect(result.requestUrl).to.be.eql('https://vt.tiktok.com/ZSJ9GXELc/');
+      // "expires" in the URL changes alot
+      // expect(result.ogVideo).to.be.eql({
+      //   url: 'https://v16-web.tiktok.com/video/tos/alisg/tos-alisg-pve-0037/38f1c67ad1b14d718dac205d9e461043/?a=1988&br=3720&bt=1860&cd=0%7C0%7C1&ch=0&cr=0&cs=0&cv=1&dr=3&ds=3&er=&expire=1623225846&l=202106090203130101901911635B041A1B&lr=tiktok&mime_type=video_mp4&net=0&pl=0&policy=2&qs=0&rc=M2dzOHdrcXZqNTMzODgzM0ApZGZoMzVpNzw3NzdlaWU6NGcuZ2ZpNWIyMXJgLS1kLzRzc19iNDUuMjJfYzReMTBeNTU6Yw%3D%3D&signature=be3ede0772a691b97cd9334dcc6a0214&tk=tt_webid_v2&vl=&vr=',
+      //   width: '576',
+      //   height: '1024',
+      //   type: 'video/mp4',
+      // });
+      expect(result.ogLocale).to.be.eql('ko-KR');
+      expect(result.twitterAppIdiPhone).to.be.eql('835599320');
+      expect(result.twitterAppIdGooglePlay).to.be.eql('com.zhiliaoapp.musically');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'ogLocale',
+        'ogVideo',
+        'twitterAppIdiPhone',
+        'twitterAppIdGooglePlay',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
