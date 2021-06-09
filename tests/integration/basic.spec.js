@@ -248,6 +248,7 @@ describe('basic', function () {
       expect(result.alAndroidPackage).to.be.eql('com.zhiliaoapp.musically');
       // "expires" in the URL changes alot
       // expect(result.ogImage).to.be.eql({
+      // eslint-disable-next-line max-len
       //   url: 'https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/f37b9343e8054c33802fcb9a8c0f15e6_1622999687~tplv-tiktok-play.jpeg?x-expires=1623225600&x-signature=5Ag5ZUCX0QCc7qy05WvuGqbQWTY%3D',
       //   width: '576',
       //   height: '1024',
@@ -263,6 +264,7 @@ describe('basic', function () {
       expect(result.requestUrl).to.be.eql('https://vt.tiktok.com/ZSJ9GXELc/');
       // "expires" in the URL changes alot
       // expect(result.ogVideo).to.be.eql({
+      // eslint-disable-next-line max-len
       //   url: 'https://v16-web.tiktok.com/video/tos/alisg/tos-alisg-pve-0037/38f1c67ad1b14d718dac205d9e461043/?a=1988&br=3720&bt=1860&cd=0%7C0%7C1&ch=0&cr=0&cs=0&cv=1&dr=3&ds=3&er=&expire=1623225846&l=202106090203130101901911635B041A1B&lr=tiktok&mime_type=video_mp4&net=0&pl=0&policy=2&qs=0&rc=M2dzOHdrcXZqNTMzODgzM0ApZGZoMzVpNzw3NzdlaWU6NGcuZ2ZpNWIyMXJgLS1kLzRzc19iNDUuMjJfYzReMTBeNTU6Yw%3D%3D&signature=be3ede0772a691b97cd9334dcc6a0214&tk=tt_webid_v2&vl=&vr=',
       //   width: '576',
       //   height: '1024',
