@@ -8,30 +8,32 @@ A simple node module for scraping Open Graph and Twitter Card info off a site. F
 ## Installation
 
 ```bash
-npm install open-graph-scraper
+npm install open-graph-scraper --save
 ```
 
 ## Usage
 
 Callback Example:
+
 ```javascript
 const ogs = require('open-graph-scraper');
 const options = { url: 'http://ogp.me/' };
 ogs(options, (error, results, response) => {
-  console.log('error:', error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+  console.log('error:', error); // This returns true or false. True if there was an error. The error itself is inside the results object.
   console.log('results:', results); // This contains all of the Open Graph results
   console.log('response:', response); // This contains the HTML of page
 });
 ```
 
 Promise Example:
+
 ```javascript
 const ogs = require('open-graph-scraper');
 const options = { url: 'http://ogp.me/' };
 ogs(options)
   .then((data) => {
     const { error, result, response } = data;
-    console.log('error:', error);  // This is returns true or false. True if there was a error. The error it self is inside the results object.
+    console.log('error:', error);  // This returns true or false. True if there was an error. The error itself is inside the results object.
     console.log('result:', result); // This contains all of the Open Graph results
     console.log('response:', response); // This contains the HTML of page
   })
@@ -40,6 +42,7 @@ ogs(options)
 ## Results JSON
 
 Check the return for a ```success``` flag. If success is set to true, then the url input was valid. Otherwise it will be set to false. The above example will return something like...
+
 ```javascript
 {
   ogTitle: 'Open Graph protocol',
@@ -58,6 +61,7 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 ```
 
 ## Options
+
 | Name                 | Info                                                                       | Default Value | Required |
 |----------------------|----------------------------------------------------------------------------|---------------|----------|
 | url                  | URL of the site.                                                           |               | x        |
@@ -79,13 +83,14 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 
 Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got#options) should work as `open-graph-scraper` options.
 
-## Custom Meta Tag Example:
+## Custom Meta Tag Example
+
 ```javascript
 const ogs = require('open-graph-scraper');
 const options = {
   url: 'https://github.com/jshemas/openGraphScraper',
   customMetaTags: [{
-    multiple: false, // is there more then one of these tags on a page (normally this is false)
+    multiple: false, // is there more than one of these tags on a page (normally this is false)
     property: 'hostname', // meta tag name/property attribute
     fieldName: 'hostnameMetaTag', // name of the result variable
   }],
@@ -97,8 +102,10 @@ ogs(options)
   })
 ```
 
-## Proxy Example:
+## Proxy Example
+
 [Look here](https://github.com/sindresorhus/got#proxies) for more info on how to use proxies.
+
 ```javascript
 const ogs = require('open-graph-scraper');
 const tunnel = require('tunnel');
@@ -124,7 +131,8 @@ ogs(options)
   })
 ```
 
-## User Agent Example:
+## User Agent Example
+
 ```javascript
 const ogs = require("open-graph-scraper");
 const options = {
@@ -134,7 +142,7 @@ const options = {
   },
 };
 ogs(options, (error, results) => {
-  console.log("error:", error); // This is returns true or false. True if there was a error. The error it self is inside the results object.
+  console.log("error:", error); // This returns true or false. True if there was an error. The error itself is inside the results object.
   console.log("results:", results); // This contains all of the Open Graph results
 });
 ```
@@ -142,6 +150,7 @@ ogs(options, (error, results) => {
 ## Tests
 
 Then you can run the tests by running...
+
 ```bash
 npm run test
 ```
