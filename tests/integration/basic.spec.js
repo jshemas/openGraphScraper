@@ -221,4 +221,67 @@ describe('basic', function () {
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
+  it('tiktok.com should return open graph data', function () {
+    return ogs({
+      url: 'https://vt.tiktok.com/ZSJ9GXELc/',
+    }, function (error, result, response) {
+      console.log('error:', error);
+      console.log('result:', result);
+      console.log('response', response.body);
+      expect(error).to.be.eql(false);
+      expect(result.ogSiteName).to.be.eql('TikTok');
+      expect(result.twitterSite).to.be.eql('TikTok');
+      expect(result.twitterCard).to.be.eql('summary');
+      expect(result.ogUrl).to.be.eql('https://t.tiktok.com/i18n/share/video/6970730555012812033/?_r=1');
+      expect(result.ogType).to.be.eql('website');
+      expect(result.ogTitle).to.be.eql('TikTok의 Canart');
+      expect(result.ogDescription).to.be.eql('진짜 이건 만드는 법 더이상 쉽게 만드는 법 하면 뇌절이라서 올려요 다같이 만들어서 친구에게 자랑합시다 #캔 #캔아트 #추천 #추천떠라 #추천좀 #추천추천 #추천떠랑 #추천뜨게해주세요 #추천안뜨면삐짐 #고2 #04 #손기술 #편의점 #토레타 #광고였으면좋겠다');
+      expect(result.twitterTitle).to.be.eql('TikTok의 Canart');
+      expect(result.twitterDescription).to.be.eql('진짜 이건 만드는 법 더이상 쉽게 만드는 법 하면 뇌절이라서 올려요 다같이 만들어서 친구에게 자랑합시다 #캔 #캔아트 #추천 #추천떠라 #추천좀 #추천추천 #추천떠랑 #추천뜨게해주세요 #추천안뜨면삐짐 #고2 #04 #손기술 #편의점 #토레타 #광고였으면좋겠다');
+      expect(result.alIosUrl).to.be.eql('snssdk1233://aweme/detail/6970730555012812033?refer=facebook&_d=secCgYIASAHKAESMgowOF60jLVp1ZIxMhyBheaGq00aFZaMQFI3s%2B9x9QJxwg5hXYEX9AapajtdxeejPJDkGgA%3D&checksum=87eb4e60a45d45f5ea4b80d8c7f64d04c4a3a3e3585d1e85e8651978c7262c1d&language=ko&mid=6819019962259081218&preview_pb=0&region=KR&sec_user_id=MS4wLjABAAAAtzvBHtjXm-tPQMOgilr8RWGrBVAgXGP_Io2yVF-B_FnLba1x__i2rP-zVAcyXNya&share_app_id=1180&share_item_id=6970730555012812033&share_link_id=A65F51C4-9691-4B73-AD65-69CA290480E9&source=h5_t&timestamp=1623141698&tt_from=copy&u_code=d3ffh7fhif419b&user_id=6633161343988285442&utm_campaign=client_share&utm_medium=ios&utm_source=copy');
+      expect(result.alAndroidUrl).to.be.eql('snssdk1233://aweme/detail/6970730555012812033?refer=facebook&_d=secCgYIASAHKAESMgowOF60jLVp1ZIxMhyBheaGq00aFZaMQFI3s%2B9x9QJxwg5hXYEX9AapajtdxeejPJDkGgA%3D&checksum=87eb4e60a45d45f5ea4b80d8c7f64d04c4a3a3e3585d1e85e8651978c7262c1d&language=ko&mid=6819019962259081218&preview_pb=0&region=KR&sec_user_id=MS4wLjABAAAAtzvBHtjXm-tPQMOgilr8RWGrBVAgXGP_Io2yVF-B_FnLba1x__i2rP-zVAcyXNya&share_app_id=1180&share_item_id=6970730555012812033&share_link_id=A65F51C4-9691-4B73-AD65-69CA290480E9&source=h5_t&timestamp=1623141698&tt_from=copy&u_code=d3ffh7fhif419b&user_id=6633161343988285442&utm_campaign=client_share&utm_medium=ios&utm_source=copy');
+      expect(result.alIosAppStoreId).to.be.eql('835599320');
+      expect(result.alIosAppName).to.be.eql('musical.ly');
+      expect(result.alAndroidAppName).to.be.eql('musical.ly');
+      expect(result.alAndroidPackage).to.be.eql('com.zhiliaoapp.musically');
+      expect(result.ogImage).to.be.eql({
+        url: 'https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/f37b9343e8054c33802fcb9a8c0f15e6_1622999687~tplv-tiktok-play2.jpeg?x-expires=1623222000&x-signature=TcSyY5dL2bL5y327WSrwGl2Ektg%3D',
+        width: '576',
+        height: '1024',
+        type: 'jpeg',
+      });
+      expect(result.twitterImage).to.be.eql({
+        url: 'https://p16-sign-sg.tiktokcdn.com/tos-alisg-p-0037/f37b9343e8054c33802fcb9a8c0f15e6_1622999687~tplv-tiktok-play2.jpeg?x-expires=1623222000&x-signature=TcSyY5dL2bL5y327WSrwGl2Ektg%3D',
+        width: null,
+        height: null,
+        alt: null,
+      });
+      expect(result.charset).to.be.eql('utf8');
+      expect(result.requestUrl).to.be.eql('https://vt.tiktok.com/ZSJ9GXELc/');
+      expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'alAndroidAppName',
+        'alAndroidPackage',
+        'alAndroidUrl',
+        'alIosAppName',
+        'alIosAppStoreId',
+        'alIosUrl',
+        'charset',
+        'ogDescription',
+        'ogImage',
+        'ogSiteName',
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'requestUrl',
+        'success',
+        'twitterCard',
+        'twitterDescription',
+        'twitterImage',
+        'twitterSite',
+        'twitterTitle',
+      );
+      expect(response).to.be.an('object').and.to.not.be.empty;
+    });
+  });
 });
