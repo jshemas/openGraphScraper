@@ -3,7 +3,8 @@ const ogs = require('../../index');
 // eslint-disable-next-line mocha/no-exclusive-tests
 describe.only('tiktok', function () {
   context('Should Return correct Open Graph Info using user-agent', function () {
-    it('Edge on Windows', function () {
+    // eslint-disable-next-line mocha/no-exclusive-tests
+    it.only('Edge on Windows', function () {
       return ogs({
         url: 'https://vt.tiktok.com/ZSJ9GXELc/',
         headers: {
@@ -12,6 +13,7 @@ describe.only('tiktok', function () {
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
+        console.log('response', response.rawBody);
         expect(error).to.be.eql(false);
         expect(result.ogSiteName).to.be.eql('TikTok');
         expect(result.twitterSite).to.be.eql('@TikTok.com');
