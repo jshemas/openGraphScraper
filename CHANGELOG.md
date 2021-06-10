@@ -1,38 +1,53 @@
 # Change Log
 
+## 4.9.0
+
+- Dropping support for Node10 since it has reach it's end of life
+- Setting response.rawBody to the parsed body since response.body is a buffer
+- Updating Dependencies
+
 ## 4.8.2
+
 - Adding support for Node16
 - Updating Dependencies
 
 ## 4.8.1
+
 - Fixing bug where the title fallback would return multiple titles
 
 ## 4.8.0
+
 - Adding support for Proxies
 - Updating Dependencies
 
 ## 4.7.1
+
 - Updating Dependencies to fix a security vulnerability
 
 ## 4.7.0
+
 - Adding `options.urlValidatorSettings`, it sets the options used by validator.js for testing the URL
 - Updating Dependencies
 
 ## 4.6.0
+
 - Fixing issue where you would get a false positive errors with pages that have `.tar` in it like `www.target.com`
 - Split extract and request into their own files
 - Updating Dependencies
 
 ## 4.5.1
+
 - Fixing issue where you couldn't set the `ogImageFallback` option to false
 - Fixing image type fallback so it works with arrays
 
 ## 4.5.0
+
 - Adding support for custom meta tags you want to scrape
 - If ogs thinks the URL isn't a HTML page, it will return a 'Must scrape an HTML page' error.
 - Updating Dependencies
 
 ## 4.4.0
+
 - Adding support for app links meta data
 - Removed the `withCharset` option, you can use `onlyGetOpenGraphInfo` now if you do not want charset
 - Removed the `runChar` option, this will always be turned on
@@ -41,10 +56,12 @@
 - Updating Dependencies
 
 ## 4.3.1
+
 - Small code clean up and adding tests
 - Updating Dependencies
 
 ## 4.3.0
+
 - Adding support for request headers
 
 ## 4.2.1
@@ -83,7 +100,7 @@
 - Options.followAllRedirects is now options.followRedirect
 - Drop support for options.jar
 - Options.timeout must be a number value
-- Updating error messesing
+- Updating error messaging
 - Updating dependencies
 
 ## 3.6.2
@@ -112,7 +129,7 @@
 
 ## 3.3.0
 
-- Code refactor to work in a es5 environment!
+- Code refactor to work in an es5 environment!
 
 ## 3.2.0
 

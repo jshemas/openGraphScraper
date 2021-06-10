@@ -68,8 +68,8 @@ describe('basic', function () {
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogUrl).to.be.eql('https://www.namecheap.com/');
-      expect(result.ogTitle).to.be.eql('Buy domain name - Cheap domain names from $1.37 - Namecheap');
-      expect(result.ogDescription).to.be.eql('Namecheap offers cheap domain names with the most reliable service. Buy domain names with Namecheap and see why over 2 million customers trust us with over 10 million domains!');
+      expect(result.ogTitle).to.be.eql('Buy a domain name - Register cheap domain names from $0.99 - Namecheap');
+      expect(result.ogDescription).to.be.eql('Register domain names at Namecheap. Buy cheap domain names and enjoy 24/7 support. With over 13 million domains under management, you know you’re in good hands.');
       expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
       expect(result.charset).to.be.eql('utf8');
@@ -121,7 +121,7 @@ describe('basic', function () {
       expect(result.twitterAppUrlGooglePlay).to.be.eql('vimeo://app.vimeo.com/videos/232889838');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
-        url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704_1280x720.jpg&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
+        url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
         width: '1280',
         height: '720',
         type: 'image/jpg',
@@ -133,7 +133,7 @@ describe('basic', function () {
         type: 'text/html',
       });
       expect(result.twitterImage).to.be.eql({
-        url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704_1280x720.jpg&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
+        url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
         width: null,
         height: null,
         alt: null,
@@ -195,19 +195,28 @@ describe('basic', function () {
       expect(result.ogTitle).to.be.eql('Date.prototype.toLocaleString() - JavaScript | MDN');
       expect(result.ogLocale).to.be.eql('en-US');
       expect(result.ogUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
-      expect(result.ogDate).to.be.eql('2021-04-23T07:46:31.000Z');
+      expect(result.ogDate).to.be.eql('2021-05-05T10:31:52.000Z');
       expect(result.charset).to.be.eql('utf8');
+      expect(result.ogImage).to.be.eql({
+        url: 'https://developer.mozilla.org/mdn-social-share.2f09512a.png',
+        width: null,
+        height: null,
+        type: 'png',
+      });
+      expect(result.twitterCard).to.be.eql('summary_large_image');
       expect(result.requestUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'charset',
         'ogDate',
         'ogDescription',
+        'ogImage',
         'ogLocale',
         'ogTitle',
         'ogUrl',
         'requestUrl',
         'success',
+        'twitterCard',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });

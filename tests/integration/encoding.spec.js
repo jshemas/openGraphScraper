@@ -89,13 +89,19 @@ describe('encoding', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogLocale).to.be.eql('en_US');
-        expect(result.articleModifiedTime).to.be.eql('2021-04-20T14:26:59+00:00');
-        expect(result.ogType).to.be.eql('article');
-        expect(result.ogTitle).to.be.eql('Careers | Signant Health');
+        expect(result.articleModifiedTime).to.be.eql('2021-05-27T11:09:28+00:00');
+        expect(result.ogType).to.be.eql('website');
+        expect(result.ogTitle).to.be.eql('Signant Health Careers - The Most Impactful Work Of Your Life');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/signanthealth/');
-        expect(result.ogDescription).to.be.eql('If you’re looking to join an exciting and fast-paced organization, consider Signant Health. We offer rewarding personal and career advancement as well as competitive compensation and benefits.');
-        expect(result.ogUrl).to.be.eql('https://www.signanthealth.com/career/');
-        expect(result.ogSiteName).to.be.eql('Signant Health');
+        expect(result.ogDescription).to.be.eql('Working at Signant Health puts you in the very heart of the world’s most exciting sector — a high-growth, ambitious company in an extraordinary industry.');
+        expect(result.ogUrl).to.be.eql('https://careers.signanthealth.com/');
+        expect(result.ogSiteName).to.be.eql('Signant Health Careers');
+        expect(result.ogImage).to.be.eql({
+          url: 'https://careers.signanthealth.com/wp-content/uploads/2021/05/signant-health-logo.png',
+          width: '900',
+          height: '168',
+          type: 'png',
+        });
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@SignantHealth');
         expect(result.requestUrl).to.be.eql('https://www.signanthealth.com/career/');
@@ -105,6 +111,7 @@ describe('encoding', function () {
           'articleModifiedTime',
           'articlePublisher',
           'ogDescription',
+          'ogImage',
           'ogLocale',
           'ogSiteName',
           'ogTitle',
