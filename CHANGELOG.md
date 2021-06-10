@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.9.0
+
+- Dropping support for Node10 since it has reach it's end of life
+- Setting response.rawBody to the parsed body since response.body is a buffer
+- Updating Dependencies
+
 ## 4.8.2
 
 - Adding support for Node16
