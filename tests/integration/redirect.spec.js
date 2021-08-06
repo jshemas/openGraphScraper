@@ -9,25 +9,25 @@ describe('redirect', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.ogSiteName).to.be.eql('WE MEAN BUSINESS | LONDON');
-        expect(result.ogTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip & Nut — WE MEAN BUSINESS | LONDON');
-        expect(result.ogUrl).to.be.eql('http://wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
+        expect(result.ogSiteName).to.be.eql('Lesley Stonier');
+        expect(result.ogTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip & Nut — Lesley Stonier');
+        expect(result.ogUrl).to.be.eql('https://www.lesleystonier.com/blog/the-entrepreneur-spiration-series-going-nuts-for-pip-amp-nut');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
-        expect(result.ogDate).to.be.eql('2021-01-29T11:38:25+0000');
-        expect(result.twitterTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip &amp; Nut — WE MEAN BUSINESS | LONDON');
+        expect(result.ogDate).to.be.eql('2021-01-29T11:39:11+0000');
+        expect(result.twitterTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip &amp; Nut — Lesley Stonier');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.ogLocale).to.be.eql('en-US');
-        expect(result.twitterUrl).to.be.eql('http://wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
+        expect(result.twitterUrl).to.be.eql('https://www.lesleystonier.com/blog/the-entrepreneur-spiration-series-going-nuts-for-pip-amp-nut');
         expect(result.ogImage).to.be.eql({
-          url: 'http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1611920305895/unnamed.jpg?format=1500w',
-          width: '1280',
-          height: '779',
+          url: 'http://static1.squarespace.com/static/5f5defebe1437124d8428156/60116274c3cbb306427416e9/6013ed4f4a7935171a2c09d7/1611920351745/Pip%2Band%2BNut%2Brange.jpg?format=1500w',
+          width: '1000',
+          height: '707',
           type: 'jpg',
         });
         expect(result.twitterImage).to.be.eql({
-          url: 'http://static1.squarespace.com/static/56365f8ae4b0bcd8401ca823/563b8ecde4b075b4124bc9b8/5732300cc6fc085da9e6da16/1611920305895/unnamed.jpg?format=1500w',
+          url: 'http://static1.squarespace.com/static/5f5defebe1437124d8428156/60116274c3cbb306427416e9/6013ed4f4a7935171a2c09d7/1611920351745/Pip%2Band%2BNut%2Brange.jpg?format=1500w',
           width: null,
           height: null,
           alt: null,

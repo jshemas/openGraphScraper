@@ -21,11 +21,9 @@ describe('spotify', function () {
       expect(result.musicMusician).to.be.eql(['https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x']);
       expect(result.musicReleaseDate).to.be.eql('2018-06-01');
       expect(result.twitterTitle).to.be.eql('ye');
-      expect(result.twitterAppIdiPhone).to.be.eql('324684580');
-      expect(result.twitterAppIdGooglePlay).to.be.eql('com.spotify.music');
       expect(result.twitterSite).to.be.eql('@spotify');
       expect(result.twitterDescription).to.be.eql('Kanye West · Album · 2018 · 7 songs.');
-      expect(result.twitterCard).to.be.eql('audio');
+      expect(result.twitterCard).to.be.eql('summary');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogImage).to.be.eql({
@@ -39,12 +37,6 @@ describe('spotify', function () {
         width: null,
         height: null,
         alt: null,
-      });
-      expect(result.twitterPlayer).to.be.eql({
-        url: 'https://open.spotify.com/embed/album/5EBGCvO6upi3GNknMVe9x9?utm_campaign=twitter-player&utm_source=open&utm_medium=twitter',
-        width: '504',
-        height: '584',
-        stream: null,
       });
       expect(result.musicSong).to.be.eql({
         url: 'https://open.spotify.com/track/0yhxBvedRdGxsPZHJNI4VA',
@@ -74,12 +66,9 @@ describe('spotify', function () {
         'requestUrl',
         'success',
         'charset',
-        'twitterAppIdGooglePlay',
-        'twitterAppIdiPhone',
         'twitterCard',
         'twitterDescription',
         'twitterImage',
-        'twitterPlayer',
         'twitterSite',
         'twitterTitle',
       );
@@ -104,30 +93,22 @@ describe('spotify', function () {
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.ogType).to.be.eql('profile');
       expect(result.twitterTitle).to.be.eql('Kanye West');
-      expect(result.twitterAppIdiPhone).to.be.eql('324684580');
-      expect(result.twitterAppIdGooglePlay).to.be.eql('com.spotify.music');
       expect(result.twitterSite).to.be.eql('@spotify');
       expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
-      expect(result.twitterCard).to.be.eql('audio');
+      expect(result.twitterCard).to.be.eql('summary');
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
-        url: 'https://i.scdn.co/image/bd1c6fdf3705cf9b7d0c8ac8e7bbed98e31a1559',
+        url: 'https://i.scdn.co/image/ab6761610000e5eb791df44171e57a2fe6e21659',
         width: null,
         height: null,
         type: null,
       });
       expect(result.twitterImage).to.be.eql({
-        url: 'https://i.scdn.co/image/bd1c6fdf3705cf9b7d0c8ac8e7bbed98e31a1559',
+        url: 'https://i.scdn.co/image/ab6761610000e5eb791df44171e57a2fe6e21659',
         width: null,
         height: null,
         alt: null,
-      });
-      expect(result.twitterPlayer).to.be.eql({
-        url: 'https://open.spotify.com/embed/artist/5K4W6rqBFWDnAN6FQUkS6x?utm_campaign=twitter-player&utm_source=open&utm_medium=twitter',
-        width: '504',
-        height: '584',
-        stream: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.charset).to.be.eql('utf8');
@@ -149,12 +130,9 @@ describe('spotify', function () {
         'requestUrl',
         'success',
         'charset',
-        'twitterAppIdGooglePlay',
-        'twitterAppIdiPhone',
         'twitterCard',
         'twitterDescription',
         'twitterImage',
-        'twitterPlayer',
         'twitterSite',
         'twitterTitle',
       );
@@ -186,11 +164,9 @@ describe('spotify', function () {
       expect(result.ogAudio).to.be.an('string').and.to.not.be.empty;
       expect(result.ogAudioType).to.be.eql('audio/vnd.facebook.bridge');
       expect(result.twitterTitle).to.be.eql('Famous');
-      expect(result.twitterAppIdiPhone).to.be.eql('324684580');
-      expect(result.twitterAppIdGooglePlay).to.be.eql('com.spotify.music');
       expect(result.twitterSite).to.be.eql('@spotify');
       expect(result.twitterDescription).to.be.eql('Kanye West · Song · 2016');
-      expect(result.twitterCard).to.be.eql('audio');
+      expect(result.twitterCard).to.be.eql('summary');
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
@@ -204,12 +180,6 @@ describe('spotify', function () {
         width: null,
         height: null,
         alt: null,
-      });
-      expect(result.twitterPlayer).to.be.eql({
-        url: 'https://open.spotify.com/embed/track/3p6fkbeZDIVqapfdgQe6fm?utm_campaign=twitter-player&utm_source=open&utm_medium=twitter',
-        width: '504',
-        height: '584',
-        stream: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm');
       expect(result.charset).to.be.eql('utf8');
@@ -238,12 +208,9 @@ describe('spotify', function () {
         'requestUrl',
         'success',
         'charset',
-        'twitterAppIdGooglePlay',
-        'twitterAppIdiPhone',
         'twitterCard',
         'twitterDescription',
         'twitterImage',
-        'twitterPlayer',
         'twitterSite',
         'twitterTitle',
       );

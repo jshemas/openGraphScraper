@@ -17,13 +17,13 @@ describe('video', function () {
       expect(result.alWebUrl).to.be.oneOf(['https://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks', 'http://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks']);
       expect(result.ogSiteName).to.be.eql('YouTube');
       expect(result.ogUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-      expect(result.ogTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');
+      expect(result.ogTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Official Music Video)');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogType).to.be.eql('video.other');
       expect(result.ogLocale).to.be.oneOf(['en', 'en-US', 'nl-NL']);
       expect(result.twitterCard).to.be.eql('player');
       expect(result.twitterSite).to.be.eql('@youtube');
-      expect(result.twitterTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Video)');
+      expect(result.twitterTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Official Music Video)');
       expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.twitterAppNameiPhone).to.be.eql('YouTube');
       expect(result.twitterAppIdiPhone).to.be.eql('544007664');
