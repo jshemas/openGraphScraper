@@ -99,13 +99,13 @@ describe('spotify', function () {
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
-        url: 'https://i.scdn.co/image/ab6761610000e5eb791df44171e57a2fe6e21659',
+        url: 'https://i.scdn.co/image/ab6761610000e5eb867008a971fae0f4d913f63a',
         width: null,
         height: null,
         type: null,
       });
       expect(result.twitterImage).to.be.eql({
-        url: 'https://i.scdn.co/image/ab6761610000e5eb791df44171e57a2fe6e21659',
+        url: 'https://i.scdn.co/image/ab6761610000e5eb867008a971fae0f4d913f63a',
         width: null,
         height: null,
         alt: null,
