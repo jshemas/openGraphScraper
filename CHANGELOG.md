@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.9.1
+
+- Updating Dependencies to fix a security vulnerability
+
 ## 4.9.0
 
 - Dropping support for Node10 since it has reach it's end of life

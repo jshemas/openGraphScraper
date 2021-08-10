@@ -195,10 +195,10 @@ describe('basic', function () {
       expect(result.ogTitle).to.be.eql('Date.prototype.toLocaleString() - JavaScript | MDN');
       expect(result.ogLocale).to.be.eql('en-US');
       expect(result.ogUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
-      expect(result.ogDate).to.be.eql('2021-05-05T10:31:52.000Z');
+      expect(result.ogDate).to.be.eql('2021-07-20T18:47:57.000Z');
       expect(result.charset).to.be.eql('utf8');
       expect(result.ogImage).to.be.eql({
-        url: 'https://developer.mozilla.org/mdn-social-share.2f09512a.png',
+        url: 'https://developer.mozilla.org/mdn-social-share.0ca9dbda.png',
         width: null,
         height: null,
         type: 'png',
