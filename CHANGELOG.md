@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.9.2
+
+- Updating Dependencies to fix a security vulnerability
+
 ## 4.9.1
 
 - Updating Dependencies to fix a security vulnerability
