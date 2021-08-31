@@ -127,7 +127,7 @@ describe('basic', function () {
         type: 'image/jpg',
       });
       expect(result.ogVideo).to.be.eql({
-        url: 'https://player.vimeo.com/video/232889838?autoplay=1',
+        url: 'https://player.vimeo.com/video/232889838?autoplay=1&h=a53cfb14db',
         width: '1280',
         height: '720',
         type: 'text/html',
