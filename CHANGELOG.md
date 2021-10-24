@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.10.0
+
+- Adding a check for the `content-type` header, it has to contain `text/html`
+- Adding `options.downloadLimit`, it sets the maximum size of the content downloaded from the server, in bytes
+- Updating Dependencies
+
 ## 4.9.2
 
 - Updating Dependencies to fix a security vulnerability

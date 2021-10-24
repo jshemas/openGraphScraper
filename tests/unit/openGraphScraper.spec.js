@@ -1,8 +1,8 @@
-const got = require('got');
 const chardet = require('chardet');
 const iconv = require('iconv-lite');
 const openGraphScraper = require('../../index');
 const charset = require('../../lib/charset');
+const { gotClient } = require('../../lib/utils');
 
 const basicHTML = `
   <html>
@@ -63,7 +63,7 @@ describe('return openGraphScraper', function () {
   context('should be able to hit site and find OG title info', function () {
     context('using just a url', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: basicHTML });
+        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -87,7 +87,7 @@ describe('return openGraphScraper', function () {
 
     context('with html', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: basicHTML });
+        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
       });
       it('using callbacks', function () {
         return openGraphScraper({ html: basicHTML }, function (error, result, response) {
@@ -111,7 +111,7 @@ describe('return openGraphScraper', function () {
 
     context('when site is not on blacklist', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: basicHTML });
+        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com', blacklist: ['testtest.com'] }, function (error, result, response) {
@@ -135,7 +135,7 @@ describe('return openGraphScraper', function () {
 
     context('with encoding set to null (this has been deprecated, but should still work)', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: Buffer.from(encodingHTML, 'utf8') });
+        sandbox.stub(gotClient, 'get').resolves({ body: Buffer.from(encodingHTML, 'utf8') });
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com', encoding: null }, function (error, result, response) {
@@ -163,7 +163,7 @@ describe('return openGraphScraper', function () {
 
     context('when there is more then one image', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: multipleImageHTML });
+        sandbox.stub(gotClient, 'get').resolves({ body: multipleImageHTML });
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -199,7 +199,7 @@ describe('return openGraphScraper', function () {
 
     context('when meta description exist while og description does not', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: metaDescriptionHTML });
+        sandbox.stub(gotClient, 'get').resolves({ body: metaDescriptionHTML });
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -225,7 +225,7 @@ describe('return openGraphScraper', function () {
 
     context('as a browser', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: basicHTML });
+        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
       });
       it('using callbacks', function () {
         process.browser = true;
@@ -251,7 +251,7 @@ describe('return openGraphScraper', function () {
 
     context('using onlyGetOpenGraphInfo', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: metaDescriptionHTML });
+        sandbox.stub(gotClient, 'get').resolves({ body: metaDescriptionHTML });
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com', onlyGetOpenGraphInfo: true }, function (error, result, response) {
@@ -284,7 +284,7 @@ describe('return openGraphScraper', function () {
           <body></body>
         </html>`;
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: secureUrlHTML });
+        sandbox.stub(gotClient, 'get').resolves({ body: secureUrlHTML });
       });
       it('using callbacks', function () {
         process.browser = true;
@@ -321,7 +321,7 @@ describe('return openGraphScraper', function () {
           <body></body>
         </html>`;
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: secureUrlHTML });
+        sandbox.stub(gotClient, 'get').resolves({ body: secureUrlHTML });
       });
       it('using callbacks', function () {
         process.browser = true;
@@ -351,7 +351,7 @@ describe('return openGraphScraper', function () {
 
     context('when charset and chardet are unknown', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: basicHTML });
+        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
         sandbox.stub(chardet, 'detect').returns(false);
         sandbox.stub(charset, 'find').returns(false);
       });
@@ -377,7 +377,7 @@ describe('return openGraphScraper', function () {
 
     context('when passing in a custom tag', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ body: basicHTML });
+        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
       });
       it('using callbacks', function () {
         return openGraphScraper({
@@ -421,7 +421,7 @@ describe('return openGraphScraper', function () {
       beforeEach(async function () {
         const error = new Error('server error');
         error.code = 'ENOTFOUND';
-        sandbox.stub(got, 'get').throws(error);
+        sandbox.stub(gotClient, 'get').throws(error);
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -451,7 +451,7 @@ describe('return openGraphScraper', function () {
       beforeEach(async function () {
         const error = new Error('server error');
         error.code = 'EHOSTUNREACH';
-        sandbox.stub(got, 'get').throws(error);
+        sandbox.stub(gotClient, 'get').throws(error);
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -481,7 +481,7 @@ describe('return openGraphScraper', function () {
       beforeEach(async function () {
         const error = new Error('server error');
         error.code = 'ENETUNREACH';
-        sandbox.stub(got, 'get').throws(error);
+        sandbox.stub(gotClient, 'get').throws(error);
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -511,7 +511,7 @@ describe('return openGraphScraper', function () {
       beforeEach(async function () {
         const error = new Error('server error');
         error.code = 'ERR_INVALID_URL';
-        sandbox.stub(got, 'get').throws(error);
+        sandbox.stub(gotClient, 'get').throws(error);
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -541,7 +541,7 @@ describe('return openGraphScraper', function () {
       beforeEach(async function () {
         const error = new Error('server error');
         error.code = 'EINVAL';
-        sandbox.stub(got, 'get').throws(error);
+        sandbox.stub(gotClient, 'get').throws(error);
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -571,7 +571,7 @@ describe('return openGraphScraper', function () {
       beforeEach(async function () {
         const error = new Error('server error');
         error.code = 'ETIMEDOUT';
-        sandbox.stub(got, 'get').throws(error);
+        sandbox.stub(gotClient, 'get').throws(error);
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -600,7 +600,7 @@ describe('return openGraphScraper', function () {
     context('when the request sends a Response code 401 error', function () {
       beforeEach(async function () {
         const error = new Error('Response code 401');
-        sandbox.stub(got, 'get').throws(error);
+        sandbox.stub(gotClient, 'get').throws(error);
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -629,7 +629,7 @@ describe('return openGraphScraper', function () {
     context('when the request sends a Response code 500 error', function () {
       beforeEach(async function () {
         const error = new Error('Response code 500');
-        sandbox.stub(got, 'get').throws(error);
+        sandbox.stub(gotClient, 'get').throws(error);
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -657,7 +657,7 @@ describe('return openGraphScraper', function () {
 
     context('when an server sends back nothing', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({});
+        sandbox.stub(gotClient, 'get').resolves({});
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -687,7 +687,7 @@ describe('return openGraphScraper', function () {
 
     context('when an server error occurres', function () {
       beforeEach(async function () {
-        sandbox.stub(got, 'get').resolves({ statusCode: 500 });
+        sandbox.stub(gotClient, 'get').resolves({ statusCode: 500 });
       });
       it('using callbacks', function () {
         return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
@@ -853,7 +853,7 @@ describe('return openGraphScraper', function () {
     context('when iconv throws a error', function () {
       beforeEach(async function () {
         const error = new Error('Page not found');
-        sandbox.stub(got, 'get').resolves({ body: Buffer.from(basicHTML, 'utf8') });
+        sandbox.stub(gotClient, 'get').resolves({ body: Buffer.from(basicHTML, 'utf8') });
         sandbox.stub(iconv, 'decode').throws(error);
       });
       it('using callbacks', function () {

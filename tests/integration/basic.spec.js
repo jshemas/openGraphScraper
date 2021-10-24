@@ -121,7 +121,7 @@ describe('basic', function () {
       expect(result.twitterAppUrlGooglePlay).to.be.eql('vimeo://app.vimeo.com/videos/232889838');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
-        url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
+        url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
         width: '1280',
         height: '720',
         type: 'image/jpg',
@@ -134,7 +134,7 @@ describe('basic', function () {
       //   type: 'text/html',
       // });
       expect(result.twitterImage).to.be.eql({
-        url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
+        url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
         width: null,
         height: null,
         alt: null,
@@ -221,6 +221,26 @@ describe('basic', function () {
         'twitterCard',
       );
       expect(response).to.be.an('object').and.to.not.be.empty;
+    });
+  });
+  it('should error out if the page is too large', function () {
+    return ogs({
+      url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso',
+    }, function (error, result, response) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be.eql(true);
+      expect(result.success).to.be.eql(false);
+      expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso');
+      expect(result.error).to.eql('Exceeded the download limit of 1000000 bytes');
+      expect(result.errorDetails.toString()).to.eql('Error: Exceeded the download limit of 1000000 bytes');
+      expect(result).to.have.all.keys(
+        'error',
+        'errorDetails',
+        'requestUrl',
+        'success',
+      );
+      expect(response).to.eql(undefined);
     });
   });
 });
