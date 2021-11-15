@@ -67,6 +67,7 @@ describe('basic', function () {
       expect(error).to.be.eql(false);
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogLocale).to.be.eql('en');
+      expect(result.favicon).to.be.eql('https://www.namecheap.com/assets/img/nc-icon/favicon.ico');
       expect(result.ogUrl).to.be.eql('https://www.namecheap.com/');
       expect(result.ogTitle).to.be.eql('Buy a domain name - Register cheap domain names from $0.99 - Namecheap');
       expect(result.ogDescription).to.be.eql('Register domain names at Namecheap. Buy cheap domain names and enjoy 24/7 support. With over 13 million domains under management, you know you’re in good hands.');
@@ -75,6 +76,7 @@ describe('basic', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'ogTitle',
         'ogDescription',
         'ogImage',
@@ -103,6 +105,7 @@ describe('basic', function () {
       expect(result.alWebShouldFallback).to.be.eql('true');
       expect(result.ogSiteName).to.be.eql('Vimeo');
       expect(result.ogUrl).to.be.eql('https://vimeo.com/232889838');
+      expect(result.favicon).to.be.eql('https://f.vimeocdn.com/images_v6/favicon.ico?a32e857bac9d54e9334817199a3d00a89ff1cc8e');
       expect(result.ogType).to.be.eql('video.other');
       expect(result.ogTitle).to.be.eql('Heroin');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
@@ -150,6 +153,7 @@ describe('basic', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -198,6 +202,7 @@ describe('basic', function () {
       expect(result.ogLocale).to.be.eql('en-US');
       expect(result.ogUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
       expect(result.ogDate).to.be.eql('2021-07-20T18:47:57.000Z');
+      expect(result.favicon).to.be.eql('/favicon-48x48.97046865.png');
       expect(result.charset).to.be.eql('utf8');
       expect(result.ogImage).to.be.eql({
         url: 'https://developer.mozilla.org/mdn-social-share.0ca9dbda.png',
@@ -209,6 +214,7 @@ describe('basic', function () {
       expect(result.requestUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'charset',
         'ogDate',
         'ogDescription',

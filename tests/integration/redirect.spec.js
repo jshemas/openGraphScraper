@@ -19,6 +19,7 @@ describe('redirect', function () {
         expect(result.alIpadAppStoreId).to.be.eql('357066198');
         expect(result.alIpadAppName).to.be.eql('NYTimes');
         expect(result.ogUrl).to.be.eql('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html');
+        expect(result.favicon).to.be.eql('/vi-assets/static-assets/favicon-d2483f10ef688e6f89e23806b9700298.ico');
         expect(result.ogType).to.be.eql('article');
         expect(result.articleSection).to.be.eql('Arts');
         expect(result.articleTag).to.be.eql('Blum & Poe (Los Angeles, Calif)');
@@ -51,6 +52,7 @@ describe('redirect', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -101,6 +103,7 @@ describe('redirect', function () {
         expect(result.author).to.be.eql('Ken Kam');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/');
+        expect(result.favicon).to.be.eql('https://i.forbesimg.com/48X48-F.png');
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@forbes');
@@ -125,6 +128,7 @@ describe('redirect', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDate',
           'articleAuthor',
           'articleSection',

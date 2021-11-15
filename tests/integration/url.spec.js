@@ -12,9 +12,11 @@ describe('url', function () {
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
+      expect(result.favicon).to.be.eql('/static/favicon/wikipedia.ico');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'ogDescription',
         'ogLocale',
         'ogTitle',
@@ -36,9 +38,11 @@ describe('url', function () {
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.requestUrl).to.be.eql('https://www.wikipedia.org/');
+      expect(result.favicon).to.be.eql('/static/favicon/wikipedia.ico');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'ogDescription',
         'ogLocale',
         'ogTitle',
@@ -60,9 +64,11 @@ describe('url', function () {
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
+      expect(result.favicon).to.be.eql('/static/favicon/wikipedia.ico');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'ogDescription',
         'ogLocale',
         'ogTitle',
@@ -84,9 +90,11 @@ describe('url', function () {
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.requestUrl).to.be.eql('http://wikipedia.org/');
+      expect(result.favicon).to.be.eql('/static/favicon/wikipedia.ico');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'ogDescription',
         'ogLocale',
         'ogTitle',
@@ -108,9 +116,11 @@ describe('url', function () {
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.requestUrl).to.be.eql('http://wikipedia.org/');
+      expect(result.favicon).to.be.eql('/static/favicon/wikipedia.ico');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'ogDescription',
         'ogLocale',
         'ogTitle',

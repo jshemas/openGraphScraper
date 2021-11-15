@@ -16,6 +16,7 @@ describe('spotify', function () {
       expect(result.alIosUrl).to.be.eql('spotify://album/5EBGCvO6upi3GNknMVe9x9');
       expect(result.ogTitle).to.be.eql('ye');
       expect(result.ogDescription).to.be.eql('Kanye West · Album · 2018 · 7 songs.');
+      // expect(result.favicon).to.be.eql('https://open.scdn.co/cdn/images/favicon.0c211e2e.png');
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
       expect(result.ogType).to.be.eql('music.album');
       expect(result.musicMusician).to.be.eql(['https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x']);
@@ -47,6 +48,7 @@ describe('spotify', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -89,6 +91,7 @@ describe('spotify', function () {
       expect(result.alIosAppStoreId).to.be.eql('324684580');
       expect(result.alIosUrl).to.be.eql('spotify://artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.ogTitle).to.be.eql('Kanye West');
+      // expect(result.favicon).to.be.eql('https://open.scdn.co/cdn/images/favicon.0c211e2e.png');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.ogType).to.be.eql('profile');
@@ -114,6 +117,7 @@ describe('spotify', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -155,6 +159,7 @@ describe('spotify', function () {
       expect(result.ogTitle).to.be.eql('Famous');
       expect(result.ogDescription).to.be.eql('Kanye West · Song · 2016');
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/track/19a3JfW8BQwqHWUMbcqSx8');
+      // expect(result.favicon).to.be.eql('https://open.scdn.co/cdn/images/favicon32.a19b4f5b.png');
       expect(result.ogType).to.be.eql('music.song');
       expect(result.musicDuration).to.be.eql('196');
       expect(result.musicAlbum).to.be.eql(['https://open.spotify.com/album/4xM1pUHZp9HsuKNxyOQDR0']);
@@ -185,6 +190,7 @@ describe('spotify', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -233,6 +239,7 @@ describe('spotify', function () {
       expect(result.ogTitle).to.be.eql('Calm Hip Hop Mindset');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/playlist/4BSIiLTu7qzDZLDdkHaty9');
+      expect(result.favicon).to.be.eql('https://open.scdn.co/cdn/images/favicon32.a19b4f5b.png');
       expect(result.ogType).to.be.eql('music.playlist');
       expect(result.musicCreator).to.be.eql(['https://open.spotify.com/user/mjaschmidt']);
       expect(result.twitterTitle).to.be.eql('Calm Hip Hop Mindset');
@@ -270,6 +277,7 @@ describe('spotify', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
