@@ -1,5 +1,10 @@
 # Change Log
 
+## 4.11.0
+
+- Adding support for fetching the favicon
+- Updating Dependencies
+
 ## 4.10.0
 
 - Adding a check for the `content-type` header, it has to contain `text/html`
