@@ -19,6 +19,7 @@ describe('image', function () {
       expect(result.ogDescription).to.be.eql('____________________ Press "L" to view on black Press "F" to favor Share, if you like :)    You can leave a comment, if you like :)    Not to use or publish without permission! © Christoph Wagner Photographie');
       expect(result.ogType).to.be.eql('article');
       expect(result.ogUrl).to.be.eql('https://www.flickr.com/photos/travelgraph/18791678505/');
+      expect(result.favicon).to.be.eql('https://s.yimg.com/pw/favicon.ico');
       expect(result.ogLocale).to.be.eql('en-us');
       expect(result.twitterCard).to.be.eql('photo');
       expect(result.twitterDescription).to.be.eql('____________________ Press "L" to view on black Press "F" to favor Share, if you like :)    You can leave a comment, if you like :)    Not to use or publish without permission! © Christoph Wagner Photographie');
@@ -33,6 +34,7 @@ describe('image', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'alIosAppName',
         'alIosAppStoreId',
         'alIosUrl',
@@ -70,6 +72,7 @@ describe('image', function () {
       expect(result.ogDescription).to.be.eql('From breaking news and entertainment to sports and politics, get the full story with all the live commentary.');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20170608000236/https://twitter.com/i/hello');
+      expect(result.favicon).to.be.eql('//web.archive.org/web/20170608000236im_/https://abs.twimg.com/favicons/favicon.ico');
       expect(result.ogImage.length).to.be.eql(45);
       let imageFound = false;
       for (let i = 0; i < result.ogImage.length; i += 1) {
@@ -79,6 +82,7 @@ describe('image', function () {
       }
       expect(imageFound).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'ogDescription',
         'ogImage',
         'ogTitle',

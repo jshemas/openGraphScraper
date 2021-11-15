@@ -2,60 +2,6 @@ const ogs = require('../../index');
 
 describe('redirect', function () {
   context('should return correct Open Graph Info', function () {
-    it('wemeanbusinesslondon page', function () {
-      return ogs({
-        url: 'http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut',
-      }, function (error, result, response) {
-        console.log('error:', error);
-        console.log('result:', result);
-        expect(error).to.be.eql(false);
-        expect(result.ogSiteName).to.be.eql('Lesley Stonier');
-        expect(result.ogTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip & Nut — Lesley Stonier');
-        expect(result.ogUrl).to.be.eql('https://www.lesleystonier.com/blog/the-entrepreneur-spiration-series-going-nuts-for-pip-amp-nut');
-        expect(result.ogType).to.be.eql('article');
-        expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
-        expect(result.ogDate).to.be.eql('2021-01-29T11:39:11+0000');
-        expect(result.twitterTitle).to.be.eql('The Entrepreneur-spiration Series: Going nuts for Pip &amp; Nut — Lesley Stonier');
-        expect(result.twitterCard).to.be.eql('summary');
-        expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
-        expect(result.ogLocale).to.be.eql('en-US');
-        expect(result.twitterUrl).to.be.eql('https://www.lesleystonier.com/blog/the-entrepreneur-spiration-series-going-nuts-for-pip-amp-nut');
-        expect(result.ogImage).to.be.eql({
-          url: 'http://static1.squarespace.com/static/5f5defebe1437124d8428156/60116274c3cbb306427416e9/6013ed4f4a7935171a2c09d7/1611920351745/Pip%2Band%2BNut%2Brange.jpg?format=1500w',
-          width: '1000',
-          height: '707',
-          type: 'jpg',
-        });
-        expect(result.twitterImage).to.be.eql({
-          url: 'http://static1.squarespace.com/static/5f5defebe1437124d8428156/60116274c3cbb306427416e9/6013ed4f4a7935171a2c09d7/1611920351745/Pip%2Band%2BNut%2Brange.jpg?format=1500w',
-          width: null,
-          height: null,
-          alt: null,
-        });
-        expect(result.requestUrl).to.be.eql('http://www.wemeanbusinesslondon.com/blog/2016/5/10/the-entrepreneur-spiration-series-going-nuts-for-pip-nut');
-        expect(result.charset).to.be.eql('utf8');
-        expect(result.success).to.be.eql(true);
-        expect(result).to.have.all.keys(
-          'ogDate',
-          'ogDescription',
-          'ogImage',
-          'ogSiteName',
-          'ogTitle',
-          'ogLocale',
-          'ogType',
-          'ogUrl',
-          'requestUrl',
-          'success',
-          'charset',
-          'twitterCard',
-          'twitterUrl',
-          'twitterDescription',
-          'twitterImage',
-          'twitterTitle',
-        );
-        expect(response).to.be.an('object').and.to.not.be.empty;
-      });
-    });
     it('nytimes page', function () {
       return ogs({
         url: 'https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0',
@@ -73,6 +19,7 @@ describe('redirect', function () {
         expect(result.alIpadAppStoreId).to.be.eql('357066198');
         expect(result.alIpadAppName).to.be.eql('NYTimes');
         expect(result.ogUrl).to.be.eql('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html');
+        expect(result.favicon).to.be.eql('/vi-assets/static-assets/favicon-d2483f10ef688e6f89e23806b9700298.ico');
         expect(result.ogType).to.be.eql('article');
         expect(result.articleSection).to.be.eql('Arts');
         expect(result.articleTag).to.be.eql('Blum & Poe (Los Angeles, Calif)');
@@ -105,6 +52,7 @@ describe('redirect', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -155,6 +103,7 @@ describe('redirect', function () {
         expect(result.author).to.be.eql('Ken Kam');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/');
+        expect(result.favicon).to.be.eql('https://i.forbesimg.com/48X48-F.png');
         expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@forbes');
@@ -179,6 +128,7 @@ describe('redirect', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDate',
           'articleAuthor',
           'articleSection',

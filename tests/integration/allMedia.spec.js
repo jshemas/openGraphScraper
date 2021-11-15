@@ -18,6 +18,7 @@ describe('allMedia', function () {
       expect(result.ogType).to.be.eql('yelpyelp:business');
       expect(result.ogDate).to.be.eql('2016-10-09');
       expect(result.ogUrl).to.be.eql('https://www.yelp.com/biz/boba-guys-san-francisco-4');
+      expect(result.favicon).to.be.eql('//s3-media2.fl.yelpcdn.com/assets/srv0/yelp_styleguide/118ff475a341/assets/img/logos/favicon.ico');
       expect(result.twitterCard).to.be.eql('summary');
       expect(result.twitterSite).to.be.eql('@yelp');
       expect(result.twitterAppNameiPhone).to.be.eql('Yelp');
@@ -46,6 +47,7 @@ describe('allMedia', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'alIosAppName',
         'alIosAppStoreId',
         'alIosUrl',
@@ -93,6 +95,7 @@ describe('allMedia', function () {
       expect(result.ogType).to.be.eql('yelpyelp:business');
       expect(result.ogDate).to.be.eql('2016-10-09');
       expect(result.ogUrl).to.be.eql('https://www.yelp.com/biz/boba-guys-san-francisco-4');
+      expect(result.favicon).to.be.eql('//s3-media2.fl.yelpcdn.com/assets/srv0/yelp_styleguide/118ff475a341/assets/img/logos/favicon.ico');
       expect(result.twitterCard).to.be.eql('summary');
       expect(result.twitterSite).to.be.eql('@yelp');
       expect(result.twitterAppNameiPhone).to.be.eql('Yelp');
@@ -126,6 +129,7 @@ describe('allMedia', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'alIosAppName',
         'alIosAppStoreId',
         'alIosUrl',

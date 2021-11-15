@@ -11,11 +11,13 @@ describe('ogImageFallback', function () {
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Cloudinary - Pricing');
       expect(result.ogDescription).to.be.eql('Cloudinary');
+      expect(result.favicon).to.be.eql('/images/favicon-192x192.png');
       expect(result.ogImage).to.eql(undefined);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cloudinary');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'ogDescription',
         'ogTitle',
         'requestUrl',
@@ -34,6 +36,7 @@ describe('ogImageFallback', function () {
       console.log('result:', result);
       expect(error).to.be.eql(false);
       expect(result.ogTitle).to.be.eql('Cloudinary - Pricing');
+      expect(result.favicon).to.be.eql('/images/favicon-192x192.png');
       expect(result.ogDescription).to.be.eql('Cloudinary');
       expect(result.ogImage).to.be.eql([
         {
@@ -53,6 +56,7 @@ describe('ogImageFallback', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'ogDescription',
         'ogImage',
         'ogTitle',

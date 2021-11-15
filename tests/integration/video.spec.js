@@ -17,6 +17,7 @@ describe('video', function () {
       expect(result.alWebUrl).to.be.oneOf(['https://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks', 'http://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=applinks']);
       expect(result.ogSiteName).to.be.eql('YouTube');
       expect(result.ogUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+      expect(result.favicon).to.be.eql('https://www.youtube.com/s/desktop/12d6b690/img/favicon.ico');
       expect(result.ogTitle).to.be.eql('Rick Astley - Never Gonna Give You Up (Official Music Video)');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogType).to.be.eql('video.other');
@@ -65,6 +66,7 @@ describe('video', function () {
       expect(result.success).to.be.eql(true);
       if (result.ogDate === undefined) result.ogDate = 'hack because sometimes this does not come back for some reason';
       expect(result).to.have.all.keys(
+        'favicon',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -117,12 +119,14 @@ describe('video', function () {
       expect(result.ogTitle).to.be.oneOf(['Twitch', 'AI Soundscapes, Trials of Mana', 'AI Soundscapes, Trials of Mana - Vinesauce on Twitch']);
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
       expect(result.ogUrl).to.be.eql('https://www.twitch.tv/videos/632214184');
+      expect(result.favicon).to.be.eql('https://static.twitchcdn.net/assets/favicon-32-d6025c14e900565d6177.png');
       expect(result.ogType).to.be.oneOf(['website', 'video.other']);
       expect(result.ogImage).to.be.to.be.an('object').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitch.html');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'ogDescription',
         'ogImage',
         'ogLocale',

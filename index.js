@@ -37,14 +37,15 @@ exports.run = async (options, callback) => {
           errorDetails: exception,
         },
       };
-      return reject(returnError);
+      reject(returnError);
+      return;
     }
     const returnValues = {
       error: false,
       result: results.ogObject,
       response: results.response,
     };
-    return resolve(returnValues);
+    resolve(returnValues);
   });
 };
 

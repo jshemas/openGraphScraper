@@ -10,6 +10,7 @@ describe('twitter', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.twitterTitle).to.be.eql('Twitter Developers');
+        expect(result.favicon).to.be.eql('https://web.archive.org/web/20160303190414im_/https://abs.twimg.com/favicons/favicon.ico');
         expect(result.ogTitle).to.be.eql('Twitter Developers');
         expect(result.ogType).to.be.eql('website');
         expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20160303190414im_/https://dev.twitter.com/');
@@ -34,6 +35,7 @@ describe('twitter', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogImage',
           'ogSiteName',
           'ogTitle',
@@ -60,6 +62,7 @@ describe('twitter', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20170113081103/https://github.com/');
+        expect(result.favicon).to.be.eql('https://web.archive.org/web/20170113081103im_/https://assets-cdn.github.com/favicon.ico');
         expect(result.ogSiteName).to.be.eql('GitHub');
         expect(result.ogTitle).to.be.eql('Build software better, together');
         expect(result.ogDescription).to.be.eql('GitHub is where people build software. More than 19 million people use GitHub to discover, fork, and contribute to over 50 million projects.');
@@ -87,6 +90,7 @@ describe('twitter', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -116,6 +120,7 @@ describe('twitter', function () {
         console.log('result:', result);
         expect(error).to.be.eql(false);
         expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20170913111314/https://atom.io/');
+        expect(result.favicon).to.be.eql('/web/20170913111314im_/https://atom.io/favicon.ico');
         expect(result.ogSiteName).to.be.eql('Atom');
         expect(result.ogTitle).to.be.eql('A hackable text editor for the 21st Century');
         expect(result.ogLocale).to.be.eql('en');
@@ -142,6 +147,7 @@ describe('twitter', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogImage',
           'ogLocale',

@@ -9,6 +9,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://a1.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico');
         expect(result.alAndroidAppName).to.be.eql('Airbnb');
         expect(result.alAndroidPackage).to.be.eql('com.airbnb.android');
         expect(result.alAndroidUrl).to.be.eql('airbnb://d/listing?id=2250401&ref=monorail_deep_link');
@@ -51,6 +52,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -93,6 +95,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://cdn.arstechnica.net/favicon.ico');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterTitle).to.be.eql('Google Pixel review: The best Android phone, even if it is a little pricey');
         expect(result.twitterDescription).to.be.eql('Unbeatable software and support with a great camera, wrapped in a familiar exterior.');
@@ -121,6 +124,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -149,6 +153,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/assets/dist/images/favicon.ico');
         expect(result.ogUrl).to.be.eql('https://www.battlefield.com/buy/battlefield-1');
         expect(result.ogSiteName).to.be.eql('Battlefield');
         expect(result.ogType).to.be.eql('article');
@@ -175,6 +180,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -201,6 +207,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('http://www.bestbuy.com/favicon.ico');
         expect(result.ogTitle).to.be.eql('Apple - iPhone 6s 64GB - Space Gray (Verizon)');
         expect(result.ogType).to.be.eql('product');
         expect(result.ogUrl).to.be.eql('/site/apple-iphone-6s-64gb-space-gray-verizon/4447801.p?skuId=4447801');
@@ -229,6 +236,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDate',
           'ogDescription',
           'ogImage',
@@ -257,12 +265,14 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/favicon.ico');
         expect(result.ogTitle).to.be.eql('iStat Menus');
         expect(result.ogLocale).to.be.eql('en-us');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bjango');
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogTitle',
           'ogLocale',
           'requestUrl',
@@ -279,6 +289,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://assets.bwbx.io/s3/javelin/public/javelin/images/favicon-black-63fe5249d3.png');
         expect(result.alAndroidAppName).to.be.eql('Bloomberg');
         expect(result.alAndroidPackage).to.be.eql('com.bloomberg.android.plus');
         expect(result.alAndroidUrl).to.be.eql('bloomberg://www.bloomberg.com/news/articles/2020-06-11/sony-reveals-playstation-5-games-ahead-of-holiday-release?utm_medium=applink&utm_source=facebook');
@@ -311,6 +322,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -343,6 +355,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/images/favicon.ico');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@BT_India');
         expect(result.ogDate).to.be.eql('2020-06-10T10:13:00+05:30');
@@ -369,6 +382,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDate',
           'ogDescription',
           'ogImage',
@@ -395,6 +409,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://www.cbronline.com/wp-content/uploads/2016/09/cbr-icon-150x150.png');
         expect(result.ogLocale).to.be.eql('en_GB');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogDate).to.be.eql('June 04, 2020 1:32 pm');
@@ -425,6 +440,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'articleModifiedTime',
           'articlePublishedTime',
           'articleSection',
@@ -455,6 +471,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://idge.staticworld.net/ifw/favicon.ico');
         expect(result.ogTitle).to.be.eql('The state of cloud computing in 2020');
         expect(result.ogDescription).to.be.eql('As cloud adoption hits another growth spurt, companies are discovering the power of mixing and matching cloud services into solutions that address almost any business need');
         expect(result.ogType).to.be.eql('article');
@@ -484,6 +501,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'author',
           'ogDate',
           'dcDateIssued',
@@ -513,6 +531,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://cdn1.cloudpro.co.uk/sites/cloudprod7/themes/cloudpro/favicon.ico');
         expect(result.ogSiteName).to.be.eql('Cloud Pro');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.cloudpro.co.uk/go/8550');
@@ -541,6 +560,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -569,6 +589,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://cnet2.cbsistatic.com/fly/bundles/cnetcss/images/core/icon/favicon-16.png');
         expect(result.author).to.be.eql('Roger Cheng');
         expect(result.ogSiteName).to.be.eql('CNET');
         expect(result.ogTitle).to.be.eql('5G glossary: From spectrum to small cell to MIMO');
@@ -600,6 +621,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'author',
           'ogDescription',
           'articlePublisher',
@@ -672,6 +694,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://idge.staticworld.net/ctw/favicon.ico');
         expect(result.ogTitle).to.be.eql('Healthcare Data Protection and Privacy Prognosis—Still Critical but New Treatment is Available');
         expect(result.ogDescription).to.be.eql('My healthcare data is what I want protected the most (intimate details about my family’s health, where we live, and financial information). Anything and everything a hacker could want! It is safe? As a data security professional and citizen, I know the answer is not good.');
         expect(result.ogType).to.be.eql('article');
@@ -700,6 +723,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDate',
           'author',
           'dcDateIssued',
@@ -728,6 +752,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://img.deusm.com/darkreading/favicon.ico');
         expect(result.ogTitle).to.be.eql("DDoS Attack Mitigation: Don't Sacrifice Speed for Security");
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.darkreading.com/attacks-breaches/ddos-attack-mitigation-dont-sacrifice-speed-for-security/d/d-id/1337917');
@@ -754,6 +779,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -780,6 +806,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/images/default-favicon.ico');
         expect(result.ogSiteName).to.be.eql('Coding Horror Discussion');
         expect(result.twitterCard).to.be.eql('summary');
         expect(result.ogUrl).to.be.eql('https://discourse.codinghorror.com/t/the-raspberry-pi-has-revolutionized-emulation/4462/29');
@@ -805,6 +832,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -830,6 +858,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://ssl.gstatic.com/docs/documents/images/kix-favicon6.ico');
         expect(result.ogTitle).to.be.eql('Bay Area Guide to Mission Series/Banners');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogSiteName).to.be.eql('Google Docs');
@@ -844,6 +873,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -918,6 +948,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/icons/etfavicon.ico');
         expect(result.alAndroidAppName).to.be.eql('The Economic Times');
         expect(result.alAndroidUrl).to.be.eql('etandroidapp://articleshow/76152443');
         expect(result.alIosAppName).to.be.eql(' The Economic Times App');
@@ -959,6 +990,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'alAndroidAppName',
           'alAndroidUrl',
           'alIosAppName',
@@ -1000,6 +1032,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://assets.entrepreneur.com/favicon.ico');
         expect(result.ogSiteName).to.be.eql('Entrepreneur');
         expect(result.articleAuthor).to.be.eql('Matthew Humphries');
         expect(result.ogTitle).to.be.eql('Origami-Inspired Robot Gripper Could Pack Your Groceries');
@@ -1033,6 +1066,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'articleAuthor',
           'articleModifiedTime',
           'articlePublishedTime',
@@ -1066,6 +1100,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/images/favicon.ico');
         expect(result.alAndroidAppName).to.be.eql('Etsy');
         expect(result.alAndroidPackage).to.be.eql('com.etsy.android');
         expect(result.alAndroidUrl).to.be.eql('etsy://listing/230389421?ref=applinks_android');
@@ -1107,6 +1142,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -1148,6 +1184,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://static.xx.fbcdn.net/rsrc.php/yV/r/hzMapiNYYpW.ico');
         expect(result.ogSiteName).to.be.eql('Facebook');
         expect(result.ogUrl).to.be.eql('https://www.facebook.com/');
         expect(result.ogLocale).to.be.eql('en_US');
@@ -1163,6 +1200,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1183,6 +1221,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/favicon.ico?v=5');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('The internet’s favorite psychiatrist has a game plan for your mental health');
         expect(result.ogUrl).to.be.eql('https://www.fastcompany.com/90514725/the-internets-favorite-psychiatrist-has-a-game-plan-for-your-mental-health');
@@ -1216,6 +1255,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'articleModifiedTime',
           'articlePublishedTime',
           'articlePublisher',
@@ -1249,6 +1289,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://i.forbesimg.com/48X48-F.png');
         expect(result.author).to.be.eql('Adam Hurly');
         expect(result.articleSection).to.be.eql('Shopping');
         expect(result.articleAuthor).to.be.eql('Adam Hurly');
@@ -1280,6 +1321,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'articleAuthor',
           'articleSection',
           'articlePublisher',
@@ -1311,6 +1353,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://content.fortune.com/wp-content/uploads/2020/02/favicon_144.ico');
         expect(result.ogUrl).to.be.eql('https://fortune.com/2020/06/10/coronavirus-deaths-us-covid-19-killed-more-americans-korean-war-vietnam-iraq-persian-gulf-combined-how-many-died/');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('The coronavirus has now killed more Americans than every war since the start of the Korean War—combined');
@@ -1338,6 +1381,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDate',
           'ogDescription',
           'ogImage',
@@ -1365,6 +1409,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/favicon.ico');
         expect(result.alAndroidAppName).to.be.eql('Foursquare');
         expect(result.alAndroidPackage).to.be.eql('com.joelapenna.foursquared');
         expect(result.alAndroidUrl).to.be.eql('foursquare://venues/4ed4896c775b45f6ed7b0182');
@@ -1414,6 +1459,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -1463,6 +1509,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/favicon.png');
         expect(result.ogSiteName).to.be.eql('GeekTime');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogTitle).to.be.eql('Duckface can saves lives: Binah.ai raises $13.5M to monitor health condition through selfies');
@@ -1495,6 +1542,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDate',
           'articleModifiedTime',
           'articlePublishedTime',
@@ -1527,6 +1575,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://www.inc.com/favicon.ico');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogSiteName).to.be.eql('Inc.com');
         expect(result.twitterCard).to.be.eql('summary_large_image');
@@ -1557,6 +1606,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'articleAuthor',
           'articlePublishedTime',
           'articleSection',
@@ -1587,6 +1637,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('//instagramstatic-a.akamaihd.net/h1/images/ico/favicon.ico/dfa85bb1fd63.ico');
         expect(result.alAndroidAppName).to.be.eql('Instagram');
         expect(result.alAndroidPackage).to.be.eql('com.instagram.android');
         expect(result.alAndroidUrl).to.be.eql('https://www.instagram.com/p/BG0m4IDGaqk/');
@@ -1609,6 +1660,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -1688,6 +1740,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://2xkcvt35vyxycuy7x23e0em1a5g-wpengine.netdna-ssl.com/favicon-196x196.png');
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogType).to.be.eql('article');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/jbusinessnews/?ref=bookmarks');
@@ -1722,6 +1775,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'articleModifiedTime',
           'articlePublishedTime',
           'articlePublisher',
@@ -1822,6 +1876,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/favicon-32x32.png');
         expect(result.ogTitle).to.be.eql('Dow sinks 1,800 as virus cases rise, deflating optimism');
         expect(result.ogUrl).to.be.eql('https://www.latimes.com/business/story/2020-06-11/stocks-wall-street-coronavirus');
         expect(result.ogDescription).to.be.eql("The Dow Jones industrial average sank more than 1,800 points and the Standard & Poor's 500 dropped 5.9% in its worst day since mid-March, when stocks had a number of harrowing falls as the virus lockdowns began.");
@@ -1851,6 +1906,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'articleAuthor',
           'articlePublishedTime',
           'articleSection',
@@ -1880,6 +1936,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://content.cdntwrk.com/files/aHViPTYzMTAyJmNtZD1mYXZpY29uJnZlcnNpb249MTU5MTgxMDAyOSZleHQ9cG5nJnNpemU9MTYmc2lnPWJkNzFjYjE1YWZlOTUzODUwNTBkNTE1ODc5Y2U1Y2M4/favicon.png');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogDate).to.be.eql('2020-06-10');
         expect(result.ogTitle).to.be.eql('Accelerate Growth with Revenue Operations ');
@@ -1904,6 +1961,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDate',
           'ogDescription',
           'ogImage',
@@ -1959,6 +2017,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('http://edge.alluremedia.com.au/assets/technetwork/ico/favicon_lifehacker.ico');
         expect(result.author).to.be.eql('Kristin Wong');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogDate).to.be.eql('2016-08-16T17:00:00+10:00');
@@ -1984,6 +2043,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'author',
           'ogDate',
           'ogDescription',
@@ -2009,6 +2069,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://images.macrumors.com/images-new/favicon.ico');
         expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogSiteName).to.be.eql('MacRumors');
         expect(result.ogTitle).to.be.eql("Apple Announces July 10 Release Date for Upcoming Tom Hanks WWII Film 'Greyhound'");
@@ -2038,6 +2099,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'articlePublisher',
           'ogDate',
           'ogDescription',
@@ -2067,6 +2129,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://mashable.com/favicon.ico?v=m2Pmw8zNwl');
         expect(result.ogUrl).to.be.eql('https://mashable.com/article/biden-open-letter-facebook-mark-zuckerberg-election/');
         expect(result.ogTitle).to.be.eql('Indignant Joe Biden pens strongly worded letter to Mark Zuckerberg');
         expect(result.ogType).to.be.eql('article');
@@ -2103,6 +2166,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogLocale',
           'author',
           'ogDate',
@@ -2137,6 +2201,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://cdn-static-1.medium.com/_/fp/icons/favicon-rebrand-medium.3Y6xpZ-0FSdWDnPM3hSBIA.ico');
         expect(result.alAndroidAppName).to.be.eql('Medium');
         expect(result.alAndroidPackage).to.be.eql('com.medium.reader');
         expect(result.alAndroidUrl).to.be.eql('medium://p/105fc835a170');
@@ -2176,6 +2241,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -2215,6 +2281,7 @@ describe('static', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
+      expect(result.favicon).to.be.eql('/web/20161126090544im_/http://www.michaelkors.com:80/img/favicon.ico');
       expect(result.author).to.be.eql('Michael Kors');
       expect(result.ogType).to.be.eql('product');
       expect(result.ogTitle).to.be.eql('Mirabel Suede Sandal  | Michael Kors');
@@ -2235,6 +2302,7 @@ describe('static', function () {
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'favicon',
         'author',
         'ogLocale',
         'ogAvailability',
@@ -2260,6 +2328,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://www.mulesoft.com/sites/all/themes/muletheme/favicon.ico');
         expect(result.ogSiteName).to.be.eql('MuleSoft');
         expect(result.ogType).to.be.eql('article');
         expect(result.ogUrl).to.be.eql('https://www.mulesoft.com/contact');
@@ -2270,6 +2339,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogLocale',
           'ogSiteName',
@@ -2290,6 +2360,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('http://images10.newegg.com/WebResource/Themes/2005/Nest/Newegg.ico');
         expect(result.ogLocale).to.be.eql('en');
         expect(result.ogUrl).to.be.eql('http://www.newegg.com/Product/Product.aspx?Item=N82E16828840014');
         expect(result.ogTitle).to.be.eql('XYZprinting da Vinci 2.0 Duo FFF (Fused Filament Fabrication) ABS/PLA Dual Nozzle 3D Printer-Newegg.com');
@@ -2600,6 +2671,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -2619,6 +2691,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/static/images/touch-icons/favicon-32x32.png');
         expect(result.ogDescription).to.be.eql('Convert a string to a valid safe filename');
         expect(result.ogTitle).to.be.eql('filenamify');
         expect(result.ogUrl).to.be.eql('https://www.npmjs.com/package/filenamify');
@@ -2638,6 +2711,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDescription',
           'ogLocale',
           'ogImage',
@@ -2662,6 +2736,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/content/dam/prnewswire/icons/2019-Q4-PRN-Icon-32-32.png');
         expect(result.author).to.be.eql('Ideanomics');
         expect(result.ogDate).to.be.eql('2020-06-11T16:25:00-04:00');
         expect(result.twitterCard).to.be.eql('summary_large_image');
@@ -2689,6 +2764,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'author',
           'ogDate',
           'ogDescription',
@@ -2716,6 +2792,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('//www.redditstatic.com/favicon.ico');
         expect(result.ogSiteName).to.be.eql('reddit');
         expect(result.ogUrl).to.be.eql('https://www.reddit.com/r/news/comments/4p1enj/uk_man_tried_to_kill_trump_court_papers/');
         expect(result.ogDescription).to.be.eql('4910 points and 7055 comments so far on reddit');
@@ -2735,6 +2812,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDate',
           'ogDescription',
           'ogImage',
@@ -2759,6 +2837,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://s3.reutersmedia.net/resources_v2/images/favicon/favicon.ico');
         expect(result.author).to.be.eql('Joshua Franklin');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/Reuters');
         expect(result.ogLocale).to.be.eql('en_US');
@@ -2793,6 +2872,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'author',
           'articlePublisher',
           'ogDescription',
@@ -2827,6 +2907,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://staticv2.rottentomatoes.com/static/images/icons/favicon.ico');
         expect(result.ogTitle).to.be.eql('Inception');
         expect(result.ogType).to.be.eql('video.movie');
         expect(result.ogUrl).to.be.eql('https://www.rottentomatoes.com/m/inception/');
@@ -3063,6 +3144,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogDate',
           'ogImage',
           'ogTitle',
@@ -3293,6 +3375,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://techcrunch.com/wp-content/uploads/2015/02/cropped-cropped-favicon-gradient.png?w=32');
         expect(result.ogSiteName).to.be.eql('TechCrunch');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/techcrunch');
         expect(result.ogTitle).to.be.eql('HackerRank Makes Technical Recruiting More Transparent – TechCrunch');
@@ -3322,6 +3405,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'articlePublisher',
           'ogDate',
           'ogDescription',
@@ -3351,6 +3435,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://pa.tedcdn.com/favicon.ico');
         expect(result.alAndroidAppName).to.be.eql('TED');
         expect(result.alAndroidPackage).to.be.eql('com.ted.android');
         expect(result.alAndroidUrl).to.be.eql('ted://playlists/321/talks_to_form_better_habits?source=facebook');
@@ -3389,6 +3474,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -3427,6 +3513,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/images/favicon.png');
         expect(result.ogSiteName).to.be.eql('ThinkGeek');
         expect(result.ogType).to.be.eql('product');
         expect(result.ogTitle).to.be.eql('Citizen Playing Cards');
@@ -3457,6 +3544,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'articleAuthor',
           'articlePublisher',
           'ogDescription',
@@ -3487,6 +3575,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://cdn.vox-cdn.com/uploads/chorus_asset/file/6397031/recode_favicon-64.0.png');
         expect(result.author).to.be.eql('Theodore Schleifer');
         expect(result.articlePublishedTime).to.be.eql('2020-06-11T17:03:32-04:00');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/Vox');
@@ -3519,6 +3608,7 @@ describe('static', function () {
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'articleModifiedTime',
           'articlePublishedTime',
           'articlePublisher',
@@ -3584,11 +3674,13 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('/s/919f27.ico');
         expect(result.ogTitle).to.be.eql('xkcd: Regular Expressions');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/xkcd');
         expect(result.charset).to.be.eql('utf8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'favicon',
           'ogTitle',
           'requestUrl',
           'success',
