@@ -5,7 +5,7 @@ const validateUrl = (urls, valid, message, urlValidatorSettings) => {
   for (let index = 0; index < urls.length; index += 1) {
     // eslint-disable-next-line no-loop-func
     it(`${urls[index]} ${message}`, function () {
-      const validate = utils.validate(urls[index], 2000, urlValidatorSettings);
+      const validate = utils.validate(urls[index], urlValidatorSettings);
       if (valid) {
         return expect(validate.url).to.not.be.eql(null);
       }
@@ -142,37 +142,6 @@ describe('utils', function () {
         'https://www.foobar.com/',
         'HTTPS://WWW.FOOBAR.COM/',
       ], false, 'should be invalid', noHTTPSUrlValidatorSettings);
-    });
-
-    context('validing Timeouts', function () {
-      it('time out is 2000', function () {
-        const validate = utils.validate('foobar.com', 2000);
-        expect(validate.timeout).to.eql(2000);
-      });
-      it('timeout is under 2000', function () {
-        const validate = utils.validate('foobar.com', 1000);
-        expect(validate.timeout).to.eql(1000);
-      });
-      it('timeout is above 2000', function () {
-        const validate = utils.validate('foobar.com', 3000);
-        expect(validate.timeout).to.eql(3000);
-      });
-      it('timeout is a string', function () {
-        const validate = utils.validate('foobar.com', '123');
-        expect(validate.timeout).to.eql(2000);
-      });
-      it('timeout is a bool', function () {
-        const validate = utils.validate('foobar.com', true);
-        expect(validate.timeout).to.eql(2000);
-      });
-      it('timeout is empty string', function () {
-        const validate = utils.validate('foobar.com', '');
-        expect(validate.timeout).to.eql(2000);
-      });
-      it('timeout is missing', function () {
-        const validate = utils.validate('foobar.com');
-        expect(validate.timeout).to.eql(2000);
-      });
     });
   });
 

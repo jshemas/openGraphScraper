@@ -65,7 +65,6 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | Name                 | Info                                                                       | Default Value | Required |
 |----------------------|----------------------------------------------------------------------------|---------------|----------|
 | url                  | URL of the site.                                                           |               | x        |
-| timeout              | Timeout of the request                                                     | 2000 ms       |          |
 | html                 | You can pass in an HTML string to run ogs on it. (use without options.url) |               |          |
 | blacklist            | Pass in an array of sites you don't want ogs to run on.                    | []            |          |
 | onlyGetOpenGraphInfo | Only fetch open graph info and don't fall back on anything else.           | false         |          |
@@ -75,10 +74,9 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | decompress           | Set the accept-encoding to gzip/deflate                                    | true          |          |
 | followRedirect       | Defines if redirect responses should be followed automatically.            | true          |          |
 | maxRedirects         | Max number of redirects ogs will follow.                                   | 10            |          |
-| retry                | Number of times ogs will retry the request.                                | 2             |          |
 | headers              | An object containing request headers. Useful for setting the user-agent    | {}            |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
-| agent                | Used for Proxies, Look below for notes on how to use.                      | null          |          |
+| agent                | Used for Proxies, Look below for notes on how to use.                      |               |          |
 | downloadLimit        | Maximum size of the content downloaded from the server, in bytes           | 1000000 (1MB) |          |
 | urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/openGraphScraper.js#L21-L36)          |          |
 

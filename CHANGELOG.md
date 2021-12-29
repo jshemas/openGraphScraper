@@ -1,5 +1,13 @@
 # Change Log
 
+## 5.0.0
+
+- Updating to got version 12!
+- The `retry` option is now a object -> https://github.com/sindresorhus/got/blob/main/documentation/7-retry.md#retry
+- The `timeout` option is now a object -> https://github.com/sindresorhus/got/blob/main/documentation/6-timeout.md#timeout-options
+- Auth errors will now be passed back to the clint and will no long just be `Page not found` errors.
+- Updating Dependencies
+
 ## 4.11.0
 
 - Adding support for fetching the favicon
