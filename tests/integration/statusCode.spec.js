@@ -5,7 +5,9 @@ describe('statusCode', function () {
     it('200', function () {
       return ogs({
         url: 'http://httpstat.us/200',
-        timeout: 10000,
+        timeout: {
+          request: 10000,
+        },
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
@@ -24,15 +26,16 @@ describe('statusCode', function () {
     it('403', function () {
       return ogs({
         url: 'http://httpstat.us/403',
-        timeout: 10000,
+        timeout: {
+          request: 10000,
+        },
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(true);
         expect(result.success).to.be.eql(false);
         expect(result.requestUrl).to.be.eql('http://httpstat.us/403');
-        expect(result.error).to.eql('Page not found');
-        expect(result.errorDetails.toString()).to.eql('Error: Page not found');
+        expect(result.error).to.eql('Response code 403 (Forbidden)');
         expect(result).to.have.all.keys(
           'error',
           'errorDetails',
@@ -45,7 +48,9 @@ describe('statusCode', function () {
     it('500', function () {
       return ogs({
         url: 'http://httpstat.us/500',
-        timeout: 10000,
+        timeout: {
+          request: 10000,
+        },
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
