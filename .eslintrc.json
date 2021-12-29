@@ -6,6 +6,10 @@
   "plugins": [
     "promise"
   ],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false
+  },
   "rules": {
     "max-len": ["error", {
       "code": 120,
