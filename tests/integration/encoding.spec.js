@@ -8,7 +8,9 @@ describe('encoding', function () {
       this.timeout(30000);
       return ogs({
         url: 'http://www.gazeta.ru/',
-        timeout: 30000,
+        timeout: {
+          request: 30000,
+        },
       }, function (error, result, response) {
         console.log('error:', error);
         console.log('result:', result);
@@ -18,7 +20,7 @@ describe('encoding', function () {
         expect(result.ogTitle).to.be.eql('Главные новости - Газета.Ru');
         expect(result.ogType).to.be.eql('website');
         expect(result.ogSiteName).to.be.eql('Газета.Ru');
-        expect(result.favicon).to.be.eql('https://static.gazeta.ru/nm2021/img/icons/favicon.png');
+        expect(result.favicon).to.be.eql('https://static.gazeta.ru/nm2021/img/icons/favicon.svg');
         expect(result.ogLocale).to.be.eql('ru');
         expect(result.ogUrl).to.be.eql('https://www.gazeta.ru/');
         expect(result.ogDate).to.be.an('string').and.to.not.be.empty;
