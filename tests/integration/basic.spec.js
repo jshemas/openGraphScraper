@@ -105,7 +105,7 @@ describe('basic', function () {
       expect(result.alWebShouldFallback).to.be.eql('true');
       expect(result.ogSiteName).to.be.eql('Vimeo');
       expect(result.ogUrl).to.be.eql('https://vimeo.com/232889838');
-      expect(result.favicon).to.be.eql('https://f.vimeocdn.com/images_v6/favicon.ico?a32e857bac9d54e9334817199a3d00a89ff1cc8e');
+      expect(result.favicon).to.be.eql('https://f.vimeocdn.com/images_v6/favicon.ico?89336b63950c54ecb71a3d56f90d64e381494b1f');
       expect(result.ogType).to.be.eql('video.other');
       expect(result.ogTitle).to.be.eql('Heroin');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
