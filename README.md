@@ -71,16 +71,11 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | ogImageFallback      | Fetch other images if no open graph ones are found.                        | true          |          |
 | customMetaTags       | Here you can define custom meta tags you want to scrape.                   | []            |          |
 | allMedia             | By default, OGS will only send back the first image/video it finds         | false         |          |
-| decompress           | Set the accept-encoding to gzip/deflate                                    | true          |          |
-| followRedirect       | Defines if redirect responses should be followed automatically.            | true          |          |
-| maxRedirects         | Max number of redirects ogs will follow.                                   | 10            |          |
-| headers              | An object containing request headers. Useful for setting the user-agent    | {}            |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
-| agent                | Used for Proxies, Look below for notes on how to use.                      |               |          |
 | downloadLimit        | Maximum size of the content downloaded from the server, in bytes           | 1000000 (1MB) |          |
 | urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/openGraphScraper.js#L21-L36)          |          |
 
-Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got#options) should work as `open-graph-scraper` options.
+Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got/blob/main/documentation/2-options.md) should work as `open-graph-scraper` options.
 
 ## Custom Meta Tag Example
 
