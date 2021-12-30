@@ -290,7 +290,7 @@ describe('url', function () {
       console.log('result:', result);
       expect(error).to.be.eql(true);
       expect(result.success).to.be.eql(false);
-      expect(result.requestUrl).to.be.eql('http://test.pdf?123');
+      expect(result.requestUrl).to.be.eql('test.pdf?123');
       expect(result.error).to.eql('Must scrape an HTML page');
       expect(result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
       expect(result).to.have.all.keys(
