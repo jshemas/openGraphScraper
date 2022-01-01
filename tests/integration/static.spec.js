@@ -4,8 +4,7 @@ const ogs = require('../../index');
 describe('static', function () {
   it('airbnb', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/airbnb' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -90,8 +89,7 @@ describe('static', function () {
   });
   it('arstechnica', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/arstechnica' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -148,8 +146,7 @@ describe('static', function () {
   });
   it('battlefield', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/battlefield' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -202,8 +199,7 @@ describe('static', function () {
   });
   it('bestbuy', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bestbuy' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -260,8 +256,7 @@ describe('static', function () {
   });
   it('bjango', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bjango' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -284,8 +279,7 @@ describe('static', function () {
   });
   it('bloomberg', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bloomberg' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -350,8 +344,7 @@ describe('static', function () {
   });
   it('businesstoday', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/businesstoday' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -404,8 +397,7 @@ describe('static', function () {
   });
   it('cbronline', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cbronline' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -466,8 +458,7 @@ describe('static', function () {
   });
   it('cio', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cio' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -526,8 +517,7 @@ describe('static', function () {
   });
   it('cloudpro', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cloudpro' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -584,8 +574,7 @@ describe('static', function () {
   });
   it('cnet', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cnet' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -648,8 +637,7 @@ describe('static', function () {
   });
   it('crn', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/crn' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -689,8 +677,7 @@ describe('static', function () {
   });
   it('computerworld', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/computerworld' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -747,8 +734,7 @@ describe('static', function () {
   });
   it('darkreading', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/darkreading' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -801,8 +787,7 @@ describe('static', function () {
   });
   it('discourse', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/discourse' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -853,8 +838,7 @@ describe('static', function () {
   });
   it('docs', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/docs' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -889,8 +873,7 @@ describe('static', function () {
   });
   it('ebay', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/ebay' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -943,8 +926,7 @@ describe('static', function () {
   });
   it('economictimes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/economictimes' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1027,8 +1009,7 @@ describe('static', function () {
   });
   it('entrepreneur', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/entrepreneur' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1095,8 +1076,7 @@ describe('static', function () {
   });
   it('etsy', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/etsy' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1179,8 +1159,7 @@ describe('static', function () {
   });
   it('facebook', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/facebook' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1216,8 +1195,7 @@ describe('static', function () {
   });
   it('fastcompany', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/fastcompany' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1284,8 +1262,7 @@ describe('static', function () {
   });
   it('forbes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/forbes' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1348,8 +1325,7 @@ describe('static', function () {
   });
   it('fortune', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/fortune' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1404,8 +1380,7 @@ describe('static', function () {
   });
   it('foursquare', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/foursquare' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1504,8 +1479,7 @@ describe('static', function () {
   });
   it('geektime', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/geektime' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1570,8 +1544,7 @@ describe('static', function () {
   });
   it('inc', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/inc' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1632,8 +1605,7 @@ describe('static', function () {
   });
   it('insta', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/insta' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1683,8 +1655,7 @@ describe('static', function () {
   });
   it('itunes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/itunes' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1735,8 +1706,7 @@ describe('static', function () {
   });
   it('jewishbusinessnews', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/jewishbusinessnews' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1805,8 +1775,7 @@ describe('static', function () {
   });
   it('kickstarter', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/kickstarter' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1871,8 +1840,7 @@ describe('static', function () {
   });
   it('latimes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/latimes' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1931,8 +1899,7 @@ describe('static', function () {
   });
   it('leandata', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/leandata' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -1981,8 +1948,7 @@ describe('static', function () {
   });
   it('learnxinyminutes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/learnxinyminutes' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -2012,8 +1978,7 @@ describe('static', function () {
   });
   it('lifehacker', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/lifehacker' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -2064,8 +2029,7 @@ describe('static', function () {
   });
   it('macrumors', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/macrumors' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -2124,8 +2088,7 @@ describe('static', function () {
   });
   it('mashable', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mashable' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -2196,8 +2159,7 @@ describe('static', function () {
   });
   it('medium', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/medium' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -2275,9 +2237,7 @@ describe('static', function () {
       });
   });
   it('michaelkors', function () {
-    return ogs({
-      url: 'https://jshemas.github.io/openGraphScraperPages/michaelkors',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/michaelkors' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -2323,8 +2283,7 @@ describe('static', function () {
   });
   it('mulesoft', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mulesoft' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -2355,8 +2314,7 @@ describe('static', function () {
   });
   it('newegg', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/newegg' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -2686,8 +2644,7 @@ describe('static', function () {
   });
   it('npm', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/npm' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -2731,8 +2688,7 @@ describe('static', function () {
   });
   it('prnewswire', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/prnewswire' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -2787,8 +2743,7 @@ describe('static', function () {
   });
   it('reddit', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/reddit' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -2832,8 +2787,7 @@ describe('static', function () {
   });
   it('reuters', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/reuters' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -2902,8 +2856,7 @@ describe('static', function () {
   });
   it('rottentomatoes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/rottentomatoes' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -3163,8 +3116,7 @@ describe('static', function () {
   });
   it('smile', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/smile' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -3370,8 +3322,7 @@ describe('static', function () {
   });
   it('techcrunch', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/techcrunch' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -3430,8 +3381,7 @@ describe('static', function () {
   });
   it('ted', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/ted' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -3508,8 +3458,7 @@ describe('static', function () {
   });
   it('thinkgeek', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/thinkgeek' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -3570,8 +3519,7 @@ describe('static', function () {
   });
   it('vox', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/vox' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -3636,8 +3584,7 @@ describe('static', function () {
   });
   it('w3', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/w3' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -3669,8 +3616,7 @@ describe('static', function () {
   });
   it('xkcd', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/xkcd' })
-      .then(function (data) {
-        const { error, result, response } = data;
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);

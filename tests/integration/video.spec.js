@@ -2,9 +2,7 @@ const ogs = require('../../index');
 
 describe('video', function () {
   it('Test Youtube Video - Should Return correct Open Graph Info', function () {
-    return ogs({
-      url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -107,9 +105,7 @@ describe('video', function () {
     });
   });
   it('Test Twitch.tv Video - Should Return correct Open Graph Info', function () {
-    return ogs({
-      url: 'https://jshemas.github.io/openGraphScraperPages/twitch.html',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/twitch.html' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);

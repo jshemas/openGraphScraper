@@ -11,9 +11,7 @@ const HTML_STRING = `
 
 describe('html', function () {
   it('pass in HTML string', function () {
-    return ogs({
-      html: HTML_STRING,
-    }, function (error, result, response) {
+    return ogs({ html: HTML_STRING }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -32,41 +30,49 @@ describe('html', function () {
     return ogs({
       url: 'https://upload.wikimedia.org/wikipedia/commons.jpg',
       html: HTML_STRING,
-    }, function (error, result, response) {
-      console.log('error:', error);
-      console.log('result:', result);
-      expect(error).to.be.eql(true);
-      expect(result.success).to.be.eql(false);
-      expect(result.requestUrl).to.be.eql('https://upload.wikimedia.org/wikipedia/commons.jpg');
-      expect(result.error).to.eql('Must specify either `url` or `html`, not both');
-      expect(result.errorDetails.toString()).to.eql('Error: Must specify either `url` or `html`, not both');
-      expect(result).to.have.all.keys(
-        'error',
-        'errorDetails',
-        'requestUrl',
-        'success',
-      );
-      expect(response).to.eql(undefined);
-    });
+    })
+      .then(function () {
+        expect().fail('this should not happen');
+      })
+      .catch(function ({ error, result, response }) {
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(true);
+        expect(result.success).to.be.eql(false);
+        expect(result.requestUrl).to.be.eql('https://upload.wikimedia.org/wikipedia/commons.jpg');
+        expect(result.error).to.eql('Must specify either `url` or `html`, not both');
+        expect(result.errorDetails.toString()).to.eql('Error: Must specify either `url` or `html`, not both');
+        expect(result).to.have.all.keys(
+          'error',
+          'errorDetails',
+          'requestUrl',
+          'success',
+        );
+        expect(response).to.eql(undefined);
+      });
   });
   it('Invalid Call - Not a HTML page', function () {
     return ogs({
       url: 'https://upload.wikimedia.org/wikipedia/commons.jpg',
-    }, function (error, result, response) {
-      console.log('error:', error);
-      console.log('result:', result);
-      expect(error).to.be.eql(true);
-      expect(result.success).to.be.eql(false);
-      expect(result.requestUrl).to.be.eql('https://upload.wikimedia.org/wikipedia/commons.jpg');
-      expect(result.error).to.eql('Must scrape an HTML page');
-      expect(result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
-      expect(result).to.have.all.keys(
-        'error',
-        'errorDetails',
-        'requestUrl',
-        'success',
-      );
-      expect(response).to.eql(undefined);
-    });
+    })
+      .then(function () {
+        expect().fail('this should not happen');
+      })
+      .catch(function ({ error, result, response }) {
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(true);
+        expect(result.success).to.be.eql(false);
+        expect(result.requestUrl).to.be.eql('https://upload.wikimedia.org/wikipedia/commons.jpg');
+        expect(result.error).to.eql('Must scrape an HTML page');
+        expect(result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
+        expect(result).to.have.all.keys(
+          'error',
+          'errorDetails',
+          'requestUrl',
+          'success',
+        );
+        expect(response).to.eql(undefined);
+      });
   });
 });

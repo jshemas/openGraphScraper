@@ -13,20 +13,6 @@ npm install open-graph-scraper --save
 
 ## Usage
 
-Callback Example:
-
-```javascript
-const ogs = require('open-graph-scraper');
-const options = { url: 'http://ogp.me/' };
-ogs(options, (error, results, response) => {
-  console.log('error:', error); // This returns true or false. True if there was an error. The error itself is inside the results object.
-  console.log('results:', results); // This contains all of the Open Graph results
-  console.log('response:', response); // This contains the HTML of page
-});
-```
-
-Promise Example:
-
 ```javascript
 const ogs = require('open-graph-scraper');
 const options = { url: 'http://ogp.me/' };
@@ -135,10 +121,12 @@ const options = {
     "user-agent": "Googlebot/2.1 (+http://www.google.com/bot.html)",
   },
 };
-ogs(options, (error, results) => {
-  console.log("error:", error); // This returns true or false. True if there was an error. The error itself is inside the results object.
-  console.log("results:", results); // This contains all of the Open Graph results
-});
+ogs(options)
+  .then((data) => {
+    const { error, result, response } = data;
+    console.log("error:", error); // This returns true or false. True if there was an error. The error itself is inside the results object.
+    console.log("results:", results); // This contains all of the Open Graph results
+  })
 ```
 
 ## Tests

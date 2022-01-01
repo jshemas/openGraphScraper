@@ -6,9 +6,7 @@ describe.skip('proxy', function () {
   it('example of how to use a proxy', function () {
     this.timeout(30000);
     // first do a normal request to get the local IP
-    return ogs({
-      url: 'https://whatismyipaddress.com/',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://whatismyipaddress.com/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);

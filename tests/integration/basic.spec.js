@@ -1,10 +1,9 @@
+const util = require('util');
 const ogs = require('../../index');
 
 describe('basic', function () {
-  it('using callbacks should return valid data', function () {
-    return ogs({
-      url: 'https://ogp.me/',
-    }, function (error, result, response) {
+  it('using promises should return valid data', function () {
+    return ogs({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -21,47 +20,76 @@ describe('basic', function () {
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
       expect(result.charset).to.be.eql('utf8');
       expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'success');
+      expect(result).to.have.all.keys(
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'ogDescription',
+        'ogImage',
+        'requestUrl',
+        'charset',
+        'success',
+      );
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
-  it('using promises should return valid data', function () {
-    return ogs({ url: 'https://ogp.me/' })
-      .then(function (data) {
-        const { error, result, response } = data;
-        console.log('error:', error);
-        console.log('result:', result);
-        expect(error).to.be.eql(false);
-        expect(result.ogTitle).to.be.eql('Open Graph protocol');
-        expect(result.ogType).to.be.eql('website');
-        expect(result.ogUrl).to.be.eql('https://ogp.me/');
-        expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
-        expect(result.ogImage).to.be.eql({
-          url: 'https://ogp.me/logo.png',
-          width: '300',
-          height: '300',
-          type: 'image/png',
-        });
-        expect(result.requestUrl).to.be.eql('https://ogp.me/');
-        expect(result.charset).to.be.eql('utf8');
-        expect(result.success).to.be.eql(true);
-        expect(result).to.have.all.keys(
-          'ogTitle',
-          'ogType',
-          'ogUrl',
-          'ogDescription',
-          'ogImage',
-          'requestUrl',
-          'charset',
-          'success',
-        );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+  it('using await should return valid data', async function () {
+    const { error, result, response } = await ogs({ url: 'https://ogp.me/' });
+    console.log('error:', error);
+    console.log('result:', result);
+    expect(error).to.be.eql(false);
+    expect(result.ogTitle).to.be.eql('Open Graph protocol');
+    expect(result.ogType).to.be.eql('website');
+    expect(result.ogUrl).to.be.eql('https://ogp.me/');
+    expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
+    expect(result.ogImage).to.be.eql({
+      url: 'https://ogp.me/logo.png',
+      width: '300',
+      height: '300',
+      type: 'image/png',
+    });
+    expect(result.requestUrl).to.be.eql('https://ogp.me/');
+    expect(result.charset).to.be.eql('utf8');
+    expect(result.success).to.be.eql(true);
+    expect(result).to.have.all.keys(
+      'ogTitle',
+      'ogType',
+      'ogUrl',
+      'ogDescription',
+      'ogImage',
+      'requestUrl',
+      'charset',
+      'success',
+    );
+    expect(response).to.be.an('object').and.to.not.be.empty;
+  });
+  it('using callbackify should return valid data', function () {
+    const ogsCallback = util.callbackify(ogs);
+    return ogsCallback({
+      url: 'https://ogp.me/',
+    }, function (error, response) {
+      console.log('error:', response.error);
+      console.log('result:', response.result);
+      expect(response.error).to.be.eql(false);
+      expect(response.result.ogTitle).to.be.eql('Open Graph protocol');
+      expect(response.result.ogType).to.be.eql('website');
+      expect(response.result.ogUrl).to.be.eql('https://ogp.me/');
+      expect(response.result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
+      expect(response.result.ogImage).to.be.eql({
+        url: 'https://ogp.me/logo.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
       });
+      expect(response.result.requestUrl).to.be.eql('https://ogp.me/');
+      expect(response.result.charset).to.be.eql('utf8');
+      expect(response.result.success).to.be.eql(true);
+      expect(response.result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'success');
+      expect(response.response).to.be.an('object').and.to.not.be.empty;
+    });
   });
   it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {
-    return ogs({
-      url: 'https://www.namecheap.com/',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://www.namecheap.com/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -90,9 +118,7 @@ describe('basic', function () {
     });
   });
   it('vimeo.com should return open graph data', function () {
-    return ogs({
-      url: 'https://vimeo.com/232889838',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://vimeo.com/232889838' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -192,9 +218,7 @@ describe('basic', function () {
     });
   });
   it('mozilla.org should return open graph data with one title', function () {
-    return ogs({
-      url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -230,23 +254,25 @@ describe('basic', function () {
     });
   });
   it('should error out if the page is too large', function () {
-    return ogs({
-      url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso',
-    }, function (error, result, response) {
-      console.log('error:', error);
-      console.log('result:', result);
-      expect(error).to.be.eql(true);
-      expect(result.success).to.be.eql(false);
-      expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso');
-      expect(result.error).to.eql('Exceeded the download limit of 1000000 bytes');
-      expect(result.errorDetails.toString()).to.eql('Error: Exceeded the download limit of 1000000 bytes');
-      expect(result).to.have.all.keys(
-        'error',
-        'errorDetails',
-        'requestUrl',
-        'success',
-      );
-      expect(response).to.eql(undefined);
-    });
+    return ogs({ url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso' })
+      .then(function () {
+        expect().fail('this should not happen');
+      })
+      .catch(function ({ error, result, response }) {
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(true);
+        expect(result.success).to.be.eql(false);
+        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso');
+        expect(result.error).to.eql('Exceeded the download limit of 1000000 bytes');
+        expect(result.errorDetails.toString()).to.eql('Error: Exceeded the download limit of 1000000 bytes');
+        expect(result).to.have.all.keys(
+          'error',
+          'errorDetails',
+          'requestUrl',
+          'success',
+        );
+        expect(response).to.eql(undefined);
+      });
   });
 });

@@ -11,7 +11,7 @@ describe('encoding', function () {
         timeout: {
           request: 30000,
         },
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -89,7 +89,7 @@ describe('encoding', function () {
     it('when charset is utf-8 - signanthealth', function () {
       return ogs({
         url: 'https://www.signanthealth.com/career/',
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -136,7 +136,7 @@ describe('encoding', function () {
     it('when charset is utf-8 - ogp', function () {
       return ogs({
         url: 'https://ogp.me/',
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -170,7 +170,7 @@ describe('encoding', function () {
     it('legacy no charset', function () {
       return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/rakuten',
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);

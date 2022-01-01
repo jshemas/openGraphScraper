@@ -5,7 +5,7 @@ describe('redirect', function () {
     it('nytimes page', function () {
       return ogs({
         url: 'https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0',
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -92,7 +92,7 @@ describe('redirect', function () {
     it('forbes page', function () {
       return ogs({
         url: 'https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa',
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
