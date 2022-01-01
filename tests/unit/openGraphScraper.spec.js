@@ -58,6 +58,7 @@ const sandbox = sinon.createSandbox();
 describe('return ogs', function () {
   afterEach(function () {
     sandbox.restore();
+    nock.cleanAll();
   });
 
   context('should be able to hit site and find OG title info', function () {
@@ -276,13 +277,13 @@ describe('return ogs', function () {
 
   context('should return the proper error data', function () {
     it('when the request sends a ENOTFOUND error', function () {
-      const stub = nock('http://www.testerror.com').persist().get('/')
+      nock('http://www.testerror.com').persist().get('/')
         .replyWithError({
           message: 'server error',
           code: 'ENOTFOUND',
         });
 
-      return ogs({ url: 'www.testerror.com' })
+      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -292,18 +293,17 @@ describe('return ogs', function () {
           expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
-          stub.persist(false);
         });
     });
 
     it('when the request sends a EHOSTUNREACH error', function () {
-      const stub = nock('http://www.testerror.com').persist().get('/')
+      nock('http://www.testerror.com').persist().get('/')
         .replyWithError({
           message: 'server error',
           code: 'EHOSTUNREACH',
         });
 
-      return ogs({ url: 'www.testerror.com' })
+      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -313,18 +313,17 @@ describe('return ogs', function () {
           expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
-          stub.persist(false);
         });
     });
 
     it('when the request sends a ENETUNREACH error', function () {
-      const stub = nock('http://www.testerror.com').persist().get('/')
+      nock('http://www.testerror.com').persist().get('/')
         .replyWithError({
           message: 'server error',
           code: 'ENETUNREACH',
         });
 
-      return ogs({ url: 'www.testerror.com' })
+      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -334,18 +333,17 @@ describe('return ogs', function () {
           expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
-          stub.persist(false);
         });
     });
 
     it('when the request sends a ERR_INVALID_URL error', function () {
-      const stub = nock('http://www.testerror.com').persist().get('/')
+      nock('http://www.testerror.com').persist().get('/')
         .replyWithError({
           message: 'server error',
           code: 'ERR_INVALID_URL',
         });
 
-      return ogs({ url: 'www.testerror.com' })
+      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -355,18 +353,17 @@ describe('return ogs', function () {
           expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
-          stub.persist(false);
         });
     });
 
     it('when the request sends a EINVAL error', function () {
-      const stub = nock('http://www.testerror.com').persist().get('/')
+      nock('http://www.testerror.com').persist().get('/')
         .replyWithError({
           message: 'server error',
           code: 'EINVAL',
         });
 
-      return ogs({ url: 'www.testerror.com' })
+      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -376,18 +373,17 @@ describe('return ogs', function () {
           expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
-          stub.persist(false);
         });
     });
 
     it('when the request sends a ETIMEDOUT error', function () {
-      const stub = nock('http://www.testerror-ETIMEDOUT.com').persist().get('/')
+      nock('http://www.testerror-ETIMEDOUT.com').persist().get('/')
         .replyWithError({
           message: 'server error',
           code: 'ETIMEDOUT',
         });
 
-      return ogs({ url: 'www.testerror-ETIMEDOUT.com' })
+      return ogs({ url: 'www.testerror-ETIMEDOUT.com', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -397,18 +393,17 @@ describe('return ogs', function () {
           expect(data.result.errorDetails.toString()).to.eql('Error: Time out');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
-          stub.persist(false);
         });
     });
 
     it('when the request sends a Response code 401 error', function () {
-      const stub = nock('http://www.testerror-401.com').persist().get('/')
+      nock('http://www.testerror-401.com').persist().get('/')
         .replyWithError({
           message: 'Response code 401',
           code: '401',
         });
 
-      return ogs({ url: 'www.testerror-401.com' })
+      return ogs({ url: 'www.testerror-401.com', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -418,18 +413,17 @@ describe('return ogs', function () {
           expect(data.result.errorDetails.toString()).to.eql('RequestError: Response code 401');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
-          stub.persist(false);
         });
     });
 
     it('when the request sends a Response code 500 error', function () {
-      const stub = nock('http://www.testerror-500.com').persist().get('/')
+      nock('http://www.testerror-500.com').persist().get('/')
         .replyWithError({
           message: 'Response code 500',
           code: '500',
         });
 
-      return ogs({ url: 'www.testerror-500.com' })
+      return ogs({ url: 'www.testerror-500.com', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -439,20 +433,17 @@ describe('return ogs', function () {
           expect(data.result.errorDetails.toString()).to.eql('Error: Web server is returning error');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
-          stub.persist(false);
         });
     });
 
     it('when an server sends back nothing', function () {
       nock('http://www.test.com').get('/').reply(200);
 
-      return ogs({ url: 'www.test.com' })
+      return ogs({ url: 'www.test.com', retry: { limit: 0 } })
         .then(function () {
-          console.log('datasss');
           expect().fail('this should not happen');
         })
         .catch(function (data) {
-          console.log('data', data);
           expect(data.error).to.be.eql(true);
           expect(data.result.error).to.eql('Page not found');
           expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
@@ -463,13 +454,13 @@ describe('return ogs', function () {
     });
 
     it('when an server error occurres', function () {
-      const stub = nock('http://www.testerror-500error.com').persist().get('/')
+      nock('http://www.testerror-500error.com').persist().get('/')
         .replyWithError({
           message: 'Server has returned a 400/500 error code',
           code: '500',
         });
 
-      return ogs({ url: 'www.testerror-500error.com' })
+      return ogs({ url: 'www.testerror-500error.com', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -480,12 +471,11 @@ describe('return ogs', function () {
           expect(data.result.requestUrl).to.eql('www.testerror-500error.com');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
-          stub.persist(false);
         });
     });
 
     it('when trying to hit a non html pages', function () {
-      return ogs({ url: 'www.test.com/test.png' })
+      return ogs({ url: 'www.test.com/test.png', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -500,7 +490,7 @@ describe('return ogs', function () {
     });
 
     it('when trying to hit a non html pages and has params', function () {
-      return ogs({ url: 'www.test.com/test.pdf?123' })
+      return ogs({ url: 'www.test.com/test.pdf?123', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -515,7 +505,7 @@ describe('return ogs', function () {
     });
 
     it('when trying to hit a blacklist site', function () {
-      return ogs({ url: 'www.test.com/test', blacklist: ['test.com'] })
+      return ogs({ url: 'www.test.com/test', blacklist: ['test.com'], retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -530,7 +520,7 @@ describe('return ogs', function () {
     });
 
     it('when trying to hit a empty url', function () {
-      return ogs({ url: '' })
+      return ogs({ url: '', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -545,7 +535,7 @@ describe('return ogs', function () {
     });
 
     it('when trying to hit a URL and you are passing in a HTML page', function () {
-      return ogs({ url: 'www.test.com', html: basicHTML })
+      return ogs({ url: 'www.test.com', html: basicHTML, retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -564,7 +554,7 @@ describe('return ogs', function () {
       sandbox.stub(iconv, 'decode').throws(error);
       nock('http://www.test.com').persist().get('/').reply(200, Buffer.from(basicHTML, 'utf8'));
 
-      return ogs({ url: 'www.test.com' })
+      return ogs({ url: 'www.test.com', retry: { limit: 0 } })
         .then(function () {
           expect().fail('this should not happen');
         })
