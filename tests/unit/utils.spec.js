@@ -5,17 +5,17 @@ const validateUrl = (urls, valid, message, urlValidatorSettings) => {
   for (let index = 0; index < urls.length; index += 1) {
     // eslint-disable-next-line no-loop-func
     it(`${urls[index]} ${message}`, function () {
-      const validate = utils.validate(urls[index], urlValidatorSettings);
+      const formattedUrl = utils.validateAndFormatURL(urls[index], urlValidatorSettings);
       if (valid) {
-        return expect(validate.url).to.not.be.eql(null);
+        return expect(formattedUrl.url).to.not.be.eql(null);
       }
-      return expect(validate.url).to.be.eql(null);
+      return expect(formattedUrl.url).to.be.eql(null);
     });
   }
 };
 
 describe('utils', function () {
-  describe('validate', function () {
+  describe('validateAndFormatURL', function () {
     context('validing URLs', function () {
       const defaultUrlValidatorSettings = {
         protocols: ['http', 'https'],
