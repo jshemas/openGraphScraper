@@ -7,7 +7,7 @@
   "scripts": {
     "eslint:fix": "eslint . --ext .js --fix",
     "eslint": "eslint . --ext .js",
-    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\"",
+    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\" --timeout 10000",
     "mocha:int": "mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",
     "test": "npm run mocha:unit && npm run mocha:int",
     "snyk-protect": "snyk protect",
@@ -42,6 +42,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint": "^8.5.0",
     "mocha": "^9.1.3",
+    "nock": "^13.2.1",
     "nyc": "^15.0.1",
     "sinon": "^12.0.1",
     "snyk": "^1.760.0",
