@@ -14,7 +14,7 @@
     "prepare": "npm run snyk-protect"
   },
   "engines": {
-    "node": ">=12.x.x"
+    "node": ">=14.x.x"
   },
   "author": {
     "name": "Josh Shemas",
