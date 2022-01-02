@@ -1,11 +1,13 @@
 const openGraphScraper = require('./lib/openGraphScraper');
 
-/*
- * run
- * @param string options - options the user has set
- * @param function promise
+/**
+ * Open Graph Scraper
+ *
+ * @param {object} options - The options used by Open Graph Scraper
+ * @return {object} object with results with the of given page
+ *
  */
-exports.run = async (options) => {
+const run = async (options) => {
   let results;
   try {
     results = await openGraphScraper(options);
@@ -28,4 +30,4 @@ exports.run = async (options) => {
   };
 };
 
-module.exports = (options) => exports.run(options);
+module.exports = run;
