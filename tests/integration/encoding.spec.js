@@ -4,7 +4,8 @@ const ogs = require('../../index');
 describe('encoding', function () {
   context('should return correct Open Graph Info + charset info', function () {
     // gazeta is no longer using charset windows-1251 (it's now utf8) will need to find new site for encodeing tests
-    it('when charset is windows-1251', function () {
+    // TODO: gazeta is now blocked in my contry, will need to find a replacement
+    it.skip('when charset is windows-1251', function () {
       this.timeout(30000);
       return ogs({
         url: 'http://www.gazeta.ru/',
@@ -104,7 +105,7 @@ describe('encoding', function () {
           url: 'https://careers.signanthealth.com/wp-content/uploads/2021/05/signant-health-logo.png',
           width: '900',
           height: '168',
-          type: 'png',
+          type: 'image/png',
         });
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@SignantHealth');
