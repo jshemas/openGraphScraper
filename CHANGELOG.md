@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.11.1
+
+- Updating Dependencies to fix a security vulnerability
+
 ## 4.11.0
 
 - Adding support for fetching the favicon
