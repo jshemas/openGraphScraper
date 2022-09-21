@@ -131,7 +131,7 @@ describe('basic', function () {
       expect(result.alWebShouldFallback).to.be.eql('true');
       expect(result.ogSiteName).to.be.eql('Vimeo');
       expect(result.ogUrl).to.be.eql('https://vimeo.com/232889838');
-      expect(result.favicon).to.be.eql('https://f.vimeocdn.com/images_v6/favicon.ico?89336b63950c54ecb71a3d56f90d64e381494b1f');
+      expect(result.favicon).to.be.eql('https://f.vimeocdn.com/images_v6/favicon.ico?ee6866976bbc221e77592ae9a444ee781b487692');
       expect(result.ogType).to.be.eql('video.other');
       expect(result.ogTitle).to.be.eql('Heroin');
       expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
@@ -225,11 +225,11 @@ describe('basic', function () {
       expect(result.ogTitle).to.be.eql('Date.prototype.toLocaleString() - JavaScript | MDN');
       expect(result.ogLocale).to.be.eql('en-US');
       expect(result.ogUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
-      expect(result.ogDate).to.be.eql('2021-07-20T18:47:57.000Z');
-      expect(result.favicon).to.be.eql('/favicon-48x48.97046865.png');
+      expect(result.ogDate).to.be.eql('2022-09-13T07:06:03.000Z');
+      expect(result.favicon).to.be.eql('/favicon-48x48.cbbd161b.png');
       expect(result.charset).to.be.eql('utf8');
       expect(result.ogImage).to.be.eql({
-        url: 'https://developer.mozilla.org/mdn-social-share.0ca9dbda.png',
+        url: 'https://developer.mozilla.org/mdn-social-share.cd6c4a5a.png',
         width: null,
         height: null,
         type: 'png',
