@@ -10,7 +10,7 @@
     "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\" --timeout 10000",
     "mocha:int": "mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",
     "test": "npm run mocha:unit && npm run mocha:int",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepare": "npm run snyk-protect"
   },
   "engines": {
@@ -35,6 +35,7 @@
   "devDependencies": {
     "@babel/core": "^7.19.1",
     "@babel/eslint-parser": "^7.19.1",
+    "@snyk/protect": "^1.1009.0",
     "chai": "^4.3.6",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
@@ -45,7 +46,6 @@
     "nock": "^13.2.9",
     "nyc": "^15.1.0",
     "sinon": "^14.0.0",
-    "snyk": "^1.1009.0",
     "tunnel": "^0.0.6"
   },
   "repository": {
