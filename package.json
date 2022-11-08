@@ -4,14 +4,16 @@
   "version": "4.11.0",
   "license": "MIT",
   "main": "index.js",
+  "types": "./dist/main.d.ts",
   "scripts": {
+    "build:types": "npx -p typescript tsc",
     "eslint:fix": "eslint . --ext .js --fix",
     "eslint": "eslint . --ext .js",
-    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\" --timeout 10000",
     "mocha:int": "mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",
-    "test": "npm run mocha:unit && npm run mocha:int",
+    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\" --timeout 10000",
+    "prepare": "npm run snyk-protect",
     "snyk-protect": "snyk-protect",
-    "prepare": "npm run snyk-protect"
+    "test": "npm run mocha:unit && npm run mocha:int"
   },
   "engines": {
     "node": ">=14.16"
@@ -37,16 +39,17 @@
     "@babel/eslint-parser": "^7.19.1",
     "@snyk/protect": "^1.1054.0",
     "chai": "^4.3.7",
+    "eslint": "^8.27.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-mocha": "^10.1.0",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint": "^8.27.0",
     "mocha": "^10.1.0",
     "nock": "^13.2.9",
     "nyc": "^15.1.0",
     "sinon": "^14.0.2",
-    "tunnel": "^0.0.6"
+    "tunnel": "^0.0.6",
+    "typescript": "^4.8.4"
   },
   "repository": {
     "type": "git",

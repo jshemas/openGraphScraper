@@ -3,6 +3,7 @@
 ## 5.0.0
 
 - Updating to `got` version 12!
+- Adding typescript support.
 - The `retry` option is now a object -> https://github.com/sindresorhus/got/blob/main/documentation/7-retry.md#retry
 - The `timeout` option is now a object -> https://github.com/sindresorhus/got/blob/main/documentation/6-timeout.md#timeout-options
 - Dropping callback support. If you still want to use callbacks, you can use `callbackify` -> https://nodejs.org/api/util.html#util_util_callbackify_original
