@@ -105,7 +105,7 @@ describe('return ogs', function () {
         .get('/')
         .reply(200, Buffer.from(encodingHTML, 'utf8'));
 
-      return ogs({ url: 'www.test.com', encoding: null })
+      return ogs({ url: 'www.test.com' })
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.charset).to.be.eql(null);

@@ -9,6 +9,7 @@
 - Dropping callback support. If you still want to use callbacks, you can use `callbackify` -> https://nodejs.org/api/util.html#util_util_callbackify_original
 - Auth errors will now be passed back to the clint and will no long just be `Page not found` errors.
 - Dropping support for node12 since `got` no longer supports it.
+- Removing `options.encoding`.
 - Updating Dependencies
 
 ## 4.11.1
