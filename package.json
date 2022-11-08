@@ -32,6 +32,7 @@
   },
   "files": [
     "CHANGELOG.md",
+    "/dist",
     "/lib"
   ],
   "devDependencies": {
