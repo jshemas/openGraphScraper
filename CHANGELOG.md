@@ -11,6 +11,10 @@
 - Dropping support for node12 since `got` no longer supports it.
 - Updating Dependencies
 
+## 4.11.1
+
+- Updating Dependencies to fix a security vulnerability
+
 ## 4.11.0
 
 - Adding support for fetching the favicon
