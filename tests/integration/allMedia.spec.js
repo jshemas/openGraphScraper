@@ -5,7 +5,7 @@ describe('allMedia', function () {
     return ogs({
       url: 'https://jshemas.github.io/openGraphScraperPages/yelp',
       allMedia: false,
-    }, function (error, result, response) {
+    }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -82,7 +82,7 @@ describe('allMedia', function () {
     return ogs({
       url: 'https://jshemas.github.io/openGraphScraperPages/yelp',
       allMedia: true,
-    }, function (error, result, response) {
+    }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);

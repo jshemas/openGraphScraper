@@ -13,20 +13,6 @@ npm install open-graph-scraper --save
 
 ## Usage
 
-Callback Example:
-
-```javascript
-const ogs = require('open-graph-scraper');
-const options = { url: 'http://ogp.me/' };
-ogs(options, (error, results, response) => {
-  console.log('error:', error); // This returns true or false. True if there was an error. The error itself is inside the results object.
-  console.log('results:', results); // This contains all of the Open Graph results
-  console.log('response:', response); // This contains the HTML of page
-});
-```
-
-Promise Example:
-
 ```javascript
 const ogs = require('open-graph-scraper');
 const options = { url: 'http://ogp.me/' };
@@ -65,24 +51,17 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | Name                 | Info                                                                       | Default Value | Required |
 |----------------------|----------------------------------------------------------------------------|---------------|----------|
 | url                  | URL of the site.                                                           |               | x        |
-| timeout              | Timeout of the request                                                     | 2000 ms       |          |
 | html                 | You can pass in an HTML string to run ogs on it. (use without options.url) |               |          |
 | blacklist            | Pass in an array of sites you don't want ogs to run on.                    | []            |          |
 | onlyGetOpenGraphInfo | Only fetch open graph info and don't fall back on anything else.           | false         |          |
 | ogImageFallback      | Fetch other images if no open graph ones are found.                        | true          |          |
 | customMetaTags       | Here you can define custom meta tags you want to scrape.                   | []            |          |
 | allMedia             | By default, OGS will only send back the first image/video it finds         | false         |          |
-| decompress           | Set the accept-encoding to gzip/deflate                                    | true          |          |
-| followRedirect       | Defines if redirect responses should be followed automatically.            | true          |          |
-| maxRedirects         | Max number of redirects ogs will follow.                                   | 10            |          |
-| retry                | Number of times ogs will retry the request.                                | 2             |          |
-| headers              | An object containing request headers. Useful for setting the user-agent    | {}            |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
-| agent                | Used for Proxies, Look below for notes on how to use.                      | null          |          |
 | downloadLimit        | Maximum size of the content downloaded from the server, in bytes           | 1000000 (1MB) |          |
 | urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/openGraphScraper.js#L21-L36)          |          |
 
-Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got#options) should work as `open-graph-scraper` options.
+Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got/blob/main/documentation/2-options.md) should work as `open-graph-scraper` options.
 
 ## Custom Meta Tag Example
 
@@ -105,7 +84,7 @@ ogs(options)
 
 ## Proxy Example
 
-[Look here](https://github.com/sindresorhus/got#proxies) for more info on how to use proxies.
+[Look here](https://github.com/sindresorhus/got/blob/main/documentation/tips.md#proxying) for more info on how to use proxies.
 
 ```javascript
 const ogs = require('open-graph-scraper');
@@ -137,15 +116,17 @@ ogs(options)
 ```javascript
 const ogs = require("open-graph-scraper");
 const options = {
-  url: "https://twitter.com/elonmusk/status/1364826301027115008",
+  url: "https://www.wikipedia.org/",
   headers: {
     "user-agent": "Googlebot/2.1 (+http://www.google.com/bot.html)",
   },
 };
-ogs(options, (error, results) => {
-  console.log("error:", error); // This returns true or false. True if there was an error. The error itself is inside the results object.
-  console.log("results:", results); // This contains all of the Open Graph results
-});
+ogs(options)
+  .then((data) => {
+    const { error, result, response } = data;
+    console.log("error:", error); // This returns true or false. True if there was an error. The error itself is inside the results object.
+    console.log("results:", results); // This contains all of the Open Graph results
+  })
 ```
 
 ## Tests

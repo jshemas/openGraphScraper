@@ -4,13 +4,15 @@ const ogs = require('../../index');
 describe('encoding', function () {
   context('should return correct Open Graph Info + charset info', function () {
     // gazeta is no longer using charset windows-1251 (it's now utf8) will need to find new site for encodeing tests
-    // TODO: gazeta is now blocked in my contry, will need to find a replacement
+    // TODO: gazeta is now being blocked.
     it.skip('when charset is windows-1251', function () {
       this.timeout(30000);
       return ogs({
         url: 'http://www.gazeta.ru/',
-        timeout: 30000,
-      }, function (error, result, response) {
+        timeout: {
+          request: 30000,
+        },
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -19,7 +21,7 @@ describe('encoding', function () {
         expect(result.ogTitle).to.be.eql('Главные новости - Газета.Ru');
         expect(result.ogType).to.be.eql('website');
         expect(result.ogSiteName).to.be.eql('Газета.Ru');
-        expect(result.favicon).to.be.eql('https://static.gazeta.ru/nm2021/img/icons/favicon.png');
+        expect(result.favicon).to.be.eql('https://static.gazeta.ru/nm2021/img/icons/favicon.svg');
         expect(result.ogLocale).to.be.eql('ru');
         expect(result.ogUrl).to.be.eql('https://www.gazeta.ru/');
         expect(result.ogDate).to.be.an('string').and.to.not.be.empty;
@@ -88,7 +90,7 @@ describe('encoding', function () {
     it('when charset is utf-8 - signanthealth', function () {
       return ogs({
         url: 'https://www.signanthealth.com/career/',
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -135,7 +137,7 @@ describe('encoding', function () {
     it('when charset is utf-8 - ogp', function () {
       return ogs({
         url: 'https://ogp.me/',
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -169,7 +171,7 @@ describe('encoding', function () {
     it('legacy no charset', function () {
       return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/rakuten',
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);

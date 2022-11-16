@@ -1,0 +1,13 @@
+{
+  "include": [
+    "index.js",
+    "lib/**/*"
+  ],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "declarationMap": true
+  }
+}

@@ -1,8 +1,8 @@
 const chardet = require('chardet');
 const iconv = require('iconv-lite');
-const openGraphScraper = require('../../index');
+const nock = require('nock');
+const ogs = require('../../index');
 const charset = require('../../lib/charset');
-const { gotClient } = require('../../lib/utils');
 
 const basicHTML = `
   <html>
@@ -55,227 +55,133 @@ const encodingHTML = `
 
 const sandbox = sinon.createSandbox();
 
-describe('return openGraphScraper', function () {
+describe('return ogs', function () {
   afterEach(function () {
     sandbox.restore();
+    nock.cleanAll();
   });
 
   context('should be able to hit site and find OG title info', function () {
-    context('using just a url', function () {
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.ogTitle).to.be.eql('test page');
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(basicHTML);
+    it('using just a url', function () {
+      nock('http://www.test.com')
+        .get('/')
+        .reply(200, basicHTML);
+
+      return ogs({ url: 'www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogTitle).to.be.eql('test page');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.response.body).to.be.eql(Buffer.from(basicHTML, 'utf8'));
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.ogTitle).to.be.eql('test page');
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(basicHTML);
-          });
-      });
     });
 
-    context('with html', function () {
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ html: basicHTML }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.ogTitle).to.be.eql('test page');
-          expect(result.requestUrl).to.be.eql(null);
-          expect(response.body).to.be.eql(basicHTML);
+    it('with html', function () {
+      return ogs({ html: basicHTML })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogTitle).to.be.eql('test page');
+          expect(data.result.requestUrl).to.be.eql(null);
+          expect(data.response.body).to.be.eql(basicHTML);
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ html: basicHTML })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.ogTitle).to.be.eql('test page');
-            expect(data.result.requestUrl).to.be.eql(null);
-            expect(data.response.body).to.be.eql(basicHTML);
-          });
-      });
     });
 
-    context('when site is not on blacklist', function () {
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com', blacklist: ['testtest.com'] }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.ogTitle).to.be.eql('test page');
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(basicHTML);
+    it('when site is not on blacklist', function () {
+      nock('http://www.test.com')
+        .get('/')
+        .reply(200, basicHTML);
+
+      return ogs({ url: 'www.test.com', blacklist: ['testtest.com'] })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogTitle).to.be.eql('test page');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.response.body).to.be.eql(Buffer.from(basicHTML, 'utf8'));
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com', blacklist: ['testtest.com'] })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.ogTitle).to.be.eql('test page');
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(basicHTML);
-          });
-      });
     });
 
-    context('with encoding set to null (this has been deprecated, but should still work)', function () {
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: Buffer.from(encodingHTML, 'utf8') });
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com', encoding: null }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.charset).to.be.eql(null);
-          expect(result.ogTitle).to.be.eql('тестовая страница');
-          expect(result.ogDescription).to.be.eql('привет тестовая страница<');
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(Buffer.from(encodingHTML, 'utf8'));
+    it('with encoding set to null (this has been deprecated, but should still work)', function () {
+      nock('http://www.test.com')
+        .get('/')
+        .reply(200, Buffer.from(encodingHTML, 'utf8'));
+
+      return ogs({ url: 'www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.charset).to.be.eql(null);
+          expect(data.result.ogTitle).to.be.eql('тестовая страница');
+          expect(data.result.ogDescription).to.be.eql('привет тестовая страница<');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.response.body).to.be.eql(Buffer.from(encodingHTML, 'utf8'));
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com', encoding: null })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.charset).to.be.eql(null);
-            expect(data.result.ogTitle).to.be.eql('тестовая страница');
-            expect(data.result.ogDescription).to.be.eql('привет тестовая страница<');
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(Buffer.from(encodingHTML, 'utf8'));
-          });
-      });
     });
 
-    context('when there is more then one image', function () {
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: multipleImageHTML });
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.ogTitle).to.be.eql('test page');
-          expect(result.ogImage).to.be.eql({
+    it('when there is more then one image', function () {
+      nock('http://www.test.com')
+        .get('/')
+        .reply(200, multipleImageHTML);
+
+      return ogs({ url: 'www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogTitle).to.be.eql('test page');
+          expect(data.result.ogImage).to.be.eql({
             url: 'test1.png',
             width: null,
             height: null,
             type: 'png',
           });
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(multipleImageHTML);
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.response.body).to.be.eql(Buffer.from(multipleImageHTML, 'utf8'));
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.ogTitle).to.be.eql('test page');
-            expect(data.result.ogImage).to.be.eql({
-              url: 'test1.png',
-              width: null,
-              height: null,
-              type: 'png',
-            });
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(multipleImageHTML);
-          });
-      });
     });
 
-    context('when meta description exist while og description does not', function () {
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: metaDescriptionHTML });
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.ogTitle).to.be.eql('test page');
-          expect(result.ogDescription).to.be.eql('test description from meta');
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(metaDescriptionHTML);
+    it('when meta description exist while og description does not', function () {
+      nock('http://www.test.com')
+        .get('/')
+        .reply(200, metaDescriptionHTML);
+
+      return ogs({ url: 'www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogTitle).to.be.eql('test page');
+          expect(data.result.ogDescription).to.be.eql('test description from meta');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.response.body).to.be.eql(Buffer.from(metaDescriptionHTML, 'utf8'));
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.ogTitle).to.be.eql('test page');
-            expect(data.result.ogDescription).to.be.eql('test description from meta');
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(metaDescriptionHTML);
-          });
-      });
     });
 
-    context('as a browser', function () {
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
-      });
-      it('using callbacks', function () {
-        process.browser = true;
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.ogTitle).to.be.eql('test page');
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(basicHTML);
+    it('as a browser', function () {
+      nock('http://www.test.com')
+        .get('/')
+        .reply(200, basicHTML);
+
+      process.browser = true;
+      return ogs({ url: 'www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogTitle).to.be.eql('test page');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.response.body).to.be.eql(Buffer.from(basicHTML, 'utf8'));
         });
-      });
-      it('using promises', function () {
-        process.browser = true;
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.ogTitle).to.be.eql('test page');
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(basicHTML);
-          });
-      });
     });
 
-    context('using onlyGetOpenGraphInfo', function () {
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: metaDescriptionHTML });
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com', onlyGetOpenGraphInfo: true }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.ogTitle).to.be.eql(undefined);
-          expect(result.describe).to.be.eql(undefined);
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(metaDescriptionHTML);
+    it('using onlyGetOpenGraphInfo', function () {
+      nock('http://www.test.com')
+        .get('/')
+        .reply(200, metaDescriptionHTML);
+
+      return ogs({ url: 'www.test.com', onlyGetOpenGraphInfo: true })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogTitle).to.be.eql(undefined);
+          expect(data.result.describe).to.be.eql(undefined);
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.response.body).to.be.eql(Buffer.from(metaDescriptionHTML, 'utf8'));
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com', onlyGetOpenGraphInfo: true })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.ogTitle).to.be.eql(undefined);
-            expect(data.result.describe).to.be.eql(undefined);
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(metaDescriptionHTML);
-          });
-      });
     });
 
-    context('when there is a og:image:secure_url tag', function () {
+    it('when there is a og:image:secure_url tag', function () {
       const secureUrlHTML = `
         <html>
           <head>
@@ -283,36 +189,25 @@ describe('return openGraphScraper', function () {
           </head>
           <body></body>
         </html>`;
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: secureUrlHTML });
-      });
-      it('using callbacks', function () {
-        process.browser = true;
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.ogImage).to.be.eql({
+
+      nock('http://www.test.com')
+        .get('/')
+        .reply(200, secureUrlHTML);
+
+      process.browser = true;
+
+      return ogs({ url: 'www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogImage).to.be.eql({
             url: 'test1.png', width: null, height: null, type: 'png',
           });
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(secureUrlHTML);
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.response.body).to.be.eql(Buffer.from(secureUrlHTML, 'utf8'));
         });
-      });
-      it('using promises', function () {
-        process.browser = true;
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.ogImage).to.be.eql({
-              url: 'test1.png', width: null, height: null, type: 'png',
-            });
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(secureUrlHTML);
-          });
-      });
     });
 
-    context('when there is a og:image:url tag', function () {
+    it('when there is a og:image:url tag', function () {
       const secureUrlHTML = `
         <html>
           <head>
@@ -320,564 +215,356 @@ describe('return openGraphScraper', function () {
           </head>
           <body></body>
         </html>`;
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: secureUrlHTML });
-      });
-      it('using callbacks', function () {
-        process.browser = true;
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.ogImage).to.be.eql({
+
+      nock('http://www.test.com')
+        .get('/')
+        .reply(200, secureUrlHTML);
+
+      process.browser = true;
+
+      return ogs({ url: 'www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogImage).to.be.eql({
             url: 'test1.png', width: null, height: null, type: 'png',
           });
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(secureUrlHTML);
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.response.body).to.be.eql(Buffer.from(secureUrlHTML, 'utf8'));
         });
-      });
-      it('using promises', function () {
-        process.browser = true;
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.ogImage).to.be.eql({
-              url: 'test1.png', width: null, height: null, type: 'png',
-            });
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(secureUrlHTML);
-          });
-      });
     });
 
     context('when charset and chardet are unknown', function () {
       beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
+        nock('http://www.test.com')
+          .get('/')
+          .reply(200, basicHTML);
         sandbox.stub(chardet, 'detect').returns(false);
         sandbox.stub(charset, 'find').returns(false);
       });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.ogTitle).to.be.eql('test page');
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(basicHTML);
-        });
-      });
       it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
+        return ogs({ url: 'www.test.com' })
           .then(function (data) {
             expect(data.result.success).to.be.eql(true);
             expect(data.result.ogTitle).to.be.eql('test page');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(basicHTML);
+            expect(data.response.body).to.be.eql(Buffer.from(basicHTML, 'utf8'));
           });
       });
     });
 
-    context('when passing in a custom tag', function () {
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ body: basicHTML });
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({
-          url: 'www.test.com',
-          customMetaTags: [{
-            multiple: false,
-            property: 'foo',
-            fieldName: 'fooTag',
-          }],
-        }, function (error, result, response) {
-          expect(error).to.be.eql(false);
-          expect(result.success).to.be.eql(true);
-          expect(result.fooTag).to.be.eql('bar');
-          expect(result.ogTitle).to.be.eql('test page');
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response.body).to.be.eql(basicHTML);
+    it('when passing in a custom tag', function () {
+      nock('http://www.test.com')
+        .get('/')
+        .reply(200, basicHTML);
+
+      return ogs({
+        url: 'www.test.com',
+        customMetaTags: [{
+          multiple: false,
+          property: 'foo',
+          fieldName: 'fooTag',
+        }],
+      })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.fooTag).to.be.eql('bar');
+          expect(data.result.ogTitle).to.be.eql('test page');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.response.body).to.be.eql(Buffer.from(basicHTML, 'utf8'));
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({
-          url: 'www.test.com',
-          customMetaTags: [{
-            multiple: false,
-            property: 'foo',
-            fieldName: 'fooTag',
-          }],
-        })
-          .then(function (data) {
-            expect(data.result.success).to.be.eql(true);
-            expect(data.result.fooTag).to.be.eql('bar');
-            expect(data.result.ogTitle).to.be.eql('test page');
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(basicHTML);
-          });
-      });
     });
   });
 
   context('should return the proper error data', function () {
-    context('when the request sends a ENOTFOUND error', function () {
-      beforeEach(async function () {
-        const error = new Error('server error');
-        error.code = 'ENOTFOUND';
-        sandbox.stub(gotClient, 'get').throws(error);
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Page not found');
-          expect(result.errorDetails.toString()).to.eql('Error: Page not found');
-          expect(response).to.be.eql(undefined);
+    it('when the request sends a ENOTFOUND error', function () {
+      nock('http://www.testerror.com').persist().get('/')
+        .replyWithError({
+          message: 'server error',
+          code: 'ENOTFOUND',
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Page not found');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
+
+      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Page not found');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
     });
 
-    context('when the request sends a EHOSTUNREACH error', function () {
-      beforeEach(async function () {
-        const error = new Error('server error');
-        error.code = 'EHOSTUNREACH';
-        sandbox.stub(gotClient, 'get').throws(error);
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Page not found');
-          expect(result.errorDetails.toString()).to.eql('Error: Page not found');
-          expect(response).to.be.eql(undefined);
+    it('when the request sends a EHOSTUNREACH error', function () {
+      nock('http://www.testerror.com').persist().get('/')
+        .replyWithError({
+          message: 'server error',
+          code: 'EHOSTUNREACH',
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Page not found');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
+
+      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Page not found');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
     });
 
-    context('when the request sends a ENETUNREACH error', function () {
-      beforeEach(async function () {
-        const error = new Error('server error');
-        error.code = 'ENETUNREACH';
-        sandbox.stub(gotClient, 'get').throws(error);
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Page not found');
-          expect(result.errorDetails.toString()).to.eql('Error: Page not found');
-          expect(response).to.be.eql(undefined);
+    it('when the request sends a ENETUNREACH error', function () {
+      nock('http://www.testerror.com').persist().get('/')
+        .replyWithError({
+          message: 'server error',
+          code: 'ENETUNREACH',
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Page not found');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
+
+      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Page not found');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
     });
 
-    context('when the request sends a ERR_INVALID_URL error', function () {
-      beforeEach(async function () {
-        const error = new Error('server error');
-        error.code = 'ERR_INVALID_URL';
-        sandbox.stub(gotClient, 'get').throws(error);
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Page not found');
-          expect(result.errorDetails.toString()).to.eql('Error: Page not found');
-          expect(response).to.be.eql(undefined);
+    it('when the request sends a ERR_INVALID_URL error', function () {
+      nock('http://www.testerror.com').persist().get('/')
+        .replyWithError({
+          message: 'server error',
+          code: 'ERR_INVALID_URL',
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Page not found');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
+
+      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Page not found');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
     });
 
-    context('when the request sends a EINVAL error', function () {
-      beforeEach(async function () {
-        const error = new Error('server error');
-        error.code = 'EINVAL';
-        sandbox.stub(gotClient, 'get').throws(error);
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Page not found');
-          expect(result.errorDetails.toString()).to.eql('Error: Page not found');
-          expect(response).to.be.eql(undefined);
+    it('when the request sends a EINVAL error', function () {
+      nock('http://www.testerror.com').persist().get('/')
+        .replyWithError({
+          message: 'server error',
+          code: 'EINVAL',
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Page not found');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
+
+      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Page not found');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
     });
 
-    context('when the request sends a ETIMEDOUT error', function () {
-      beforeEach(async function () {
-        const error = new Error('server error');
-        error.code = 'ETIMEDOUT';
-        sandbox.stub(gotClient, 'get').throws(error);
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Time out');
-          expect(result.errorDetails.toString()).to.eql('Error: Time out');
-          expect(response).to.be.eql(undefined);
+    it('when the request sends a ETIMEDOUT error', function () {
+      nock('http://www.testerror-ETIMEDOUT.com').persist().get('/')
+        .replyWithError({
+          message: 'server error',
+          code: 'ETIMEDOUT',
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Time out');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Time out');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
+
+      return ogs({ url: 'www.testerror-ETIMEDOUT.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Time out');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Time out');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
     });
 
-    context('when the request sends a Response code 401 error', function () {
-      beforeEach(async function () {
-        const error = new Error('Response code 401');
-        sandbox.stub(gotClient, 'get').throws(error);
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Page not found');
-          expect(result.errorDetails.toString()).to.eql('Error: Page not found');
-          expect(response).to.be.eql(undefined);
+    it('when the request sends a Response code 401 error', function () {
+      nock('http://www.testerror-401.com').persist().get('/')
+        .replyWithError({
+          message: 'Response code 401',
+          code: '401',
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Page not found');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
+
+      return ogs({ url: 'www.testerror-401.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Response code 401');
+          expect(data.result.errorDetails.toString()).to.eql('RequestError: Response code 401');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
     });
 
-    context('when the request sends a Response code 500 error', function () {
-      beforeEach(async function () {
-        const error = new Error('Response code 500');
-        sandbox.stub(gotClient, 'get').throws(error);
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Web server is returning error');
-          expect(result.errorDetails.toString()).to.eql('Error: Web server is returning error');
-          expect(response).to.be.eql(undefined);
+    it('when the request sends a Response code 500 error', function () {
+      nock('http://www.testerror-500.com').persist().get('/')
+        .replyWithError({
+          message: 'Response code 500',
+          code: '500',
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Web server is returning error');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Web server is returning error');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
+
+      return ogs({ url: 'www.testerror-500.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Web server is returning error');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Web server is returning error');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
     });
 
-    context('when an server sends back nothing', function () {
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({});
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Page not found');
-          expect(result.errorDetails.toString()).to.eql('Error: Page not found');
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response).to.be.eql(undefined);
+    it('when an server sends back nothing', function () {
+      nock('http://www.test.com').get('/').reply(200);
+
+      return ogs({ url: 'www.test.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Page not found');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.requestUrl).to.eql('www.test.com');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Page not found');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
-            expect(data.result.requestUrl).to.eql('http://www.test.com');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
     });
 
-    context('when an server error occurres', function () {
-      beforeEach(async function () {
-        sandbox.stub(gotClient, 'get').resolves({ statusCode: 500 });
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Server has returned a 400/500 error code');
-          expect(result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
-          expect(result.requestUrl).to.be.eql('http://www.test.com');
-          expect(response).to.be.eql(undefined);
+    it('when an server error occurres', function () {
+      nock('http://www.testerror-500error.com').persist().get('/')
+        .replyWithError({
+          message: 'Server has returned a 400/500 error code',
+          code: '500',
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Server has returned a 400/500 error code');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
-            expect(data.result.requestUrl).to.eql('http://www.test.com');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
+
+      return ogs({ url: 'www.testerror-500error.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('RequestError: Server has returned a 400/500 error code');
+          expect(data.result.requestUrl).to.eql('www.testerror-500error.com');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
     });
 
-    context('when trying to hit a non html pages', function () {
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com/test.png' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Must scrape an HTML page');
-          expect(result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
-          expect(result.requestUrl).to.be.eql('http://www.test.com/test.png');
-          expect(response).to.be.eql(undefined);
+    it('when trying to hit a non html pages', function () {
+      return ogs({ url: 'www.test.com/test.png', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.success).to.be.eql(false);
+          expect(data.result.error).to.eql('Must scrape an HTML page');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
+          expect(data.result.requestUrl).to.be.eql('www.test.com/test.png');
+          expect(data.response).to.be.eql(undefined);
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'http://www.test.com/test.png' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.success).to.be.eql(false);
-            expect(data.result.error).to.eql('Must scrape an HTML page');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com/test.png');
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
     });
 
-    context('when trying to hit a non html pages and has params', function () {
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com/test.pdf?123' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Must scrape an HTML page');
-          expect(result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
-          expect(result.requestUrl).to.be.eql('http://www.test.com/test.pdf?123');
-          expect(response).to.be.eql(undefined);
+    it('when trying to hit a non html pages and has params', function () {
+      return ogs({ url: 'www.test.com/test.pdf?123', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.success).to.be.eql(false);
+          expect(data.result.error).to.eql('Must scrape an HTML page');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
+          expect(data.result.requestUrl).to.be.eql('www.test.com/test.pdf?123');
+          expect(data.response).to.be.eql(undefined);
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'http://www.test.com/test.pdf?123' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.success).to.be.eql(false);
-            expect(data.result.error).to.eql('Must scrape an HTML page');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com/test.pdf?123');
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
     });
 
-    context('when trying to hit a blacklist site', function () {
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com/test', blacklist: ['test.com'] }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Host name has been black listed');
-          expect(result.errorDetails.toString()).to.eql('Error: Host name has been black listed');
-          expect(result.requestUrl).to.be.eql('http://www.test.com/test');
-          expect(response).to.be.eql(undefined);
+    it('when trying to hit a blacklist site', function () {
+      return ogs({ url: 'www.test.com/test', blacklist: ['test.com'], retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.success).to.be.eql(false);
+          expect(data.result.error).to.eql('Host name has been black listed');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Host name has been black listed');
+          expect(data.result.requestUrl).to.be.eql('www.test.com/test');
+          expect(data.response).to.be.eql(undefined);
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com/test', blacklist: ['test.com'] })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.success).to.be.eql(false);
-            expect(data.result.error).to.eql('Host name has been black listed');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Host name has been black listed');
-            expect(data.result.requestUrl).to.be.eql('http://www.test.com/test');
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
     });
 
-    context('when trying to hit a empty url', function () {
-      it('using callbacks', function () {
-        return openGraphScraper({ url: '' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Invalid URL');
-          expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
-          expect(result.requestUrl).to.be.eql('');
-          expect(response).to.be.eql(undefined);
+    it('when trying to hit a empty url', function () {
+      return ogs({ url: '', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.success).to.be.eql(false);
+          expect(data.result.error).to.eql('Invalid URL');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Invalid URL');
+          expect(data.result.requestUrl).to.be.eql('');
+          expect(data.response).to.be.eql(undefined);
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: '' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.success).to.be.eql(false);
-            expect(data.result.error).to.eql('Invalid URL');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Invalid URL');
-            expect(data.result.requestUrl).to.be.eql('');
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
     });
 
-    context('when trying to hit a URL and you are passing in a HTML page', function () {
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com', html: basicHTML }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Must specify either `url` or `html`, not both');
-          expect(result.errorDetails.toString()).to.eql('Error: Must specify either `url` or `html`, not both');
-          expect(result.requestUrl).to.be.eql('www.test.com');
-          expect(response).to.be.eql(undefined);
+    it('when trying to hit a URL and you are passing in a HTML page', function () {
+      return ogs({ url: 'www.test.com', html: basicHTML, retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Must specify either `url` or `html`, not both');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Must specify either `url` or `html`, not both');
+          expect(data.result.requestUrl).to.eql('www.test.com');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com', html: basicHTML })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Must specify either `url` or `html`, not both');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Must specify either `url` or `html`, not both');
-            expect(data.result.requestUrl).to.eql('www.test.com');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
     });
 
-    context('when iconv throws a error', function () {
-      beforeEach(async function () {
-        const error = new Error('Page not found');
-        sandbox.stub(gotClient, 'get').resolves({ body: Buffer.from(basicHTML, 'utf8') });
-        sandbox.stub(iconv, 'decode').throws(error);
-      });
-      it('using callbacks', function () {
-        return openGraphScraper({ url: 'www.test.com' }, function (error, result, response) {
-          expect(error).to.be.eql(true);
-          expect(result.success).to.be.eql(false);
-          expect(result.error).to.eql('Page not found');
-          expect(result.errorDetails.toString()).to.eql('Error: Page not found');
-          expect(response).to.be.eql(undefined);
+    it('when iconv throws a error', function () {
+      const error = new Error('Page not found');
+      sandbox.stub(iconv, 'decode').throws(error);
+      nock('http://www.test.com').persist().get('/').reply(200, Buffer.from(basicHTML, 'utf8'));
+
+      return ogs({ url: 'www.test.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Page not found');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
         });
-      });
-      it('using promises', function () {
-        return openGraphScraper({ url: 'www.test.com' })
-          .then(function () {
-            expect().fail('this should not happen');
-          })
-          .catch(function (data) {
-            expect(data.error).to.be.eql(true);
-            expect(data.result.error).to.eql('Page not found');
-            expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
-            expect(data.result.success).to.eql(false);
-            expect(data.response).to.be.eql(undefined);
-          });
-      });
     });
   });
 });

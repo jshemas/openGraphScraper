@@ -5,7 +5,7 @@ describe('twitter', function () {
     it('On Twitter Site', function () {
       return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/twitter-dev',
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -57,7 +57,7 @@ describe('twitter', function () {
     it('On Github Site', function () {
       return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/github',
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
@@ -115,7 +115,7 @@ describe('twitter', function () {
     it('On Atom Site', function () {
       return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/atom.html',
-      }, function (error, result, response) {
+      }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);

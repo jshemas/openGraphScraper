@@ -2,9 +2,7 @@ const ogs = require('../../index');
 
 describe('image', function () {
   it('Test Flickr Image - Should Return correct Open Graph Info', function () {
-    return ogs({
-      url: 'https://jshemas.github.io/openGraphScraperPages/flickr',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/flickr' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -59,9 +57,7 @@ describe('image', function () {
     });
   });
   it('Test getting the description and images from meta tags', function () {
-    return ogs({
-      url: 'https://jshemas.github.io/openGraphScraperPages/twitter.html',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/twitter.html' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);

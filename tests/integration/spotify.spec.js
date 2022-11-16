@@ -2,9 +2,7 @@ const ogs = require('../../index');
 
 describe('spotify', function () {
   it('album should return music:album and associated tags', function () {
-    return ogs({
-      url: 'https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -78,9 +76,7 @@ describe('spotify', function () {
     });
   });
   it('artist should return music:musician', function () {
-    return ogs({
-      url: 'https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -144,9 +140,7 @@ describe('spotify', function () {
     });
   });
   it('track should return music:song and associated tags', function () {
-    return ogs({
-      url: 'https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -224,9 +218,7 @@ describe('spotify', function () {
     });
   });
   it('playlist should return music:playlist and associated tags', function () {
-    return ogs({
-      url: 'https://jshemas.github.io/openGraphScraperPages/spotifyPlayList',
-    }, function (error, result, response) {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/spotifyPlayList' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);

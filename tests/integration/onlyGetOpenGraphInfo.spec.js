@@ -5,7 +5,7 @@ describe('onlyGetOpenGraphInfo', function () {
     return ogs({
       url: 'http://www.wikipedia.org/',
       onlyGetOpenGraphInfo: true,
-    }, function (error, result, response) {
+    }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -25,7 +25,7 @@ describe('onlyGetOpenGraphInfo', function () {
     return ogs({
       url: 'http://www.wikipedia.org/',
       onlyGetOpenGraphInfo: false,
-    }, function (error, result, response) {
+    }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
