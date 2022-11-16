@@ -84,7 +84,7 @@ ogs(options)
 
 ## Proxy Example
 
-[Look here](https://github.com/sindresorhus/got#proxies) for more info on how to use proxies.
+[Look here](https://github.com/sindresorhus/got/blob/main/documentation/tips.md#proxying) for more info on how to use proxies.
 
 ```javascript
 const ogs = require('open-graph-scraper');
@@ -116,7 +116,7 @@ ogs(options)
 ```javascript
 const ogs = require("open-graph-scraper");
 const options = {
-  url: "https://twitter.com/elonmusk/status/1364826301027115008",
+  url: "https://www.wikipedia.org/",
   headers: {
     "user-agent": "Googlebot/2.1 (+http://www.google.com/bot.html)",
   },
