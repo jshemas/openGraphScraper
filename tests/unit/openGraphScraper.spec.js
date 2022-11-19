@@ -436,10 +436,46 @@ describe('return ogs', function () {
         });
     });
 
+    it('when the request sends exceeded the download limit', function () {
+      nock('http://www.testerror-downloadlimit.com').persist().get('/')
+        .replyWithError({
+          message: 'Promise was canceled',
+        });
+
+      return ogs({ url: 'www.testerror-downloadlimit.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Exceeded the download limit of 1000000 bytes');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Exceeded the download limit of 1000000 bytes');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
+    });
+
     it('when an server sends back nothing', function () {
       nock('http://www.test.com').get('/').reply(200);
 
       return ogs({ url: 'www.test.com', retry: { limit: 0 } })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Page not found');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.requestUrl).to.eql('www.test.com');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
+    });
+
+    it('when an server sends back nothing, not even a buffer', function () {
+      nock('http://www.test.com').get('/').reply(200, '');
+
+      return ogs({ url: 'www.test.com', retry: { limit: 0 }, responseType: 'text' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -474,6 +510,40 @@ describe('return ogs', function () {
         });
     });
 
+    it('when an server error occurres but the request still works - 400', function () {
+      nock('http://www.testerror-400workingerror.com').get('/').reply(400);
+
+      return ogs({ url: 'www.testerror-400workingerror.com', retry: { limit: 0 }, throwHttpErrors: false })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(data.result.requestUrl).to.eql('www.testerror-400workingerror.com');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
+    });
+
+    it('when an server error occurres but the request still works - 500', function () {
+      nock('http://www.testerror-500workingerror.com').get('/').reply(500);
+
+      return ogs({ url: 'www.testerror-500workingerror.com', retry: { limit: 0 }, throwHttpErrors: false })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(data.result.requestUrl).to.eql('www.testerror-500workingerror.com');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+        });
+    });
+
     it('when trying to hit a non html pages', function () {
       return ogs({ url: 'www.test.com/test.png', retry: { limit: 0 } })
         .then(function () {
@@ -485,6 +555,22 @@ describe('return ogs', function () {
           expect(data.result.error).to.eql('Must scrape an HTML page');
           expect(data.result.errorDetails.toString()).to.eql('Error: Must scrape an HTML page');
           expect(data.result.requestUrl).to.be.eql('www.test.com/test.png');
+          expect(data.response).to.be.eql(undefined);
+        });
+    });
+
+    it('when trying to hit a non html pages based on content-type', function () {
+      nock('http://www.test.com').get('/').reply(200, { }, { 'content-type': 'foo' });
+      return ogs({ url: 'www.test.com' })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.success).to.be.eql(false);
+          expect(data.result.error).to.eql('Page must return a header content-type with text/');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Page must return a header content-type with text/');
+          expect(data.result.requestUrl).to.be.eql('www.test.com');
           expect(data.response).to.be.eql(undefined);
         });
     });
