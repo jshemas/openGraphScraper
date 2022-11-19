@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 const ogs = require('../../index');
 
 describe('encoding', function () {
