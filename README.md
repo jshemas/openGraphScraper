@@ -59,7 +59,7 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | allMedia             | By default, OGS will only send back the first image/video it finds         | false         |          |
 | peekSize             | Sets the peekSize for the request                                          | 1024          |          |
 | downloadLimit        | Maximum size of the content downloaded from the server, in bytes           | 1000000 (1MB) |          |
-| urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/openGraphScraper.js#L21-L36)          |          |
+| urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/utils.js#L102-L114)          |          |
 
 Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got/blob/main/documentation/2-options.md) should work as `open-graph-scraper` options.
 
