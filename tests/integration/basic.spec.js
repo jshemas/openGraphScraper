@@ -217,7 +217,7 @@ describe('basic', function () {
     });
   });
   it('mozilla.org should return open graph data with one title', function () {
-    return ogs({ url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString' }).then(function ({ error, result, response }) {
+    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mozilla' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -234,7 +234,7 @@ describe('basic', function () {
         type: 'png',
       });
       expect(result.twitterCard).to.be.eql('summary_large_image');
-      expect(result.requestUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
+      expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mozilla');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
