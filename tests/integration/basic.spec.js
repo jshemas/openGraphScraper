@@ -98,7 +98,6 @@ describe('basic', function () {
       expect(result.favicon).to.be.eql('https://www.namecheap.com/assets/img/nc-icon/favicon.ico');
       expect(result.ogUrl).to.be.eql('https://www.namecheap.com/');
       expect(result.ogTitle).to.be.eql('Buy a domain name - Register cheap domain names from $0.99 - Namecheap');
-      expect(result.ogDescription).to.be.eql('Register domain names at Namecheap. Buy cheap domain names and enjoy 24/7 support. With over 13 million domains under management, you know you’re in good hands.');
       expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
       expect(result.charset).to.be.eql('utf8');
