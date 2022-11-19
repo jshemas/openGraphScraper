@@ -2,6 +2,7 @@ const cheerio = require('cheerio');
 const tunnel = require('tunnel');
 const ogs = require('../../index');
 
+// eslint-disable-next-line mocha/no-skipped-tests
 describe.skip('proxy', function () {
   it('example of how to use a proxy', function () {
     this.timeout(30000);
