@@ -91,7 +91,9 @@ const ogs = require('open-graph-scraper');
 const tunnel = require('tunnel');
 const options = {
   url: 'https://whatismyipaddress.com/',
-  timeout: 15000,
+  timeout: {
+    request: 10000,
+  },
   agent: {
     // setting proxy agent for https requests
     https: tunnel.httpsOverHttp({
