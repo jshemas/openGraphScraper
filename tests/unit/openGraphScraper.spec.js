@@ -207,6 +207,27 @@ describe('return ogs', function () {
         });
     });
 
+    it('when there is a meta property tag but it has no content', function () {
+      const missingContentHTML = `
+        <html>
+          <head>
+            <meta property="og:title">
+          </head>
+        </html>`;
+
+      nock('http://www.test.com')
+        .get('/')
+        .reply(200, missingContentHTML);
+
+      return ogs({ url: 'www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.result.ogTitle).to.not.exist;
+          expect(data.response.body).to.be.eql(Buffer.from(missingContentHTML, 'utf8'));
+        });
+    });
+
     it('when there is a og:image:url tag', function () {
       const secureUrlHTML = `
         <html>
