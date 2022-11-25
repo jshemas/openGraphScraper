@@ -50,11 +50,11 @@ declare function run(options: {
     peekSize?: number;
     downloadLimit?: number;
     urlValidatorSettings?: validatorSettings;
-}): {
+}): Promise<{
     error: boolean;
     result: object;
     response: object;
-};
+}>;
 declare namespace run {
     export { customMetaTags, validatorSettings };
 }
