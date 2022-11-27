@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.1
+
+- TS export run as a Promise
+- Updating Docs
+- Updating Dependencies
+
 ## 5.0.0
 
 - Updating to `got` version 12!

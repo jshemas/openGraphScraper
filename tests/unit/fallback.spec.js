@@ -98,14 +98,26 @@ describe('fallback', function () {
   context('ogImage', function () {
     it('when there is a og image already found', function () {
       let ogObject = { ogImage: { url: 'bar.png', type: 'png' } };
-      const $ = cheerio.load('<html><body><image src="foo.png"></body></html>');
+      const $ = cheerio.load('<html></html>');
       ogObject = fallback(ogObject, { ogImageFallback: true }, $);
       expect(ogObject.ogImage.url).to.be.eql('bar.png');
       expect(ogObject.ogImage.type).to.be.eql('png');
       expect(ogObject).to.have.all.keys('ogImage');
     });
+    it('when there is a og image already found and is a array', function () {
+      let ogObject = { ogImage: [{ url: 'foo.png', type: 'png' }, { url: 'bar.png', type: 'png' }] };
+      const $ = cheerio.load('<html></html>');
+      ogObject = fallback(ogObject, { ogImageFallback: true }, $);
+      expect(ogObject.ogImage).to.be.eql([{ url: 'foo.png', type: 'png' }, { url: 'bar.png', type: 'png' }]);
+    });
+    it('when there is a og image already found and is a array with missing/invalid types', function () {
+      let ogObject = { ogImage: [{ url: 'foo.bar' }, { url: 'bar.png' }] };
+      const $ = cheerio.load('<html></html>');
+      ogObject = fallback(ogObject, { ogImageFallback: true }, $);
+      expect(ogObject.ogImage).to.be.eql([{ url: 'foo.bar' }, { url: 'bar.png', type: 'png' }]);
+    });
     it('when there is no og images found and ogImageFallback is set to false', function () {
-      const $ = cheerio.load('<html><body><image src="foo.png"></body></html>');
+      const $ = cheerio.load('<html></html>');
       const ogObject = fallback({}, { ogImageFallback: false }, $);
       expect(ogObject).to.be.eql({});
     });
@@ -120,13 +132,13 @@ describe('fallback', function () {
       expect(ogObject).to.have.all.keys('ogImage');
     });
     it('when there is no og images found and no fallback images', function () {
-      const $ = cheerio.load('<html><body></body></html>');
+      const $ = cheerio.load('<html></html>');
       const ogObject = fallback({}, { ogImageFallback: true }, $);
       expect(ogObject).to.be.eql({});
     });
     it('when there is a og image already found but it has no type', function () {
       let ogObject = { ogImage: { url: 'bar.png' } };
-      const $ = cheerio.load('<html><body><image src="foo.png"></body></html>');
+      const $ = cheerio.load('<html></html>');
       ogObject = fallback(ogObject, { ogImageFallback: true }, $);
       expect(ogObject.ogImage.url).to.be.eql('bar.png');
       expect(ogObject.ogImage.type).to.be.eql('png');
@@ -134,7 +146,7 @@ describe('fallback', function () {
     });
     it('when there is a og image already found but it has no type but that type is invalid', function () {
       let ogObject = { ogImage: { url: 'bar.foo' } };
-      const $ = cheerio.load('<html><body><image src="foo.png"></body></html>');
+      const $ = cheerio.load('<html></html>');
       ogObject = fallback(ogObject, { ogImageFallback: true }, $);
       expect(ogObject.ogImage.url).to.be.eql('bar.foo');
       expect(ogObject.ogImage.type).to.be.eql(undefined);
@@ -319,6 +331,58 @@ describe('fallback', function () {
       const $ = cheerio.load('<html><body></body></html>');
       const ogObject = fallback({}, {}, $);
       expect(ogObject).to.be.eql({});
+    });
+  });
+
+  context('favicon', function () {
+    it('when there is a favicon already found', function () {
+      let ogObject = { favicon: 'foo' };
+      const $ = cheerio.load('<html></html>');
+      ogObject = fallback(ogObject, {}, $);
+      expect(ogObject.favicon).to.be.eql('foo');
+      expect(ogObject).to.have.all.keys('favicon');
+    });
+    it('when there is a shortcut icon', function () {
+      const $ = cheerio.load('<html><link rel="shortcut icon" href="foo" /></html>');
+      const ogObject = fallback({}, {}, $);
+      expect(ogObject.favicon).to.be.eql('foo');
+      expect(ogObject).to.have.all.keys('favicon');
+    });
+    it('when there is a icon', function () {
+      const $ = cheerio.load('<html><link rel="icon" href="foo" /></html>');
+      const ogObject = fallback({}, {}, $);
+      expect(ogObject.favicon).to.be.eql('foo');
+      expect(ogObject).to.have.all.keys('favicon');
+    });
+    it('when there is a mask-icon', function () {
+      const $ = cheerio.load('<html><link rel="mask-icon" href="foo" /></html>');
+      const ogObject = fallback({}, {}, $);
+      expect(ogObject.favicon).to.be.eql('foo');
+      expect(ogObject).to.have.all.keys('favicon');
+    });
+    it('when there is a apple-touch-icon', function () {
+      const $ = cheerio.load('<html><link rel="apple-touch-icon" href="foo" /></html>');
+      const ogObject = fallback({}, {}, $);
+      expect(ogObject.favicon).to.be.eql('foo');
+      expect(ogObject).to.have.all.keys('favicon');
+    });
+    it('when there is a image/png', function () {
+      const $ = cheerio.load('<html><link type="image/png" href="foo" /></html>');
+      const ogObject = fallback({}, {}, $);
+      expect(ogObject.favicon).to.be.eql('foo');
+      expect(ogObject).to.have.all.keys('favicon');
+    });
+    it('when there is a image/ico', function () {
+      const $ = cheerio.load('<html><link type="image/ico" href="foo" /></html>');
+      const ogObject = fallback({}, {}, $);
+      expect(ogObject.favicon).to.be.eql('foo');
+      expect(ogObject).to.have.all.keys('favicon');
+    });
+    it('when there is a image/x-icon', function () {
+      const $ = cheerio.load('<html><link type="image/x-icon" href="foo" /></html>');
+      const ogObject = fallback({}, {}, $);
+      expect(ogObject.favicon).to.be.eql('foo');
+      expect(ogObject).to.have.all.keys('favicon');
     });
   });
 });

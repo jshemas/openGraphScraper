@@ -36,7 +36,7 @@ export = run;
  * @param {number} [options.peekSize] - Sets the peekSize for the request.
  * @param {number} [options.downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
  * @param {validatorSettings} [options.urlValidatorSettings] - Sets the options used by validator.js for testing the URL
- * @returns {{error: boolean, result: object, response: object}} Object with the Open Graph results with the given page
+ * @returns {Promise<{error: boolean, result: object, response: object}>} Promise Object with the Open Graph results
  *
  */
 declare function run(options: {
