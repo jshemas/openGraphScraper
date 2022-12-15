@@ -38,7 +38,7 @@ describe('spotify', function () {
         alt: null,
       });
       expect(result.musicSong).to.be.eql({
-        url: 'https://open.spotify.com/track/0yhxBvedRdGxsPZHJNI4VA',
+        url: 'https://open.spotify.com/track/6EuE9M1viu9gkdFSafia9o',
         track: '1',
         disc: '1',
       });
@@ -146,13 +146,13 @@ describe('spotify', function () {
       expect(error).to.be.eql(false);
       expect(result.alAndroidAppName).to.be.eql('Spotify');
       expect(result.alAndroidPackage).to.be.eql('com.spotify.music');
-      expect(result.alAndroidUrl).to.be.eql('spotify://track/19a3JfW8BQwqHWUMbcqSx8');
+      expect(result.alAndroidUrl).to.be.eql('spotify://track/3p6fkbeZDIVqapfdgQe6fm');
       expect(result.alIosAppName).to.be.eql('Spotify');
       expect(result.alIosAppStoreId).to.be.eql('324684580');
-      expect(result.alIosUrl).to.be.eql('spotify://track/19a3JfW8BQwqHWUMbcqSx8');
+      expect(result.alIosUrl).to.be.eql('spotify://track/3p6fkbeZDIVqapfdgQe6fm');
       expect(result.ogTitle).to.be.eql('Famous');
       expect(result.ogDescription).to.be.eql('Kanye West · Song · 2016');
-      expect(result.ogUrl).to.be.eql('https://open.spotify.com/track/19a3JfW8BQwqHWUMbcqSx8');
+      expect(result.ogUrl).to.be.eql('https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm');
       // expect(result.favicon).to.be.eql('https://open.scdn.co/cdn/images/favicon32.a19b4f5b.png');
       expect(result.ogType).to.be.eql('music.song');
       expect(result.musicDuration).to.be.eql('196');
