@@ -36,6 +36,12 @@ export = run;
  * @param {number} [options.peekSize] - Sets the peekSize for the request.
  * @param {number} [options.downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
  * @param {validatorSettings} [options.urlValidatorSettings] - Sets the options used by validator.js for testing the URL
+ * @param {boolean} [options.decompress] - Set the accept-encoding to `gzip, deflate, br` (default: `true`).
+ * @param {boolean} [options.followRedirect] - Defines if redirect responses should be followed automatically. (default: `true`).
+ * @param {Object<string, string>} [options.headers] - An object containing request headers. Useful for setting the user-agent.
+ * @param {number} [options.maxRedirects] - If exceeded, the request will be aborted and a MaxRedirectsError will be thrown. (default: `10`).
+ * @param {object} [options.retry] - Number of times `og`s will retry the request (default: `2`).
+ * @param {object} [options.timeout] - Timeout of the request.
  * @returns {Promise<{error: boolean, result: object, response: object}>} Promise Object with the Open Graph results
  *
  */
@@ -50,6 +56,14 @@ declare function run(options: {
     peekSize?: number;
     downloadLimit?: number;
     urlValidatorSettings?: validatorSettings;
+    decompress?: boolean;
+    followRedirect?: boolean;
+    headers?: {
+        [x: string]: string;
+    };
+    maxRedirects?: number;
+    retry?: object;
+    timeout?: object;
 }): Promise<{
     error: boolean;
     result: object;
