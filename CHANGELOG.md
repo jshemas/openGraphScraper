@@ -1,5 +1,10 @@
 # Change Log
 
+## 5.0.2
+
+- TS export now has common GOT options.
+- Updating Dependencies
+
 ## 5.0.1
 
 - TS export run as a Promise
