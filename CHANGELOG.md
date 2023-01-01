@@ -1,5 +1,9 @@
 # Change Log
 
+## 5.0.3
+
+- Adding successResult and errorResult types
+
 ## 5.0.2
 
 - TS export now has common GOT options.
