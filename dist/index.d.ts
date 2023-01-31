@@ -403,7 +403,7 @@ export = run;
  * @param {customMetaTags[]} [options.customMetaTags] - Here you can define custom meta tags you want to scrape.
  * @param {boolean} [options.allMedia] - By default, OGS will only send back the first image/video it finds.
  * @param {number} [options.peekSize] - Sets the peekSize for the request.
- * @param {number} [options.downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
+ * @param {number | false} [options.downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
  * @param {validatorSettings} [options.urlValidatorSettings] - Sets the options used by validator.js for testing the URL
  * @param {boolean} [options.decompress] - Set the accept-encoding to `gzip, deflate, br` (default: `true`).
  * @param {boolean} [options.followRedirect] - Defines if redirect responses should be followed automatically. (default: `true`).
@@ -422,7 +422,7 @@ declare function run(options: {
     customMetaTags?: customMetaTags[];
     allMedia?: boolean;
     peekSize?: number;
-    downloadLimit?: number;
+    downloadLimit?: number | false;
     urlValidatorSettings?: validatorSettings;
     decompress?: boolean;
     followRedirect?: boolean;
