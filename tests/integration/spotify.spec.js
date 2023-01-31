@@ -161,7 +161,7 @@ describe('spotify', function () {
       expect(result.musicMusician).to.be.eql(['https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x']);
       expect(result.musicReleaseDate).to.be.eql('2016-06-10');
       expect(result.ogAudio).to.be.an('string').and.to.not.be.empty;
-      expect(result.ogAudioType).to.be.eql('audio/vnd.facebook.bridge');
+      expect(result.ogAudioType).to.be.eql('audio/mpeg');
       expect(result.twitterTitle).to.be.eql('Famous');
       expect(result.twitterSite).to.be.eql('@spotify');
       expect(result.twitterDescription).to.be.eql('Kanye West · Song · 2016');
