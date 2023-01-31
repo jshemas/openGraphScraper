@@ -6,7 +6,7 @@
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build:types": "npx -p typescript tsc",
+    "build": "tsc",
     "eslint:fix": "eslint . --ext .js --fix",
     "eslint": "eslint . --ext .js",
     "mocha:int": "mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",

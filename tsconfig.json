@@ -1,13 +1,12 @@
 {
   "include": [
-    "index.js",
+    "index.ts",
     "lib/**/*"
   ],
   "compilerOptions": {
+    "outDir": "./dist",
     "allowJs": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "dist",
-    "declarationMap": true
+    "target": "es2022"
   }
 }
