@@ -1,4 +1,4 @@
-export { charset as find };
+declare const CHARTSET_RE: RegExp;
 /**
  * guest data charset from req.headers, xml, html content-type meta tag
  * headers:
@@ -15,5 +15,4 @@ export { charset as find };
  *  If can\'t guest, return null
  * @api public
  */
-declare function charset(obj: any, data?: Buffer, peekSize?: number): string;
-//# sourceMappingURL=charset.d.ts.map
+declare function charset(obj: any, data: any, peekSize: any): any;

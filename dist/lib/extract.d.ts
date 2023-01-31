@@ -1,2 +1,5 @@
-export function extractMetaTags(body: object, options: object): object;
-//# sourceMappingURL=extract.d.ts.map
+declare const cheerio: any;
+declare const fallback: any;
+declare const fields: any;
+declare const media: any;
+declare const utils: any;

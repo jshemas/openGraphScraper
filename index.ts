@@ -1,25 +1,80 @@
-declare function run(options: OpenGraphScraperOptions): Promise<SuccessResult>;
-export default run;
-type OpenGraphScraperOptions = {
-    url: string;
-    html?: string;
-    blacklist?: string[];
-    onlyGetOpenGraphInfo?: boolean;
-    ogImageFallback?: boolean;
-    customMetaTags?: customMetaTags[];
-    allMedia?: boolean;
-    peekSize?: number;
-    downloadLimit?: number;
-    urlValidatorSettings?: validatorSettings;
-    decompress?: boolean;
-    followRedirect?: boolean;
-    headers?: {
-        [x: string]: string;
+const openGraphScraper = require('./lib/openGraphScraper');
+// import openGraphScraper from './lib/openGraphScraper';
+
+async function run(options: OpenGraphScraperOptions) {
+  let results;
+  try {
+    results = await openGraphScraper(options);
+  } catch (error) {
+    const exception = error as Error;
+    const returnError:ErrorResult = {
+      error: true,
+      result: {
+        success: false,
+        requestUrl: options.url,
+        error: exception.message,
+        errorDetails: exception,
+      },
     };
-    maxRedirects?: number;
-    retry?: object;
-    timeout?: object;
-};
+    throw returnError;
+  }
+  const returnSuccess: SuccessResult = {
+    error: false,
+    result: results.ogObject,
+    response: results.response,
+  }
+  return returnSuccess;
+}
+
+export default run;
+
+// export run(options: {
+//     url: string;
+//     html?: string;
+//     blacklist?: string[];
+//     onlyGetOpenGraphInfo?: boolean;
+//     ogImageFallback?: boolean;
+//     customMetaTags?: customMetaTags[];
+//     allMedia?: boolean;
+//     peekSize?: number;
+//     downloadLimit?: number;
+//     urlValidatorSettings?: validatorSettings;
+//     decompress?: boolean;
+//     followRedirect?: boolean;
+//     headers?: {
+//         [x: string]: string;
+//     };
+//     maxRedirects?: number;
+//     retry?: object;
+//     timeout?: object;
+// }): Promise<successResult | errorResult>;
+
+// declare namespace run {
+//     export { imageObject, successResult, successResultObject, errorResult, errorResultObject, customMetaTags, validatorSettings };
+// }
+
+type OpenGraphScraperOptions = {
+  url: string;
+  html?: string;
+  blacklist?: string[];
+  onlyGetOpenGraphInfo?: boolean;
+  ogImageFallback?: boolean;
+  customMetaTags?: customMetaTags[];
+  allMedia?: boolean;
+  peekSize?: number;
+  downloadLimit?: number;
+  urlValidatorSettings?: validatorSettings;
+  decompress?: boolean;
+  followRedirect?: boolean;
+  headers?: {
+      [x: string]: string;
+  };
+  maxRedirects?: number;
+  retry?: object;
+  timeout?: object;
+}
+
+
 type customMetaTags = {
     /**
      * - is there more than one of these tags on a page (normally this is false)
@@ -34,6 +89,7 @@ type customMetaTags = {
      */
     fieldName: string;
 };
+
 /**
  * You can find the `isUrl` settings details at https://github.com/validatorjs/validator.js
  */
@@ -50,17 +106,26 @@ type validatorSettings = {
     allow_protocol_relative_urls: boolean;
     disallow_auth: boolean;
 };
+
 type SuccessResult = {
     error: boolean;
     result: successResultObject;
     response: object;
 };
+
+type ErrorResult = {
+    error: boolean;
+    result: errorResultObject;
+    // response: undefined;
+};
+
 type imageObject = {
     height?: string | number;
     type: string;
     url: string;
     width?: string | number;
 };
+
 type successResultObject = {
     error?: undefined;
     errorDetails?: undefined;
@@ -234,4 +299,179 @@ type successResultObject = {
     success: boolean;
     charset?: string | undefined;
     favicon?: string | undefined;
+};
+
+type errorResultObject = {
+    error: string;
+    errorDetails: Error;
+    alAndroidAppName?: undefined;
+    alAndroidClass?: undefined;
+    alAndroidPackage?: undefined;
+    alAndroidUrl?: undefined;
+    alIosAppName?: undefined;
+    alIosAppStoreId?: undefined;
+    alIosUrl?: undefined;
+    alIpadAppName?: undefined;
+    alIpadAppStoreId?: undefined;
+    alIpadUrl?: undefined;
+    alIphoneAppName?: undefined;
+    alIphoneAppStoreId?: undefined;
+    alIphoneUrl?: undefined;
+    alWebShouldFallback?: undefined;
+    alWebUrl?: undefined;
+    alWindowsAppId?: undefined;
+    alWindowsAppName?: undefined;
+    alWindowsPhoneAppId?: undefined;
+    alWindowsPhoneAppName?: undefined;
+    alWindowsPhoneUrl?: undefined;
+    alWindowsUniversalAppId?: undefined;
+    alWindowsUniversalAppName?: undefined;
+    alWindowsUniversalUrl?: undefined;
+    alWindowsUrl?: undefined;
+    articleAuthor?: undefined;
+    articleExpirationTime?: undefined;
+    articleModifiedTime?: undefined;
+    articlePublishedTime?: undefined;
+    articlePublisher?: undefined;
+    articleSection?: undefined;
+    articleTag?: undefined;
+    author?: undefined;
+    bookAuthor?: undefined;
+    bookCanonicalName?: undefined;
+    bookIsbn?: undefined;
+    bookReleaseDate?: undefined;
+    booksBook?: undefined;
+    booksRatingScale?: undefined;
+    booksRatingValue?: undefined;
+    bookTag?: undefined;
+    businessContactDataCountryName?: undefined;
+    businessContactDataLocality?: undefined;
+    businessContactDataPostalCode?: undefined;
+    businessContactDataRegion?: undefined;
+    businessContactDataStreetAddress?: undefined;
+    dcContributor?: undefined;
+    dcCoverage?: undefined;
+    dcCreator?: undefined;
+    dcDate?: undefined;
+    dcDateCreated?: undefined;
+    dcDateIssued?: undefined;
+    dcDescription?: undefined;
+    dcFormatMedia?: undefined;
+    dcFormatSize?: undefined;
+    dcIdentifier?: undefined;
+    dcLanguage?: undefined;
+    dcPublisher?: undefined;
+    dcRelation?: undefined;
+    dcRights?: undefined;
+    dcSource?: undefined;
+    dcSubject?: undefined;
+    dcTitle?: undefined;
+    dcType?: undefined;
+    modifiedTime?: undefined;
+    musicAlbum?: undefined;
+    musicAlbumDisc?: undefined;
+    musicAlbumTrack?: undefined;
+    musicAlbumUrl?: undefined;
+    musicCreator?: undefined;
+    musicDuration?: undefined;
+    musicMusician?: undefined;
+    musicReleaseDate?: undefined;
+    musicSong?: undefined;
+    musicSongDisc?: undefined;
+    musicSongTrack?: undefined;
+    musicSongUrl?: undefined;
+    ogArticleAuthor?: undefined;
+    ogArticleExpirationTime?: undefined;
+    ogArticleModifiedTime?: undefined;
+    ogArticlePublishedTime?: undefined;
+    ogArticlePublisher?: undefined;
+    ogArticleSection?: undefined;
+    ogArticleTag?: undefined;
+    ogAudio?: undefined;
+    ogAudioSecureURL?: undefined;
+    ogAudioType?: undefined;
+    ogAudioURL?: undefined;
+    ogAvailability?: undefined;
+    ogDate?: undefined;
+    ogDescription?: undefined;
+    ogDeterminer?: undefined;
+    ogImage?: undefined;
+    ogImageHeight?: undefined;
+    ogImageSecureURL?: undefined;
+    ogImageType?: undefined;
+    ogImageURL?: undefined;
+    ogImageWidth?: undefined;
+    ogLocale?: undefined;
+    ogLocaleAlternate?: undefined;
+    ogLogo?: undefined;
+    ogPriceAmount?: undefined;
+    ogPriceCurrency?: undefined;
+    ogProductAvailability?: undefined;
+    ogProductCondition?: undefined;
+    ogProductPriceAmount?: undefined;
+    ogProductPriceCurrency?: undefined;
+    ogProductRetailerItemId?: undefined;
+    ogSiteName?: undefined;
+    ogTitle?: undefined;
+    ogType?: undefined;
+    ogUrl?: undefined;
+    ogVideo?: undefined;
+    ogVideoActorId?: undefined;
+    ogVideoHeight?: undefined;
+    ogVideoSecureURL?: undefined;
+    ogVideoType?: undefined;
+    ogVideoWidth?: undefined;
+    placeLocationLatitude?: undefined;
+    placeLocationLongitude?: undefined;
+    profileFirstName?: undefined;
+    profileGender?: undefined;
+    profileLastName?: undefined;
+    profileUsername?: undefined;
+    publishedTime?: undefined;
+    releaseDate?: undefined;
+    restaurantContactInfoCountryName?: undefined;
+    restaurantContactInfoEmail?: undefined;
+    restaurantContactInfoLocality?: undefined;
+    restaurantContactInfoPhoneNumber?: undefined;
+    restaurantContactInfoPostalCode?: undefined;
+    restaurantContactInfoRegion?: undefined;
+    restaurantContactInfoStreetAddress?: undefined;
+    restaurantContactInfoWebsite?: undefined;
+    restaurantMenu?: undefined;
+    restaurantRestaurant?: undefined;
+    restaurantSection?: undefined;
+    restaurantVariationPriceAmount?: undefined;
+    restaurantVariationPriceCurrency?: undefined;
+    twitterAppIdGooglePlay?: undefined;
+    twitterAppIdiPad?: undefined;
+    twitterAppIdiPhone?: undefined;
+    twitterAppNameGooglePlay?: undefined;
+    twitterAppNameiPad?: undefined;
+    twitterAppNameiPhone?: undefined;
+    twitterAppUrlGooglePlay?: undefined;
+    twitterAppUrliPad?: undefined;
+    twitterAppUrliPhone?: undefined;
+    twitterCard?: undefined;
+    twitterCreator?: undefined;
+    twitterCreatorId?: undefined;
+    twitterDescription?: undefined;
+    twitterImage?: undefined;
+    twitterImageAlt?: undefined;
+    twitterImageHeight?: undefined;
+    twitterImageSrc?: undefined;
+    twitterImageWidth?: undefined;
+    twitterPlayer?: undefined;
+    twitterPlayerHeight?: undefined;
+    twitterPlayerStream?: undefined;
+    twitterPlayerStreamContentType?: undefined;
+    twitterPlayerWidth?: undefined;
+    twitterSite?: undefined;
+    twitterSiteId?: undefined;
+    twitterTitle?: undefined;
+    twitterUrl?: undefined;
+    updatedTime?: undefined;
+    requestUrl: string;
+    success: boolean;
+    charset?: undefined;
+    favicon?: undefined;
 };

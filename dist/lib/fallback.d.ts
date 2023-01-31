@@ -1,4 +1,5 @@
-export = fallback;
+declare const findImageTypeFromUrl: any, isImageTypeValid: any, isUrlValid: any;
+declare const doesElementExist: (selector: any, attribute: any, $: any) => boolean;
 /**
  * ogs fallbacks
  *
@@ -8,5 +9,4 @@ export = fallback;
  * @return {object} object with ogs results with updated fallback values
  *
  */
-declare function fallback(ogObject: object, options: object, $: object): object;
-//# sourceMappingURL=fallback.d.ts.map
+declare const fallback: (ogObject: any, options: any, $: any) => any;
