@@ -9,7 +9,7 @@ type OpenGraphScraperOptions = {
     customMetaTags?: customMetaTags[];
     allMedia?: boolean;
     peekSize?: number;
-    downloadLimit?: number;
+    downloadLimit?: number | false;
     urlValidatorSettings?: validatorSettings;
     decompress?: boolean;
     followRedirect?: boolean;
