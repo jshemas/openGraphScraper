@@ -3,8 +3,8 @@
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
   "version": "5.0.4",
   "license": "MIT",
-  "main": "index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "index.ts",
   "scripts": {
     "build": "tsc",
     "eslint:fix": "eslint . --ext .js --fix",
@@ -31,9 +31,10 @@
     "validator": "^13.7.0"
   },
   "files": [
-    "CHANGELOG.md",
     "/dist",
-    "/lib"
+    "/lib",
+    "CHANGELOG.md",
+    "index.ts"
   ],
   "devDependencies": {
     "@babel/core": "^7.20.12",
