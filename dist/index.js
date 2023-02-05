@@ -1,6 +1,5 @@
 const openGraphScraper = require('./lib/openGraphScraper');
-// import openGraphScraper from './lib/openGraphScraper';
-async function run(options) {
+export default async function run(options) {
     let results;
     try {
         results = await openGraphScraper(options);
@@ -15,6 +14,7 @@ async function run(options) {
                 error: exception.message,
                 errorDetails: exception,
             },
+            response: undefined
         };
         throw returnError;
     }
@@ -25,4 +25,3 @@ async function run(options) {
     };
     return returnSuccess;
 }
-export default run;
