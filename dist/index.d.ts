@@ -7,6 +7,20 @@ export = run;
  * @property {string | number} [width]
  */
 /**
+ * @typedef {object} twitterImageObject
+ * @property {string | number} [height]
+ * @property {string} [alt]
+ * @property {string} url
+ * @property {string | number} [width]
+ */
+/**
+ * @typedef {object} twitterPlayerObject
+ * @property {string | number} [height]
+ * @property {string} [stream]
+ * @property {string} [url]
+ * @property {string | number} [width]
+ */
+/**
  * @typedef {object} successResult
  * @property {boolean} error
  * @property {successResultObject} result
@@ -167,12 +181,12 @@ export = run;
  * @property {string | undefined} [twitterCreator]
  * @property {string | undefined} [twitterCreatorId]
  * @property {string | undefined} [twitterDescription]
- * @property {string | undefined} [twitterImage]
+ * @property {string | twitterImageObject | twitterImageObject[] | undefined} [twitterImage]
  * @property {string | undefined} [twitterImageAlt]
  * @property {string | undefined} [twitterImageHeight]
  * @property {string | undefined} [twitterImageSrc]
  * @property {string | undefined} [twitterImageWidth]
- * @property {string | undefined} [twitterPlayer]
+ * @property {string | twitterPlayerObject | twitterPlayerObject[] | undefined} [twitterPlayer]
  * @property {string | undefined} [twitterPlayerHeight]
  * @property {string | undefined} [twitterPlayerStream]
  * @property {string | undefined} [twitterPlayerStreamContentType]
@@ -434,7 +448,7 @@ declare function run(options: {
     timeout?: object;
 }): Promise<successResult | errorResult>;
 declare namespace run {
-    export { imageObject, successResult, successResultObject, errorResult, errorResultObject, customMetaTags, validatorSettings };
+    export { imageObject, twitterImageObject, twitterPlayerObject, successResult, successResultObject, errorResult, errorResultObject, customMetaTags, validatorSettings };
 }
 type customMetaTags = {
     /**
@@ -480,6 +494,18 @@ type imageObject = {
     height?: string | number;
     type: string;
     url: string;
+    width?: string | number;
+};
+type twitterImageObject = {
+    height?: string | number;
+    alt?: string;
+    url: string;
+    width?: string | number;
+};
+type twitterPlayerObject = {
+    height?: string | number;
+    stream?: string;
+    url?: string;
     width?: string | number;
 };
 type successResultObject = {
@@ -636,12 +662,12 @@ type successResultObject = {
     twitterCreator?: string | undefined;
     twitterCreatorId?: string | undefined;
     twitterDescription?: string | undefined;
-    twitterImage?: string | undefined;
+    twitterImage?: string | twitterImageObject | twitterImageObject[] | undefined;
     twitterImageAlt?: string | undefined;
     twitterImageHeight?: string | undefined;
     twitterImageSrc?: string | undefined;
     twitterImageWidth?: string | undefined;
-    twitterPlayer?: string | undefined;
+    twitterPlayer?: string | twitterPlayerObject | twitterPlayerObject[] | undefined;
     twitterPlayerHeight?: string | undefined;
     twitterPlayerStream?: string | undefined;
     twitterPlayerStreamContentType?: string | undefined;

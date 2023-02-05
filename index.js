@@ -10,6 +10,22 @@ const openGraphScraper = require('./lib/openGraphScraper');
  */
 
 /**
+ * @typedef {object} twitterImageObject
+ * @property {string | number} [height]
+ * @property {string} [alt]
+ * @property {string} url
+ * @property {string | number} [width]
+ */
+
+/**
+ * @typedef {object} twitterPlayerObject
+ * @property {string | number} [height]
+ * @property {string} [stream]
+ * @property {string} [url]
+ * @property {string | number} [width]
+ */
+
+/**
  * @typedef {object} successResult
  * @property {boolean} error
  * @property {successResultObject} result
@@ -171,12 +187,12 @@ const openGraphScraper = require('./lib/openGraphScraper');
  * @property {string | undefined} [twitterCreator]
  * @property {string | undefined} [twitterCreatorId]
  * @property {string | undefined} [twitterDescription]
- * @property {string | undefined} [twitterImage]
+ * @property {string | twitterImageObject | twitterImageObject[] | undefined} [twitterImage]
  * @property {string | undefined} [twitterImageAlt]
  * @property {string | undefined} [twitterImageHeight]
  * @property {string | undefined} [twitterImageSrc]
  * @property {string | undefined} [twitterImageWidth]
- * @property {string | undefined} [twitterPlayer]
+ * @property {string | twitterPlayerObject | twitterPlayerObject[] | undefined} [twitterPlayer]
  * @property {string | undefined} [twitterPlayerHeight]
  * @property {string | undefined} [twitterPlayerStream]
  * @property {string | undefined} [twitterPlayerStreamContentType]
