@@ -126,6 +126,20 @@ type imageObject = {
     width?: string | number;
 };
 
+type twitterImageObject = {
+  height?: string | number;
+  alt?: string;
+  url: string;
+  width?: string | number;
+};
+
+type twitterPlayerObject = {
+  height?: string | number;
+  stream?: string;
+  url?: string;
+  width?: string | number;
+};
+
 type successResultObject = {
     error?: undefined;
     errorDetails?: undefined;
@@ -280,12 +294,12 @@ type successResultObject = {
     twitterCreator?: string | undefined;
     twitterCreatorId?: string | undefined;
     twitterDescription?: string | undefined;
-    twitterImage?: string | undefined;
+    twitterImage?: string | twitterImageObject | twitterImageObject[] | undefined;
     twitterImageAlt?: string | undefined;
     twitterImageHeight?: string | undefined;
     twitterImageSrc?: string | undefined;
     twitterImageWidth?: string | undefined;
-    twitterPlayer?: string | undefined;
+    twitterPlayer?: string | twitterPlayerObject | twitterPlayerObject[] | undefined;
     twitterPlayerHeight?: string | undefined;
     twitterPlayerStream?: string | undefined;
     twitterPlayerStreamContentType?: string | undefined;
