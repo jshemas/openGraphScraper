@@ -1,5 +1,10 @@
 # Change Log
 
+## 5.0.5
+
+- Adding `twitterImageObject` and `twitterPlayerObject` types
+- Updating Dependencies
+
 ## 5.0.4
 
 - The `options.downloadLimit` type now allows for `false`
