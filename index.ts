@@ -1,7 +1,6 @@
 const openGraphScraper = require('./lib/openGraphScraper');
-// import openGraphScraper from './lib/openGraphScraper';
 
-async function run(options: OpenGraphScraperOptions) {
+export default async function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult> {
   let results;
   try {
     results = await openGraphScraper(options);
@@ -15,6 +14,7 @@ async function run(options: OpenGraphScraperOptions) {
         error: exception.message,
         errorDetails: exception,
       },
+      response: undefined
     };
     throw returnError;
   }
@@ -25,33 +25,6 @@ async function run(options: OpenGraphScraperOptions) {
   }
   return returnSuccess;
 }
-
-export default run;
-
-// export run(options: {
-//     url: string;
-//     html?: string;
-//     blacklist?: string[];
-//     onlyGetOpenGraphInfo?: boolean;
-//     ogImageFallback?: boolean;
-//     customMetaTags?: customMetaTags[];
-//     allMedia?: boolean;
-//     peekSize?: number;
-//     downloadLimit?: number;
-//     urlValidatorSettings?: validatorSettings;
-//     decompress?: boolean;
-//     followRedirect?: boolean;
-//     headers?: {
-//         [x: string]: string;
-//     };
-//     maxRedirects?: number;
-//     retry?: object;
-//     timeout?: object;
-// }): Promise<successResult | errorResult>;
-
-// declare namespace run {
-//     export { imageObject, successResult, successResultObject, errorResult, errorResultObject, customMetaTags, validatorSettings };
-// }
 
 type OpenGraphScraperOptions = {
   url: string;
@@ -73,7 +46,6 @@ type OpenGraphScraperOptions = {
   retry?: object;
   timeout?: object;
 }
-
 
 type customMetaTags = {
     /**
@@ -116,7 +88,7 @@ type SuccessResult = {
 type ErrorResult = {
     error: boolean;
     result: errorResultObject;
-    // response: undefined;
+    response: undefined;
 };
 
 type imageObject = {
