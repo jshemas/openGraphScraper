@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const openGraphScraper = require('./lib/openGraphScraper');
 async function run(options) {
     let results;
@@ -25,4 +27,5 @@ async function run(options) {
     };
     return returnSuccess;
 }
+exports.default = run;
 module.exports = run;
