@@ -5,6 +5,8 @@
   ],
   "compilerOptions": {
     "allowJs": true,
+    "module": "commonjs",
+    "moduleResolution": "node16",
     "outDir": "./dist",
     "target": "es2022"
   }
