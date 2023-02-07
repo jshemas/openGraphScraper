@@ -1,6 +1,6 @@
 const openGraphScraper = require('./lib/openGraphScraper');
 
-export default async function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult> {
+async function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult> {
   let results;
   try {
     results = await openGraphScraper(options);
@@ -25,6 +25,8 @@ export default async function run(options: OpenGraphScraperOptions): Promise<Err
   }
   return returnSuccess;
 }
+
+module.exports = run;
 
 type OpenGraphScraperOptions = {
   url: string;
