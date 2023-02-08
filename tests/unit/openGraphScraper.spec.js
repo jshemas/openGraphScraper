@@ -1,8 +1,8 @@
 const chardet = require('chardet');
 const iconv = require('iconv-lite');
 const nock = require('nock');
-const ogs = require('../../index');
-const charset = require('../../lib/charset');
+const ogs = require('../../dist/index');
+const charset = require('../../dist/lib/charset');
 
 const basicHTML = `
   <html>
