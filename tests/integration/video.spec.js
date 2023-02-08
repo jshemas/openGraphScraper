@@ -1,4 +1,4 @@
-const ogs = require('../../index');
+const ogs = require('../../dist/index');
 
 describe('video', function () {
   it('Test Youtube Video - Should Return correct Open Graph Info', function () {

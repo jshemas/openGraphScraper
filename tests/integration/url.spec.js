@@ -1,4 +1,4 @@
-const ogs = require('../../index');
+const ogs = require('../../dist/index');
 
 describe('url', function () {
   it('http', function () {

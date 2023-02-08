@@ -1,5 +1,5 @@
 const util = require('util');
-const ogs = require('../../index');
+const ogs = require('../../dist/index');
 
 describe('basic', function () {
   it('using promises should return valid data', function () {

@@ -1,4 +1,4 @@
-const ogs = require('../../index');
+const ogs = require('../../dist/index');
 
 describe('redirect', function () {
   context('should return correct Open Graph Info', function () {

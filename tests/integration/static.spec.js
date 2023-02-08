@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const ogs = require('../../index');
+const ogs = require('../../dist/index');
 
 describe('static', function () {
   it('airbnb', function () {

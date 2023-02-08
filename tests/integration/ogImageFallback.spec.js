@@ -1,4 +1,4 @@
-const ogs = require('../../index');
+const ogs = require('../../dist/index');
 
 describe('ogImageFallback', function () {
   it('should not use image fallback if there is no og image', function () {
