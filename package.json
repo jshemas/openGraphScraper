@@ -10,7 +10,7 @@
     "eslint:fix": "eslint . --ext .js --fix",
     "eslint": "eslint . --ext .js",
     "mocha:int": "mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",
-    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.ts --recursive \"./tests/unit/**/static.spec.ts\"",
+    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\"",
     "prepare": "npm run snyk-protect",
     "snyk-protect": "snyk-protect",
     "test": "npm run mocha:unit && npm run mocha:int"
