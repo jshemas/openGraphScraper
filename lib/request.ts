@@ -1,8 +1,8 @@
-const chardet = require('chardet');
-const iconv = require('iconv-lite');
-const { gotClient } = require('./utils');
+import * as chardet from 'chardet';
+import * as iconv from 'iconv-lite';
 
-const charset = require('./charset');
+import { gotClient } from './utils';
+import * as charset from './charset';
 
 /**
  * performs the got request and formats the body for ogs
@@ -12,7 +12,7 @@ const charset = require('./charset');
  * @return {object} formatted request body and response
  *
  */
-exports.requestAndResultsFormatter = async (gotOptions, ogsOptions) => {
+export async function requestAndResultsFormatter(gotOptions, ogsOptions) {
   const got = await gotClient(ogsOptions.downloadLimit);
 
   return got(gotOptions)

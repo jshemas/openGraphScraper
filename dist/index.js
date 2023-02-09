@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const openGraphScraper = require('./lib/openGraphScraper');
+const openGraphScraper_1 = require("./lib/openGraphScraper");
 async function run(options) {
     let results;
     try {
-        results = await openGraphScraper(options);
+        results = await (0, openGraphScraper_1.setOptionsAndReturnOpenGraphResults)(options);
     }
     catch (error) {
         const exception = error;

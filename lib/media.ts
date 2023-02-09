@@ -1,4 +1,4 @@
-const fields = require('./fields');
+import { fields } from './fields';
 
 const mediaMapperTwitterImage = (item) => ({
   url: item[0],
@@ -71,7 +71,7 @@ const zip = (array, ...args) => {
  * @return {object} object with ogs results with updated media values
  *
  */
-exports.mediaSetup = (ogObject, options) => {
+export function mediaSetup(ogObject, options) {
   // sets ogImage image/width/height/type to null if one these exists
   if (ogObject.ogImage || ogObject.ogImageWidth || ogObject.twitterImageHeight || ogObject.ogImageType) {
     ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : [null];

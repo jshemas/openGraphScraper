@@ -83,4 +83,4 @@ function charset(obj, data, peekSize) {
   return cs;
 }
 
-module.exports.find = charset;
+export const find = charset;

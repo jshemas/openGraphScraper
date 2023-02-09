@@ -1,4 +1,7 @@
-const fields = require('./fields');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mediaSetup = void 0;
+const fields_1 = require("./fields");
 const mediaMapperTwitterImage = (item) => ({
     url: item[0],
     width: item[1],
@@ -65,7 +68,7 @@ const zip = (array, ...args) => {
  * @return {object} object with ogs results with updated media values
  *
  */
-exports.mediaSetup = (ogObject, options) => {
+function mediaSetup(ogObject, options) {
     // sets ogImage image/width/height/type to null if one these exists
     if (ogObject.ogImage || ogObject.ogImageWidth || ogObject.twitterImageHeight || ogObject.ogImageType) {
         ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : [null];
@@ -126,7 +129,7 @@ exports.mediaSetup = (ogObject, options) => {
         .map(mediaMapperMusicSong)
         .sort(mediaSorterMusicSong);
     // remove old values since everything will live under the main property
-    fields.filter((item) => (item.multiple && item.fieldName && item.fieldName.match('(ogImage|ogVideo|twitter|musicSong).*')))
+    fields_1.fields.filter((item) => (item.multiple && item.fieldName && item.fieldName.match('(ogImage|ogVideo|twitter|musicSong).*')))
         .forEach((item) => {
         delete ogObject[item.fieldName];
     });
@@ -155,4 +158,6 @@ exports.mediaSetup = (ogObject, options) => {
             [ogObject.musicSong] = musicSongs;
     }
     return ogObject;
-};
+}
+exports.mediaSetup = mediaSetup;
+;

@@ -1,7 +1,10 @@
-const { extractMetaTags } = require('./extract');
-const { requestAndResultsFormatter } = require('./request');
-const charset = require('./charset');
-const utils = require('./utils');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.setOptionsAndReturnOpenGraphResults = void 0;
+const extract_1 = require("./extract");
+const request_1 = require("./request");
+const charset = require("./charset");
+const utils = require("./utils");
 /**
  * sets up options for the got request and calls extract on html
  *
@@ -9,12 +12,12 @@ const utils = require('./utils');
  * @return {object} object with ogs results
  *
  */
-const setOptionsAndReturnOpenGraphResults = async (options) => {
+async function setOptionsAndReturnOpenGraphResults(options) {
     const { ogsOptions, gotOptions } = utils.optionSetupAndSplit(options);
     if (ogsOptions.html) {
         if (ogsOptions.url)
             throw new Error('Must specify either `url` or `html`, not both');
-        const ogObject = extractMetaTags(ogsOptions.html, ogsOptions);
+        const ogObject = (0, extract_1.extractMetaTags)(ogsOptions.html, ogsOptions);
         ogObject.requestUrl = null;
         ogObject.success = true;
         return { ogObject, response: { body: ogsOptions.html } };
@@ -32,8 +35,8 @@ const setOptionsAndReturnOpenGraphResults = async (options) => {
         throw new Error('Host name has been black listed');
     }
     try {
-        const { requestBody, response } = await requestAndResultsFormatter(gotOptions, ogsOptions);
-        const ogObject = extractMetaTags(requestBody, ogsOptions);
+        const { requestBody, response } = await (0, request_1.requestAndResultsFormatter)(gotOptions, ogsOptions);
+        const ogObject = (0, extract_1.extractMetaTags)(requestBody, ogsOptions);
         if (!ogsOptions.onlyGetOpenGraphInfo) {
             ogObject.charset = charset.find(response.headers, requestBody, ogsOptions.peekSize);
         }
@@ -63,5 +66,6 @@ const setOptionsAndReturnOpenGraphResults = async (options) => {
             throw exception;
         throw new Error('Page not found');
     }
-};
-module.exports = setOptionsAndReturnOpenGraphResults;
+}
+exports.setOptionsAndReturnOpenGraphResults = setOptionsAndReturnOpenGraphResults;
+;

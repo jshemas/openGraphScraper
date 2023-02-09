@@ -1,4 +1,7 @@
-const { findImageTypeFromUrl, isImageTypeValid, isUrlValid } = require('./utils');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.fallback = void 0;
+const utils_1 = require("./utils");
 const doesElementExist = (selector, attribute, $) => ($(selector).attr(attribute) && $(selector).attr(attribute).length > 0);
 /**
  * ogs fallbacks
@@ -9,7 +12,7 @@ const doesElementExist = (selector, attribute, $) => ($(selector).attr(attribute
  * @return {object} object with ogs results with updated fallback values
  *
  */
-const fallback = (ogObject, options, $) => {
+function fallback(ogObject, options, $) {
     // title fallback
     if (!ogObject.ogTitle) {
         if ($('title').text() && $('title').text().length > 0) {
@@ -49,8 +52,8 @@ const fallback = (ogObject, options, $) => {
         $('img').map((index, imageElement) => {
             if (doesElementExist(imageElement, 'src', $)) {
                 const source = $(imageElement).attr('src');
-                const type = findImageTypeFromUrl(source);
-                if (!isUrlValid(source, options.urlValidatorSettings) || !isImageTypeValid(type))
+                const type = (0, utils_1.findImageTypeFromUrl)(source);
+                if (!(0, utils_1.isUrlValid)(source, options.urlValidatorSettings) || !(0, utils_1.isImageTypeValid)(type))
                     return false;
                 ogObject.ogImage.push({
                     url: source,
@@ -69,16 +72,16 @@ const fallback = (ogObject, options, $) => {
         if (Array.isArray(ogObject.ogImage)) {
             ogObject.ogImage.map((image) => {
                 if (image.url && !image.type) {
-                    const type = findImageTypeFromUrl(image.url);
-                    if (isImageTypeValid(type))
+                    const type = (0, utils_1.findImageTypeFromUrl)(image.url);
+                    if ((0, utils_1.isImageTypeValid)(type))
                         image.type = type;
                 }
                 return false;
             });
         }
         else if (ogObject.ogImage.url && !ogObject.ogImage.type) {
-            const type = findImageTypeFromUrl(ogObject.ogImage.url);
-            if (isImageTypeValid(type))
+            const type = (0, utils_1.findImageTypeFromUrl)(ogObject.ogImage.url);
+            if ((0, utils_1.isImageTypeValid)(type))
                 ogObject.ogImage.type = type;
         }
     }
@@ -182,5 +185,6 @@ const fallback = (ogObject, options, $) => {
         }
     }
     return ogObject;
-};
-module.exports = fallback;
+}
+exports.fallback = fallback;
+;

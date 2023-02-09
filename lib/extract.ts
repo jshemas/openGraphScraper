@@ -1,9 +1,9 @@
-const cheerio = require('cheerio');
+import * as cheerio from 'cheerio';
 
-const fallback = require('./fallback');
-const fields = require('./fields');
-const media = require('./media');
-const utils = require('./utils');
+import { fallback } from './fallback';
+import { fields } from './fields';
+import * as media from './media';
+import * as utils from'./utils';
 
 /**
  * extract all of the meta tags needed for ogs
@@ -13,7 +13,7 @@ const utils = require('./utils');
  * @return {object} object with ogs results
  *
  */
-exports.extractMetaTags = (body, options) => {
+export function extractMetaTags(body, options) {
   let ogObject = {};
   const $ = cheerio.load(body);
   const metaFields = fields.concat(options.customMetaTags);

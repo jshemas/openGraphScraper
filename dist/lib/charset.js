@@ -1,3 +1,4 @@
+"use strict";
 /*
 
 This software is licensed under the MIT License.
@@ -24,6 +25,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.find = void 0;
 // note: this was pull at version 1.0.1 from https://github.com/node-modules/charset
 const CHARTSET_RE = /(?:charset|encoding)\s{0,10}=\s{0,10}['"]? {0,10}([\w-]{1,100})/i;
 /**
@@ -79,4 +82,4 @@ function charset(obj, data, peekSize) {
     }
     return cs;
 }
-module.exports.find = charset;
+exports.find = charset;

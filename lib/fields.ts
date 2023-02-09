@@ -4,7 +4,7 @@
  * @return {array} array of meta tags
  *
  */
-module.exports = [
+export const fields = [
   {
     multiple: false,
     property: 'og:title',

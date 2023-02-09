@@ -1,4 +1,7 @@
-const validator = require('validator');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.gotClient = exports.optionSetupAndSplit = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = void 0;
+const validator = require("validator");
 /**
  * Checks if URL is valid
  *
@@ -7,7 +10,11 @@ const validator = require('validator');
  * @return {boolean} boolean value if the url is valid
  *
  */
-exports.isUrlValid = (url, urlValidatorSettings) => typeof url === 'string' && url.length > 0 && validator.isURL(url, urlValidatorSettings);
+function isUrlValid(url, urlValidatorSettings) {
+    return typeof url === 'string' && url.length > 0 && validator.isURL(url, urlValidatorSettings);
+}
+exports.isUrlValid = isUrlValid;
+;
 /**
  * Forces url to start with http:// if it doesn't
  *
@@ -24,9 +31,11 @@ const coerceUrl = (url) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}
  * @return {string} proper url or null
  *
  */
-exports.validateAndFormatURL = (url, urlValidatorSettings) => ({
-    url: this.isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null,
-});
+function validateAndFormatURL(url, urlValidatorSettings) {
+    return { url: this.isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null };
+}
+exports.validateAndFormatURL = validateAndFormatURL;
+;
 /**
  * finds the image type from a given url
  *
@@ -34,11 +43,13 @@ exports.validateAndFormatURL = (url, urlValidatorSettings) => ({
  * @return {string} image type from url
  *
  */
-exports.findImageTypeFromUrl = (url) => {
+function findImageTypeFromUrl(url) {
     let type = url.split('.').pop();
     [type] = type.split('?');
     return type;
-};
+}
+exports.findImageTypeFromUrl = findImageTypeFromUrl;
+;
 /**
  * checks if image type is valid
  *
@@ -46,10 +57,12 @@ exports.findImageTypeFromUrl = (url) => {
  * @return {boolean} boolean value if type is value
  *
  */
-exports.isImageTypeValid = (type) => {
+function isImageTypeValid(type) {
     const validImageTypes = ['apng', 'bmp', 'gif', 'ico', 'cur', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'tif', 'tiff', 'webp'];
     return validImageTypes.includes(type);
-};
+}
+exports.isImageTypeValid = isImageTypeValid;
+;
 /**
  * checks if URL is a non html page
  *
@@ -57,11 +70,13 @@ exports.isImageTypeValid = (type) => {
  * @return {boolean} boolean value if url is non html
  *
  */
-exports.isThisANonHTMLUrl = (url) => {
+function isThisANonHTMLUrl(url) {
     const invalidImageTypes = ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.3gp', '.avi', '.mov', '.mp4', '.m4v', '.m4a', '.mp3', '.mkv', '.ogv', '.ogm', '.ogg', '.oga', '.webm', '.wav', '.bmp', '.gif', '.jpg', '.jpeg', '.png', '.webp', '.zip', '.rar', '.tar', '.tar.gz', '.tgz', '.tar.bz2', '.tbz2', '.txt', '.pdf'];
     const extension = this.findImageTypeFromUrl(url);
     return invalidImageTypes.some((type) => `.${extension}`.includes(type));
-};
+}
+exports.isThisANonHTMLUrl = isThisANonHTMLUrl;
+;
 /**
  * find and delete nested undefs
  *
@@ -69,7 +84,7 @@ exports.isThisANonHTMLUrl = (url) => {
  * @return {object} object without nested undefs
  *
  */
-exports.removeNestedUndefinedValues = (object) => {
+function removeNestedUndefinedValues(object) {
     Object.entries(object).forEach(([key, value]) => {
         if (value && typeof value === 'object')
             this.removeNestedUndefinedValues(value);
@@ -77,7 +92,9 @@ exports.removeNestedUndefinedValues = (object) => {
             delete object[key];
     });
     return object;
-};
+}
+exports.removeNestedUndefinedValues = removeNestedUndefinedValues;
+;
 /**
  * split the options object into ogs and got option objects
  *
@@ -85,7 +102,7 @@ exports.removeNestedUndefinedValues = (object) => {
  * @return {object} object with nested options for ogs and got
  *
  */
-exports.optionSetupAndSplit = (options) => {
+function optionSetupAndSplit(options) {
     const ogsOptions = {
         allMedia: false,
         customMetaTags: [],
@@ -129,7 +146,9 @@ exports.optionSetupAndSplit = (options) => {
     delete gotOptions.peekSize;
     delete gotOptions.urlValidatorSettings;
     return { ogsOptions, gotOptions };
-};
+}
+exports.optionSetupAndSplit = optionSetupAndSplit;
+;
 /**
  * gotClient - limit the size of the content we fetch when performing the request
  * from https://github.com/sindresorhus/got/blob/main/documentation/examples/advanced-creation.js
@@ -138,7 +157,7 @@ exports.optionSetupAndSplit = (options) => {
  * @return {function} got client with download limit
  *
  */
-exports.gotClient = async (downloadLimit) => {
+async function gotClient(downloadLimit) {
     // https://github.com/sindresorhus/got/issues/1789
     // eslint-disable-next-line import/no-unresolved
     const { got } = await import('got');
@@ -164,4 +183,6 @@ exports.gotClient = async (downloadLimit) => {
             },
         ],
     });
-};
+}
+exports.gotClient = gotClient;
+;

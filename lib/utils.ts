@@ -1,4 +1,4 @@
-const validator = require('validator');
+import * as validator from 'validator';
 
 /**
  * Checks if URL is valid
@@ -8,7 +8,9 @@ const validator = require('validator');
  * @return {boolean} boolean value if the url is valid
  *
  */
-exports.isUrlValid = (url, urlValidatorSettings) => typeof url === 'string' && url.length > 0 && validator.isURL(url, urlValidatorSettings);
+export function isUrlValid(url, urlValidatorSettings) {
+  return typeof url === 'string' && url.length > 0 && validator.isURL(url, urlValidatorSettings);
+};
 
 /**
  * Forces url to start with http:// if it doesn't
@@ -27,9 +29,9 @@ const coerceUrl = (url) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}
  * @return {string} proper url or null
  *
  */
-exports.validateAndFormatURL = (url, urlValidatorSettings) => ({
-  url: this.isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null,
-});
+export function validateAndFormatURL(url, urlValidatorSettings){
+  return {url: this.isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null}
+};
 
 /**
  * finds the image type from a given url
@@ -38,7 +40,7 @@ exports.validateAndFormatURL = (url, urlValidatorSettings) => ({
  * @return {string} image type from url
  *
  */
-exports.findImageTypeFromUrl = (url) => {
+export function findImageTypeFromUrl(url) {
   let type = url.split('.').pop();
   [type] = type.split('?');
   return type;
@@ -51,7 +53,7 @@ exports.findImageTypeFromUrl = (url) => {
  * @return {boolean} boolean value if type is value
  *
  */
-exports.isImageTypeValid = (type) => {
+export function isImageTypeValid(type) {
   const validImageTypes = ['apng', 'bmp', 'gif', 'ico', 'cur', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'tif', 'tiff', 'webp'];
   return validImageTypes.includes(type);
 };
@@ -63,7 +65,7 @@ exports.isImageTypeValid = (type) => {
  * @return {boolean} boolean value if url is non html
  *
  */
-exports.isThisANonHTMLUrl = (url) => {
+export function isThisANonHTMLUrl(url) {
   const invalidImageTypes = ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.3gp', '.avi', '.mov', '.mp4', '.m4v', '.m4a', '.mp3', '.mkv', '.ogv', '.ogm', '.ogg', '.oga', '.webm', '.wav', '.bmp', '.gif', '.jpg', '.jpeg', '.png', '.webp', '.zip', '.rar', '.tar', '.tar.gz', '.tgz', '.tar.bz2', '.tbz2', '.txt', '.pdf'];
   const extension = this.findImageTypeFromUrl(url);
   return invalidImageTypes.some((type) => `.${extension}`.includes(type));
@@ -76,7 +78,7 @@ exports.isThisANonHTMLUrl = (url) => {
  * @return {object} object without nested undefs
  *
  */
-exports.removeNestedUndefinedValues = (object) => {
+export function removeNestedUndefinedValues(object) {
   Object.entries(object).forEach(([key, value]) => {
     if (value && typeof value === 'object') this.removeNestedUndefinedValues(value);
     else if (value === undefined) delete object[key];
@@ -91,7 +93,7 @@ exports.removeNestedUndefinedValues = (object) => {
  * @return {object} object with nested options for ogs and got
  *
  */
-exports.optionSetupAndSplit = (options) => {
+export function optionSetupAndSplit(options) {
   const ogsOptions = {
     allMedia: false,
     customMetaTags: [],
@@ -148,7 +150,7 @@ exports.optionSetupAndSplit = (options) => {
  * @return {function} got client with download limit
  *
  */
-exports.gotClient = async (downloadLimit) => {
+export async function gotClient(downloadLimit) {
   // https://github.com/sindresorhus/got/issues/1789
   // eslint-disable-next-line import/no-unresolved
   const { got } = await import('got');

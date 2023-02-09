@@ -1,10 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.fields = void 0;
 /**
  * array of meta tags ogs is looking for
  *
  * @return {array} array of meta tags
  *
  */
-module.exports = [
+exports.fields = [
     {
         multiple: false,
         property: 'og:title',

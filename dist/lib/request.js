@@ -1,7 +1,10 @@
-const chardet = require('chardet');
-const iconv = require('iconv-lite');
-const { gotClient } = require('./utils');
-const charset = require('./charset');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.requestAndResultsFormatter = void 0;
+const chardet = require("chardet");
+const iconv = require("iconv-lite");
+const utils_1 = require("./utils");
+const charset = require("./charset");
 /**
  * performs the got request and formats the body for ogs
  *
@@ -10,8 +13,8 @@ const charset = require('./charset');
  * @return {object} formatted request body and response
  *
  */
-exports.requestAndResultsFormatter = async (gotOptions, ogsOptions) => {
-    const got = await gotClient(ogsOptions.downloadLimit);
+async function requestAndResultsFormatter(gotOptions, ogsOptions) {
+    const got = await (0, utils_1.gotClient)(ogsOptions.downloadLimit);
     return got(gotOptions)
         .then((response) => {
         let requestBody = response.body;
@@ -41,4 +44,6 @@ exports.requestAndResultsFormatter = async (gotOptions, ogsOptions) => {
             throw error;
         throw new Error(error);
     });
-};
+}
+exports.requestAndResultsFormatter = requestAndResultsFormatter;
+;

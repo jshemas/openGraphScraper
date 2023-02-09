@@ -1,7 +1,7 @@
-const { extractMetaTags } = require('./extract');
-const { requestAndResultsFormatter } = require('./request');
-const charset = require('./charset');
-const utils = require('./utils');
+import { extractMetaTags } from './extract';
+import { requestAndResultsFormatter } from './request';
+import * as charset from './charset';
+import * as utils from './utils';
 
 /**
  * sets up options for the got request and calls extract on html
@@ -10,7 +10,7 @@ const utils = require('./utils');
  * @return {object} object with ogs results
  *
  */
-const setOptionsAndReturnOpenGraphResults = async (options) => {
+export async function setOptionsAndReturnOpenGraphResults(options) {
   const { ogsOptions, gotOptions } = utils.optionSetupAndSplit(options);
 
   if (ogsOptions.html) {
@@ -67,5 +67,3 @@ const setOptionsAndReturnOpenGraphResults = async (options) => {
     throw new Error('Page not found');
   }
 };
-
-module.exports = setOptionsAndReturnOpenGraphResults;

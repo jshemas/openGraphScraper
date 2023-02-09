@@ -1,8 +1,11 @@
-const cheerio = require('cheerio');
-const fallback = require('./fallback');
-const fields = require('./fields');
-const media = require('./media');
-const utils = require('./utils');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.extractMetaTags = void 0;
+const cheerio = require("cheerio");
+const fallback_1 = require("./fallback");
+const fields_1 = require("./fields");
+const media = require("./media");
+const utils = require("./utils");
 /**
  * extract all of the meta tags needed for ogs
  *
@@ -11,10 +14,10 @@ const utils = require('./utils');
  * @return {object} object with ogs results
  *
  */
-exports.extractMetaTags = (body, options) => {
+function extractMetaTags(body, options) {
     let ogObject = {};
     const $ = cheerio.load(body);
-    const metaFields = fields.concat(options.customMetaTags);
+    const metaFields = fields_1.fields.concat(options.customMetaTags);
     // find all of the open graph info in the meta tags
     $('meta').each((index, meta) => {
         if (!meta.attribs || (!meta.attribs.property && !meta.attribs.name))
@@ -46,9 +49,11 @@ exports.extractMetaTags = (body, options) => {
     ogObject = media.mediaSetup(ogObject, options);
     // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks
     if (!options.onlyGetOpenGraphInfo) {
-        ogObject = fallback(ogObject, options, $);
+        ogObject = (0, fallback_1.fallback)(ogObject, options, $);
     }
     // removes any undefs
     ogObject = utils.removeNestedUndefinedValues(ogObject);
     return ogObject;
-};
+}
+exports.extractMetaTags = extractMetaTags;
+;

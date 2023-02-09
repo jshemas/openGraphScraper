@@ -1,9 +1,9 @@
-const openGraphScraper = require('./lib/openGraphScraper');
+import { setOptionsAndReturnOpenGraphResults } from './lib/openGraphScraper';
 
 export default async function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult> {
   let results;
   try {
-    results = await openGraphScraper(options);
+    results = await setOptionsAndReturnOpenGraphResults(options);
   } catch (error) {
     const exception = error as Error;
     const returnError:ErrorResult = {
