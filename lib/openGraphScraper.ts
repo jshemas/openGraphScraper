@@ -37,18 +37,14 @@ export async function setOptionsAndReturnOpenGraphResults(options) {
   }
 
   try {
-    const { requestBody, response } = await requestAndResultsFormatter(gotOptions, ogsOptions);
-
-    const ogObject = extractMetaTags(requestBody, ogsOptions);
+    const { decodedBody, response } = await requestAndResultsFormatter(gotOptions, ogsOptions);
+    const ogObject = extractMetaTags(decodedBody, ogsOptions);
 
     if (!ogsOptions.onlyGetOpenGraphInfo) {
-      ogObject.charset = charset.find(response.headers, requestBody, ogsOptions.peekSize);
+      ogObject.charset = charset.find(response.headers, decodedBody, ogsOptions.peekSize);
     }
     ogObject.requestUrl = ogsOptions.url;
     ogObject.success = true;
-
-    // setting response.rawBody to the parsed body since response.body is a buffer
-    response.rawBody = requestBody;
 
     return { ogObject, response };
   } catch (exception) {

@@ -37,7 +37,8 @@ describe('static check meta tags', function () {
         });
         expect(data.result.favicon).to.be.eql('https://bar.com/foo.png');
         expect(data.result.charset).to.be.eql('utf8');
-        expect(data.response.body).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.response.body).to.be.eql(metaHTML);
+        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
       });
   });
 
@@ -65,7 +66,8 @@ describe('static check meta tags', function () {
         expect(data.result.articleSection).to.be.eql('bar');
         expect(data.result.articleTag).to.be.eql('foobar');
         expect(data.result.ogType).to.be.eql('article');
-        expect(data.response.body).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.response.body).to.be.eql(metaHTML);
+        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
       });
   });
 
@@ -85,7 +87,8 @@ describe('static check meta tags', function () {
         expect(data.result.ogAudio).to.be.eql('http://foo.com');
         expect(data.result.ogAudioSecureURL).to.be.eql('https://foo.com');
         expect(data.result.ogAudioType).to.be.eql('audio/bar');
-        expect(data.response.body).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.response.body).to.be.eql(metaHTML);
+        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
       });
   });
 
@@ -110,7 +113,8 @@ describe('static check meta tags', function () {
           height: '2',
           type: 'image/png',
         });
-        expect(data.response.body).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.response.body).to.be.eql(metaHTML);
+        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
       });
   });
 
@@ -162,7 +166,8 @@ describe('static check meta tags', function () {
           height: null,
           alt: null,
         });
-        expect(data.response.body).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.response.body).to.be.eql(metaHTML);
+        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
       });
   });
 
@@ -187,7 +192,8 @@ describe('static check meta tags', function () {
           height: '2',
           type: 'text/bar',
         });
-        expect(data.response.body).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.response.body).to.be.eql(metaHTML);
+        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
       });
   });
 
@@ -236,7 +242,8 @@ describe('static check meta tags', function () {
         });
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('utf8');
-        expect(data.response.body).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.response.body).to.be.eql(metaHTML);
+        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
       });
   });
 
@@ -287,7 +294,8 @@ describe('static check meta tags', function () {
         });
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('sjis');
-        expect(data.response.body).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.response.body).to.be.eql(metaHTML);
+        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
       });
   });
 
@@ -336,7 +344,8 @@ describe('static check meta tags', function () {
         });
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('euc-jp');
-        expect(data.response.body).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.response.body).to.be.eql(metaHTML);
+        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
       });
   });
 });

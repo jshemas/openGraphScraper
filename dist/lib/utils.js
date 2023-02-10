@@ -130,12 +130,8 @@ function optionSetupAndSplit(options) {
         followRedirect: true,
         headers: {},
         maxRedirects: 10,
-        responseType: 'buffer',
         ...options,
     };
-    if (process.browser) {
-        gotOptions.decompress = false;
-    }
     // remove any OGS options from gotOptions since this will cause errors in got
     delete gotOptions.allMedia;
     delete gotOptions.blacklist;
@@ -167,9 +163,11 @@ async function gotClient(downloadLimit) {
                 const promiseOrStream = next(options);
                 const destroy = (message) => {
                     if (options.isStream) {
+                        // @ts-ignore
                         promiseOrStream.destroy(new Error(message));
                         return;
                     }
+                    // @ts-ignore
                     promiseOrStream.cancel(message);
                 };
                 if (typeof downloadLimit === 'number') {

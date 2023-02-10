@@ -72,7 +72,8 @@ describe('return ogs', function () {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(Buffer.from(basicHTML, 'utf8'));
+          expect(data.response.body).to.be.eql(basicHTML);
+          expect(data.response.rawBody).to.be.eql(Buffer.from(basicHTML, 'utf8'));
         });
     });
 
@@ -96,7 +97,8 @@ describe('return ogs', function () {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(Buffer.from(basicHTML, 'utf8'));
+          expect(data.response.body).to.be.eql(basicHTML);
+          expect(data.response.rawBody).to.be.eql(Buffer.from(basicHTML, 'utf8'));
         });
     });
 
@@ -112,7 +114,8 @@ describe('return ogs', function () {
           expect(data.result.ogTitle).to.be.eql('тестовая страница');
           expect(data.result.ogDescription).to.be.eql('привет тестовая страница<');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(Buffer.from(encodingHTML, 'utf8'));
+          expect(data.response.body).to.be.eql(encodingHTML);
+          expect(data.response.rawBody).to.be.eql(Buffer.from(encodingHTML, 'utf8'));
         });
     });
 
@@ -132,7 +135,8 @@ describe('return ogs', function () {
             type: 'png',
           });
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(Buffer.from(multipleImageHTML, 'utf8'));
+          expect(data.response.body).to.be.eql(multipleImageHTML);
+          expect(data.response.rawBody).to.be.eql(Buffer.from(multipleImageHTML, 'utf8'));
         });
     });
 
@@ -147,7 +151,8 @@ describe('return ogs', function () {
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.ogDescription).to.be.eql('test description from meta');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(Buffer.from(metaDescriptionHTML, 'utf8'));
+          expect(data.response.body).to.be.eql(metaDescriptionHTML);
+          expect(data.response.rawBody).to.be.eql(Buffer.from(metaDescriptionHTML, 'utf8'));
         });
     });
 
@@ -162,7 +167,8 @@ describe('return ogs', function () {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(Buffer.from(basicHTML, 'utf8'));
+          expect(data.response.body).to.be.eql(basicHTML);
+          expect(data.response.rawBody).to.be.eql(Buffer.from(basicHTML, 'utf8'));
         });
     });
 
@@ -177,7 +183,8 @@ describe('return ogs', function () {
           expect(data.result.ogTitle).to.be.eql(undefined);
           expect(data.result.describe).to.be.eql(undefined);
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(Buffer.from(metaDescriptionHTML, 'utf8'));
+          expect(data.response.body).to.be.eql(metaDescriptionHTML);
+          expect(data.response.rawBody).to.be.eql(Buffer.from(metaDescriptionHTML, 'utf8'));
         });
     });
 
@@ -203,7 +210,8 @@ describe('return ogs', function () {
             url: 'test1.png', width: null, height: null, type: 'png',
           });
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(Buffer.from(secureUrlHTML, 'utf8'));
+          expect(data.response.body).to.be.eql(secureUrlHTML);
+          expect(data.response.rawBody).to.be.eql(Buffer.from(secureUrlHTML, 'utf8'));
         });
     });
 
@@ -224,7 +232,8 @@ describe('return ogs', function () {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
           expect(data.result.ogTitle).to.not.exist;
-          expect(data.response.body).to.be.eql(Buffer.from(missingContentHTML, 'utf8'));
+          expect(data.response.body).to.be.eql(missingContentHTML);
+          expect(data.response.rawBody).to.be.eql(Buffer.from(missingContentHTML, 'utf8'));
         });
     });
 
@@ -250,7 +259,8 @@ describe('return ogs', function () {
             url: 'test1.png', width: null, height: null, type: 'png',
           });
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(Buffer.from(secureUrlHTML, 'utf8'));
+          expect(data.response.body).to.be.eql(secureUrlHTML);
+          expect(data.response.rawBody).to.be.eql(Buffer.from(secureUrlHTML, 'utf8'));
         });
     });
 
@@ -268,7 +278,8 @@ describe('return ogs', function () {
             expect(data.result.success).to.be.eql(true);
             expect(data.result.ogTitle).to.be.eql('test page');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(Buffer.from(basicHTML, 'utf8'));
+            expect(data.response.body).to.be.eql(basicHTML);
+            expect(data.response.rawBody).to.be.eql(Buffer.from(basicHTML, 'utf8'));
           });
       });
     });
@@ -291,7 +302,8 @@ describe('return ogs', function () {
           expect(data.result.fooTag).to.be.eql('bar');
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(Buffer.from(basicHTML, 'utf8'));
+          expect(data.response.body).to.be.eql(basicHTML);
+          expect(data.response.rawBody).to.be.eql(Buffer.from(basicHTML, 'utf8'));
         });
     });
   });
