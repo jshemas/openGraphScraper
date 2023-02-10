@@ -32,7 +32,6 @@
   },
   "files": [
     "/dist",
-    "/lib",
     "CHANGELOG.md",
     "index.ts"
   ],
