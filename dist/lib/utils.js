@@ -132,9 +132,6 @@ function optionSetupAndSplit(options) {
         maxRedirects: 10,
         ...options,
     };
-    if (process.browser) {
-        gotOptions.decompress = false;
-    }
     // remove any OGS options from gotOptions since this will cause errors in got
     delete gotOptions.allMedia;
     delete gotOptions.blacklist;

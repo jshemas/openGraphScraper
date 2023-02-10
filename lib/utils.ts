@@ -124,10 +124,6 @@ export function optionSetupAndSplit(options) {
     ...options,
   };
 
-  if (process.browser) {
-    gotOptions.decompress = false;
-  }
-
   // remove any OGS options from gotOptions since this will cause errors in got
   delete gotOptions.allMedia;
   delete gotOptions.blacklist;
