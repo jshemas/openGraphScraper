@@ -16,7 +16,7 @@ async function run(options) {
                 error: exception.message,
                 errorDetails: exception,
             },
-            response: undefined
+            response: undefined,
         };
         throw returnError;
     }

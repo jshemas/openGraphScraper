@@ -66,4 +66,3 @@ async function setOptionsAndReturnOpenGraphResults(options) {
     }
 }
 exports.setOptionsAndReturnOpenGraphResults = setOptionsAndReturnOpenGraphResults;
-;

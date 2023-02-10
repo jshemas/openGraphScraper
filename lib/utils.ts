@@ -10,7 +10,7 @@ import * as validator from 'validator';
  */
 export function isUrlValid(url, urlValidatorSettings) {
   return typeof url === 'string' && url.length > 0 && validator.isURL(url, urlValidatorSettings);
-};
+}
 
 /**
  * Forces url to start with http:// if it doesn't
@@ -29,9 +29,9 @@ const coerceUrl = (url) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}
  * @return {string} proper url or null
  *
  */
-export function validateAndFormatURL(url, urlValidatorSettings){
-  return {url: this.isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null}
-};
+export function validateAndFormatURL(url, urlValidatorSettings) {
+  return { url: this.isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null };
+}
 
 /**
  * finds the image type from a given url
@@ -44,7 +44,7 @@ export function findImageTypeFromUrl(url) {
   let type = url.split('.').pop();
   [type] = type.split('?');
   return type;
-};
+}
 
 /**
  * checks if image type is valid
@@ -56,7 +56,7 @@ export function findImageTypeFromUrl(url) {
 export function isImageTypeValid(type) {
   const validImageTypes = ['apng', 'bmp', 'gif', 'ico', 'cur', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'tif', 'tiff', 'webp'];
   return validImageTypes.includes(type);
-};
+}
 
 /**
  * checks if URL is a non html page
@@ -69,7 +69,7 @@ export function isThisANonHTMLUrl(url) {
   const invalidImageTypes = ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.3gp', '.avi', '.mov', '.mp4', '.m4v', '.m4a', '.mp3', '.mkv', '.ogv', '.ogm', '.ogg', '.oga', '.webm', '.wav', '.bmp', '.gif', '.jpg', '.jpeg', '.png', '.webp', '.zip', '.rar', '.tar', '.tar.gz', '.tgz', '.tar.bz2', '.tbz2', '.txt', '.pdf'];
   const extension = this.findImageTypeFromUrl(url);
   return invalidImageTypes.some((type) => `.${extension}`.includes(type));
-};
+}
 
 /**
  * find and delete nested undefs
@@ -84,7 +84,7 @@ export function removeNestedUndefinedValues(object) {
     else if (value === undefined) delete object[key];
   });
   return object;
-};
+}
 
 /**
  * split the options object into ogs and got option objects
@@ -135,7 +135,7 @@ export function optionSetupAndSplit(options) {
   delete gotOptions.urlValidatorSettings;
 
   return { ogsOptions, gotOptions };
-};
+}
 
 /**
  * gotClient - limit the size of the content we fetch when performing the request
@@ -177,4 +177,4 @@ export async function gotClient(downloadLimit) {
       },
     ],
   });
-};
+}

@@ -56,4 +56,3 @@ function extractMetaTags(body, options) {
     return ogObject;
 }
 exports.extractMetaTags = extractMetaTags;
-;

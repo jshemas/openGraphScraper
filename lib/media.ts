@@ -175,4 +175,4 @@ export function mediaSetup(ogObject, options) {
   }
 
   return ogObject;
-};
+}

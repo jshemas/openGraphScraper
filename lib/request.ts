@@ -45,4 +45,4 @@ export async function requestAndResultsFormatter(gotOptions, ogsOptions) {
       if (error instanceof Error) throw error;
       throw new Error(error);
     });
-};
+}

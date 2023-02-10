@@ -43,4 +43,3 @@ async function requestAndResultsFormatter(gotOptions, ogsOptions) {
     });
 }
 exports.requestAndResultsFormatter = requestAndResultsFormatter;
-;

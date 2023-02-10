@@ -160,4 +160,3 @@ function mediaSetup(ogObject, options) {
     return ogObject;
 }
 exports.mediaSetup = mediaSetup;
-;

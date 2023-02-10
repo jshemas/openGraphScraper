@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import { fallback } from './fallback';
 import { fields } from './fields';
 import * as media from './media';
-import * as utils from'./utils';
+import * as utils from './utils';
 import { successResultObject } from '../index';
 
 /**
@@ -56,4 +56,4 @@ export function extractMetaTags(body, options) {
   ogObject = utils.removeNestedUndefinedValues(ogObject);
 
   return ogObject;
-};
+}

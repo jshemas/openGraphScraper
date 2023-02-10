@@ -62,4 +62,4 @@ export async function setOptionsAndReturnOpenGraphResults(options) {
     if (exception instanceof Error) throw exception;
     throw new Error('Page not found');
   }
-};
+}
