@@ -35,15 +35,13 @@ async function setOptionsAndReturnOpenGraphResults(options) {
         throw new Error('Host name has been black listed');
     }
     try {
-        const { requestBody, response } = await (0, request_1.requestAndResultsFormatter)(gotOptions, ogsOptions);
-        const ogObject = (0, extract_1.extractMetaTags)(requestBody, ogsOptions);
+        const { decodedBody, response } = await (0, request_1.requestAndResultsFormatter)(gotOptions, ogsOptions);
+        const ogObject = (0, extract_1.extractMetaTags)(decodedBody, ogsOptions);
         if (!ogsOptions.onlyGetOpenGraphInfo) {
-            ogObject.charset = charset.find(response.headers, requestBody, ogsOptions.peekSize);
+            ogObject.charset = charset.find(response.headers, decodedBody, ogsOptions.peekSize);
         }
         ogObject.requestUrl = ogsOptions.url;
         ogObject.success = true;
-        // setting response.rawBody to the parsed body since response.body is a buffer
-        response.rawBody = requestBody;
         return { ogObject, response };
     }
     catch (exception) {

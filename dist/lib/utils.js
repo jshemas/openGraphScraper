@@ -130,7 +130,6 @@ function optionSetupAndSplit(options) {
         followRedirect: true,
         headers: {},
         maxRedirects: 10,
-        responseType: 'buffer',
         ...options,
     };
     if (process.browser) {

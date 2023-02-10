@@ -17,8 +17,6 @@ export async function requestAndResultsFormatter(gotOptions, ogsOptions) {
 
   return got(gotOptions)
     .then((response) => {
-      let requestBody = response.body;
-
       if (response && response.headers && response.headers['content-type'] && !response.headers['content-type'].includes('text/')) {
         throw new Error('Page must return a header content-type with text/');
       }
@@ -27,22 +25,21 @@ export async function requestAndResultsFormatter(gotOptions, ogsOptions) {
         throw new Error('Server has returned a 400/500 error code');
       }
 
-      if (requestBody === undefined || requestBody === '') {
+      if (response.body === undefined || response.body === '') {
         throw new Error('Page not found');
       }
 
-      const char = charset.find(response.headers, requestBody, ogsOptions.peekSize) || chardet.detect(requestBody);
-      if (char && typeof requestBody === 'object') {
-        requestBody = iconv.decode(requestBody, char);
-      } else {
-        requestBody = requestBody.toString();
+      const char = charset.find(response.headers, response.rawBody, ogsOptions.peekSize) || chardet.detect(response.rawBody);
+      let decodedBody = response.rawBody.toString();
+      if (char && typeof response.rawBody === 'object') {
+        decodedBody = iconv.decode(response.rawBody, char);
       }
 
-      if (!requestBody) {
+      if (!decodedBody) {
         throw new Error('Page not found');
       }
 
-      return { requestBody, response };
+      return { decodedBody, response };
     })
     .catch((error) => {
       if (error instanceof Error) throw error;
