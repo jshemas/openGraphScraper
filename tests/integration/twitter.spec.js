@@ -1,4 +1,4 @@
-const ogs = require('../../dist/index');
+const ogs = require('../../index');
 
 describe('twitter', function () {
   context('Should Return correct Open Graph Info + Some Twitter Info ', function () {

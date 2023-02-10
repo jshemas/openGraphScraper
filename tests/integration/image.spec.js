@@ -1,4 +1,4 @@
-const ogs = require('../../dist/index');
+const ogs = require('../../index');
 
 describe('image', function () {
   it('Test Flickr Image - Should Return correct Open Graph Info', function () {

@@ -1,5 +1,5 @@
 const nock = require('nock');
-const ogs = require('../../dist/index');
+const ogs = require('../../index');
 
 const sandbox = sinon.createSandbox();
 

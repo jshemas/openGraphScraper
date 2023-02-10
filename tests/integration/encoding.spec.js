@@ -1,4 +1,4 @@
-const ogs = require('../../dist/index');
+const ogs = require('../../index');
 
 describe('encoding', function () {
   context('should return correct Open Graph Info + charset info', function () {

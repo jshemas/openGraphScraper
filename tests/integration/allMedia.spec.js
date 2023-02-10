@@ -1,4 +1,4 @@
-const ogs = require('../../dist/index');
+const ogs = require('../../index');
 
 describe('allMedia', function () {
   it('if more then one media tags are found, return the first one', function () {

@@ -1,4 +1,4 @@
-const ogs = require('../../dist/index');
+const ogs = require('../../index');
 
 describe('onlyGetOpenGraphInfo', function () {
   it('should only get open graph info', function () {

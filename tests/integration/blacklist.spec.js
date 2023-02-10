@@ -1,4 +1,4 @@
-const ogs = require('../../dist/index');
+const ogs = require('../../index');
 
 describe('blacklist', function () {
   it('when website is on the blacklist', function () {

@@ -9,8 +9,8 @@
     "build": "tsc",
     "eslint:fix": "eslint . --ext .js --fix",
     "eslint": "eslint . --ext .js",
-    "mocha:int": "mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",
-    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\"",
+    "mocha:int": "ts-mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",
+    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ ts-mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\"",
     "prepare": "npm run snyk-protect",
     "snyk-protect": "snyk-protect",
     "test": "npm run mocha:unit && npm run mocha:int"
@@ -50,6 +50,7 @@
     "nock": "^13.3.0",
     "nyc": "^15.1.0",
     "sinon": "^15.0.1",
+    "ts-mocha": "^10.0.0",
     "tunnel": "^0.0.6",
     "typescript": "^4.9.5"
   },

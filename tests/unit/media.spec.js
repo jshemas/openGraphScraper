@@ -1,4 +1,4 @@
-const media = require('../../dist/lib/media');
+const media = require('../../lib/media');
 
 describe('media', function () {
   it('has images and twitter images', function () {

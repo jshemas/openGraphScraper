@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 
-const { fallback } = require('../../dist/lib/fallback');
+const { fallback } = require('../../lib/fallback');
 
 describe('fallback', function () {
   context('ogTitle', function () {

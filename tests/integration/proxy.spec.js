@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 const tunnel = require('tunnel');
-const ogs = require('../../dist/index');
+const ogs = require('../../index');
 
 // eslint-disable-next-line mocha/no-skipped-tests
 describe.skip('proxy', function () {

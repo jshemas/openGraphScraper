@@ -1,4 +1,4 @@
-const ogs = require('../../dist/index');
+const ogs = require('../../index');
 
 describe('spotify', function () {
   it('album should return music:album and associated tags', function () {
