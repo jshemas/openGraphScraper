@@ -270,7 +270,7 @@ describe('return ogs', function () {
           .get('/')
           .reply(200, basicHTML);
         sandbox.stub(chardet, 'detect').returns(false);
-        sandbox.stub(charset, 'find').returns(false);
+        sandbox.stub(charset, 'default').returns(false);
       });
       it('using promises', function () {
         return ogs({ url: 'www.test.com' })

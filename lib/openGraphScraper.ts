@@ -1,6 +1,6 @@
 import extractMetaTags from './extract';
 import requestAndResultsFormatter from './request';
-import * as charset from './charset';
+import charset from './charset';
 import * as utils from './utils';
 
 /**
@@ -41,7 +41,7 @@ export default async function setOptionsAndReturnOpenGraphResults(options) {
     const ogObject = extractMetaTags(decodedBody, ogsOptions);
 
     if (!ogsOptions.onlyGetOpenGraphInfo) {
-      ogObject.charset = charset.find(response.headers, decodedBody, ogsOptions.peekSize);
+      ogObject.charset = charset(response.headers, decodedBody, ogsOptions.peekSize);
     }
     ogObject.requestUrl = ogsOptions.url;
     ogObject.success = true;

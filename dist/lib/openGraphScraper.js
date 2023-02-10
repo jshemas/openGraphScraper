@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const extract_1 = require("./extract");
 const request_1 = require("./request");
-const charset = require("./charset");
+const charset_1 = require("./charset");
 const utils = require("./utils");
 /**
  * sets up options for the got request and calls extract on html
@@ -37,7 +37,7 @@ async function setOptionsAndReturnOpenGraphResults(options) {
         const { decodedBody, response } = await (0, request_1.default)(gotOptions, ogsOptions);
         const ogObject = (0, extract_1.default)(decodedBody, ogsOptions);
         if (!ogsOptions.onlyGetOpenGraphInfo) {
-            ogObject.charset = charset.find(response.headers, decodedBody, ogsOptions.peekSize);
+            ogObject.charset = (0, charset_1.default)(response.headers, decodedBody, ogsOptions.peekSize);
         }
         ogObject.requestUrl = ogsOptions.url;
         ogObject.success = true;
