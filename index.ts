@@ -1,12 +1,12 @@
 import { setOptionsAndReturnOpenGraphResults } from './lib/openGraphScraper';
 
-export default async function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult> {
+export default async function run(options: openGraphScraperOptions): Promise<errorResult | successResult> {
   let results;
   try {
     results = await setOptionsAndReturnOpenGraphResults(options);
   } catch (error) {
     const exception = error as Error;
-    const returnError:ErrorResult = {
+    const returnError:errorResult = {
       error: true,
       result: {
         success: false,
@@ -18,7 +18,7 @@ export default async function run(options: OpenGraphScraperOptions): Promise<Err
     };
     throw returnError;
   }
-  const returnSuccess: SuccessResult = {
+  const returnSuccess: successResult = {
     error: false,
     result: results.ogObject,
     response: results.response,
@@ -28,7 +28,7 @@ export default async function run(options: OpenGraphScraperOptions): Promise<Err
 
 module.exports = run;
 
-type OpenGraphScraperOptions = {
+type openGraphScraperOptions = {
   url: string;
   html?: string;
   blacklist?: string[];
@@ -81,13 +81,13 @@ type validatorSettings = {
     disallow_auth: boolean;
 };
 
-type SuccessResult = {
+type successResult = {
     error: boolean;
     result: successResultObject;
     response: object;
 };
 
-type ErrorResult = {
+type errorResult = {
     error: boolean;
     result: errorResultObject;
     response: undefined;
