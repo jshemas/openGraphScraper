@@ -114,7 +114,7 @@ type twitterPlayerObject = {
   width?: string | number;
 };
 
-type successResultObject = {
+export type successResultObject = {
     error?: undefined;
     errorDetails?: undefined;
     alAndroidAppName?: string | undefined;
@@ -283,8 +283,8 @@ type successResultObject = {
     twitterTitle?: string | undefined;
     twitterUrl?: string | undefined;
     updatedTime?: string | undefined;
-    requestUrl: string;
-    success: boolean;
+    requestUrl?: string;
+    success?: boolean;
     charset?: string | undefined;
     favicon?: string | undefined;
 };
@@ -458,8 +458,8 @@ type errorResultObject = {
     twitterTitle?: undefined;
     twitterUrl?: undefined;
     updatedTime?: undefined;
-    requestUrl: string;
-    success: boolean;
+    requestUrl?: string;
+    success?: boolean;
     charset?: undefined;
     favicon?: undefined;
 };
