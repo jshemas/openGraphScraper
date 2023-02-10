@@ -163,9 +163,11 @@ async function gotClient(downloadLimit) {
                 const promiseOrStream = next(options);
                 const destroy = (message) => {
                     if (options.isStream) {
+                        // @ts-ignore
                         promiseOrStream.destroy(new Error(message));
                         return;
                     }
+                    // @ts-ignore
                     promiseOrStream.cancel(message);
                 };
                 if (typeof downloadLimit === 'number') {

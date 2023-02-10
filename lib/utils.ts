@@ -157,9 +157,11 @@ export async function gotClient(downloadLimit) {
 
         const destroy = (message) => {
           if (options.isStream) {
+            // @ts-ignore
             promiseOrStream.destroy(new Error(message));
             return;
           }
+          // @ts-ignore
           promiseOrStream.cancel(message);
         };
 
