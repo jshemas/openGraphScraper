@@ -5,6 +5,7 @@
   ],
   "compilerOptions": {
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "module": "commonjs",
     "moduleResolution": "node16",
     "outDir": "./dist",
