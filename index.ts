@@ -1,4 +1,4 @@
-import { setOptionsAndReturnOpenGraphResults } from './lib/openGraphScraper';
+import setOptionsAndReturnOpenGraphResults from './lib/openGraphScraper';
 
 export default async function run(options: openGraphScraperOptions): Promise<errorResult | successResult> {
   let results;

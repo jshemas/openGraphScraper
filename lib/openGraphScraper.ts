@@ -1,5 +1,5 @@
-import { extractMetaTags } from './extract';
-import { requestAndResultsFormatter } from './request';
+import extractMetaTags from './extract';
+import requestAndResultsFormatter from './request';
 import * as charset from './charset';
 import * as utils from './utils';
 
@@ -10,7 +10,7 @@ import * as utils from './utils';
  * @return {object} object with ogs results
  *
  */
-export async function setOptionsAndReturnOpenGraphResults(options) {
+export default async function setOptionsAndReturnOpenGraphResults(options) {
   const { ogsOptions, gotOptions } = utils.optionSetupAndSplit(options);
 
   if (ogsOptions.html) {

@@ -1,4 +1,4 @@
-import { fields } from './fields';
+import fields from './fields';
 
 const mediaMapperTwitterImage = (item) => ({
   url: item[0],
@@ -176,3 +176,5 @@ export function mediaSetup(ogObject, options) {
 
   return ogObject;
 }
+
+export default mediaSetup;

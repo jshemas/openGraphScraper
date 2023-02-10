@@ -4,7 +4,7 @@ const openGraphScraper_1 = require("./lib/openGraphScraper");
 async function run(options) {
     let results;
     try {
-        results = await (0, openGraphScraper_1.setOptionsAndReturnOpenGraphResults)(options);
+        results = await (0, openGraphScraper_1.default)(options);
     }
     catch (error) {
         const exception = error;

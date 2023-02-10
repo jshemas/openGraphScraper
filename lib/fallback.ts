@@ -164,3 +164,5 @@ export function fallback(ogObject, options, $) {
 
   return ogObject;
 }
+
+export default fallback;

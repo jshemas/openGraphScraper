@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.requestAndResultsFormatter = void 0;
 const chardet = require("chardet");
 const iconv = require("iconv-lite");
 const utils_1 = require("./utils");
@@ -42,4 +41,4 @@ async function requestAndResultsFormatter(gotOptions, ogsOptions) {
         throw new Error(error);
     });
 }
-exports.requestAndResultsFormatter = requestAndResultsFormatter;
+exports.default = requestAndResultsFormatter;

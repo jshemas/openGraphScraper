@@ -12,7 +12,7 @@ import * as charset from './charset';
  * @return {object} formatted request body and response
  *
  */
-export async function requestAndResultsFormatter(gotOptions, ogsOptions) {
+export default async function requestAndResultsFormatter(gotOptions, ogsOptions) {
   const got = await gotClient(ogsOptions.downloadLimit);
 
   return got(gotOptions)
