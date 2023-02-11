@@ -1,12 +1,12 @@
 import setOptionsAndReturnOpenGraphResults from './lib/openGraphScraper';
 
-export default async function run(options: openGraphScraperOptions): Promise<errorResult | successResult> {
+export default async function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult> {
   let results;
   try {
     results = await setOptionsAndReturnOpenGraphResults(options);
   } catch (error) {
     const exception = error as Error;
-    const returnError:errorResult = {
+    const returnError:ErrorResult = {
       error: true,
       result: {
         success: false,
@@ -18,7 +18,7 @@ export default async function run(options: openGraphScraperOptions): Promise<err
     };
     throw returnError;
   }
-  const returnSuccess: successResult = {
+  const returnSuccess: SuccessResult = {
     error: false,
     result: results.ogObject,
     response: results.response,
@@ -28,17 +28,17 @@ export default async function run(options: openGraphScraperOptions): Promise<err
 
 module.exports = run;
 
-type openGraphScraperOptions = {
+type OpenGraphScraperOptions = {
   url: string;
   html?: string;
   blacklist?: string[];
   onlyGetOpenGraphInfo?: boolean;
   ogImageFallback?: boolean;
-  customMetaTags?: customMetaTags[];
+  customMetaTags?: CustomMetaTags[];
   allMedia?: boolean;
   peekSize?: number;
   downloadLimit?: number | false;
-  urlValidatorSettings?: validatorSettings;
+  urlValidatorSettings?: ValidatorSettings;
   decompress?: boolean;
   followRedirect?: boolean;
   headers?: {
@@ -49,7 +49,7 @@ type openGraphScraperOptions = {
   timeout?: object;
 };
 
-type customMetaTags = {
+type CustomMetaTags = {
   /**
      * - is there more than one of these tags on a page (normally this is false)
      */
@@ -67,7 +67,7 @@ type customMetaTags = {
 /**
  * You can find the `isUrl` settings details at https://github.com/validatorjs/validator.js
  */
-type validatorSettings = {
+type ValidatorSettings = {
   protocols: string[];
   require_tld: boolean;
   require_protocol: boolean;
@@ -81,40 +81,40 @@ type validatorSettings = {
   disallow_auth: boolean;
 };
 
-type successResult = {
+type SuccessResult = {
   error: boolean;
-  result: successResultObject;
+  result: SuccessResultObject;
   response: object;
 };
 
-type errorResult = {
+type ErrorResult = {
   error: boolean;
-  result: errorResultObject;
+  result: ErrorResultObject;
   response: undefined;
 };
 
-type imageObject = {
+type ImageObject = {
   height?: string | number;
   type: string;
   url: string;
   width?: string | number;
 };
 
-type twitterImageObject = {
+type TwitterImageObject = {
   height?: string | number;
   alt?: string;
   url: string;
   width?: string | number;
 };
 
-type twitterPlayerObject = {
+type TwitterPlayerObject = {
   height?: string | number;
   stream?: string;
   url?: string;
   width?: string | number;
 };
 
-export type successResultObject = {
+export type SuccessResultObject = {
   error?: undefined;
   errorDetails?: undefined;
   alAndroidAppName?: string | undefined;
@@ -208,7 +208,7 @@ export type successResultObject = {
   ogDate?: string | undefined;
   ogDescription?: string | undefined;
   ogDeterminer?: string | undefined;
-  ogImage?: string | imageObject | imageObject[] | undefined;
+  ogImage?: string | ImageObject | ImageObject[] | undefined;
   ogImageHeight?: string | undefined;
   ogImageSecureURL?: string | undefined;
   ogImageType?: string | undefined;
@@ -268,12 +268,12 @@ export type successResultObject = {
   twitterCreator?: string | undefined;
   twitterCreatorId?: string | undefined;
   twitterDescription?: string | undefined;
-  twitterImage?: string | twitterImageObject | twitterImageObject[] | undefined;
+  twitterImage?: string | TwitterImageObject | TwitterImageObject[] | undefined;
   twitterImageAlt?: string | undefined;
   twitterImageHeight?: string | undefined;
   twitterImageSrc?: string | undefined;
   twitterImageWidth?: string | undefined;
-  twitterPlayer?: string | twitterPlayerObject | twitterPlayerObject[] | undefined;
+  twitterPlayer?: string | TwitterPlayerObject | TwitterPlayerObject[] | undefined;
   twitterPlayerHeight?: string | undefined;
   twitterPlayerStream?: string | undefined;
   twitterPlayerStreamContentType?: string | undefined;
@@ -289,7 +289,7 @@ export type successResultObject = {
   favicon?: string | undefined;
 };
 
-type errorResultObject = {
+type ErrorResultObject = {
   error: string;
   errorDetails: Error;
   alAndroidAppName?: undefined;

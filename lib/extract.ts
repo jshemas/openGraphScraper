@@ -4,7 +4,7 @@ import fallback from './fallback';
 import fields from './fields';
 import * as media from './media';
 import * as utils from './utils';
-import { successResultObject } from '../index';
+import { SuccessResultObject } from '../index';
 
 /**
  * extract all of the meta tags needed for ogs
@@ -15,7 +15,7 @@ import { successResultObject } from '../index';
  *
  */
 export default function extractMetaTags(body, options) {
-  let ogObject:successResultObject = {};
+  let ogObject:SuccessResultObject = {};
   const $ = cheerio.load(body);
   const metaFields = fields.concat(options.customMetaTags);
 
