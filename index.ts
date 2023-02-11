@@ -114,7 +114,7 @@ type TwitterPlayerObject = {
   width?: string | number;
 };
 
-export type SuccessResultObject = {
+type SuccessResultObject = {
   error?: undefined;
   errorDetails?: undefined;
   alAndroidAppName?: string | undefined;
