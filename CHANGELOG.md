@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.0
+
+- Convert source code to typescript
+- Changing `response.body` to be a `string` and `response.rawBody` to be a `buffer`. They now match the `node` type for `response`.
+- Updating Dependencies
+
 ## 5.0.5
 
 - Adding `twitterImageObject` and `twitterPlayerObject` types
