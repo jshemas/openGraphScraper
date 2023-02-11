@@ -45,7 +45,7 @@ const CHARTSET_RE = /(?:charset|encoding)\s{0,10}=\s{0,10}['"]? {0,10}([\w-]{1,1
  *  If can\'t guest, return null
  * @api public
  */
-function charset(obj, data, peekSize) {
+export function charset(obj, data, peekSize) {
   let matchs = null;
   let end = 0;
   if (data) {
@@ -83,4 +83,4 @@ function charset(obj, data, peekSize) {
   return cs;
 }
 
-export const find = charset;
+export default charset;

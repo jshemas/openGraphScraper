@@ -26,7 +26,7 @@ THE SOFTWARE.
 
 */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.find = void 0;
+exports.charset = void 0;
 // note: this was pull at version 1.0.1 from https://github.com/node-modules/charset
 const CHARTSET_RE = /(?:charset|encoding)\s{0,10}=\s{0,10}['"]? {0,10}([\w-]{1,100})/i;
 /**
@@ -82,4 +82,5 @@ function charset(obj, data, peekSize) {
     }
     return cs;
 }
-exports.find = charset;
+exports.charset = charset;
+exports.default = charset;

@@ -1,6 +1,8 @@
 {
+  "root": true,
   "extends": [
-    "../.eslintrc.json",
+    "airbnb-base",
+    "plugin:promise/recommended",
     "plugin:mocha/recommended"
   ],
   "plugins": [
@@ -17,7 +19,13 @@
     "func-names": 0,
     "import/extensions": 0,
     "import/no-unresolved": 0,
+    "max-len": ["error", {
+      "code": 120,
+      "ignoreStrings": true,
+      "ignoreTrailingComments": true
+    }],
     "no-console": 0,
+    "no-param-reassign": "off",
     "no-unused-expressions": 0,
     "prefer-arrow-callback": 0,
     "promise/always-return": 0

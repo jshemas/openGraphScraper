@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setOptionsAndReturnOpenGraphResults = void 0;
 const extract_1 = require("./extract");
 const request_1 = require("./request");
-const charset = require("./charset");
+const charset_1 = require("./charset");
 const utils = require("./utils");
 /**
  * sets up options for the got request and calls extract on html
@@ -17,7 +16,7 @@ async function setOptionsAndReturnOpenGraphResults(options) {
     if (ogsOptions.html) {
         if (ogsOptions.url)
             throw new Error('Must specify either `url` or `html`, not both');
-        const ogObject = (0, extract_1.extractMetaTags)(ogsOptions.html, ogsOptions);
+        const ogObject = (0, extract_1.default)(ogsOptions.html, ogsOptions);
         ogObject.requestUrl = null;
         ogObject.success = true;
         return { ogObject, response: { body: ogsOptions.html } };
@@ -35,10 +34,10 @@ async function setOptionsAndReturnOpenGraphResults(options) {
         throw new Error('Host name has been black listed');
     }
     try {
-        const { decodedBody, response } = await (0, request_1.requestAndResultsFormatter)(gotOptions, ogsOptions);
-        const ogObject = (0, extract_1.extractMetaTags)(decodedBody, ogsOptions);
+        const { decodedBody, response } = await (0, request_1.default)(gotOptions, ogsOptions);
+        const ogObject = (0, extract_1.default)(decodedBody, ogsOptions);
         if (!ogsOptions.onlyGetOpenGraphInfo) {
-            ogObject.charset = charset.find(response.headers, decodedBody, ogsOptions.peekSize);
+            ogObject.charset = (0, charset_1.default)(response.headers, decodedBody, ogsOptions.peekSize);
         }
         ogObject.requestUrl = ogsOptions.url;
         ogObject.success = true;
@@ -65,5 +64,4 @@ async function setOptionsAndReturnOpenGraphResults(options) {
         throw new Error('Page not found');
     }
 }
-exports.setOptionsAndReturnOpenGraphResults = setOptionsAndReturnOpenGraphResults;
-;
+exports.default = setOptionsAndReturnOpenGraphResults;

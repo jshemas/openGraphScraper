@@ -1,13 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fields = void 0;
 /**
  * array of meta tags ogs is looking for
  *
  * @return {array} array of meta tags
  *
  */
-exports.fields = [
+const fields = [
     {
         multiple: false,
         property: 'og:title',
@@ -844,3 +843,4 @@ exports.fields = [
         fieldName: 'alWebShouldFallback',
     },
 ];
+exports.default = fields;

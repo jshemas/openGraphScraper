@@ -4,7 +4,7 @@
  * @return {array} array of meta tags
  *
  */
-export const fields = [
+const fields = [
   {
     multiple: false,
     property: 'og:title',
@@ -841,3 +841,5 @@ export const fields = [
     fieldName: 'alWebShouldFallback',
   },
 ];
+
+export default fields;

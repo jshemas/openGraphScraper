@@ -1,6 +1,6 @@
-import { extractMetaTags } from './extract';
-import { requestAndResultsFormatter } from './request';
-import * as charset from './charset';
+import extractMetaTags from './extract';
+import requestAndResultsFormatter from './request';
+import charset from './charset';
 import * as utils from './utils';
 
 /**
@@ -10,7 +10,7 @@ import * as utils from './utils';
  * @return {object} object with ogs results
  *
  */
-export async function setOptionsAndReturnOpenGraphResults(options) {
+export default async function setOptionsAndReturnOpenGraphResults(options) {
   const { ogsOptions, gotOptions } = utils.optionSetupAndSplit(options);
 
   if (ogsOptions.html) {
@@ -41,7 +41,7 @@ export async function setOptionsAndReturnOpenGraphResults(options) {
     const ogObject = extractMetaTags(decodedBody, ogsOptions);
 
     if (!ogsOptions.onlyGetOpenGraphInfo) {
-      ogObject.charset = charset.find(response.headers, decodedBody, ogsOptions.peekSize);
+      ogObject.charset = charset(response.headers, decodedBody, ogsOptions.peekSize);
     }
     ogObject.requestUrl = ogsOptions.url;
     ogObject.success = true;
@@ -62,4 +62,4 @@ export async function setOptionsAndReturnOpenGraphResults(options) {
     if (exception instanceof Error) throw exception;
     throw new Error('Page not found');
   }
-};
+}

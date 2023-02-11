@@ -187,4 +187,4 @@ function fallback(ogObject, options, $) {
     return ogObject;
 }
 exports.fallback = fallback;
-;
+exports.default = fallback;

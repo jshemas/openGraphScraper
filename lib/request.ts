@@ -2,7 +2,7 @@ import * as chardet from 'chardet';
 import * as iconv from 'iconv-lite';
 
 import { gotClient } from './utils';
-import * as charset from './charset';
+import charset from './charset';
 
 /**
  * performs the got request and formats the body for ogs
@@ -12,7 +12,7 @@ import * as charset from './charset';
  * @return {object} formatted request body and response
  *
  */
-export async function requestAndResultsFormatter(gotOptions, ogsOptions) {
+export default async function requestAndResultsFormatter(gotOptions, ogsOptions) {
   const got = await gotClient(ogsOptions.downloadLimit);
 
   return got(gotOptions)
@@ -29,7 +29,7 @@ export async function requestAndResultsFormatter(gotOptions, ogsOptions) {
         throw new Error('Page not found');
       }
 
-      const char = charset.find(response.headers, response.rawBody, ogsOptions.peekSize) || chardet.detect(response.rawBody);
+      const char = charset(response.headers, response.rawBody, ogsOptions.peekSize) || chardet.detect(response.rawBody);
       let decodedBody = response.rawBody.toString();
       if (char && typeof response.rawBody === 'object') {
         decodedBody = iconv.decode(response.rawBody, char);
@@ -45,4 +45,4 @@ export async function requestAndResultsFormatter(gotOptions, ogsOptions) {
       if (error instanceof Error) throw error;
       throw new Error(error);
     });
-};
+}

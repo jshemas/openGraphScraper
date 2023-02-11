@@ -129,7 +129,7 @@ function mediaSetup(ogObject, options) {
         .map(mediaMapperMusicSong)
         .sort(mediaSorterMusicSong);
     // remove old values since everything will live under the main property
-    fields_1.fields.filter((item) => (item.multiple && item.fieldName && item.fieldName.match('(ogImage|ogVideo|twitter|musicSong).*')))
+    fields_1.default.filter((item) => (item.multiple && item.fieldName && item.fieldName.match('(ogImage|ogVideo|twitter|musicSong).*')))
         .forEach((item) => {
         delete ogObject[item.fieldName];
     });
@@ -160,4 +160,4 @@ function mediaSetup(ogObject, options) {
     return ogObject;
 }
 exports.mediaSetup = mediaSetup;
-;
+exports.default = mediaSetup;

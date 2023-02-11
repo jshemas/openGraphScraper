@@ -1,10 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.requestAndResultsFormatter = void 0;
 const chardet = require("chardet");
 const iconv = require("iconv-lite");
 const utils_1 = require("./utils");
-const charset = require("./charset");
+const charset_1 = require("./charset");
 /**
  * performs the got request and formats the body for ogs
  *
@@ -26,7 +25,7 @@ async function requestAndResultsFormatter(gotOptions, ogsOptions) {
         if (response.body === undefined || response.body === '') {
             throw new Error('Page not found');
         }
-        const char = charset.find(response.headers, response.rawBody, ogsOptions.peekSize) || chardet.detect(response.rawBody);
+        const char = (0, charset_1.default)(response.headers, response.rawBody, ogsOptions.peekSize) || chardet.detect(response.rawBody);
         let decodedBody = response.rawBody.toString();
         if (char && typeof response.rawBody === 'object') {
             decodedBody = iconv.decode(response.rawBody, char);
@@ -42,5 +41,4 @@ async function requestAndResultsFormatter(gotOptions, ogsOptions) {
         throw new Error(error);
     });
 }
-exports.requestAndResultsFormatter = requestAndResultsFormatter;
-;
+exports.default = requestAndResultsFormatter;

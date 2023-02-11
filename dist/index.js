@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+// eslint-disable-next-line import/no-import-module-exports
 const openGraphScraper_1 = require("./lib/openGraphScraper");
 async function run(options) {
     let results;
     try {
-        results = await (0, openGraphScraper_1.setOptionsAndReturnOpenGraphResults)(options);
+        results = await (0, openGraphScraper_1.default)(options);
     }
     catch (error) {
         const exception = error;
@@ -16,8 +17,9 @@ async function run(options) {
                 error: exception.message,
                 errorDetails: exception,
             },
-            response: undefined
+            response: undefined,
         };
+        // eslint-disable-next-line @typescript-eslint/no-throw-literal
         throw returnError;
     }
     const returnSuccess = {

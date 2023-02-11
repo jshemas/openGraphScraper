@@ -14,7 +14,6 @@ function isUrlValid(url, urlValidatorSettings) {
     return typeof url === 'string' && url.length > 0 && validator.isURL(url, urlValidatorSettings);
 }
 exports.isUrlValid = isUrlValid;
-;
 /**
  * Forces url to start with http:// if it doesn't
  *
@@ -35,7 +34,6 @@ function validateAndFormatURL(url, urlValidatorSettings) {
     return { url: this.isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null };
 }
 exports.validateAndFormatURL = validateAndFormatURL;
-;
 /**
  * finds the image type from a given url
  *
@@ -49,7 +47,6 @@ function findImageTypeFromUrl(url) {
     return type;
 }
 exports.findImageTypeFromUrl = findImageTypeFromUrl;
-;
 /**
  * checks if image type is valid
  *
@@ -62,7 +59,6 @@ function isImageTypeValid(type) {
     return validImageTypes.includes(type);
 }
 exports.isImageTypeValid = isImageTypeValid;
-;
 /**
  * checks if URL is a non html page
  *
@@ -76,7 +72,6 @@ function isThisANonHTMLUrl(url) {
     return invalidImageTypes.some((type) => `.${extension}`.includes(type));
 }
 exports.isThisANonHTMLUrl = isThisANonHTMLUrl;
-;
 /**
  * find and delete nested undefs
  *
@@ -94,7 +89,6 @@ function removeNestedUndefinedValues(object) {
     return object;
 }
 exports.removeNestedUndefinedValues = removeNestedUndefinedValues;
-;
 /**
  * split the options object into ogs and got option objects
  *
@@ -144,7 +138,6 @@ function optionSetupAndSplit(options) {
     return { ogsOptions, gotOptions };
 }
 exports.optionSetupAndSplit = optionSetupAndSplit;
-;
 /**
  * gotClient - limit the size of the content we fetch when performing the request
  * from https://github.com/sindresorhus/got/blob/main/documentation/examples/advanced-creation.js
@@ -183,4 +176,3 @@ async function gotClient(downloadLimit) {
     });
 }
 exports.gotClient = gotClient;
-;

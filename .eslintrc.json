@@ -1,16 +1,18 @@
 {
   "extends": [
     "airbnb-base",
+    "airbnb-typescript/base",
     "plugin:promise/recommended"
   ],
   "plugins": [
     "promise"
   ],
-  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "requireConfigFile": false
+    "project": "./tsconfig.json"
   },
+  "ignorePatterns": ["/tests/*/*.js"],
   "rules": {
+    "import/no-named-as-default": 0,
     "max-len": ["error", {
       "code": 120,
       "ignoreStrings": true,
