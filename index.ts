@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-import-module-exports
 import setOptionsAndReturnOpenGraphResults from './lib/openGraphScraper';
 
 export default async function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult> {
@@ -16,6 +17,7 @@ export default async function run(options: OpenGraphScraperOptions): Promise<Err
       },
       response: undefined,
     };
+    // eslint-disable-next-line @typescript-eslint/no-throw-literal
     throw returnError;
   }
   const returnSuccess: SuccessResult = {
