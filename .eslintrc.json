@@ -12,6 +12,7 @@
   },
   "ignorePatterns": ["/tests/*/*.js"],
   "rules": {
+    "import/no-named-as-default": 0,
     "max-len": ["error", {
       "code": 120,
       "ignoreStrings": true,
