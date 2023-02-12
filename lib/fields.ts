@@ -4,7 +4,7 @@
  * @return {array} array of meta tags
  *
  */
-module.exports = [
+const fields = [
   {
     multiple: false,
     property: 'og:title',
@@ -841,3 +841,5 @@ module.exports = [
     fieldName: 'alWebShouldFallback',
   },
 ];
+
+export default fields;

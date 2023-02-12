@@ -1,4 +1,4 @@
-const { findImageTypeFromUrl, isImageTypeValid, isUrlValid } = require('./utils');
+import { findImageTypeFromUrl, isImageTypeValid, isUrlValid } from './utils';
 
 const doesElementExist = (selector, attribute, $) => (
   $(selector).attr(attribute) && $(selector).attr(attribute).length > 0
@@ -13,7 +13,7 @@ const doesElementExist = (selector, attribute, $) => (
  * @return {object} object with ogs results with updated fallback values
  *
  */
-const fallback = (ogObject, options, $) => {
+export function fallback(ogObject, options, $) {
   // title fallback
   if (!ogObject.ogTitle) {
     if ($('title').text() && $('title').text().length > 0) {
@@ -163,6 +163,6 @@ const fallback = (ogObject, options, $) => {
   }
 
   return ogObject;
-};
+}
 
-module.exports = fallback;
+export default fallback;

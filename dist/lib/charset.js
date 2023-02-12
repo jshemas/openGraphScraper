@@ -1,3 +1,4 @@
+"use strict";
 /*
 
 This software is licensed under the MIT License.
@@ -24,11 +25,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 */
-
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.charset = void 0;
 // note: this was pull at version 1.0.1 from https://github.com/node-modules/charset
-
 const CHARTSET_RE = /(?:charset|encoding)\s{0,10}=\s{0,10}['"]? {0,10}([\w-]{1,100})/i;
-
 /**
  * guest data charset from req.headers, xml, html content-type meta tag
  * headers:
@@ -46,41 +46,41 @@ const CHARTSET_RE = /(?:charset|encoding)\s{0,10}=\s{0,10}['"]? {0,10}([\w-]{1,1
  * @api public
  */
 function charset(obj, data, peekSize) {
-  let matchs = null;
-  let end = 0;
-  if (data) {
-    peekSize = peekSize || 512;
-    // https://github.com/node-modules/charset/issues/4
-    end = data.length > peekSize ? peekSize : data.length;
-  }
-  // charset('text/html;charset=gbk')
-  let contentType = obj;
-  if (contentType && typeof contentType !== 'string') {
-    // charset(res.headers)
-    let headers = obj;
-    if (obj.headers) {
-      // charset(res)
-      headers = obj.headers;
+    let matchs = null;
+    let end = 0;
+    if (data) {
+        peekSize = peekSize || 512;
+        // https://github.com/node-modules/charset/issues/4
+        end = data.length > peekSize ? peekSize : data.length;
     }
-    contentType = headers['content-type'] || headers['Content-Type'];
-  }
-  if (contentType) {
-    // guest from obj first
-    matchs = CHARTSET_RE.exec(contentType);
-  }
-  if (!matchs && end > 0) {
-    // guest from content body (html/xml) header
-    contentType = data.slice(0, end).toString();
-    matchs = CHARTSET_RE.exec(contentType);
-  }
-  let cs = null;
-  if (matchs) {
-    cs = matchs[1].toLowerCase();
-    if (cs === 'utf-8') {
-      cs = 'utf8';
+    // charset('text/html;charset=gbk')
+    let contentType = obj;
+    if (contentType && typeof contentType !== 'string') {
+        // charset(res.headers)
+        let headers = obj;
+        if (obj.headers) {
+            // charset(res)
+            headers = obj.headers;
+        }
+        contentType = headers['content-type'] || headers['Content-Type'];
     }
-  }
-  return cs;
+    if (contentType) {
+        // guest from obj first
+        matchs = CHARTSET_RE.exec(contentType);
+    }
+    if (!matchs && end > 0) {
+        // guest from content body (html/xml) header
+        contentType = data.slice(0, end).toString();
+        matchs = CHARTSET_RE.exec(contentType);
+    }
+    let cs = null;
+    if (matchs) {
+        cs = matchs[1].toLowerCase();
+        if (cs === 'utf-8') {
+            cs = 'utf8';
+        }
+    }
+    return cs;
 }
-
-module.exports.find = charset;
+exports.charset = charset;
+exports.default = charset;

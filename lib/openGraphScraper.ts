@@ -1,7 +1,7 @@
-const { extractMetaTags } = require('./extract');
-const { requestAndResultsFormatter } = require('./request');
-const charset = require('./charset');
-const utils = require('./utils');
+import extractMetaTags from './extract';
+import requestAndResultsFormatter from './request';
+import charset from './charset';
+import * as utils from './utils';
 
 /**
  * sets up options for the got request and calls extract on html
@@ -10,7 +10,7 @@ const utils = require('./utils');
  * @return {object} object with ogs results
  *
  */
-const setOptionsAndReturnOpenGraphResults = async (options) => {
+export default async function setOptionsAndReturnOpenGraphResults(options) {
   const { ogsOptions, gotOptions } = utils.optionSetupAndSplit(options);
 
   if (ogsOptions.html) {
@@ -37,18 +37,14 @@ const setOptionsAndReturnOpenGraphResults = async (options) => {
   }
 
   try {
-    const { requestBody, response } = await requestAndResultsFormatter(gotOptions, ogsOptions);
-
-    const ogObject = extractMetaTags(requestBody, ogsOptions);
+    const { decodedBody, response } = await requestAndResultsFormatter(gotOptions, ogsOptions);
+    const ogObject = extractMetaTags(decodedBody, ogsOptions);
 
     if (!ogsOptions.onlyGetOpenGraphInfo) {
-      ogObject.charset = charset.find(response.headers, requestBody, ogsOptions.peekSize);
+      ogObject.charset = charset(response.headers, decodedBody, ogsOptions.peekSize);
     }
     ogObject.requestUrl = ogsOptions.url;
     ogObject.success = true;
-
-    // setting response.rawBody to the parsed body since response.body is a buffer
-    response.rawBody = requestBody;
 
     return { ogObject, response };
   } catch (exception) {
@@ -66,6 +62,4 @@ const setOptionsAndReturnOpenGraphResults = async (options) => {
     if (exception instanceof Error) throw exception;
     throw new Error('Page not found');
   }
-};
-
-module.exports = setOptionsAndReturnOpenGraphResults;
+}

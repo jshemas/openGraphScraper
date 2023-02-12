@@ -1,8 +1,8 @@
-const chardet = require('chardet');
-const iconv = require('iconv-lite');
-const { gotClient } = require('./utils');
+import * as chardet from 'chardet';
+import * as iconv from 'iconv-lite';
 
-const charset = require('./charset');
+import { gotClient } from './utils';
+import charset from './charset';
 
 /**
  * performs the got request and formats the body for ogs
@@ -12,13 +12,11 @@ const charset = require('./charset');
  * @return {object} formatted request body and response
  *
  */
-exports.requestAndResultsFormatter = async (gotOptions, ogsOptions) => {
+export default async function requestAndResultsFormatter(gotOptions, ogsOptions) {
   const got = await gotClient(ogsOptions.downloadLimit);
 
   return got(gotOptions)
     .then((response) => {
-      let requestBody = response.body;
-
       if (response && response.headers && response.headers['content-type'] && !response.headers['content-type'].includes('text/')) {
         throw new Error('Page must return a header content-type with text/');
       }
@@ -27,25 +25,24 @@ exports.requestAndResultsFormatter = async (gotOptions, ogsOptions) => {
         throw new Error('Server has returned a 400/500 error code');
       }
 
-      if (requestBody === undefined || requestBody === '') {
+      if (response.body === undefined || response.body === '') {
         throw new Error('Page not found');
       }
 
-      const char = charset.find(response.headers, requestBody, ogsOptions.peekSize) || chardet.detect(requestBody);
-      if (char && typeof requestBody === 'object') {
-        requestBody = iconv.decode(requestBody, char);
-      } else {
-        requestBody = requestBody.toString();
+      const char = charset(response.headers, response.rawBody, ogsOptions.peekSize) || chardet.detect(response.rawBody);
+      let decodedBody = response.rawBody.toString();
+      if (char && typeof response.rawBody === 'object') {
+        decodedBody = iconv.decode(response.rawBody, char);
       }
 
-      if (!requestBody) {
+      if (!decodedBody) {
         throw new Error('Page not found');
       }
 
-      return { requestBody, response };
+      return { decodedBody, response };
     })
     .catch((error) => {
       if (error instanceof Error) throw error;
       throw new Error(error);
     });
-};
+}

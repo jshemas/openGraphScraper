@@ -1,13 +1,14 @@
 {
   "include": [
-    "index.js",
+    "index.ts",
     "lib/**/*"
   ],
   "compilerOptions": {
     "allowJs": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "dist",
-    "declarationMap": true
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+    "moduleResolution": "node16",
+    "outDir": "./dist",
+    "target": "es2022"
   }
 }

@@ -1,17 +1,17 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "5.0.5",
+  "version": "5.1.0",
   "license": "MIT",
-  "main": "index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "index.ts",
   "scripts": {
-    "build:types": "npx -p typescript tsc",
-    "eslint:fix": "eslint . --ext .js --fix",
-    "eslint": "eslint . --ext .js",
-    "mocha:int": "mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",
-    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\"",
-    "prepare": "npm run snyk-protect",
+    "build": "tsc",
+    "eslint:fix": "eslint . --ext .js,.ts --fix",
+    "eslint": "eslint . --ext .js,.ts",
+    "mocha:int": "ts-mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.js\" --timeout 10000",
+    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ ts-mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/unit/**/*.spec.js\"",
+    "prepare": "npm run snyk-protect && npm run build",
     "snyk-protect": "snyk-protect",
     "test": "npm run mocha:unit && npm run mocha:int"
   },
@@ -31,17 +31,19 @@
     "validator": "^13.9.0"
   },
   "files": [
-    "CHANGELOG.md",
     "/dist",
-    "/lib"
+    "CHANGELOG.md",
+    "index.ts"
   ],
   "devDependencies": {
-    "@babel/core": "^7.20.12",
-    "@babel/eslint-parser": "^7.19.1",
-    "@snyk/protect": "^1.1096.0",
+    "@snyk/protect": "^1.1100.0",
+    "@types/node": "^18.13.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
     "chai": "^4.3.7",
-    "eslint": "^8.33.0",
+    "eslint": "^8.34.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-mocha": "^10.1.0",
     "eslint-plugin-promise": "^6.1.1",
@@ -49,6 +51,7 @@
     "nock": "^13.3.0",
     "nyc": "^15.1.0",
     "sinon": "^15.0.1",
+    "ts-mocha": "^10.0.0",
     "tunnel": "^0.0.6",
     "typescript": "^4.9.5"
   },

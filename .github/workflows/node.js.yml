@@ -28,6 +28,8 @@ jobs:
       run: npm ci
     - name: Linting
       run: npm run eslint
+    - name: Running Typescript
+      run: npm run build
     - name: Unit Testing
       run: npm run mocha:unit
     - name: Integration Testing
