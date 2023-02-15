@@ -31,7 +31,7 @@ const coerceUrl = (url) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}
  *
  */
 function validateAndFormatURL(url, urlValidatorSettings) {
-    return { url: this.isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null };
+    return { url: isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null };
 }
 exports.validateAndFormatURL = validateAndFormatURL;
 /**
@@ -68,7 +68,7 @@ exports.isImageTypeValid = isImageTypeValid;
  */
 function isThisANonHTMLUrl(url) {
     const invalidImageTypes = ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.3gp', '.avi', '.mov', '.mp4', '.m4v', '.m4a', '.mp3', '.mkv', '.ogv', '.ogm', '.ogg', '.oga', '.webm', '.wav', '.bmp', '.gif', '.jpg', '.jpeg', '.png', '.webp', '.zip', '.rar', '.tar', '.tar.gz', '.tgz', '.tar.bz2', '.tbz2', '.txt', '.pdf'];
-    const extension = this.findImageTypeFromUrl(url);
+    const extension = findImageTypeFromUrl(url);
     return invalidImageTypes.some((type) => `.${extension}`.includes(type));
 }
 exports.isThisANonHTMLUrl = isThisANonHTMLUrl;
@@ -82,7 +82,7 @@ exports.isThisANonHTMLUrl = isThisANonHTMLUrl;
 function removeNestedUndefinedValues(object) {
     Object.entries(object).forEach(([key, value]) => {
         if (value && typeof value === 'object')
-            this.removeNestedUndefinedValues(value);
+            removeNestedUndefinedValues(value);
         else if (value === undefined)
             delete object[key];
     });
