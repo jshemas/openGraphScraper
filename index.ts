@@ -1,6 +1,6 @@
-/* eslint-disable max-len */
-// eslint-disable-next-line import/no-import-module-exports
+/* eslint-disable max-len, import/no-import-module-exports */
 import setOptionsAndReturnOpenGraphResults from './lib/openGraphScraper';
+import { ValidatorSettings } from './lib/types';
 
 /**
  * `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of
@@ -17,7 +17,7 @@ import setOptionsAndReturnOpenGraphResults from './lib/openGraphScraper';
  * @param {boolean} [options.allMedia] - By default, OGS will only send back the first image/video it finds.
  * @param {number} [options.peekSize] - Sets the peekSize for the request.
  * @param {number | false} [options.downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
- * @param {object} [options.urlValidatorSettings] - Sets the options used by validator.js for testing the URL
+ * @param {object} [options.ValidatorSettings] - Sets the options used by validator.js for testing the URL
  * @param {boolean} [options.decompress] - Set the accept-encoding to `gzip, deflate, br` (default: `true`).
  * @param {boolean} [options.followRedirect] - Defines if redirect responses should be followed automatically. (default: `true`).
  * @param {Object<string, string>} [options.headers] - An object containing request headers. Useful for setting the user-agent.
@@ -89,23 +89,6 @@ type CustomMetaTags = {
      * - name of the result variable
      */
   fieldName: string;
-};
-
-/**
- * You can find the `isUrl` settings details at https://github.com/validatorjs/validator.js
- */
-type ValidatorSettings = {
-  protocols: string[];
-  require_tld: boolean;
-  require_protocol: boolean;
-  require_host: boolean;
-  require_valid_protocol: boolean;
-  allow_underscores: boolean;
-  host_whitelist: boolean;
-  host_blacklist: boolean;
-  allow_trailing_dot: boolean;
-  allow_protocol_relative_urls: boolean;
-  disallow_auth: boolean;
 };
 
 type SuccessResult = {

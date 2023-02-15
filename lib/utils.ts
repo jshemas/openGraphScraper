@@ -1,4 +1,5 @@
 import * as validator from 'validator';
+import { ValidatorSettings } from './types';
 
 /**
  * Checks if URL is valid
@@ -8,7 +9,7 @@ import * as validator from 'validator';
  * @return {boolean} boolean value if the url is valid
  *
  */
-export function isUrlValid(url, urlValidatorSettings) {
+export function isUrlValid(url: string, urlValidatorSettings: ValidatorSettings) {
   return typeof url === 'string' && url.length > 0 && validator.isURL(url, urlValidatorSettings);
 }
 
@@ -29,7 +30,7 @@ const coerceUrl = (url) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}
  * @return {string} proper url or null
  *
  */
-export function validateAndFormatURL(url, urlValidatorSettings) {
+export function validateAndFormatURL(url, urlValidatorSettings: ValidatorSettings) {
   return { url: this.isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null };
 }
 
