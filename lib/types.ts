@@ -101,3 +101,9 @@ export type ImageObject = {
   url: string;
   width?: string | number;
 };
+
+export type MusicSongObject = {
+  disc?: string;
+  track?: string;
+  url: string;
+};

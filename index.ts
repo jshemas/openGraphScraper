@@ -2,6 +2,7 @@
 import setOptionsAndReturnOpenGraphResults from './lib/openGraphScraper';
 import {
   ImageObject,
+  MusicSongObject,
   OpenGraphScraperOptions,
   TwitterImageObject,
   TwitterPlayerObject,
@@ -147,7 +148,7 @@ type SuccessResultObject = {
   musicDuration?: string | undefined;
   musicMusician?: string | undefined;
   musicReleaseDate?: string | undefined;
-  musicSong?: string | undefined;
+  musicSong?: string | MusicSongObject | MusicSongObject[] | undefined;
   musicSongDisc?: string | undefined;
   musicSongTrack?: string | undefined;
   musicSongUrl?: string | undefined;
