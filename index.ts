@@ -1,6 +1,11 @@
 /* eslint-disable max-len, import/no-import-module-exports */
 import setOptionsAndReturnOpenGraphResults from './lib/openGraphScraper';
-import { OpenGraphScraperOptions } from './lib/types';
+import {
+  ImageObject,
+  OpenGraphScraperOptions,
+  TwitterImageObject,
+  TwitterPlayerObject,
+} from './lib/types';
 
 /**
  * `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of
@@ -65,27 +70,6 @@ type ErrorResult = {
   error: boolean;
   result: ErrorResultObject;
   response: undefined;
-};
-
-type ImageObject = {
-  height?: string | number;
-  type: string;
-  url: string;
-  width?: string | number;
-};
-
-type TwitterImageObject = {
-  height?: string | number;
-  alt?: string;
-  url: string;
-  width?: string | number;
-};
-
-type TwitterPlayerObject = {
-  height?: string | number;
-  stream?: string;
-  url?: string;
-  width?: string | number;
 };
 
 type SuccessResultObject = {

@@ -21,24 +21,24 @@
  * @typeParam {object} [timeout] - Timeout of the request.
  */
 export type OpenGraphScraperOptions = {
-  url: string;
-  html?: string;
-  blacklist?: string[];
-  onlyGetOpenGraphInfo?: boolean;
-  ogImageFallback?: boolean;
-  customMetaTags?: CustomMetaTags[];
   allMedia?: boolean;
-  peekSize?: number;
-  downloadLimit?: number | false;
-  urlValidatorSettings?: ValidatorSettings;
+  blacklist?: string[];
+  customMetaTags?: CustomMetaTags[];
   decompress?: boolean;
+  downloadLimit?: number | false;
   followRedirect?: boolean;
   headers?: {
     [x: string]: string;
   };
+  html?: string;
   maxRedirects?: number;
+  ogImageFallback?: boolean;
+  onlyGetOpenGraphInfo?: boolean;
+  peekSize?: number;
   retry?: object;
   timeout?: object;
+  url: string;
+  urlValidatorSettings?: ValidatorSettings;
 };
 
 /**
@@ -76,7 +76,28 @@ export type ValidatorSettings = {
  * @typeParam {string} fieldName - name of the result variable
  */
 type CustomMetaTags = {
+  fieldName: string;
   multiple: boolean;
   property: string;
-  fieldName: string;
+};
+
+export type TwitterImageObject = {
+  alt?: string;
+  height?: string | number;
+  url: string;
+  width?: string | number;
+};
+
+export type TwitterPlayerObject = {
+  height?: string | number;
+  stream?: string;
+  url?: string;
+  width?: string | number;
+};
+
+export type ImageObject = {
+  height?: string | number;
+  type: string;
+  url: string;
+  width?: string | number;
 };
