@@ -58,6 +58,7 @@ export type ValidatorSettings = {
   allow_protocol_relative_urls: boolean;
   allow_query_components: boolean;
   allow_trailing_dot: boolean;
+  allow_underscores: boolean;
   protocols: string[];
   require_host: boolean;
   require_port: boolean;
