@@ -42,7 +42,7 @@ export function validateAndFormatURL(url: string, urlValidatorSettings: Validato
  *
  */
 export function findImageTypeFromUrl(url: string) {
-  let type = url.split('.').pop();
+  let type: string = url.split('.').pop();
   [type] = type.split('?');
   return type;
 }
@@ -55,7 +55,7 @@ export function findImageTypeFromUrl(url: string) {
  *
  */
 export function isImageTypeValid(type: string) {
-  const validImageTypes = ['apng', 'bmp', 'gif', 'ico', 'cur', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'tif', 'tiff', 'webp'];
+  const validImageTypes: string[] = ['apng', 'bmp', 'gif', 'ico', 'cur', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'tif', 'tiff', 'webp'];
   return validImageTypes.includes(type);
 }
 
@@ -67,13 +67,13 @@ export function isImageTypeValid(type: string) {
  *
  */
 export function isThisANonHTMLUrl(url: string) {
-  const invalidImageTypes = ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.3gp', '.avi', '.mov', '.mp4', '.m4v', '.m4a', '.mp3', '.mkv', '.ogv', '.ogm', '.ogg', '.oga', '.webm', '.wav', '.bmp', '.gif', '.jpg', '.jpeg', '.png', '.webp', '.zip', '.rar', '.tar', '.tar.gz', '.tgz', '.tar.bz2', '.tbz2', '.txt', '.pdf'];
-  const extension = findImageTypeFromUrl(url);
+  const invalidImageTypes: string[] = ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.3gp', '.avi', '.mov', '.mp4', '.m4v', '.m4a', '.mp3', '.mkv', '.ogv', '.ogm', '.ogg', '.oga', '.webm', '.wav', '.bmp', '.gif', '.jpg', '.jpeg', '.png', '.webp', '.zip', '.rar', '.tar', '.tar.gz', '.tgz', '.tar.bz2', '.tbz2', '.txt', '.pdf'];
+  const extension: string = findImageTypeFromUrl(url);
   return invalidImageTypes.some((type) => `.${extension}`.includes(type));
 }
 
 /**
- * find and delete nested undefs
+ * Find and delete nested undefs
  *
  * @param {object} object - object to be cleaned
  * @return {object} object without nested undefs
@@ -88,14 +88,14 @@ export function removeNestedUndefinedValues(object) {
 }
 
 /**
- * split the options object into ogs and got option objects
+ * Split the options object into ogs and got option objects
  *
  * @param {object} options - options that need to be split
  * @return {object} object with nested options for ogs and got
  *
  */
 export function optionSetupAndSplit(options: OpenGraphScraperOptions) {
-  const ogsOptions = {
+  const ogsOptions: OpenGraphScraperOptions = {
     allMedia: false,
     customMetaTags: [],
     downloadLimit: 1000000,

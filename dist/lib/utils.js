@@ -73,7 +73,7 @@ function isThisANonHTMLUrl(url) {
 }
 exports.isThisANonHTMLUrl = isThisANonHTMLUrl;
 /**
- * find and delete nested undefs
+ * Find and delete nested undefs
  *
  * @param {object} object - object to be cleaned
  * @return {object} object without nested undefs
@@ -90,7 +90,7 @@ function removeNestedUndefinedValues(object) {
 }
 exports.removeNestedUndefinedValues = removeNestedUndefinedValues;
 /**
- * split the options object into ogs and got option objects
+ * Split the options object into ogs and got option objects
  *
  * @param {object} options - options that need to be split
  * @return {object} object with nested options for ogs and got
