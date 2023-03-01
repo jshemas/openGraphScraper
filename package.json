@@ -31,6 +31,7 @@
     "validator": "^13.9.0"
   },
   "files": [
+    "/lib",
     "/dist",
     "CHANGELOG.md",
     "index.ts"
