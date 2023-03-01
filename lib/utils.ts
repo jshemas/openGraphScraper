@@ -1,5 +1,5 @@
 import * as validator from 'validator';
-import { ValidatorSettings } from './types';
+import { ValidatorSettings, OpenGraphScraperOptions } from './types';
 
 /**
  * Checks if URL is valid
@@ -20,53 +20,53 @@ export function isUrlValid(url: string, urlValidatorSettings: ValidatorSettings)
  * @return {string} url that starts with http
  *
  */
-const coerceUrl = (url) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}`);
+const coerceUrl = (url: string) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}`);
 
 /**
- * validates and formats url
+ * Validates and formats url
  *
  * @param {string} url - url to be checked and formatted
  * @param {string} urlValidatorSettings - settings used by validator
  * @return {string} proper url or null
  *
  */
-export function validateAndFormatURL(url, urlValidatorSettings: ValidatorSettings) {
+export function validateAndFormatURL(url: string, urlValidatorSettings: ValidatorSettings) {
   return { url: isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null };
 }
 
 /**
- * finds the image type from a given url
+ * Finds the image type from a given url
  *
  * @param {string} url - url to be checked
  * @return {string} image type from url
  *
  */
-export function findImageTypeFromUrl(url) {
+export function findImageTypeFromUrl(url: string) {
   let type = url.split('.').pop();
   [type] = type.split('?');
   return type;
 }
 
 /**
- * checks if image type is valid
+ * Checks if image type is valid
  *
  * @param {string} type - type to be checked
  * @return {boolean} boolean value if type is value
  *
  */
-export function isImageTypeValid(type) {
+export function isImageTypeValid(type: string) {
   const validImageTypes = ['apng', 'bmp', 'gif', 'ico', 'cur', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'tif', 'tiff', 'webp'];
   return validImageTypes.includes(type);
 }
 
 /**
- * checks if URL is a non html page
+ * Checks if URL is a non html page
  *
  * @param {string} url - url to be checked
  * @return {boolean} boolean value if url is non html
  *
  */
-export function isThisANonHTMLUrl(url) {
+export function isThisANonHTMLUrl(url: string) {
   const invalidImageTypes = ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.3gp', '.avi', '.mov', '.mp4', '.m4v', '.m4a', '.mp3', '.mkv', '.ogv', '.ogm', '.ogg', '.oga', '.webm', '.wav', '.bmp', '.gif', '.jpg', '.jpeg', '.png', '.webp', '.zip', '.rar', '.tar', '.tar.gz', '.tgz', '.tar.bz2', '.tbz2', '.txt', '.pdf'];
   const extension = findImageTypeFromUrl(url);
   return invalidImageTypes.some((type) => `.${extension}`.includes(type));
@@ -94,7 +94,7 @@ export function removeNestedUndefinedValues(object) {
  * @return {object} object with nested options for ogs and got
  *
  */
-export function optionSetupAndSplit(options) {
+export function optionSetupAndSplit(options: OpenGraphScraperOptions) {
   const ogsOptions = {
     allMedia: false,
     customMetaTags: [],
@@ -107,13 +107,14 @@ export function optionSetupAndSplit(options) {
       require_tld: true,
       require_protocol: false,
       require_host: true,
+      require_port: false,
       require_valid_protocol: true,
       allow_underscores: false,
-      host_whitelist: false,
-      host_blacklist: false,
       allow_trailing_dot: false,
       allow_protocol_relative_urls: false,
-      disallow_auth: false,
+      allow_fragments: true,
+      allow_query_components: true,
+      validate_length: true,
     },
     ...options,
   };
@@ -146,7 +147,7 @@ export function optionSetupAndSplit(options) {
  * @return {function} got client with download limit
  *
  */
-export async function gotClient(downloadLimit) {
+export async function gotClient(downloadLimit: number | false) {
   // https://github.com/sindresorhus/got/issues/1789
   // eslint-disable-next-line import/no-unresolved
   const { got } = await import('got');

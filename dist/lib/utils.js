@@ -23,7 +23,7 @@ exports.isUrlValid = isUrlValid;
  */
 const coerceUrl = (url) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}`);
 /**
- * validates and formats url
+ * Validates and formats url
  *
  * @param {string} url - url to be checked and formatted
  * @param {string} urlValidatorSettings - settings used by validator
@@ -35,7 +35,7 @@ function validateAndFormatURL(url, urlValidatorSettings) {
 }
 exports.validateAndFormatURL = validateAndFormatURL;
 /**
- * finds the image type from a given url
+ * Finds the image type from a given url
  *
  * @param {string} url - url to be checked
  * @return {string} image type from url
@@ -48,7 +48,7 @@ function findImageTypeFromUrl(url) {
 }
 exports.findImageTypeFromUrl = findImageTypeFromUrl;
 /**
- * checks if image type is valid
+ * Checks if image type is valid
  *
  * @param {string} type - type to be checked
  * @return {boolean} boolean value if type is value
@@ -60,7 +60,7 @@ function isImageTypeValid(type) {
 }
 exports.isImageTypeValid = isImageTypeValid;
 /**
- * checks if URL is a non html page
+ * Checks if URL is a non html page
  *
  * @param {string} url - url to be checked
  * @return {boolean} boolean value if url is non html
@@ -109,13 +109,14 @@ function optionSetupAndSplit(options) {
             require_tld: true,
             require_protocol: false,
             require_host: true,
+            require_port: false,
             require_valid_protocol: true,
             allow_underscores: false,
-            host_whitelist: false,
-            host_blacklist: false,
             allow_trailing_dot: false,
             allow_protocol_relative_urls: false,
-            disallow_auth: false,
+            allow_fragments: true,
+            allow_query_components: true,
+            validate_length: true,
         },
         ...options,
     };

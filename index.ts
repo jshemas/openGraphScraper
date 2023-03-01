@@ -1,6 +1,6 @@
 /* eslint-disable max-len, import/no-import-module-exports */
 import setOptionsAndReturnOpenGraphResults from './lib/openGraphScraper';
-import { ValidatorSettings } from './lib/types';
+import { OpenGraphScraperOptions } from './lib/types';
 
 /**
  * `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of
@@ -54,42 +54,6 @@ export default async function run(options: OpenGraphScraperOptions): Promise<Err
 }
 
 module.exports = run;
-
-type OpenGraphScraperOptions = {
-  url: string;
-  html?: string;
-  blacklist?: string[];
-  onlyGetOpenGraphInfo?: boolean;
-  ogImageFallback?: boolean;
-  customMetaTags?: CustomMetaTags[];
-  allMedia?: boolean;
-  peekSize?: number;
-  downloadLimit?: number | false;
-  urlValidatorSettings?: ValidatorSettings;
-  decompress?: boolean;
-  followRedirect?: boolean;
-  headers?: {
-    [x: string]: string;
-  };
-  maxRedirects?: number;
-  retry?: object;
-  timeout?: object;
-};
-
-type CustomMetaTags = {
-  /**
-     * - is there more than one of these tags on a page (normally this is false)
-     */
-  multiple: boolean;
-  /**
-     * - meta tag name/property attribute
-     */
-  property: string;
-  /**
-     * - name of the result variable
-     */
-  fieldName: string;
-};
 
 type SuccessResult = {
   error: boolean;
