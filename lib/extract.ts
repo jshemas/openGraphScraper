@@ -51,6 +51,7 @@ export default function extractMetaTags(body, options) {
     ogObject = fallback(ogObject, options, $);
   }
 
+  // TODO: Is this still needed?
   // removes any undefs
   ogObject = utils.removeNestedUndefinedValues(ogObject);
 

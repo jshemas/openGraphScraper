@@ -50,6 +50,7 @@ function extractMetaTags(body, options) {
     if (!options.onlyGetOpenGraphInfo) {
         ogObject = (0, fallback_1.default)(ogObject, options, $);
     }
+    // TODO: Is this still needed?
     // removes any undefs
     ogObject = utils.removeNestedUndefinedValues(ogObject);
     return ogObject;
