@@ -83,28 +83,35 @@ type CustomMetaTags = {
 
 export type TwitterImageObject = {
   alt?: string;
-  height?: string | number;
+  height?: number;
   url: string;
-  width?: string | number;
+  width?: number;
 };
 
 export type TwitterPlayerObject = {
-  height?: string | number;
+  height?: number;
   stream?: string;
   url?: string;
-  width?: string | number;
+  width?: number;
 };
 
 export type ImageObject = {
-  height?: string | number;
+  height?: number;
   type: string;
   url: string;
-  width?: string | number;
+  width?: number;
+};
+
+export type VideoObject = {
+  height?: number;
+  type?: string;
+  url: string;
+  width?: number;
 };
 
 export type MusicSongObject = {
   disc?: string;
-  track?: string;
+  track?: number;
   url: string;
 };
 
@@ -184,8 +191,8 @@ export type OgObject = {
   musicMusician?: string;
   musicReleaseDate?: string;
   musicSong?: string | MusicSongObject | MusicSongObject[];
-  musicSongDisc?: string;
-  musicSongTrack?: string;
+  musicSongDisc?: string | null[];
+  musicSongTrack?: number | null[];
   musicSongUrl?: string;
   ogArticleAuthor?: string;
   ogArticleExpirationTime?: string;
@@ -203,11 +210,11 @@ export type OgObject = {
   ogDescription?: string;
   ogDeterminer?: string;
   ogImage?: string | ImageObject | ImageObject[];
-  ogImageHeight?: string;
+  ogImageHeight?: string | null[];
   ogImageSecureURL?: string;
-  ogImageType?: string;
+  ogImageType?: string | null[];
   ogImageURL?: string;
-  ogImageWidth?: string;
+  ogImageWidth?: string | null[];
   ogLocale?: string;
   ogLocaleAlternate?: string;
   ogLogo?: string;
@@ -222,12 +229,12 @@ export type OgObject = {
   ogTitle?: string;
   ogType?: string;
   ogUrl?: string;
-  ogVideo?: string;
+  ogVideo?: string | VideoObject | VideoObject[];
   ogVideoActorId?: string;
-  ogVideoHeight?: string;
+  ogVideoHeight?: string | null[];
   ogVideoSecureURL?: string;
-  ogVideoType?: string;
-  ogVideoWidth?: string;
+  ogVideoType?: string | null[];
+  ogVideoWidth?: string | null[];
   placeLocationLatitude?: string;
   placeLocationLongitude?: string;
   profileFirstName?: string;
@@ -265,15 +272,15 @@ export type OgObject = {
   twitterCreatorId?: string;
   twitterDescription?: string;
   twitterImage?: string | TwitterImageObject | TwitterImageObject[];
-  twitterImageAlt?: string;
-  twitterImageHeight?: string;
-  twitterImageSrc?: string;
-  twitterImageWidth?: string;
+  twitterImageAlt?: string | null[];
+  twitterImageHeight?: string | null[];
+  twitterImageSrc?: string | null[];
+  twitterImageWidth?: string | null[];
   twitterPlayer?: string | TwitterPlayerObject | TwitterPlayerObject[];
-  twitterPlayerHeight?: string;
-  twitterPlayerStream?: string;
+  twitterPlayerHeight?: string | null[];
+  twitterPlayerStream?: string | null[];
   twitterPlayerStreamContentType?: string;
-  twitterPlayerWidth?: string;
+  twitterPlayerWidth?: string | null[];
   twitterSite?: string;
   twitterSiteId?: string;
   twitterTitle?: string;
