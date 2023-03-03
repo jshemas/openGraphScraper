@@ -243,7 +243,7 @@ export type OgObject = {
   profileUsername?: string;
   publishedTime?: string;
   releaseDate?: string;
-  requestUrl: string;
+  requestUrl?: string;
   restaurantContactInfoCountryName?: string;
   restaurantContactInfoEmail?: string;
   restaurantContactInfoLocality?: string;
@@ -257,7 +257,7 @@ export type OgObject = {
   restaurantSection?: string;
   restaurantVariationPriceAmount?: string;
   restaurantVariationPriceCurrency?: string;
-  success: boolean;
+  success?: boolean;
   twitterAppIdGooglePlay?: string;
   twitterAppIdiPad?: string;
   twitterAppIdiPhone?: string;
