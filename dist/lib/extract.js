@@ -8,7 +8,7 @@ const utils = require("./utils");
 /**
  * extract all of the meta tags needed for ogs
  *
- * @param {object} body - the body of the got request
+ * @param {sting} body - the body of the got request
  * @param {object} options - options for ogs
  * @return {object} object with ogs results
  *

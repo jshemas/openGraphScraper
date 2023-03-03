@@ -5,17 +5,17 @@ import fields from './fields';
 import * as media from './media';
 import * as utils from './utils';
 
-import { OgObject } from './types';
+import { OgObject, OpenGraphScraperOptions } from './types';
 
 /**
  * extract all of the meta tags needed for ogs
  *
- * @param {object} body - the body of the got request
+ * @param {sting} body - the body of the got request
  * @param {object} options - options for ogs
  * @return {object} object with ogs results
  *
  */
-export default function extractMetaTags(body, options) {
+export default function extractMetaTags(body: string, options: OpenGraphScraperOptions) {
   let ogObject: OgObject = {};
   const $ = cheerio.load(body);
   const metaFields = fields.concat(options.customMetaTags);
