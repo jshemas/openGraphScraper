@@ -1,4 +1,4 @@
-import * as validator from 'validator';
+import validator from 'validator';
 import { ValidatorSettings, OpenGraphScraperOptions } from './types';
 
 /**
@@ -9,7 +9,7 @@ import { ValidatorSettings, OpenGraphScraperOptions } from './types';
  * @return {boolean} boolean value if the url is valid
  *
  */
-export function isUrlValid(url: string, urlValidatorSettings: ValidatorSettings) {
+export function isUrlValid(url: string, urlValidatorSettings: ValidatorSettings): boolean {
   return typeof url === 'string' && url.length > 0 && validator.isURL(url, urlValidatorSettings);
 }
 
@@ -20,7 +20,7 @@ export function isUrlValid(url: string, urlValidatorSettings: ValidatorSettings)
  * @return {string} url that starts with http
  *
  */
-const coerceUrl = (url: string) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}`);
+const coerceUrl = (url: string): string => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}`);
 
 /**
  * Validates and formats url
@@ -30,7 +30,7 @@ const coerceUrl = (url: string) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http:
  * @return {string} proper url or null
  *
  */
-export function validateAndFormatURL(url: string, urlValidatorSettings: ValidatorSettings) {
+export function validateAndFormatURL(url: string, urlValidatorSettings: ValidatorSettings): { url: string | null } {
   return { url: isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null };
 }
 
@@ -41,7 +41,7 @@ export function validateAndFormatURL(url: string, urlValidatorSettings: Validato
  * @return {string} image type from url
  *
  */
-export function findImageTypeFromUrl(url: string) {
+export function findImageTypeFromUrl(url: string): string {
   let type: string = url.split('.').pop();
   [type] = type.split('?');
   return type;
@@ -54,7 +54,7 @@ export function findImageTypeFromUrl(url: string) {
  * @return {boolean} boolean value if type is value
  *
  */
-export function isImageTypeValid(type: string) {
+export function isImageTypeValid(type: string): boolean {
   const validImageTypes: string[] = ['apng', 'bmp', 'gif', 'ico', 'cur', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'tif', 'tiff', 'webp'];
   return validImageTypes.includes(type);
 }
@@ -66,10 +66,10 @@ export function isImageTypeValid(type: string) {
  * @return {boolean} boolean value if url is non html
  *
  */
-export function isThisANonHTMLUrl(url: string) {
+export function isThisANonHTMLUrl(url: string): boolean {
   const invalidImageTypes: string[] = ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.3gp', '.avi', '.mov', '.mp4', '.m4v', '.m4a', '.mp3', '.mkv', '.ogv', '.ogm', '.ogg', '.oga', '.webm', '.wav', '.bmp', '.gif', '.jpg', '.jpeg', '.png', '.webp', '.zip', '.rar', '.tar', '.tar.gz', '.tgz', '.tar.bz2', '.tbz2', '.txt', '.pdf'];
   const extension: string = findImageTypeFromUrl(url);
-  return invalidImageTypes.some((type) => `.${extension}`.includes(type));
+  return invalidImageTypes.some((type: string): boolean => `.${extension}`.includes(type));
 }
 
 /**
@@ -79,7 +79,7 @@ export function isThisANonHTMLUrl(url: string) {
  * @return {object} object without nested undefs
  *
  */
-export function removeNestedUndefinedValues(object) {
+export function removeNestedUndefinedValues(object: { [key: string]: any }): { [key: string]: any } {
   Object.entries(object).forEach(([key, value]) => {
     if (value && typeof value === 'object') removeNestedUndefinedValues(value);
     else if (value === undefined) delete object[key];
@@ -94,7 +94,8 @@ export function removeNestedUndefinedValues(object) {
  * @return {object} object with nested options for ogs and got
  *
  */
-export function optionSetupAndSplit(options: OpenGraphScraperOptions) {
+export function optionSetupAndSplit(options: OpenGraphScraperOptions):
+{ ogsOptions: OpenGraphScraperOptions, gotOptions: Options } {
   const ogsOptions: OpenGraphScraperOptions = {
     allMedia: false,
     customMetaTags: [],
@@ -118,7 +119,7 @@ export function optionSetupAndSplit(options: OpenGraphScraperOptions) {
     },
     ...options,
   };
-  const gotOptions = {
+  const gotOptions: Options = {
     decompress: true,
     followRedirect: true,
     headers: {},
@@ -139,6 +140,10 @@ export function optionSetupAndSplit(options: OpenGraphScraperOptions) {
   return { ogsOptions, gotOptions };
 }
 
+interface Options {
+  [key: string]: any;
+}
+
 /**
  * gotClient - limit the size of the content we fetch when performing the request
  * from https://github.com/sindresorhus/got/blob/main/documentation/examples/advanced-creation.js
@@ -147,28 +152,26 @@ export function optionSetupAndSplit(options: OpenGraphScraperOptions) {
  * @return {function} got client with download limit
  *
  */
-export async function gotClient(downloadLimit: number | false) {
+export async function gotClient(downloadLimit: number | false): Promise<any> {
   // https://github.com/sindresorhus/got/issues/1789
   // eslint-disable-next-line import/no-unresolved
   const { got } = await import('got');
 
   return got.extend({
     handlers: [
-      (options, next) => {
+      (options: any, next: any) => {
         const promiseOrStream = next(options);
 
-        const destroy = (message) => {
+        const destroy = (message: string) => {
           if (options.isStream) {
-            // @ts-ignore
             promiseOrStream.destroy(new Error(message));
             return;
           }
-          // @ts-ignore
           promiseOrStream.cancel(message);
         };
 
         if (typeof downloadLimit === 'number') {
-          promiseOrStream.on('downloadProgress', (progress) => {
+          promiseOrStream.on('downloadProgress', (progress: { transferred: number, percent: number }) => {
             if (progress.transferred > downloadLimit && progress.percent !== 1) {
               destroy(`Exceeded the download limit of ${downloadLimit} bytes`);
             }

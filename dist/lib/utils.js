@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.gotClient = exports.optionSetupAndSplit = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = void 0;
-const validator = require("validator");
+const validator_1 = require("validator");
 /**
  * Checks if URL is valid
  *
@@ -11,7 +11,7 @@ const validator = require("validator");
  *
  */
 function isUrlValid(url, urlValidatorSettings) {
-    return typeof url === 'string' && url.length > 0 && validator.isURL(url, urlValidatorSettings);
+    return typeof url === 'string' && url.length > 0 && validator_1.default.isURL(url, urlValidatorSettings);
 }
 exports.isUrlValid = isUrlValid;
 /**
@@ -157,11 +157,9 @@ async function gotClient(downloadLimit) {
                 const promiseOrStream = next(options);
                 const destroy = (message) => {
                     if (options.isStream) {
-                        // @ts-ignore
                         promiseOrStream.destroy(new Error(message));
                         return;
                     }
-                    // @ts-ignore
                     promiseOrStream.cancel(message);
                 };
                 if (typeof downloadLimit === 'number') {
