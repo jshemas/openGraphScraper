@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.1
+
+- Fix issue where using `import` would cause typescript errors
+- Updating the `urlValidatorSettings` defaults to match `validatorjs`
+- Updating Dependencies
+
 ## 5.1.0
 
 - Convert source code to typescript
