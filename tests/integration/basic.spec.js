@@ -1,3 +1,5 @@
+import * as importOgs from '../../index';
+
 const util = require('util');
 const ogs = require('../../index');
 
@@ -86,6 +88,37 @@ describe('basic', function () {
       expect(response.result.success).to.be.eql(true);
       expect(response.result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'success');
       expect(response.response).to.be.an('object').and.to.not.be.empty;
+    });
+  });
+  it('using ogs import should still work', async function () {
+    return importOgs({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be.eql(false);
+      expect(result.ogTitle).to.be.eql('Open Graph protocol');
+      expect(result.ogType).to.be.eql('website');
+      expect(result.ogUrl).to.be.eql('https://ogp.me/');
+      expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
+      expect(result.ogImage).to.be.eql({
+        url: 'https://ogp.me/logo.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
+      });
+      expect(result.requestUrl).to.be.eql('https://ogp.me/');
+      expect(result.charset).to.be.eql('utf8');
+      expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'ogDescription',
+        'ogImage',
+        'requestUrl',
+        'charset',
+        'success',
+      );
+      expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
   it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {

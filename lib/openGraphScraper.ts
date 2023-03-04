@@ -2,6 +2,7 @@ import extractMetaTags from './extract';
 import requestAndResultsFormatter from './request';
 import charset from './charset';
 import * as utils from './utils';
+import { OpenGraphScraperOptions } from './types';
 
 /**
  * sets up options for the got request and calls extract on html
@@ -10,7 +11,7 @@ import * as utils from './utils';
  * @return {object} object with ogs results
  *
  */
-export default async function setOptionsAndReturnOpenGraphResults(options) {
+export default async function setOptionsAndReturnOpenGraphResults(options: OpenGraphScraperOptions) {
   const { ogsOptions, gotOptions } = utils.optionSetupAndSplit(options);
 
   if (ogsOptions.html) {

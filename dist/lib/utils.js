@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.gotClient = exports.optionSetupAndSplit = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = void 0;
-const validator = require("validator");
+const validator_1 = require("validator");
 /**
  * Checks if URL is valid
  *
@@ -11,7 +11,7 @@ const validator = require("validator");
  *
  */
 function isUrlValid(url, urlValidatorSettings) {
-    return typeof url === 'string' && url.length > 0 && validator.isURL(url, urlValidatorSettings);
+    return typeof url === 'string' && url.length > 0 && validator_1.default.isURL(url, urlValidatorSettings);
 }
 exports.isUrlValid = isUrlValid;
 /**
@@ -23,7 +23,7 @@ exports.isUrlValid = isUrlValid;
  */
 const coerceUrl = (url) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}`);
 /**
- * validates and formats url
+ * Validates and formats url
  *
  * @param {string} url - url to be checked and formatted
  * @param {string} urlValidatorSettings - settings used by validator
@@ -31,11 +31,11 @@ const coerceUrl = (url) => (/^(f|ht)tps?:\/\//i.test(url) ? url : `http://${url}
  *
  */
 function validateAndFormatURL(url, urlValidatorSettings) {
-    return { url: this.isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null };
+    return { url: isUrlValid(url, urlValidatorSettings) ? coerceUrl(url) : null };
 }
 exports.validateAndFormatURL = validateAndFormatURL;
 /**
- * finds the image type from a given url
+ * Finds the image type from a given url
  *
  * @param {string} url - url to be checked
  * @return {string} image type from url
@@ -48,7 +48,7 @@ function findImageTypeFromUrl(url) {
 }
 exports.findImageTypeFromUrl = findImageTypeFromUrl;
 /**
- * checks if image type is valid
+ * Checks if image type is valid
  *
  * @param {string} type - type to be checked
  * @return {boolean} boolean value if type is value
@@ -60,7 +60,7 @@ function isImageTypeValid(type) {
 }
 exports.isImageTypeValid = isImageTypeValid;
 /**
- * checks if URL is a non html page
+ * Checks if URL is a non html page
  *
  * @param {string} url - url to be checked
  * @return {boolean} boolean value if url is non html
@@ -68,12 +68,12 @@ exports.isImageTypeValid = isImageTypeValid;
  */
 function isThisANonHTMLUrl(url) {
     const invalidImageTypes = ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.3gp', '.avi', '.mov', '.mp4', '.m4v', '.m4a', '.mp3', '.mkv', '.ogv', '.ogm', '.ogg', '.oga', '.webm', '.wav', '.bmp', '.gif', '.jpg', '.jpeg', '.png', '.webp', '.zip', '.rar', '.tar', '.tar.gz', '.tgz', '.tar.bz2', '.tbz2', '.txt', '.pdf'];
-    const extension = this.findImageTypeFromUrl(url);
+    const extension = findImageTypeFromUrl(url);
     return invalidImageTypes.some((type) => `.${extension}`.includes(type));
 }
 exports.isThisANonHTMLUrl = isThisANonHTMLUrl;
 /**
- * find and delete nested undefs
+ * Find and delete nested undefs
  *
  * @param {object} object - object to be cleaned
  * @return {object} object without nested undefs
@@ -82,7 +82,7 @@ exports.isThisANonHTMLUrl = isThisANonHTMLUrl;
 function removeNestedUndefinedValues(object) {
     Object.entries(object).forEach(([key, value]) => {
         if (value && typeof value === 'object')
-            this.removeNestedUndefinedValues(value);
+            removeNestedUndefinedValues(value);
         else if (value === undefined)
             delete object[key];
     });
@@ -90,7 +90,7 @@ function removeNestedUndefinedValues(object) {
 }
 exports.removeNestedUndefinedValues = removeNestedUndefinedValues;
 /**
- * split the options object into ogs and got option objects
+ * Split the options object into ogs and got option objects
  *
  * @param {object} options - options that need to be split
  * @return {object} object with nested options for ogs and got
@@ -109,13 +109,14 @@ function optionSetupAndSplit(options) {
             require_tld: true,
             require_protocol: false,
             require_host: true,
+            require_port: false,
             require_valid_protocol: true,
             allow_underscores: false,
-            host_whitelist: false,
-            host_blacklist: false,
             allow_trailing_dot: false,
             allow_protocol_relative_urls: false,
-            disallow_auth: false,
+            allow_fragments: true,
+            allow_query_components: true,
+            validate_length: true,
         },
         ...options,
     };
@@ -156,11 +157,9 @@ async function gotClient(downloadLimit) {
                 const promiseOrStream = next(options);
                 const destroy = (message) => {
                     if (options.isStream) {
-                        // @ts-ignore
                         promiseOrStream.destroy(new Error(message));
                         return;
                     }
-                    // @ts-ignore
                     promiseOrStream.cancel(message);
                 };
                 if (typeof downloadLimit === 'number') {

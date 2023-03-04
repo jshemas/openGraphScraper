@@ -8,7 +8,7 @@ const utils = require("./utils");
 /**
  * extract all of the meta tags needed for ogs
  *
- * @param {object} body - the body of the got request
+ * @param {sting} body - the body of the got request
  * @param {object} options - options for ogs
  * @return {object} object with ogs results
  *
@@ -50,6 +50,7 @@ function extractMetaTags(body, options) {
     if (!options.onlyGetOpenGraphInfo) {
         ogObject = (0, fallback_1.default)(ogObject, options, $);
     }
+    // TODO: Is this still needed?
     // removes any undefs
     ogObject = utils.removeNestedUndefinedValues(ogObject);
     return ogObject;

@@ -1,7 +1,7 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "index.ts",
@@ -26,22 +26,23 @@
   "dependencies": {
     "chardet": "^1.5.1",
     "cheerio": "^1.0.0-rc.12",
-    "got": "^12.5.3",
+    "got": "^12.6.0",
     "iconv-lite": "^0.6.3",
     "validator": "^13.9.0"
   },
   "files": [
+    "/lib",
     "/dist",
     "CHANGELOG.md",
     "index.ts"
   ],
   "devDependencies": {
-    "@snyk/protect": "^1.1100.0",
-    "@types/node": "^18.13.0",
-    "@typescript-eslint/eslint-plugin": "^5.51.0",
-    "@typescript-eslint/parser": "^5.51.0",
+    "@snyk/protect": "^1.1111.0",
+    "@types/node": "^18.14.6",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
     "chai": "^4.3.7",
-    "eslint": "^8.34.0",
+    "eslint": "^8.35.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",

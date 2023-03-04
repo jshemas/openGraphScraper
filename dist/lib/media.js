@@ -3,27 +3,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.mediaSetup = void 0;
 const fields_1 = require("./fields");
 const mediaMapperTwitterImage = (item) => ({
+    alt: item[3],
+    height: item[2],
     url: item[0],
     width: item[1],
-    height: item[2],
-    alt: item[3],
 });
 const mediaMapperTwitterPlayer = (item) => ({
-    url: item[0],
-    width: item[1],
     height: item[2],
     stream: item[3],
-});
-const mediaMapperMusicSong = (item) => ({
-    url: item[0],
-    track: item[1],
-    disc: item[2],
-});
-const mediaMapper = (item) => ({
     url: item[0],
     width: item[1],
+});
+const mediaMapperMusicSong = (item) => ({
+    disc: item[2],
+    track: item[1],
+    url: item[0],
+});
+const mediaMapper = (item) => ({
     height: item[2],
     type: item[3],
+    url: item[0],
+    width: item[1],
 });
 const mediaSorter = (a, b) => {
     if (!(a.url && b.url)) {
@@ -70,7 +70,7 @@ const zip = (array, ...args) => {
  */
 function mediaSetup(ogObject, options) {
     // sets ogImage image/width/height/type to null if one these exists
-    if (ogObject.ogImage || ogObject.ogImageWidth || ogObject.twitterImageHeight || ogObject.ogImageType) {
+    if (ogObject.ogImage || ogObject.ogImageWidth || ogObject.ogImageHeight || ogObject.ogImageType) {
         ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : [null];
         ogObject.ogImageWidth = ogObject.ogImageWidth ? ogObject.ogImageWidth : [null];
         ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [null];

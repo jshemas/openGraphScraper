@@ -1,4 +1,5 @@
 import { findImageTypeFromUrl, isImageTypeValid, isUrlValid } from './utils';
+import { OpenGraphScraperOptions } from './types';
 
 const doesElementExist = (selector, attribute, $) => (
   $(selector).attr(attribute) && $(selector).attr(attribute).length > 0
@@ -13,7 +14,7 @@ const doesElementExist = (selector, attribute, $) => (
  * @return {object} object with ogs results with updated fallback values
  *
  */
-export function fallback(ogObject, options, $) {
+export function fallback(ogObject, options: OpenGraphScraperOptions, $) {
   // title fallback
   if (!ogObject.ogTitle) {
     if ($('title').text() && $('title').text().length > 0) {
@@ -47,7 +48,7 @@ export function fallback(ogObject, options, $) {
     ogObject.ogImage = [];
     $('img').map((index, imageElement) => {
       if (doesElementExist(imageElement, 'src', $)) {
-        const source = $(imageElement).attr('src');
+        const source: string = $(imageElement).attr('src');
         const type = findImageTypeFromUrl(source);
         if (!isUrlValid(source, options.urlValidatorSettings) || !isImageTypeValid(type)) return false;
         ogObject.ogImage.push({
@@ -78,15 +79,15 @@ export function fallback(ogObject, options, $) {
 
   // audio fallback
   if (!ogObject.ogAudioURL && !ogObject.ogAudioSecureURL) {
-    const audioElementValue = $('audio').attr('src');
-    const audioSourceElementValue = $('audio > source').attr('src');
+    const audioElementValue: string = $('audio').attr('src');
+    const audioSourceElementValue: string = $('audio > source').attr('src');
     if (doesElementExist('audio', 'src', $)) {
       if (audioElementValue.startsWith('https')) {
         ogObject.ogAudioSecureURL = audioElementValue;
       } else {
         ogObject.ogAudioURL = audioElementValue;
       }
-      const audioElementTypeValue = $('audio').attr('type');
+      const audioElementTypeValue: string = $('audio').attr('type');
       if (!ogObject.ogAudioType && doesElementExist('audio', 'type', $)) ogObject.ogAudioType = audioElementTypeValue;
     } else if (doesElementExist('audio > source', 'src', $)) {
       if (audioSourceElementValue.startsWith('https')) {
@@ -94,7 +95,7 @@ export function fallback(ogObject, options, $) {
       } else {
         ogObject.ogAudioURL = audioSourceElementValue;
       }
-      const audioSourceElementTypeValue = $('audio > source').attr('type');
+      const audioSourceElementTypeValue: string = $('audio > source').attr('type');
       if (!ogObject.ogAudioType && doesElementExist('audio > source', 'type', $)) ogObject.ogAudioType = audioSourceElementTypeValue;
     }
   }

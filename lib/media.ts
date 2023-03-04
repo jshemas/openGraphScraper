@@ -1,33 +1,45 @@
 import fields from './fields';
+import {
+  ImageObject,
+  MusicSongObject,
+  OgObject,
+  OpenGraphScraperOptions,
+  TwitterImageObject,
+  TwitterPlayerObject,
+  VideoObject,
+} from './types';
 
-const mediaMapperTwitterImage = (item) => ({
+const mediaMapperTwitterImage = (item: TwitterImageObject) => ({
+  alt: item[3],
+  height: item[2],
   url: item[0],
   width: item[1],
-  height: item[2],
-  alt: item[3],
 });
 
-const mediaMapperTwitterPlayer = (item) => ({
-  url: item[0],
-  width: item[1],
+const mediaMapperTwitterPlayer = (item: TwitterPlayerObject) => ({
   height: item[2],
   stream: item[3],
-});
-
-const mediaMapperMusicSong = (item) => ({
-  url: item[0],
-  track: item[1],
-  disc: item[2],
-});
-
-const mediaMapper = (item) => ({
   url: item[0],
   width: item[1],
-  height: item[2],
-  type: item[3],
 });
 
-const mediaSorter = (a, b) => {
+const mediaMapperMusicSong = (item: MusicSongObject) => ({
+  disc: item[2],
+  track: item[1],
+  url: item[0],
+});
+
+const mediaMapper = (item: ImageObject | VideoObject) => ({
+  height: item[2],
+  type: item[3],
+  url: item[0],
+  width: item[1],
+});
+
+const mediaSorter = (
+  a: ImageObject | TwitterImageObject | VideoObject | TwitterPlayerObject,
+  b: ImageObject | TwitterImageObject | VideoObject | TwitterPlayerObject,
+) => {
   if (!(a.url && b.url)) {
     return 0;
   }
@@ -45,7 +57,7 @@ const mediaSorter = (a, b) => {
   return Math.max(b.width, b.height) - Math.max(a.width, a.height);
 };
 
-const mediaSorterMusicSong = (a, b) => {
+const mediaSorterMusicSong = (a: MusicSongObject, b: MusicSongObject) => {
   if (!(a.track && b.track)) {
     return 0;
   } if (a.disc > b.disc) {
@@ -71,9 +83,9 @@ const zip = (array, ...args) => {
  * @return {object} object with ogs results with updated media values
  *
  */
-export function mediaSetup(ogObject, options) {
+export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions) {
   // sets ogImage image/width/height/type to null if one these exists
-  if (ogObject.ogImage || ogObject.ogImageWidth || ogObject.twitterImageHeight || ogObject.ogImageType) {
+  if (ogObject.ogImage || ogObject.ogImageWidth || ogObject.ogImageHeight || ogObject.ogImageType) {
     ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : [null];
     ogObject.ogImageWidth = ogObject.ogImageWidth ? ogObject.ogImageWidth : [null];
     ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [null];
@@ -81,7 +93,12 @@ export function mediaSetup(ogObject, options) {
   }
 
   // format images
-  const ogImages = zip(ogObject.ogImage, ogObject.ogImageWidth, ogObject.ogImageHeight, ogObject.ogImageType)
+  const ogImages: ImageObject[] = zip(
+    ogObject.ogImage,
+    ogObject.ogImageWidth,
+    ogObject.ogImageHeight,
+    ogObject.ogImageType,
+  )
     .map(mediaMapper)
     .sort(mediaSorter);
 
@@ -94,7 +111,12 @@ export function mediaSetup(ogObject, options) {
   }
 
   // format videos
-  const ogVideos = zip(ogObject.ogVideo, ogObject.ogVideoWidth, ogObject.ogVideoHeight, ogObject.ogVideoType)
+  const ogVideos: VideoObject[] = zip(
+    ogObject.ogVideo,
+    ogObject.ogVideoWidth,
+    ogObject.ogVideoHeight,
+    ogObject.ogVideoType,
+  )
     .map(mediaMapper)
     .sort(mediaSorter);
 
@@ -114,7 +136,7 @@ export function mediaSetup(ogObject, options) {
   }
 
   // format twitter images
-  const twitterImages = zip(
+  const twitterImages: TwitterImageObject[] = zip(
     ogObject.twitterImage,
     ogObject.twitterImageWidth,
     ogObject.twitterImageHeight,
@@ -134,7 +156,7 @@ export function mediaSetup(ogObject, options) {
   }
 
   // format twitter player
-  const twitterPlayers = zip(
+  const twitterPlayers: TwitterPlayerObject[] = zip(
     ogObject.twitterPlayer,
     ogObject.twitterPlayerWidth,
     ogObject.twitterPlayerHeight,
@@ -150,7 +172,7 @@ export function mediaSetup(ogObject, options) {
   }
 
   // format music songs
-  const musicSongs = zip(ogObject.musicSong, ogObject.musicSongTrack, ogObject.musicSongDisc)
+  const musicSongs: MusicSongObject[] = zip(ogObject.musicSong, ogObject.musicSongTrack, ogObject.musicSongDisc)
     .map(mediaMapperMusicSong)
     .sort(mediaSorterMusicSong);
 
