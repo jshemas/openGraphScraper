@@ -180,6 +180,8 @@ export type OgObject = {
   dcSubject?: string;
   dcTitle?: string;
   dcType?: string;
+  error?: string;
+  errorDetails?: Error;
   favicon?: string;
   modifiedTime?: string;
   musicAlbum?: string;
