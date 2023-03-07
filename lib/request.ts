@@ -1,5 +1,5 @@
 import chardet from 'chardet';
-import * as iconv from 'iconv-lite';
+import { decode } from 'iconv-lite';
 
 import { gotClient } from './utils';
 
@@ -31,7 +31,7 @@ export default async function requestAndResultsFormatter(gotOptions, ogsOptions)
       const char = chardet.detect(response.rawBody);
       let decodedBody = response.rawBody.toString();
       if (char && typeof response.rawBody === 'object') {
-        decodedBody = iconv.decode(response.rawBody, char);
+        decodedBody = decode(response.rawBody, char);
       }
 
       if (!decodedBody) {
