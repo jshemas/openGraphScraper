@@ -59,7 +59,6 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | ogImageFallback      | Fetch other images if no open graph ones are found.                        | true          |          |
 | customMetaTags       | Here you can define custom meta tags you want to scrape.                   | []            |          |
 | allMedia             | By default, OGS will only send back the first image/video it finds         | false         |          |
-| peekSize             | Sets the peekSize for the request                                          | 1024          |          |
 | downloadLimit        | Maximum size of the content downloaded from the server, in bytes           | 1000000 (1MB) |          |
 | urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/utils.js#L102-L114)          |          |
 

@@ -103,7 +103,6 @@ function optionSetupAndSplit(options) {
         downloadLimit: 1000000,
         ogImageFallback: true,
         onlyGetOpenGraphInfo: false,
-        peekSize: 1024,
         urlValidatorSettings: {
             protocols: ['http', 'https'],
             require_tld: true,
@@ -134,7 +133,6 @@ function optionSetupAndSplit(options) {
     delete gotOptions.downloadLimit;
     delete gotOptions.ogImageFallback;
     delete gotOptions.onlyGetOpenGraphInfo;
-    delete gotOptions.peekSize;
     delete gotOptions.urlValidatorSettings;
     return { ogsOptions, gotOptions };
 }
