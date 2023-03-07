@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const cheerio = require("cheerio");
+const cheerio_1 = require("cheerio");
 const fallback_1 = require("./fallback");
 const fields_1 = require("./fields");
 const media = require("./media");
@@ -15,7 +15,7 @@ const utils = require("./utils");
  */
 function extractMetaTags(body, options, rawBody) {
     let ogObject = {};
-    const $ = cheerio.load(body);
+    const $ = (0, cheerio_1.load)(body);
     const metaFields = fields_1.default.concat(options.customMetaTags);
     // find all of the open graph info in the meta tags
     $('meta').each((index, meta) => {
