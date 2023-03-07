@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fallback = void 0;
+const chardet_1 = require("chardet");
 const utils_1 = require("./utils");
 const doesElementExist = (selector, attribute, $) => ($(selector).attr(attribute) && $(selector).attr(attribute).length > 0);
 /**
@@ -12,7 +13,7 @@ const doesElementExist = (selector, attribute, $) => ($(selector).attr(attribute
  * @return {object} object with ogs results with updated fallback values
  *
  */
-function fallback(ogObject, options, $) {
+function fallback(ogObject, options, $, rawBody) {
     // title fallback
     if (!ogObject.ogTitle) {
         if ($('title').text() && $('title').text().length > 0) {
@@ -183,6 +184,13 @@ function fallback(ogObject, options, $) {
         else if (doesElementExist('link[type="image/x-icon"]', 'href', $)) {
             ogObject.favicon = $('link[type="image/x-icon"]').attr('href');
         }
+    }
+    // set the charset
+    if (doesElementExist('meta', 'charset', $)) {
+        ogObject.charset = $('meta').attr('charset');
+    }
+    else if (rawBody) {
+        ogObject.charset = chardet_1.default.detect(rawBody);
     }
     return ogObject;
 }

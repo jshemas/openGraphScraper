@@ -13,7 +13,7 @@ const utils = require("./utils");
  * @return {object} object with ogs results
  *
  */
-function extractMetaTags(body, options) {
+function extractMetaTags(body, options, rawBody) {
     let ogObject = {};
     const $ = cheerio.load(body);
     const metaFields = fields_1.default.concat(options.customMetaTags);
@@ -48,7 +48,7 @@ function extractMetaTags(body, options) {
     ogObject = media.mediaSetup(ogObject, options);
     // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks
     if (!options.onlyGetOpenGraphInfo) {
-        ogObject = (0, fallback_1.default)(ogObject, options, $);
+        ogObject = (0, fallback_1.default)(ogObject, options, $, rawBody);
     }
     // TODO: Is this still needed?
     // removes any undefs

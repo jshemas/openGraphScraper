@@ -20,7 +20,7 @@ describe('basic', function () {
         type: 'image/png',
       });
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogTitle',
@@ -51,7 +51,7 @@ describe('basic', function () {
       type: 'image/png',
     });
     expect(result.requestUrl).to.be.eql('https://ogp.me/');
-    expect(result.charset).to.be.eql('utf8');
+    expect(result.charset).to.be.eql('utf-8');
     expect(result.success).to.be.eql(true);
     expect(result).to.have.all.keys(
       'ogTitle',
@@ -84,7 +84,7 @@ describe('basic', function () {
         type: 'image/png',
       });
       expect(response.result.requestUrl).to.be.eql('https://ogp.me/');
-      expect(response.result.charset).to.be.eql('utf8');
+      expect(response.result.charset).to.be.eql('utf-8');
       expect(response.result.success).to.be.eql(true);
       expect(response.result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'success');
       expect(response.response).to.be.an('object').and.to.not.be.empty;
@@ -106,7 +106,7 @@ describe('basic', function () {
         type: 'image/png',
       });
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogTitle',
@@ -133,7 +133,7 @@ describe('basic', function () {
       expect(result.ogTitle).to.be.eql('Buy a domain name - Register cheap domain names from $0.99 - Namecheap');
       expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
@@ -207,7 +207,7 @@ describe('basic', function () {
       //   stream: null,
       // });
       expect(result.requestUrl).to.be.eql('https://vimeo.com/232889838');
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
@@ -258,7 +258,7 @@ describe('basic', function () {
       expect(result.ogUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
       expect(result.ogDate).to.be.eql('2022-10-31T06:22:03.000Z');
       expect(result.favicon).to.be.eql('/favicon-48x48.cbbd161b.png');
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('utf-8');
       expect(result.ogImage).to.be.eql({
         url: 'https://developer.mozilla.org/mdn-social-share.cd6c4a5a.png',
         width: null,

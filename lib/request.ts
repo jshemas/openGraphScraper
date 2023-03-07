@@ -1,8 +1,7 @@
-import * as chardet from 'chardet';
+import chardet from 'chardet';
 import * as iconv from 'iconv-lite';
 
 import { gotClient } from './utils';
-import charset from './charset';
 
 /**
  * performs the got request and formats the body for ogs
@@ -29,7 +28,7 @@ export default async function requestAndResultsFormatter(gotOptions, ogsOptions)
         throw new Error('Page not found');
       }
 
-      const char = charset(response.headers, response.rawBody, ogsOptions.peekSize) || chardet.detect(response.rawBody);
+      const char = chardet.detect(response.rawBody);
       let decodedBody = response.rawBody.toString();
       if (char && typeof response.rawBody === 'object') {
         decodedBody = iconv.decode(response.rawBody, char);

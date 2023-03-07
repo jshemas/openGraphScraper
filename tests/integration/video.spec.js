@@ -59,7 +59,7 @@ describe('video', function () {
         stream: null,
       });
       expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('UTF-8');
       expect(result.success).to.be.eql(true);
       if (result.ogDate === undefined) result.ogDate = 'hack because sometimes this does not come back for some reason';
       expect(result).to.have.all.keys(
@@ -118,7 +118,7 @@ describe('video', function () {
       expect(result.ogType).to.be.oneOf(['website', 'video.other']);
       expect(result.ogImage).to.be.to.be.an('object').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitch.html');
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',

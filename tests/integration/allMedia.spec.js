@@ -44,7 +44,7 @@ describe('allMedia', function () {
         alt: null,
       });
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/yelp');
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('UTF-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
@@ -126,7 +126,7 @@ describe('allMedia', function () {
         alt: null,
       }]);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/yelp');
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('UTF-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',

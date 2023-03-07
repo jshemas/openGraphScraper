@@ -1,3 +1,4 @@
+import chardet from 'chardet';
 import { findImageTypeFromUrl, isImageTypeValid, isUrlValid } from './utils';
 import { OpenGraphScraperOptions } from './types';
 
@@ -14,7 +15,7 @@ const doesElementExist = (selector, attribute, $) => (
  * @return {object} object with ogs results with updated fallback values
  *
  */
-export function fallback(ogObject, options: OpenGraphScraperOptions, $) {
+export function fallback(ogObject, options: OpenGraphScraperOptions, $, rawBody) {
   // title fallback
   if (!ogObject.ogTitle) {
     if ($('title').text() && $('title').text().length > 0) {
@@ -161,6 +162,13 @@ export function fallback(ogObject, options: OpenGraphScraperOptions, $) {
     } else if (doesElementExist('link[type="image/x-icon"]', 'href', $)) {
       ogObject.favicon = $('link[type="image/x-icon"]').attr('href');
     }
+  }
+
+  // set the charset
+  if (doesElementExist('meta', 'charset', $)) {
+    ogObject.charset = $('meta').attr('charset');
+  } else if (rawBody) {
+    ogObject.charset = chardet.detect(rawBody);
   }
 
   return ogObject;

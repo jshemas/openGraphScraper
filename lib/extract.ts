@@ -15,7 +15,7 @@ import { OgObject, OpenGraphScraperOptions } from './types';
  * @return {object} object with ogs results
  *
  */
-export default function extractMetaTags(body: string, options: OpenGraphScraperOptions) {
+export default function extractMetaTags(body: string, options: OpenGraphScraperOptions, rawBody) {
   let ogObject: OgObject = {};
   const $ = cheerio.load(body);
   const metaFields = fields.concat(options.customMetaTags);
@@ -50,7 +50,7 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
 
   // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks
   if (!options.onlyGetOpenGraphInfo) {
-    ogObject = fallback(ogObject, options, $);
+    ogObject = fallback(ogObject, options, $, rawBody);
   }
 
   // TODO: Is this still needed?

@@ -29,7 +29,7 @@ describe('image', function () {
         type: 'jpg',
       });
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/flickr');
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('UTF-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
@@ -61,7 +61,7 @@ describe('image', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitter.html');
       expect(result.ogTitle).to.be.eql('Twitter. It\'s what\'s happening.');
