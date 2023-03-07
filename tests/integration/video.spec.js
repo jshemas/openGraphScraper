@@ -1,7 +1,7 @@
 const ogs = require('../../index');
 
 describe('video', function () {
-  it.only('Test Youtube Video - Should Return correct Open Graph Info', function () {
+  it('Test Youtube Video - Should Return correct Open Graph Info', function () {
     return ogs({ url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', downloadLimit: false }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
