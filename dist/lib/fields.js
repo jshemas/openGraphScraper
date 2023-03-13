@@ -374,8 +374,18 @@ const fields = [
     },
     {
         multiple: false,
+        property: 'article:published_date',
+        fieldName: 'articlePublishedDate',
+    },
+    {
+        multiple: false,
         property: 'article:published_time',
         fieldName: 'articlePublishedTime',
+    },
+    {
+        multiple: false,
+        property: 'article:modified_date',
+        fieldName: 'articleModifiedDate',
     },
     {
         multiple: false,

@@ -33,7 +33,7 @@ describe('encoding', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rakuten');
-        expect(result.charset).to.be.eql('utf8');
+        expect(result.charset).to.be.eql('euc-jp');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
@@ -86,7 +86,7 @@ describe('encoding', function () {
             },
           ]);
           expect(result.ogLocale).to.be.eql('zh-cmn-Hans');
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/360');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -126,7 +126,7 @@ describe('encoding', function () {
             height: null,
             type: 'jpg',
           });
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/aliexpress');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -203,7 +203,7 @@ describe('encoding', function () {
               type: 'jpeg',
             },
           ]);
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/baidu');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -230,7 +230,7 @@ describe('encoding', function () {
           expect(result.ogImage.length).to.be.eql(83);
           expect(result.ogLocale).to.be.eql('zh-CN');
           expect(result.ogUrl).to.be.eql('https://blog.csdn.net/qq449245884/article/details/107096460');
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/csdn');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -268,7 +268,7 @@ describe('encoding', function () {
             type: 'jpg',
           });
           expect(result.ogLocale).to.be.eql('ko');
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/naver');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -326,7 +326,7 @@ describe('encoding', function () {
           });
           expect(result.ogLocale).to.be.eql('id-ID');
           expect(result.ogDate).to.be.eql('2014-07-13T20:07:27.8200000');
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/okezone');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -369,7 +369,7 @@ describe('encoding', function () {
           expect(result.ogTitle).to.be.eql('烧警车、闯议会、要求总统辞职，塞尔维亚宵禁引发十年最大规模抗议_腾讯新闻');
           expect(result.ogDescription).to.be.eql('东方网·纵相新闻记者单珊随着疫情反弹，塞尔维亚首都再次实施宵禁，但这一举措似乎并不被部分国民理解。据路透社7月8日报道，7日夜间，塞尔维亚首都贝尔格莱德市中心暴发大规模骚乱。抗议者向警察投掷照明弹……');
           expect(result.ogLocale).to.be.eql('zh-CN');
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/qq');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -394,7 +394,7 @@ describe('encoding', function () {
           expect(result.ogTitle).to.be.eql('搜狐');
           expect(result.favicon).to.be.eql('//statics.itc.cn/web/static/images/pic/sohu-logo/favicon.ico');
           expect(result.ogImage.length).to.be.eql(43);
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/sohu');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -463,7 +463,7 @@ describe('encoding', function () {
             },
           ]);
           expect(result.ogUrl).to.be.eql('https://item.taobao.com/item.htm?id=562283240178');
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/taobao');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -510,7 +510,7 @@ describe('encoding', function () {
             },
           ]);
           expect(result.ogUrl).to.be.eql('https://detail.tmall.com/item.htm?id=605258110430');
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('gbk');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/tmall');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -537,7 +537,7 @@ describe('encoding', function () {
           expect(result.favicon).to.be.eql('/favicon.ico');
           expect(result.ogDescription).to.be.eql('【得州883家幼儿园染疫 华盛顿大学“中招”】新冠肺炎疫情下，家长们担心把孩子送回校园是否安全。在得克萨斯州，托儿所的确诊病例增长速度明显变快了，据官方统计，该州有883家托儿所出现了新冠肺炎病例，441名儿...');
           expect(result.ogImage.length).to.be.eql(14);
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/weibo');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -599,7 +599,7 @@ describe('encoding', function () {
               type: 'jpg',
             },
           ]);
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/xinhuanet');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -622,7 +622,7 @@ describe('encoding', function () {
           expect(error).to.be.eql(false);
           expect(result.ogTitle).to.be.eql('Qq0517_UkzUkw的英雄联盟直播间_Qq0517_UkzUkw视频_游戏直播 - zhanqi.tv');
           expect(result.ogImage.length).to.be.eql(33);
-          expect(result.charset).to.be.eql('utf8');
+          expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/zhanqi');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(

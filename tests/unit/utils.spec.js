@@ -18,17 +18,18 @@ describe('utils', function () {
   describe('validateAndFormatURL', function () {
     context('validing URLs', function () {
       const defaultUrlValidatorSettings = {
-        protocols: ['http', 'https'],
-        require_tld: true,
-        require_protocol: false,
-        require_host: true,
-        require_valid_protocol: true,
-        allow_underscores: false,
-        host_whitelist: false,
-        host_blacklist: false,
-        allow_trailing_dot: false,
+        allow_fragments: true,
         allow_protocol_relative_urls: false,
-        disallow_auth: false,
+        allow_query_components: true,
+        allow_trailing_dot: false,
+        allow_underscores: false,
+        protocols: ['http', 'https'],
+        require_host: true,
+        require_port: false,
+        require_protocol: false,
+        require_tld: true,
+        require_valid_protocol: true,
+        validate_length: true,
       };
 
       validateUrl([
@@ -118,17 +119,18 @@ describe('utils', function () {
 
     context('validing URLs with options.urlValidatorSettings (https is invalid)', function () {
       const noHTTPSUrlValidatorSettings = {
-        protocols: ['http'],
-        require_tld: true,
-        require_protocol: false,
-        require_host: true,
-        require_valid_protocol: true,
-        allow_underscores: false,
-        host_whitelist: false,
-        host_blacklist: false,
-        allow_trailing_dot: false,
+        allow_fragments: true,
         allow_protocol_relative_urls: false,
-        disallow_auth: false,
+        allow_query_components: true,
+        allow_trailing_dot: false,
+        allow_underscores: false,
+        protocols: ['http'],
+        require_host: true,
+        require_port: false,
+        require_protocol: false,
+        require_tld: true,
+        require_valid_protocol: true,
+        validate_length: true,
       };
 
       validateUrl([

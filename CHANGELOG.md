@@ -1,5 +1,13 @@
 # Change Log
 
+## 5.2.0
+
+- Remove the `charset` lib and just use `chardet` for finding the html encoding
+- Remove `peekSize` option since that was used by `charset`
+- Updating the `charset` fallback to be more reliable
+- Adding support for `article:published_date` and `article:modified_date` meta tags
+- Updating Dependencies
+
 ## 5.1.1
 
 - Fix issue where using `import` would cause typescript errors

@@ -15,7 +15,6 @@ const openGraphScraper_1 = require("./lib/openGraphScraper");
  * @param {boolean} [options.ogImageFallback] - Fetch other images if no open graph ones are found.
  * @param {object} [options.customMetaTags] - Here you can define custom meta tags you want to scrape.
  * @param {boolean} [options.allMedia] - By default, OGS will only send back the first image/video it finds.
- * @param {number} [options.peekSize] - Sets the peekSize for the request.
  * @param {number | false} [options.downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
  * @param {object} [options.ValidatorSettings] - Sets the options used by validator.js for testing the URL
  * @param {boolean} [options.decompress] - Set the accept-encoding to `gzip, deflate, br` (default: `true`).

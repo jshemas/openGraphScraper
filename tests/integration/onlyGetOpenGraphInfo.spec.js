@@ -34,7 +34,7 @@ describe('onlyGetOpenGraphInfo', function () {
       expect(result.ogLocale).to.be.eql('en');
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.favicon).to.be.eql('/static/favicon/wikipedia.ico');
-      expect(result.charset).to.be.eql('utf8');
+      expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',

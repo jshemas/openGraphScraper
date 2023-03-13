@@ -32,7 +32,7 @@ describe('twitter', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitter-dev');
-        expect(result.charset).to.be.eql('utf8');
+        expect(result.charset).to.be.eql('UTF-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
@@ -87,7 +87,7 @@ describe('twitter', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/github');
-        expect(result.charset).to.be.eql('utf8');
+        expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
@@ -144,7 +144,7 @@ describe('twitter', function () {
           alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/atom.html');
-        expect(result.charset).to.be.eql('utf8');
+        expect(result.charset).to.be.eql('UTF-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',

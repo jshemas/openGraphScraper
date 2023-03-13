@@ -2,7 +2,6 @@ const chardet = require('chardet');
 const iconv = require('iconv-lite');
 const nock = require('nock');
 const ogs = require('../../index');
-const charset = require('../../lib/charset');
 
 const basicHTML = `
   <html>
@@ -110,7 +109,7 @@ describe('return ogs', function () {
       return ogs({ url: 'www.test.com' })
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
-          expect(data.result.charset).to.be.eql(null);
+          expect(data.result.charset).to.be.eql('UTF-8');
           expect(data.result.ogTitle).to.be.eql('тестовая страница');
           expect(data.result.ogDescription).to.be.eql('привет тестовая страница<');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
@@ -270,7 +269,6 @@ describe('return ogs', function () {
           .get('/')
           .reply(200, basicHTML);
         sandbox.stub(chardet, 'detect').returns(false);
-        sandbox.stub(charset, 'default').returns(false);
       });
       it('using promises', function () {
         return ogs({ url: 'www.test.com' })

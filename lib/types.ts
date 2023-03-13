@@ -10,7 +10,6 @@
  * @typeParam {boolean} [ogImageFallback] - Fetch other images if no open graph ones are found.
  * @typeParam {object} [customMetaTags] - Here you can define custom meta tags you want to scrape.
  * @typeParam {boolean} [allMedia] - By default, OGS will only send back the first image/video it finds.
- * @typeParam {number} [peekSize] - Sets the peekSize for the request.
  * @typeParam {number | false} [downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
  * @typeParam {object} [ValidatorSettings] - Sets the options used by validator.js for testing the URL
  * @typeParam {boolean} [decompress] - Set the accept-encoding to `gzip, deflate, br` (default: `true`).
@@ -34,7 +33,6 @@ export type OpenGraphScraperOptions = {
   maxRedirects?: number;
   ogImageFallback?: boolean;
   onlyGetOpenGraphInfo?: boolean;
-  peekSize?: number;
   retry?: object;
   timeout?: object;
   url: string;

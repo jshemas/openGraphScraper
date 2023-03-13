@@ -36,7 +36,7 @@ describe('static check meta tags', function () {
           type: 'jpg',
         });
         expect(data.result.favicon).to.be.eql('https://bar.com/foo.png');
-        expect(data.result.charset).to.be.eql('utf8');
+        expect(data.result.charset).to.be.eql('utf-8');
         expect(data.response.body).to.be.eql(metaHTML);
         expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
       });
@@ -241,7 +241,7 @@ describe('static check meta tags', function () {
           alt: null,
         });
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-        expect(data.result.charset).to.be.eql('utf8');
+        expect(data.result.charset).to.be.eql('utf-8');
         expect(data.response.body).to.be.eql(metaHTML);
         expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
       });
@@ -270,16 +270,14 @@ describe('static check meta tags', function () {
       .then(function (data) {
         expect(data.result.success).to.be.eql(true);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-        expect(data.result.ogTitle).to.be.eql('縲先･ｽ螟ｩ蟶ょ�ｴ縲全hopping is Entertainment! �ｼ� 繧､繝ｳ繧ｿ繝ｼ繝阪ャ繝域怙螟ｧ邏壹�ｮ騾壻ｿ｡雋ｩ螢ｲ縲�騾夊ｲｩ繧ｪ繝ｳ繝ｩ繧､繝ｳ繧ｷ繝ｧ繝�繝斐Φ繧ｰ繧ｳ繝溘Η繝九ユ繧｣');
-        // eslint-disable-next-line max-len
-        // expect(data.result.ogDescription).to.be.eql('讌ｽ螟ｩ蟶ょ�ｴ縺ｯ繧､繝ｳ繧ｿ繝ｼ繝阪ャ繝磯夊ｲｩ縺梧･ｽ縺励ａ繧狗ｷ丞粋繧ｷ繝ｧ繝�繝斐Φ繧ｰ繝｢繝ｼ繝ｫ縲よ･ｽ螟ｩ繧ｹ繝ｼ繝代�ｼ繝昴う繝ｳ繝医′縺ｩ繧薙←繧楢ｲｯ縺ｾ繧具ｼ∽ｽｿ縺医ｋ�ｼ∵ｯ取律縺雁ｾ励↑繧ｯ繝ｼ繝昴Φ繧ゅゅ≠縺呎･ｽ蛻ｩ逕ｨ縺ｧ鄙梧律縺ｫ縺雁ｱ翫￠縲る｣溷刀縺九ｉ螳ｶ髮ｻ縲√ヵ繧｡繝�繧ｷ繝ｧ繝ｳ縲√�吶ン繝ｼ逕ｨ蜩√√さ繧ｹ繝｡縺ｾ縺ｧ縲∝��螳溘�ｮ蜩∵純縺医�');
+        expect(data.result.ogTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
+        expect(data.result.ogDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
         expect(data.result.ogType).to.be.eql('website');
-        expect(data.result.ogSiteName).to.be.eql('讌ｽ螟ｩ蟶ょ�ｴ');
+        expect(data.result.ogSiteName).to.be.eql('楽天市場');
         expect(data.result.twitterCard).to.be.eql('summary');
         expect(data.result.twitterSite).to.be.eql('@RakutenJP');
-        expect(data.result.twitterTitle).to.be.eql('縲先･ｽ螟ｩ蟶ょ�ｴ縲全hopping is Entertainment! �ｼ� 繧､繝ｳ繧ｿ繝ｼ繝阪ャ繝域怙螟ｧ邏壹�ｮ騾壻ｿ｡雋ｩ螢ｲ縲�騾夊ｲｩ繧ｪ繝ｳ繝ｩ繧､繝ｳ繧ｷ繝ｧ繝�繝斐Φ繧ｰ繧ｳ繝溘Η繝九ユ繧｣');
-        // eslint-disable-next-line max-len
-        // expect(data.result.twitterDescription).to.be.eql('讌ｽ螟ｩ蟶ょ�ｴ縺ｯ繧､繝ｳ繧ｿ繝ｼ繝阪ャ繝磯夊ｲｩ縺梧･ｽ縺励ａ繧狗ｷ丞粋繧ｷ繝ｧ繝�繝斐Φ繧ｰ繝｢繝ｼ繝ｫ縲よ･ｽ螟ｩ繧ｹ繝ｼ繝代�ｼ繝昴う繝ｳ繝医′縺ｩ繧薙←繧楢ｲｯ縺ｾ繧具ｼ∽ｽｿ縺医ｋ�ｼ∵ｯ取律縺雁ｾ励↑繧ｯ繝ｼ繝昴Φ繧ゅゅ≠縺呎･ｽ蛻ｩ逕ｨ縺ｧ鄙梧律縺ｫ縺雁ｱ翫￠縲る｣溷刀縺九ｉ螳ｶ髮ｻ縲√ヵ繧｡繝�繧ｷ繝ｧ繝ｳ縲√�吶ン繝ｼ逕ｨ蜩√√さ繧ｹ繝｡縺ｾ縺ｧ縲∝��螳溘�ｮ蜩∵純縺医�');
+        expect(data.result.twitterTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
+        expect(data.result.twitterDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
         expect(data.result.ogImage).to.be.eql({
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
           width: null,
@@ -322,14 +320,14 @@ describe('static check meta tags', function () {
       .then(function (data) {
         expect(data.result.success).to.be.eql(true);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-        expect(data.result.ogTitle).to.be.eql('���罐遵ぉ絽���眼��Shopping is Entertainment! 鐚� ��ゃ�潟�帥�若�����������紊х��������篆∴鴬紕蚊�����莢������潟����ゃ�潟�激�с�������潟�違�潟����ャ��������');
-        expect(data.result.ogDescription).to.be.eql('罐遵ぉ絽���眼����ゃ�潟�帥�若�����������莢����罐純��������膩������激�с�������潟�違�≪�若�����罐遵ぉ��鴻�若����若����ゃ�潟�����������������莢���障��鐚�篏帥�����鐚�罸���ャ��緇���������若����潟�����������罐遵�������х����ャ�����絮�������蕋����������絎狗�祉�������＜����激�с�潟����������主����������潟�鴻�＜�障�с�����絎����������������');
+        expect(data.result.ogTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
+        expect(data.result.ogDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
         expect(data.result.ogType).to.be.eql('website');
-        expect(data.result.ogSiteName).to.be.eql('罐遵ぉ絽����');
+        expect(data.result.ogSiteName).to.be.eql('楽天市場');
         expect(data.result.twitterCard).to.be.eql('summary');
         expect(data.result.twitterSite).to.be.eql('@RakutenJP');
-        expect(data.result.twitterTitle).to.be.eql('���罐遵ぉ絽���眼��Shopping is Entertainment! 鐚� ��ゃ�潟�帥�若�����������紊х��������篆∴鴬紕蚊�����莢������潟����ゃ�潟�激�с�������潟�違�潟����ャ��������');
-        expect(data.result.twitterDescription).to.be.eql('罐遵ぉ絽���眼����ゃ�潟�帥�若�����������莢����罐純��������膩������激�с�������潟�違�≪�若�����罐遵ぉ��鴻�若����若����ゃ�潟�����������������莢���障��鐚�篏帥�����鐚�罸���ャ��緇���������若����潟�����������罐遵�������х����ャ�����絮�������蕋����������絎狗�祉�������＜����激�с�潟����������主����������潟�鴻�＜�障�с�����絎����������������');
+        expect(data.result.twitterTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
+        expect(data.result.twitterDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
         expect(data.result.ogImage).to.be.eql({
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
           width: null,

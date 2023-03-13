@@ -1,6 +1,5 @@
 import extractMetaTags from './extract';
 import requestAndResultsFormatter from './request';
-import charset from './charset';
 import * as utils from './utils';
 import { OpenGraphScraperOptions } from './types';
 
@@ -16,7 +15,7 @@ export default async function setOptionsAndReturnOpenGraphResults(options: OpenG
 
   if (ogsOptions.html) {
     if (ogsOptions.url) throw new Error('Must specify either `url` or `html`, not both');
-    const ogObject = extractMetaTags(ogsOptions.html, ogsOptions);
+    const ogObject = extractMetaTags(ogsOptions.html, ogsOptions, null);
     ogObject.requestUrl = null;
     ogObject.success = true;
     return { ogObject, response: { body: ogsOptions.html } };
@@ -39,11 +38,8 @@ export default async function setOptionsAndReturnOpenGraphResults(options: OpenG
 
   try {
     const { decodedBody, response } = await requestAndResultsFormatter(gotOptions, ogsOptions);
-    const ogObject = extractMetaTags(decodedBody, ogsOptions);
+    const ogObject = extractMetaTags(decodedBody, ogsOptions, response.rawBody);
 
-    if (!ogsOptions.onlyGetOpenGraphInfo) {
-      ogObject.charset = charset(response.headers, decodedBody, ogsOptions.peekSize);
-    }
     ogObject.requestUrl = ogsOptions.url;
     ogObject.success = true;
 
