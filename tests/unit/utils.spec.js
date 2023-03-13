@@ -14,7 +14,7 @@ const validateUrl = (urls, valid, message, urlValidatorSettings) => {
   }
 };
 
-describe.only('utils', function () {
+describe('utils', function () {
   describe('validateAndFormatURL', function () {
     context('validing URLs', function () {
       const defaultUrlValidatorSettings = {
