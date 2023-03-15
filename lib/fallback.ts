@@ -1,6 +1,6 @@
 import chardet from 'chardet';
 import { findImageTypeFromUrl, isImageTypeValid, isUrlValid } from './utils';
-import { OpenGraphScraperOptions } from './types';
+import type { OpenGraphScraperOptions } from './types';
 
 const doesElementExist = (selector, attribute, $) => (
   $(selector).attr(attribute) && $(selector).attr(attribute).length > 0

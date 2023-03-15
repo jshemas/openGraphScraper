@@ -1,7 +1,7 @@
 import extractMetaTags from './extract';
 import requestAndResultsFormatter from './request';
 import * as utils from './utils';
-import { OpenGraphScraperOptions } from './types';
+import type { OpenGraphScraperOptions } from './types';
 
 /**
  * sets up options for the got request and calls extract on html

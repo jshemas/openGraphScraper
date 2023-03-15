@@ -1,5 +1,5 @@
 import validator from 'validator';
-import { ValidatorSettings, OpenGraphScraperOptions } from './types';
+import type { ValidatorSettings, OpenGraphScraperOptions } from './types';
 
 /**
  * Checks if URL is valid

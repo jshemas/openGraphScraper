@@ -5,7 +5,7 @@ import fields from './fields';
 import * as media from './media';
 import * as utils from './utils';
 
-import { OgObject, OpenGraphScraperOptions } from './types';
+import type { OgObject, OpenGraphScraperOptions } from './types';
 
 /**
  * extract all of the meta tags needed for ogs
