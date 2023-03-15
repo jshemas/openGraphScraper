@@ -1,6 +1,6 @@
 /* eslint-disable max-len, import/no-import-module-exports */
 import setOptionsAndReturnOpenGraphResults from './lib/openGraphScraper';
-import {
+import type {
   OpenGraphScraperOptions,
   OgObject,
 } from './lib/types';

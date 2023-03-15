@@ -1,5 +1,5 @@
 import fields from './fields';
-import {
+import type {
   ImageObject,
   MusicSongObject,
   OgObject,
