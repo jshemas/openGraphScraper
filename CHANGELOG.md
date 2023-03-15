@@ -1,5 +1,9 @@
 # Change Log
 
+## 5.2.1
+
+- Adding the importsNotUsedAsValues flag and fixing type import issues
+
 ## 5.2.0
 
 - Remove the `charset` lib and just use `chardet` for finding the html encoding
