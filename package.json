@@ -16,7 +16,7 @@
     "test": "npm run mocha:unit && npm run mocha:int"
   },
   "engines": {
-    "node": ">=14.16"
+    "node": ">=18.0.0"
   },
   "author": {
     "name": "Josh Shemas",
