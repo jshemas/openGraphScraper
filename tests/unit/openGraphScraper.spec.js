@@ -1,5 +1,4 @@
 const chardet = require('chardet');
-const iconv = require('iconv-lite');
 const nock = require('nock');
 const ogs = require('../../index');
 
@@ -661,24 +660,6 @@ describe.skip('return ogs', function () {
           expect(data.result.error).to.eql('Must specify either `url` or `html`, not both');
           expect(data.result.errorDetails.toString()).to.eql('Error: Must specify either `url` or `html`, not both');
           expect(data.result.requestUrl).to.eql('www.test.com');
-          expect(data.result.success).to.eql(false);
-          expect(data.response).to.be.eql(undefined);
-        });
-    });
-
-    it('when iconv throws a error', function () {
-      const error = new Error('Page not found');
-      sandbox.stub(iconv, 'decode').throws(error);
-      nock('http://www.test.com').persist().get('/').reply(200, Buffer.from(basicHTML, 'utf8'));
-
-      return ogs({ url: 'www.test.com', retry: { limit: 0 } })
-        .then(function () {
-          expect().fail('this should not happen');
-        })
-        .catch(function (data) {
-          expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Page not found');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
         });
