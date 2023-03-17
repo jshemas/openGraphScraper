@@ -15,7 +15,7 @@ const doesElementExist = (selector, attribute, $) => (
  * @return {object} object with ogs results with updated fallback values
  *
  */
-export function fallback(ogObject, options: OpenGraphScraperOptions, $, rawBody) {
+export function fallback(ogObject, options: OpenGraphScraperOptions, $, body) {
   // title fallback
   if (!ogObject.ogTitle) {
     if ($('title').text() && $('title').text().length > 0) {
@@ -167,8 +167,8 @@ export function fallback(ogObject, options: OpenGraphScraperOptions, $, rawBody)
   // set the charset
   if (doesElementExist('meta', 'charset', $)) {
     ogObject.charset = $('meta').attr('charset');
-  } else if (rawBody) {
-    ogObject.charset = chardet.detect(rawBody);
+  } else if (body) {
+    ogObject.charset = chardet.detect(Buffer.from(body));
   }
 
   return ogObject;

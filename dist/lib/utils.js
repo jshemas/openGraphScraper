@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gotClient = exports.optionSetupAndSplit = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = void 0;
+exports.optionSetupAndSplit = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = void 0;
 const validator_1 = require("validator");
 /**
  * Checks if URL is valid
@@ -137,39 +137,3 @@ function optionSetupAndSplit(options) {
     return { ogsOptions, gotOptions };
 }
 exports.optionSetupAndSplit = optionSetupAndSplit;
-/**
- * gotClient - limit the size of the content we fetch when performing the request
- * from https://github.com/sindresorhus/got/blob/main/documentation/examples/advanced-creation.js
- *
- * @param {string} downloadLimit - the download limit, will close connection once it is reached
- * @return {function} got client with download limit
- *
- */
-async function gotClient(downloadLimit) {
-    // https://github.com/sindresorhus/got/issues/1789
-    // eslint-disable-next-line import/no-unresolved
-    const { got } = await import('got');
-    return got.extend({
-        handlers: [
-            (options, next) => {
-                const promiseOrStream = next(options);
-                const destroy = (message) => {
-                    if (options.isStream) {
-                        promiseOrStream.destroy(new Error(message));
-                        return;
-                    }
-                    promiseOrStream.cancel(message);
-                };
-                if (typeof downloadLimit === 'number') {
-                    promiseOrStream.on('downloadProgress', (progress) => {
-                        if (progress.transferred > downloadLimit && progress.percent !== 1) {
-                            destroy(`Exceeded the download limit of ${downloadLimit} bytes`);
-                        }
-                    });
-                }
-                return promiseOrStream;
-            },
-        ],
-    });
-}
-exports.gotClient = gotClient;

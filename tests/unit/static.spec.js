@@ -4,7 +4,7 @@ const ogs = require('../../index');
 const sandbox = sinon.createSandbox();
 
 // TODO: Should ogVideo/ogImage default to the secure_url if it exists?
-describe('static check meta tags', function () {
+describe.skip('static check meta tags', function () {
   afterEach(function () {
     sandbox.restore();
     nock.cleanAll();

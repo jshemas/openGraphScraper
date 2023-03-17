@@ -4,7 +4,7 @@ import * as utils from './utils';
 import type { OpenGraphScraperOptions } from './types';
 
 /**
- * sets up options for the got request and calls extract on html
+ * sets up options for the fetch request and calls extract on html
  *
  * @param {object} options - options for ogs
  * @return {object} object with ogs results
@@ -15,7 +15,7 @@ export default async function setOptionsAndReturnOpenGraphResults(options: OpenG
 
   if (ogsOptions.html) {
     if (ogsOptions.url) throw new Error('Must specify either `url` or `html`, not both');
-    const ogObject = extractMetaTags(ogsOptions.html, ogsOptions, null);
+    const ogObject = extractMetaTags(ogsOptions.html, ogsOptions);
     ogObject.requestUrl = null;
     ogObject.success = true;
     return { ogObject, response: { body: ogsOptions.html } };
@@ -37,8 +37,8 @@ export default async function setOptionsAndReturnOpenGraphResults(options: OpenG
   }
 
   try {
-    const { decodedBody, response } = await requestAndResultsFormatter(gotOptions, ogsOptions);
-    const ogObject = extractMetaTags(decodedBody, ogsOptions, response.rawBody);
+    const { body, response } = await requestAndResultsFormatter(gotOptions, ogsOptions);
+    const ogObject = extractMetaTags(body, ogsOptions);
 
     ogObject.requestUrl = ogsOptions.url;
     ogObject.success = true;

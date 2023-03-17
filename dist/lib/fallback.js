@@ -13,7 +13,7 @@ const doesElementExist = (selector, attribute, $) => ($(selector).attr(attribute
  * @return {object} object with ogs results with updated fallback values
  *
  */
-function fallback(ogObject, options, $, rawBody) {
+function fallback(ogObject, options, $, body) {
     // title fallback
     if (!ogObject.ogTitle) {
         if ($('title').text() && $('title').text().length > 0) {
@@ -189,8 +189,8 @@ function fallback(ogObject, options, $, rawBody) {
     if (doesElementExist('meta', 'charset', $)) {
         ogObject.charset = $('meta').attr('charset');
     }
-    else if (rawBody) {
-        ogObject.charset = chardet_1.default.detect(rawBody);
+    else if (body) {
+        ogObject.charset = chardet_1.default.detect(Buffer.from(body));
     }
     return ogObject;
 }

@@ -86,7 +86,7 @@ describe('redirect', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
     });
     it('forbes page', function () {
@@ -151,7 +151,7 @@ describe('redirect', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
     });
   });

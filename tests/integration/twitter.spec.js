@@ -51,7 +51,7 @@ describe('twitter', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
     });
     it('On Github Site', function () {
@@ -109,7 +109,7 @@ describe('twitter', function () {
           'twitterSiteId',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
     });
     it('On Atom Site', function () {
@@ -165,7 +165,7 @@ describe('twitter', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
     });
   });

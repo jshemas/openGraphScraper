@@ -84,7 +84,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('arstechnica', function () {
@@ -141,7 +141,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('battlefield', function () {
@@ -194,7 +194,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('bestbuy', function () {
@@ -251,7 +251,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('bjango', function () {
@@ -274,7 +274,7 @@ describe('static', function () {
           'success',
           'charset',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('bloomberg', function () {
@@ -339,7 +339,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('businesstoday', function () {
@@ -392,7 +392,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('cbronline', function () {
@@ -453,7 +453,7 @@ describe('static', function () {
           'twitterImage',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('cio', function () {
@@ -512,7 +512,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('cloudpro', function () {
@@ -569,7 +569,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('cnet', function () {
@@ -632,7 +632,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('crn', function () {
@@ -672,7 +672,7 @@ describe('static', function () {
           'success',
           'charset',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('computerworld', function () {
@@ -729,7 +729,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('darkreading', function () {
@@ -782,7 +782,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('discourse', function () {
@@ -833,7 +833,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('docs', function () {
@@ -868,7 +868,7 @@ describe('static', function () {
           'success',
           'charset',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('ebay', function () {
@@ -921,7 +921,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('economictimes', function () {
@@ -1004,7 +1004,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('entrepreneur', function () {
@@ -1071,7 +1071,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('etsy', function () {
@@ -1154,7 +1154,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('facebook', function () {
@@ -1190,7 +1190,7 @@ describe('static', function () {
           'success',
           'charset',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('fastcompany', function () {
@@ -1257,7 +1257,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('forbes', function () {
@@ -1320,7 +1320,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('fortune', function () {
@@ -1375,7 +1375,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('foursquare', function () {
@@ -1474,7 +1474,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('geektime', function () {
@@ -1539,7 +1539,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('inc', function () {
@@ -1600,7 +1600,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('insta', function () {
@@ -1650,7 +1650,7 @@ describe('static', function () {
           'success',
           'charset',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('itunes', function () {
@@ -1701,7 +1701,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('jewishbusinessnews', function () {
@@ -1770,7 +1770,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('kickstarter', function () {
@@ -1835,7 +1835,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('latimes', function () {
@@ -1894,7 +1894,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('leandata', function () {
@@ -1943,7 +1943,7 @@ describe('static', function () {
           'twitterImage',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('learnxinyminutes', function () {
@@ -1973,7 +1973,7 @@ describe('static', function () {
           'success',
           'charset',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('lifehacker', function () {
@@ -2024,7 +2024,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('macrumors', function () {
@@ -2083,7 +2083,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('mashable', function () {
@@ -2154,7 +2154,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('medium', function () {
@@ -2233,7 +2233,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('michaelkors', function () {
@@ -2278,7 +2278,7 @@ describe('static', function () {
         'charset',
         'success',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('mulesoft', function () {
@@ -2309,7 +2309,7 @@ describe('static', function () {
           'success',
           'charset',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('newegg', function () {
@@ -2639,7 +2639,7 @@ describe('static', function () {
           'success',
           'charset',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('npm', function () {
@@ -2683,7 +2683,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('prnewswire', function () {
@@ -2738,7 +2738,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('reddit', function () {
@@ -2782,7 +2782,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('reuters', function () {
@@ -2851,7 +2851,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('rottentomatoes', function () {
@@ -3111,7 +3111,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('smile', function () {
@@ -3317,7 +3317,7 @@ describe('static', function () {
           'success',
           'charset',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('techcrunch', function () {
@@ -3376,7 +3376,7 @@ describe('static', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('ted', function () {
@@ -3453,7 +3453,7 @@ describe('static', function () {
           'twitterImage',
           'twitterSite',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('thinkgeek', function () {
@@ -3514,7 +3514,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('vox', function () {
@@ -3579,7 +3579,7 @@ describe('static', function () {
           'twitterTitle',
           'twitterUrl',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('w3', function () {
@@ -3611,7 +3611,7 @@ describe('static', function () {
           'success',
           'charset',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
   it('xkcd', function () {
@@ -3632,7 +3632,7 @@ describe('static', function () {
           'success',
           'charset',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
   });
 });

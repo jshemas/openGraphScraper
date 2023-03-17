@@ -53,7 +53,7 @@ describe('encoding', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
     });
     it('360', function () {
@@ -98,7 +98,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('aliexpress', function () {
@@ -147,7 +147,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('baidu', function () {
@@ -214,7 +214,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('csdn', function () {
@@ -244,7 +244,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('naver', function () {
@@ -285,7 +285,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('okezone', function () {
@@ -355,7 +355,7 @@ describe('encoding', function () {
             'twitterTitle',
             'twitterUrl',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('qq', function () {
@@ -381,7 +381,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('sohu', function () {
@@ -405,7 +405,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('taobao', function () {
@@ -476,7 +476,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('tmall', function () {
@@ -523,7 +523,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('weibo', function () {
@@ -549,7 +549,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('xinhuanet', function () {
@@ -610,7 +610,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('zhanqi', function () {
@@ -632,7 +632,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
   });

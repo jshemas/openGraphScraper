@@ -1,3 +1,4 @@
+const { expect } = require('chai');
 const ogs = require('../../index');
 
 const HTML_STRING = `
@@ -18,7 +19,9 @@ describe('html', function () {
       expect(result.success).to.be.eql(true);
       expect(result.ogTitle).to.be.eql('Test page');
       expect(result.requestUrl).to.be.eql(null);
+      expect(result.charset).to.be.eql('ISO-8859-1');
       expect(result).to.have.all.keys(
+        'charset',
         'ogTitle',
         'requestUrl',
         'success',

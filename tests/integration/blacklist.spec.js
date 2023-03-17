@@ -50,7 +50,7 @@ describe('blacklist', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('when blacklist empty', function () {
@@ -77,7 +77,7 @@ describe('blacklist', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
 });

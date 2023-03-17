@@ -53,7 +53,7 @@ describe('image', function () {
         'twitterDescription',
         'twitterSite',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('Test getting the description and images from meta tags', function () {
@@ -88,7 +88,7 @@ describe('image', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
 });

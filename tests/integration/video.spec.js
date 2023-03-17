@@ -100,7 +100,7 @@ describe('video', function () {
         'twitterTitle',
         'twitterUrl',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('Test Twitch.tv Video - Should Return correct Open Graph Info', function () {
@@ -134,7 +134,7 @@ describe('video', function () {
         'charset',
         'twitterSite',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
 });

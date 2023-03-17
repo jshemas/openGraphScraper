@@ -75,7 +75,7 @@ describe('allMedia', function () {
         'twitterImage',
         'twitterSite',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('if more then one media tags are found, return all of them', function () {
@@ -157,7 +157,7 @@ describe('allMedia', function () {
         'twitterImage',
         'twitterSite',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
 });
