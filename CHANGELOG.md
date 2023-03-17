@@ -1,5 +1,9 @@
 # Change Log
 
+## 5.2.2
+
+- Specify true/false to distinguish `SuccessResult` and `ErrorResult` by `error` field.
+
 ## 5.2.1
 
 - Adding the importsNotUsedAsValues flag and fixing type import issues
