@@ -3,13 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * performs the fetch request and formats the body for ogs
  *
- * @param {object} gotOptions - options for got
- * @param {object} ogsOptions - options for ogs
+ * @param {object} options - options for ogs
  * @return {object} formatted request body and response
  *
  */
-async function requestAndResultsFormatter(gotOptions, ogsOptions) {
-    return fetch(ogsOptions.url)
+async function requestAndResultsFormatter(options) {
+    return fetch(options.url, options.fetchOptions)
         .then(async (response) => {
         if (response && response.headers && response.headers['content-type'] && !response.headers['content-type'].includes('text/')) {
             throw new Error('Page must return a header content-type with text/');

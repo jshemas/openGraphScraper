@@ -23,18 +23,11 @@ export type OpenGraphScraperOptions = {
   allMedia?: boolean;
   blacklist?: string[];
   customMetaTags?: CustomMetaTags[];
-  decompress?: boolean;
   downloadLimit?: number | false;
-  followRedirect?: boolean;
-  headers?: {
-    [x: string]: string;
-  };
+  fetchOptions?: Request;
   html?: string;
-  maxRedirects?: number;
   ogImageFallback?: boolean;
   onlyGetOpenGraphInfo?: boolean;
-  retry?: object;
-  timeout?: object;
   url: string;
   urlValidatorSettings?: ValidatorSettings;
 };

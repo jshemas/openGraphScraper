@@ -94,9 +94,8 @@ export function removeNestedUndefinedValues(object: { [key: string]: any }): { [
  * @return {object} object with nested options for ogs and got
  *
  */
-export function optionSetupAndSplit(options: OpenGraphScraperOptions):
-{ ogsOptions: OpenGraphScraperOptions, gotOptions: Options } {
-  const ogsOptions: OpenGraphScraperOptions = {
+export function optionSetup(ogsOptions: OpenGraphScraperOptions): { options: OpenGraphScraperOptions } {
+  const options: OpenGraphScraperOptions = {
     allMedia: false,
     customMetaTags: [],
     downloadLimit: 1000000,
@@ -116,28 +115,8 @@ export function optionSetupAndSplit(options: OpenGraphScraperOptions):
       require_valid_protocol: true,
       validate_length: true,
     },
-    ...options,
-  };
-  const gotOptions: Options = {
-    decompress: true,
-    followRedirect: true,
-    headers: {},
-    maxRedirects: 10,
-    ...options,
+    ...ogsOptions,
   };
 
-  // remove any OGS options from gotOptions since this will cause errors in got
-  delete gotOptions.allMedia;
-  delete gotOptions.blacklist;
-  delete gotOptions.customMetaTags;
-  delete gotOptions.downloadLimit;
-  delete gotOptions.ogImageFallback;
-  delete gotOptions.onlyGetOpenGraphInfo;
-  delete gotOptions.urlValidatorSettings;
-
-  return { ogsOptions, gotOptions };
-}
-
-interface Options {
-  [key: string]: any;
+  return { options };
 }

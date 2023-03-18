@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.optionSetupAndSplit = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = void 0;
+exports.optionSetup = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = void 0;
 const validator_1 = require("validator");
 /**
  * Checks if URL is valid
@@ -96,8 +96,8 @@ exports.removeNestedUndefinedValues = removeNestedUndefinedValues;
  * @return {object} object with nested options for ogs and got
  *
  */
-function optionSetupAndSplit(options) {
-    const ogsOptions = {
+function optionSetup(ogsOptions) {
+    const options = {
         allMedia: false,
         customMetaTags: [],
         downloadLimit: 1000000,
@@ -117,23 +117,8 @@ function optionSetupAndSplit(options) {
             require_valid_protocol: true,
             validate_length: true,
         },
-        ...options,
+        ...ogsOptions,
     };
-    const gotOptions = {
-        decompress: true,
-        followRedirect: true,
-        headers: {},
-        maxRedirects: 10,
-        ...options,
-    };
-    // remove any OGS options from gotOptions since this will cause errors in got
-    delete gotOptions.allMedia;
-    delete gotOptions.blacklist;
-    delete gotOptions.customMetaTags;
-    delete gotOptions.downloadLimit;
-    delete gotOptions.ogImageFallback;
-    delete gotOptions.onlyGetOpenGraphInfo;
-    delete gotOptions.urlValidatorSettings;
-    return { ogsOptions, gotOptions };
+    return { options };
 }
-exports.optionSetupAndSplit = optionSetupAndSplit;
+exports.optionSetup = optionSetup;

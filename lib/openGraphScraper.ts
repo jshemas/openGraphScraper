@@ -10,37 +10,36 @@ import type { OpenGraphScraperOptions } from './types';
  * @return {object} object with ogs results
  *
  */
-export default async function setOptionsAndReturnOpenGraphResults(options: OpenGraphScraperOptions) {
-  const { ogsOptions, gotOptions } = utils.optionSetupAndSplit(options);
+export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: OpenGraphScraperOptions) {
+  const { options } = utils.optionSetup(ogsOptions);
 
-  if (ogsOptions.html) {
-    if (ogsOptions.url) throw new Error('Must specify either `url` or `html`, not both');
-    const ogObject = extractMetaTags(ogsOptions.html, ogsOptions);
+  if (options.html) {
+    if (options.url) throw new Error('Must specify either `url` or `html`, not both');
+    const ogObject = extractMetaTags(options.html, options);
     ogObject.requestUrl = null;
     ogObject.success = true;
-    return { ogObject, response: { body: ogsOptions.html } };
+    return { ogObject, response: { body: options.html } };
   }
 
-  const formattedUrl = utils.validateAndFormatURL(ogsOptions.url, ogsOptions.urlValidatorSettings);
+  const formattedUrl = utils.validateAndFormatURL(options.url, options.urlValidatorSettings);
 
   if (!formattedUrl.url) throw new Error('Invalid URL');
 
-  ogsOptions.url = formattedUrl.url;
-  gotOptions.url = formattedUrl.url;
+  options.url = formattedUrl.url;
 
   // trying to limit non html pages
-  if (utils.isThisANonHTMLUrl(ogsOptions.url)) throw new Error('Must scrape an HTML page');
+  if (utils.isThisANonHTMLUrl(options.url)) throw new Error('Must scrape an HTML page');
 
   // eslint-disable-next-line max-len
-  if (ogsOptions.blacklist && ogsOptions.blacklist.some((blacklistedHostname) => ogsOptions.url.includes(blacklistedHostname))) {
+  if (options.blacklist && options.blacklist.some((blacklistedHostname) => options.url.includes(blacklistedHostname))) {
     throw new Error('Host name has been black listed');
   }
 
   try {
-    const { body, response } = await requestAndResultsFormatter(gotOptions, ogsOptions);
-    const ogObject = extractMetaTags(body, ogsOptions);
+    const { body, response } = await requestAndResultsFormatter(options);
+    const ogObject = extractMetaTags(body, options);
 
-    ogObject.requestUrl = ogsOptions.url;
+    ogObject.requestUrl = options.url;
     ogObject.success = true;
 
     return { ogObject, response };
@@ -54,7 +53,7 @@ export default async function setOptionsAndReturnOpenGraphResults(options: OpenG
     } else if (exception && exception.message && exception.message.startsWith('Response code 5')) {
       throw new Error('Web server is returning error');
     } else if (exception && exception.message && exception.message === 'Promise was canceled') {
-      throw new Error(`Exceeded the download limit of ${ogsOptions.downloadLimit} bytes`);
+      throw new Error(`Exceeded the download limit of ${options.downloadLimit} bytes`);
     }
     if (exception instanceof Error) throw exception;
     throw new Error('Page not found');
