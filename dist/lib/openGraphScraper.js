@@ -45,8 +45,8 @@ async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
         else if (exception && (exception.code === 'ERR_INVALID_URL' || exception.code === 'EINVAL')) {
             throw new Error('Page not found');
         }
-        else if (exception && exception.code === 'ETIMEDOUT') {
-            throw new Error('Time out');
+        else if (exception && (exception.code === 'ETIMEDOUT' || exception.name === 'AbortError')) {
+            throw new Error('The operation was aborted due to timeout');
         }
         else if (exception && exception.message && exception.message.startsWith('Response code 5')) {
             throw new Error('Web server is returning error');

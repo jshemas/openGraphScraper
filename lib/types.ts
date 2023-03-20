@@ -8,10 +8,12 @@
  * @typeParam {string[]} [blacklist] - Pass in an array of sites you don't want ogs to run on.
  * @typeParam {boolean} [onlyGetOpenGraphInfo] - Only fetch open graph info and don't fall back on anything else.
  * @typeParam {boolean} [ogImageFallback] - Fetch other images if no open graph ones are found.
- * @typeParam {object} [customMetaTags] - Here you can define custom meta tags you want to scrape.
+ * @typeParam {CustomMetaTags} [customMetaTags] - Here you can define custom meta tags you want to scrape.
+ * @typeParam {Request} [fetchOptions] - The options passed into fetch.
  * @typeParam {boolean} [allMedia] - By default, OGS will only send back the first image/video it finds.
+ * @typeParam {number} [timeout] - Number of seconds before the fetch request ends. (default is 10 seconds)
  * @typeParam {number | false} [downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
- * @typeParam {object} [ValidatorSettings] - Sets the options used by validator.js for testing the URL
+ * @typeParam {ValidatorSettings} [urlValidatorSettings] - Sets the options used by validator.js for testing the URL
  */
 export type OpenGraphScraperOptions = {
   allMedia?: boolean;
@@ -22,6 +24,7 @@ export type OpenGraphScraperOptions = {
   html?: string;
   ogImageFallback?: boolean;
   onlyGetOpenGraphInfo?: boolean;
+  timeout?: number;
   url: string;
   urlValidatorSettings?: ValidatorSettings;
 };
