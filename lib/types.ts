@@ -12,12 +12,6 @@
  * @typeParam {boolean} [allMedia] - By default, OGS will only send back the first image/video it finds.
  * @typeParam {number | false} [downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
  * @typeParam {object} [ValidatorSettings] - Sets the options used by validator.js for testing the URL
- * @typeParam {boolean} [decompress] - Set the accept-encoding to `gzip, deflate, br` (default: `true`).
- * @typeParam {boolean} [followRedirect] - Defines if redirect responses should be followed automatically. (default: `true`).
- * @typeParam {Object<string, string>} [headers] - An object containing request headers. Useful for setting the user-agent.
- * @typeParam {number} [maxRedirects] - If exceeded, the request will be aborted and a MaxRedirectsError will be thrown. (default: `10`).
- * @typeParam {object} [retry] - Number of times `og`s will retry the request (default: `2`).
- * @typeParam {object} [timeout] - Timeout of the request.
  */
 export type OpenGraphScraperOptions = {
   allMedia?: boolean;
