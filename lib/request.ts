@@ -10,6 +10,7 @@ import type { OpenGraphScraperOptions } from './types';
 export default async function requestAndResultsFormatter(options: OpenGraphScraperOptions) {
   return fetch(options.url, options.fetchOptions)
     .then(async (response) => {
+      const clonedResponse = response.clone();
       if (response && response.headers && response.headers['content-type'] && !response.headers['content-type'].includes('text/')) {
         throw new Error('Page must return a header content-type with text/');
       }
@@ -22,7 +23,7 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
         throw new Error('Page not found');
       }
 
-      return { body, response };
+      return { body, response: clonedResponse };
     })
     .catch((error) => {
       if (error instanceof Error) {

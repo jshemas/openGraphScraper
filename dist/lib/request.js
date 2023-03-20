@@ -10,6 +10,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 async function requestAndResultsFormatter(options) {
     return fetch(options.url, options.fetchOptions)
         .then(async (response) => {
+        const clonedResponse = response.clone();
         if (response && response.headers && response.headers['content-type'] && !response.headers['content-type'].includes('text/')) {
             throw new Error('Page must return a header content-type with text/');
         }
@@ -20,7 +21,7 @@ async function requestAndResultsFormatter(options) {
         if (body === undefined || body === '') {
             throw new Error('Page not found');
         }
-        return { body, response };
+        return { body, response: clonedResponse };
     })
         .catch((error) => {
         if (error instanceof Error) {
