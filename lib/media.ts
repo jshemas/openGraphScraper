@@ -92,7 +92,7 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [null];
   }
 
-  // format images
+  // format images and limit to 10
   const ogImages: ImageObject[] = zip(
     ogObject.ogImage,
     ogObject.ogImageWidth,
@@ -100,6 +100,7 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     ogObject.ogImageType,
   )
     .map(mediaMapper)
+    .filter((value, index) => index < 10)
     .sort(mediaSorter);
 
   // sets ogVideo video/width/height/type to null if one these exists
@@ -110,7 +111,7 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     ogObject.ogVideoType = ogObject.ogVideoType ? ogObject.ogVideoType : [null];
   }
 
-  // format videos
+  // format videos and limit to 10
   const ogVideos: VideoObject[] = zip(
     ogObject.ogVideo,
     ogObject.ogVideoWidth,
@@ -118,6 +119,7 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     ogObject.ogVideoType,
   )
     .map(mediaMapper)
+    .filter((value, index) => index < 10)
     .sort(mediaSorter);
 
   // sets twitter image image/width/height/type to null if one these exists
@@ -135,13 +137,13 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     ogObject.twitterImageAlt = ogObject.twitterImageAlt ? ogObject.twitterImageAlt : [null];
   }
 
-  // format twitter images
+  // format twitter images and limit to 10
   const twitterImages: TwitterImageObject[] = zip(
     ogObject.twitterImage,
     ogObject.twitterImageWidth,
     ogObject.twitterImageHeight,
     ogObject.twitterImageAlt,
-  ).map(mediaMapperTwitterImage).sort(mediaSorter);
+  ).map(mediaMapperTwitterImage).filter((value, index) => index < 10).sort(mediaSorter);
 
   // sets twitter player/width/height/stream to null if one these exists
   if (ogObject.twitterPlayer
@@ -155,13 +157,14 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     ogObject.twitterPlayerStream = ogObject.twitterPlayerStream ? ogObject.twitterPlayerStream : [null];
   }
 
-  // format twitter player
+  // format twitter player and limit to 10
   const twitterPlayers: TwitterPlayerObject[] = zip(
     ogObject.twitterPlayer,
     ogObject.twitterPlayerWidth,
     ogObject.twitterPlayerHeight,
     ogObject.twitterPlayerStream,
   ).map(mediaMapperTwitterPlayer)
+    .filter((value, index) => index < 10)
     .sort(mediaSorter);
 
   // sets music song/songTrack/songDisc to null if one these exists
@@ -171,9 +174,10 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     ogObject.musicSongDisc = ogObject.musicSongDisc ? ogObject.musicSongDisc : [null];
   }
 
-  // format music songs
+  // format music songs and limit to 10
   const musicSongs: MusicSongObject[] = zip(ogObject.musicSong, ogObject.musicSongTrack, ogObject.musicSongDisc)
     .map(mediaMapperMusicSong)
+    .filter((value, index) => index < 10)
     .sort(mediaSorterMusicSong);
 
   // remove old values since everything will live under the main property

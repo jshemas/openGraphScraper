@@ -211,4 +211,77 @@ describe('media', function () {
       stream: 'image/png',
     }]);
   });
+  it('allMedia set to true and has more then 10 images', function () {
+    const ogMedia = media.mediaSetup({
+      ogImage: ['http://test.com/logo1.png', 'http://test.com/logo2.png', 'http://test.com/logo3.png', 'http://test.com/logo4.png', 'http://test.com/logo5.png', 'http://test.com/logo6.png', 'http://test.com/logo7.png', 'http://test.com/logo8.png', 'http://test.com/logo9.png', 'http://test.com/logo10.png', 'http://test.com/logo11.png'],
+      ogImageType: ['image/png', 'image/png', 'image/png', 'image/png', 'image/png', 'image/png', 'image/png', 'image/png', 'image/png', 'image/png', 'image/png'],
+      ogImageWidth: ['300', '300', '300', '300', '300', '300', '300', '300', '300', '300', '300'],
+      ogImageHeight: ['300', '300', '300', '300', '300', '300', '300', '300', '300', '300', '300'],
+    }, {
+      allMedia: true,
+    });
+
+    expect(ogMedia.ogImage).to.eql([
+      {
+        url: 'http://test.com/logo1.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
+      },
+      {
+        url: 'http://test.com/logo2.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
+      },
+      {
+        url: 'http://test.com/logo3.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
+      },
+      {
+        url: 'http://test.com/logo4.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
+      },
+      {
+        url: 'http://test.com/logo5.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
+      },
+      {
+        url: 'http://test.com/logo6.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
+      },
+      {
+        url: 'http://test.com/logo7.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
+      },
+      {
+        url: 'http://test.com/logo8.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
+      },
+      {
+        url: 'http://test.com/logo9.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
+      },
+      {
+        url: 'http://test.com/logo10.png',
+        width: '300',
+        height: '300',
+        type: 'image/png',
+      },
+    ]);
+  });
 });
