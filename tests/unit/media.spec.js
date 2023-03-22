@@ -29,7 +29,7 @@ describe('media', function () {
   });
   it('has many images and twitter images', function () {
     const ogMedia = media.mediaSetup({
-      ogImage: ['http://test.com/logo_one.png', 'http://test.com/logo_two.png', 'http://test.com/logo_two.png', ''],
+      ogImage: ['http://test.com/logo_one.png', 'http://test.com/logo_two.png', 'http://test.com/logo_two.png', '', undefined],
       ogImageType: ['image/png'],
       ogImageWidth: ['300'],
       ogImageHeight: ['300'],

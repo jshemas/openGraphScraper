@@ -79,6 +79,7 @@ function mediaSetup(ogObject, options) {
     // format images and limit to 10
     const ogImages = zip(ogObject.ogImage, ogObject.ogImageWidth, ogObject.ogImageHeight, ogObject.ogImageType)
         .map(mediaMapper)
+        .filter((value) => value.url !== undefined && value.url !== '')
         .filter((value, index) => index < 10)
         .sort(mediaSorter);
     // sets ogVideo video/width/height/type to null if one these exists
@@ -91,6 +92,7 @@ function mediaSetup(ogObject, options) {
     // format videos and limit to 10
     const ogVideos = zip(ogObject.ogVideo, ogObject.ogVideoWidth, ogObject.ogVideoHeight, ogObject.ogVideoType)
         .map(mediaMapper)
+        .filter((value) => value.url !== undefined && value.url !== '')
         .filter((value, index) => index < 10)
         .sort(mediaSorter);
     // sets twitter image image/width/height/type to null if one these exists
@@ -106,7 +108,11 @@ function mediaSetup(ogObject, options) {
         ogObject.twitterImageAlt = ogObject.twitterImageAlt ? ogObject.twitterImageAlt : [null];
     }
     // format twitter images and limit to 10
-    const twitterImages = zip(ogObject.twitterImage, ogObject.twitterImageWidth, ogObject.twitterImageHeight, ogObject.twitterImageAlt).map(mediaMapperTwitterImage).filter((value, index) => index < 10).sort(mediaSorter);
+    const twitterImages = zip(ogObject.twitterImage, ogObject.twitterImageWidth, ogObject.twitterImageHeight, ogObject.twitterImageAlt)
+        .map(mediaMapperTwitterImage)
+        .filter((value) => value.url !== undefined && value.url !== '')
+        .filter((value, index) => index < 10)
+        .sort(mediaSorter);
     // sets twitter player/width/height/stream to null if one these exists
     if (ogObject.twitterPlayer
         || ogObject.twitterPlayerWidth
@@ -119,6 +125,7 @@ function mediaSetup(ogObject, options) {
     }
     // format twitter player and limit to 10
     const twitterPlayers = zip(ogObject.twitterPlayer, ogObject.twitterPlayerWidth, ogObject.twitterPlayerHeight, ogObject.twitterPlayerStream).map(mediaMapperTwitterPlayer)
+        .filter((value) => value.url !== undefined && value.url !== '')
         .filter((value, index) => index < 10)
         .sort(mediaSorter);
     // sets music song/songTrack/songDisc to null if one these exists
@@ -130,6 +137,7 @@ function mediaSetup(ogObject, options) {
     // format music songs and limit to 10
     const musicSongs = zip(ogObject.musicSong, ogObject.musicSongTrack, ogObject.musicSongDisc)
         .map(mediaMapperMusicSong)
+        .filter((value) => value.url !== undefined && value.url !== '')
         .filter((value, index) => index < 10)
         .sort(mediaSorterMusicSong);
     // remove old values since everything will live under the main property

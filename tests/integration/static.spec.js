@@ -2122,9 +2122,6 @@ describe('static', function () {
           height: null,
           alt: null,
         });
-        expect(result.twitterPlayer).to.be.eql({
-          width: '435', height: '245', stream: null,
-        });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mashable');
         expect(result.charset).to.be.eql('UTF-8');
         expect(result.success).to.be.eql(true);
@@ -2149,7 +2146,6 @@ describe('static', function () {
           'twitterCreator',
           'twitterDescription',
           'twitterImage',
-          'twitterPlayer',
           'twitterSite',
           'twitterTitle',
           'twitterUrl',

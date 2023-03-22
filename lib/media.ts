@@ -100,6 +100,7 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     ogObject.ogImageType,
   )
     .map(mediaMapper)
+    .filter((value) => value.url !== undefined && value.url !== '')
     .filter((value, index) => index < 10)
     .sort(mediaSorter);
 
@@ -119,6 +120,7 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     ogObject.ogVideoType,
   )
     .map(mediaMapper)
+    .filter((value) => value.url !== undefined && value.url !== '')
     .filter((value, index) => index < 10)
     .sort(mediaSorter);
 
@@ -143,7 +145,11 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     ogObject.twitterImageWidth,
     ogObject.twitterImageHeight,
     ogObject.twitterImageAlt,
-  ).map(mediaMapperTwitterImage).filter((value, index) => index < 10).sort(mediaSorter);
+  )
+    .map(mediaMapperTwitterImage)
+    .filter((value) => value.url !== undefined && value.url !== '')
+    .filter((value, index) => index < 10)
+    .sort(mediaSorter);
 
   // sets twitter player/width/height/stream to null if one these exists
   if (ogObject.twitterPlayer
@@ -164,6 +170,7 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     ogObject.twitterPlayerHeight,
     ogObject.twitterPlayerStream,
   ).map(mediaMapperTwitterPlayer)
+    .filter((value) => value.url !== undefined && value.url !== '')
     .filter((value, index) => index < 10)
     .sort(mediaSorter);
 
@@ -177,6 +184,7 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
   // format music songs and limit to 10
   const musicSongs: MusicSongObject[] = zip(ogObject.musicSong, ogObject.musicSongTrack, ogObject.musicSongDisc)
     .map(mediaMapperMusicSong)
+    .filter((value) => value.url !== undefined && value.url !== '')
     .filter((value, index) => index < 10)
     .sort(mediaSorterMusicSong);
 
