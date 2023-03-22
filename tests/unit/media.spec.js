@@ -154,11 +154,6 @@ describe('media', function () {
       url: 'http://test.com/songurl3',
       track: '2',
       disc: '2',
-    },
-    {
-      url: '',
-      track: '',
-      disc: '',
     }]);
   });
   it('allMedia set to true', function () {
