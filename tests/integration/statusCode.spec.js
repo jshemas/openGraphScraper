@@ -5,9 +5,7 @@ describe('statusCode', function () {
     it('403', function () {
       return ogs({
         url: 'http://httpstat.us/403',
-        timeout: {
-          request: 10000,
-        },
+        timeout: 10,
       })
         .then(function () {
           expect().fail('this should not happen');
@@ -32,9 +30,7 @@ describe('statusCode', function () {
     it('500', function () {
       return ogs({
         url: 'http://httpstat.us/500',
-        timeout: {
-          request: 10000,
-        },
+        timeout: 10,
       })
         .then(function () {
           expect().fail('this should not happen');
