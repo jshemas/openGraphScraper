@@ -101,7 +101,6 @@ export function optionSetup(ogsOptions: OpenGraphScraperOptions): { options: Ope
     downloadLimit: 1000000,
     ogImageFallback: true,
     onlyGetOpenGraphInfo: false,
-    timeout: 10,
     urlValidatorSettings: {
       allow_fragments: true,
       allow_protocol_relative_urls: false,

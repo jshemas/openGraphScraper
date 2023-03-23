@@ -19,7 +19,6 @@ import type {
  * @param {object} [options.validatorSettings] - Sets the options used by validator.js for testing the URL
  * @param {string[]} [options.blacklist] - Pass in an array of sites you don't want ogs to run on.
  * @param {string} [options.html] - You can pass in an HTML string to run ogs on it. (use without options.url)
- * @param {number} [options.timeout] - Number of seconds before the fetch request ends. (default is 10 seconds)
  * @param {string} options.url - URL of the site. (Required)
  * @returns {Promise} Promise Object with the Open Graph results
  */

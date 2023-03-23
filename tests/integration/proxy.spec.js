@@ -29,7 +29,6 @@ describe.skip('proxy', function () {
             },
           }),
         },
-        timeout: 10,
       }, function (errorWithProxy, resultWithProxy, responseWithProxy) {
         console.log('errorWithProxy:', errorWithProxy);
         console.log('resultWithProxy:', resultWithProxy);

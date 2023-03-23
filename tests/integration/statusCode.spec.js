@@ -3,10 +3,7 @@ const ogs = require('../../index');
 describe('statusCode', function () {
   context('when the site returns', function () {
     it('403', function () {
-      return ogs({
-        url: 'http://httpstat.us/403',
-        timeout: 10,
-      })
+      return ogs({ url: 'http://httpstat.us/403' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -28,10 +25,7 @@ describe('statusCode', function () {
         });
     });
     it('500', function () {
-      return ogs({
-        url: 'http://httpstat.us/500',
-        timeout: 10,
-      })
+      return ogs({ url: 'http://httpstat.us/500' })
         .then(function () {
           expect().fail('this should not happen');
         })
