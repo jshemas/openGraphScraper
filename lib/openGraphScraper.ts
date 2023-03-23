@@ -52,8 +52,6 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
       throw new Error('The operation was aborted due to timeout');
     } else if (exception && exception.message && exception.message.startsWith('Response code 5')) {
       throw new Error('Web server is returning error');
-    } else if (exception && exception.message && exception.message === 'Promise was canceled') {
-      throw new Error(`Exceeded the download limit of ${options.downloadLimit} bytes`);
     }
     if (exception instanceof Error) throw exception;
     throw new Error('Page not found');

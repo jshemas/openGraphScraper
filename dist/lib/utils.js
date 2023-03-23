@@ -100,7 +100,6 @@ function optionSetup(ogsOptions) {
     const options = {
         allMedia: false,
         customMetaTags: [],
-        downloadLimit: 1000000,
         ogImageFallback: true,
         onlyGetOpenGraphInfo: false,
         timeout: 10,

@@ -466,25 +466,6 @@ describe.skip('return ogs', function () {
         });
     });
 
-    it('when the request sends exceeded the download limit', function () {
-      nock('http://www.testerror-downloadlimit.com').persist().get('/')
-        .replyWithError({
-          message: 'Promise was canceled',
-        });
-
-      return ogs({ url: 'www.testerror-downloadlimit.com', retry: { limit: 0 } })
-        .then(function () {
-          expect().fail('this should not happen');
-        })
-        .catch(function (data) {
-          expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Exceeded the download limit of 1000000 bytes');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Exceeded the download limit of 1000000 bytes');
-          expect(data.result.success).to.eql(false);
-          expect(data.response).to.be.eql(undefined);
-        });
-    });
-
     it('when an server sends back nothing', function () {
       nock('http://www.test.com').get('/').reply(200);
 

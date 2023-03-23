@@ -98,7 +98,6 @@ export function optionSetup(ogsOptions: OpenGraphScraperOptions): { options: Ope
   const options: OpenGraphScraperOptions = {
     allMedia: false,
     customMetaTags: [],
-    downloadLimit: 1000000,
     ogImageFallback: true,
     onlyGetOpenGraphInfo: false,
     timeout: 10,

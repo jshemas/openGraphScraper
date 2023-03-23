@@ -11,7 +11,6 @@
  * @typeParam {CustomMetaTags} [customMetaTags] - Here you can define custom meta tags you want to scrape.
  * @typeParam {Request} [fetchOptions] - The options passed into fetch.
  * @typeParam {boolean} [allMedia] - By default, OGS will only send back the first image/video it finds.
- * @typeParam {number | false} [downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
  * @typeParam {number} [timeout] - Number of seconds before the fetch request ends. (default is 10 seconds)
  * @typeParam {ValidatorSettings} [urlValidatorSettings] - Sets the options used by validator.js for testing the URL
  */
@@ -19,7 +18,6 @@ export type OpenGraphScraperOptions = {
   allMedia?: boolean;
   blacklist?: string[];
   customMetaTags?: CustomMetaTags[];
-  downloadLimit?: number | false;
   fetchOptions?: Request;
   html?: string;
   ogImageFallback?: boolean;
