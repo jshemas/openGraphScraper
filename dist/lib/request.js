@@ -9,10 +9,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 async function requestAndResultsFormatter(options) {
     let body;
-    let clonedResponse;
+    let response;
     try {
-        const response = await fetch(options.url, options.fetchOptions);
-        clonedResponse = response.clone();
+        response = await fetch(options.url, options.fetchOptions);
         if (response && response.headers && response.headers['content-type'] && !response.headers['content-type'].includes('text/')) {
             throw new Error('Page must return a header content-type with text/');
         }
@@ -32,6 +31,6 @@ async function requestAndResultsFormatter(options) {
         }
         throw new Error(error);
     }
-    return { body, response: clonedResponse };
+    return { body, response };
 }
 exports.default = requestAndResultsFormatter;
