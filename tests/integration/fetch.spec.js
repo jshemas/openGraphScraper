@@ -41,6 +41,28 @@ describe('fetch', function () {
         expect(rawUa).to.be.eql(`rawUa: ${userAgent}`);
       });
   });
+  it('setting a timeout', function () {
+    return ogs({ url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso', timeout: 3 })
+      .then(function () {
+        expect().fail('this should not happen');
+      })
+      .catch(function ({ error, result, response }) {
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(true);
+        expect(result.success).to.be.eql(false);
+        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso');
+        expect(result.error).to.eql('The operation was aborted due to timeout');
+        expect(result.errorDetails.toString()).to.eql('Error: The operation was aborted due to timeout');
+        expect(result).to.have.all.keys(
+          'error',
+          'errorDetails',
+          'requestUrl',
+          'success',
+        );
+        expect(response).to.eql(undefined);
+      });
+  });
   // https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout
   // eslint-disable-next-line mocha/no-skipped-tests
   it.skip('setting a timeout - using AbortSignal.timeout()', function () {
