@@ -37,6 +37,7 @@ export default async function run(options: OpenGraphScraperOptions): Promise<Err
         errorDetails: exception,
       },
       response: undefined,
+      html: undefined,
     };
     // eslint-disable-next-line @typescript-eslint/no-throw-literal
     throw returnError;
@@ -45,6 +46,7 @@ export default async function run(options: OpenGraphScraperOptions): Promise<Err
     error: false,
     result: results.ogObject,
     response: results.response,
+    html: results.html,
   };
   return returnSuccess;
 }
@@ -53,12 +55,14 @@ module.exports = run;
 
 type SuccessResult = {
   error: false;
-  result: OgObject;
+  html: string;
   response: object;
+  result: OgObject;
 };
 
 type ErrorResult = {
   error: true;
-  result: OgObject;
+  html: undefined;
   response: undefined;
+  result: OgObject;
 };

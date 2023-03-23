@@ -35,6 +35,7 @@ async function run(options) {
                 errorDetails: exception,
             },
             response: undefined,
+            html: undefined,
         };
         // eslint-disable-next-line @typescript-eslint/no-throw-literal
         throw returnError;
@@ -43,6 +44,7 @@ async function run(options) {
         error: false,
         result: results.ogObject,
         response: results.response,
+        html: results.html,
     };
     return returnSuccess;
 }

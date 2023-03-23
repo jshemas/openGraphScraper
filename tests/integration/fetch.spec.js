@@ -9,35 +9,37 @@ describe('fetch', function () {
     const headers = new Headers({
       'user-agent': userAgent,
     });
-    return ogs({ url: 'https://www.whatsmyua.info/', fetchOptions: { headers } }).then(async function ({ error, result, response }) {
-      console.log('error:', error);
-      console.log('result:', result);
-      expect(error).to.be.eql(false);
-      expect(result.ogTitle).to.be.eql('What\'s my user agent?');
-      expect(result.ogDescription).to.be.eql('Detect user-agent, operating system, browser, and device using several libraries, including ua-parser, ua-parser-js, and platform.');
-      expect(result.ogImage).to.be.eql([{
-        url: 'https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png',
-        width: null,
-        height: null,
-        type: 'png',
-      }]);
-      expect(result.requestUrl).to.be.eql('https://www.whatsmyua.info/');
-      expect(result.charset).to.be.eql('utf-8');
-      expect(result.success).to.be.eql(true);
-      expect(result).to.have.all.keys(
-        'ogTitle',
-        'ogDescription',
-        'ogImage',
-        'requestUrl',
-        'charset',
-        'success',
-      );
-      expect(response).to.be.an('Response');
-      const body = await response.text();
-      const $ = cheerio.load(body);
-      const rawUa = $('li#rawUa').text();
-      expect(rawUa).to.be.eql(`rawUa: ${userAgent}`);
-    });
+    return ogs({ url: 'https://www.whatsmyua.info/', fetchOptions: { headers } })
+      .then(async function ({
+        error, result, response, html,
+      }) {
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.ogTitle).to.be.eql('What\'s my user agent?');
+        expect(result.ogDescription).to.be.eql('Detect user-agent, operating system, browser, and device using several libraries, including ua-parser, ua-parser-js, and platform.');
+        expect(result.ogImage).to.be.eql([{
+          url: 'https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png',
+          width: null,
+          height: null,
+          type: 'png',
+        }]);
+        expect(result.requestUrl).to.be.eql('https://www.whatsmyua.info/');
+        expect(result.charset).to.be.eql('utf-8');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'ogTitle',
+          'ogDescription',
+          'ogImage',
+          'requestUrl',
+          'charset',
+          'success',
+        );
+        expect(response).to.be.an('Response');
+        const $ = cheerio.load(html);
+        const rawUa = $('li#rawUa').text();
+        expect(rawUa).to.be.eql(`rawUa: ${userAgent}`);
+      });
   });
   // https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout
   // eslint-disable-next-line mocha/no-skipped-tests

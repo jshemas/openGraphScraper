@@ -18,7 +18,7 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
     const ogObject = extractMetaTags(options.html, options);
     ogObject.requestUrl = null;
     ogObject.success = true;
-    return { ogObject, response: { body: options.html } };
+    return { ogObject, response: { body: options.html }, html: options.html };
   }
 
   const formattedUrl = utils.validateAndFormatURL(options.url, options.urlValidatorSettings);
@@ -42,7 +42,7 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
     ogObject.requestUrl = options.url;
     ogObject.success = true;
 
-    return { ogObject, response };
+    return { ogObject, response, html: body };
   } catch (exception) {
     if (exception && (exception.code === 'ENOTFOUND' || exception.code === 'EHOSTUNREACH' || exception.code === 'ENETUNREACH')) {
       throw new Error('Page not found');

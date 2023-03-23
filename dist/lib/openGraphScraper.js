@@ -18,7 +18,7 @@ async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
         const ogObject = (0, extract_1.default)(options.html, options);
         ogObject.requestUrl = null;
         ogObject.success = true;
-        return { ogObject, response: { body: options.html } };
+        return { ogObject, response: { body: options.html }, html: options.html };
     }
     const formattedUrl = utils.validateAndFormatURL(options.url, options.urlValidatorSettings);
     if (!formattedUrl.url)
@@ -36,7 +36,7 @@ async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
         const ogObject = (0, extract_1.default)(body, options);
         ogObject.requestUrl = options.url;
         ogObject.success = true;
-        return { ogObject, response };
+        return { ogObject, response, html: body };
     }
     catch (exception) {
         if (exception && (exception.code === 'ENOTFOUND' || exception.code === 'EHOSTUNREACH' || exception.code === 'ENETUNREACH')) {
