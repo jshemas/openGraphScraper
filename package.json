@@ -4,7 +4,7 @@
   "version": "5.2.2",
   "license": "MIT",
   "main": "./dist/index.js",
-  "types": "index.ts",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "eslint:fix": "eslint . --ext .js,.ts --fix",
@@ -31,7 +31,6 @@
     "validator": "^13.9.0"
   },
   "files": [
-    "/lib",
     "/dist",
     "CHANGELOG.md",
     "index.ts"
