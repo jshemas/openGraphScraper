@@ -1,5 +1,9 @@
 # Change Log
 
+## 5.2.3
+
+- Add in declaration files for typescript users.
+
 ## 5.2.2
 
 - Specify true/false to distinguish `SuccessResult` and `ErrorResult` by `error` field.

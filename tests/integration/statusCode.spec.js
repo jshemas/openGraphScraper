@@ -1,6 +1,7 @@
 const ogs = require('../../index');
 
-describe('statusCode', function () {
+// http://httpstat.us keeps going offline, we need to fine a replacement
+describe.skip('statusCode', function () {
   context('when the site returns', function () {
     it('403', function () {
       return ogs({
