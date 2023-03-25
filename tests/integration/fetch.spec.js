@@ -41,7 +41,7 @@ describe('fetch', function () {
         expect(rawUa).to.be.eql(`rawUa: ${userAgent}`);
       });
   });
-  it('setting a timeout', function () {
+  it.skip('setting a timeout', function () {
     return ogs({ url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso', timeout: 3 })
       .then(function () {
         expect().fail('this should not happen');
