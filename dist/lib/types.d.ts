@@ -6,33 +6,21 @@
  * @typeParam {string[]} [blacklist] - Pass in an array of sites you don't want ogs to run on.
  * @typeParam {boolean} [onlyGetOpenGraphInfo] - Only fetch open graph info and don't fall back on anything else.
  * @typeParam {boolean} [ogImageFallback] - Fetch other images if no open graph ones are found.
- * @typeParam {object} [customMetaTags] - Here you can define custom meta tags you want to scrape.
+ * @typeParam {CustomMetaTags} [customMetaTags] - Here you can define custom meta tags you want to scrape.
+ * @typeParam {Request} [fetchOptions] - The options passed into fetch.
  * @typeParam {boolean} [allMedia] - By default, OGS will only send back the first image/video it finds.
- * @typeParam {number | false} [downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
- * @typeParam {object} [ValidatorSettings] - Sets the options used by validator.js for testing the URL
- * @typeParam {boolean} [decompress] - Set the accept-encoding to `gzip, deflate, br` (default: `true`).
- * @typeParam {boolean} [followRedirect] - Defines if redirect responses should be followed automatically. (default: `true`).
- * @typeParam {Object<string, string>} [headers] - An object containing request headers. Useful for setting the user-agent.
- * @typeParam {number} [maxRedirects] - If exceeded, the request will be aborted and a MaxRedirectsError will be thrown. (default: `10`).
- * @typeParam {object} [retry] - Number of times `og`s will retry the request (default: `2`).
- * @typeParam {object} [timeout] - Timeout of the request.
+ * @typeParam {number} [timeout] - Number of seconds before the fetch request ends. (default is 10 seconds)
+ * @typeParam {ValidatorSettings} [urlValidatorSettings] - Sets the options used by validator.js for testing the URL
  */
 export type OpenGraphScraperOptions = {
     allMedia?: boolean;
     blacklist?: string[];
     customMetaTags?: CustomMetaTags[];
-    decompress?: boolean;
-    downloadLimit?: number | false;
-    followRedirect?: boolean;
-    headers?: {
-        [x: string]: string;
-    };
+    fetchOptions?: Request;
     html?: string;
-    maxRedirects?: number;
     ogImageFallback?: boolean;
     onlyGetOpenGraphInfo?: boolean;
-    retry?: object;
-    timeout?: object;
+    timeout?: number;
     url: string;
     urlValidatorSettings?: ValidatorSettings;
 };
@@ -83,7 +71,7 @@ export type TwitterImageObject = {
 export type TwitterPlayerObject = {
     height?: number;
     stream?: string;
-    url?: string;
+    url: string;
     width?: number;
 };
 export type ImageObject = {

@@ -8,5 +8,5 @@ import type { OpenGraphScraperOptions } from './types';
  * @return {object} object with ogs results with updated fallback values
  *
  */
-export declare function fallback(ogObject: any, options: OpenGraphScraperOptions, $: any, rawBody: any): any;
+export declare function fallback(ogObject: any, options: OpenGraphScraperOptions, $: any, body: any): any;
 export default fallback;
