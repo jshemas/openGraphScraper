@@ -1,10 +1,10 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "5.2.2",
+  "version": "5.2.3",
   "license": "MIT",
   "main": "./dist/index.js",
-  "types": "index.ts",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "eslint:fix": "eslint . --ext .js,.ts --fix",
@@ -29,7 +29,6 @@
     "validator": "^13.9.0"
   },
   "files": [
-    "/lib",
     "/dist",
     "CHANGELOG.md",
     "index.ts"
