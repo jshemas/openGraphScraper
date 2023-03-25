@@ -61,6 +61,9 @@ export function fallback(ogObject, options: OpenGraphScraperOptions, $, body) {
       }
       return false;
     });
+    ogObject.ogImage = ogObject.ogImage
+      .filter((value) => value.url !== undefined && value.url !== '')
+      .filter((value, index) => index < 10);
     if (ogObject.ogImage.length === 0) delete ogObject.ogImage;
   } else if (ogObject.ogImage) {
     // if there isn't a type, try to pull it from the URL

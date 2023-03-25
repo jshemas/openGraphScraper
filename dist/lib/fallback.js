@@ -65,6 +65,9 @@ function fallback(ogObject, options, $, body) {
             }
             return false;
         });
+        ogObject.ogImage = ogObject.ogImage
+            .filter((value) => value.url !== undefined && value.url !== '')
+            .filter((value, index) => index < 10);
         if (ogObject.ogImage.length === 0)
             delete ogObject.ogImage;
     }
