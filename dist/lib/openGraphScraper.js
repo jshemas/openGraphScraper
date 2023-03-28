@@ -39,17 +39,8 @@ async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
         return { ogObject, response, html: body };
     }
     catch (exception) {
-        if (exception && (exception.code === 'ENOTFOUND' || exception.code === 'EHOSTUNREACH' || exception.code === 'ENETUNREACH')) {
-            throw new Error('Page not found');
-        }
-        else if (exception && (exception.code === 'ERR_INVALID_URL' || exception.code === 'EINVAL')) {
-            throw new Error('Page not found');
-        }
-        else if (exception && (exception.code === 'ETIMEDOUT' || exception.name === 'AbortError')) {
+        if (exception && (exception.name === 'AbortError')) {
             throw new Error('The operation was aborted due to timeout');
-        }
-        else if (exception && exception.message && exception.message.startsWith('Response code 5')) {
-            throw new Error('Web server is returning error');
         }
         if (exception instanceof Error)
             throw exception;
