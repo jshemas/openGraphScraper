@@ -8,12 +8,13 @@ import type { OpenGraphScraperOptions } from './types';
  *
  */
 export default async function requestAndResultsFormatter(options: OpenGraphScraperOptions) {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), options.timeout * 1000);
   let body;
   let response;
   try {
-    response = await fetch(options.url, { signal: controller.signal, ...options.fetchOptions });
+    response = await fetch(
+      options.url,
+      { signal: AbortSignal.timeout(options.timeout * 1000), ...options.fetchOptions },
+    );
 
     if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type').includes('text/')) {
       throw new Error('Page must return a header content-type with text/');
@@ -32,8 +33,6 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
       throw error;
     }
     throw new Error(error);
-  } finally {
-    clearTimeout(timeoutId);
   }
 
   return { body, response };
