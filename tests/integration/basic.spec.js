@@ -284,26 +284,4 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
-  it.skip('should error out if the page is too large', function () {
-    return ogs({ url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso' })
-      .then(function () {
-        expect().fail('this should not happen');
-      })
-      .catch(function ({ error, result, response }) {
-        console.log('error:', error);
-        console.log('result:', result);
-        expect(error).to.be.eql(true);
-        expect(result.success).to.be.eql(false);
-        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso');
-        expect(result.error).to.eql('Exceeded the download limit of 1000000 bytes');
-        expect(result.errorDetails.toString()).to.eql('Error: Exceeded the download limit of 1000000 bytes');
-        expect(result).to.have.all.keys(
-          'error',
-          'errorDetails',
-          'requestUrl',
-          'success',
-        );
-        expect(response).to.eql(undefined);
-      });
-  });
 });
