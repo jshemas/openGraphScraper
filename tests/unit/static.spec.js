@@ -1,13 +1,20 @@
-const nock = require('nock');
+const { MockAgent, setGlobalDispatcher } = require('undici');
+
 const ogs = require('../../index');
 
 const sandbox = sinon.createSandbox();
+const mockAgent = new MockAgent();
 
 // TODO: Should ogVideo/ogImage default to the secure_url if it exists?
-describe.skip('static check meta tags', function () {
+describe('static check meta tags', function () {
+  beforeEach(function () {
+    setGlobalDispatcher(mockAgent);
+    mockAgent.disableNetConnect();
+  });
+
   afterEach(function () {
     sandbox.restore();
-    nock.cleanAll();
+    mockAgent.enableNetConnect();
   });
 
   it('check one off tags', function () {
@@ -20,7 +27,9 @@ describe.skip('static check meta tags', function () {
       <meta property="og:type" name="og:type" content="bar" />
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -37,8 +46,8 @@ describe.skip('static check meta tags', function () {
         });
         expect(data.result.favicon).to.be.eql('https://bar.com/foo.png');
         expect(data.result.charset).to.be.eql('utf-8');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -53,7 +62,9 @@ describe.skip('static check meta tags', function () {
       <meta property="og:type" content="article">
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -66,8 +77,8 @@ describe.skip('static check meta tags', function () {
         expect(data.result.articleSection).to.be.eql('bar');
         expect(data.result.articleTag).to.be.eql('foobar');
         expect(data.result.ogType).to.be.eql('article');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -78,7 +89,9 @@ describe.skip('static check meta tags', function () {
       <meta property="og:audio" content="http://foo.com">
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -87,8 +100,8 @@ describe.skip('static check meta tags', function () {
         expect(data.result.ogAudio).to.be.eql('http://foo.com');
         expect(data.result.ogAudioSecureURL).to.be.eql('https://foo.com');
         expect(data.result.ogAudioType).to.be.eql('audio/bar');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -101,7 +114,9 @@ describe.skip('static check meta tags', function () {
       <meta property="og:image:secure_url" content="https://foobar.png">
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -113,8 +128,8 @@ describe.skip('static check meta tags', function () {
           height: '2',
           type: 'image/png',
         });
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -137,7 +152,9 @@ describe.skip('static check meta tags', function () {
       <meta property="twitter:title" name="twitter:title" content="the foo of bar" />
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -166,8 +183,8 @@ describe.skip('static check meta tags', function () {
           height: null,
           alt: null,
         });
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -180,7 +197,9 @@ describe.skip('static check meta tags', function () {
       <meta property="og:video:width" content="1">
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -192,8 +211,8 @@ describe.skip('static check meta tags', function () {
           height: '2',
           type: 'text/bar',
         });
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -214,7 +233,9 @@ describe.skip('static check meta tags', function () {
     </head></html>`;
     /* eslint-enable max-len */
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -242,8 +263,8 @@ describe.skip('static check meta tags', function () {
         });
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('utf-8');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -264,7 +285,9 @@ describe.skip('static check meta tags', function () {
     </head></html>`;
     /* eslint-enable max-len */
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -292,8 +315,8 @@ describe.skip('static check meta tags', function () {
         });
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('sjis');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -314,7 +337,9 @@ describe.skip('static check meta tags', function () {
     </head></html>`;
     /* eslint-enable max-len */
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -342,8 +367,8 @@ describe.skip('static check meta tags', function () {
         });
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('euc-jp');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 });

@@ -1,5 +1,5 @@
 const chardet = require('chardet');
-const nock = require('nock');
+const { MockAgent, setGlobalDispatcher } = require('undici');
 const ogs = require('../../index');
 
 const basicHTML = `
@@ -52,17 +52,23 @@ const encodingHTML = `
   </html>`;
 
 const sandbox = sinon.createSandbox();
+const mockAgent = new MockAgent();
 
-describe.skip('return ogs', function () {
+describe('return ogs', function () {
+  beforeEach(function () {
+    setGlobalDispatcher(mockAgent);
+    mockAgent.disableNetConnect();
+  });
+
   afterEach(function () {
     sandbox.restore();
-    nock.cleanAll();
+    mockAgent.enableNetConnect();
   });
 
   context('should be able to hit site and find OG title info', function () {
     it('using just a url', function () {
-      nock('http://www.test.com')
-        .get('/')
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
         .reply(200, basicHTML);
 
       return ogs({ url: 'www.test.com' })
@@ -70,8 +76,8 @@ describe.skip('return ogs', function () {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(basicHTML);
-          expect(data.response.rawBody).to.be.eql(Buffer.from(basicHTML, 'utf8'));
+          expect(data.html).to.be.eql(basicHTML);
+          expect(data.response).to.be.a('response');
         });
     });
 
@@ -82,12 +88,13 @@ describe.skip('return ogs', function () {
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.requestUrl).to.be.eql(null);
           expect(data.response.body).to.be.eql(basicHTML);
+          expect(data.html).to.be.eql(basicHTML);
         });
     });
 
     it('when site is not on blacklist', function () {
-      nock('http://www.test.com')
-        .get('/')
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
         .reply(200, basicHTML);
 
       return ogs({ url: 'www.test.com', blacklist: ['testtest.com'] })
@@ -95,14 +102,14 @@ describe.skip('return ogs', function () {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(basicHTML);
-          expect(data.response.rawBody).to.be.eql(Buffer.from(basicHTML, 'utf8'));
+          expect(data.html).to.be.eql(basicHTML);
+          expect(data.response).to.be.a('response');
         });
     });
 
     it('with encoding set to null (this has been deprecated, but should still work)', function () {
-      nock('http://www.test.com')
-        .get('/')
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
         .reply(200, Buffer.from(encodingHTML, 'utf8'));
 
       return ogs({ url: 'www.test.com' })
@@ -112,14 +119,14 @@ describe.skip('return ogs', function () {
           expect(data.result.ogTitle).to.be.eql('тестовая страница');
           expect(data.result.ogDescription).to.be.eql('привет тестовая страница<');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(encodingHTML);
-          expect(data.response.rawBody).to.be.eql(Buffer.from(encodingHTML, 'utf8'));
+          expect(data.html).to.be.eql(encodingHTML);
+          expect(data.response).to.be.a('response');
         });
     });
 
     it('when there is more then one image', function () {
-      nock('http://www.test.com')
-        .get('/')
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
         .reply(200, multipleImageHTML);
 
       return ogs({ url: 'www.test.com' })
@@ -133,14 +140,14 @@ describe.skip('return ogs', function () {
             type: 'png',
           });
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(multipleImageHTML);
-          expect(data.response.rawBody).to.be.eql(Buffer.from(multipleImageHTML, 'utf8'));
+          expect(data.html).to.be.eql(multipleImageHTML);
+          expect(data.response).to.be.a('response');
         });
     });
 
     it('when meta description exist while og description does not', function () {
-      nock('http://www.test.com')
-        .get('/')
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
         .reply(200, metaDescriptionHTML);
 
       return ogs({ url: 'www.test.com' })
@@ -149,14 +156,14 @@ describe.skip('return ogs', function () {
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.ogDescription).to.be.eql('test description from meta');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(metaDescriptionHTML);
-          expect(data.response.rawBody).to.be.eql(Buffer.from(metaDescriptionHTML, 'utf8'));
+          expect(data.html).to.be.eql(metaDescriptionHTML);
+          expect(data.response).to.be.a('response');
         });
     });
 
     it('as a browser', function () {
-      nock('http://www.test.com')
-        .get('/')
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
         .reply(200, basicHTML);
 
       process.browser = true;
@@ -165,14 +172,14 @@ describe.skip('return ogs', function () {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(basicHTML);
-          expect(data.response.rawBody).to.be.eql(Buffer.from(basicHTML, 'utf8'));
+          expect(data.html).to.be.eql(basicHTML);
+          expect(data.response).to.be.a('response');
         });
     });
 
     it('using onlyGetOpenGraphInfo', function () {
-      nock('http://www.test.com')
-        .get('/')
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
         .reply(200, metaDescriptionHTML);
 
       return ogs({ url: 'www.test.com', onlyGetOpenGraphInfo: true })
@@ -181,8 +188,8 @@ describe.skip('return ogs', function () {
           expect(data.result.ogTitle).to.be.eql(undefined);
           expect(data.result.describe).to.be.eql(undefined);
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(metaDescriptionHTML);
-          expect(data.response.rawBody).to.be.eql(Buffer.from(metaDescriptionHTML, 'utf8'));
+          expect(data.html).to.be.eql(metaDescriptionHTML);
+          expect(data.response).to.be.a('response');
         });
     });
 
@@ -195,11 +202,9 @@ describe.skip('return ogs', function () {
           <body></body>
         </html>`;
 
-      nock('http://www.test.com')
-        .get('/')
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
         .reply(200, secureUrlHTML);
-
-      process.browser = true;
 
       return ogs({ url: 'www.test.com' })
         .then(function (data) {
@@ -208,8 +213,8 @@ describe.skip('return ogs', function () {
             url: 'test1.png', width: null, height: null, type: 'png',
           });
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(secureUrlHTML);
-          expect(data.response.rawBody).to.be.eql(Buffer.from(secureUrlHTML, 'utf8'));
+          expect(data.html).to.be.eql(secureUrlHTML);
+          expect(data.response).to.be.a('response');
         });
     });
 
@@ -221,8 +226,8 @@ describe.skip('return ogs', function () {
           </head>
         </html>`;
 
-      nock('http://www.test.com')
-        .get('/')
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
         .reply(200, missingContentHTML);
 
       return ogs({ url: 'www.test.com' })
@@ -230,8 +235,8 @@ describe.skip('return ogs', function () {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
           expect(data.result.ogTitle).to.not.exist;
-          expect(data.response.body).to.be.eql(missingContentHTML);
-          expect(data.response.rawBody).to.be.eql(Buffer.from(missingContentHTML, 'utf8'));
+          expect(data.html).to.be.eql(missingContentHTML);
+          expect(data.response).to.be.a('response');
         });
     });
 
@@ -244,11 +249,9 @@ describe.skip('return ogs', function () {
           <body></body>
         </html>`;
 
-      nock('http://www.test.com')
-        .get('/')
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
         .reply(200, secureUrlHTML);
-
-      process.browser = true;
 
       return ogs({ url: 'www.test.com' })
         .then(function (data) {
@@ -257,15 +260,15 @@ describe.skip('return ogs', function () {
             url: 'test1.png', width: null, height: null, type: 'png',
           });
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(secureUrlHTML);
-          expect(data.response.rawBody).to.be.eql(Buffer.from(secureUrlHTML, 'utf8'));
+          expect(data.html).to.be.eql(secureUrlHTML);
+          expect(data.response).to.be.a('response');
         });
     });
 
     context('when charset and chardet are unknown', function () {
       beforeEach(async function () {
-        nock('http://www.test.com')
-          .get('/')
+        mockAgent.get('http://www.test.com')
+          .intercept({ path: '/' })
           .reply(200, basicHTML);
         sandbox.stub(chardet, 'detect').returns(false);
       });
@@ -275,15 +278,15 @@ describe.skip('return ogs', function () {
             expect(data.result.success).to.be.eql(true);
             expect(data.result.ogTitle).to.be.eql('test page');
             expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-            expect(data.response.body).to.be.eql(basicHTML);
-            expect(data.response.rawBody).to.be.eql(Buffer.from(basicHTML, 'utf8'));
+            expect(data.html).to.be.eql(basicHTML);
+            expect(data.response).to.be.a('response');
           });
       });
     });
 
     it('when passing in a custom tag', function () {
-      nock('http://www.test.com')
-        .get('/')
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
         .reply(200, basicHTML);
 
       return ogs({
@@ -299,177 +302,195 @@ describe.skip('return ogs', function () {
           expect(data.result.fooTag).to.be.eql('bar');
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.response.body).to.be.eql(basicHTML);
-          expect(data.response.rawBody).to.be.eql(Buffer.from(basicHTML, 'utf8'));
+          expect(data.html).to.be.eql(basicHTML);
+          expect(data.response).to.be.a('response');
         });
     });
   });
 
   context('should return the proper error data', function () {
     it('when the request sends a ENOTFOUND error', function () {
-      nock('http://www.testerror.com').persist().get('/')
-        .replyWithError({
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(404, {
           message: 'server error',
           code: 'ENOTFOUND',
         });
 
-      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
+      return ogs({ url: 'www.testerror.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Page not found');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
         });
     });
 
     it('when the request sends a EHOSTUNREACH error', function () {
-      nock('http://www.testerror.com').persist().get('/')
-        .replyWithError({
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(503, {
           message: 'server error',
           code: 'EHOSTUNREACH',
         });
 
-      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
+      return ogs({ url: 'www.testerror.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Page not found');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
         });
     });
 
     it('when the request sends a ENETUNREACH error', function () {
-      nock('http://www.testerror.com').persist().get('/')
-        .replyWithError({
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(503, {
           message: 'server error',
           code: 'ENETUNREACH',
         });
 
-      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
+      return ogs({ url: 'www.testerror.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Page not found');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
         });
     });
 
     it('when the request sends a ERR_INVALID_URL error', function () {
-      nock('http://www.testerror.com').persist().get('/')
-        .replyWithError({
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(502, {
           message: 'server error',
           code: 'ERR_INVALID_URL',
         });
 
-      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
+      return ogs({ url: 'www.testerror.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Page not found');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
         });
     });
 
     it('when the request sends a EINVAL error', function () {
-      nock('http://www.testerror.com').persist().get('/')
-        .replyWithError({
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(400, {
           message: 'server error',
           code: 'EINVAL',
         });
 
-      return ogs({ url: 'www.testerror.com', retry: { limit: 0 } })
+      return ogs({ url: 'www.testerror.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Page not found');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
         });
     });
 
     it('when the request sends a ETIMEDOUT error', function () {
-      nock('http://www.testerror-ETIMEDOUT.com').persist().get('/')
-        .replyWithError({
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(408, {
           message: 'server error',
           code: 'ETIMEDOUT',
         });
 
-      return ogs({ url: 'www.testerror-ETIMEDOUT.com', retry: { limit: 0 } })
+      return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Time out');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Time out');
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
         });
     });
 
     it('when the request sends a Response code 401 error', function () {
-      nock('http://www.testerror-401.com').persist().get('/')
-        .replyWithError({
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(401, {
           message: 'Response code 401',
           code: '401',
         });
 
-      return ogs({ url: 'www.testerror-401.com', retry: { limit: 0 } })
+      return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Response code 401');
-          expect(data.result.errorDetails.toString()).to.eql('RequestError: Response code 401');
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
         });
     });
 
     it('when the request sends a Response code 500 error', function () {
-      nock('http://www.testerror-500.com').persist().get('/')
-        .replyWithError({
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(500, {
           message: 'Response code 500',
           code: '500',
         });
 
-      return ogs({ url: 'www.testerror-500.com', retry: { limit: 0 } })
+      return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Web server is returning error');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Web server is returning error');
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
         });
     });
 
     it('when an server sends back nothing', function () {
-      nock('http://www.test.com').get('/').reply(200);
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200);
 
-      return ogs({ url: 'www.test.com', retry: { limit: 0 } })
+      return ogs({ url: 'www.test.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -484,9 +505,11 @@ describe.skip('return ogs', function () {
     });
 
     it('when an server sends back nothing, not even a buffer', function () {
-      nock('http://www.test.com').get('/').reply(200, '');
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200, '');
 
-      return ogs({ url: 'www.test.com', retry: { limit: 0 }, responseType: 'text' })
+      return ogs({ url: 'www.test.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -501,30 +524,33 @@ describe.skip('return ogs', function () {
     });
 
     it('when an server error occurres', function () {
-      nock('http://www.testerror-500error.com').persist().get('/')
-        .replyWithError({
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(500, {
           message: 'Server has returned a 400/500 error code',
           code: '500',
         });
 
-      return ogs({ url: 'www.testerror-500error.com', retry: { limit: 0 } })
+      return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
           expect(data.result.error).to.eql('Server has returned a 400/500 error code');
-          expect(data.result.errorDetails.toString()).to.eql('RequestError: Server has returned a 400/500 error code');
-          expect(data.result.requestUrl).to.eql('www.testerror-500error.com');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
         });
     });
 
     it('when an server error occurres but the request still works - 400', function () {
-      nock('http://www.testerror-400workingerror.com').get('/').reply(400);
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(400);
 
-      return ogs({ url: 'www.testerror-400workingerror.com', retry: { limit: 0 }, throwHttpErrors: false })
+      return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -532,16 +558,18 @@ describe.skip('return ogs', function () {
           expect(data.error).to.be.eql(true);
           expect(data.result.error).to.eql('Server has returned a 400/500 error code');
           expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
-          expect(data.result.requestUrl).to.eql('www.testerror-400workingerror.com');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
         });
     });
 
     it('when an server error occurres but the request still works - 500', function () {
-      nock('http://www.testerror-500workingerror.com').get('/').reply(500);
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(500);
 
-      return ogs({ url: 'www.testerror-500workingerror.com', retry: { limit: 0 }, throwHttpErrors: false })
+      return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -549,14 +577,14 @@ describe.skip('return ogs', function () {
           expect(data.error).to.be.eql(true);
           expect(data.result.error).to.eql('Server has returned a 400/500 error code');
           expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
-          expect(data.result.requestUrl).to.eql('www.testerror-500workingerror.com');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
         });
     });
 
     it('when trying to hit a non html pages', function () {
-      return ogs({ url: 'www.test.com/test.png', retry: { limit: 0 } })
+      return ogs({ url: 'www.test.com/test.png' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -571,8 +599,10 @@ describe.skip('return ogs', function () {
     });
 
     it('when trying to hit a non html pages based on content-type', function () {
-      nock('http://www.test.com').get('/').reply(200, { }, { 'content-type': 'foo' });
-      return ogs({ url: 'www.test.com' })
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200, { }, { headers: { 'content-type': 'foo' } });
+      return ogs({ url: 'http://www.test.com' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -581,13 +611,13 @@ describe.skip('return ogs', function () {
           expect(data.result.success).to.be.eql(false);
           expect(data.result.error).to.eql('Page must return a header content-type with text/');
           expect(data.result.errorDetails.toString()).to.eql('Error: Page must return a header content-type with text/');
-          expect(data.result.requestUrl).to.be.eql('www.test.com');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
           expect(data.response).to.be.eql(undefined);
         });
     });
 
     it('when trying to hit a non html pages and has params', function () {
-      return ogs({ url: 'www.test.com/test.pdf?123', retry: { limit: 0 } })
+      return ogs({ url: 'www.test.com/test.pdf?123' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -602,7 +632,7 @@ describe.skip('return ogs', function () {
     });
 
     it('when trying to hit a blacklist site', function () {
-      return ogs({ url: 'www.test.com/test', blacklist: ['test.com'], retry: { limit: 0 } })
+      return ogs({ url: 'www.test.com/test', blacklist: ['test.com'] })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -617,7 +647,7 @@ describe.skip('return ogs', function () {
     });
 
     it('when trying to hit a empty url', function () {
-      return ogs({ url: '', retry: { limit: 0 } })
+      return ogs({ url: '' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -632,7 +662,7 @@ describe.skip('return ogs', function () {
     });
 
     it('when trying to hit a URL and you are passing in a HTML page', function () {
-      return ogs({ url: 'www.test.com', html: basicHTML, retry: { limit: 0 } })
+      return ogs({ url: 'www.test.com', html: basicHTML })
         .then(function () {
           expect().fail('this should not happen');
         })
