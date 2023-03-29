@@ -307,6 +307,72 @@ describe('return ogs', function () {
   });
 
   context('should return the proper error data', function () {
+    it('when the request sends a ENOTFOUND error', function () {
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(404, {
+          message: 'server error',
+          code: 'ENOTFOUND',
+        });
+
+      return ogs({ url: 'www.testerror.com' })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
+        });
+    });
+
+    it('when the request sends a EHOSTUNREACH error', function () {
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(404, {
+          message: 'server error',
+          code: 'EHOSTUNREACH',
+        });
+
+      return ogs({ url: 'www.testerror.com' })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
+        });
+    });
+
+    it('when the request sends a ENETUNREACH error', function () {
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(404, {
+          message: 'server error',
+          code: 'ENETUNREACH',
+        });
+
+      return ogs({ url: 'www.testerror.com' })
+        .then(function () {
+          expect().fail('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
+        });
+    });
+
     it('when the request sends a Response code 401 error', function () {
       mockAgent.get('http://www.testerror.com')
         .intercept({ path: '/' })

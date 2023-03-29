@@ -44,7 +44,9 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
 
     return { ogObject, response, html: body };
   } catch (exception) {
-    if (exception && (exception.name === 'AbortError')) {
+    if (exception && (exception.code === 'ENOTFOUND' || exception.code === 'EHOSTUNREACH' || exception.code === 'ENETUNREACH')) {
+      throw new Error('Page not found');
+    } else if (exception && (exception.name === 'AbortError')) {
       throw new Error('The operation was aborted due to timeout');
     }
     if (exception instanceof Error) throw exception;
