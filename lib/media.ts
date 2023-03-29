@@ -84,12 +84,12 @@ const zip = (array, ...args) => {
  *
  */
 export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions) {
-  // sets ogImage image/width/height/type to null if one these exists
+  // sets ogImage image/width/height/type to empty array if one these exists
   if (ogObject.ogImage || ogObject.ogImageWidth || ogObject.ogImageHeight || ogObject.ogImageType) {
-    ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : [null];
-    ogObject.ogImageWidth = ogObject.ogImageWidth ? ogObject.ogImageWidth : [null];
-    ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [null];
-    ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [null];
+    ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : [];
+    ogObject.ogImageWidth = ogObject.ogImageWidth ? ogObject.ogImageWidth : [];
+    ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [];
+    ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [];
   }
 
   // format images and limit to 10
@@ -104,12 +104,12 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     .filter((value, index) => index < 10)
     .sort(mediaSorter);
 
-  // sets ogVideo video/width/height/type to null if one these exists
+  // sets ogVideo video/width/height/type to empty array if one these exists
   if (ogObject.ogVideo || ogObject.ogVideoWidth || ogObject.ogVideoHeight || ogObject.ogVideoType) {
-    ogObject.ogVideo = ogObject.ogVideo ? ogObject.ogVideo : [null];
-    ogObject.ogVideoWidth = ogObject.ogVideoWidth ? ogObject.ogVideoWidth : [null];
-    ogObject.ogVideoHeight = ogObject.ogVideoHeight ? ogObject.ogVideoHeight : [null];
-    ogObject.ogVideoType = ogObject.ogVideoType ? ogObject.ogVideoType : [null];
+    ogObject.ogVideo = ogObject.ogVideo ? ogObject.ogVideo : [];
+    ogObject.ogVideoWidth = ogObject.ogVideoWidth ? ogObject.ogVideoWidth : [];
+    ogObject.ogVideoHeight = ogObject.ogVideoHeight ? ogObject.ogVideoHeight : [];
+    ogObject.ogVideoType = ogObject.ogVideoType ? ogObject.ogVideoType : [];
   }
 
   // format videos and limit to 10
@@ -124,7 +124,7 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     .filter((value, index) => index < 10)
     .sort(mediaSorter);
 
-  // sets twitter image image/width/height/type to null if one these exists
+  // sets twitter image image/width/height/type to empty array if one these exists
   if (
     ogObject.twitterImageSrc
     || ogObject.twitterImage
@@ -132,11 +132,11 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     || ogObject.twitterImageHeight
     || ogObject.twitterImageAlt
   ) {
-    ogObject.twitterImageSrc = ogObject.twitterImageSrc ? ogObject.twitterImageSrc : [null];
+    ogObject.twitterImageSrc = ogObject.twitterImageSrc ? ogObject.twitterImageSrc : [];
     ogObject.twitterImage = ogObject.twitterImage ? ogObject.twitterImage : ogObject.twitterImageSrc; // deafult to twitterImageSrc
-    ogObject.twitterImageWidth = ogObject.twitterImageWidth ? ogObject.twitterImageWidth : [null];
-    ogObject.twitterImageHeight = ogObject.twitterImageHeight ? ogObject.twitterImageHeight : [null];
-    ogObject.twitterImageAlt = ogObject.twitterImageAlt ? ogObject.twitterImageAlt : [null];
+    ogObject.twitterImageWidth = ogObject.twitterImageWidth ? ogObject.twitterImageWidth : [];
+    ogObject.twitterImageHeight = ogObject.twitterImageHeight ? ogObject.twitterImageHeight : [];
+    ogObject.twitterImageAlt = ogObject.twitterImageAlt ? ogObject.twitterImageAlt : [];
   }
 
   // format twitter images and limit to 10
@@ -151,16 +151,16 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     .filter((value, index) => index < 10)
     .sort(mediaSorter);
 
-  // sets twitter player/width/height/stream to null if one these exists
+  // sets twitter player/width/height/stream to empty array if one these exists
   if (ogObject.twitterPlayer
     || ogObject.twitterPlayerWidth
     || ogObject.twitterPlayerHeight
     || ogObject.twitterPlayerStream
   ) {
-    ogObject.twitterPlayer = ogObject.twitterPlayer ? ogObject.twitterPlayer : [null];
-    ogObject.twitterPlayerWidth = ogObject.twitterPlayerWidth ? ogObject.twitterPlayerWidth : [null];
-    ogObject.twitterPlayerHeight = ogObject.twitterPlayerHeight ? ogObject.twitterPlayerHeight : [null];
-    ogObject.twitterPlayerStream = ogObject.twitterPlayerStream ? ogObject.twitterPlayerStream : [null];
+    ogObject.twitterPlayer = ogObject.twitterPlayer ? ogObject.twitterPlayer : [];
+    ogObject.twitterPlayerWidth = ogObject.twitterPlayerWidth ? ogObject.twitterPlayerWidth : [];
+    ogObject.twitterPlayerHeight = ogObject.twitterPlayerHeight ? ogObject.twitterPlayerHeight : [];
+    ogObject.twitterPlayerStream = ogObject.twitterPlayerStream ? ogObject.twitterPlayerStream : [];
   }
 
   // format twitter player and limit to 10
@@ -174,11 +174,11 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
     .filter((value, index) => index < 10)
     .sort(mediaSorter);
 
-  // sets music song/songTrack/songDisc to null if one these exists
+  // sets music song/songTrack/songDisc to empty array if one these exists
   if (ogObject.musicSong || ogObject.musicSongTrack || ogObject.musicSongDisc) {
-    ogObject.musicSong = ogObject.musicSong ? ogObject.musicSong : [null];
-    ogObject.musicSongTrack = ogObject.musicSongTrack ? ogObject.musicSongTrack : [null];
-    ogObject.musicSongDisc = ogObject.musicSongDisc ? ogObject.musicSongDisc : [null];
+    ogObject.musicSong = ogObject.musicSong ? ogObject.musicSong : [];
+    ogObject.musicSongTrack = ogObject.musicSongTrack ? ogObject.musicSongTrack : [];
+    ogObject.musicSongDisc = ogObject.musicSongDisc ? ogObject.musicSongDisc : [];
   }
 
   // format music songs and limit to 10

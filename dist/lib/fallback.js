@@ -56,12 +56,15 @@ function fallback(ogObject, options, $, body) {
                 const type = (0, utils_1.findImageTypeFromUrl)(source);
                 if (!(0, utils_1.isUrlValid)(source, options.urlValidatorSettings) || !(0, utils_1.isImageTypeValid)(type))
                     return false;
-                ogObject.ogImage.push({
+                const fallbackImage = {
                     url: source,
-                    width: $(imageElement).attr('width') || null,
-                    height: $(imageElement).attr('height') || null,
                     type,
-                });
+                };
+                if ($(imageElement).attr('width'))
+                    fallbackImage.width = $(imageElement).attr('width');
+                if ($(imageElement).attr('height'))
+                    fallbackImage.height = $(imageElement).attr('height');
+                ogObject.ogImage.push(fallbackImage);
             }
             return false;
         });

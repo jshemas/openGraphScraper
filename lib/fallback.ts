@@ -1,6 +1,6 @@
 import chardet from 'chardet';
 import { findImageTypeFromUrl, isImageTypeValid, isUrlValid } from './utils';
-import type { OpenGraphScraperOptions } from './types';
+import type { OpenGraphScraperOptions, ImageObject } from './types';
 
 const doesElementExist = (selector, attribute, $) => (
   $(selector).attr(attribute) && $(selector).attr(attribute).length > 0
@@ -52,12 +52,13 @@ export function fallback(ogObject, options: OpenGraphScraperOptions, $, body) {
         const source: string = $(imageElement).attr('src');
         const type = findImageTypeFromUrl(source);
         if (!isUrlValid(source, options.urlValidatorSettings) || !isImageTypeValid(type)) return false;
-        ogObject.ogImage.push({
+        const fallbackImage: ImageObject = {
           url: source,
-          width: $(imageElement).attr('width') || null,
-          height: $(imageElement).attr('height') || null,
           type,
-        });
+        };
+        if ($(imageElement).attr('width')) fallbackImage.width = $(imageElement).attr('width');
+        if ($(imageElement).attr('height')) fallbackImage.height = $(imageElement).attr('height');
+        ogObject.ogImage.push(fallbackImage);
       }
       return false;
     });

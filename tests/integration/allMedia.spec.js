@@ -39,9 +39,6 @@ describe('allMedia', function () {
       });
       expect(result.twitterImage).to.be.eql({
         url: 'https://s3-media1.fl.yelpcdn.com/bphoto/FE1lCskaigmVupQGk86T4g/258s.jpg',
-        width: null,
-        height: null,
-        alt: null,
       });
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/yelp');
       expect(result.charset).to.be.eql('UTF-8');
@@ -121,9 +118,6 @@ describe('allMedia', function () {
       }]);
       expect(result.twitterImage).to.be.eql([{
         url: 'https://s3-media1.fl.yelpcdn.com/bphoto/FE1lCskaigmVupQGk86T4g/258s.jpg',
-        width: null,
-        height: null,
-        alt: null,
       }]);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/yelp');
       expect(result.charset).to.be.eql('UTF-8');

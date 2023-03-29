@@ -195,16 +195,12 @@ describe('basic', function () {
       // });
       expect(result.twitterImage).to.be.eql({
         url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
-        width: null,
-        height: null,
-        alt: null,
       });
       // TODO: url keeps changing, this test case should move to static test suit
       // expect(result.twitterPlayer).to.be.eql({
       //   url: 'https://player.vimeo.com/video/232889838',
       //   width: '1280',
       //   height: '720',
-      //   stream: null,
       // });
       expect(result.requestUrl).to.be.eql('https://vimeo.com/232889838');
       expect(result.charset).to.be.eql('utf-8');
@@ -261,8 +257,6 @@ describe('basic', function () {
       expect(result.charset).to.be.eql('utf-8');
       expect(result.ogImage).to.be.eql({
         url: 'https://developer.mozilla.org/mdn-social-share.cd6c4a5a.png',
-        width: null,
-        height: null,
         type: 'png',
       });
       expect(result.twitterCard).to.be.eql('summary_large_image');

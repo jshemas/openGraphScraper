@@ -27,15 +27,9 @@ describe('spotify', function () {
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67616d0000b27397508a4b756763370510bd44',
-        width: null,
-        height: null,
-        type: null,
       });
       expect(result.twitterImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67616d0000b27397508a4b756763370510bd44',
-        width: null,
-        height: null,
-        alt: null,
       });
       expect(result.musicSong).to.be.eql({
         url: 'https://open.spotify.com/track/6EuE9M1viu9gkdFSafia9o',
@@ -99,15 +93,9 @@ describe('spotify', function () {
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab6761610000e5eb867008a971fae0f4d913f63a',
-        width: null,
-        height: null,
-        type: null,
       });
       expect(result.twitterImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab6761610000e5eb867008a971fae0f4d913f63a',
-        width: null,
-        height: null,
-        alt: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.charset).to.be.eql('utf-8');
@@ -170,15 +158,9 @@ describe('spotify', function () {
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67616d0000b2730939dadf614e70aeffc6710c',
-        width: null,
-        height: null,
-        type: null,
       });
       expect(result.twitterImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67616d0000b2730939dadf614e70aeffc6710c',
-        width: null,
-        height: null,
-        alt: null,
       });
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm');
       expect(result.charset).to.be.eql('utf-8');
@@ -244,26 +226,18 @@ describe('spotify', function () {
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67706c0000bebb5a535b3001ccf567ddef2927',
-        width: null,
-        height: null,
-        type: null,
       });
       expect(result.twitterImage).to.be.eql({
         url: 'https://i.scdn.co/image/ab67706c0000bebb5a535b3001ccf567ddef2927',
-        width: null,
-        height: null,
-        alt: null,
       });
       expect(result.twitterPlayer).to.be.eql({
         url: 'https://open.spotify.com/embed/playlist/4BSIiLTu7qzDZLDdkHaty9?utm_campaign=twitter-player&utm_source=open&utm_medium=twitter',
         width: '504',
         height: '584',
-        stream: null,
       });
       expect(result.musicSong).to.be.eql({
         url: 'https://open.spotify.com/track/2LTlO3NuNVN70lp2ZbVswF',
         track: '1',
-        disc: null,
       });
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/spotifyPlayList');
       expect(result.charset).to.be.eql('UTF-8');

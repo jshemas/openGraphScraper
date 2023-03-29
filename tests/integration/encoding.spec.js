@@ -22,15 +22,10 @@ describe('encoding', function () {
         expect(result.twitterDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
         expect(result.ogImage).to.be.eql({
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
-          width: null,
-          height: null,
           type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
-          width: null,
-          height: null,
-          alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rakuten');
         expect(result.charset).to.be.eql('euc-jp');
@@ -68,20 +63,14 @@ describe('encoding', function () {
           expect(result.ogImage).to.be.eql([
             {
               url: 'https://p2.ssl.qhimg.com/t010b24b058c4437785.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://p2.ssl.qhimg.com/t01b807e29a3b0c7153.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://p2.ssl.qhimg.com/t018cc20cb079beab73.png',
-              width: null,
-              height: null,
               type: 'png',
             },
           ]);
@@ -122,8 +111,6 @@ describe('encoding', function () {
           expect(result.ogSiteName).to.be.eql('aliexpress.com');
           expect(result.ogImage).to.be.eql({
             url: 'https://ae01.alicdn.com/kf/HTB1.DiLM7voK1RjSZFDq6xY3pXam/Apple-iPhone-SE-A9-Dual-Core-2GB-RAM-16.jpg',
-            width: null,
-            height: null,
             type: 'jpg',
           });
           expect(result.charset).to.be.eql('utf-8');
@@ -162,44 +149,30 @@ describe('encoding', function () {
           expect(result.ogImage).to.be.eql([
             {
               url: 'https://dss0.bdstatic.com/9bA1vGfa2gU2pMbfm9GUKT-w/timg?wisealaddin&sec=1594256156&di=864c7c75c9b283e42186dec20390fbc6&quality=60&size=8&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F9da74a517eb1befeba93a5f3167cc74b.jpeg',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://vdposter.bdstatic.com/5b2d214a87da29772dec1f678f5b92c4.jpeg?x-bce-process=image/resize,m_fill,w_242,h_182/format,f_jpg/quality,Q_100',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://vdposter.bdstatic.com/00647e856517ca0eb83edc7e03be6979.jpeg?x-bce-process=image/resize,m_fill,w_242,h_182/format,f_jpg/quality,Q_100',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://vdposter.bdstatic.com/b967288928873cb870969b5589056e20.jpeg?x-bce-process=image/resize,m_fill,w_242,h_182/format,f_jpg/quality,Q_100',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://vdposter.bdstatic.com/c128c54635383c10f0c7a3af756bc3d3.jpeg?x-bce-process=image/resize,m_fill,w_242,h_182/format,f_jpg/quality,Q_100',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://cambrian-images.cdn.bcebos.com/a8e0f1d50bdbb152d681a49f43a85a28_1530519716895.jpeg',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&di=f459a48fec76e6e11a24246e3e8543f7&quality=90&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F81ba6ae0f76179306351cf6e634c5c2c.jpeg',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
           ]);
@@ -263,8 +236,6 @@ describe('encoding', function () {
           expect(result.ogSiteName).to.be.eql('네이버 블로그 | 테크플러스');
           expect(result.ogImage).to.be.eql({
             url: 'https://blogthumb.pstatic.net/MjAyMDA3MDdfMjIy/MDAxNTk0MDk5Mzg0OTI2.metaMYBdIy6ous31SXPcVWc9ytV9ASYC2YOBu0gA2Pgg.VwcdwSyJ8tO_BHK95P8MsVb0pdiFtZqgRlbg2pkUXb4g.JPEG.tech-plus/245_2947.ct.655.336.jpg?type=w2',
-            width: null,
-            height: null,
             type: 'jpg',
           });
           expect(result.ogLocale).to.be.eql('ko');
@@ -320,9 +291,6 @@ describe('encoding', function () {
           });
           expect(result.twitterImage).to.be.eql({
             url: 'https://img.okezone.com/content/2020/07/08/320/2243366/6-rekomendasi-bisnis-dengan-tingkat-kerugian-kecil-tertarik-mencoba-p7VgY90ykv.jpg',
-            width: null,
-            height: null,
-            alt: null,
           });
           expect(result.ogLocale).to.be.eql('id-ID');
           expect(result.ogDate).to.be.eql('2014-07-13T20:07:27.8200000');
@@ -421,44 +389,30 @@ describe('encoding', function () {
           expect(result.ogImage).to.be.eql([
             {
               url: 'https://gd3.alicdn.com/imgextra/i3/134583372/TB2eWJ.h1OSBuNjy0FdXXbDnVXa_!!134583372.jpg_400x400.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'http://img.alicdn.com/bao/uploaded/O1CN01L4mliz1amQ8K69BqC_!!134583372.jpg_80x80.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'http://img.alicdn.com/bao/uploaded/O1CN01lhmMOl1amQ6zed9Sv_!!0-item_pic.jpg_80x80.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://gd4.alicdn.com/imgextra/i4/134583372/TB2bje8gS_I8KJjy0FoXXaFnVXa_!!134583372.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://gd3.alicdn.com/imgextra/i3/134583372/TB2eWJ.h1OSBuNjy0FdXXbDnVXa_!!134583372.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://gd4.alicdn.com/imgextra/i4/134583372/TB2bje8gS_I8KJjy0FoXXaFnVXa_!!134583372.jpg_400x400.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://gd4.alicdn.com/imgextra/i4/134583372/TB2bje8gS_I8KJjy0FoXXaFnVXa_!!134583372.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
           ]);
@@ -492,20 +446,14 @@ describe('encoding', function () {
           expect(result.ogImage).to.be.eql([
             {
               url: 'https://img.alicdn.com/imgextra/i3/2616970884/O1CN01TOc9jZ1IOujNdnN64_!!2616970884.jpg_430x430q90.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://img.alicdn.com/imgextra/i3/2616970884/O1CN01TOc9jZ1IOujNdnN64_!!2616970884.jpg_q30.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://img.alicdn.com/imgextra/i3/2616970884/O1CN01TOc9jZ1IOujNdnN64_!!2616970884.jpg_430x430q90.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
           ]);
@@ -564,20 +512,14 @@ describe('encoding', function () {
           expect(result.ogImage).to.be.eql([
             {
               url: 'http://www.newsimg.cn/xl2017/images/net_logo.png',
-              width: null,
-              height: null,
               type: 'png',
             },
             {
               url: 'http://www.newsimg.cn/xl2017/images/wx.png',
-              width: null,
-              height: null,
               type: 'png',
             },
             {
               url: 'http://www.xinhuanet.com/politics/2020-07/08/ewm_11262129661n.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
@@ -588,8 +530,6 @@ describe('encoding', function () {
             },
             {
               url: 'http://www.newsimg.cn/xl2017/images/wx.png',
-              width: null,
-              height: null,
               type: 'png',
             },
             {

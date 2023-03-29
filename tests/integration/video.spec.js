@@ -48,15 +48,11 @@ describe('video', function () {
       });
       expect(result.twitterImage).to.be.eql({
         url: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
-        width: null,
-        height: null,
-        alt: null,
       });
       expect(result.twitterPlayer).to.be.eql({
         url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         width: '1280',
         height: '720',
-        stream: null,
       });
       expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.charset).to.be.eql('UTF-8');

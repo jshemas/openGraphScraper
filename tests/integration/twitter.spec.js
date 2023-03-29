@@ -21,15 +21,12 @@ describe('twitter', function () {
         expect(result.twitterDescription).to.be.eql('The Twitter platform connects your website or application with the worldwide conversation happening on Twitter.');
         expect(result.ogImage).to.be.eql({
           url: 'https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png',
-          width: null,
-          height: null,
           type: 'png',
         });
         expect(result.twitterImage).to.be.eql({
           url: 'https://web.archive.org/web/20160303190414im_/https://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png',
           width: '500',
           height: '500',
-          alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitter-dev');
         expect(result.charset).to.be.eql('UTF-8');
@@ -84,7 +81,6 @@ describe('twitter', function () {
           url: 'https://web.archive.org/web/20170113081103im_/https://assets-cdn.github.com/images/modules/open_graph/github-logo.png',
           width: '1200',
           height: '1200',
-          alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/github');
         expect(result.charset).to.be.eql('utf-8');
@@ -141,7 +137,6 @@ describe('twitter', function () {
           url: 'https://web.archive.org/web/20170913111314im_/http://og.github.com/atom-logo/atom-logo@1200x630.png',
           width: '1200',
           height: '630',
-          alt: null,
         });
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/atom.html');
         expect(result.charset).to.be.eql('UTF-8');

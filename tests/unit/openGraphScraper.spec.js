@@ -135,8 +135,6 @@ describe('return ogs', function () {
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.ogImage).to.be.eql({
             url: 'test1.png',
-            width: null,
-            height: null,
             type: 'png',
           });
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
@@ -210,7 +208,7 @@ describe('return ogs', function () {
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogImage).to.be.eql({
-            url: 'test1.png', width: null, height: null, type: 'png',
+            url: 'test1.png', type: 'png',
           });
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
           expect(data.html).to.be.eql(secureUrlHTML);
@@ -257,7 +255,7 @@ describe('return ogs', function () {
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogImage).to.be.eql({
-            url: 'test1.png', width: null, height: null, type: 'png',
+            url: 'test1.png', type: 'png',
           });
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
           expect(data.html).to.be.eql(secureUrlHTML);

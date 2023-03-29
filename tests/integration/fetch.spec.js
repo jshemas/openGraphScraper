@@ -20,8 +20,6 @@ describe('fetch', function () {
         expect(result.ogDescription).to.be.eql('Detect user-agent, operating system, browser, and device using several libraries, including ua-parser, ua-parser-js, and platform.');
         expect(result.ogImage).to.be.eql([{
           url: 'https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png',
-          width: null,
-          height: null,
           type: 'png',
         }]);
         expect(result.requestUrl).to.be.eql('https://www.whatsmyua.info/');
