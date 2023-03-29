@@ -20,13 +20,13 @@ describe('encoding', function () {
         expect(result.twitterSite).to.be.eql('@RakutenJP');
         expect(result.twitterTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
         expect(result.twitterDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
-        expect(result.ogImage).to.be.eql({
+        expect(result.ogImage).to.be.eql([{
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
           type: 'png',
-        });
-        expect(result.twitterImage).to.be.eql({
+        }]);
+        expect(result.twitterImage).to.be.eql([{
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
-        });
+        }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rakuten');
         expect(result.charset).to.be.eql('euc-jp');
         expect(result.success).to.be.eql(true);
@@ -109,10 +109,10 @@ describe('encoding', function () {
           expect(result.ogType).to.be.eql('product');
           expect(result.ogDescription).to.be.eql('Smarter Shopping, Better Living!  Aliexpress.com');
           expect(result.ogSiteName).to.be.eql('aliexpress.com');
-          expect(result.ogImage).to.be.eql({
+          expect(result.ogImage).to.be.eql([{
             url: 'https://ae01.alicdn.com/kf/HTB1.DiLM7voK1RjSZFDq6xY3pXam/Apple-iPhone-SE-A9-Dual-Core-2GB-RAM-16.jpg',
             type: 'jpg',
-          });
+          }]);
           expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/aliexpress');
           expect(result.success).to.be.eql(true);
@@ -234,10 +234,10 @@ describe('encoding', function () {
           expect(result.ogType).to.be.eql('article');
           expect(result.ogArticleAuthor).to.be.eql('네이버 블로그 | 테크플러스');
           expect(result.ogSiteName).to.be.eql('네이버 블로그 | 테크플러스');
-          expect(result.ogImage).to.be.eql({
+          expect(result.ogImage).to.be.eql([{
             url: 'https://blogthumb.pstatic.net/MjAyMDA3MDdfMjIy/MDAxNTk0MDk5Mzg0OTI2.metaMYBdIy6ous31SXPcVWc9ytV9ASYC2YOBu0gA2Pgg.VwcdwSyJ8tO_BHK95P8MsVb0pdiFtZqgRlbg2pkUXb4g.JPEG.tech-plus/245_2947.ct.655.336.jpg?type=w2',
             type: 'jpg',
-          });
+          }]);
           expect(result.ogLocale).to.be.eql('ko');
           expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/naver');
@@ -283,15 +283,15 @@ describe('encoding', function () {
           expect(result.twitterUrl).to.be.eql('https://economy.okezone.com/read/2020/07/08/320/2243366/6-rekomendasi-bisnis-dengan-tingkat-kerugian-kecil-tertarik-mencoba');
           expect(result.articleSection).to.be.eql('Economy');
           expect(result.articlePublishedTime).to.be.eql('2020-07-09T07:26:05+07:00');
-          expect(result.ogImage).to.be.eql({
+          expect(result.ogImage).to.be.eql([{
             url: 'https://img.okezone.com/content/2020/07/08/320/2243366/6-rekomendasi-bisnis-dengan-tingkat-kerugian-kecil-tertarik-mencoba-p7VgY90ykv.jpg',
             width: '600',
             height: '315',
             type: 'jpg',
-          });
-          expect(result.twitterImage).to.be.eql({
+          }]);
+          expect(result.twitterImage).to.be.eql([{
             url: 'https://img.okezone.com/content/2020/07/08/320/2243366/6-rekomendasi-bisnis-dengan-tingkat-kerugian-kecil-tertarik-mencoba-p7VgY90ykv.jpg',
-          });
+          }]);
           expect(result.ogLocale).to.be.eql('id-ID');
           expect(result.ogDate).to.be.eql('2014-07-13T20:07:27.8200000');
           expect(result.charset).to.be.eql('UTF-8');

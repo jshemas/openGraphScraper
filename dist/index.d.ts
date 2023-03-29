@@ -4,7 +4,6 @@ import type { OpenGraphScraperOptions, OgObject } from './lib/types';
  * for scraping Open Graph and Twitter Card info off a website.
  *
  * @param {object} options - The options used by Open Graph Scraper
- * @param {boolean} [options.allMedia] - By default, OGS will only send back the first image/video it finds.
  * @param {boolean} [options.ogImageFallback] - Fetch other images if no open graph ones are found.
  * @param {boolean} [options.onlyGetOpenGraphInfo] - Only fetch open graph info and don't fall back on anything else.
  * @param {object} [options.customMetaTags] - Here you can define custom meta tags you want to scrape.

@@ -36,14 +36,14 @@ describe('redirect', function () {
         expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterSite).to.be.eql('@nytimes');
         expect(result.twitterUrl).to.be.eql('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html');
-        expect(result.ogImage).to.be.eql({
+        expect(result.ogImage).to.be.eql([{
           url: 'https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-facebookJumbo.jpg?year=2016&h=550&w=1050&s=f15e16ac34e5bf83b85e4497c724e7bd5ba43994e780f23119610eba47cd726d&k=ZQJBKqZ0VN',
           type: 'jpg',
-        });
-        expect(result.twitterImage).to.be.eql({
+        }]);
+        expect(result.twitterImage).to.be.eql([{
           url: 'https://static01.nyt.com/images/2016/09/02/arts/01KANYE1-web/01KANYE1-web-videoSixteenByNineJumbo1600.jpg?year=2016&h=901&w=1600&s=a5f74a00775cb159c1978e3d3c89d7ea7f176aec59f6565fad3c377cf3b1bd7b&k=ZQJBKqZ0VN&tw=1',
           alt: 'Kim Kardashian West at the “Famous” exhibition at Blum & Poe in Los Angeles last week. The gallery is planning to sell the sculpture for a hefty price tag.',
-        });
+        }]);
         expect(result.requestUrl).to.be.eql('https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0');
         expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
@@ -108,13 +108,13 @@ describe('redirect', function () {
         expect(result.twitterTitle).to.be.eql('3 Stocks Like Apple Was 10 Years Ago: Tesla, Nvidia And Alibaba');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/forbes');
-        expect(result.ogImage).to.be.eql({
+        expect(result.ogImage).to.be.eql([{
           url: 'https://imageio.forbes.com/specials-images/imageserve/825671570/0x0.jpg?format=jpg&width=1200',
           type: 'jpg',
-        });
-        expect(result.twitterImage).to.be.eql({
+        }]);
+        expect(result.twitterImage).to.be.eql([{
           url: 'https://imageio.forbes.com/specials-images/imageserve/825671570/0x0.jpg?format=jpg&width=1200',
-        });
+        }]);
         expect(result.requestUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa');
         expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);

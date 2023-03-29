@@ -98,7 +98,6 @@ exports.removeNestedUndefinedValues = removeNestedUndefinedValues;
  */
 function optionSetup(ogsOptions) {
     const options = {
-        allMedia: false,
         customMetaTags: [],
         ogImageFallback: true,
         onlyGetOpenGraphInfo: false,

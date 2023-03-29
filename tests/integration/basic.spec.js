@@ -13,12 +13,12 @@ describe('basic', function () {
       expect(result.ogType).to.be.eql('website');
       expect(result.ogUrl).to.be.eql('https://ogp.me/');
       expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
-      expect(result.ogImage).to.be.eql({
+      expect(result.ogImage).to.be.eql([{
         url: 'https://ogp.me/logo.png',
         width: '300',
         height: '300',
         type: 'image/png',
-      });
+      }]);
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
@@ -44,12 +44,12 @@ describe('basic', function () {
     expect(result.ogType).to.be.eql('website');
     expect(result.ogUrl).to.be.eql('https://ogp.me/');
     expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
-    expect(result.ogImage).to.be.eql({
+    expect(result.ogImage).to.be.eql([{
       url: 'https://ogp.me/logo.png',
       width: '300',
       height: '300',
       type: 'image/png',
-    });
+    }]);
     expect(result.requestUrl).to.be.eql('https://ogp.me/');
     expect(result.charset).to.be.eql('utf-8');
     expect(result.success).to.be.eql(true);
@@ -77,12 +77,12 @@ describe('basic', function () {
       expect(response.result.ogType).to.be.eql('website');
       expect(response.result.ogUrl).to.be.eql('https://ogp.me/');
       expect(response.result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
-      expect(response.result.ogImage).to.be.eql({
+      expect(response.result.ogImage).to.be.eql([{
         url: 'https://ogp.me/logo.png',
         width: '300',
         height: '300',
         type: 'image/png',
-      });
+      }]);
       expect(response.result.requestUrl).to.be.eql('https://ogp.me/');
       expect(response.result.charset).to.be.eql('utf-8');
       expect(response.result.success).to.be.eql(true);
@@ -99,12 +99,12 @@ describe('basic', function () {
       expect(result.ogType).to.be.eql('website');
       expect(result.ogUrl).to.be.eql('https://ogp.me/');
       expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
-      expect(result.ogImage).to.be.eql({
+      expect(result.ogImage).to.be.eql([{
         url: 'https://ogp.me/logo.png',
         width: '300',
         height: '300',
         type: 'image/png',
-      });
+      }]);
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
@@ -180,28 +180,28 @@ describe('basic', function () {
       expect(result.twitterAppIdGooglePlay).to.be.eql('com.vimeo.android.videoapp');
       expect(result.twitterAppUrlGooglePlay).to.be.eql('vimeo://app.vimeo.com/videos/232889838');
       expect(result.ogLocale).to.be.eql('en');
-      expect(result.ogImage).to.be.eql({
+      expect(result.ogImage).to.be.eql([{
         url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
         width: '1280',
         height: '720',
         type: 'image/jpg',
-      });
+      }]);
       // TODO: url keeps changing, this test case should move to static test suit
-      // expect(result.ogVideo).to.be.eql({
+      // expect(result.ogVideo).to.be.eql([{
       //   url: 'https://player.vimeo.com/video/232889838',
       //   width: '1280',
       //   height: '720',
       //   type: 'text/html',
-      // });
-      expect(result.twitterImage).to.be.eql({
+      // }]);
+      expect(result.twitterImage).to.be.eql([{
         url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
-      });
+      }]);
       // TODO: url keeps changing, this test case should move to static test suit
-      // expect(result.twitterPlayer).to.be.eql({
+      // expect(result.twitterPlayer).to.be.eql([{
       //   url: 'https://player.vimeo.com/video/232889838',
       //   width: '1280',
       //   height: '720',
-      // });
+      // }]);
       expect(result.requestUrl).to.be.eql('https://vimeo.com/232889838');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
@@ -255,10 +255,10 @@ describe('basic', function () {
       expect(result.ogDate).to.be.eql('2022-10-31T06:22:03.000Z');
       expect(result.favicon).to.be.eql('/favicon-48x48.cbbd161b.png');
       expect(result.charset).to.be.eql('utf-8');
-      expect(result.ogImage).to.be.eql({
+      expect(result.ogImage).to.be.eql([{
         url: 'https://developer.mozilla.org/mdn-social-share.cd6c4a5a.png',
         type: 'png',
-      });
+      }]);
       expect(result.twitterCard).to.be.eql('summary_large_image');
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mozilla');
       expect(result.success).to.be.eql(true);

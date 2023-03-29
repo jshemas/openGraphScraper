@@ -46,7 +46,7 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
   }
 
   // formats the multiple media values
-  ogObject = media.mediaSetup(ogObject, options);
+  ogObject = media.mediaSetup(ogObject);
 
   // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks
   if (!options.onlyGetOpenGraphInfo) {

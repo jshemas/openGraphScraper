@@ -3,7 +3,6 @@ import type {
   ImageObject,
   MusicSongObject,
   OgObject,
-  OpenGraphScraperOptions,
   TwitterImageObject,
   TwitterPlayerObject,
   VideoObject,
@@ -83,7 +82,7 @@ const zip = (array, ...args) => {
  * @return {object} object with ogs results with updated media values
  *
  */
-export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions) {
+export function mediaSetup(ogObject: OgObject) {
   // sets ogImage image/width/height/type to empty array if one these exists
   if (ogObject.ogImage || ogObject.ogImageWidth || ogObject.ogImageHeight || ogObject.ogImageType) {
     ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : [];
@@ -194,19 +193,11 @@ export function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions)
       delete ogObject[item.fieldName];
     });
 
-  if (options.allMedia) {
-    if (ogImages.length) ogObject.ogImage = ogImages;
-    if (ogVideos.length) ogObject.ogVideo = ogVideos;
-    if (twitterImages.length) ogObject.twitterImage = twitterImages;
-    if (twitterPlayers.length) ogObject.twitterPlayer = twitterPlayers;
-    if (musicSongs.length) ogObject.musicSong = musicSongs;
-  } else {
-    if (ogImages.length) [ogObject.ogImage] = ogImages;
-    if (ogVideos.length) [ogObject.ogVideo] = ogVideos;
-    if (twitterImages.length) [ogObject.twitterImage] = twitterImages;
-    if (twitterPlayers.length) [ogObject.twitterPlayer] = twitterPlayers;
-    if (musicSongs.length) [ogObject.musicSong] = musicSongs;
-  }
+  if (ogImages.length) ogObject.ogImage = ogImages;
+  if (ogVideos.length) ogObject.ogVideo = ogVideos;
+  if (twitterImages.length) ogObject.twitterImage = twitterImages;
+  if (twitterPlayers.length) ogObject.twitterPlayer = twitterPlayers;
+  if (musicSongs.length) ogObject.musicSong = musicSongs;
 
   return ogObject;
 }

@@ -133,10 +133,13 @@ describe('return ogs', function () {
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogTitle).to.be.eql('test page');
-          expect(data.result.ogImage).to.be.eql({
+          expect(data.result.ogImage).to.be.eql([{
             url: 'test1.png',
             type: 'png',
-          });
+          }, {
+            url: 'test2.png',
+            type: 'png',
+          }]);
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
           expect(data.html).to.be.eql(multipleImageHTML);
           expect(data.response).to.be.a('response');
@@ -207,9 +210,9 @@ describe('return ogs', function () {
       return ogs({ url: 'www.test.com' })
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
-          expect(data.result.ogImage).to.be.eql({
+          expect(data.result.ogImage).to.be.eql([{
             url: 'test1.png', type: 'png',
-          });
+          }]);
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
           expect(data.html).to.be.eql(secureUrlHTML);
           expect(data.response).to.be.a('response');
@@ -254,9 +257,9 @@ describe('return ogs', function () {
       return ogs({ url: 'www.test.com' })
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
-          expect(data.result.ogImage).to.be.eql({
+          expect(data.result.ogImage).to.be.eql([{
             url: 'test1.png', type: 'png',
-          });
+          }]);
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
           expect(data.html).to.be.eql(secureUrlHTML);
           expect(data.response).to.be.a('response');

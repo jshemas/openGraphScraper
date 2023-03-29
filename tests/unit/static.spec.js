@@ -38,10 +38,10 @@ describe('static check meta tags', function () {
         expect(data.result.ogDescription).to.be.eql('the bar of foo');
         expect(data.result.ogTitle).to.be.eql('foobar');
         expect(data.result.ogType).to.be.eql('bar');
-        expect(data.result.ogImage).to.be.eql({
+        expect(data.result.ogImage).to.be.eql([{
           url: 'https://www.foo.com/bar.jpg',
           type: 'jpg',
-        });
+        }]);
         expect(data.result.favicon).to.be.eql('https://bar.com/foo.png');
         expect(data.result.charset).to.be.eql('utf-8');
         expect(data.html).to.be.eql(metaHTML);
@@ -120,12 +120,12 @@ describe('static check meta tags', function () {
       .then(function (data) {
         expect(data.result.success).to.be.eql(true);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-        expect(data.result.ogImage).to.be.eql({
+        expect(data.result.ogImage).to.be.eql([{
           url: 'http://foobar.png',
           width: '1',
           height: '2',
           type: 'image/png',
-        });
+        }]);
         expect(data.html).to.be.eql(metaHTML);
         expect(data.response).to.be.a('response');
       });
@@ -169,14 +169,14 @@ describe('static check meta tags', function () {
         expect(data.result.twitterDescription).to.be.eql('the bar of foo');
         expect(data.result.twitterSite).to.be.eql('@foobar');
         expect(data.result.twitterTitle).to.be.eql('the foo of bar');
-        expect(data.result.twitterPlayer).to.be.eql({
+        expect(data.result.twitterPlayer).to.be.eql([{
           url: 'https://www.bar.com',
           width: '1',
           height: '2',
-        });
-        expect(data.result.twitterImage).to.be.eql({
+        }]);
+        expect(data.result.twitterImage).to.be.eql([{
           url: 'https://www.foo.com/bar.jpg',
-        });
+        }]);
         expect(data.html).to.be.eql(metaHTML);
         expect(data.response).to.be.a('response');
       });
@@ -199,12 +199,12 @@ describe('static check meta tags', function () {
       .then(function (data) {
         expect(data.result.success).to.be.eql(true);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-        expect(data.result.ogVideo).to.be.eql({
+        expect(data.result.ogVideo).to.be.eql([{
           url: 'http://www.foo.com',
           width: '1',
           height: '2',
           type: 'text/bar',
-        });
+        }]);
         expect(data.html).to.be.eql(metaHTML);
         expect(data.response).to.be.a('response');
       });
@@ -243,13 +243,13 @@ describe('static check meta tags', function () {
         expect(data.result.twitterSite).to.be.eql('@RakutenJP');
         expect(data.result.twitterTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
         expect(data.result.twitterDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
-        expect(data.result.ogImage).to.be.eql({
+        expect(data.result.ogImage).to.be.eql([{
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
           type: 'png',
-        });
-        expect(data.result.twitterImage).to.be.eql({
+        }]);
+        expect(data.result.twitterImage).to.be.eql([{
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
-        });
+        }]);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('utf-8');
         expect(data.html).to.be.eql(metaHTML);
@@ -290,13 +290,13 @@ describe('static check meta tags', function () {
         expect(data.result.twitterSite).to.be.eql('@RakutenJP');
         expect(data.result.twitterTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
         expect(data.result.twitterDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
-        expect(data.result.ogImage).to.be.eql({
+        expect(data.result.ogImage).to.be.eql([{
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
           type: 'png',
-        });
-        expect(data.result.twitterImage).to.be.eql({
+        }]);
+        expect(data.result.twitterImage).to.be.eql([{
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
-        });
+        }]);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('sjis');
         expect(data.html).to.be.eql(metaHTML);
@@ -337,13 +337,13 @@ describe('static check meta tags', function () {
         expect(data.result.twitterSite).to.be.eql('@RakutenJP');
         expect(data.result.twitterTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
         expect(data.result.twitterDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
-        expect(data.result.ogImage).to.be.eql({
+        expect(data.result.ogImage).to.be.eql([{
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
           type: 'png',
-        });
-        expect(data.result.twitterImage).to.be.eql({
+        }]);
+        expect(data.result.twitterImage).to.be.eql([{
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
-        });
+        }]);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('euc-jp');
         expect(data.html).to.be.eql(metaHTML);

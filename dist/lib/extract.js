@@ -45,7 +45,7 @@ function extractMetaTags(body, options) {
         ogObject.ogImage = ogObject.ogImageURL;
     }
     // formats the multiple media values
-    ogObject = media.mediaSetup(ogObject, options);
+    ogObject = media.mediaSetup(ogObject);
     // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks
     if (!options.onlyGetOpenGraphInfo) {
         ogObject = (0, fallback_1.default)(ogObject, options, $, body);

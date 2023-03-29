@@ -22,12 +22,12 @@ describe('image', function () {
       expect(result.twitterCard).to.be.eql('photo');
       expect(result.twitterDescription).to.be.eql('____________________ Press "L" to view on black Press "F" to favor Share, if you like :)    You can leave a comment, if you like :)    Not to use or publish without permission! © Christoph Wagner Photographie');
       expect(result.twitterAppUrliPhone).to.be.eql('flickr://flickr.com/photos/travelgraph/18791678505/');
-      expect(result.ogImage).to.be.eql({
+      expect(result.ogImage).to.be.eql([{
         url: 'https://c1.staticflickr.com/1/499/18791678505_5886fefcf7_b.jpg',
         width: '1024',
         height: '375',
         type: 'jpg',
-      });
+      }]);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/flickr');
       expect(result.charset).to.be.eql('UTF-8');
       expect(result.success).to.be.eql(true);
