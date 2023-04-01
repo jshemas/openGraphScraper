@@ -51,21 +51,21 @@ function fallback(ogObject, options, $, body) {
     if (!ogObject.ogImage && options.ogImageFallback) {
         ogObject.ogImage = [];
         $('img').map((index, imageElement) => {
-            if (doesElementExist(imageElement, 'src', $)) {
-                const source = $(imageElement).attr('src');
-                const type = (0, utils_1.findImageTypeFromUrl)(source);
-                if (!(0, utils_1.isUrlValid)(source, options.urlValidatorSettings) || !(0, utils_1.isImageTypeValid)(type))
-                    return false;
-                const fallbackImage = {
-                    url: source,
-                    type,
-                };
-                if ($(imageElement).attr('width') && Number($(imageElement).attr('width')))
-                    fallbackImage.width = Number($(imageElement).attr('width'));
-                if ($(imageElement).attr('height') && Number($(imageElement).attr('height')))
-                    fallbackImage.height = Number($(imageElement).attr('height'));
-                ogObject.ogImage.push(fallbackImage);
-            }
+            const source = $(imageElement).attr('src');
+            if (!source)
+                return false;
+            const type = (0, utils_1.findImageTypeFromUrl)(source);
+            if (!(0, utils_1.isUrlValid)(source, options.urlValidatorSettings) || !(0, utils_1.isImageTypeValid)(type))
+                return false;
+            const fallbackImage = {
+                url: source,
+                type,
+            };
+            if ($(imageElement).attr('width') && Number($(imageElement).attr('width')))
+                fallbackImage.width = Number($(imageElement).attr('width'));
+            if ($(imageElement).attr('height') && Number($(imageElement).attr('height')))
+                fallbackImage.height = Number($(imageElement).attr('height'));
+            ogObject.ogImage.push(fallbackImage);
             return false;
         });
         ogObject.ogImage = ogObject.ogImage
