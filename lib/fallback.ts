@@ -69,19 +69,13 @@ export function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $
       .filter((value, index) => index < 10);
     if (ogObject.ogImage.length === 0) delete ogObject.ogImage;
   } else if (ogObject.ogImage) {
-    // if there isn't a type, try to pull it from the URL
-    if (Array.isArray(ogObject.ogImage)) {
-      ogObject.ogImage.map((image) => {
-        if (image.url && !image.type) {
-          const type = findImageTypeFromUrl(image.url);
-          if (isImageTypeValid(type)) image.type = type;
-        }
-        return false;
-      });
-    } else if (ogObject.ogImage.url && !ogObject.ogImage.type) {
-      const type = findImageTypeFromUrl(ogObject.ogImage.url);
-      if (isImageTypeValid(type)) ogObject.ogImage.type = type;
-    }
+    ogObject.ogImage.map((image) => {
+      if (image.url && !image.type) {
+        const type = findImageTypeFromUrl(image.url);
+        if (isImageTypeValid(type)) image.type = type;
+      }
+      return false;
+    });
   }
 
   // audio fallback
