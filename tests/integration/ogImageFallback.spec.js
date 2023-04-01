@@ -41,14 +41,14 @@ describe('ogImageFallback', function () {
       expect(result.ogImage).to.be.eql([
         {
           url: 'http://res-1.cloudinary.com/cloudinary/image/asset/dpr_2.0/logo-e0df892053afd966cc0bfe047ba93ca4.png',
-          width: '172',
-          height: '38',
+          width: 172,
+          height: 38,
           type: 'png',
         },
         {
           url: 'http://res-3.cloudinary.com/cloudinary/image/asset/dpr_2.0/logo-white-f1a9f401b60dd17a7629e663523b150e.png',
-          width: '172',
-          height: '38',
+          width: 172,
+          height: 38,
           type: 'png',
         },
       ]);

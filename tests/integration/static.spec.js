@@ -2569,8 +2569,7 @@ describe('static', function () {
           },
           {
             url: 'https://images-na.ssl-images-amazon.com/images/G/01/kindle/kindle-device-phone-36px._CB297183290_.png',
-
-            height: '16',
+            height: 16,
             type: 'png',
           },
           {

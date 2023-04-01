@@ -60,10 +60,10 @@ function fallback(ogObject, options, $, body) {
                     url: source,
                     type,
                 };
-                if ($(imageElement).attr('width'))
-                    fallbackImage.width = $(imageElement).attr('width');
-                if ($(imageElement).attr('height'))
-                    fallbackImage.height = $(imageElement).attr('height');
+                if ($(imageElement).attr('width') && Number($(imageElement).attr('width')))
+                    fallbackImage.width = Number($(imageElement).attr('width'));
+                if ($(imageElement).attr('height') && Number($(imageElement).attr('height')))
+                    fallbackImage.height = Number($(imageElement).attr('height'));
                 ogObject.ogImage.push(fallbackImage);
             }
             return false;
@@ -75,22 +75,14 @@ function fallback(ogObject, options, $, body) {
             delete ogObject.ogImage;
     }
     else if (ogObject.ogImage) {
-        // if there isn't a type, try to pull it from the URL
-        if (Array.isArray(ogObject.ogImage)) {
-            ogObject.ogImage.map((image) => {
-                if (image.url && !image.type) {
-                    const type = (0, utils_1.findImageTypeFromUrl)(image.url);
-                    if ((0, utils_1.isImageTypeValid)(type))
-                        image.type = type;
-                }
-                return false;
-            });
-        }
-        else if (ogObject.ogImage.url && !ogObject.ogImage.type) {
-            const type = (0, utils_1.findImageTypeFromUrl)(ogObject.ogImage.url);
-            if ((0, utils_1.isImageTypeValid)(type))
-                ogObject.ogImage.type = type;
-        }
+        ogObject.ogImage.map((image) => {
+            if (image.url && !image.type) {
+                const type = (0, utils_1.findImageTypeFromUrl)(image.url);
+                if ((0, utils_1.isImageTypeValid)(type))
+                    image.type = type;
+            }
+            return false;
+        });
     }
     // audio fallback
     if (!ogObject.ogAudioURL && !ogObject.ogAudioSecureURL) {

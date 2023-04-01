@@ -58,8 +58,8 @@ export function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $
           url: source,
           type,
         };
-        if ($(imageElement).attr('width')) fallbackImage.width = $(imageElement).attr('width');
-        if ($(imageElement).attr('height')) fallbackImage.height = $(imageElement).attr('height');
+        if ($(imageElement).attr('width') && Number($(imageElement).attr('width'))) fallbackImage.width = Number($(imageElement).attr('width'));
+        if ($(imageElement).attr('height') && Number($(imageElement).attr('height'))) fallbackImage.height = Number($(imageElement).attr('height'));
         ogObject.ogImage.push(fallbackImage);
       }
       return false;

@@ -524,8 +524,8 @@ describe('encoding', function () {
             },
             {
               url: 'http://www.xinhuanet.com/images/syicon/space.gif',
-              width: '24',
-              height: '24',
+              width: 24,
+              height: 24,
               type: 'gif',
             },
             {
@@ -534,8 +534,8 @@ describe('encoding', function () {
             },
             {
               url: 'http://www.newsimg.cn/common/share/logo4share.jpg',
-              width: '300',
-              height: '300',
+              width: 300,
+              height: 300,
               type: 'jpg',
             },
           ]);

@@ -124,7 +124,7 @@ describe('fallback', function () {
       const $ = cheerio.load('<html><body><image width=2 src="foo.png"><image src="bar.png"><image src="foo.bar"><image></body></html>');
       const ogObject = fallback({}, { ogImageFallback: true }, $);
       expect(ogObject.ogImage).to.be.eql([{
-        type: 'png', url: 'foo.png', width: '2',
+        type: 'png', url: 'foo.png', width: 2,
       }, {
         type: 'png', url: 'bar.png',
       }]);
