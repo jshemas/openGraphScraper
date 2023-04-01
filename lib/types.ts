@@ -176,7 +176,7 @@ export type OgObject = {
   musicDuration?: string;
   musicMusician?: string;
   musicReleaseDate?: string;
-  musicSong?: MusicSongObject | MusicSongObject[];
+  musicSong?: MusicSongObject[];
   musicSongDisc?: string | null[];
   musicSongProperty?: string | null[];
   musicSongTrack?: number | null[];
@@ -196,7 +196,7 @@ export type OgObject = {
   ogDate?: string;
   ogDescription?: string;
   ogDeterminer?: string;
-  ogImage?: ImageObject | ImageObject[];
+  ogImage?: ImageObject[];
   ogImageHeight?: string | null[];
   ogImageProperty?: string | null[];
   ogImageSecureURL?: string;
@@ -217,7 +217,7 @@ export type OgObject = {
   ogTitle?: string;
   ogType?: string;
   ogUrl?: string;
-  ogVideo?: VideoObject | VideoObject[];
+  ogVideo?: VideoObject[];
   ogVideoActorId?: string;
   ogVideoHeight?: string | null[];
   ogVideoProperty?: string | null[];
@@ -260,13 +260,13 @@ export type OgObject = {
   twitterCreator?: string;
   twitterCreatorId?: string;
   twitterDescription?: string;
-  twitterImage?: TwitterImageObject | TwitterImageObject[];
+  twitterImage?: TwitterImageObject[];
   twitterImageAlt?: string | null[];
   twitterImageHeight?: string | null[];
   twitterImageProperty?: string | null[];
   twitterImageSrc?: string | null[];
   twitterImageWidth?: string | null[];
-  twitterPlayer?: TwitterPlayerObject | TwitterPlayerObject[];
+  twitterPlayer?: TwitterPlayerObject[];
   twitterPlayerHeight?: string | null[];
   twitterPlayerProperty?: string | null[];
   twitterPlayerStream?: string | null[];
