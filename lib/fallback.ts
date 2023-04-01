@@ -1,8 +1,10 @@
 import chardet from 'chardet';
-import { findImageTypeFromUrl, isImageTypeValid, isUrlValid } from './utils';
-import type { OpenGraphScraperOptions, ImageObject } from './types';
+import type { CheerioAPI } from 'cheerio';
 
-const doesElementExist = (selector, attribute, $) => (
+import { findImageTypeFromUrl, isImageTypeValid, isUrlValid } from './utils';
+import type { OpenGraphScraperOptions, ImageObject, OgObject } from './types';
+
+const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
   $(selector).attr(attribute) && $(selector).attr(attribute).length > 0
 );
 
@@ -15,7 +17,7 @@ const doesElementExist = (selector, attribute, $) => (
  * @return {object} object with ogs results with updated fallback values
  *
  */
-export function fallback(ogObject, options: OpenGraphScraperOptions, $, body) {
+export function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $: CheerioAPI, body: string) {
   // title fallback
   if (!ogObject.ogTitle) {
     if ($('title').text() && $('title').text().length > 0) {

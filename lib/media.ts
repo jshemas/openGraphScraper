@@ -8,27 +8,27 @@ import type {
   VideoObject,
 } from './types';
 
-const mediaMapperTwitterImage = (item: TwitterImageObject) => ({
+const mediaMapperTwitterImage = (item: TwitterImageObject[]) => ({
   alt: item[3],
   height: item[2],
   url: item[0],
   width: item[1],
 });
 
-const mediaMapperTwitterPlayer = (item: TwitterPlayerObject) => ({
+const mediaMapperTwitterPlayer = (item: TwitterPlayerObject[]) => ({
   height: item[2],
   stream: item[3],
   url: item[0],
   width: item[1],
 });
 
-const mediaMapperMusicSong = (item: MusicSongObject) => ({
+const mediaMapperMusicSong = (item: MusicSongObject[]) => ({
   disc: item[2],
   track: item[1],
   url: item[0],
 });
 
-const mediaMapper = (item: ImageObject | VideoObject) => ({
+const mediaMapper = (item: ImageObject[] | VideoObject[]) => ({
   height: item[2],
   type: item[3],
   url: item[0],
@@ -99,8 +99,8 @@ export function mediaSetup(ogObject: OgObject) {
     ogObject.ogImageType,
   )
     .map(mediaMapper)
-    .filter((value) => value.url !== undefined && value.url !== '')
-    .filter((value, index) => index < 10)
+    .filter((value:ImageObject) => value.url !== undefined && value.url !== '')
+    .filter((value:ImageObject, index:number) => index < 10)
     .sort(mediaSorter);
 
   // sets ogVideo property/width/height/type to empty array if one these exists
@@ -119,8 +119,8 @@ export function mediaSetup(ogObject: OgObject) {
     ogObject.ogVideoType,
   )
     .map(mediaMapper)
-    .filter((value) => value.url !== undefined && value.url !== '')
-    .filter((value, index) => index < 10)
+    .filter((value:VideoObject) => value.url !== undefined && value.url !== '')
+    .filter((value:VideoObject, index:number) => index < 10)
     .sort(mediaSorter);
 
   // sets twitter image src/property/width/height/alt to empty array if one these exists
@@ -147,8 +147,8 @@ export function mediaSetup(ogObject: OgObject) {
     ogObject.twitterImageAlt,
   )
     .map(mediaMapperTwitterImage)
-    .filter((value) => value.url !== undefined && value.url !== '')
-    .filter((value, index) => index < 10)
+    .filter((value:TwitterImageObject) => value.url !== undefined && value.url !== '')
+    .filter((value:TwitterImageObject, index:number) => index < 10)
     .sort(mediaSorter);
 
   // sets twitter property/width/height/stream to empty array if one these exists
@@ -170,8 +170,8 @@ export function mediaSetup(ogObject: OgObject) {
     ogObject.twitterPlayerHeight,
     ogObject.twitterPlayerStream,
   ).map(mediaMapperTwitterPlayer)
-    .filter((value) => value.url !== undefined && value.url !== '')
-    .filter((value, index) => index < 10)
+    .filter((value:TwitterPlayerObject) => value.url !== undefined && value.url !== '')
+    .filter((value:TwitterPlayerObject, index:number) => index < 10)
     .sort(mediaSorter);
 
   // sets music property/songTrack/songDisc to empty array if one these exists
@@ -184,8 +184,8 @@ export function mediaSetup(ogObject: OgObject) {
   // format music songs and limit to 10
   const musicSongs: MusicSongObject[] = zip(ogObject.musicSongProperty, ogObject.musicSongTrack, ogObject.musicSongDisc)
     .map(mediaMapperMusicSong)
-    .filter((value) => value.url !== undefined && value.url !== '')
-    .filter((value, index) => index < 10)
+    .filter((value:MusicSongObject) => value.url !== undefined && value.url !== '')
+    .filter((value:MusicSongObject, index:number) => index < 10)
     .sort(mediaSorterMusicSong);
 
   // remove old values since everything will live under the main property
