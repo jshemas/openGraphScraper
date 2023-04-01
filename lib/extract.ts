@@ -38,11 +38,11 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
     });
   });
 
-  // set ogImage to ogImageSecureURL/ogImageURL if there is no ogImage
-  if (!ogObject.ogImage && ogObject.ogImageSecureURL) {
-    ogObject.ogImage = ogObject.ogImageSecureURL;
-  } else if (!ogObject.ogImage && ogObject.ogImageURL) {
-    ogObject.ogImage = ogObject.ogImageURL;
+  // set ogImageProperty to ogImageSecureURL/ogImageURL if there is no ogImage
+  if (!ogObject.ogImageProperty && ogObject.ogImageSecureURL) {
+    ogObject.ogImageProperty = ogObject.ogImageSecureURL;
+  } else if (!ogObject.ogImageProperty && ogObject.ogImageURL) {
+    ogObject.ogImageProperty = ogObject.ogImageURL;
   }
 
   // formats the multiple media values

@@ -25,7 +25,7 @@ const fields = [
     {
         multiple: true,
         property: 'og:image',
-        fieldName: 'ogImage',
+        fieldName: 'ogImageProperty',
     },
     {
         multiple: true,
@@ -145,12 +145,12 @@ const fields = [
     {
         multiple: true,
         property: 'og:video',
-        fieldName: 'ogVideo',
+        fieldName: 'ogVideoProperty',
     },
     {
         multiple: true,
         property: 'og:video:url',
-        fieldName: 'ogVideo',
+        fieldName: 'ogVideoProperty',
     },
     {
         multiple: true,
@@ -220,7 +220,7 @@ const fields = [
     {
         multiple: true,
         property: 'twitter:image',
-        fieldName: 'twitterImage',
+        fieldName: 'twitterImageProperty',
     },
     {
         multiple: true,
@@ -245,7 +245,7 @@ const fields = [
     {
         multiple: true,
         property: 'twitter:player',
-        fieldName: 'twitterPlayer',
+        fieldName: 'twitterPlayerProperty',
     },
     {
         multiple: true,
@@ -315,7 +315,7 @@ const fields = [
     {
         multiple: true,
         property: 'music:song',
-        fieldName: 'musicSong',
+        fieldName: 'musicSongProperty',
     },
     {
         multiple: true,

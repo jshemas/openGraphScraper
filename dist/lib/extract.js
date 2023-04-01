@@ -37,12 +37,12 @@ function extractMetaTags(body, options) {
             }
         });
     });
-    // set ogImage to ogImageSecureURL/ogImageURL if there is no ogImage
-    if (!ogObject.ogImage && ogObject.ogImageSecureURL) {
-        ogObject.ogImage = ogObject.ogImageSecureURL;
+    // set ogImageProperty to ogImageSecureURL/ogImageURL if there is no ogImage
+    if (!ogObject.ogImageProperty && ogObject.ogImageSecureURL) {
+        ogObject.ogImageProperty = ogObject.ogImageSecureURL;
     }
-    else if (!ogObject.ogImage && ogObject.ogImageURL) {
-        ogObject.ogImage = ogObject.ogImageURL;
+    else if (!ogObject.ogImageProperty && ogObject.ogImageURL) {
+        ogObject.ogImageProperty = ogObject.ogImageURL;
     }
     // formats the multiple media values
     ogObject = media.mediaSetup(ogObject);

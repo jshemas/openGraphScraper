@@ -69,73 +69,74 @@ const zip = (array, ...args) => {
  *
  */
 function mediaSetup(ogObject) {
-    // sets ogImage image/width/height/type to empty array if one these exists
-    if (ogObject.ogImage || ogObject.ogImageWidth || ogObject.ogImageHeight || ogObject.ogImageType) {
-        ogObject.ogImage = ogObject.ogImage ? ogObject.ogImage : [];
+    // sets ogImage property/width/height/type to empty array if one these exists
+    if (ogObject.ogImageProperty || ogObject.ogImageWidth || ogObject.ogImageHeight || ogObject.ogImageType) {
+        ogObject.ogImageProperty = ogObject.ogImageProperty ? ogObject.ogImageProperty : [];
         ogObject.ogImageWidth = ogObject.ogImageWidth ? ogObject.ogImageWidth : [];
         ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [];
         ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [];
     }
     // format images and limit to 10
-    const ogImages = zip(ogObject.ogImage, ogObject.ogImageWidth, ogObject.ogImageHeight, ogObject.ogImageType)
+    const ogImages = zip(ogObject.ogImageProperty, ogObject.ogImageWidth, ogObject.ogImageHeight, ogObject.ogImageType)
         .map(mediaMapper)
         .filter((value) => value.url !== undefined && value.url !== '')
         .filter((value, index) => index < 10)
         .sort(mediaSorter);
-    // sets ogVideo video/width/height/type to empty array if one these exists
-    if (ogObject.ogVideo || ogObject.ogVideoWidth || ogObject.ogVideoHeight || ogObject.ogVideoType) {
-        ogObject.ogVideo = ogObject.ogVideo ? ogObject.ogVideo : [];
+    // sets ogVideo property/width/height/type to empty array if one these exists
+    if (ogObject.ogVideoProperty || ogObject.ogVideoWidth || ogObject.ogVideoHeight || ogObject.ogVideoType) {
+        ogObject.ogVideoProperty = ogObject.ogVideoProperty ? ogObject.ogVideoProperty : [];
         ogObject.ogVideoWidth = ogObject.ogVideoWidth ? ogObject.ogVideoWidth : [];
         ogObject.ogVideoHeight = ogObject.ogVideoHeight ? ogObject.ogVideoHeight : [];
         ogObject.ogVideoType = ogObject.ogVideoType ? ogObject.ogVideoType : [];
     }
     // format videos and limit to 10
-    const ogVideos = zip(ogObject.ogVideo, ogObject.ogVideoWidth, ogObject.ogVideoHeight, ogObject.ogVideoType)
+    const ogVideos = zip(ogObject.ogVideoProperty, ogObject.ogVideoWidth, ogObject.ogVideoHeight, ogObject.ogVideoType)
         .map(mediaMapper)
         .filter((value) => value.url !== undefined && value.url !== '')
         .filter((value, index) => index < 10)
         .sort(mediaSorter);
-    // sets twitter image image/width/height/type to empty array if one these exists
+    // sets twitter image src/property/width/height/alt to empty array if one these exists
     if (ogObject.twitterImageSrc
-        || ogObject.twitterImage
+        || ogObject.twitterImageProperty
         || ogObject.twitterImageWidth
         || ogObject.twitterImageHeight
         || ogObject.twitterImageAlt) {
         ogObject.twitterImageSrc = ogObject.twitterImageSrc ? ogObject.twitterImageSrc : [];
-        ogObject.twitterImage = ogObject.twitterImage ? ogObject.twitterImage : ogObject.twitterImageSrc; // deafult to twitterImageSrc
+        // eslint-disable-next-line max-len
+        ogObject.twitterImageProperty = ogObject.twitterImageProperty ? ogObject.twitterImageProperty : ogObject.twitterImageSrc; // deafult to twitterImageSrc
         ogObject.twitterImageWidth = ogObject.twitterImageWidth ? ogObject.twitterImageWidth : [];
         ogObject.twitterImageHeight = ogObject.twitterImageHeight ? ogObject.twitterImageHeight : [];
         ogObject.twitterImageAlt = ogObject.twitterImageAlt ? ogObject.twitterImageAlt : [];
     }
     // format twitter images and limit to 10
-    const twitterImages = zip(ogObject.twitterImage, ogObject.twitterImageWidth, ogObject.twitterImageHeight, ogObject.twitterImageAlt)
+    const twitterImages = zip(ogObject.twitterImageProperty, ogObject.twitterImageWidth, ogObject.twitterImageHeight, ogObject.twitterImageAlt)
         .map(mediaMapperTwitterImage)
         .filter((value) => value.url !== undefined && value.url !== '')
         .filter((value, index) => index < 10)
         .sort(mediaSorter);
-    // sets twitter player/width/height/stream to empty array if one these exists
-    if (ogObject.twitterPlayer
+    // sets twitter property/width/height/stream to empty array if one these exists
+    if (ogObject.twitterPlayerProperty
         || ogObject.twitterPlayerWidth
         || ogObject.twitterPlayerHeight
         || ogObject.twitterPlayerStream) {
-        ogObject.twitterPlayer = ogObject.twitterPlayer ? ogObject.twitterPlayer : [];
+        ogObject.twitterPlayerProperty = ogObject.twitterPlayerProperty ? ogObject.twitterPlayerProperty : [];
         ogObject.twitterPlayerWidth = ogObject.twitterPlayerWidth ? ogObject.twitterPlayerWidth : [];
         ogObject.twitterPlayerHeight = ogObject.twitterPlayerHeight ? ogObject.twitterPlayerHeight : [];
         ogObject.twitterPlayerStream = ogObject.twitterPlayerStream ? ogObject.twitterPlayerStream : [];
     }
     // format twitter player and limit to 10
-    const twitterPlayers = zip(ogObject.twitterPlayer, ogObject.twitterPlayerWidth, ogObject.twitterPlayerHeight, ogObject.twitterPlayerStream).map(mediaMapperTwitterPlayer)
+    const twitterPlayers = zip(ogObject.twitterPlayerProperty, ogObject.twitterPlayerWidth, ogObject.twitterPlayerHeight, ogObject.twitterPlayerStream).map(mediaMapperTwitterPlayer)
         .filter((value) => value.url !== undefined && value.url !== '')
         .filter((value, index) => index < 10)
         .sort(mediaSorter);
-    // sets music song/songTrack/songDisc to empty array if one these exists
-    if (ogObject.musicSong || ogObject.musicSongTrack || ogObject.musicSongDisc) {
-        ogObject.musicSong = ogObject.musicSong ? ogObject.musicSong : [];
+    // sets music property/songTrack/songDisc to empty array if one these exists
+    if (ogObject.musicSongProperty || ogObject.musicSongTrack || ogObject.musicSongDisc) {
+        ogObject.musicSongProperty = ogObject.musicSongProperty ? ogObject.musicSongProperty : [];
         ogObject.musicSongTrack = ogObject.musicSongTrack ? ogObject.musicSongTrack : [];
         ogObject.musicSongDisc = ogObject.musicSongDisc ? ogObject.musicSongDisc : [];
     }
     // format music songs and limit to 10
-    const musicSongs = zip(ogObject.musicSong, ogObject.musicSongTrack, ogObject.musicSongDisc)
+    const musicSongs = zip(ogObject.musicSongProperty, ogObject.musicSongTrack, ogObject.musicSongDisc)
         .map(mediaMapperMusicSong)
         .filter((value) => value.url !== undefined && value.url !== '')
         .filter((value, index) => index < 10)
