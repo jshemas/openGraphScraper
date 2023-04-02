@@ -4,12 +4,13 @@
     "lib/**/*"
   ],
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "importsNotUsedAsValues": "error",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
+    "moduleResolution": "node",
     "outDir": "./dist",
+    "skipLibCheck": true,
     "target": "es2022"
   }
 }

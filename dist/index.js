@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable max-len, import/no-import-module-exports */
-const openGraphScraper_1 = require("./lib/openGraphScraper");
+const openGraphScraper_1 = __importDefault(require("./lib/openGraphScraper"));
 /**
  * `open-graph-scraper` uses [fetch](https://developer.mozilla.org/en-US/docs/Web/API/fetch) for http requests
  * for scraping Open Graph and Twitter Card info off a website.
