@@ -16,7 +16,7 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
       { signal: AbortSignal.timeout(options.timeout * 1000), ...options.fetchOptions },
     );
 
-    if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type').includes('text/')) {
+    if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
       throw new Error('Page must return a header content-type with text/');
     }
     if (response && response.status && (response.status.toString().substring(0, 1) === '4' || response.status.toString().substring(0, 1) === '5')) {
