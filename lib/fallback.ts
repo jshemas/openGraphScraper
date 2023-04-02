@@ -50,7 +50,7 @@ export function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $
   if (!ogObject.ogImage && options.ogImageFallback) {
     ogObject.ogImage = [];
     $('img').map((index, imageElement) => {
-      const source: string = $(imageElement).attr('src');
+      const source: string = $(imageElement).attr('src') || '';
       if (!source) return false;
       const type = findImageTypeFromUrl(source);
       if (!isUrlValid(source, options.urlValidatorSettings) || !isImageTypeValid(type)) return false;
@@ -79,15 +79,15 @@ export function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $
 
   // audio fallback
   if (!ogObject.ogAudioURL && !ogObject.ogAudioSecureURL) {
-    const audioElementValue: string = $('audio').attr('src');
-    const audioSourceElementValue: string = $('audio > source').attr('src');
+    const audioElementValue: string = $('audio').attr('src') || '';
+    const audioSourceElementValue: string = $('audio > source').attr('src') || '';
     if (doesElementExist('audio', 'src', $)) {
       if (audioElementValue.startsWith('https')) {
         ogObject.ogAudioSecureURL = audioElementValue;
       } else {
         ogObject.ogAudioURL = audioElementValue;
       }
-      const audioElementTypeValue: string = $('audio').attr('type');
+      const audioElementTypeValue: string = $('audio').attr('type') || '';
       if (!ogObject.ogAudioType && doesElementExist('audio', 'type', $)) ogObject.ogAudioType = audioElementTypeValue;
     } else if (doesElementExist('audio > source', 'src', $)) {
       if (audioSourceElementValue.startsWith('https')) {
@@ -95,7 +95,7 @@ export function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $
       } else {
         ogObject.ogAudioURL = audioSourceElementValue;
       }
-      const audioSourceElementTypeValue: string = $('audio > source').attr('type');
+      const audioSourceElementTypeValue: string = $('audio > source').attr('type') || '';
       if (!ogObject.ogAudioType && doesElementExist('audio > source', 'type', $)) ogObject.ogAudioType = audioSourceElementTypeValue;
     }
   }
@@ -167,7 +167,7 @@ export function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $
   if (doesElementExist('meta', 'charset', $)) {
     ogObject.charset = $('meta').attr('charset');
   } else if (body) {
-    ogObject.charset = chardet.detect(Buffer.from(body));
+    ogObject.charset = chardet.detect(Buffer.from(body)) || '';
   }
 
   return ogObject;

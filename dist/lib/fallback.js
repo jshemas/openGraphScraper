@@ -54,7 +54,7 @@ function fallback(ogObject, options, $, body) {
     if (!ogObject.ogImage && options.ogImageFallback) {
         ogObject.ogImage = [];
         $('img').map((index, imageElement) => {
-            const source = $(imageElement).attr('src');
+            const source = $(imageElement).attr('src') || '';
             if (!source)
                 return false;
             const type = (0, utils_1.findImageTypeFromUrl)(source);
@@ -89,8 +89,8 @@ function fallback(ogObject, options, $, body) {
     }
     // audio fallback
     if (!ogObject.ogAudioURL && !ogObject.ogAudioSecureURL) {
-        const audioElementValue = $('audio').attr('src');
-        const audioSourceElementValue = $('audio > source').attr('src');
+        const audioElementValue = $('audio').attr('src') || '';
+        const audioSourceElementValue = $('audio > source').attr('src') || '';
         if (doesElementExist('audio', 'src', $)) {
             if (audioElementValue.startsWith('https')) {
                 ogObject.ogAudioSecureURL = audioElementValue;
@@ -98,7 +98,7 @@ function fallback(ogObject, options, $, body) {
             else {
                 ogObject.ogAudioURL = audioElementValue;
             }
-            const audioElementTypeValue = $('audio').attr('type');
+            const audioElementTypeValue = $('audio').attr('type') || '';
             if (!ogObject.ogAudioType && doesElementExist('audio', 'type', $))
                 ogObject.ogAudioType = audioElementTypeValue;
         }
@@ -109,7 +109,7 @@ function fallback(ogObject, options, $, body) {
             else {
                 ogObject.ogAudioURL = audioSourceElementValue;
             }
-            const audioSourceElementTypeValue = $('audio > source').attr('type');
+            const audioSourceElementTypeValue = $('audio > source').attr('type') || '';
             if (!ogObject.ogAudioType && doesElementExist('audio > source', 'type', $))
                 ogObject.ogAudioType = audioSourceElementTypeValue;
         }
@@ -191,7 +191,7 @@ function fallback(ogObject, options, $, body) {
         ogObject.charset = $('meta').attr('charset');
     }
     else if (body) {
-        ogObject.charset = chardet_1.default.detect(Buffer.from(body));
+        ogObject.charset = chardet_1.default.detect(Buffer.from(body)) || '';
     }
     return ogObject;
 }
