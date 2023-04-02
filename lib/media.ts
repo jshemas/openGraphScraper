@@ -59,9 +59,9 @@ const mediaSorter = (
 const mediaSorterMusicSong = (a: MusicSongObject, b: MusicSongObject) => {
   if (!(a.track && b.track)) {
     return 0;
-  } if (a.disc > b.disc) {
+  } if ((a.disc || 0) > (b.disc || 0)) {
     return 1;
-  } if (a.disc < b.disc) {
+  } if ((a.disc || 0) < (b.disc || 0)) {
     return -1;
   }
   return a.track - b.track;
