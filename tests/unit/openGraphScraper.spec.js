@@ -86,7 +86,6 @@ describe('return ogs', function () {
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogTitle).to.be.eql('test page');
-          expect(data.result.requestUrl).to.be.eql(null);
           expect(data.response.body).to.be.eql(basicHTML);
           expect(data.html).to.be.eql(basicHTML);
         });

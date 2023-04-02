@@ -16,7 +16,6 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
   if (options.html) {
     if (options.url) throw new Error('Must specify either `url` or `html`, not both');
     const ogObject = extractMetaTags(options.html, options);
-    ogObject.requestUrl = null;
     ogObject.success = true;
     return { ogObject, response: { body: options.html }, html: options.html };
   }

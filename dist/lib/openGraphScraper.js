@@ -42,7 +42,6 @@ async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
         if (options.url)
             throw new Error('Must specify either `url` or `html`, not both');
         const ogObject = (0, extract_1.default)(options.html, options);
-        ogObject.requestUrl = null;
         ogObject.success = true;
         return { ogObject, response: { body: options.html }, html: options.html };
     }
