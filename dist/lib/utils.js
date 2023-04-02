@@ -45,7 +45,7 @@ exports.validateAndFormatURL = validateAndFormatURL;
  *
  */
 function findImageTypeFromUrl(url) {
-    let type = url.split('.').pop();
+    let type = url.split('.').pop() || '';
     [type] = type.split('?');
     return type;
 }

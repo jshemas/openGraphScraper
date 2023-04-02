@@ -164,6 +164,10 @@ describe('utils', function () {
       const type = utils.findImageTypeFromUrl('image');
       expect(type).to.eql('image');
     });
+    it('empty string', function () {
+      const type = utils.findImageTypeFromUrl('');
+      expect(type).to.eql('');
+    });
   });
 
   describe('isImageTypeValid', function () {
