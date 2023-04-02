@@ -24,12 +24,9 @@ async function requestAndResultsFormatter(options) {
         }
     }
     catch (error) {
-        if (error instanceof Error) {
-            if (error.message === 'fetch failed')
-                throw error.cause;
-            throw error;
-        }
-        throw new Error(error);
+        if (error instanceof Error && error.message === 'fetch failed')
+            throw error.cause;
+        throw error;
     }
     return { body, response };
 }
