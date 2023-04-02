@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.fallback = void 0;
 const chardet_1 = __importDefault(require("chardet"));
 const utils_1 = require("./utils");
-const doesElementExist = (selector, attribute, $) => ($(selector).attr(attribute) && $(selector).attr(attribute).length > 0);
+const doesElementExist = (selector, attribute, $) => ($(selector).attr(attribute) && ($(selector).attr(attribute)?.length || 0) > 0);
 /**
  * ogs fallbacks
  *

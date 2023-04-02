@@ -5,7 +5,7 @@ import { findImageTypeFromUrl, isImageTypeValid, isUrlValid } from './utils';
 import type { OpenGraphScraperOptions, ImageObject, OgObject } from './types';
 
 const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
-  $(selector).attr(attribute) && $(selector).attr(attribute).length > 0
+  $(selector).attr(attribute) && ($(selector).attr(attribute)?.length || 0) > 0
 );
 
 /**
