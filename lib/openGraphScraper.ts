@@ -42,7 +42,7 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
     ogObject.success = true;
 
     return { ogObject, response, html: body };
-  } catch (exception) {
+  } catch (exception: any) {
     if (exception && (exception.code === 'ENOTFOUND' || exception.code === 'EHOSTUNREACH' || exception.code === 'ENETUNREACH')) {
       throw new Error('Page not found');
     } else if (exception && (exception.name === 'AbortError')) {
