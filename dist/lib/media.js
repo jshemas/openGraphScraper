@@ -42,7 +42,7 @@ const mediaSorter = (a, b) => {
     if (aExt !== 'gif' && bExt === 'gif') {
         return 1;
     }
-    return Math.max(b.width, b.height) - Math.max(a.width, a.height);
+    return Math.max(b.width || 0, b.height || 0) - Math.max(a.width || 0, a.height || 0);
 };
 const mediaSorterMusicSong = (a, b) => {
     if (!(a.track && b.track)) {
