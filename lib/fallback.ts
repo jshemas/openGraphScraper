@@ -60,7 +60,7 @@ export function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $
       };
       if ($(imageElement).attr('width') && Number($(imageElement).attr('width'))) fallbackImage.width = Number($(imageElement).attr('width'));
       if ($(imageElement).attr('height') && Number($(imageElement).attr('height'))) fallbackImage.height = Number($(imageElement).attr('height'));
-      ogObject.ogImage.push(fallbackImage);
+      ogObject.ogImage?.push(fallbackImage);
       return false;
     });
     ogObject.ogImage = ogObject.ogImage
