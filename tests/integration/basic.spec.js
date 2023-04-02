@@ -1,11 +1,11 @@
-import * as importOgs from '../../index';
+import ogs from '../../index';
 
 const util = require('util');
-const ogs = require('../../index');
+const ogsRequire = require('../../index');
 
 describe('basic', function () {
   it('using promises should return valid data', function () {
-    return ogs({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
+    return ogsRequire({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -36,7 +36,7 @@ describe('basic', function () {
     });
   });
   it('using await should return valid data', async function () {
-    const { error, result, response } = await ogs({ url: 'https://ogp.me/' });
+    const { error, result, response } = await ogsRequire({ url: 'https://ogp.me/' });
     console.log('error:', error);
     console.log('result:', result);
     expect(error).to.be.eql(false);
@@ -66,7 +66,7 @@ describe('basic', function () {
     expect(response).to.be.an('Response');
   });
   it('using callbackify should return valid data', function () {
-    const ogsCallback = util.callbackify(ogs);
+    const ogsCallback = util.callbackify(ogsRequire);
     return ogsCallback({
       url: 'https://ogp.me/',
     }, function (error, response) {
@@ -91,7 +91,7 @@ describe('basic', function () {
     });
   });
   it('using ogs import should still work', async function () {
-    return importOgs({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
+    return ogs({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -122,7 +122,7 @@ describe('basic', function () {
     });
   });
   it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {
-    return ogs({ url: 'https://www.namecheap.com/' }).then(function ({ error, result, response }) {
+    return ogsRequire({ url: 'https://www.namecheap.com/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -150,7 +150,7 @@ describe('basic', function () {
     });
   });
   it('vimeo.com should return open graph data', function () {
-    return ogs({ url: 'https://vimeo.com/232889838' }).then(function ({ error, result, response }) {
+    return ogsRequire({ url: 'https://vimeo.com/232889838' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -245,7 +245,7 @@ describe('basic', function () {
     });
   });
   it('mozilla.org should return open graph data with one title', function () {
-    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mozilla' }).then(function ({ error, result, response }) {
+    return ogsRequire({ url: 'https://jshemas.github.io/openGraphScraperPages/mozilla' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
