@@ -27,7 +27,7 @@ export function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $
   if (!ogObject.ogTitle) {
     if ($('title').text() && $('title').text().length > 0) {
       ogObject.ogTitle = $('title').first().text();
-    } else if ($('head > meta[name="title"]').attr('content') && $('head > meta[name="title"]').attr('content').length > 0) {
+    } else if ($('head > meta[name="title"]').attr('content') && ($('head > meta[name="title"]').attr('content')?.length || 0) > 0) {
       ogObject.ogTitle = $('head > meta[name="title"]').attr('content');
     } else if ($('.post-title').text() && $('.post-title').text().length > 0) {
       ogObject.ogTitle = $('.post-title').text();
