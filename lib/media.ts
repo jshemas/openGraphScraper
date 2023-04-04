@@ -68,10 +68,10 @@ const mediaSorterMusicSong = (a: MusicSongObject, b: MusicSongObject) => {
 };
 
 // lodash zip replacement
-const zip = (array, ...args) => {
+const zip = (array: any, ...args: any) => {
   if (array === undefined) return [];
   return array
-    .map((value, idx) => [value, ...args.map((arr) => arr[idx])]);
+    .map((value: any, idx: number) => [value, ...args.map((arr: []) => arr[idx])]);
 };
 
 /**
