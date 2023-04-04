@@ -13,7 +13,7 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
   try {
     response = await fetch(
       options.url,
-      { signal: AbortSignal.timeout(options.timeout * 1000), ...options.fetchOptions },
+      { signal: AbortSignal.timeout((options.timeout || 10) * 1000), ...options.fetchOptions },
     );
 
     if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
