@@ -58,7 +58,7 @@ function fallback(ogObject, options, $, body) {
             if (!source)
                 return false;
             const type = (0, utils_1.findImageTypeFromUrl)(source);
-            if (!(0, utils_1.isUrlValid)(source, options.urlValidatorSettings) || !(0, utils_1.isImageTypeValid)(type))
+            if (!(0, utils_1.isUrlValid)(source, (options.urlValidatorSettings || utils_1.defaultUrlValidatorSettings)) || !(0, utils_1.isImageTypeValid)(type))
                 return false;
             const fallbackImage = {
                 url: source,

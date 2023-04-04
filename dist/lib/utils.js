@@ -3,8 +3,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.optionSetup = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = void 0;
+exports.optionSetup = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = exports.defaultUrlValidatorSettings = void 0;
 const validator_1 = __importDefault(require("validator"));
+exports.defaultUrlValidatorSettings = {
+    allow_fragments: true,
+    allow_protocol_relative_urls: false,
+    allow_query_components: true,
+    allow_trailing_dot: false,
+    allow_underscores: false,
+    protocols: ['http', 'https'],
+    require_host: true,
+    require_port: false,
+    require_protocol: false,
+    require_tld: true,
+    require_valid_protocol: true,
+    validate_length: true,
+};
 /**
  * Checks if URL is valid
  *
@@ -103,20 +117,6 @@ function optionSetup(ogsOptions) {
     const options = {
         ogImageFallback: true,
         onlyGetOpenGraphInfo: false,
-        urlValidatorSettings: {
-            allow_fragments: true,
-            allow_protocol_relative_urls: false,
-            allow_query_components: true,
-            allow_trailing_dot: false,
-            allow_underscores: false,
-            protocols: ['http', 'https'],
-            require_host: true,
-            require_port: false,
-            require_protocol: false,
-            require_tld: true,
-            require_valid_protocol: true,
-            validate_length: true,
-        },
         ...ogsOptions,
     };
     return { options };

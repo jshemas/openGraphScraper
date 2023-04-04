@@ -1,6 +1,21 @@
 import validator from 'validator';
 import type { ValidatorSettings, OpenGraphScraperOptions } from './types';
 
+export const defaultUrlValidatorSettings = {
+  allow_fragments: true,
+  allow_protocol_relative_urls: false,
+  allow_query_components: true,
+  allow_trailing_dot: false,
+  allow_underscores: false,
+  protocols: ['http', 'https'],
+  require_host: true,
+  require_port: false,
+  require_protocol: false,
+  require_tld: true,
+  require_valid_protocol: true,
+  validate_length: true,
+};
+
 /**
  * Checks if URL is valid
  *
@@ -98,20 +113,6 @@ export function optionSetup(ogsOptions: OpenGraphScraperOptions): { options: Ope
   const options: OpenGraphScraperOptions = {
     ogImageFallback: true,
     onlyGetOpenGraphInfo: false,
-    urlValidatorSettings: {
-      allow_fragments: true,
-      allow_protocol_relative_urls: false,
-      allow_query_components: true,
-      allow_trailing_dot: false,
-      allow_underscores: false,
-      protocols: ['http', 'https'],
-      require_host: true,
-      require_port: false,
-      require_protocol: false,
-      require_tld: true,
-      require_valid_protocol: true,
-      validate_length: true,
-    },
     ...ogsOptions,
   };
 

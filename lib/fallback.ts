@@ -1,7 +1,12 @@
 import chardet from 'chardet';
 import type { CheerioAPI } from 'cheerio';
 
-import { findImageTypeFromUrl, isImageTypeValid, isUrlValid } from './utils';
+import {
+  defaultUrlValidatorSettings,
+  findImageTypeFromUrl,
+  isImageTypeValid,
+  isUrlValid,
+} from './utils';
 import type { OpenGraphScraperOptions, ImageObject, OgObject } from './types';
 
 const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
@@ -53,7 +58,9 @@ export function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $
       const source: string = $(imageElement).attr('src') || '';
       if (!source) return false;
       const type = findImageTypeFromUrl(source);
-      if (!isUrlValid(source, options.urlValidatorSettings) || !isImageTypeValid(type)) return false;
+      if (
+        !isUrlValid(source, (options.urlValidatorSettings || defaultUrlValidatorSettings)) || !isImageTypeValid(type)
+      ) return false;
       const fallbackImage: ImageObject = {
         url: source,
         type,

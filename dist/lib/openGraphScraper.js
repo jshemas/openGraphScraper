@@ -45,7 +45,8 @@ async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
         ogObject.success = true;
         return { ogObject, response: { body: options.html }, html: options.html };
     }
-    const formattedUrl = utils.validateAndFormatURL(options.url, options.urlValidatorSettings);
+    const formattedUrl = utils
+        .validateAndFormatURL(options.url, (options.urlValidatorSettings || utils.defaultUrlValidatorSettings));
     if (!formattedUrl.url)
         throw new Error('Invalid URL');
     options.url = formattedUrl.url;
