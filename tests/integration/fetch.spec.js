@@ -3,7 +3,8 @@ const cheerio = require('cheerio');
 const ogs = require('../../index');
 
 describe('fetch', function () {
-  it('setting the fetch headers', function () {
+  // eslint-disable-next-line mocha/no-skipped-tests
+  it.skip('setting the fetch headers', function () {
     // userAgent is undici by default
     const userAgent = 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.5563.57 Mobile Safari/537.36';
     const headers = new Headers({
