@@ -18,7 +18,7 @@ import type { OgObject, OpenGraphScraperOptions } from './types';
 export default function extractMetaTags(body: string, options: OpenGraphScraperOptions) {
   let ogObject: OgObject = {};
   const $ = load(body);
-  const metaFields = fields.concat(options.customMetaTags);
+  const metaFields = fields.concat(options.customMetaTags || []);
 
   // find all of the open graph info in the meta tags
   $('meta').each((index, meta) => {

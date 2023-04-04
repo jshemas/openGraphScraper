@@ -96,7 +96,6 @@ export function removeNestedUndefinedValues(object: { [key: string]: any }): { [
  */
 export function optionSetup(ogsOptions: OpenGraphScraperOptions): { options: OpenGraphScraperOptions } {
   const options: OpenGraphScraperOptions = {
-    customMetaTags: [],
     ogImageFallback: true,
     onlyGetOpenGraphInfo: false,
     urlValidatorSettings: {

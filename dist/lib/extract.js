@@ -42,7 +42,7 @@ const utils = __importStar(require("./utils"));
 function extractMetaTags(body, options) {
     let ogObject = {};
     const $ = (0, cheerio_1.load)(body);
-    const metaFields = fields_1.default.concat(options.customMetaTags);
+    const metaFields = fields_1.default.concat(options.customMetaTags || []);
     // find all of the open graph info in the meta tags
     $('meta').each((index, meta) => {
         if (!meta.attribs || (!meta.attribs.property && !meta.attribs.name))
