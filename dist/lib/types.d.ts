@@ -170,7 +170,7 @@ export type OgObjectInteral = {
     musicSongDisc?: string | null[];
     musicSongProperty?: string | null[];
     musicSongTrack?: number | null[];
-    musicSongUrl?: string;
+    musicSongUrl?: string | null[];
     ogArticleAuthor?: string;
     ogArticleExpirationTime?: string;
     ogArticleModifiedTime?: string;
@@ -268,5 +268,5 @@ export type OgObjectInteral = {
     twitterUrl?: string;
     updatedTime?: string;
 };
-export type OgObject = Omit<OgObjectInteral, 'musicSongDisc' | 'musicSongProperty' | 'musicSongTrack' | 'ogImageHeight' | 'ogImageProperty' | 'ogImageSecureURL' | 'ogImageType' | 'ogImageURL' | 'ogImageWidth' | 'ogVideoHeight' | 'ogVideoProperty' | 'ogVideoType' | 'ogVideoWidth' | 'twitterImageAlt' | 'twitterImageHeight' | 'twitterImageProperty' | 'twitterImageSrc' | 'twitterImageWidth' | 'twitterPlayerHeight' | 'twitterPlayerProperty' | 'twitterPlayerStream' | 'twitterPlayerWidth'>;
+export type OgObject = Omit<OgObjectInteral, 'musicSongDisc' | 'musicSongProperty' | 'musicSongTrack' | 'musicSongUrl' | 'ogImageHeight' | 'ogImageProperty' | 'ogImageSecureURL' | 'ogImageType' | 'ogImageURL' | 'ogImageWidth' | 'ogVideoHeight' | 'ogVideoProperty' | 'ogVideoType' | 'ogVideoWidth' | 'twitterImageAlt' | 'twitterImageHeight' | 'twitterImageProperty' | 'twitterImageSrc' | 'twitterImageWidth' | 'twitterPlayerHeight' | 'twitterPlayerProperty' | 'twitterPlayerStream' | 'twitterPlayerWidth'>;
 export {};

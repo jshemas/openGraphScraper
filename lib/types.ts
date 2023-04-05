@@ -180,7 +180,7 @@ export type OgObjectInteral = {
   musicSongDisc?: string | null[];
   musicSongProperty?: string | null[];
   musicSongTrack?: number | null[];
-  musicSongUrl?: string;
+  musicSongUrl?: string | null[];
   ogArticleAuthor?: string;
   ogArticleExpirationTime?: string;
   ogArticleModifiedTime?: string;
@@ -284,6 +284,7 @@ OgObjectInteral,
 'musicSongDisc' |
 'musicSongProperty' |
 'musicSongTrack' |
+'musicSongUrl' |
 'ogImageHeight' |
 'ogImageProperty' |
 'ogImageSecureURL' |

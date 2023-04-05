@@ -133,8 +133,9 @@ function mediaSetup(ogObject) {
         .filter((value, index) => index < 10)
         .sort(mediaSorter);
     // sets music property/songTrack/songDisc to empty array if one these exists
-    if (ogObject.musicSongProperty || ogObject.musicSongTrack || ogObject.musicSongDisc) {
-        ogObject.musicSongProperty = ogObject.musicSongProperty ? ogObject.musicSongProperty : [];
+    if (ogObject.musicSongProperty || ogObject.musicSongTrack || ogObject.musicSongDisc || ogObject.musicSongUrl) {
+        ogObject.musicSongUrl = ogObject.musicSongUrl ? ogObject.musicSongUrl : [];
+        ogObject.musicSongProperty = ogObject.musicSongProperty ? ogObject.musicSongProperty : ogObject.musicSongUrl; // deafult to musicSongUrl
         ogObject.musicSongTrack = ogObject.musicSongTrack ? ogObject.musicSongTrack : [];
         ogObject.musicSongDisc = ogObject.musicSongDisc ? ogObject.musicSongDisc : [];
     }
