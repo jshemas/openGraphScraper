@@ -89,7 +89,7 @@ export type MusicSongObject = {
     track?: number;
     url: string;
 };
-export type OgObject = {
+export type OgObjectInteral = {
     alAndroidAppName?: string;
     alAndroidClass?: string;
     alAndroidPackage?: string;
@@ -268,4 +268,5 @@ export type OgObject = {
     twitterUrl?: string;
     updatedTime?: string;
 };
+export type OgObject = Omit<OgObjectInteral, 'musicSongDisc' | 'musicSongProperty' | 'musicSongTrack' | 'ogImageHeight' | 'ogImageProperty' | 'ogImageSecureURL' | 'ogImageType' | 'ogImageURL' | 'ogImageWidth' | 'ogVideoHeight' | 'ogVideoProperty' | 'ogVideoType' | 'ogVideoWidth' | 'twitterImageAlt' | 'twitterImageHeight' | 'twitterImageProperty' | 'twitterImageSrc' | 'twitterImageWidth' | 'twitterPlayerHeight' | 'twitterPlayerProperty' | 'twitterPlayerStream' | 'twitterPlayerWidth'>;
 export {};

@@ -1,5 +1,5 @@
 import type { CheerioAPI } from 'cheerio';
-import type { OpenGraphScraperOptions, OgObject } from './types';
+import type { OpenGraphScraperOptions, OgObjectInteral } from './types';
 /**
  * ogs fallbacks
  *
@@ -9,5 +9,5 @@ import type { OpenGraphScraperOptions, OgObject } from './types';
  * @return {object} object with ogs results with updated fallback values
  *
  */
-export declare function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $: CheerioAPI, body: string): OgObject;
+export declare function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOptions, $: CheerioAPI, body: string): OgObjectInteral;
 export default fallback;

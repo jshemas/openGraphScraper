@@ -7,7 +7,7 @@ import type { OpenGraphScraperOptions } from './types';
  *
  */
 export default function setOptionsAndReturnOpenGraphResults(ogsOptions: OpenGraphScraperOptions): Promise<{
-    ogObject: import("./types").OgObject;
+    ogObject: import("./types").OgObjectInteral;
     response: any;
     html: any;
 }>;

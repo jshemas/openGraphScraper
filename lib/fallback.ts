@@ -7,7 +7,7 @@ import {
   isImageTypeValid,
   isUrlValid,
 } from './utils';
-import type { OpenGraphScraperOptions, ImageObject, OgObject } from './types';
+import type { OpenGraphScraperOptions, ImageObject, OgObjectInteral } from './types';
 
 const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
   $(selector).attr(attribute) && ($(selector).attr(attribute)?.length || 0) > 0
@@ -22,7 +22,7 @@ const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
  * @return {object} object with ogs results with updated fallback values
  *
  */
-export function fallback(ogObject: OgObject, options: OpenGraphScraperOptions, $: CheerioAPI, body: string) {
+export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOptions, $: CheerioAPI, body: string) {
   // title fallback
   if (!ogObject.ogTitle) {
     if ($('title').text() && $('title').text().length > 0) {

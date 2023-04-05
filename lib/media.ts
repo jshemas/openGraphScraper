@@ -2,7 +2,7 @@ import fields from './fields';
 import type {
   ImageObject,
   MusicSongObject,
-  OgObject,
+  OgObjectInteral,
   TwitterImageObject,
   TwitterPlayerObject,
   VideoObject,
@@ -82,7 +82,7 @@ const zip = (array: any, ...args: any) => {
  * @return {object} object with ogs results with updated media values
  *
  */
-export function mediaSetup(ogObject: OgObject) {
+export function mediaSetup(ogObject: OgObjectInteral) {
   // sets ogImage property/width/height/type to empty array if one these exists
   if (ogObject.ogImageProperty || ogObject.ogImageWidth || ogObject.ogImageHeight || ogObject.ogImageType) {
     ogObject.ogImageProperty = ogObject.ogImageProperty ? ogObject.ogImageProperty : [];
