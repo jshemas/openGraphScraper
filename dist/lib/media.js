@@ -73,8 +73,15 @@ const zip = (array, ...args) => {
  */
 function mediaSetup(ogObject) {
     // sets ogImage property/width/height/type to empty array if one these exists
-    if (ogObject.ogImageProperty || ogObject.ogImageWidth || ogObject.ogImageHeight || ogObject.ogImageType) {
-        ogObject.ogImageProperty = ogObject.ogImageProperty ? ogObject.ogImageProperty : [];
+    if (ogObject.ogImageSecureURL
+        || ogObject.ogImageURL
+        || ogObject.ogImageProperty
+        || ogObject.ogImageWidth
+        || ogObject.ogImageHeight
+        || ogObject.ogImageType) {
+        ogObject.ogImageSecureURL = ogObject.ogImageSecureURL ? ogObject.ogImageSecureURL : [];
+        ogObject.ogImageURL = ogObject.ogImageURL ? ogObject.ogImageURL : ogObject.ogImageSecureURL; // default to ogImageSecureURL
+        ogObject.ogImageProperty = ogObject.ogImageProperty ? ogObject.ogImageProperty : ogObject.ogImageURL; // default to ogImageURL
         ogObject.ogImageWidth = ogObject.ogImageWidth ? ogObject.ogImageWidth : [];
         ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [];
         ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [];

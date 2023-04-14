@@ -189,9 +189,9 @@ export type OgObjectInteral = {
     ogImage?: ImageObject[];
     ogImageHeight?: string | null[];
     ogImageProperty?: string | null[];
-    ogImageSecureURL?: string;
+    ogImageSecureURL?: string | null[];
     ogImageType?: string | null[];
-    ogImageURL?: string;
+    ogImageURL?: string | null[];
     ogImageWidth?: string | null[];
     ogLocale?: string;
     ogLocaleAlternate?: string;
