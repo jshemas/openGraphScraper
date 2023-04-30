@@ -27,6 +27,54 @@ describe('media', function () {
       alt: 'image/png',
     }]);
   });
+  it('has image with ogImageSecureURL/ogImageURL/ogImageProperty', function () {
+    const ogMedia = media.mediaSetup({
+      ogImageSecureURL: ['https://test.com/logo.png'],
+      ogImageURL: ['http://test.com/logoTwo.png'],
+      ogImageProperty: ['http://test.com/logo.png'],
+      ogImageType: ['image/png'],
+      ogImageWidth: ['300'],
+      ogImageHeight: ['300'],
+    });
+
+    expect(ogMedia.ogImage).to.eql([{
+      url: 'https://test.com/logo.png',
+      width: '300',
+      height: '300',
+      type: 'image/png',
+    }]);
+  });
+  it('has image with ogImageURL/ogImageProperty', function () {
+    const ogMedia = media.mediaSetup({
+      ogImageURL: ['http://test.com/logoTwo.png'],
+      ogImageProperty: ['http://test.com/logo.png'],
+      ogImageType: ['image/png'],
+      ogImageWidth: ['300'],
+      ogImageHeight: ['300'],
+    });
+
+    expect(ogMedia.ogImage).to.eql([{
+      url: 'http://test.com/logo.png',
+      width: '300',
+      height: '300',
+      type: 'image/png',
+    }]);
+  });
+  it('has image with ogImageURL', function () {
+    const ogMedia = media.mediaSetup({
+      ogImageURL: ['http://test.com/logoTwo.png'],
+      ogImageType: ['image/png'],
+      ogImageWidth: ['300'],
+      ogImageHeight: ['300'],
+    });
+
+    expect(ogMedia.ogImage).to.eql([{
+      url: 'http://test.com/logoTwo.png',
+      width: '300',
+      height: '300',
+      type: 'image/png',
+    }]);
+  });
   it('has many images and twitter images', function () {
     const ogMedia = media.mediaSetup({
       ogImageProperty: ['http://test.com/logo_one.png', 'http://test.com/logo_two.png', 'http://test.com/logo_three.png', '', undefined],

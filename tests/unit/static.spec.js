@@ -5,7 +5,6 @@ const ogs = require('../../index');
 const sandbox = sinon.createSandbox();
 const mockAgent = new MockAgent();
 
-// TODO: Should ogVideo/ogImage default to the secure_url if it exists?
 describe('static check meta tags', function () {
   beforeEach(function () {
     setGlobalDispatcher(mockAgent);
@@ -121,7 +120,7 @@ describe('static check meta tags', function () {
         expect(data.result.success).to.be.eql(true);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.ogImage).to.be.eql([{
-          url: 'http://foobar.png',
+          url: 'https://foobar.png',
           width: '1',
           height: '2',
           type: 'image/png',

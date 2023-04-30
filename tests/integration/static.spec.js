@@ -385,9 +385,6 @@ describe('static', function () {
           width: '1920',
           height: '1281',
           type: 'jpg',
-        }, {
-          type: 'jpg',
-          url: 'https://www.cbronline.com/wp-content/uploads/2020/06/technology-4256272_1920.jpg',
         }]);
         expect(result.twitterImage).to.be.eql([{
           url: 'https://www.cbronline.com/wp-content/uploads/2020/06/technology-4256272_1920.jpg',
@@ -1573,7 +1570,7 @@ describe('static', function () {
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.ogUrl).to.be.eql('https://itunes.apple.com/us/app/pokemon-go/id1094591345?mt=8');
         expect(result.ogImage).to.be.eql([{
-          url: 'http://is5.mzstatic.com/image/thumb/Purple71/v4/97/0a/71/970a71f1-9c94-cc61-c960-304191a8dc42/source/1200x630bf.jpg',
+          url: 'https://is5-ssl.mzstatic.com/image/thumb/Purple71/v4/97/0a/71/970a71f1-9c94-cc61-c960-304191a8dc42/source/1200x630bf.jpg',
           width: '1200',
           height: '630',
           type: 'image/jpg',

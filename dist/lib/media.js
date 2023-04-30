@@ -80,8 +80,13 @@ function mediaSetup(ogObject) {
         || ogObject.ogImageHeight
         || ogObject.ogImageType) {
         ogObject.ogImageSecureURL = ogObject.ogImageSecureURL ? ogObject.ogImageSecureURL : [];
-        ogObject.ogImageURL = ogObject.ogImageURL ? ogObject.ogImageURL : ogObject.ogImageSecureURL; // default to ogImageSecureURL
-        ogObject.ogImageProperty = ogObject.ogImageProperty ? ogObject.ogImageProperty : ogObject.ogImageURL; // default to ogImageURL
+        ogObject.ogImageURL = ogObject.ogImageURL ? ogObject.ogImageURL : [];
+        ogObject.ogImageProperty = ogObject.ogImageProperty ? ogObject.ogImageProperty : [];
+        // set ogImageProperty to ogImageSecureURL if it exists
+        // eslint-disable-next-line max-len
+        ogObject.ogImageProperty = (ogObject.ogImageSecureURL.length !== 0) ? ogObject.ogImageSecureURL : ogObject.ogImageProperty;
+        // fall back to ogImageURL if ogImageProperty isn't set
+        ogObject.ogImageProperty = (ogObject.ogImageProperty.length !== 0) ? ogObject.ogImageProperty : ogObject.ogImageURL;
         ogObject.ogImageWidth = ogObject.ogImageWidth ? ogObject.ogImageWidth : [];
         ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [];
         ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [];
