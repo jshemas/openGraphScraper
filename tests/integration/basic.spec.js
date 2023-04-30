@@ -181,7 +181,7 @@ describe('basic', function () {
       expect(result.twitterAppUrlGooglePlay).to.be.eql('vimeo://app.vimeo.com/videos/232889838');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql([{
-        url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
+        url: 'https://i.vimeocdn.com/video/659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d',
         width: '1280',
         height: '720',
         type: 'image/jpg',
