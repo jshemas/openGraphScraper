@@ -1,5 +1,19 @@
 # Change Log
 
+## 6.0.0 (Has breaking changes!)
+
+- Replace `GOT` with [fetch](https://nodejs.org/docs/latest-v18.x/api/globals.html#fetch)!
+- Only supporting `node18` or higher going forward
+- Updated how options work. `Fetch` and `OGS` options no longer being mixed together, users can now set [fetch options](https://developer.mozilla.org/en-US/docs/Web/API/fetch#options) using `options.fetchOptions`
+- Remove any ogImages/ogVideos/twitterImages/twitterPlayers/musicSongs resultes that have no url
+- The `downloadLimit` option has been removed in favor of just using timeouts.
+- Limit ogImages/ogVideos/twitterImages/twitterPlayers/musicSongs to 10 items
+- Adding html to the `SuccessResult` of `OGS`
+- Adding `options.timeout` to set the fetch request timeout. (default is 10 seconds)
+- Remove `null` values from ogImages/ogVideos/twitterImages/twitterPlayers/musicSongs
+- Removing `options.allMedia`, you can just grab the first value of the array for the pervious behavior
+- ogImages/ogVideos/twitterImages/twitterPlayers/musicSongs will always be an array now, you can just grab the first value of the array for the pervious behavior
+
 ## 5.2.3
 
 - Add in declaration files for typescript users.
