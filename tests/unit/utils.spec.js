@@ -218,4 +218,19 @@ describe('utils', function () {
       expect(object).to.eql({ one: 1, two: {} });
     });
   });
+
+  describe('optionSetup', function () {
+    it('when passing nothing into optionSetup', function () {
+      const { options } = utils.optionSetup();
+      expect(options).to.eql({ ogImageFallback: true, onlyGetOpenGraphInfo: false });
+    });
+    it('when passing ogImageFallback into optionSetup', function () {
+      const { options } = utils.optionSetup({ ogImageFallback: false });
+      expect(options).to.eql({ ogImageFallback: false, onlyGetOpenGraphInfo: false });
+    });
+    it('when passing onlyGetOpenGraphInfo into optionSetup', function () {
+      const { options } = utils.optionSetup({ onlyGetOpenGraphInfo: true });
+      expect(options).to.eql({ ogImageFallback: true, onlyGetOpenGraphInfo: true });
+    });
+  });
 });
