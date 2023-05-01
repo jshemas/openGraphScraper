@@ -2,7 +2,7 @@ import { load } from 'cheerio';
 
 import fallback from './fallback';
 import fields from './fields';
-import * as media from './media';
+import mediaSetup from './media';
 
 import type { OgObjectInteral, OpenGraphScraperOptions } from './types';
 
@@ -38,7 +38,7 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
   });
 
   // formats the multiple media values
-  ogObject = media.mediaSetup(ogObject);
+  ogObject = mediaSetup(ogObject);
 
   // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks
   if (!options.onlyGetOpenGraphInfo) {

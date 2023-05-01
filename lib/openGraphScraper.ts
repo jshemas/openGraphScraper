@@ -1,6 +1,11 @@
 import extractMetaTags from './extract';
 import requestAndResultsFormatter from './request';
-import * as utils from './utils';
+import {
+  defaultUrlValidatorSettings,
+  isThisANonHTMLUrl,
+  optionSetup,
+  validateAndFormatURL,
+} from './utils';
 import type { OpenGraphScraperOptions } from './types';
 
 /**
@@ -11,7 +16,7 @@ import type { OpenGraphScraperOptions } from './types';
  *
  */
 export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: OpenGraphScraperOptions) {
-  const { options } = utils.optionSetup(ogsOptions);
+  const { options } = optionSetup(ogsOptions);
 
   if (options.html) {
     if (options.url) throw new Error('Must specify either `url` or `html`, not both');
@@ -20,15 +25,14 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
     return { ogObject, response: { body: options.html }, html: options.html };
   }
 
-  const formattedUrl = utils
-    .validateAndFormatURL(options.url, (options.urlValidatorSettings || utils.defaultUrlValidatorSettings));
+  const formattedUrl = validateAndFormatURL(options.url, (options.urlValidatorSettings || defaultUrlValidatorSettings));
 
   if (!formattedUrl.url) throw new Error('Invalid URL');
 
   options.url = formattedUrl.url;
 
   // trying to limit non html pages
-  if (utils.isThisANonHTMLUrl(options.url)) throw new Error('Must scrape an HTML page');
+  if (isThisANonHTMLUrl(options.url)) throw new Error('Must scrape an HTML page');
 
   // eslint-disable-next-line max-len
   if (options.blacklist && options.blacklist.some((blacklistedHostname) => options.url.includes(blacklistedHostname))) {
