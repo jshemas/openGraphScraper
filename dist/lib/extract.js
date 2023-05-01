@@ -30,7 +30,6 @@ const cheerio_1 = require("cheerio");
 const fallback_1 = __importDefault(require("./fallback"));
 const fields_1 = __importDefault(require("./fields"));
 const media = __importStar(require("./media"));
-const utils = __importStar(require("./utils"));
 /**
  * extract all of the meta tags needed for ogs
  *
@@ -69,9 +68,6 @@ function extractMetaTags(body, options) {
     if (!options.onlyGetOpenGraphInfo) {
         ogObject = (0, fallback_1.default)(ogObject, options, $, body);
     }
-    // TODO: Is this still needed?
-    // removes any undefs
-    ogObject = utils.removeNestedUndefinedValues(ogObject);
     return ogObject;
 }
 exports.default = extractMetaTags;

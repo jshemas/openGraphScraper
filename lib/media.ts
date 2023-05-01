@@ -1,4 +1,5 @@
 import fields from './fields';
+import { removeNestedUndefinedValues } from './utils';
 import type {
   ImageObject,
   MusicSongObject,
@@ -214,6 +215,9 @@ export function mediaSetup(ogObject: OgObjectInteral) {
   if (twitterImages.length) ogObject.twitterImage = twitterImages;
   if (twitterPlayers.length) ogObject.twitterPlayer = twitterPlayers;
   if (musicSongs.length) ogObject.musicSong = musicSongs;
+
+  // removes any undefs
+  ogObject = removeNestedUndefinedValues(ogObject);
 
   return ogObject;
 }

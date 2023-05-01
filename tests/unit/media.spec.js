@@ -94,13 +94,9 @@ describe('media', function () {
       type: 'image/png',
     }, {
       url: 'http://test.com/logo_two.png',
-      width: undefined,
-      height: undefined,
       type: 'image/png',
     }, {
       url: 'http://test.com/logo_three.png',
-      width: undefined,
-      height: undefined,
       type: 'image/png',
     }]);
 
@@ -111,13 +107,9 @@ describe('media', function () {
       alt: 'image/png',
     }, {
       url: 'http://test.com/logo_two.png',
-      width: undefined,
-      height: undefined,
       alt: 'image/png',
     }, {
       url: 'http://test.com/logo_three.png',
-      width: undefined,
-      height: undefined,
       alt: 'image/png',
     }]);
   });
