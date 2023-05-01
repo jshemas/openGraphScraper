@@ -190,6 +190,9 @@ function fallback(ogObject, options, $, body) {
     if (doesElementExist('meta', 'charset', $)) {
         ogObject.charset = $('meta').attr('charset');
     }
+    else if (doesElementExist('head > meta[name="charset"]', 'content', $)) {
+        ogObject.charset = $('head > meta[name="charset"]').attr('content');
+    }
     else if (body) {
         ogObject.charset = chardet_1.default.detect(Buffer.from(body)) || '';
     }

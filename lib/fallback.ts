@@ -173,6 +173,8 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   // set the charset
   if (doesElementExist('meta', 'charset', $)) {
     ogObject.charset = $('meta').attr('charset');
+  } else if (doesElementExist('head > meta[name="charset"]', 'content', $)) {
+    ogObject.charset = $('head > meta[name="charset"]').attr('content');
   } else if (body) {
     ogObject.charset = chardet.detect(Buffer.from(body)) || '';
   }
