@@ -12,13 +12,13 @@ async function requestAndResultsFormatter(options) {
     let response;
     try {
         response = await fetch(options.url, { signal: AbortSignal.timeout((options.timeout || 10) * 1000), ...options.fetchOptions });
+        body = await response.text();
         if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
             throw new Error('Page must return a header content-type with text/');
         }
         if (response && response.status && (response.status.toString().substring(0, 1) === '4' || response.status.toString().substring(0, 1) === '5')) {
             throw new Error('Server has returned a 400/500 error code');
         }
-        body = await response.text();
         if (body === undefined || body === '') {
             throw new Error('Page not found');
         }

@@ -16,6 +16,8 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
       { signal: AbortSignal.timeout((options.timeout || 10) * 1000), ...options.fetchOptions },
     );
 
+    body = await response.text();
+
     if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
       throw new Error('Page must return a header content-type with text/');
     }
@@ -23,7 +25,6 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
       throw new Error('Server has returned a 400/500 error code');
     }
 
-    body = await response.text();
     if (body === undefined || body === '') {
       throw new Error('Page not found');
     }
