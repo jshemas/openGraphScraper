@@ -1,6 +1,7 @@
 const ogs = require('../../index');
 
 // http://httpstat.us keeps going offline, we need to fine a replacement
+// eslint-disable-next-line mocha/no-skipped-tests
 describe.skip('statusCode', function () {
   context('when the site returns', function () {
     it('403', function () {

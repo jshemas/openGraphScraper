@@ -3,8 +3,7 @@ const cheerio = require('cheerio');
 const ogs = require('../../index');
 
 describe('fetch', function () {
-  // eslint-disable-next-line mocha/no-skipped-tests
-  it.skip('setting the fetch headers', function () {
+  it('setting the fetch headers', function () {
     // userAgent is undici by default
     const userAgent = 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.5563.57 Mobile Safari/537.36';
     const headers = new Headers({
@@ -40,7 +39,7 @@ describe('fetch', function () {
         expect(rawUa).to.be.eql(`rawUa: ${userAgent}`);
       });
   });
-  it.skip('setting a timeout', function () {
+  it('setting a timeout', function () {
     return ogs({ url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso', timeout: 3 })
       .then(function () {
         expect().fail('this should not happen');
