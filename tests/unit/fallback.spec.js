@@ -115,30 +115,25 @@ describe('fallback', function () {
     it('when there is a og image already found', function () {
       let ogObject = { ogImage: [{ url: 'bar.png', type: 'png' }] };
       const $ = cheerio.load('<html></html>');
-      ogObject = fallback(ogObject, { ogImageFallback: true }, $);
+      ogObject = fallback(ogObject, { }, $);
       expect(ogObject.ogImage).to.be.eql([{ url: 'bar.png', type: 'png' }]);
       expect(ogObject).to.have.all.keys('ogImage');
     });
     it('when there is a og image already found and is a array', function () {
       let ogObject = { ogImage: [{ url: 'foo.png', type: 'png' }, { url: 'bar.png', type: 'png' }] };
       const $ = cheerio.load('<html></html>');
-      ogObject = fallback(ogObject, { ogImageFallback: true }, $);
+      ogObject = fallback(ogObject, { }, $);
       expect(ogObject.ogImage).to.be.eql([{ url: 'foo.png', type: 'png' }, { url: 'bar.png', type: 'png' }]);
     });
     it('when there is a og image already found and is a array with missing/invalid types', function () {
       let ogObject = { ogImage: [{ url: 'foo.bar' }, { url: 'bar.png' }] };
       const $ = cheerio.load('<html></html>');
-      ogObject = fallback(ogObject, { ogImageFallback: true }, $);
+      ogObject = fallback(ogObject, { }, $);
       expect(ogObject.ogImage).to.be.eql([{ url: 'foo.bar' }, { url: 'bar.png', type: 'png' }]);
-    });
-    it('when there is no og images found and ogImageFallback is set to false', function () {
-      const $ = cheerio.load('<html></html>');
-      const ogObject = fallback({}, { ogImageFallback: false }, $);
-      expect(ogObject).to.be.eql({});
     });
     it('when there is a mix of valid and invalid images', function () {
       const $ = cheerio.load('<html><body><image width=2 height=4 src="foo.png"><image src="bar.png"><image src="foo.bar"><image></body></html>');
-      const ogObject = fallback({}, { ogImageFallback: true }, $);
+      const ogObject = fallback({}, { }, $);
       expect(ogObject.ogImage).to.be.eql([{
         type: 'png', url: 'foo.png', width: 2, height: 4,
       }, {
@@ -148,7 +143,7 @@ describe('fallback', function () {
     });
     it('when image has width/height as strings', function () {
       const $ = cheerio.load('<html><body><image width="2" height="4" src="foo.png"><image></body></html>');
-      const ogObject = fallback({}, { ogImageFallback: true }, $);
+      const ogObject = fallback({}, { }, $);
       expect(ogObject.ogImage).to.be.eql([{
         type: 'png', url: 'foo.png', width: 2, height: 4,
       }]);
@@ -156,7 +151,7 @@ describe('fallback', function () {
     });
     it('when image has invalid width/height as strings', function () {
       const $ = cheerio.load('<html><body><image width="foo" height="bar" src="foo.png"><image></body></html>');
-      const ogObject = fallback({}, { ogImageFallback: true }, $);
+      const ogObject = fallback({}, { }, $);
       expect(ogObject.ogImage).to.be.eql([{
         type: 'png', url: 'foo.png',
       }]);
@@ -164,20 +159,20 @@ describe('fallback', function () {
     });
     it('when there is no og images found and no fallback images', function () {
       const $ = cheerio.load('<html></html>');
-      const ogObject = fallback({}, { ogImageFallback: true }, $);
+      const ogObject = fallback({}, { }, $);
       expect(ogObject).to.be.eql({});
     });
     it('when there is a og image already found but it has no type', function () {
       let ogObject = { ogImage: [{ url: 'bar.png' }] };
       const $ = cheerio.load('<html></html>');
-      ogObject = fallback(ogObject, { ogImageFallback: true }, $);
+      ogObject = fallback(ogObject, { }, $);
       expect(ogObject.ogImage).to.be.eql([{ url: 'bar.png', type: 'png' }]);
       expect(ogObject).to.have.all.keys('ogImage');
     });
     it('when there is a og image already found but it has no type but that type is invalid', function () {
       let ogObject = { ogImage: [{ url: 'bar.foo' }] };
       const $ = cheerio.load('<html></html>');
-      ogObject = fallback(ogObject, { ogImageFallback: true }, $);
+      ogObject = fallback(ogObject, { }, $);
       expect(ogObject.ogImage).to.be.eql([{ url: 'bar.foo' }]);
       expect(ogObject).to.have.all.keys('ogImage');
     });

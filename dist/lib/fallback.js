@@ -51,7 +51,7 @@ function fallback(ogObject, options, $, body) {
         }
     }
     // Get all of images if there is no og:image info
-    if (!ogObject.ogImage && options.ogImageFallback) {
+    if (!ogObject.ogImage) {
         ogObject.ogImage = [];
         $('img').map((index, imageElement) => {
             const source = $(imageElement).attr('src') || '';

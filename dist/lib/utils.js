@@ -115,7 +115,6 @@ exports.removeNestedUndefinedValues = removeNestedUndefinedValues;
  */
 function optionSetup(ogsOptions) {
     const options = {
-        ogImageFallback: true,
         onlyGetOpenGraphInfo: false,
         ...ogsOptions,
     };
