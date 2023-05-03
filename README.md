@@ -20,10 +20,11 @@ const ogs = require('open-graph-scraper');
 const options = { url: 'http://ogp.me/' };
 ogs(options)
   .then((data) => {
-    const { error, result, response } = data;
-    console.log('error:', error);  // This returns true or false. True if there was an error. The error itself is inside the results object.
+    const { error, html, result, response } = data;
+    console.log('error:', error);  // This returns true or false. True if there was an error. The error itself is inside the result object.
+    console.log('html:', html); // This contains the HTML of page
     console.log('result:', result); // This contains all of the Open Graph results
-    console.log('response:', response); // This contains the HTML of page
+    console.log('response:', response); // This contains response from the Fetch API
   })
 ```
 
@@ -35,14 +36,17 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 {
   ogTitle: 'Open Graph protocol',
   ogType: 'website',
-  ogUrl: 'http://ogp.me/',
+  ogUrl: 'https://ogp.me/',
   ogDescription: 'The Open Graph protocol enables any web page to become a rich object in a social graph.',
-  ogImage: {
-    url: 'http://ogp.me/logo.png',
-    width: '300',
-    height: '300',
-    type: 'image/png'
-  },
+  ogImage: [
+    {
+      height: '300',
+      type: 'image/png',
+      url: 'https://ogp.me/logo.png',
+      width: '300'
+    }
+  ],
+  charset: 'utf-8',
   requestUrl: 'http://ogp.me/',
   success: true
 }
@@ -54,13 +58,15 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 |----------------------|----------------------------------------------------------------------------|---------------|----------|
 | url                  | URL of the site.                                                           |               | x        |
 | html                 | You can pass in an HTML string to run ogs on it. (use without options.url) |               |          |
+| fetchOptions         | Options that are used by the Fetch API                                     | {}            |          |
+| timeout              | Request timeout for Fetch (Default is 10 seconds)                          | 10            |          |
 | blacklist            | Pass in an array of sites you don't want ogs to run on.                    | []            |          |
 | onlyGetOpenGraphInfo | Only fetch open graph info and don't fall back on anything else.           | false         |          |
 | ogImageFallback      | Fetch other images if no open graph ones are found.                        | true          |          |
 | customMetaTags       | Here you can define custom meta tags you want to scrape.                   | []            |          |
-| urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/utils.js#L102-L114)          |          |
+| urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/utils.ts#L4-L17)          |          |
 
-Note: `open-graph-scraper` uses [got](https://github.com/sindresorhus/got) for requests and most of [got's options](https://github.com/sindresorhus/got/blob/main/documentation/2-options.md) should work as `open-graph-scraper` options.
+Note: `open-graph-scraper` uses the [Fetch API](https://nodejs.org/dist/latest-v18.x/docs/api/globals.html#fetch) for requests and most of [Fetch's options](https://developer.mozilla.org/en-US/docs/Web/API/fetch#options) should work as `open-graph-scraper`'s `fetchOptions` options.
 
 ## Custom Meta Tag Example
 
@@ -81,52 +87,21 @@ ogs(options)
   })
 ```
 
-## Proxy Example
-
-[Look here](https://github.com/sindresorhus/got/blob/main/documentation/tips.md#proxying) for more info on how to use proxies.
-
-```javascript
-const ogs = require('open-graph-scraper');
-const tunnel = require('tunnel');
-const options = {
-  url: 'https://whatismyipaddress.com/',
-  timeout: {
-    request: 10000,
-  },
-  agent: {
-    // setting proxy agent for https requests
-    https: tunnel.httpsOverHttp({
-      // test proxies can be found here: https://hidemy.name/en/proxy-list/?country=US&type=h#list or http://free-proxy.cz/en/proxylist/country/US/https/ping/all
-      proxy: {
-        host: 'proxy_ip',
-        port: proxyPort,
-        rejectUnauthorized: false,
-      }
-    })
-  }
-};
-ogs(options)
-  .then((data) => {
-    const { error, result, response } = data;
-    console.log('response:', response); // you should see the proxy IP in here
-  })
-```
-
 ## User Agent Example
 
 ```javascript
 const ogs = require("open-graph-scraper");
-const options = {
-  url: "https://www.wikipedia.org/",
-  headers: {
-    "user-agent": "Googlebot/2.1 (+http://www.google.com/bot.html)",
-  },
-};
-ogs(options)
+const userAgent = 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.5563.57 Mobile Safari/537.36';
+const headers = new Headers({
+  'user-agent': userAgent,
+});
+ogs({ url: 'https://www.wikipedia.org/', fetchOptions: { headers } })
   .then((data) => {
-    const { error, result, response } = data;
-    console.log("error:", error); // This returns true or false. True if there was an error. The error itself is inside the results object.
-    console.log("results:", results); // This contains all of the Open Graph results
+    const { error, html, result, response } = data;
+    console.log('error:', error);  // This returns true or false. True if there was an error. The error itself is inside the result object.
+    console.log('html:', html); // This contains the HTML of page
+    console.log('result:', result); // This contains all of the Open Graph results
+    console.log('response:', response); // This contains response from the Fetch API
   })
 ```
 
