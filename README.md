@@ -88,9 +88,11 @@ ogs(options)
 
 ## User Agent Example
 
+The request header is set to [undici](https://github.com/nodejs/undici) by default. Some sites might block this, and changing the `userAgent` might work. If not you can try [using a proxy](https://www.scrapingbee.com/blog/proxy-node-fetch/) for the request and then pass the `html` into `open-graph-scraper`.
+
 ```javascript
 const ogs = require("open-graph-scraper");
-const userAgent = 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.5563.57 Mobile Safari/537.36';
+const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36';
 const headers = new Headers({
   'user-agent': userAgent,
 });
