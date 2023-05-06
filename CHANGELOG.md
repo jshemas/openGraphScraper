@@ -14,6 +14,7 @@
 - Removing `options.allMedia`, you can just grab the first value of the array for the pervious behavior
 - Removing `options.ogImageFallback`, you can set `options.onlyGetOpenGraphInfo` to `true` for the pervious behavior
 - ogImages/ogVideos/twitterImages/twitterPlayers/musicSongs will always be an array now, you can just grab the first value of the array for the pervious behavior
+- Updating Dependencies
 
 ## 5.2.3
 
