@@ -18,17 +18,12 @@ describe('fetch', function () {
         expect(error).to.be.eql(false);
         expect(result.ogTitle).to.be.eql('What\'s my user agent?');
         expect(result.ogDescription).to.be.eql('Detect user-agent, operating system, browser, and device using several libraries, including ua-parser, ua-parser-js, and platform.');
-        expect(result.ogImage).to.be.eql([{
-          url: 'https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png',
-          type: 'png',
-        }]);
         expect(result.requestUrl).to.be.eql('https://www.whatsmyua.info/');
         expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogTitle',
           'ogDescription',
-          'ogImage',
           'requestUrl',
           'charset',
           'success',
