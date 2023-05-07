@@ -1,6 +1,21 @@
 import validator from 'validator';
 import type { ValidatorSettings, OpenGraphScraperOptions } from './types';
 
+export const defaultUrlValidatorSettings = {
+  allow_fragments: true,
+  allow_protocol_relative_urls: false,
+  allow_query_components: true,
+  allow_trailing_dot: false,
+  allow_underscores: false,
+  protocols: ['http', 'https'],
+  require_host: true,
+  require_port: false,
+  require_protocol: false,
+  require_tld: true,
+  require_valid_protocol: true,
+  validate_length: true,
+};
+
 /**
  * Checks if URL is valid
  *
@@ -42,7 +57,7 @@ export function validateAndFormatURL(url: string, urlValidatorSettings: Validato
  *
  */
 export function findImageTypeFromUrl(url: string): string {
-  let type: string = url.split('.').pop();
+  let type: string = url.split('.').pop() || '';
   [type] = type.split('?');
   return type;
 }
@@ -94,90 +109,11 @@ export function removeNestedUndefinedValues(object: { [key: string]: any }): { [
  * @return {object} object with nested options for ogs and got
  *
  */
-export function optionSetupAndSplit(options: OpenGraphScraperOptions):
-{ ogsOptions: OpenGraphScraperOptions, gotOptions: Options } {
-  const ogsOptions: OpenGraphScraperOptions = {
-    allMedia: false,
-    customMetaTags: [],
-    downloadLimit: 1000000,
-    ogImageFallback: true,
+export function optionSetup(ogsOptions: OpenGraphScraperOptions): { options: OpenGraphScraperOptions } {
+  const options: OpenGraphScraperOptions = {
     onlyGetOpenGraphInfo: false,
-    urlValidatorSettings: {
-      allow_fragments: true,
-      allow_protocol_relative_urls: false,
-      allow_query_components: true,
-      allow_trailing_dot: false,
-      allow_underscores: false,
-      protocols: ['http', 'https'],
-      require_host: true,
-      require_port: false,
-      require_protocol: false,
-      require_tld: true,
-      require_valid_protocol: true,
-      validate_length: true,
-    },
-    ...options,
-  };
-  const gotOptions: Options = {
-    decompress: true,
-    followRedirect: true,
-    headers: {},
-    maxRedirects: 10,
-    ...options,
+    ...ogsOptions,
   };
 
-  // remove any OGS options from gotOptions since this will cause errors in got
-  delete gotOptions.allMedia;
-  delete gotOptions.blacklist;
-  delete gotOptions.customMetaTags;
-  delete gotOptions.downloadLimit;
-  delete gotOptions.ogImageFallback;
-  delete gotOptions.onlyGetOpenGraphInfo;
-  delete gotOptions.urlValidatorSettings;
-
-  return { ogsOptions, gotOptions };
-}
-
-interface Options {
-  [key: string]: any;
-}
-
-/**
- * gotClient - limit the size of the content we fetch when performing the request
- * from https://github.com/sindresorhus/got/blob/main/documentation/examples/advanced-creation.js
- *
- * @param {string} downloadLimit - the download limit, will close connection once it is reached
- * @return {function} got client with download limit
- *
- */
-export async function gotClient(downloadLimit: number | false): Promise<any> {
-  // https://github.com/sindresorhus/got/issues/1789
-  // eslint-disable-next-line import/no-unresolved
-  const { got } = await import('got');
-
-  return got.extend({
-    handlers: [
-      (options: any, next: any) => {
-        const promiseOrStream = next(options);
-
-        const destroy = (message: string) => {
-          if (options.isStream) {
-            promiseOrStream.destroy(new Error(message));
-            return;
-          }
-          promiseOrStream.cancel(message);
-        };
-
-        if (typeof downloadLimit === 'number') {
-          promiseOrStream.on('downloadProgress', (progress: { transferred: number, percent: number }) => {
-            if (progress.transferred > downloadLimit && progress.percent !== 1) {
-              destroy(`Exceeded the download limit of ${downloadLimit} bytes`);
-            }
-          });
-        }
-
-        return promiseOrStream;
-      },
-    ],
-  });
+  return { options };
 }

@@ -1,4 +1,18 @@
 import type { ValidatorSettings, OpenGraphScraperOptions } from './types';
+export declare const defaultUrlValidatorSettings: {
+    allow_fragments: boolean;
+    allow_protocol_relative_urls: boolean;
+    allow_query_components: boolean;
+    allow_trailing_dot: boolean;
+    allow_underscores: boolean;
+    protocols: string[];
+    require_host: boolean;
+    require_port: boolean;
+    require_protocol: boolean;
+    require_tld: boolean;
+    require_valid_protocol: boolean;
+    validate_length: boolean;
+};
 /**
  * Checks if URL is valid
  *
@@ -62,20 +76,6 @@ export declare function removeNestedUndefinedValues(object: {
  * @return {object} object with nested options for ogs and got
  *
  */
-export declare function optionSetupAndSplit(options: OpenGraphScraperOptions): {
-    ogsOptions: OpenGraphScraperOptions;
-    gotOptions: Options;
+export declare function optionSetup(ogsOptions: OpenGraphScraperOptions): {
+    options: OpenGraphScraperOptions;
 };
-interface Options {
-    [key: string]: any;
-}
-/**
- * gotClient - limit the size of the content we fetch when performing the request
- * from https://github.com/sindresorhus/got/blob/main/documentation/examples/advanced-creation.js
- *
- * @param {string} downloadLimit - the download limit, will close connection once it is reached
- * @return {function} got client with download limit
- *
- */
-export declare function gotClient(downloadLimit: number | false): Promise<any>;
-export {};

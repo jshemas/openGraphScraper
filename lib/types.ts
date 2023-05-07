@@ -7,34 +7,18 @@
  * @typeParam {string} [html] - You can pass in an HTML string to run ogs on it. (use without options.url)
  * @typeParam {string[]} [blacklist] - Pass in an array of sites you don't want ogs to run on.
  * @typeParam {boolean} [onlyGetOpenGraphInfo] - Only fetch open graph info and don't fall back on anything else.
- * @typeParam {boolean} [ogImageFallback] - Fetch other images if no open graph ones are found.
- * @typeParam {object} [customMetaTags] - Here you can define custom meta tags you want to scrape.
- * @typeParam {boolean} [allMedia] - By default, OGS will only send back the first image/video it finds.
- * @typeParam {number | false} [downloadLimit] - Maximum size of the content downloaded from the server, in bytes.
- * @typeParam {object} [ValidatorSettings] - Sets the options used by validator.js for testing the URL
- * @typeParam {boolean} [decompress] - Set the accept-encoding to `gzip, deflate, br` (default: `true`).
- * @typeParam {boolean} [followRedirect] - Defines if redirect responses should be followed automatically. (default: `true`).
- * @typeParam {Object<string, string>} [headers] - An object containing request headers. Useful for setting the user-agent.
- * @typeParam {number} [maxRedirects] - If exceeded, the request will be aborted and a MaxRedirectsError will be thrown. (default: `10`).
- * @typeParam {object} [retry] - Number of times `og`s will retry the request (default: `2`).
- * @typeParam {object} [timeout] - Timeout of the request.
+ * @typeParam {CustomMetaTags} [customMetaTags] - Here you can define custom meta tags you want to scrape.
+ * @typeParam {Request} [fetchOptions] - The options passed into fetch.
+ * @typeParam {number} [timeout] - Number of seconds before the fetch request ends. (default is 10 seconds)
+ * @typeParam {ValidatorSettings} [urlValidatorSettings] - Sets the options used by validator.js for testing the URL
  */
 export type OpenGraphScraperOptions = {
-  allMedia?: boolean;
   blacklist?: string[];
   customMetaTags?: CustomMetaTags[];
-  decompress?: boolean;
-  downloadLimit?: number | false;
-  followRedirect?: boolean;
-  headers?: {
-    [x: string]: string;
-  };
+  fetchOptions?: Request;
   html?: string;
-  maxRedirects?: number;
-  ogImageFallback?: boolean;
   onlyGetOpenGraphInfo?: boolean;
-  retry?: object;
-  timeout?: object;
+  timeout?: number;
   url: string;
   urlValidatorSettings?: ValidatorSettings;
 };
@@ -89,7 +73,7 @@ export type TwitterImageObject = {
 export type TwitterPlayerObject = {
   height?: number;
   stream?: string;
-  url?: string;
+  url: string;
   width?: number;
 };
 
@@ -113,7 +97,7 @@ export type MusicSongObject = {
   url: string;
 };
 
-export type OgObject = {
+export type OgObjectInteral = {
   alAndroidAppName?: string;
   alAndroidClass?: string;
   alAndroidPackage?: string;
@@ -190,10 +174,11 @@ export type OgObject = {
   musicDuration?: string;
   musicMusician?: string;
   musicReleaseDate?: string;
-  musicSong?: string | MusicSongObject | MusicSongObject[];
+  musicSong?: MusicSongObject[];
   musicSongDisc?: string | null[];
+  musicSongProperty?: string | null[];
   musicSongTrack?: number | null[];
-  musicSongUrl?: string;
+  musicSongUrl?: string | null[];
   ogArticleAuthor?: string;
   ogArticleExpirationTime?: string;
   ogArticleModifiedTime?: string;
@@ -209,11 +194,12 @@ export type OgObject = {
   ogDate?: string;
   ogDescription?: string;
   ogDeterminer?: string;
-  ogImage?: string | ImageObject | ImageObject[];
+  ogImage?: ImageObject[];
   ogImageHeight?: string | null[];
-  ogImageSecureURL?: string;
+  ogImageProperty?: string | null[];
+  ogImageSecureURL?: string | null[];
   ogImageType?: string | null[];
-  ogImageURL?: string;
+  ogImageURL?: string | null[];
   ogImageWidth?: string | null[];
   ogLocale?: string;
   ogLocaleAlternate?: string;
@@ -229,9 +215,10 @@ export type OgObject = {
   ogTitle?: string;
   ogType?: string;
   ogUrl?: string;
-  ogVideo?: string | VideoObject | VideoObject[];
+  ogVideo?: VideoObject[];
   ogVideoActorId?: string;
   ogVideoHeight?: string | null[];
+  ogVideoProperty?: string | null[];
   ogVideoSecureURL?: string;
   ogVideoType?: string | null[];
   ogVideoWidth?: string | null[];
@@ -271,13 +258,15 @@ export type OgObject = {
   twitterCreator?: string;
   twitterCreatorId?: string;
   twitterDescription?: string;
-  twitterImage?: string | TwitterImageObject | TwitterImageObject[];
+  twitterImage?: TwitterImageObject[];
   twitterImageAlt?: string | null[];
   twitterImageHeight?: string | null[];
+  twitterImageProperty?: string | null[];
   twitterImageSrc?: string | null[];
   twitterImageWidth?: string | null[];
-  twitterPlayer?: string | TwitterPlayerObject | TwitterPlayerObject[];
+  twitterPlayer?: TwitterPlayerObject[];
   twitterPlayerHeight?: string | null[];
+  twitterPlayerProperty?: string | null[];
   twitterPlayerStream?: string | null[];
   twitterPlayerStreamContentType?: string;
   twitterPlayerWidth?: string | null[];
@@ -287,3 +276,30 @@ export type OgObject = {
   twitterUrl?: string;
   updatedTime?: string;
 };
+
+export type OgObject = Omit<
+OgObjectInteral,
+'musicSongDisc' |
+'musicSongProperty' |
+'musicSongTrack' |
+'musicSongUrl' |
+'ogImageHeight' |
+'ogImageProperty' |
+'ogImageSecureURL' |
+'ogImageType' |
+'ogImageURL' |
+'ogImageWidth' |
+'ogVideoHeight' |
+'ogVideoProperty' |
+'ogVideoType' |
+'ogVideoWidth' |
+'twitterImageAlt' |
+'twitterImageHeight' |
+'twitterImageProperty' |
+'twitterImageSrc' |
+'twitterImageWidth' |
+'twitterPlayerHeight' |
+'twitterPlayerProperty' |
+'twitterPlayerStream' |
+'twitterPlayerWidth'
+>;

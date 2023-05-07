@@ -1,13 +1,19 @@
-const nock = require('nock');
+const { MockAgent, setGlobalDispatcher } = require('undici');
+
 const ogs = require('../../index');
 
 const sandbox = sinon.createSandbox();
+const mockAgent = new MockAgent();
 
-// TODO: Should ogVideo/ogImage default to the secure_url if it exists?
 describe('static check meta tags', function () {
+  beforeEach(function () {
+    setGlobalDispatcher(mockAgent);
+    mockAgent.disableNetConnect();
+  });
+
   afterEach(function () {
     sandbox.restore();
-    nock.cleanAll();
+    mockAgent.enableNetConnect();
   });
 
   it('check one off tags', function () {
@@ -20,7 +26,9 @@ describe('static check meta tags', function () {
       <meta property="og:type" name="og:type" content="bar" />
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -29,16 +37,14 @@ describe('static check meta tags', function () {
         expect(data.result.ogDescription).to.be.eql('the bar of foo');
         expect(data.result.ogTitle).to.be.eql('foobar');
         expect(data.result.ogType).to.be.eql('bar');
-        expect(data.result.ogImage).to.be.eql({
+        expect(data.result.ogImage).to.be.eql([{
           url: 'https://www.foo.com/bar.jpg',
-          width: null,
-          height: null,
           type: 'jpg',
-        });
+        }]);
         expect(data.result.favicon).to.be.eql('https://bar.com/foo.png');
         expect(data.result.charset).to.be.eql('utf-8');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -53,7 +59,9 @@ describe('static check meta tags', function () {
       <meta property="og:type" content="article">
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -66,8 +74,8 @@ describe('static check meta tags', function () {
         expect(data.result.articleSection).to.be.eql('bar');
         expect(data.result.articleTag).to.be.eql('foobar');
         expect(data.result.ogType).to.be.eql('article');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -78,7 +86,9 @@ describe('static check meta tags', function () {
       <meta property="og:audio" content="http://foo.com">
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -87,8 +97,8 @@ describe('static check meta tags', function () {
         expect(data.result.ogAudio).to.be.eql('http://foo.com');
         expect(data.result.ogAudioSecureURL).to.be.eql('https://foo.com');
         expect(data.result.ogAudioType).to.be.eql('audio/bar');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -101,20 +111,22 @@ describe('static check meta tags', function () {
       <meta property="og:image:secure_url" content="https://foobar.png">
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
         expect(data.result.success).to.be.eql(true);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-        expect(data.result.ogImage).to.be.eql({
-          url: 'http://foobar.png',
+        expect(data.result.ogImage).to.be.eql([{
+          url: 'https://foobar.png',
           width: '1',
           height: '2',
           type: 'image/png',
-        });
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        }]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -137,7 +149,9 @@ describe('static check meta tags', function () {
       <meta property="twitter:title" name="twitter:title" content="the foo of bar" />
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -154,20 +168,16 @@ describe('static check meta tags', function () {
         expect(data.result.twitterDescription).to.be.eql('the bar of foo');
         expect(data.result.twitterSite).to.be.eql('@foobar');
         expect(data.result.twitterTitle).to.be.eql('the foo of bar');
-        expect(data.result.twitterPlayer).to.be.eql({
+        expect(data.result.twitterPlayer).to.be.eql([{
           url: 'https://www.bar.com',
           width: '1',
           height: '2',
-          stream: null,
-        });
-        expect(data.result.twitterImage).to.be.eql({
+        }]);
+        expect(data.result.twitterImage).to.be.eql([{
           url: 'https://www.foo.com/bar.jpg',
-          width: null,
-          height: null,
-          alt: null,
-        });
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        }]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -180,20 +190,22 @@ describe('static check meta tags', function () {
       <meta property="og:video:width" content="1">
     </head></html>`;
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
         expect(data.result.success).to.be.eql(true);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-        expect(data.result.ogVideo).to.be.eql({
+        expect(data.result.ogVideo).to.be.eql([{
           url: 'http://www.foo.com',
           width: '1',
           height: '2',
           type: 'text/bar',
-        });
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        }]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -214,7 +226,9 @@ describe('static check meta tags', function () {
     </head></html>`;
     /* eslint-enable max-len */
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -228,22 +242,17 @@ describe('static check meta tags', function () {
         expect(data.result.twitterSite).to.be.eql('@RakutenJP');
         expect(data.result.twitterTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
         expect(data.result.twitterDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
-        expect(data.result.ogImage).to.be.eql({
+        expect(data.result.ogImage).to.be.eql([{
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
-          width: null,
-          height: null,
           type: 'png',
-        });
-        expect(data.result.twitterImage).to.be.eql({
+        }]);
+        expect(data.result.twitterImage).to.be.eql([{
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
-          width: null,
-          height: null,
-          alt: null,
-        });
+        }]);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('utf-8');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -264,7 +273,9 @@ describe('static check meta tags', function () {
     </head></html>`;
     /* eslint-enable max-len */
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -278,22 +289,17 @@ describe('static check meta tags', function () {
         expect(data.result.twitterSite).to.be.eql('@RakutenJP');
         expect(data.result.twitterTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
         expect(data.result.twitterDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
-        expect(data.result.ogImage).to.be.eql({
+        expect(data.result.ogImage).to.be.eql([{
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
-          width: null,
-          height: null,
           type: 'png',
-        });
-        expect(data.result.twitterImage).to.be.eql({
+        }]);
+        expect(data.result.twitterImage).to.be.eql([{
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
-          width: null,
-          height: null,
-          alt: null,
-        });
+        }]);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('sjis');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 
@@ -314,7 +320,9 @@ describe('static check meta tags', function () {
     </head></html>`;
     /* eslint-enable max-len */
 
-    nock('http://www.test.com').get('/').reply(200, metaHTML);
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -328,22 +336,17 @@ describe('static check meta tags', function () {
         expect(data.result.twitterSite).to.be.eql('@RakutenJP');
         expect(data.result.twitterTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
         expect(data.result.twitterDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
-        expect(data.result.ogImage).to.be.eql({
+        expect(data.result.ogImage).to.be.eql([{
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
-          width: null,
-          height: null,
           type: 'png',
-        });
-        expect(data.result.twitterImage).to.be.eql({
+        }]);
+        expect(data.result.twitterImage).to.be.eql([{
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
-          width: null,
-          height: null,
-          alt: null,
-        });
+        }]);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.charset).to.be.eql('euc-jp');
-        expect(data.response.body).to.be.eql(metaHTML);
-        expect(data.response.rawBody).to.be.eql(Buffer.from(metaHTML, 'utf8'));
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
       });
   });
 });

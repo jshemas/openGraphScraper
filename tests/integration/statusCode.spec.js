@@ -1,15 +1,11 @@
 const ogs = require('../../index');
 
 // http://httpstat.us keeps going offline, we need to fine a replacement
+// eslint-disable-next-line mocha/no-skipped-tests
 describe.skip('statusCode', function () {
   context('when the site returns', function () {
     it('403', function () {
-      return ogs({
-        url: 'http://httpstat.us/403',
-        timeout: {
-          request: 10000,
-        },
-      })
+      return ogs({ url: 'http://httpstat.us/403' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -19,7 +15,8 @@ describe.skip('statusCode', function () {
           expect(error).to.be.eql(true);
           expect(result.success).to.be.eql(false);
           expect(result.requestUrl).to.be.eql('http://httpstat.us/403');
-          expect(result.error).to.eql('Response code 403 (Forbidden)');
+          expect(result.error).to.eql('Server has returned a 400/500 error code');
+          expect(result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(result).to.have.all.keys(
             'error',
             'errorDetails',
@@ -30,12 +27,7 @@ describe.skip('statusCode', function () {
         });
     });
     it('500', function () {
-      return ogs({
-        url: 'http://httpstat.us/500',
-        timeout: {
-          request: 10000,
-        },
-      })
+      return ogs({ url: 'http://httpstat.us/500' })
         .then(function () {
           expect().fail('this should not happen');
         })
@@ -45,8 +37,8 @@ describe.skip('statusCode', function () {
           expect(error).to.be.eql(true);
           expect(result.success).to.be.eql(false);
           expect(result.requestUrl).to.be.eql('http://httpstat.us/500');
-          expect(result.error).to.eql('Web server is returning error');
-          expect(result.errorDetails.toString()).to.eql('Error: Web server is returning error');
+          expect(result.error).to.eql('Server has returned a 400/500 error code');
+          expect(result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
           expect(result).to.have.all.keys(
             'error',
             'errorDetails',

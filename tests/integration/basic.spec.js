@@ -1,11 +1,11 @@
-import * as importOgs from '../../index';
+import ogs from '../../index';
 
 const util = require('util');
-const ogs = require('../../index');
+const ogsRequire = require('../../index');
 
 describe('basic', function () {
   it('using promises should return valid data', function () {
-    return ogs({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
+    return ogsRequire({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -13,12 +13,12 @@ describe('basic', function () {
       expect(result.ogType).to.be.eql('website');
       expect(result.ogUrl).to.be.eql('https://ogp.me/');
       expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
-      expect(result.ogImage).to.be.eql({
+      expect(result.ogImage).to.be.eql([{
         url: 'https://ogp.me/logo.png',
         width: '300',
         height: '300',
         type: 'image/png',
-      });
+      }]);
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
@@ -32,11 +32,11 @@ describe('basic', function () {
         'charset',
         'success',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('using await should return valid data', async function () {
-    const { error, result, response } = await ogs({ url: 'https://ogp.me/' });
+    const { error, result, response } = await ogsRequire({ url: 'https://ogp.me/' });
     console.log('error:', error);
     console.log('result:', result);
     expect(error).to.be.eql(false);
@@ -44,12 +44,12 @@ describe('basic', function () {
     expect(result.ogType).to.be.eql('website');
     expect(result.ogUrl).to.be.eql('https://ogp.me/');
     expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
-    expect(result.ogImage).to.be.eql({
+    expect(result.ogImage).to.be.eql([{
       url: 'https://ogp.me/logo.png',
       width: '300',
       height: '300',
       type: 'image/png',
-    });
+    }]);
     expect(result.requestUrl).to.be.eql('https://ogp.me/');
     expect(result.charset).to.be.eql('utf-8');
     expect(result.success).to.be.eql(true);
@@ -63,10 +63,10 @@ describe('basic', function () {
       'charset',
       'success',
     );
-    expect(response).to.be.an('object').and.to.not.be.empty;
+    expect(response).to.be.an('Response');
   });
   it('using callbackify should return valid data', function () {
-    const ogsCallback = util.callbackify(ogs);
+    const ogsCallback = util.callbackify(ogsRequire);
     return ogsCallback({
       url: 'https://ogp.me/',
     }, function (error, response) {
@@ -77,21 +77,21 @@ describe('basic', function () {
       expect(response.result.ogType).to.be.eql('website');
       expect(response.result.ogUrl).to.be.eql('https://ogp.me/');
       expect(response.result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
-      expect(response.result.ogImage).to.be.eql({
+      expect(response.result.ogImage).to.be.eql([{
         url: 'https://ogp.me/logo.png',
         width: '300',
         height: '300',
         type: 'image/png',
-      });
+      }]);
       expect(response.result.requestUrl).to.be.eql('https://ogp.me/');
       expect(response.result.charset).to.be.eql('utf-8');
       expect(response.result.success).to.be.eql(true);
       expect(response.result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'success');
-      expect(response.response).to.be.an('object').and.to.not.be.empty;
+      expect(response.response).to.be.an('Response');
     });
   });
   it('using ogs import should still work', async function () {
-    return importOgs({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
+    return ogs({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -99,12 +99,12 @@ describe('basic', function () {
       expect(result.ogType).to.be.eql('website');
       expect(result.ogUrl).to.be.eql('https://ogp.me/');
       expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
-      expect(result.ogImage).to.be.eql({
+      expect(result.ogImage).to.be.eql([{
         url: 'https://ogp.me/logo.png',
         width: '300',
         height: '300',
         type: 'image/png',
-      });
+      }]);
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
@@ -118,11 +118,11 @@ describe('basic', function () {
         'charset',
         'success',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {
-    return ogs({ url: 'https://www.namecheap.com/' }).then(function ({ error, result, response }) {
+    return ogsRequire({ url: 'https://www.namecheap.com/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -146,11 +146,11 @@ describe('basic', function () {
         'charset',
         'success',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('vimeo.com should return open graph data', function () {
-    return ogs({ url: 'https://vimeo.com/232889838' }).then(function ({ error, result, response }) {
+    return ogsRequire({ url: 'https://vimeo.com/232889838' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -180,32 +180,28 @@ describe('basic', function () {
       expect(result.twitterAppIdGooglePlay).to.be.eql('com.vimeo.android.videoapp');
       expect(result.twitterAppUrlGooglePlay).to.be.eql('vimeo://app.vimeo.com/videos/232889838');
       expect(result.ogLocale).to.be.eql('en');
-      expect(result.ogImage).to.be.eql({
-        url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
+      expect(result.ogImage).to.be.eql([{
+        url: 'https://i.vimeocdn.com/video/659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d',
         width: '1280',
         height: '720',
         type: 'image/jpg',
-      });
+      }]);
       // TODO: url keeps changing, this test case should move to static test suit
-      // expect(result.ogVideo).to.be.eql({
+      // expect(result.ogVideo).to.be.eql([{
       //   url: 'https://player.vimeo.com/video/232889838',
       //   width: '1280',
       //   height: '720',
       //   type: 'text/html',
-      // });
-      expect(result.twitterImage).to.be.eql({
-        url: 'https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d_1280x720&src1=https%3A%2F%2Ff.vimeocdn.com%2Fimages_v6%2Fshare%2Fplay_icon_overlay.png',
-        width: null,
-        height: null,
-        alt: null,
-      });
+      // }]);
+      expect(result.twitterImage).to.be.eql([{
+        url: 'https://i.vimeocdn.com/video/659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d',
+      }]);
       // TODO: url keeps changing, this test case should move to static test suit
-      // expect(result.twitterPlayer).to.be.eql({
+      // expect(result.twitterPlayer).to.be.eql([{
       //   url: 'https://player.vimeo.com/video/232889838',
       //   width: '1280',
       //   height: '720',
-      //   stream: null,
-      // });
+      // }]);
       expect(result.requestUrl).to.be.eql('https://vimeo.com/232889838');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
@@ -245,11 +241,11 @@ describe('basic', function () {
         'twitterSite',
         'twitterTitle',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('mozilla.org should return open graph data with one title', function () {
-    return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mozilla' }).then(function ({ error, result, response }) {
+    return ogsRequire({ url: 'https://jshemas.github.io/openGraphScraperPages/mozilla' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -259,12 +255,10 @@ describe('basic', function () {
       expect(result.ogDate).to.be.eql('2022-10-31T06:22:03.000Z');
       expect(result.favicon).to.be.eql('/favicon-48x48.cbbd161b.png');
       expect(result.charset).to.be.eql('utf-8');
-      expect(result.ogImage).to.be.eql({
+      expect(result.ogImage).to.be.eql([{
         url: 'https://developer.mozilla.org/mdn-social-share.cd6c4a5a.png',
-        width: null,
-        height: null,
         type: 'png',
-      });
+      }]);
       expect(result.twitterCard).to.be.eql('summary_large_image');
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mozilla');
       expect(result.success).to.be.eql(true);
@@ -281,29 +275,7 @@ describe('basic', function () {
         'success',
         'twitterCard',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
-  });
-  it('should error out if the page is too large', function () {
-    return ogs({ url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso' })
-      .then(function () {
-        expect().fail('this should not happen');
-      })
-      .catch(function ({ error, result, response }) {
-        console.log('error:', error);
-        console.log('result:', result);
-        expect(error).to.be.eql(true);
-        expect(result.success).to.be.eql(false);
-        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso');
-        expect(result.error).to.eql('Exceeded the download limit of 1000000 bytes');
-        expect(result.errorDetails.toString()).to.eql('Error: Exceeded the download limit of 1000000 bytes');
-        expect(result).to.have.all.keys(
-          'error',
-          'errorDetails',
-          'requestUrl',
-          'success',
-        );
-        expect(response).to.eql(undefined);
-      });
   });
 });

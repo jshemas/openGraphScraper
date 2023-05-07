@@ -22,12 +22,12 @@ describe('image', function () {
       expect(result.twitterCard).to.be.eql('photo');
       expect(result.twitterDescription).to.be.eql('____________________ Press "L" to view on black Press "F" to favor Share, if you like :)    You can leave a comment, if you like :)    Not to use or publish without permission! © Christoph Wagner Photographie');
       expect(result.twitterAppUrliPhone).to.be.eql('flickr://flickr.com/photos/travelgraph/18791678505/');
-      expect(result.ogImage).to.be.eql({
+      expect(result.ogImage).to.be.eql([{
         url: 'https://c1.staticflickr.com/1/499/18791678505_5886fefcf7_b.jpg',
         width: '1024',
         height: '375',
         type: 'jpg',
-      });
+      }]);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/flickr');
       expect(result.charset).to.be.eql('UTF-8');
       expect(result.success).to.be.eql(true);
@@ -53,7 +53,7 @@ describe('image', function () {
         'twitterDescription',
         'twitterSite',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('Test getting the description and images from meta tags', function () {
@@ -69,10 +69,10 @@ describe('image', function () {
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogUrl).to.be.eql('https://web.archive.org/web/20170608000236/https://twitter.com/i/hello');
       expect(result.favicon).to.be.eql('//web.archive.org/web/20170608000236im_/https://abs.twimg.com/favicons/favicon.ico');
-      expect(result.ogImage.length).to.be.eql(45);
+      expect(result.ogImage.length).to.be.eql(10);
       let imageFound = false;
       for (let i = 0; i < result.ogImage.length; i += 1) {
-        if (result.ogImage[i].url === 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/media/DBwS1I_W0AACC8s.jpg') {
+        if (result.ogImage[i].url === 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/media/CljfeELUoAUskW4.jpg') {
           imageFound = true;
         }
       }
@@ -88,7 +88,7 @@ describe('image', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
 });

@@ -1,7 +1,24 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gotClient = exports.optionSetupAndSplit = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = void 0;
-const validator_1 = require("validator");
+exports.optionSetup = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = exports.defaultUrlValidatorSettings = void 0;
+const validator_1 = __importDefault(require("validator"));
+exports.defaultUrlValidatorSettings = {
+    allow_fragments: true,
+    allow_protocol_relative_urls: false,
+    allow_query_components: true,
+    allow_trailing_dot: false,
+    allow_underscores: false,
+    protocols: ['http', 'https'],
+    require_host: true,
+    require_port: false,
+    require_protocol: false,
+    require_tld: true,
+    require_valid_protocol: true,
+    validate_length: true,
+};
 /**
  * Checks if URL is valid
  *
@@ -42,7 +59,7 @@ exports.validateAndFormatURL = validateAndFormatURL;
  *
  */
 function findImageTypeFromUrl(url) {
-    let type = url.split('.').pop();
+    let type = url.split('.').pop() || '';
     [type] = type.split('?');
     return type;
 }
@@ -96,80 +113,11 @@ exports.removeNestedUndefinedValues = removeNestedUndefinedValues;
  * @return {object} object with nested options for ogs and got
  *
  */
-function optionSetupAndSplit(options) {
-    const ogsOptions = {
-        allMedia: false,
-        customMetaTags: [],
-        downloadLimit: 1000000,
-        ogImageFallback: true,
+function optionSetup(ogsOptions) {
+    const options = {
         onlyGetOpenGraphInfo: false,
-        urlValidatorSettings: {
-            allow_fragments: true,
-            allow_protocol_relative_urls: false,
-            allow_query_components: true,
-            allow_trailing_dot: false,
-            allow_underscores: false,
-            protocols: ['http', 'https'],
-            require_host: true,
-            require_port: false,
-            require_protocol: false,
-            require_tld: true,
-            require_valid_protocol: true,
-            validate_length: true,
-        },
-        ...options,
+        ...ogsOptions,
     };
-    const gotOptions = {
-        decompress: true,
-        followRedirect: true,
-        headers: {},
-        maxRedirects: 10,
-        ...options,
-    };
-    // remove any OGS options from gotOptions since this will cause errors in got
-    delete gotOptions.allMedia;
-    delete gotOptions.blacklist;
-    delete gotOptions.customMetaTags;
-    delete gotOptions.downloadLimit;
-    delete gotOptions.ogImageFallback;
-    delete gotOptions.onlyGetOpenGraphInfo;
-    delete gotOptions.urlValidatorSettings;
-    return { ogsOptions, gotOptions };
+    return { options };
 }
-exports.optionSetupAndSplit = optionSetupAndSplit;
-/**
- * gotClient - limit the size of the content we fetch when performing the request
- * from https://github.com/sindresorhus/got/blob/main/documentation/examples/advanced-creation.js
- *
- * @param {string} downloadLimit - the download limit, will close connection once it is reached
- * @return {function} got client with download limit
- *
- */
-async function gotClient(downloadLimit) {
-    // https://github.com/sindresorhus/got/issues/1789
-    // eslint-disable-next-line import/no-unresolved
-    const { got } = await import('got');
-    return got.extend({
-        handlers: [
-            (options, next) => {
-                const promiseOrStream = next(options);
-                const destroy = (message) => {
-                    if (options.isStream) {
-                        promiseOrStream.destroy(new Error(message));
-                        return;
-                    }
-                    promiseOrStream.cancel(message);
-                };
-                if (typeof downloadLimit === 'number') {
-                    promiseOrStream.on('downloadProgress', (progress) => {
-                        if (progress.transferred > downloadLimit && progress.percent !== 1) {
-                            destroy(`Exceeded the download limit of ${downloadLimit} bytes`);
-                        }
-                    });
-                }
-                return promiseOrStream;
-            },
-        ],
-    });
-}
-exports.gotClient = gotClient;
+exports.optionSetup = optionSetup;

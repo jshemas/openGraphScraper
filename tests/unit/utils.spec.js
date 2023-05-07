@@ -164,6 +164,10 @@ describe('utils', function () {
       const type = utils.findImageTypeFromUrl('image');
       expect(type).to.eql('image');
     });
+    it('empty string', function () {
+      const type = utils.findImageTypeFromUrl('');
+      expect(type).to.eql('');
+    });
   });
 
   describe('isImageTypeValid', function () {
@@ -212,6 +216,17 @@ describe('utils', function () {
     it('when there is a nested undef value', function () {
       const object = utils.removeNestedUndefinedValues({ one: 1, two: { three: undefined } });
       expect(object).to.eql({ one: 1, two: {} });
+    });
+  });
+
+  describe('optionSetup', function () {
+    it('when passing nothing into optionSetup', function () {
+      const { options } = utils.optionSetup();
+      expect(options).to.eql({ onlyGetOpenGraphInfo: false });
+    });
+    it('when passing onlyGetOpenGraphInfo into optionSetup', function () {
+      const { options } = utils.optionSetup({ onlyGetOpenGraphInfo: true });
+      expect(options).to.eql({ onlyGetOpenGraphInfo: true });
     });
   });
 });

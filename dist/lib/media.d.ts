@@ -1,4 +1,4 @@
-import type { OgObject, OpenGraphScraperOptions } from './types';
+import type { OgObjectInteral } from './types';
 /**
  * formats the multiple media values
  *
@@ -7,5 +7,5 @@ import type { OgObject, OpenGraphScraperOptions } from './types';
  * @return {object} object with ogs results with updated media values
  *
  */
-export declare function mediaSetup(ogObject: OgObject, options: OpenGraphScraperOptions): OgObject;
+export declare function mediaSetup(ogObject: OgObjectInteral): OgObjectInteral;
 export default mediaSetup;

@@ -1,9 +1,16 @@
 import chardet from 'chardet';
-import { findImageTypeFromUrl, isImageTypeValid, isUrlValid } from './utils';
-import type { OpenGraphScraperOptions } from './types';
+import type { CheerioAPI } from 'cheerio';
 
-const doesElementExist = (selector, attribute, $) => (
-  $(selector).attr(attribute) && $(selector).attr(attribute).length > 0
+import {
+  defaultUrlValidatorSettings,
+  findImageTypeFromUrl,
+  isImageTypeValid,
+  isUrlValid,
+} from './utils';
+import type { OpenGraphScraperOptions, ImageObject, OgObjectInteral } from './types';
+
+const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
+  $(selector).attr(attribute) && ($(selector).attr(attribute)?.length || 0) > 0
 );
 
 /**
@@ -15,12 +22,12 @@ const doesElementExist = (selector, attribute, $) => (
  * @return {object} object with ogs results with updated fallback values
  *
  */
-export function fallback(ogObject, options: OpenGraphScraperOptions, $, rawBody) {
+export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOptions, $: CheerioAPI, body: string) {
   // title fallback
   if (!ogObject.ogTitle) {
     if ($('title').text() && $('title').text().length > 0) {
       ogObject.ogTitle = $('title').first().text();
-    } else if ($('head > meta[name="title"]').attr('content') && $('head > meta[name="title"]').attr('content').length > 0) {
+    } else if ($('head > meta[name="title"]').attr('content') && ($('head > meta[name="title"]').attr('content')?.length || 0) > 0) {
       ogObject.ogTitle = $('head > meta[name="title"]').attr('content');
     } else if ($('.post-title').text() && $('.post-title').text().length > 0) {
       ogObject.ogTitle = $('.post-title').text();
@@ -45,50 +52,49 @@ export function fallback(ogObject, options: OpenGraphScraperOptions, $, rawBody)
   }
 
   // Get all of images if there is no og:image info
-  if (!ogObject.ogImage && options.ogImageFallback) {
+  if (!ogObject.ogImage) {
     ogObject.ogImage = [];
     $('img').map((index, imageElement) => {
-      if (doesElementExist(imageElement, 'src', $)) {
-        const source: string = $(imageElement).attr('src');
-        const type = findImageTypeFromUrl(source);
-        if (!isUrlValid(source, options.urlValidatorSettings) || !isImageTypeValid(type)) return false;
-        ogObject.ogImage.push({
-          url: source,
-          width: $(imageElement).attr('width') || null,
-          height: $(imageElement).attr('height') || null,
-          type,
-        });
+      const source: string = $(imageElement).attr('src') || '';
+      if (!source) return false;
+      const type = findImageTypeFromUrl(source);
+      if (
+        !isUrlValid(source, (options.urlValidatorSettings || defaultUrlValidatorSettings)) || !isImageTypeValid(type)
+      ) return false;
+      const fallbackImage: ImageObject = {
+        url: source,
+        type,
+      };
+      if ($(imageElement).attr('width') && Number($(imageElement).attr('width'))) fallbackImage.width = Number($(imageElement).attr('width'));
+      if ($(imageElement).attr('height') && Number($(imageElement).attr('height'))) fallbackImage.height = Number($(imageElement).attr('height'));
+      ogObject.ogImage?.push(fallbackImage);
+      return false;
+    });
+    ogObject.ogImage = ogObject.ogImage
+      .filter((value) => value.url !== undefined && value.url !== '')
+      .filter((value, index) => index < 10);
+    if (ogObject.ogImage.length === 0) delete ogObject.ogImage;
+  } else if (ogObject.ogImage) {
+    ogObject.ogImage.map((image) => {
+      if (image.url && !image.type) {
+        const type = findImageTypeFromUrl(image.url);
+        if (isImageTypeValid(type)) image.type = type;
       }
       return false;
     });
-    if (ogObject.ogImage.length === 0) delete ogObject.ogImage;
-  } else if (ogObject.ogImage) {
-    // if there isn't a type, try to pull it from the URL
-    if (Array.isArray(ogObject.ogImage)) {
-      ogObject.ogImage.map((image) => {
-        if (image.url && !image.type) {
-          const type = findImageTypeFromUrl(image.url);
-          if (isImageTypeValid(type)) image.type = type;
-        }
-        return false;
-      });
-    } else if (ogObject.ogImage.url && !ogObject.ogImage.type) {
-      const type = findImageTypeFromUrl(ogObject.ogImage.url);
-      if (isImageTypeValid(type)) ogObject.ogImage.type = type;
-    }
   }
 
   // audio fallback
   if (!ogObject.ogAudioURL && !ogObject.ogAudioSecureURL) {
-    const audioElementValue: string = $('audio').attr('src');
-    const audioSourceElementValue: string = $('audio > source').attr('src');
+    const audioElementValue: string = $('audio').attr('src') || '';
+    const audioSourceElementValue: string = $('audio > source').attr('src') || '';
     if (doesElementExist('audio', 'src', $)) {
       if (audioElementValue.startsWith('https')) {
         ogObject.ogAudioSecureURL = audioElementValue;
       } else {
         ogObject.ogAudioURL = audioElementValue;
       }
-      const audioElementTypeValue: string = $('audio').attr('type');
+      const audioElementTypeValue: string = $('audio').attr('type') || '';
       if (!ogObject.ogAudioType && doesElementExist('audio', 'type', $)) ogObject.ogAudioType = audioElementTypeValue;
     } else if (doesElementExist('audio > source', 'src', $)) {
       if (audioSourceElementValue.startsWith('https')) {
@@ -96,7 +102,7 @@ export function fallback(ogObject, options: OpenGraphScraperOptions, $, rawBody)
       } else {
         ogObject.ogAudioURL = audioSourceElementValue;
       }
-      const audioSourceElementTypeValue: string = $('audio > source').attr('type');
+      const audioSourceElementTypeValue: string = $('audio > source').attr('type') || '';
       if (!ogObject.ogAudioType && doesElementExist('audio > source', 'type', $)) ogObject.ogAudioType = audioSourceElementTypeValue;
     }
   }
@@ -167,8 +173,10 @@ export function fallback(ogObject, options: OpenGraphScraperOptions, $, rawBody)
   // set the charset
   if (doesElementExist('meta', 'charset', $)) {
     ogObject.charset = $('meta').attr('charset');
-  } else if (rawBody) {
-    ogObject.charset = chardet.detect(rawBody);
+  } else if (doesElementExist('head > meta[name="charset"]', 'content', $)) {
+    ogObject.charset = $('head > meta[name="charset"]').attr('content');
+  } else if (body) {
+    ogObject.charset = chardet.detect(Buffer.from(body)) || '';
   }
 
   return ogObject;

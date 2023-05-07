@@ -2,7 +2,7 @@ const ogs = require('../../index');
 
 describe('video', function () {
   it('Test Youtube Video - Should Return correct Open Graph Info', function () {
-    return ogs({ url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', downloadLimit: false }).then(function ({ error, result, response }) {
+    return ogs({ url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -34,30 +34,26 @@ describe('video', function () {
       expect(result.twitterAppNameGooglePlay).to.be.eql('YouTube');
       expect(result.twitterAppIdGooglePlay).to.be.eql('com.google.android.youtube');
       expect(result.twitterAppUrlGooglePlay).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-      expect(result.ogImage).to.be.eql({
+      expect(result.ogImage).to.be.eql([{
         url: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
         width: '1280',
         height: '720',
         type: 'jpg',
-      });
-      expect(result.ogVideo).to.be.eql({
+      }]);
+      expect(result.ogVideo).to.be.eql([{
         url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         width: '1280',
         height: '720',
         type: 'text/html',
-      });
-      expect(result.twitterImage).to.be.eql({
+      }]);
+      expect(result.twitterImage).to.be.eql([{
         url: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
-        width: null,
-        height: null,
-        alt: null,
-      });
-      expect(result.twitterPlayer).to.be.eql({
+      }]);
+      expect(result.twitterPlayer).to.be.eql([{
         url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
         width: '1280',
         height: '720',
-        stream: null,
-      });
+      }]);
       expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.charset).to.be.eql('UTF-8');
       expect(result.success).to.be.eql(true);
@@ -100,7 +96,7 @@ describe('video', function () {
         'twitterTitle',
         'twitterUrl',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('Test Twitch.tv Video - Should Return correct Open Graph Info', function () {
@@ -116,7 +112,7 @@ describe('video', function () {
       expect(result.ogUrl).to.be.eql('https://www.twitch.tv/videos/632214184');
       expect(result.favicon).to.be.eql('https://static.twitchcdn.net/assets/favicon-32-d6025c14e900565d6177.png');
       expect(result.ogType).to.be.oneOf(['website', 'video.other']);
-      expect(result.ogImage).to.be.to.be.an('object').and.to.not.be.empty;
+      expect(result.ogImage).to.be.to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitch.html');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
@@ -134,7 +130,7 @@ describe('video', function () {
         'charset',
         'twitterSite',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
 });

@@ -20,18 +20,13 @@ describe('encoding', function () {
         expect(result.twitterSite).to.be.eql('@RakutenJP');
         expect(result.twitterTitle).to.be.eql('【楽天市場】Shopping is Entertainment! ： インターネット最大級の通信販売、通販オンラインショッピングコミュニティ');
         expect(result.twitterDescription).to.be.eql('楽天市場はインターネット通販が楽しめる総合ショッピングモール。楽天スーパーポイントがどんどん貯まる！使える！毎日お得なクーポンも。あす楽利用で翌日にお届け。食品から家電、ファッション、ベビー用品、コスメまで、充実の品揃え。');
-        expect(result.ogImage).to.be.eql({
+        expect(result.ogImage).to.be.eql([{
           url: 'https://web.archive.org/web/20170913045814im_/https://r.r10s.jp/com/img/home/top/ogp.png',
-          width: null,
-          height: null,
           type: 'png',
-        });
-        expect(result.twitterImage).to.be.eql({
+        }]);
+        expect(result.twitterImage).to.be.eql([{
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
-          width: null,
-          height: null,
-          alt: null,
-        });
+        }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rakuten');
         expect(result.charset).to.be.eql('euc-jp');
         expect(result.success).to.be.eql(true);
@@ -53,7 +48,7 @@ describe('encoding', function () {
           'twitterSite',
           'twitterTitle',
         );
-        expect(response).to.be.an('object').and.to.not.be.empty;
+        expect(response).to.be.an('Response');
       });
     });
     it('360', function () {
@@ -68,20 +63,14 @@ describe('encoding', function () {
           expect(result.ogImage).to.be.eql([
             {
               url: 'https://p2.ssl.qhimg.com/t010b24b058c4437785.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://p2.ssl.qhimg.com/t01b807e29a3b0c7153.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://p2.ssl.qhimg.com/t018cc20cb079beab73.png',
-              width: null,
-              height: null,
               type: 'png',
             },
           ]);
@@ -98,7 +87,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('aliexpress', function () {
@@ -120,12 +109,10 @@ describe('encoding', function () {
           expect(result.ogType).to.be.eql('product');
           expect(result.ogDescription).to.be.eql('Smarter Shopping, Better Living!  Aliexpress.com');
           expect(result.ogSiteName).to.be.eql('aliexpress.com');
-          expect(result.ogImage).to.be.eql({
+          expect(result.ogImage).to.be.eql([{
             url: 'https://ae01.alicdn.com/kf/HTB1.DiLM7voK1RjSZFDq6xY3pXam/Apple-iPhone-SE-A9-Dual-Core-2GB-RAM-16.jpg',
-            width: null,
-            height: null,
             type: 'jpg',
-          });
+          }]);
           expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/aliexpress');
           expect(result.success).to.be.eql(true);
@@ -147,7 +134,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('baidu', function () {
@@ -162,44 +149,30 @@ describe('encoding', function () {
           expect(result.ogImage).to.be.eql([
             {
               url: 'https://dss0.bdstatic.com/9bA1vGfa2gU2pMbfm9GUKT-w/timg?wisealaddin&sec=1594256156&di=864c7c75c9b283e42186dec20390fbc6&quality=60&size=8&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F9da74a517eb1befeba93a5f3167cc74b.jpeg',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://vdposter.bdstatic.com/5b2d214a87da29772dec1f678f5b92c4.jpeg?x-bce-process=image/resize,m_fill,w_242,h_182/format,f_jpg/quality,Q_100',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://vdposter.bdstatic.com/00647e856517ca0eb83edc7e03be6979.jpeg?x-bce-process=image/resize,m_fill,w_242,h_182/format,f_jpg/quality,Q_100',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://vdposter.bdstatic.com/b967288928873cb870969b5589056e20.jpeg?x-bce-process=image/resize,m_fill,w_242,h_182/format,f_jpg/quality,Q_100',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://vdposter.bdstatic.com/c128c54635383c10f0c7a3af756bc3d3.jpeg?x-bce-process=image/resize,m_fill,w_242,h_182/format,f_jpg/quality,Q_100',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://cambrian-images.cdn.bcebos.com/a8e0f1d50bdbb152d681a49f43a85a28_1530519716895.jpeg',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
             {
               url: 'https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&di=f459a48fec76e6e11a24246e3e8543f7&quality=90&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F81ba6ae0f76179306351cf6e634c5c2c.jpeg',
-              width: null,
-              height: null,
               type: 'jpeg',
             },
           ]);
@@ -214,7 +187,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('csdn', function () {
@@ -227,7 +200,7 @@ describe('encoding', function () {
           expect(result.favicon).to.be.eql('https://csdnimg.cn/public/favicon.ico');
           expect(result.ogTitle).to.be.eql('周末学会了 10个超级实用 Javascript 技巧!_前端小智-CSDN博客');
           expect(result.ogDescription).to.be.eql('众所周知，JavaScript 一直在快速变化。在新的 ES2020 中，有很多很棒的特性，我们大都已经迫不及待尝试了。老实说，有时我们可以用不同角度来编写代码，同样也能达到相同的效果，...');
-          expect(result.ogImage.length).to.be.eql(83);
+          expect(result.ogImage.length).to.be.eql(10);
           expect(result.ogLocale).to.be.eql('zh-CN');
           expect(result.ogUrl).to.be.eql('https://blog.csdn.net/qq449245884/article/details/107096460');
           expect(result.charset).to.be.eql('UTF-8');
@@ -244,7 +217,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('naver', function () {
@@ -261,12 +234,10 @@ describe('encoding', function () {
           expect(result.ogType).to.be.eql('article');
           expect(result.ogArticleAuthor).to.be.eql('네이버 블로그 | 테크플러스');
           expect(result.ogSiteName).to.be.eql('네이버 블로그 | 테크플러스');
-          expect(result.ogImage).to.be.eql({
+          expect(result.ogImage).to.be.eql([{
             url: 'https://blogthumb.pstatic.net/MjAyMDA3MDdfMjIy/MDAxNTk0MDk5Mzg0OTI2.metaMYBdIy6ous31SXPcVWc9ytV9ASYC2YOBu0gA2Pgg.VwcdwSyJ8tO_BHK95P8MsVb0pdiFtZqgRlbg2pkUXb4g.JPEG.tech-plus/245_2947.ct.655.336.jpg?type=w2',
-            width: null,
-            height: null,
             type: 'jpg',
-          });
+          }]);
           expect(result.ogLocale).to.be.eql('ko');
           expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/naver');
@@ -285,7 +256,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('okezone', function () {
@@ -312,18 +283,15 @@ describe('encoding', function () {
           expect(result.twitterUrl).to.be.eql('https://economy.okezone.com/read/2020/07/08/320/2243366/6-rekomendasi-bisnis-dengan-tingkat-kerugian-kecil-tertarik-mencoba');
           expect(result.articleSection).to.be.eql('Economy');
           expect(result.articlePublishedTime).to.be.eql('2020-07-09T07:26:05+07:00');
-          expect(result.ogImage).to.be.eql({
+          expect(result.ogImage).to.be.eql([{
             url: 'https://img.okezone.com/content/2020/07/08/320/2243366/6-rekomendasi-bisnis-dengan-tingkat-kerugian-kecil-tertarik-mencoba-p7VgY90ykv.jpg',
             width: '600',
             height: '315',
             type: 'jpg',
-          });
-          expect(result.twitterImage).to.be.eql({
+          }]);
+          expect(result.twitterImage).to.be.eql([{
             url: 'https://img.okezone.com/content/2020/07/08/320/2243366/6-rekomendasi-bisnis-dengan-tingkat-kerugian-kecil-tertarik-mencoba-p7VgY90ykv.jpg',
-            width: null,
-            height: null,
-            alt: null,
-          });
+          }]);
           expect(result.ogLocale).to.be.eql('id-ID');
           expect(result.ogDate).to.be.eql('2014-07-13T20:07:27.8200000');
           expect(result.charset).to.be.eql('UTF-8');
@@ -355,7 +323,7 @@ describe('encoding', function () {
             'twitterTitle',
             'twitterUrl',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('qq', function () {
@@ -381,7 +349,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('sohu', function () {
@@ -393,7 +361,7 @@ describe('encoding', function () {
           expect(error).to.be.eql(false);
           expect(result.ogTitle).to.be.eql('搜狐');
           expect(result.favicon).to.be.eql('//statics.itc.cn/web/static/images/pic/sohu-logo/favicon.ico');
-          expect(result.ogImage.length).to.be.eql(43);
+          expect(result.ogImage.length).to.be.eql(10);
           expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/sohu');
           expect(result.success).to.be.eql(true);
@@ -405,7 +373,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('taobao', function () {
@@ -421,44 +389,30 @@ describe('encoding', function () {
           expect(result.ogImage).to.be.eql([
             {
               url: 'https://gd3.alicdn.com/imgextra/i3/134583372/TB2eWJ.h1OSBuNjy0FdXXbDnVXa_!!134583372.jpg_400x400.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'http://img.alicdn.com/bao/uploaded/O1CN01L4mliz1amQ8K69BqC_!!134583372.jpg_80x80.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'http://img.alicdn.com/bao/uploaded/O1CN01lhmMOl1amQ6zed9Sv_!!0-item_pic.jpg_80x80.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://gd4.alicdn.com/imgextra/i4/134583372/TB2bje8gS_I8KJjy0FoXXaFnVXa_!!134583372.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://gd3.alicdn.com/imgextra/i3/134583372/TB2eWJ.h1OSBuNjy0FdXXbDnVXa_!!134583372.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://gd4.alicdn.com/imgextra/i4/134583372/TB2bje8gS_I8KJjy0FoXXaFnVXa_!!134583372.jpg_400x400.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://gd4.alicdn.com/imgextra/i4/134583372/TB2bje8gS_I8KJjy0FoXXaFnVXa_!!134583372.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
           ]);
@@ -476,7 +430,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('tmall', function () {
@@ -492,20 +446,14 @@ describe('encoding', function () {
           expect(result.ogImage).to.be.eql([
             {
               url: 'https://img.alicdn.com/imgextra/i3/2616970884/O1CN01TOc9jZ1IOujNdnN64_!!2616970884.jpg_430x430q90.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://img.alicdn.com/imgextra/i3/2616970884/O1CN01TOc9jZ1IOujNdnN64_!!2616970884.jpg_q30.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'https://img.alicdn.com/imgextra/i3/2616970884/O1CN01TOc9jZ1IOujNdnN64_!!2616970884.jpg_430x430q90.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
           ]);
@@ -523,7 +471,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('weibo', function () {
@@ -536,7 +484,7 @@ describe('encoding', function () {
           expect(result.ogTitle).to.be.eql('得州883家幼儿园染疫 华盛顿大学中招... 来自美国侨报网 - 微博');
           expect(result.favicon).to.be.eql('/favicon.ico');
           expect(result.ogDescription).to.be.eql('【得州883家幼儿园染疫 华盛顿大学“中招”】新冠肺炎疫情下，家长们担心把孩子送回校园是否安全。在得克萨斯州，托儿所的确诊病例增长速度明显变快了，据官方统计，该州有883家托儿所出现了新冠肺炎病例，441名儿...');
-          expect(result.ogImage.length).to.be.eql(14);
+          expect(result.ogImage.length).to.be.eql(10);
           expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/weibo');
           expect(result.success).to.be.eql(true);
@@ -549,7 +497,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('xinhuanet', function () {
@@ -564,38 +512,30 @@ describe('encoding', function () {
           expect(result.ogImage).to.be.eql([
             {
               url: 'http://www.newsimg.cn/xl2017/images/net_logo.png',
-              width: null,
-              height: null,
               type: 'png',
             },
             {
               url: 'http://www.newsimg.cn/xl2017/images/wx.png',
-              width: null,
-              height: null,
               type: 'png',
             },
             {
               url: 'http://www.xinhuanet.com/politics/2020-07/08/ewm_11262129661n.jpg',
-              width: null,
-              height: null,
               type: 'jpg',
             },
             {
               url: 'http://www.xinhuanet.com/images/syicon/space.gif',
-              width: '24',
-              height: '24',
+              width: 24,
+              height: 24,
               type: 'gif',
             },
             {
               url: 'http://www.newsimg.cn/xl2017/images/wx.png',
-              width: null,
-              height: null,
               type: 'png',
             },
             {
               url: 'http://www.newsimg.cn/common/share/logo4share.jpg',
-              width: '300',
-              height: '300',
+              width: 300,
+              height: 300,
               type: 'jpg',
             },
           ]);
@@ -610,7 +550,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
     it('zhanqi', function () {
@@ -621,7 +561,7 @@ describe('encoding', function () {
           console.log('result:', result);
           expect(error).to.be.eql(false);
           expect(result.ogTitle).to.be.eql('Qq0517_UkzUkw的英雄联盟直播间_Qq0517_UkzUkw视频_游戏直播 - zhanqi.tv');
-          expect(result.ogImage.length).to.be.eql(33);
+          expect(result.ogImage.length).to.be.eql(10);
           expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/zhanqi');
           expect(result.success).to.be.eql(true);
@@ -632,7 +572,7 @@ describe('encoding', function () {
             'requestUrl',
             'success',
           );
-          expect(response).to.be.an('object').and.to.not.be.empty;
+          expect(response).to.be.an('Response');
         });
     });
   });

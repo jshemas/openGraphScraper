@@ -1,47 +1,37 @@
-import chardet from 'chardet';
-import { decode } from 'iconv-lite';
-
-import { gotClient } from './utils';
+import type { OpenGraphScraperOptions } from './types';
 
 /**
- * performs the got request and formats the body for ogs
+ * performs the fetch request and formats the body for ogs
  *
- * @param {object} gotOptions - options for got
- * @param {object} ogsOptions - options for ogs
+ * @param {object} options - options for ogs
  * @return {object} formatted request body and response
  *
  */
-export default async function requestAndResultsFormatter(gotOptions, ogsOptions) {
-  const got = await gotClient(ogsOptions.downloadLimit);
+export default async function requestAndResultsFormatter(options: OpenGraphScraperOptions) {
+  let body;
+  let response;
+  try {
+    response = await fetch(
+      options.url,
+      { signal: AbortSignal.timeout((options.timeout || 10) * 1000), ...options.fetchOptions },
+    );
 
-  return got(gotOptions)
-    .then((response) => {
-      if (response && response.headers && response.headers['content-type'] && !response.headers['content-type'].includes('text/')) {
-        throw new Error('Page must return a header content-type with text/');
-      }
+    body = await response.text();
 
-      if (response && response.statusCode && (response.statusCode.toString().substring(0, 1) === '4' || response.statusCode.toString().substring(0, 1) === '5')) {
-        throw new Error('Server has returned a 400/500 error code');
-      }
+    if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
+      throw new Error('Page must return a header content-type with text/');
+    }
+    if (response && response.status && (response.status.toString().substring(0, 1) === '4' || response.status.toString().substring(0, 1) === '5')) {
+      throw new Error('Server has returned a 400/500 error code');
+    }
 
-      if (response.body === undefined || response.body === '') {
-        throw new Error('Page not found');
-      }
+    if (body === undefined || body === '') {
+      throw new Error('Page not found');
+    }
+  } catch (error) {
+    if (error instanceof Error && error.message === 'fetch failed') throw error.cause;
+    throw error;
+  }
 
-      const char = chardet.detect(response.rawBody);
-      let decodedBody = response.rawBody.toString();
-      if (char && typeof response.rawBody === 'object') {
-        decodedBody = decode(response.rawBody, char);
-      }
-
-      if (!decodedBody) {
-        throw new Error('Page not found');
-      }
-
-      return { decodedBody, response };
-    })
-    .catch((error) => {
-      if (error instanceof Error) throw error;
-      throw new Error(error);
-    });
+  return { body, response };
 }

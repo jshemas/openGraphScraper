@@ -18,7 +18,7 @@ describe('onlyGetOpenGraphInfo', function () {
         'requestUrl',
         'success',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
   it('should get all open graph info', function () {
@@ -45,7 +45,7 @@ describe('onlyGetOpenGraphInfo', function () {
         'success',
         'charset',
       );
-      expect(response).to.be.an('object').and.to.not.be.empty;
+      expect(response).to.be.an('Response');
     });
   });
 });

@@ -1,22 +1,24 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const cheerio_1 = require("cheerio");
-const fallback_1 = require("./fallback");
-const fields_1 = require("./fields");
-const media = require("./media");
-const utils = require("./utils");
+const fallback_1 = __importDefault(require("./fallback"));
+const fields_1 = __importDefault(require("./fields"));
+const media_1 = __importDefault(require("./media"));
 /**
  * extract all of the meta tags needed for ogs
  *
- * @param {sting} body - the body of the got request
+ * @param {sting} body - the body of the fetch request
  * @param {object} options - options for ogs
  * @return {object} object with ogs results
  *
  */
-function extractMetaTags(body, options, rawBody) {
+function extractMetaTags(body, options) {
     let ogObject = {};
     const $ = (0, cheerio_1.load)(body);
-    const metaFields = fields_1.default.concat(options.customMetaTags);
+    const metaFields = fields_1.default.concat(options.customMetaTags || []);
     // find all of the open graph info in the meta tags
     $('meta').each((index, meta) => {
         if (!meta.attribs || (!meta.attribs.property && !meta.attribs.name))
@@ -37,22 +39,12 @@ function extractMetaTags(body, options, rawBody) {
             }
         });
     });
-    // set ogImage to ogImageSecureURL/ogImageURL if there is no ogImage
-    if (!ogObject.ogImage && ogObject.ogImageSecureURL) {
-        ogObject.ogImage = ogObject.ogImageSecureURL;
-    }
-    else if (!ogObject.ogImage && ogObject.ogImageURL) {
-        ogObject.ogImage = ogObject.ogImageURL;
-    }
     // formats the multiple media values
-    ogObject = media.mediaSetup(ogObject, options);
+    ogObject = (0, media_1.default)(ogObject);
     // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks
     if (!options.onlyGetOpenGraphInfo) {
-        ogObject = (0, fallback_1.default)(ogObject, options, $, rawBody);
+        ogObject = (0, fallback_1.default)(ogObject, options, $, body);
     }
-    // TODO: Is this still needed?
-    // removes any undefs
-    ogObject = utils.removeNestedUndefinedValues(ogObject);
     return ogObject;
 }
 exports.default = extractMetaTags;

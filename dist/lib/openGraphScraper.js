@@ -1,59 +1,51 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const extract_1 = require("./extract");
-const request_1 = require("./request");
-const utils = require("./utils");
+const extract_1 = __importDefault(require("./extract"));
+const request_1 = __importDefault(require("./request"));
+const utils_1 = require("./utils");
 /**
- * sets up options for the got request and calls extract on html
+ * sets up options for the fetch request and calls extract on html
  *
  * @param {object} options - options for ogs
  * @return {object} object with ogs results
  *
  */
-async function setOptionsAndReturnOpenGraphResults(options) {
-    const { ogsOptions, gotOptions } = utils.optionSetupAndSplit(options);
-    if (ogsOptions.html) {
-        if (ogsOptions.url)
+async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
+    const { options } = (0, utils_1.optionSetup)(ogsOptions);
+    if (options.html) {
+        if (options.url)
             throw new Error('Must specify either `url` or `html`, not both');
-        const ogObject = (0, extract_1.default)(ogsOptions.html, ogsOptions, null);
-        ogObject.requestUrl = null;
+        const ogObject = (0, extract_1.default)(options.html, options);
         ogObject.success = true;
-        return { ogObject, response: { body: ogsOptions.html } };
+        return { ogObject, response: { body: options.html }, html: options.html };
     }
-    const formattedUrl = utils.validateAndFormatURL(ogsOptions.url, ogsOptions.urlValidatorSettings);
+    const formattedUrl = (0, utils_1.validateAndFormatURL)(options.url, (options.urlValidatorSettings || utils_1.defaultUrlValidatorSettings));
     if (!formattedUrl.url)
         throw new Error('Invalid URL');
-    ogsOptions.url = formattedUrl.url;
-    gotOptions.url = formattedUrl.url;
+    options.url = formattedUrl.url;
     // trying to limit non html pages
-    if (utils.isThisANonHTMLUrl(ogsOptions.url))
+    if ((0, utils_1.isThisANonHTMLUrl)(options.url))
         throw new Error('Must scrape an HTML page');
     // eslint-disable-next-line max-len
-    if (ogsOptions.blacklist && ogsOptions.blacklist.some((blacklistedHostname) => ogsOptions.url.includes(blacklistedHostname))) {
+    if (options.blacklist && options.blacklist.some((blacklistedHostname) => options.url.includes(blacklistedHostname))) {
         throw new Error('Host name has been black listed');
     }
     try {
-        const { decodedBody, response } = await (0, request_1.default)(gotOptions, ogsOptions);
-        const ogObject = (0, extract_1.default)(decodedBody, ogsOptions, response.rawBody);
-        ogObject.requestUrl = ogsOptions.url;
+        const { body, response } = await (0, request_1.default)(options);
+        const ogObject = (0, extract_1.default)(body, options);
+        ogObject.requestUrl = options.url;
         ogObject.success = true;
-        return { ogObject, response };
+        return { ogObject, response, html: body };
     }
     catch (exception) {
         if (exception && (exception.code === 'ENOTFOUND' || exception.code === 'EHOSTUNREACH' || exception.code === 'ENETUNREACH')) {
             throw new Error('Page not found');
         }
-        else if (exception && (exception.code === 'ERR_INVALID_URL' || exception.code === 'EINVAL')) {
-            throw new Error('Page not found');
-        }
-        else if (exception && exception.code === 'ETIMEDOUT') {
-            throw new Error('Time out');
-        }
-        else if (exception && exception.message && exception.message.startsWith('Response code 5')) {
-            throw new Error('Web server is returning error');
-        }
-        else if (exception && exception.message && exception.message === 'Promise was canceled') {
-            throw new Error(`Exceeded the download limit of ${ogsOptions.downloadLimit} bytes`);
+        else if (exception && (exception.name === 'AbortError')) {
+            throw new Error('The operation was aborted due to timeout');
         }
         if (exception instanceof Error)
             throw exception;
