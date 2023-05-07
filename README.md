@@ -3,7 +3,7 @@
 [![Node.js CI](https://github.com/jshemas/openGraphScraper/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/jshemas/openGraphScraper/actions?query=branch%3Amaster)
 [![Known Vulnerabilities](https://snyk.io/test/github/jshemas/openGraphScraper/badge.svg)](https://snyk.io/test/github/jshemas/openGraphScraper)
 
-A simple node module for scraping Open Graph and Twitter Card info off a site.
+A simple node module(with TypeScript declarations) for scraping Open Graph and Twitter Card info off a site.
 
 Note: `open-graph-scraper` doesn't support browser usage at this time.
 
@@ -135,12 +135,4 @@ ogs({ url: 'https://www.wikipedia.org/', fetchOptions: { headers } })
     console.log('result:', result); // This contains all of the Open Graph results
     console.log('response:', response); // This contains response from the Fetch API
   })
-```
-
-## Tests
-
-Then you can run the tests by running...
-
-```bash
-npm run test
 ```
