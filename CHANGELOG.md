@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.0.1
+
+- `OpenGraphScraperOptions.fetchOptions` should be of type `RequestInit` instead of `Request`.
+- Updating Dependencies
+
 ## 6.0.0 (Has breaking changes!)
 
 - Replace `GOT` with [fetch](https://nodejs.org/docs/latest-v18.x/api/globals.html#fetch)!
