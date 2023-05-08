@@ -15,7 +15,7 @@
 export type OpenGraphScraperOptions = {
   blacklist?: string[];
   customMetaTags?: CustomMetaTags[];
-  fetchOptions?: Request;
+  fetchOptions?: RequestInit;
   html?: string;
   onlyGetOpenGraphInfo?: boolean;
   timeout?: number;
