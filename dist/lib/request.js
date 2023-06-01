@@ -11,7 +11,11 @@ async function requestAndResultsFormatter(options) {
     let body;
     let response;
     try {
-        response = await fetch(options.url, { signal: AbortSignal.timeout((options.timeout || 10) * 1000), ...options.fetchOptions });
+        response = await fetch(options.url, {
+            signal: AbortSignal.timeout((options.timeout || 10) * 1000),
+            headers: { Origin: options.url },
+            ...options.fetchOptions,
+        });
         body = await response.text();
         if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
             throw new Error('Page must return a header content-type with text/');
