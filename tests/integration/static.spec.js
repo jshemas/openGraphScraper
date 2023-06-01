@@ -1077,7 +1077,7 @@ describe('static', function () {
         console.log('error:', error);
         console.log('result:', result);
         expect(error).to.be.eql(false);
-        expect(result.favicon).to.be.eql('https://static.xx.fbcdn.net/rsrc.php/yV/r/hzMapiNYYpW.ico');
+        expect(result.favicon).to.be.eql('https://static.xx.fbcdn.net/rsrc.php/yb/r/hLRJ1GG_y0J.ico');
         expect(result.ogSiteName).to.be.eql('Facebook');
         expect(result.ogUrl).to.be.eql('https://www.facebook.com/');
         expect(result.ogLocale).to.be.eql('en_US');
@@ -1085,8 +1085,8 @@ describe('static', function () {
           url: 'https://www.facebook.com/images/fb_icon_325x325.png',
           type: 'png',
         }]);
-        expect(result.ogTitle).to.be.eql('Facebook - Log In or Sign Up');
-        expect(result.ogDescription).to.be.eql('Create an account or log into Facebook. Connect with friends, family and other people you know. Share photos and videos, send messages and get updates.');
+        expect(result.ogTitle).to.be.eql('Facebook - log in or sign up');
+        expect(result.ogDescription).to.be.eql('Log into Facebook to start sharing and connecting with your friends, family, and people you know.');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/facebook');
         expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
