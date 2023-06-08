@@ -1,3 +1,4 @@
+import { fetch } from 'undici';
 import type { OpenGraphScraperOptions } from './types';
 
 /**
@@ -13,7 +14,11 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
   try {
     response = await fetch(
       options.url,
-      { signal: AbortSignal.timeout((options.timeout || 10) * 1000), ...options.fetchOptions },
+      {
+        signal: AbortSignal.timeout((options.timeout || 10) * 1000),
+        headers: { Origin: options.url },
+        ...options.fetchOptions,
+      },
     );
 
     body = await response.text();

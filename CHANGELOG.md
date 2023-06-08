@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.1.0
+
+- Setting the `origin` `header` to the request url since `fetch` runs in [cors mode by default](https://github.com/nodejs/undici/issues/1305).
+- Import `undici` for `fetch` so all versions of node18 are running the same version of `fetch`. Now ogs supports all versions of node18!
+- Updating Dependencies
+
 ## 6.0.1
 
 - `OpenGraphScraperOptions.fetchOptions` should be of type `RequestInit` instead of `Request`.

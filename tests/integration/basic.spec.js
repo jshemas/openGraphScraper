@@ -278,4 +278,38 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+  it('facebook - testing cors mode - header origin should default to url', function () {
+    return ogs({ url: 'https://www.facebook.com/' })
+      .then(function ({ error, result, response }) {
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.favicon).to.be.eql('https://static.xx.fbcdn.net/rsrc.php/yv/r/B8BxsscfVBr.ico');
+        expect(result.ogSiteName).to.be.eql('Facebook');
+        expect(result.ogUrl).to.be.eql('https://www.facebook.com/');
+        expect(result.ogLocale).to.be.eql('en_US');
+        expect(result.ogImage).to.be.eql([{
+          url: 'https://www.facebook.com/images/fb_icon_325x325.png',
+          type: 'png',
+        }]);
+        expect(result.ogTitle).to.be.eql('Facebook - log in or sign up');
+        expect(result.ogDescription).to.be.eql('Log into Facebook to start sharing and connecting with your friends, family, and people you know.');
+        expect(result.requestUrl).to.be.eql('https://www.facebook.com/');
+        expect(result.charset).to.be.eql('utf-8');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'favicon',
+          'ogDescription',
+          'ogImage',
+          'ogLocale',
+          'ogSiteName',
+          'ogTitle',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'charset',
+        );
+        expect(response).to.be.an('Response');
+      });
+  });
 });
