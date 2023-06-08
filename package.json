@@ -17,7 +17,7 @@
     "test": "npm run mocha:unit && npm run mocha:int"
   },
   "engines": {
-    "node": ">=18.16.0"
+    "node": ">=18.0.0"
   },
   "author": {
     "name": "Josh Shemas",
@@ -27,6 +27,7 @@
   "dependencies": {
     "chardet": "^1.5.1",
     "cheerio": "^1.0.0-rc.12",
+    "undici": "^5.22.1",
     "validator": "^13.9.0"
   },
   "files": [
@@ -52,8 +53,7 @@
     "sinon": "^15.0.4",
     "ts-mocha": "^10.0.0",
     "tunnel": "^0.0.6",
-    "typescript": "^5.0.4",
-    "undici": "^5.22.0"
+    "typescript": "^5.0.4"
   },
   "repository": {
     "type": "git",

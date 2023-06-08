@@ -1,3 +1,4 @@
+import { fetch } from 'undici';
 import type { OpenGraphScraperOptions } from './types';
 
 /**
