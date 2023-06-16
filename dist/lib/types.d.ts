@@ -18,7 +18,7 @@ export type OpenGraphScraperOptions = {
     html?: string;
     onlyGetOpenGraphInfo?: boolean;
     timeout?: number;
-    url: string;
+    url?: string;
     urlValidatorSettings?: ValidatorSettings;
 };
 /**

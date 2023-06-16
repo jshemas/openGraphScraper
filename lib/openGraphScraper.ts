@@ -18,8 +18,9 @@ import type { OpenGraphScraperOptions } from './types';
 export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: OpenGraphScraperOptions) {
   const { options } = optionSetup(ogsOptions);
 
+  if (options.html && options.url) throw new Error('Must specify either `url` or `html`, not both');
+
   if (options.html) {
-    if (options.url) throw new Error('Must specify either `url` or `html`, not both');
     const ogObject = extractMetaTags(options.html, options);
     ogObject.success = true;
     return { ogObject, response: { body: options.html }, html: options.html };
