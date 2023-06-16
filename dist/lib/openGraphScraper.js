@@ -15,9 +15,9 @@ const utils_1 = require("./utils");
  */
 async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
     const { options } = (0, utils_1.optionSetup)(ogsOptions);
+    if (options.html && options.url)
+        throw new Error('Must specify either `url` or `html`, not both');
     if (options.html) {
-        if (options.url)
-            throw new Error('Must specify either `url` or `html`, not both');
         const ogObject = (0, extract_1.default)(options.html, options);
         ogObject.success = true;
         return { ogObject, response: { body: options.html }, html: options.html };
