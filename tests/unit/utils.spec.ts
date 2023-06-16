@@ -1,3 +1,5 @@
+import { expect } from "chai";
+
 /* eslint-disable mocha/no-setup-in-describe */
 const utils = require('../../lib/utils');
 

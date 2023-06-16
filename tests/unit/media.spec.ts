@@ -1,3 +1,5 @@
+import { expect } from "chai";
+
 const media = require('../../lib/media');
 
 describe('media', function () {

@@ -1,3 +1,6 @@
+import { expect } from "chai";
+import sinon from "sinon";
+
 const chardet = require('chardet');
 const { MockAgent, setGlobalDispatcher } = require('undici');
 const ogs = require('../../index');

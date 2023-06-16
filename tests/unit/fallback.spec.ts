@@ -1,3 +1,5 @@
+import { expect } from "chai";
+
 const cheerio = require('cheerio');
 
 const { fallback } = require('../../lib/fallback');
