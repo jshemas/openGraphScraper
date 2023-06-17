@@ -74,44 +74,44 @@ describe('image', function () {
       expect(result.ogImage).to.be.eql([
         {
           url: 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/media/C_-sImTVYAEEJM5.jpg',
-          type: 'jpg'
+          type: 'jpg',
         },
         {
           url: 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/tweet_video_thumb/DBp8umbVYAAWJuC.jpg',
-          type: 'jpg'
+          type: 'jpg',
         },
         {
           url: 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/tweet_video_thumb/DBvjXJsWsAEAs90.jpg',
-          type: 'jpg'
+          type: 'jpg',
         },
         {
           url: 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/media/CljfeELUoAUskW4.jpg',
-          type: 'jpg'
+          type: 'jpg',
         },
         {
           url: 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/media/DBwVAyKUIAEmWVs.jpg',
-          type: 'jpg'
+          type: 'jpg',
         },
         {
           url: 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/profile_images/508960761826131968/LnvhR8ED_bigger.png',
-          type: 'png'
+          type: 'png',
         },
         {
           url: 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/profile_images/854430488777379840/zFdLhwbT_bigger.jpg',
-          type: 'jpg'
+          type: 'jpg',
         },
         {
           url: 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/profile_images/652596362073272320/Zv6K-clv_bigger.jpg',
-          type: 'jpg'
+          type: 'jpg',
         },
         {
           url: 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/media/DBrlZk4UwAA9Zq-.jpg',
-          type: 'jpg'
+          type: 'jpg',
         },
         {
           url: 'https://web.archive.org/web/20170608000236im_/https://pbs.twimg.com/media/DBrlZk2UQAAfAkd.jpg',
-          type: 'jpg'
-        }
+          type: 'jpg',
+        },
       ]);
       expect(result).to.have.all.keys(
         'favicon',
