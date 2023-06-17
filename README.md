@@ -124,10 +124,7 @@ The request header is set to [undici](https://github.com/nodejs/undici) by defau
 ```javascript
 const ogs = require("open-graph-scraper");
 const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36';
-const headers = new Headers({
-  'user-agent': userAgent,
-});
-ogs({ url: 'https://www.wikipedia.org/', fetchOptions: { headers } })
+ogs({ url: 'https://www.wikipedia.org/', fetchOptions: { headers: { 'user-agent': userAgent } } })
   .then((data) => {
     const { error, html, result, response } = data;
     console.log('error:', error);  // This returns true or false. True if there was an error. The error itself is inside the result object.
