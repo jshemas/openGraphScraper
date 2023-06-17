@@ -173,7 +173,7 @@ describe('return ogs', function () {
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
           expect(data.result.ogTitle).to.be.eql(undefined);
-          expect(data.result.describe).to.be.eql(undefined);
+          expect(data.result.ogDescription).to.be.eql(undefined);
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
           expect(data.html).to.be.eql(metaDescriptionHTML);
           expect(data.response).to.be.a('response');
