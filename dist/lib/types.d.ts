@@ -73,7 +73,7 @@ export type TwitterPlayerObject = {
 };
 export type ImageObject = {
     height?: number;
-    type: string;
+    type?: string;
     url: string;
     width?: number;
 };
