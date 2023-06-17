@@ -7,23 +7,23 @@ import { fallback } from '../../lib/fallback';
 describe('fallback', function () {
   context('ogTitle', function () {
     it('when there is a og title already found', function () {
-      let ogObject = { ogTitle: 'bar' };
+      const data = { ogTitle: 'bar' };
       const $ = load('<html><body><title>foo</title></body></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogTitle).to.be.eql('bar');
       expect(ogObject).to.have.all.keys('ogTitle');
     });
     it('when there is a title tag', function () {
-      let ogObject = {};
+      const data = {};
       const $ = load('<html><body><title>foo</title></body></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogTitle).to.be.eql('foo');
       expect(ogObject).to.have.all.keys('ogTitle');
     });
     it('when there are multiple title tags', function () {
-      let ogObject = {};
+      const data = {};
       const $ = load('<html><head><title>foo</title></head><body><svg><title>bar</title></svg><svg><title>baz</title></svg></body></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogTitle).to.be.eql('foo');
       expect(ogObject).to.have.all.keys('ogTitle');
     });
@@ -63,9 +63,9 @@ describe('fallback', function () {
       expect(ogObject).to.be.eql({});
     });
     it('when there is a title tag but it is empty', function () {
-      let ogObject = {};
+      const data = {};
       const $ = load('<html><body><title></title></body></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject).to.be.eql({});
     });
     it('when there is a meta title tag but the content is empty', function () {
@@ -82,9 +82,9 @@ describe('fallback', function () {
 
   context('ogDescription', function () {
     it('when there is a og description already found', function () {
-      let ogObject = { ogDescription: 'bar' };
+      const data = { ogDescription: 'bar' };
       const $ = load('<html><head><meta name="description" content="foo"></head></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogDescription).to.be.eql('bar');
       expect(ogObject).to.have.all.keys('ogDescription');
     });
@@ -115,22 +115,22 @@ describe('fallback', function () {
 
   context('ogImage', function () {
     it('when there is a og image already found', function () {
-      let ogObject = { ogImage: [{ url: 'bar.png', type: 'png' }] };
+      const data = { ogImage: [{ url: 'bar.png', type: 'png' }] };
       const $ = load('<html></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogImage).to.be.eql([{ url: 'bar.png', type: 'png' }]);
       expect(ogObject).to.have.all.keys('ogImage');
     });
     it('when there is a og image already found and is a array', function () {
-      let ogObject = { ogImage: [{ url: 'foo.png', type: 'png' }, { url: 'bar.png', type: 'png' }] };
+      const data = { ogImage: [{ url: 'foo.png', type: 'png' }, { url: 'bar.png', type: 'png' }] };
       const $ = load('<html></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogImage).to.be.eql([{ url: 'foo.png', type: 'png' }, { url: 'bar.png', type: 'png' }]);
     });
     it('when there is a og image already found and is a array with missing/invalid types', function () {
-      let ogObject = { ogImage: [{ url: 'foo.bar' }, { url: 'bar.png' }] };
+      const data = { ogImage: [{ url: 'foo.bar' }, { url: 'bar.png' }] };
       const $ = load('<html></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogImage).to.be.eql([{ url: 'foo.bar' }, { url: 'bar.png', type: 'png' }]);
     });
     it('when there is a mix of valid and invalid images', function () {
@@ -165,16 +165,16 @@ describe('fallback', function () {
       expect(ogObject).to.be.eql({});
     });
     it('when there is a og image already found but it has no type', function () {
-      let ogObject = { ogImage: [{ url: 'bar.png' }] };
+      const data = { ogImage: [{ url: 'bar.png' }] };
       const $ = load('<html></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogImage).to.be.eql([{ url: 'bar.png', type: 'png' }]);
       expect(ogObject).to.have.all.keys('ogImage');
     });
     it('when there is a og image already found but it has no type but that type is invalid', function () {
-      let ogObject = { ogImage: [{ url: 'bar.foo' }] };
+      const data = { ogImage: [{ url: 'bar.foo' }] };
       const $ = load('<html></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogImage).to.be.eql([{ url: 'bar.foo' }]);
       expect(ogObject).to.have.all.keys('ogImage');
     });
@@ -182,16 +182,16 @@ describe('fallback', function () {
 
   context('ogAudioURL/ogAudioSecureURL', function () {
     it('when there is a og AudioURL already found', function () {
-      let ogObject = { ogAudioURL: 'bar.mp3' };
+      const data = { ogAudioURL: 'bar.mp3' };
       const $ = load('<html><body><audio src="foo.png"></body></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogAudioURL).to.be.eql('bar.mp3');
       expect(ogObject).to.have.all.keys('ogAudioURL');
     });
     it('when there is a og AudioSecureURL already found', function () {
-      let ogObject = { ogAudioSecureURL: 'bar.mp3' };
+      const data = { ogAudioSecureURL: 'bar.mp3' };
       const $ = load('<html><body><audio src="foo.png"></body></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogAudioSecureURL).to.be.eql('bar.mp3');
       expect(ogObject).to.have.all.keys('ogAudioSecureURL');
     });
@@ -230,9 +230,9 @@ describe('fallback', function () {
 
   context('ogLocale', function () {
     it('when there is a og locale already found', function () {
-      let ogObject = { ogLocale: 'bar' };
+      const data = { ogLocale: 'bar' };
       const $ = load('<html lang="foo"></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogLocale).to.be.eql('bar');
       expect(ogObject).to.have.all.keys('ogLocale');
     });
@@ -257,9 +257,9 @@ describe('fallback', function () {
 
   context('ogLogo', function () {
     it('when there is a og logo already found', function () {
-      let ogObject = { ogLogo: 'bar' };
+      const data = { ogLogo: 'bar' };
       const $ = load('<html><head><meta itemprop="logo" content="foo"></head></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogLogo).to.be.eql('bar');
       expect(ogObject).to.have.all.keys('ogLogo');
     });
@@ -284,9 +284,9 @@ describe('fallback', function () {
 
   context('ogUrl', function () {
     it('when there is a og url already found', function () {
-      let ogObject = { ogUrl: 'bar' };
+      const data = { ogUrl: 'bar' };
       const $ = load('<html><head><link rel="canonical" href="foo"></head></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogUrl).to.be.eql('bar');
       expect(ogObject).to.have.all.keys('ogUrl');
     });
@@ -311,9 +311,9 @@ describe('fallback', function () {
 
   context('ogDate', function () {
     it('when there is a og date already found', function () {
-      let ogObject = { ogDate: 'bar' };
+      const data = { ogDate: 'bar' };
       const $ = load('<html><head><meta name="date" content="foo"></head></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.ogDate).to.be.eql('bar');
       expect(ogObject).to.have.all.keys('ogDate');
     });
@@ -362,9 +362,9 @@ describe('fallback', function () {
 
   context('favicon', function () {
     it('when there is a favicon already found', function () {
-      let ogObject = { favicon: 'foo' };
+      const data = { favicon: 'foo' };
       const $ = load('<html></html>');
-      ogObject = fallback(ogObject, {}, $, '');
+      const ogObject = fallback(data, {}, $, '');
       expect(ogObject.favicon).to.be.eql('foo');
       expect(ogObject).to.have.all.keys('favicon');
     });
