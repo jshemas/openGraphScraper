@@ -32,7 +32,7 @@ describe('fetch', function () {
           'success',
         );
         expect(response).to.be.an('Response');
-        const $ = load(html);
+        const $ = load(html || '');
         const rawUa = $('li#rawUa').text();
         expect(rawUa).to.be.eql(`rawUa: ${userAgent}`);
       });
