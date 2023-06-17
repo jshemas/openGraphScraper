@@ -202,7 +202,7 @@ describe('encoding', function () {
           expect(result.favicon).to.be.eql('https://csdnimg.cn/public/favicon.ico');
           expect(result.ogTitle).to.be.eql('周末学会了 10个超级实用 Javascript 技巧!_前端小智-CSDN博客');
           expect(result.ogDescription).to.be.eql('众所周知，JavaScript 一直在快速变化。在新的 ES2020 中，有很多很棒的特性，我们大都已经迫不及待尝试了。老实说，有时我们可以用不同角度来编写代码，同样也能达到相同的效果，...');
-          expect(result.ogImage.length).to.be.eql(10);
+          expect(result.ogImage?.length).to.be.eql(10);
           expect(result.ogLocale).to.be.eql('zh-CN');
           expect(result.ogUrl).to.be.eql('https://blog.csdn.net/qq449245884/article/details/107096460');
           expect(result.charset).to.be.eql('UTF-8');
@@ -363,7 +363,7 @@ describe('encoding', function () {
           expect(error).to.be.eql(false);
           expect(result.ogTitle).to.be.eql('搜狐');
           expect(result.favicon).to.be.eql('//statics.itc.cn/web/static/images/pic/sohu-logo/favicon.ico');
-          expect(result.ogImage.length).to.be.eql(10);
+          expect(result.ogImage?.length).to.be.eql(10);
           expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/sohu');
           expect(result.success).to.be.eql(true);
@@ -486,7 +486,7 @@ describe('encoding', function () {
           expect(result.ogTitle).to.be.eql('得州883家幼儿园染疫 华盛顿大学中招... 来自美国侨报网 - 微博');
           expect(result.favicon).to.be.eql('/favicon.ico');
           expect(result.ogDescription).to.be.eql('【得州883家幼儿园染疫 华盛顿大学“中招”】新冠肺炎疫情下，家长们担心把孩子送回校园是否安全。在得克萨斯州，托儿所的确诊病例增长速度明显变快了，据官方统计，该州有883家托儿所出现了新冠肺炎病例，441名儿...');
-          expect(result.ogImage.length).to.be.eql(10);
+          expect(result.ogImage?.length).to.be.eql(10);
           expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/weibo');
           expect(result.success).to.be.eql(true);
@@ -563,7 +563,7 @@ describe('encoding', function () {
           console.log('result:', result);
           expect(error).to.be.eql(false);
           expect(result.ogTitle).to.be.eql('Qq0517_UkzUkw的英雄联盟直播间_Qq0517_UkzUkw视频_游戏直播 - zhanqi.tv');
-          expect(result.ogImage.length).to.be.eql(10);
+          expect(result.ogImage?.length).to.be.eql(10);
           expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/zhanqi');
           expect(result.success).to.be.eql(true);
