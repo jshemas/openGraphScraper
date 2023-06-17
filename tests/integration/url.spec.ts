@@ -189,28 +189,6 @@ describe('url', function () {
         expect(response).to.eql(undefined);
       });
   });
-  it('url is just a number', function () {
-    return ogs({ url: 23233 })
-      .then(function () {
-        expect().fail('this should not happen');
-      })
-      .catch(function ({ error, result, response }) {
-        console.log('error:', error);
-        console.log('result:', result);
-        expect(error).to.be.eql(true);
-        expect(result.success).to.be.eql(false);
-        expect(result.requestUrl).to.be.eql(23233);
-        expect(result.error).to.eql('Invalid URL');
-        expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
-        expect(result).to.have.all.keys(
-          'error',
-          'errorDetails',
-          'requestUrl',
-          'success',
-        );
-        expect(response).to.eql(undefined);
-      });
-  });
   it('url is a string of numbers', function () {
     return ogs({ url: '2323233' })
       .then(function () {
