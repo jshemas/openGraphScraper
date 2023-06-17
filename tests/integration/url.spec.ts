@@ -237,17 +237,18 @@ describe('url', function () {
     return ogs({
       url: 'https://www.wikipedia.org/',
       urlValidatorSettings: {
-        protocols: ['http'],
-        require_tld: true,
-        require_protocol: false,
-        require_host: true,
-        require_valid_protocol: true,
-        allow_underscores: false,
-        host_whitelist: false,
-        host_blacklist: false,
-        allow_trailing_dot: false,
+        allow_fragments: true,
         allow_protocol_relative_urls: false,
-        disallow_auth: false,
+        allow_query_components: true,
+        allow_trailing_dot: false,
+        allow_underscores: false,
+        protocols: ['http'],
+        require_host: true,
+        require_port: false,
+        require_protocol: false,
+        require_tld: true,
+        require_valid_protocol: true,
+        validate_length: true,
       },
     })
       .then(function () {
