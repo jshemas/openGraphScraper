@@ -1,9 +1,9 @@
-import { expect } from "chai";
-import sinon from "sinon";
+import { expect } from 'chai';
+import sinon from 'sinon';
 
-const { MockAgent, setGlobalDispatcher } = require('undici');
+import { MockAgent, setGlobalDispatcher } from 'undici';
 
-const ogs = require('../../index');
+import ogs from '../../index';
 
 const sandbox = sinon.createSandbox();
 const mockAgent = new MockAgent();

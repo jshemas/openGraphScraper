@@ -1,9 +1,9 @@
-import { expect } from "chai";
-import sinon from "sinon";
+import { expect } from 'chai';
+import sinon from 'sinon';
 
-const chardet = require('chardet');
-const { MockAgent, setGlobalDispatcher } = require('undici');
-const ogs = require('../../index');
+import chardet from 'chardet';
+import { MockAgent, setGlobalDispatcher } from 'undici';
+import ogs from '../../index';
 
 const basicHTML = `
   <html>
