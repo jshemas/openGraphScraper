@@ -429,7 +429,7 @@ describe('fallback', function () {
       const body = '<html><head></head></html>';
       const $ = load(body);
       const ogObject = fallback({}, {}, $, body);
-      expect(ogObject.charset).to.be.eql('ISO-8859-1');
+      expect(ogObject.charset).to.be.eql('ASCII');
       expect(ogObject).to.have.all.keys('charset');
     });
     it('when trying to get a charset from the body and the body is empty', function () {
