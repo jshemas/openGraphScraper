@@ -230,7 +230,7 @@ describe('utils', function () {
 
   describe('optionSetup', function () {
     it('when passing nothing into optionSetup', function () {
-      const { options } = optionSetup();
+      const { options } = optionSetup({});
       expect(options).to.eql({ onlyGetOpenGraphInfo: false });
     });
     it('when passing onlyGetOpenGraphInfo into optionSetup', function () {
