@@ -3,6 +3,9 @@
     "index.ts",
     "lib/**/*"
   ],
+  "exclude": [
+    "tests/**/*"
+  ],
   "compilerOptions": {
     "allowJs": true,
     "declaration": true,
