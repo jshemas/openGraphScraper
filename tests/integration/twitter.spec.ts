@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-const ogs = require('../../index');
+import ogs from '../../index';
 
 describe('twitter', function () {
   context('Should Return correct Open Graph Info + Some Twitter Info ', function () {

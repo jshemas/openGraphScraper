@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-const ogs = require('../../index');
+import ogs from '../../index';
 
 describe('encoding', function () {
   context('should return correct Open Graph Info + charset info', function () {

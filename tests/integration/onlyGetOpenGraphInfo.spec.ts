@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-const ogs = require('../../index');
+import ogs from '../../index';
 
 describe('onlyGetOpenGraphInfo', function () {
   it('should only get open graph info', function () {

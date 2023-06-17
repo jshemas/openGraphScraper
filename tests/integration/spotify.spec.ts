@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-const ogs = require('../../index');
+import ogs from '../../index';
 
 describe('spotify', function () {
   it('album should return music:album and associated tags', function () {

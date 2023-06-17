@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-const ogs = require('../../index');
+import ogs from '../../index';
 
 // http://httpstat.us keeps going offline, we need to fine a replacement
 // eslint-disable-next-line mocha/no-skipped-tests

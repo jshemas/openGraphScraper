@@ -1,8 +1,8 @@
 import { expect } from 'chai';
+import { load } from 'cheerio';
+import tunnel from 'tunnel';
 
-const cheerio = require('cheerio');
-const tunnel = require('tunnel');
-const ogs = require('../../index');
+import ogs from '../../index';
 
 // eslint-disable-next-line mocha/no-skipped-tests
 describe.skip('proxy', function () {
@@ -14,7 +14,7 @@ describe.skip('proxy', function () {
       console.log('result:', result);
       expect(error).to.be.eql(false);
       expect(result.success).to.be.eql(true);
-      const $ = cheerio.load(response.body);
+      const $ = load(response.body);
       const ipWithoutProxy = $('.address a').attr('href');
       console.log('ip:', ipWithoutProxy);
       // second do a proxy request and compair the IPs
@@ -36,7 +36,7 @@ describe.skip('proxy', function () {
         console.log('resultWithProxy:', resultWithProxy);
         expect(errorWithProxy).to.be.eql(false);
         expect(resultWithProxy.success).to.be.eql(true);
-        const $$ = cheerio.load(responseWithProxy.body);
+        const $$ = load(responseWithProxy.body);
         const ipWithProxy = $$('.address a').attr('href');
         console.log('proxyIp:', ipWithProxy);
         // if proxy agent is working, these IPs should be differnt

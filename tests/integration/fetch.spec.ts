@@ -1,8 +1,7 @@
 import { expect } from 'chai';
+import { load } from 'cheerio';
 
-const cheerio = require('cheerio');
-
-const ogs = require('../../index');
+import ogs from '../../index';
 
 describe('fetch', function () {
   // TODO: Site keeps going offline, will need to find a new site
@@ -33,7 +32,7 @@ describe('fetch', function () {
           'success',
         );
         expect(response).to.be.an('Response');
-        const $ = cheerio.load(html);
+        const $ = load(html);
         const rawUa = $('li#rawUa').text();
         expect(rawUa).to.be.eql(`rawUa: ${userAgent}`);
       });

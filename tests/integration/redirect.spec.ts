@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-const ogs = require('../../index');
+import ogs from '../../index';
 
 describe('redirect', function () {
   context('should return correct Open Graph Info', function () {

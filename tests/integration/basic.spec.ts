@@ -1,8 +1,8 @@
 import { expect } from 'chai';
+import util from 'util';
 
 import ogs from '../../index';
 
-const util = require('util');
 const ogsRequire = require('../../index');
 
 describe('basic', function () {

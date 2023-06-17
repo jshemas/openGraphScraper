@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-const ogs = require('../../index');
+import ogs from '../../index';
 
 describe('image', function () {
   it('Test Flickr Image - Should Return correct Open Graph Info', function () {
