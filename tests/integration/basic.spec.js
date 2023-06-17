@@ -184,7 +184,7 @@ describe('basic', function () {
         url: 'https://i.vimeocdn.com/video/659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d',
         width: '1280',
         height: '720',
-        type: 'image/jpg',
+        type: 'image/jpeg',
       }]);
       // TODO: url keeps changing, this test case should move to static test suit
       // expect(result.ogVideo).to.be.eql([{
