@@ -164,22 +164,6 @@ describe('return ogs', function () {
         });
     });
 
-    it('as a browser', function () {
-      mockAgent.get('http://www.test.com')
-        .intercept({ path: '/' })
-        .reply(200, basicHTML);
-
-      process.browser = true;
-      return ogs({ url: 'www.test.com' })
-        .then(function (data) {
-          expect(data.result.success).to.be.eql(true);
-          expect(data.result.ogTitle).to.be.eql('test page');
-          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.html).to.be.eql(basicHTML);
-          expect(data.response).to.be.a('response');
-        });
-    });
-
     it('using onlyGetOpenGraphInfo', function () {
       mockAgent.get('http://www.test.com')
         .intercept({ path: '/' })
