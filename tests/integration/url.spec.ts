@@ -1,3 +1,5 @@
+import { expect } from 'chai';
+
 const ogs = require('../../index');
 
 describe('url', function () {

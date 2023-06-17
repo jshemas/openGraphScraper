@@ -1,4 +1,5 @@
-const { expect } = require('chai');
+import { expect } from 'chai';
+
 const ogs = require('../../index');
 
 const HTML_STRING = `

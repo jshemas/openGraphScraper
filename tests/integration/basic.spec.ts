@@ -1,3 +1,5 @@
+import { expect } from 'chai';
+
 import ogs from '../../index';
 
 const util = require('util');

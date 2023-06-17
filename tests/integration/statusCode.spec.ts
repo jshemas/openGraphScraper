@@ -1,3 +1,5 @@
+import { expect } from 'chai';
+
 const ogs = require('../../index');
 
 // http://httpstat.us keeps going offline, we need to fine a replacement

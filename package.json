@@ -10,7 +10,7 @@
     "ci": "npm run eslint && npm run build && npm run test",
     "eslint:fix": "eslint . --ext .js,.ts --fix",
     "eslint": "eslint . --ext .js,.ts",
-    "mocha:int": "ts-mocha --require ./tests/helpers/bootstrap.js --recursive \"./tests/integration/**/*.spec.ts\" --timeout 10000",
+    "mocha:int": "ts-mocha --recursive \"./tests/integration/**/*.spec.ts\" --timeout 10000",
     "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ ts-mocha --recursive \"./tests/unit/**/*.spec.ts\"",
     "prepare": "npm run snyk-protect && npm run build",
     "snyk-protect": "snyk-protect",
