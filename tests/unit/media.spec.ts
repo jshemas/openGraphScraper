@@ -120,7 +120,7 @@ describe('media', function () {
   });
   it('has many images and twitter images', function () {
     const ogMedia = mediaSetup({
-      ogImageProperty: ['http://test.com/logo_one.png', 'http://test.com/logo_two.png', 'http://test.com/logo_three.png', '', undefined],
+      ogImageProperty: ['http://test.com/logo_one.png', 'http://test.com/logo_two.png', 'http://test.com/logo_three.png', ''],
       ogImageType: ['image/png', 'image/png', 'image/png'],
       ogImageWidth: ['300'],
       ogImageHeight: ['300'],
