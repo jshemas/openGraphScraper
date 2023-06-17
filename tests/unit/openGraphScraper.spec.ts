@@ -306,7 +306,7 @@ describe('return ogs', function () {
 
       return ogs({ url: 'www.testerror.com' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -328,7 +328,7 @@ describe('return ogs', function () {
 
       return ogs({ url: 'www.testerror.com' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -350,7 +350,7 @@ describe('return ogs', function () {
 
       return ogs({ url: 'www.testerror.com' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -372,7 +372,7 @@ describe('return ogs', function () {
 
       return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -394,7 +394,7 @@ describe('return ogs', function () {
 
       return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -413,7 +413,7 @@ describe('return ogs', function () {
 
       return ogs({ url: 'www.test.com' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -432,7 +432,7 @@ describe('return ogs', function () {
 
       return ogs({ url: 'www.test.com' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -454,7 +454,7 @@ describe('return ogs', function () {
 
       return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -473,7 +473,7 @@ describe('return ogs', function () {
 
       return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -492,7 +492,7 @@ describe('return ogs', function () {
 
       return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -507,7 +507,7 @@ describe('return ogs', function () {
     it('when trying to hit a non html pages', function () {
       return ogs({ url: 'www.test.com/test.png' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -525,7 +525,7 @@ describe('return ogs', function () {
         .reply(200, { }, { headers: { 'content-type': 'foo' } });
       return ogs({ url: 'http://www.test.com' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -540,7 +540,7 @@ describe('return ogs', function () {
     it('when trying to hit a non html pages and has params', function () {
       return ogs({ url: 'www.test.com/test.pdf?123' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -555,7 +555,7 @@ describe('return ogs', function () {
     it('when trying to hit a blacklist site', function () {
       return ogs({ url: 'www.test.com/test', blacklist: ['test.com'] })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -570,7 +570,7 @@ describe('return ogs', function () {
     it('when trying to hit a empty url', function () {
       return ogs({ url: '' })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
@@ -585,7 +585,7 @@ describe('return ogs', function () {
     it('when trying to hit a URL and you are passing in a HTML page', function () {
       return ogs({ url: 'www.test.com', html: basicHTML })
         .then(function () {
-          expect().fail('this should not happen');
+          expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
