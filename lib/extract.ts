@@ -37,6 +37,19 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
     });
   });
 
+  // take all of the customMetaTags out of base of ogObject and store them into ogObject.customMetaTags
+  if (options.customMetaTags) {
+    options.customMetaTags.forEach((customMetaTag) => {
+      if (ogObject[customMetaTag.fieldName]) {
+        ogObject.customMetaTags = {
+          ...ogObject.customMetaTags,
+          [customMetaTag.fieldName]: ogObject[customMetaTag.fieldName],
+        };
+        delete ogObject[customMetaTag.fieldName];
+      }
+    });
+  }
+
   // formats the multiple media values
   ogObject = mediaSetup(ogObject);
 

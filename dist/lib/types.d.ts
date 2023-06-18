@@ -135,6 +135,9 @@ export type OgObjectInteral = {
     businessContactDataRegion?: string;
     businessContactDataStreetAddress?: string;
     charset?: string;
+    customMetaTags?: {
+        [key: string]: string | undefined;
+    };
     dcContributor?: string;
     dcCoverage?: string;
     dcCreator?: string;

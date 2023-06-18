@@ -282,11 +282,38 @@ describe('return ogs', function () {
           multiple: false,
           property: 'foo',
           fieldName: 'fooTag',
+        }, {
+          multiple: false,
+          property: 'bar',
+          fieldName: 'barTag',
         }],
       })
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
-          expect(data.result.fooTag).to.be.eql('bar');
+          expect(data.result.customMetaTags?.fooTag).to.be.eql('bar');
+          expect(data.result.ogTitle).to.be.eql('test page');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.html).to.be.eql(basicHTML);
+          expect(data.response).to.be.a('response');
+        });
+    });
+
+    it('when passing in a custom tag and nothing is found', function () {
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200, basicHTML);
+
+      return ogs({
+        url: 'www.test.com',
+        customMetaTags: [{
+          multiple: false,
+          property: 'bar',
+          fieldName: 'barTag',
+        }],
+      })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.customMetaTags).to.be.undefined;
           expect(data.result.ogTitle).to.be.eql('test page');
           expect(data.result.requestUrl).to.be.eql('http://www.test.com');
           expect(data.html).to.be.eql(basicHTML);

@@ -39,6 +39,18 @@ function extractMetaTags(body, options) {
             }
         });
     });
+    // take all of the customMetaTags out of base of ogObject and store them into ogObject.customMetaTags
+    if (options.customMetaTags) {
+        options.customMetaTags.forEach((customMetaTag) => {
+            if (ogObject[customMetaTag.fieldName]) {
+                ogObject.customMetaTags = {
+                    ...ogObject.customMetaTags,
+                    [customMetaTag.fieldName]: ogObject[customMetaTag.fieldName],
+                };
+                delete ogObject[customMetaTag.fieldName];
+            }
+        });
+    }
     // formats the multiple media values
     ogObject = (0, media_1.default)(ogObject);
     // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks
