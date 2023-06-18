@@ -82,7 +82,7 @@ const options = {
 ogs(options)
   .then((data) => {
     const { result } = data;
-    console.log('hostnameMetaTag:', result.hostnameMetaTag); // hostnameMetaTag: github.com
+    console.log('hostnameMetaTag:', result.customMetaTags.hostnameMetaTag); // hostnameMetaTag: github.com
   })
 ```
 
