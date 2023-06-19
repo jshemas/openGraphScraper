@@ -1,4 +1,6 @@
-const ogs = require('../../index');
+import { expect } from 'chai';
+
+import ogs from '../../index';
 
 describe('video', function () {
   it('Test Youtube Video - Should Return correct Open Graph Info', function () {

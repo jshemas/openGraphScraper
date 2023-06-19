@@ -10,7 +10,6 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "ignorePatterns": ["/tests/*/*.js"],
   "rules": {
     "import/no-named-as-default": 0,
     "max-len": ["error", {

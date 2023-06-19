@@ -1,4 +1,6 @@
-const ogs = require('../../index');
+import { expect } from 'chai';
+
+import ogs from '../../index';
 
 describe('blacklist', function () {
   it('when website is on the blacklist', function () {

@@ -1,6 +1,7 @@
-const cheerio = require('cheerio');
+import { expect } from 'chai';
+import { load } from 'cheerio';
 
-const ogs = require('../../index');
+import ogs from '../../index';
 
 describe('fetch', function () {
   // TODO: Site keeps going offline, will need to find a new site
@@ -8,10 +9,7 @@ describe('fetch', function () {
   it.skip('setting the fetch headers', function () {
     // userAgent is undici by default
     const userAgent = 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.5563.57 Mobile Safari/537.36';
-    const headers = new Headers({
-      'user-agent': userAgent,
-    });
-    return ogs({ url: 'https://www.whatsmyua.info/', fetchOptions: { headers } })
+    return ogs({ url: 'https://www.whatsmyua.info/', fetchOptions: { headers: { 'user-agent': userAgent } } })
       .then(async function ({
         error, result, response, html,
       }) {
@@ -31,13 +29,13 @@ describe('fetch', function () {
           'success',
         );
         expect(response).to.be.an('Response');
-        const $ = cheerio.load(html);
+        const $ = load(html || '');
         const rawUa = $('li#rawUa').text();
         expect(rawUa).to.be.eql(`rawUa: ${userAgent}`);
       });
   });
   it('setting a timeout', function () {
-    return ogs({ url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso', timeout: 3 })
+    return ogs({ url: 'https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso', timeout: 3 })
       .then(function () {
         expect().fail('this should not happen');
       })
@@ -46,7 +44,7 @@ describe('fetch', function () {
         console.log('result:', result);
         expect(error).to.be.eql(true);
         expect(result.success).to.be.eql(false);
-        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso');
+        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso');
         expect(result.error).to.eql('The operation was aborted due to timeout');
         expect(result.errorDetails.toString()).to.eql('Error: The operation was aborted due to timeout');
         expect(result).to.have.all.keys(
@@ -61,7 +59,7 @@ describe('fetch', function () {
   // https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout
   // eslint-disable-next-line mocha/no-skipped-tests
   it.skip('setting a timeout - using AbortSignal.timeout()', function () {
-    return ogs({ url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso', fetchOptions: { signal: AbortSignal.timeout(3000) } })
+    return ogs({ url: 'https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso', fetchOptions: { signal: AbortSignal.timeout(3000) } })
       .then(function () {
         expect().fail('this should not happen');
       })
@@ -70,7 +68,7 @@ describe('fetch', function () {
         console.log('result:', result);
         expect(error).to.be.eql(true);
         expect(result.success).to.be.eql(false);
-        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso');
+        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso');
         expect(result.error).to.eql('The operation was aborted due to timeout');
         expect(result.errorDetails.toString()).to.eql('Error: The operation was aborted due to timeout');
         expect(result).to.have.all.keys(
@@ -87,7 +85,7 @@ describe('fetch', function () {
   it.skip('setting a timeout - using controller.abort()', function () {
     const controller = new AbortController();
     setTimeout(() => controller.abort(), 3000);
-    return ogs({ url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso', fetchOptions: { signal: controller.signal } })
+    return ogs({ url: 'https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso', fetchOptions: { signal: controller.signal } })
       .then(function () {
         expect().fail('this should not happen');
       })
@@ -96,7 +94,7 @@ describe('fetch', function () {
         console.log('result:', result);
         expect(error).to.be.eql(true);
         expect(result.success).to.be.eql(false);
-        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso');
+        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso');
         expect(result.error).to.eql('The operation was aborted due to timeout');
         expect(result.errorDetails.toString()).to.eql('Error: The operation was aborted due to timeout');
         expect(result).to.have.all.keys(

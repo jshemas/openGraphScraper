@@ -1,5 +1,6 @@
-const { expect } = require('chai');
-const ogs = require('../../index');
+import { expect } from 'chai';
+
+import ogs from '../../index';
 
 describe('static', function () {
   it('airbnb', function () {

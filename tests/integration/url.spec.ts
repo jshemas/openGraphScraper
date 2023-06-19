@@ -1,4 +1,6 @@
-const ogs = require('../../index');
+import { expect } from 'chai';
+
+import ogs from '../../index';
 
 describe('url', function () {
   it('http', function () {
@@ -187,28 +189,6 @@ describe('url', function () {
         expect(response).to.eql(undefined);
       });
   });
-  it('url is just a number', function () {
-    return ogs({ url: 23233 })
-      .then(function () {
-        expect().fail('this should not happen');
-      })
-      .catch(function ({ error, result, response }) {
-        console.log('error:', error);
-        console.log('result:', result);
-        expect(error).to.be.eql(true);
-        expect(result.success).to.be.eql(false);
-        expect(result.requestUrl).to.be.eql(23233);
-        expect(result.error).to.eql('Invalid URL');
-        expect(result.errorDetails.toString()).to.eql('Error: Invalid URL');
-        expect(result).to.have.all.keys(
-          'error',
-          'errorDetails',
-          'requestUrl',
-          'success',
-        );
-        expect(response).to.eql(undefined);
-      });
-  });
   it('url is a string of numbers', function () {
     return ogs({ url: '2323233' })
       .then(function () {
@@ -257,17 +237,18 @@ describe('url', function () {
     return ogs({
       url: 'https://www.wikipedia.org/',
       urlValidatorSettings: {
-        protocols: ['http'],
-        require_tld: true,
-        require_protocol: false,
-        require_host: true,
-        require_valid_protocol: true,
-        allow_underscores: false,
-        host_whitelist: false,
-        host_blacklist: false,
-        allow_trailing_dot: false,
+        allow_fragments: true,
         allow_protocol_relative_urls: false,
-        disallow_auth: false,
+        allow_query_components: true,
+        allow_trailing_dot: false,
+        allow_underscores: false,
+        protocols: ['http'],
+        require_host: true,
+        require_port: false,
+        require_protocol: false,
+        require_tld: true,
+        require_valid_protocol: true,
+        validate_length: true,
       },
     })
       .then(function () {

@@ -2,6 +2,7 @@
   "root": true,
   "extends": [
     "airbnb-base",
+    "airbnb-typescript/base",
     "plugin:promise/recommended",
     "plugin:mocha/recommended"
   ],
@@ -11,11 +12,11 @@
   "env": {
     "mocha": true
   },
-  "globals": {
-    "expect": "readonly",
-    "sinon": "readonly"
+  "parserOptions": {
+    "project": "./tsconfig.tests.json"
   },
   "rules": {
+    "@typescript-eslint/no-unused-expressions": 0,
     "func-names": 0,
     "import/extensions": 0,
     "import/no-unresolved": 0,
