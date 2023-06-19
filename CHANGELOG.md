@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.2.0
+
+- Modified the `url` property in `OpenGraphScraperOptions` to be an optional property since you don't need this when using just `html`
+- `Type` can optional in `ImageObject` since type is not set it it's invalid
+- Take all of the `customMetaTags` out of base of `ogObject` and store them into `ogObject.customMetaTags`
+- The interal meta properties can be string arrays
+- Updating Dependencies
+
 ## 6.1.0
 
 - Setting the `origin` `header` to the request url since `fetch` runs in [cors mode by default](https://github.com/nodejs/undici/issues/1305).
