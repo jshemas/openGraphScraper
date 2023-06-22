@@ -22,7 +22,7 @@ async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
         ogObject.success = true;
         return { ogObject, response: { body: options.html }, html: options.html };
     }
-    const formattedUrl = (0, utils_1.validateAndFormatURL)(options.url, (options.urlValidatorSettings || utils_1.defaultUrlValidatorSettings));
+    const formattedUrl = (0, utils_1.validateAndFormatURL)(options.url || '', (options.urlValidatorSettings || utils_1.defaultUrlValidatorSettings));
     if (!formattedUrl.url)
         throw new Error('Invalid URL');
     options.url = formattedUrl.url;
@@ -30,7 +30,7 @@ async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
     if ((0, utils_1.isThisANonHTMLUrl)(options.url))
         throw new Error('Must scrape an HTML page');
     // eslint-disable-next-line max-len
-    if (options.blacklist && options.blacklist.some((blacklistedHostname) => options.url.includes(blacklistedHostname))) {
+    if (options.blacklist && options.blacklist.some((blacklistedHostname) => options.url?.includes(blacklistedHostname))) {
         throw new Error('Host name has been black listed');
     }
     try {

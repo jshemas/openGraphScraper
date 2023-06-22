@@ -12,7 +12,7 @@ async function requestAndResultsFormatter(options) {
     let body;
     let response;
     try {
-        response = await (0, undici_1.fetch)(options.url, {
+        response = await (0, undici_1.fetch)(options.url || '', {
             signal: AbortSignal.timeout((options.timeout || 10) * 1000),
             headers: { Origin: options.url },
             ...options.fetchOptions,

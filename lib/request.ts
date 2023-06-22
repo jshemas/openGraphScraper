@@ -13,7 +13,7 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
   let response;
   try {
     response = await fetch(
-      options.url,
+      options.url || '',
       {
         signal: AbortSignal.timeout((options.timeout || 10) * 1000),
         headers: { Origin: options.url },
