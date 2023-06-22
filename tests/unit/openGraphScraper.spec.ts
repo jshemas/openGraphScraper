@@ -323,6 +323,69 @@ describe('return ogs', function () {
   });
 
   context('should return the proper error data', function () {
+    it('when an server error occurres but the request still works - 400', function () {
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(400);
+
+      return ogs({ url: 'http://www.testerror.com' })
+        .then(function () {
+          expect('').to.be.eql('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('400 Bad Request');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 400 Bad Request');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
+        });
+    });
+
+    it('when the request sends a Response code 401 error', function () {
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(401, {
+          message: 'Response code 401',
+          code: '401',
+        });
+
+      return ogs({ url: 'http://www.testerror.com' })
+        .then(function () {
+          expect('').to.be.eql('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('401 Unauthorized');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 401 Unauthorized');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
+        });
+    });
+
+    it('when the request sends a 403 error', function () {
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(403, {
+          message: '403 Forbidden',
+          code: '403',
+        });
+
+      return ogs({ url: 'http://www.testerror.com' })
+        .then(function () {
+          expect('').to.be.eql('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('403 Forbidden');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 403 Forbidden');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
+        });
+    });
+
     it('when the request sends a ENOTFOUND error', function () {
       mockAgent.get('http://www.testerror.com')
         .intercept({ path: '/' })
@@ -337,64 +400,64 @@ describe('return ogs', function () {
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(data.result.error).to.eql('404 Not Found');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 404 Not Found');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
           expect(data.html).to.be.eql(undefined);
         });
     });
 
-    it('when the request sends a EHOSTUNREACH error', function () {
+    it('when the request sends a 408 error', function () {
       mockAgent.get('http://www.testerror.com')
         .intercept({ path: '/' })
-        .reply(404, {
-          message: 'server error',
-          code: 'EHOSTUNREACH',
+        .reply(408, {
+          message: '408 Request Timeout',
+          code: '408',
         });
 
-      return ogs({ url: 'www.testerror.com' })
+      return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
           expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(data.result.error).to.eql('408 Request Timeout');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 408 Request Timeout');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
           expect(data.html).to.be.eql(undefined);
         });
     });
 
-    it('when the request sends a ENETUNREACH error', function () {
+    it('when the request sends a 410 error', function () {
       mockAgent.get('http://www.testerror.com')
         .intercept({ path: '/' })
-        .reply(404, {
-          message: 'server error',
-          code: 'ENETUNREACH',
+        .reply(410, {
+          message: '410 Gone',
+          code: '410',
         });
 
-      return ogs({ url: 'www.testerror.com' })
+      return ogs({ url: 'http://www.testerror.com' })
         .then(function () {
           expect('').to.be.eql('this should not happen');
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(data.result.error).to.eql('410 Gone');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 410 Gone');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
           expect(data.html).to.be.eql(undefined);
         });
     });
 
-    it('when the request sends a Response code 401 error', function () {
+    it('when the request sends a general error', function () {
       mockAgent.get('http://www.testerror.com')
         .intercept({ path: '/' })
-        .reply(401, {
-          message: 'Response code 401',
-          code: '401',
+        .reply(418, {
+          message: '418 I\'m a teapot',
+          code: '418',
         });
 
       return ogs({ url: 'http://www.testerror.com' })
@@ -425,8 +488,74 @@ describe('return ogs', function () {
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(data.result.error).to.eql('500 Internal Server Error');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 500 Internal Server Error');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
+        });
+    });
+
+    it('when the request sends a 502 error', function () {
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(502, {
+          message: '502 Bad Gateway',
+          code: '502',
+        });
+
+      return ogs({ url: 'http://www.testerror.com' })
+        .then(function () {
+          expect('').to.be.eql('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('502 Bad Gateway');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 502 Bad Gateway');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
+        });
+    });
+
+    it('when the request sends a 503 error', function () {
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(503, {
+          message: '503 Service Unavailable',
+          code: '503',
+        });
+
+      return ogs({ url: 'http://www.testerror.com' })
+        .then(function () {
+          expect('').to.be.eql('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('503 Service Unavailable');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 503 Service Unavailable');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
+        });
+    });
+
+    it('when the request sends a 504 error', function () {
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(504, {
+          message: '504 Gateway Timeout',
+          code: '504',
+        });
+
+      return ogs({ url: 'http://www.testerror.com' })
+        .then(function () {
+          expect('').to.be.eql('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('504 Gateway Timeout');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 504 Gateway Timeout');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
           expect(data.html).to.be.eql(undefined);
@@ -475,7 +604,7 @@ describe('return ogs', function () {
       mockAgent.get('http://www.testerror.com')
         .intercept({ path: '/' })
         .reply(500, {
-          message: 'Server has returned a 400/500 error code',
+          message: '500 Internal Server Error',
           code: '500',
         });
 
@@ -485,27 +614,8 @@ describe('return ogs', function () {
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
-          expect(data.result.success).to.eql(false);
-          expect(data.response).to.be.eql(undefined);
-          expect(data.html).to.be.eql(undefined);
-        });
-    });
-
-    it('when an server error occurres but the request still works - 400', function () {
-      mockAgent.get('http://www.testerror.com')
-        .intercept({ path: '/' })
-        .reply(400);
-
-      return ogs({ url: 'http://www.testerror.com' })
-        .then(function () {
-          expect('').to.be.eql('this should not happen');
-        })
-        .catch(function (data) {
-          expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(data.result.error).to.eql('500 Internal Server Error');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 500 Internal Server Error');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
           expect(data.html).to.be.eql(undefined);
@@ -523,8 +633,8 @@ describe('return ogs', function () {
         })
         .catch(function (data) {
           expect(data.error).to.be.eql(true);
-          expect(data.result.error).to.eql('Server has returned a 400/500 error code');
-          expect(data.result.errorDetails.toString()).to.eql('Error: Server has returned a 400/500 error code');
+          expect(data.result.error).to.eql('500 Internal Server Error');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 500 Internal Server Error');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
           expect(data.html).to.be.eql(undefined);

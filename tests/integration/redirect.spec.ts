@@ -5,8 +5,10 @@ import ogs from '../../index';
 describe('redirect', function () {
   context('should return correct Open Graph Info', function () {
     it('nytimes page', function () {
+      const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36';
       return ogs({
         url: 'https://www.nytimes.com/2016/09/01/arts/design/gallery-hopes-to-sell-kanye-wests-famous-sculpture-for-4-million.html?_r=0',
+        fetchOptions: { headers: { 'user-agent': userAgent } },
       }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);

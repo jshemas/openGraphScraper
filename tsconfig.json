@@ -11,6 +11,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "lib": ["es2023"],
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./dist",

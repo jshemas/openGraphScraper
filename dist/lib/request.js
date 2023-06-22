@@ -12,7 +12,7 @@ async function requestAndResultsFormatter(options) {
     let body;
     let response;
     try {
-        response = await (0, undici_1.fetch)(options.url, {
+        response = await (0, undici_1.fetch)(options.url || '', {
             signal: AbortSignal.timeout((options.timeout || 10) * 1000),
             headers: { Origin: options.url },
             ...options.fetchOptions,
@@ -22,7 +22,30 @@ async function requestAndResultsFormatter(options) {
             throw new Error('Page must return a header content-type with text/');
         }
         if (response && response.status && (response.status.toString().substring(0, 1) === '4' || response.status.toString().substring(0, 1) === '5')) {
-            throw new Error('Server has returned a 400/500 error code');
+            switch (response.status) {
+                case 400:
+                    throw new Error('400 Bad Request');
+                case 401:
+                    throw new Error('401 Unauthorized');
+                case 403:
+                    throw new Error('403 Forbidden');
+                case 404:
+                    throw new Error('404 Not Found');
+                case 408:
+                    throw new Error('408 Request Timeout');
+                case 410:
+                    throw new Error('410 Gone');
+                case 500:
+                    throw new Error('500 Internal Server Error');
+                case 502:
+                    throw new Error('502 Bad Gateway');
+                case 503:
+                    throw new Error('503 Service Unavailable');
+                case 504:
+                    throw new Error('504 Gateway Timeout');
+                default:
+                    throw new Error('Server has returned a 400/500 error code');
+            }
         }
         if (body === undefined || body === '') {
             throw new Error('Page not found');

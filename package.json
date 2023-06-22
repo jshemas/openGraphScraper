@@ -1,7 +1,7 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "6.2.0",
+  "version": "6.2.1",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -51,7 +51,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
-    "sinon": "^15.1.2",
+    "sinon": "^15.2.0",
     "ts-mocha": "^10.0.0",
     "typescript": "^5.1.3"
   },
