@@ -1,5 +1,9 @@
 # Change Log
 
+## 6.2.1
+
+- Send back more details when there is a server error
+
 ## 6.2.0
 
 - Modified the `url` property in `OpenGraphScraperOptions` to be an optional property since you don't need this when using just `html`
