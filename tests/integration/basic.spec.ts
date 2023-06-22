@@ -314,4 +314,26 @@ describe('basic', function () {
         expect(response).to.be.an('Response');
       });
   });
+  it('congress.gov - should return a 403 error', function () {
+    return ogs({ url: 'https://www.congress.gov/bill/117th-congress/house-bill/2617/text' })
+      .then(function () {
+        expect().fail('this should not happen');
+      })
+      .catch(function ({ error, result, response }) {
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(true);
+        expect(result.success).to.be.eql(false);
+        expect(result.requestUrl).to.be.eql('https://www.congress.gov/bill/117th-congress/house-bill/2617/text');
+        expect(result.error).to.eql('403 Forbidden');
+        expect(result.errorDetails?.toString()).to.eql('Error: 403 Forbidden');
+        expect(result).to.have.all.keys(
+          'error',
+          'errorDetails',
+          'requestUrl',
+          'success',
+        );
+        expect(response).to.eql(undefined);
+      });
+  });
 });
