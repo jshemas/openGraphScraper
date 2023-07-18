@@ -1,5 +1,9 @@
 # Change Log
 
+## 6.2.2
+
+- Updating dependencies to fix npm vulnerabilities
+
 ## 6.2.1
 
 - Send back more details when there is a server error
