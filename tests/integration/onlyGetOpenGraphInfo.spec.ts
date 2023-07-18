@@ -3,7 +3,8 @@ import { expect } from 'chai';
 import ogs from '../../index';
 
 describe('onlyGetOpenGraphInfo', function () {
-  it('should only get open graph info', function () {
+  // TODO: wikipedia now has og data by default, will need to find a replacement site for this test
+  it.skip('should only get open graph info', function () {
     return ogs({
       url: 'http://www.wikipedia.org/',
       onlyGetOpenGraphInfo: true,
@@ -31,21 +32,28 @@ describe('onlyGetOpenGraphInfo', function () {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
-      expect(result.ogTitle).to.be.eql('Wikipedia');
+      expect(result.ogTitle).to.be.eql('Wikipedia, the free encyclopedia');
       expect(result.ogDescription).to.be.eql('Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.requestUrl).to.be.eql('http://www.wikipedia.org/');
       expect(result.favicon).to.be.eql('/static/favicon/wikipedia.ico');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
+      expect(result.ogImage).to.be.eql([{
+        url: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/2244px-Wikipedia-logo-v2.svg.png',
+        type: 'png',
+      }]);
+      expect(result.ogType).to.be.eql('website');
       expect(result).to.have.all.keys(
+        'charset',
         'favicon',
         'ogDescription',
+        'ogImage',
         'ogLocale',
         'ogTitle',
+        'ogType',
         'requestUrl',
         'success',
-        'charset',
       );
       expect(response).to.be.an('Response');
     });
