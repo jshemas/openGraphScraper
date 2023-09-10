@@ -164,7 +164,7 @@ export type OgObjectInteral = {
   dcSubject?: string;
   dcTitle?: string;
   dcType?: string;
-  error?: string;
+  error?: boolean;
   errorDetails?: Error;
   favicon?: string;
   modifiedTime?: string;
