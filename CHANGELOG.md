@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.3.0
+
+- Export `SuccessResult` and `ErrorResult` types
+- Updating dependencies
+
 ## 6.2.2
 
 - Updating dependencies to fix npm vulnerabilities
