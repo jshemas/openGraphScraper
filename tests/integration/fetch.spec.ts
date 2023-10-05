@@ -46,7 +46,7 @@ describe('fetch', function () {
         expect(result.success).to.be.eql(false);
         expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso');
         expect(result.error).to.eql('The operation was aborted due to timeout');
-        expect(result.errorDetails.toString()).to.eql('Error: The operation was aborted due to timeout');
+        expect(result.errorDetails.toString()).to.eql('TimeoutError: The operation was aborted due to timeout');
         expect(result).to.have.all.keys(
           'error',
           'errorDetails',
