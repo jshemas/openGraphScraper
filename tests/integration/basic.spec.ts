@@ -5,6 +5,16 @@ import ogs from '../../index';
 
 const ogsRequire = require('../../index');
 
+// for http debugging
+// import diagnosticsChannel from 'diagnostics_channel'
+// diagnosticsChannel.channel('undici:request:create').subscribe(({ request }) => {
+//   console.log('origin:', request.origin);
+//   console.log('completed:', request.completed);
+//   console.log('method:', request.method);
+//   console.log('path:', request.path);
+//   console.log('headers:', request.headers);
+// });
+
 describe('basic', function () {
   it('using promises should return valid data', function () {
     return ogsRequire({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
@@ -183,10 +193,10 @@ describe('basic', function () {
       expect(result.twitterAppUrlGooglePlay).to.be.eql('vimeo://app.vimeo.com/videos/232889838');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql([{
-        url: 'https://i.vimeocdn.com/video/659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d',
-        width: '1280',
         height: '720',
-        type: 'image/jpeg',
+        type: 'image/webp',
+        url: 'https://i.vimeocdn.com/video/659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d?f=webp',
+        width: '1280',
       }]);
       // TODO: url keeps changing, this test case should move to static test suit
       // expect(result.ogVideo).to.be.eql([{
@@ -196,7 +206,7 @@ describe('basic', function () {
       //   type: 'text/html',
       // }]);
       expect(result.twitterImage).to.be.eql([{
-        url: 'https://i.vimeocdn.com/video/659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d',
+        url: 'https://i.vimeocdn.com/video/659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d?f=webp',
       }]);
       // TODO: url keeps changing, this test case should move to static test suit
       // expect(result.twitterPlayer).to.be.eql([{
@@ -292,7 +302,7 @@ describe('basic', function () {
         // this is fail in the github CI since these tests can run any where
         // expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogImage).to.be.eql([{
-          url: 'https://www.facebook.com/images/fb_icon_325x325.png',
+          url: 'https://www.facebook.com/images/fb_logo/app-facebook-circle-bp.png',
           type: 'png',
         }]);
         expect(result.ogTitle).to.be.eql('Facebook - log in or sign up');
