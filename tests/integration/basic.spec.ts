@@ -5,6 +5,16 @@ import ogs from '../../index';
 
 const ogsRequire = require('../../index');
 
+// for http debugging
+// import diagnosticsChannel from 'diagnostics_channel'
+// diagnosticsChannel.channel('undici:request:create').subscribe(({ request }) => {
+//   console.log('origin:', request.origin);
+//   console.log('completed:', request.completed);
+//   console.log('method:', request.method);
+//   console.log('path:', request.path);
+//   console.log('headers:', request.headers);
+// });
+
 describe('basic', function () {
   it('using promises should return valid data', function () {
     return ogsRequire({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
