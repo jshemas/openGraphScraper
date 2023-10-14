@@ -27,7 +27,7 @@
   "dependencies": {
     "chardet": "^2.0.0",
     "cheerio": "^1.0.0-rc.12",
-    "undici": "^5.25.4",
+    "undici": "^5.26.2",
     "validator": "^13.11.0"
   },
   "files": [
