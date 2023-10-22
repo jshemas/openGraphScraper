@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.3.1
+
+- Adding a fallback for `charset` using `http-equiv`
+- Updating dependencies to fix npm vulnerabilities
+
 ## 6.3.0
 
 - Export `SuccessResult` and `ErrorResult` types
