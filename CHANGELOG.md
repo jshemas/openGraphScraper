@@ -1,5 +1,9 @@
 # Change Log
 
+## 6.3.2
+
+- Fixing issue with npm
+
 ## 6.3.1
 
 - Adding a fallback for `charset` using `http-equiv`
