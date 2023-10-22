@@ -175,6 +175,10 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
     ogObject.charset = $('meta').attr('charset');
   } else if (doesElementExist('head > meta[name="charset"]', 'content', $)) {
     ogObject.charset = $('head > meta[name="charset"]').attr('content');
+  } else if (doesElementExist('head > meta[http-equiv="content-type"]', 'content', $)) {
+    const content = $('head > meta[http-equiv="content-type"]').attr('content');
+    const charsetRegEx = /charset=([^()<>@,;:"/[\]?.=\s]*)/i;
+    ogObject.charset = charsetRegEx.test(content) ? charsetRegEx.exec(content)[1] : 'UTF-8';
   } else if (body) {
     ogObject.charset = chardet.detect(Buffer.from(body)) || '';
   }
