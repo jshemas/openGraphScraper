@@ -425,6 +425,12 @@ describe('fallback', function () {
       expect(ogObject.charset).to.be.eql('bar');
       expect(ogObject).to.have.all.keys('charset');
     });
+    it('when there is a meta tag with http-equiv charset', function () {
+      const $ = load('<html><head><meta http-equiv="Content-Type" content="text/html; charset=foo_bar"></head></html>');
+      const ogObject = fallback({}, {}, $, '');
+      expect(ogObject.charset).to.be.eql('foo_bar');
+      expect(ogObject).to.have.all.keys('charset');
+    });
     it('when trying to get a charset from the body', function () {
       const body = '<html><head></head></html>';
       const $ = load(body);

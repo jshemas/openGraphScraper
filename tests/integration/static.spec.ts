@@ -108,7 +108,7 @@ describe('static', function () {
           height: '320',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/arstechnica');
-        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
@@ -501,7 +501,7 @@ describe('static', function () {
           url: 'https://cdn1.cloudpro.co.uk/sites/cloudprod7/files/2020/05/outreach_founding_members.jpg',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cloudpro');
-        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
@@ -556,7 +556,7 @@ describe('static', function () {
           url: 'https://cnet3.cbsistatic.com/img/0IjS4wIUDkC77PSDb-eyF0aZNw8=/756x567/2020/01/22/931a3fa2-4e0e-4def-bdc2-448926f8da02/5g-phone-2.jpg',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cnet');
-        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
@@ -701,7 +701,7 @@ describe('static', function () {
           url: 'https://twimgs.com/nojitter/darkreading/dr-logo.jpg',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/darkreading');
-        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.charset).to.be.eql('iso-8859-1');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
@@ -1480,7 +1480,7 @@ describe('static', function () {
           url: 'https://www.incimages.com/uploaded_files/image/1024x576/GettyImages-1223427650_430893.jpg',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/inc');
-        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
@@ -1580,7 +1580,7 @@ describe('static', function () {
           url: 'http://is5.mzstatic.com/image/thumb/Purple71/v4/97/0a/71/970a71f1-9c94-cc61-c960-304191a8dc42/source/1200x630bf.jpg',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/itunes');
-        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
@@ -1941,7 +1941,7 @@ describe('static', function () {
           url: 'https://images.macrumors.com/article-new/2020/05/greyhoundappletvplus.jpg',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/macrumors');
-        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
@@ -2125,7 +2125,7 @@ describe('static', function () {
         height: '400',
       }]);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/michaelkors');
-      expect(result.charset).to.be.eql('UTF-8');
+      expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
@@ -2503,7 +2503,7 @@ describe('static', function () {
           },
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rottentomatoes');
-        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
@@ -2749,7 +2749,7 @@ describe('static', function () {
           url: 'http://www.thinkgeek.com/images/products/frontsquare/jjip_citizen_playing_cards.jpg',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/thinkgeek');
-        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.charset).to.be.eql('ISO-8859-1');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
@@ -2809,7 +2809,7 @@ describe('static', function () {
           url: 'https://cdn.vox-cdn.com/thumbor/OR6JkRz2SCfX5Ecx6JSCVWk5vs0=/0x0:4746x2373/fit-in/1200x600/cdn.vox-cdn.com/uploads/chorus_asset/file/20030444/524250960.jpg.jpg', alt: 'Jack Dorsey Sydney Photo Shoot',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/vox');
-        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',

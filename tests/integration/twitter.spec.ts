@@ -31,7 +31,7 @@ describe('twitter', function () {
           height: '500',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitter-dev');
-        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',

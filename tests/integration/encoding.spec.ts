@@ -178,7 +178,7 @@ describe('encoding', function () {
               type: 'jpeg',
             },
           ]);
-          expect(result.charset).to.be.eql('UTF-8');
+          expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/baidu');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -541,7 +541,7 @@ describe('encoding', function () {
               type: 'jpg',
             },
           ]);
-          expect(result.charset).to.be.eql('UTF-8');
+          expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/xinhuanet');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -570,6 +570,26 @@ describe('encoding', function () {
           expect(result).to.have.all.keys(
             'charset',
             'ogImage',
+            'ogTitle',
+            'requestUrl',
+            'success',
+          );
+          expect(response).to.be.an('Response');
+        });
+    });
+    it('abehiroshi', function () {
+      return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/abehiroshi' })
+        .then(function (data) {
+          const { error, result, response } = data;
+          console.log('error:', error);
+          console.log('result:', result);
+          expect(error).to.be.eql(false);
+          expect(result.ogTitle).to.be.eql('阿部寛のホームページ');
+          expect(result.charset).to.be.eql('Shift_JIS');
+          expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/abehiroshi');
+          expect(result.success).to.be.eql(true);
+          expect(result).to.have.all.keys(
+            'charset',
             'ogTitle',
             'requestUrl',
             'success',
