@@ -325,6 +325,7 @@ describe('basic', function () {
         expect(response).to.be.an('Response');
       });
   });
+  // this test works locally but fails during the github CI
   it('congress.gov - should return og data', function () {
     return ogs({ url: 'https://www.congress.gov/bill/117th-congress/house-bill/2617/text' })
       .then(function ({ error, result, response }) {
@@ -375,6 +376,21 @@ describe('basic', function () {
           'success',
         );
         expect(response).to.be.an('Response');
+      }).catch(function ({ error, result, response }) {
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(true);
+        expect(result.success).to.be.eql(false);
+        expect(result.requestUrl).to.be.eql('https://www.congress.gov/bill/117th-congress/house-bill/2617/text');
+        expect(result.error).to.eql('403 Forbidden');
+        expect(result.errorDetails?.toString()).to.eql('Error: 403 Forbidden');
+        expect(result).to.have.all.keys(
+          'error',
+          'errorDetails',
+          'requestUrl',
+          'success',
+        );
+        expect(response).to.eql(undefined);
       });
   });
 });
