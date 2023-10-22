@@ -178,7 +178,7 @@ describe('encoding', function () {
               type: 'jpeg',
             },
           ]);
-          expect(result.charset).to.be.eql('UTF-8');
+          expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/baidu');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
@@ -541,7 +541,7 @@ describe('encoding', function () {
               type: 'jpg',
             },
           ]);
-          expect(result.charset).to.be.eql('UTF-8');
+          expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/xinhuanet');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
