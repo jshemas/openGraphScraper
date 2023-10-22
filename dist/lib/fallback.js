@@ -193,6 +193,11 @@ function fallback(ogObject, options, $, body) {
     else if (doesElementExist('head > meta[name="charset"]', 'content', $)) {
         ogObject.charset = $('head > meta[name="charset"]').attr('content');
     }
+    else if (doesElementExist('head > meta[http-equiv="content-type"]', 'content', $)) {
+        const content = $('head > meta[http-equiv="content-type"]').attr('content');
+        const charsetRegEx = /charset=([^()<>@,;:"/[\]?.=\s]*)/i;
+        ogObject.charset = charsetRegEx.test(content) ? charsetRegEx.exec(content)[1] : 'UTF-8';
+    }
     else if (body) {
         ogObject.charset = chardet_1.default.detect(Buffer.from(body)) || '';
     }
