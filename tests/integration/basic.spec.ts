@@ -325,26 +325,56 @@ describe('basic', function () {
         expect(response).to.be.an('Response');
       });
   });
-  it('congress.gov - should return a 403 error', function () {
+  it('congress.gov - should return og data', function () {
     return ogs({ url: 'https://www.congress.gov/bill/117th-congress/house-bill/2617/text' })
-      .then(function () {
-        expect().fail('this should not happen');
-      })
-      .catch(function ({ error, result, response }) {
+      .then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
-        expect(error).to.be.eql(true);
-        expect(result.success).to.be.eql(false);
+        expect(error).to.be.eql(false);
+        expect(result.dcCoverage).to.be.eql('2021-04-16');
+        expect(result.dcCreator).to.be.eql('Rep. Connolly, Gerald E. [D-VA-11]');
+        expect(result.dcDate).to.be.eql('12/29/2022');
+        expect(result.dcIdentifier).to.be.eql('https://www.congress.gov/bill/117th-congress/house-bill/2617/text');
+        expect(result.dcLanguage).to.be.eql('eng');
+        expect(result.dcRights).to.be.eql('Text is government work');
+        expect(result.dcSubject).to.be.eql('Economics and Public Finance');
+        expect(result.dcTitle).to.be.eql('Text - H.R.2617 - 117th Congress (2021-2022): Consolidated Appropriations Act, 2023');
+        expect(result.dcType).to.be.eql('webpage');
+        expect(result.ogDescription).to.be.eql('Text for H.R.2617 - 117th Congress (2021-2022): Consolidated Appropriations Act, 2023');
+        expect(result.ogTitle).to.be.eql('Text - H.R.2617 - 117th Congress (2021-2022): Consolidated Appropriations Act, 2023');
+        expect(result.ogType).to.be.eql('website');
+        expect(result.ogUrl).to.be.eql('https://www.congress.gov/bill/117th-congress/house-bill/2617/text');
+        expect(result.ogImage).to.be.eql([
+          {
+            url: 'https://www.congress.gov/img/opengraph1200by630.jpg',
+            type: 'jpg',
+          },
+        ]);
+        expect(result.ogLocale).to.be.eql('en');
+        expect(result.charset).to.be.eql('UTF-8');
         expect(result.requestUrl).to.be.eql('https://www.congress.gov/bill/117th-congress/house-bill/2617/text');
-        expect(result.error).to.eql('403 Forbidden');
-        expect(result.errorDetails?.toString()).to.eql('Error: 403 Forbidden');
+        expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'error',
-          'errorDetails',
+          'dcCoverage',
+          'dcCreator',
+          'dcDate',
+          'dcIdentifier',
+          'dcLanguage',
+          'dcRights',
+          'dcSubject',
+          'dcTitle',
+          'dcType',
+          'ogDescription',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'ogImage',
+          'ogLocale',
+          'charset',
           'requestUrl',
           'success',
         );
-        expect(response).to.eql(undefined);
+        expect(response).to.be.an('Response');
       });
   });
 });
