@@ -302,7 +302,7 @@ describe('basic', function () {
         // this is fail in the github CI since these tests can run any where
         // expect(result.ogLocale).to.be.eql('en_US');
         expect(result.ogImage).to.be.eql([{
-          url: 'https://www.facebook.com/images/fb_logo/app-facebook-circle-bp.png',
+          url: 'https://www.facebook.com/images/fb_icon_325x325.png',
           type: 'png',
         }]);
         expect(result.ogTitle).to.be.eql('Facebook - log in or sign up');
