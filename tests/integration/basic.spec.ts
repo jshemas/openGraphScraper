@@ -161,6 +161,58 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+  it('Test README.md using the default Accept: text/html header - Should Return correct Open Graph Info', function () {
+    return ogsRequire({ url: 'https://github.com/jshemas/openGraphScraper/blob/master/README.md' }).then(function ({ error, result, response }) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be.eql(false);
+      expect(result.twitterSite).to.be.eql('@github');
+      expect(result.twitterCard).to.be.eql('summary_large_image');
+      expect(result.twitterTitle).to.be.eql('openGraphScraper/README.md at master · jshemas/openGraphScraper');
+      expect(result.twitterDescription).to.be.eql('Node.js scraper service for Open Graph Info and More! - jshemas/openGraphScraper');
+      expect(result.ogSiteName).to.be.eql('GitHub');
+      expect(result.ogType).to.be.eql('object');
+      expect(result.ogTitle).to.be.eql('openGraphScraper/README.md at master · jshemas/openGraphScraper');
+      expect(result.ogUrl).to.be.eql('https://github.com/jshemas/openGraphScraper/blob/master/README.md');
+      expect(result.ogDescription).to.be.eql('Node.js scraper service for Open Graph Info and More! - jshemas/openGraphScraper');
+      expect(result.ogImage).to.be.eql([
+        {
+          height: '600',
+          url: 'https://opengraph.githubassets.com/ffa796e90601a7e9f9c5221fd03c4d7d698e400f83a580c0d4a52b6844148f57/jshemas/openGraphScraper',
+          width: '1200',
+        },
+      ]);
+      expect(result.twitterImage).to.be.eql([
+        {
+          url: 'https://opengraph.githubassets.com/ffa796e90601a7e9f9c5221fd03c4d7d698e400f83a580c0d4a52b6844148f57/jshemas/openGraphScraper',
+        },
+      ]);
+      expect(result.ogLocale).to.be.eql('en');
+      expect(result.favicon).to.be.eql('https://github.githubassets.com/favicons/favicon.svg');
+      expect(result.charset).to.be.eql('utf-8');
+      expect(result.requestUrl).to.be.eql('https://github.com/jshemas/openGraphScraper/blob/master/README.md');
+      expect(result.success).to.be.eql(true);
+      expect(result).to.have.all.keys(
+        'charset',
+        'favicon',
+        'ogDescription',
+        'ogImage',
+        'ogLocale',
+        'ogSiteName',
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'requestUrl',
+        'success',
+        'twitterCard',
+        'twitterDescription',
+        'twitterImage',
+        'twitterSite',
+        'twitterTitle',
+      );
+      expect(response).to.be.an('Response');
+    });
+  });
   it('vimeo.com should return open graph data', function () {
     return ogsRequire({ url: 'https://vimeo.com/232889838' }).then(function ({ error, result, response }) {
       console.log('error:', error);
