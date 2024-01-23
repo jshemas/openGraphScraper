@@ -14,7 +14,7 @@ async function requestAndResultsFormatter(options) {
     try {
         response = await (0, undici_1.fetch)(options.url || '', {
             signal: AbortSignal.timeout((options.timeout || 10) * 1000),
-            headers: { Origin: options.url },
+            headers: { Origin: options.url, Accept: 'text/html' },
             ...options.fetchOptions,
         });
         body = await response.text();
