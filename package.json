@@ -27,7 +27,7 @@
   "dependencies": {
     "chardet": "^2.0.0",
     "cheerio": "^1.0.0-rc.12",
-    "undici": "^5.26.4",
+    "undici": "^6.4.0",
     "validator": "^13.11.0"
   },
   "files": [
@@ -36,24 +36,24 @@
     "index.ts"
   ],
   "devDependencies": {
-    "@snyk/protect": "^1.1236.0",
-    "@types/mocha": "^10.0.3",
+    "@snyk/protect": "^1.1272.0",
+    "@types/mocha": "^10.0.6",
     "@types/node": "^18.18.3",
-    "@types/validator": "^13.11.5",
-    "@typescript-eslint/eslint-plugin": "^6.8.0",
-    "@typescript-eslint/parser": "^6.8.0",
-    "chai": "^4.3.10",
-    "eslint": "^8.52.0",
+    "@types/validator": "^13.11.8",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "chai": "^4.4.1",
+    "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-mocha": "^10.2.0",
     "eslint-plugin-promise": "^6.1.1",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
-    "sinon": "^17.0.0",
+    "sinon": "^17.0.1",
     "ts-mocha": "^10.0.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   },
   "repository": {
     "type": "git",
