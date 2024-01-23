@@ -149,7 +149,7 @@ const fields = [
     },
     {
         multiple: true,
-        property: 'og:video:url',
+        property: 'og:video:url', // An alternative to 'og:video'
         fieldName: 'ogVideoProperty',
     },
     {

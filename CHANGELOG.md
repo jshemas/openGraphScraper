@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.3.3
+
+- Updating dependencies
+- Sent the `Accept: text/html` header by default
+
 ## 6.3.2
 
 - Fixing issue with npm
