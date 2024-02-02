@@ -1,8 +1,8 @@
 import { fetch } from 'undici';
-import type { OpenGraphScraperOptions } from './types';
 import { decode } from 'iconv-lite';
 import { CheerioAPI, load } from 'cheerio';
 import chardet from 'chardet';
+import type { OpenGraphScraperOptions } from './types';
 
 const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
   $(selector).attr(attribute) && ($(selector).attr(attribute)?.length || 0) > 0
