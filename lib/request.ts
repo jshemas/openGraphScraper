@@ -4,11 +4,17 @@ import { CheerioAPI, load } from 'cheerio';
 import chardet from 'chardet';
 import type { OpenGraphScraperOptions } from './types';
 
+/**
+ * checks if an element exists
+ */
 const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
   $(selector).attr(attribute) && ($(selector).attr(attribute)?.length || 0) > 0
 );
 
-function getCharset(body: string, buffer: Buffer, $: CheerioAPI) {
+/**
+ * gets the charset of the html
+ */
+function getCharset(body: string, buffer: Uint8Array, $: CheerioAPI) {
   if (doesElementExist('meta', 'charset', $)) {
     return $('meta').attr('charset');
   }
@@ -24,7 +30,7 @@ function getCharset(body: string, buffer: Buffer, $: CheerioAPI) {
     return chardet.detect(buffer);
   }
 
-  return 'UTF-8';
+  return 'utf-8';
 }
 
 /**
@@ -47,14 +53,14 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
       },
     );
 
-    // body = await response.text();
-    body = await response.clone().text();
-    const buffer = Buffer.from(await response.clone().arrayBuffer());
-    const charset = getCharset(body, buffer, load(body));
-    if (charset !== 'UTF-8') {
-      body = decode(Buffer.from(await response.arrayBuffer()), charset);
+    const bodyText = await response.clone().text();
+    const bodyArrayBuffer = await response.clone().arrayBuffer();
+    const charset = getCharset(bodyText, bodyArrayBuffer, load(bodyText));
+    if (charset.toLowerCase() === 'utf-8') {
+      body = bodyText;
+    } else {
+      body = decode(Buffer.from(bodyArrayBuffer), charset);
     }
-    console.log(body);
 
     if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
       throw new Error('Page must return a header content-type with text/');
