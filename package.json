@@ -27,6 +27,7 @@
   "dependencies": {
     "chardet": "^2.0.0",
     "cheerio": "^1.0.0-rc.12",
+    "iconv-lite": "^0.6.3",
     "undici": "^6.4.0",
     "validator": "^13.11.0"
   },
