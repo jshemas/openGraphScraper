@@ -1,5 +1,31 @@
 import { fetch } from 'undici';
 import type { OpenGraphScraperOptions } from './types';
+import { decode } from 'iconv-lite';
+import { CheerioAPI, load } from 'cheerio';
+import chardet from 'chardet';
+
+const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
+  $(selector).attr(attribute) && ($(selector).attr(attribute)?.length || 0) > 0
+);
+
+function getCharset(body: string, buffer: Buffer, $: CheerioAPI) {
+  if (doesElementExist('meta', 'charset', $)) {
+    return $('meta').attr('charset');
+  }
+  if (doesElementExist('head > meta[name="charset"]', 'content', $)) {
+    return $('head > meta[name="charset"]').attr('content');
+  }
+  if (doesElementExist('head > meta[http-equiv="content-type"]', 'content', $)) {
+    const content = $('head > meta[http-equiv="content-type"]').attr('content');
+    const charsetRegEx = /charset=([^()<>@,;:"/[\]?.=\s]*)/i;
+    return charsetRegEx.test(content) ? charsetRegEx.exec(content)[1] : 'UTF-8';
+  }
+  if (body) {
+    return chardet.detect(buffer);
+  }
+
+  return 'UTF-8';
+}
 
 /**
  * performs the fetch request and formats the body for ogs
@@ -21,7 +47,14 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
       },
     );
 
-    body = await response.text();
+    // body = await response.text();
+    body = await response.clone().text();
+    const buffer = Buffer.from(await response.clone().arrayBuffer());
+    const charset = getCharset(body, buffer, load(body));
+    if (charset !== 'UTF-8') {
+      body = decode(Buffer.from(await response.arrayBuffer()), charset);
+    }
+    console.log(body);
 
     if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
       throw new Error('Page must return a header content-type with text/');
