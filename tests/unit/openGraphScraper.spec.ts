@@ -3,6 +3,9 @@ import sinon from 'sinon';
 
 import chardet from 'chardet';
 import { MockAgent, setGlobalDispatcher } from 'undici';
+import path from 'path';
+import fs from 'fs';
+import { decode } from 'iconv-lite';
 import ogs from '../../index';
 
 const basicHTML = `
@@ -731,6 +734,25 @@ describe('return ogs', function () {
           expect(data.result.requestUrl).to.eql('www.test.com');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+        });
+    });
+  });
+
+  context('when the character encoding is not UTF-8', function () {
+    it('using just a url', function () {
+      const buffer = fs.readFileSync(path.join(__dirname, '../assets', 'shift-jis.html'));
+      const decodedHtml = decode(buffer, 'shift_jis');
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200, buffer);
+
+      return ogs({ url: 'www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogTitle).to.be.eql('OGタイトル');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.html).to.be.eql(decodedHtml);
+          expect(data.response).to.be.a('response');
         });
     });
   });
