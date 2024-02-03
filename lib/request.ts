@@ -27,7 +27,7 @@ function getCharset(body: string, buffer: Uint8Array, $: CheerioAPI) {
     return charsetRegEx.test(content) ? charsetRegEx.exec(content)[1] : 'UTF-8';
   }
   if (body) {
-    return chardet.detect(buffer);
+    return chardet.detect(Buffer.from(buffer));
   }
 
   return 'utf-8';
