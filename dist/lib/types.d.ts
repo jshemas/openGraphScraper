@@ -54,7 +54,7 @@ export type ValidatorSettings = {
  * @typeParam {string} property - meta tag name/property attribute
  * @typeParam {string} fieldName - name of the result variable
  */
-type CustomMetaTags = {
+export type CustomMetaTags = {
     fieldName: string;
     multiple: boolean;
     property: string;
@@ -271,4 +271,3 @@ export type OgObjectInteral = {
     updatedTime?: string;
 };
 export type OgObject = Omit<OgObjectInteral, 'musicSongDisc' | 'musicSongProperty' | 'musicSongTrack' | 'musicSongUrl' | 'ogImageHeight' | 'ogImageProperty' | 'ogImageSecureURL' | 'ogImageType' | 'ogImageURL' | 'ogImageWidth' | 'ogVideoHeight' | 'ogVideoProperty' | 'ogVideoType' | 'ogVideoWidth' | 'twitterImageAlt' | 'twitterImageHeight' | 'twitterImageProperty' | 'twitterImageSrc' | 'twitterImageWidth' | 'twitterPlayerHeight' | 'twitterPlayerProperty' | 'twitterPlayerStream' | 'twitterPlayerWidth'>;
-export {};

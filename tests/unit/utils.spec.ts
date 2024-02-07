@@ -3,6 +3,7 @@ import { expect } from 'chai';
 /* eslint-disable mocha/no-setup-in-describe */
 import {
   findImageTypeFromUrl,
+  isCustomMetaTagsValid,
   isImageTypeValid,
   isThisANonHTMLUrl,
   optionSetup,
@@ -236,6 +237,55 @@ describe('utils', function () {
     it('when passing onlyGetOpenGraphInfo into optionSetup', function () {
       const { options } = optionSetup({ onlyGetOpenGraphInfo: true });
       expect(options).to.eql({ onlyGetOpenGraphInfo: true });
+    });
+  });
+
+  describe('isCustomMetaTagsValid', function () {
+    it('when passing a valid custom tag into isCustomMetaTagsValid', function () {
+      const response = isCustomMetaTagsValid([{
+        multiple: false,
+        property: 'foo',
+        fieldName: 'fooTag',
+      }]);
+      expect(response).to.eql(true);
+    });
+    it('when passing a enpty array into isCustomMetaTagsValid', function () {
+      const response = isCustomMetaTagsValid([]);
+      expect(response).to.eql(true);
+    });
+    it('when passing a custom tag missing property into isCustomMetaTagsValid', function () {
+      // @ts-ignore
+      const response = isCustomMetaTagsValid([{
+        multiple: false,
+        fieldName: 'fooTag',
+      }]);
+      expect(response).to.eql(false);
+    });
+    it('when passing a custom tag invalid property into isCustomMetaTagsValid', function () {
+      const response = isCustomMetaTagsValid([{
+        multiple: false,
+        property: 'foo',
+        // @ts-ignore
+        fieldName: true,
+      }]);
+      expect(response).to.eql(false);
+    });
+    it('when passing a valid and invalid custom tag into isCustomMetaTagsValid', function () {
+      // @ts-ignore
+      const response = isCustomMetaTagsValid([{
+        multiple: false,
+        property: 'foo',
+      }, {
+        multiple: false,
+        property: 'foo',
+        fieldName: 'fooTag',
+      }]);
+      expect(response).to.eql(false);
+    });
+    it('when passing a invalid array into isCustomMetaTagsValid', function () {
+      // @ts-ignore
+      const response = isCustomMetaTagsValid(['foo', 'bar']);
+      expect(response).to.eql(false);
     });
   });
 });
