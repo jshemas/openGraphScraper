@@ -133,12 +133,17 @@ function isCustomMetaTagsValid(customMetaTags) {
         return false;
     let result = true;
     customMetaTags.forEach((customMetaTag) => {
-        if (!('fieldName' in customMetaTag) || typeof customMetaTag.fieldName !== 'string')
+        if (typeof customMetaTag === 'object') {
+            if (!('fieldName' in customMetaTag) || typeof customMetaTag.fieldName !== 'string')
+                result = false;
+            if (!('multiple' in customMetaTag) || typeof customMetaTag.multiple !== 'boolean')
+                result = false;
+            if (!('property' in customMetaTag) || typeof customMetaTag.property !== 'string')
+                result = false;
+        }
+        else {
             result = false;
-        if (!('multiple' in customMetaTag) || typeof customMetaTag.multiple !== 'boolean')
-            result = false;
-        if (!('property' in customMetaTag) || typeof customMetaTag.property !== 'string')
-            result = false;
+        }
     });
     return result;
 }

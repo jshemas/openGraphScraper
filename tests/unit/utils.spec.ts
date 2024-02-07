@@ -282,5 +282,10 @@ describe('utils', function () {
       }]);
       expect(response).to.eql(false);
     });
+    it('when passing a invalid array into isCustomMetaTagsValid', function () {
+      // @ts-ignore
+      const response = isCustomMetaTagsValid(['foo', 'bar']);
+      expect(response).to.eql(false);
+    });
   });
 });
