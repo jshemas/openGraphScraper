@@ -27,7 +27,7 @@
   "dependencies": {
     "chardet": "^2.0.0",
     "cheerio": "^1.0.0-rc.12",
-    "undici": "^6.4.0",
+    "undici": "^6.6.2",
     "validator": "^13.11.0"
   },
   "files": [
@@ -36,12 +36,12 @@
     "index.ts"
   ],
   "devDependencies": {
-    "@snyk/protect": "^1.1272.0",
+    "@snyk/protect": "^1.1278.0",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^18.18.3",
-    "@types/validator": "^13.11.8",
-    "@typescript-eslint/eslint-plugin": "^6.19.1",
-    "@typescript-eslint/parser": "^6.19.1",
+    "@types/node": "^18.19.14",
+    "@types/validator": "^13.11.9",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "chai": "^4.4.1",
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
