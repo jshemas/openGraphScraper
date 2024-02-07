@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.optionSetup = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = exports.defaultUrlValidatorSettings = void 0;
+exports.isCustomMetaTagsValid = exports.optionSetup = exports.removeNestedUndefinedValues = exports.isThisANonHTMLUrl = exports.isImageTypeValid = exports.findImageTypeFromUrl = exports.validateAndFormatURL = exports.isUrlValid = exports.defaultUrlValidatorSettings = void 0;
 const validator_1 = __importDefault(require("validator"));
 exports.defaultUrlValidatorSettings = {
     allow_fragments: true,
@@ -121,3 +121,25 @@ function optionSetup(ogsOptions) {
     return { options };
 }
 exports.optionSetup = optionSetup;
+/**
+ * Checks if image type is valid
+ *
+ * @param {string} type - type to be checked
+ * @return {boolean} boolean value if type is value
+ *
+ */
+function isCustomMetaTagsValid(customMetaTags) {
+    if (!Array.isArray(customMetaTags))
+        return false;
+    let result = true;
+    customMetaTags.forEach((customMetaTag) => {
+        if (!('fieldName' in customMetaTag) || typeof customMetaTag.fieldName !== 'string')
+            result = false;
+        if (!('multiple' in customMetaTag) || typeof customMetaTag.multiple !== 'boolean')
+            result = false;
+        if (!('property' in customMetaTag) || typeof customMetaTag.property !== 'string')
+            result = false;
+    });
+    return result;
+}
+exports.isCustomMetaTagsValid = isCustomMetaTagsValid;
