@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.3.4
+
+- Adding check to make sure `customMetaTags` are valid
+- Updating dependencies
+
 ## 6.3.3
 
 - Updating dependencies
