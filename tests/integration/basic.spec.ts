@@ -178,13 +178,13 @@ describe('basic', function () {
       expect(result.ogImage).to.be.eql([
         {
           height: '600',
-          url: 'https://opengraph.githubassets.com/ffa796e90601a7e9f9c5221fd03c4d7d698e400f83a580c0d4a52b6844148f57/jshemas/openGraphScraper',
+          url: 'https://opengraph.githubassets.com/1f2623bcd99e62b5e62c0d63880899b2fb1bb10d04aadc861ff2f9231fa12473/jshemas/openGraphScraper',
           width: '1200',
         },
       ]);
       expect(result.twitterImage).to.be.eql([
         {
-          url: 'https://opengraph.githubassets.com/ffa796e90601a7e9f9c5221fd03c4d7d698e400f83a580c0d4a52b6844148f57/jshemas/openGraphScraper',
+          url: 'https://opengraph.githubassets.com/1f2623bcd99e62b5e62c0d63880899b2fb1bb10d04aadc861ff2f9231fa12473/jshemas/openGraphScraper',
         },
       ]);
       expect(result.ogLocale).to.be.eql('en');
@@ -285,7 +285,6 @@ describe('basic', function () {
         'ogTitle',
         'ogType',
         'ogUrl',
-        'ogVideo',
         'requestUrl',
         'success',
         'charset',

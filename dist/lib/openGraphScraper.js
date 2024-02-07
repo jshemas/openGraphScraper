@@ -25,6 +25,8 @@ async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
     const formattedUrl = (0, utils_1.validateAndFormatURL)(options.url || '', (options.urlValidatorSettings || utils_1.defaultUrlValidatorSettings));
     if (!formattedUrl.url)
         throw new Error('Invalid URL');
+    if (!(0, utils_1.isCustomMetaTagsValid)(options.customMetaTags || []))
+        throw new Error('Invalid Custom Meta Tags');
     options.url = formattedUrl.url;
     // trying to limit non html pages
     if ((0, utils_1.isThisANonHTMLUrl)(options.url))

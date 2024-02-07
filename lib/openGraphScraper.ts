@@ -2,6 +2,7 @@ import extractMetaTags from './extract';
 import requestAndResultsFormatter from './request';
 import {
   defaultUrlValidatorSettings,
+  isCustomMetaTagsValid,
   isThisANonHTMLUrl,
   optionSetup,
   validateAndFormatURL,
@@ -29,6 +30,8 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
   const formattedUrl = validateAndFormatURL(options.url || '', (options.urlValidatorSettings || defaultUrlValidatorSettings));
 
   if (!formattedUrl.url) throw new Error('Invalid URL');
+
+  if (!isCustomMetaTagsValid(options.customMetaTags || [])) throw new Error('Invalid Custom Meta Tags');
 
   options.url = formattedUrl.url;
 

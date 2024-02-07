@@ -58,7 +58,7 @@ export type ValidatorSettings = {
  * @typeParam {string} property - meta tag name/property attribute
  * @typeParam {string} fieldName - name of the result variable
  */
-type CustomMetaTags = {
+export type CustomMetaTags = {
   fieldName: string;
   multiple: boolean;
   property: string;
