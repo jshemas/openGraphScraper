@@ -47,8 +47,8 @@ async function requestAndResultsFormatter(options) {
             headers: { Origin: options.url, Accept: 'text/html' },
             ...options.fetchOptions,
         });
-        const bodyText = await response.clone().text();
-        const bodyArrayBuffer = await response.clone().arrayBuffer();
+        const bodyArrayBuffer = await response.arrayBuffer();
+        const bodyText = Buffer.from(bodyArrayBuffer).toString('utf-8');
         const charset = getCharset(bodyText, bodyArrayBuffer, (0, cheerio_1.load)(bodyText));
         if (charset.toLowerCase() === 'utf-8') {
             body = bodyText;
