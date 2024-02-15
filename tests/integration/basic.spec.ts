@@ -161,7 +161,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
-  it.only('Test README.md using the default Accept: text/html header - Should Return correct Open Graph Info', function () {
+  it('Test README.md using the default Accept: text/html header - Should Return correct Open Graph Info', function () {
     return ogsRequire({ url: 'https://github.com/jshemas/openGraphScraper/blob/master/README.md' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
