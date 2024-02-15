@@ -6,9 +6,7 @@ describe('encoding', function () {
   context('should return correct Open Graph Info + charset info', function () {
     it('rakuten', function () {
       return ogs({
-        // FIXME temporary use my own page
-        // url: 'https://jshemas.github.io/openGraphScraperPages/rakuten',
-        url: 'https://cm-dyoshikawa.github.io/openGraphScraperPages/rakuten',
+        url: 'https://jshemas.github.io/openGraphScraperPages/rakuten',
       }).then(function ({ error, result, response }) {
         console.log('error:', error);
         console.log('result:', result);
@@ -31,9 +29,7 @@ describe('encoding', function () {
         expect(result.twitterImage).to.be.eql([{
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
         }]);
-        // FIXME temporary use my own page
-        // expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rakuten');
-        expect(result.requestUrl).to.be.eql('https://cm-dyoshikawa.github.io/openGraphScraperPages/rakuten');
+        expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rakuten');
         expect(result.charset).to.be.eql('euc-jp');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
@@ -440,9 +436,7 @@ describe('encoding', function () {
         });
     });
     it('tmall', function () {
-      // FIXME temporary use my own page
-      // return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/tmall' })
-      return ogs({ url: 'https://cm-dyoshikawa.github.io/openGraphScraperPages/tmall' })
+      return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/tmall' })
         .then(function (data) {
           const { error, result, response } = data;
           console.log('error:', error);
@@ -467,9 +461,7 @@ describe('encoding', function () {
           ]);
           expect(result.ogUrl).to.be.eql('https://detail.tmall.com/item.htm?id=605258110430');
           expect(result.charset).to.be.eql('gbk');
-          // FIXME temporary use my own page
-          // expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/tmall');
-          expect(result.requestUrl).to.be.eql('https://cm-dyoshikawa.github.io/openGraphScraperPages/tmall');
+          expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/tmall');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
             'favicon',
@@ -586,9 +578,7 @@ describe('encoding', function () {
         });
     });
     it('abehiroshi', function () {
-      // FIXME temporary use my own page
-      // return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/abehiroshi' })
-      return ogs({ url: 'https://cm-dyoshikawa.github.io/openGraphScraperPages/abehiroshi' })
+      return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/abehiroshi' })
         .then(function (data) {
           const { error, result, response } = data;
           console.log('error:', error);
@@ -596,9 +586,7 @@ describe('encoding', function () {
           expect(error).to.be.eql(false);
           expect(result.ogTitle).to.be.eql('阿部寛のホームページ');
           expect(result.charset).to.be.eql('Shift_JIS');
-          // FIXME temporary use my own page
-          // expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/abehiroshi');
-          expect(result.requestUrl).to.be.eql('https://cm-dyoshikawa.github.io/openGraphScraperPages/abehiroshi');
+          expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/abehiroshi');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
             'charset',
