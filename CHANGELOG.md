@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.4.0
+
+- Add character encoding detection and decoding logic using `iconv-lite`
+- Updating dependencies
+
 ## 6.3.4
 
 - Adding check to make sure `customMetaTags` are valid
