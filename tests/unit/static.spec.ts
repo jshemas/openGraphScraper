@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
+import { encode } from 'iconv-lite';
 
 import { MockAgent, setGlobalDispatcher } from 'undici';
 
@@ -275,10 +276,11 @@ describe('static check meta tags', function () {
       <meta name="twitter:image:src" content="https://r.r10s.jp/com/img/home/top/ogp.png">
     </head></html>`;
     /* eslint-enable max-len */
+    const metaHTMLBuffer = encode(metaHTML, 'sjis');
 
     mockAgent.get('http://www.test.com')
       .intercept({ path: '/' })
-      .reply(200, metaHTML);
+      .reply(200, metaHTMLBuffer);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {
@@ -322,10 +324,11 @@ describe('static check meta tags', function () {
       <meta name="twitter:image:src" content="https://r.r10s.jp/com/img/home/top/ogp.png">
     </head></html>`;
     /* eslint-enable max-len */
+    const metaHTMLBuffer = encode(metaHTML, 'euc-jp');
 
     mockAgent.get('http://www.test.com')
       .intercept({ path: '/' })
-      .reply(200, metaHTML);
+      .reply(200, metaHTMLBuffer);
 
     return ogs({ url: 'www.test.com' })
       .then(function (data) {

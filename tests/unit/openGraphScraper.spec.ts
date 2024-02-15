@@ -3,6 +3,7 @@ import sinon from 'sinon';
 
 import chardet from 'chardet';
 import { MockAgent, setGlobalDispatcher } from 'undici';
+import { encode } from 'iconv-lite';
 import ogs from '../../index';
 
 const basicHTML = `
@@ -731,6 +732,39 @@ describe('return ogs', function () {
           expect(data.result.requestUrl).to.eql('www.test.com');
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
+        });
+    });
+  });
+
+  context('when the character encoding is not UTF-8', function () {
+    it('using just a url', function () {
+      const html = `
+      <html>
+        <head>
+          <meta charset="shift_jis">
+          <meta property="og:description" content="OG説明">
+          <meta property="og:title" content="OGタイトル">
+          <meta property="foo" content="バー">
+        </head>
+        <body>
+          <h1>こんにちは</h1>
+          <img width="360" src="test.png" alt="テスト画像">
+          <img width="360" alt="テスト画像2">
+        </body>
+      </html>
+      `;
+      const htmlBuffer = encode(html, 'shift_jis');
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200, htmlBuffer);
+
+      return ogs({ url: 'www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogTitle).to.be.eql('OGタイトル');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.html).to.be.eql(html);
+          expect(data.response).to.be.a('response');
         });
     });
   });

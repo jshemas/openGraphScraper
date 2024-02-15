@@ -1,6 +1,36 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const undici_1 = require("undici");
+const iconv_lite_1 = require("iconv-lite");
+const cheerio_1 = require("cheerio");
+const chardet_1 = __importDefault(require("chardet"));
+/**
+ * checks if an element exists
+ */
+const doesElementExist = (selector, attribute, $) => ($(selector).attr(attribute) && ($(selector).attr(attribute)?.length || 0) > 0);
+/**
+ * gets the charset of the html
+ */
+function getCharset(body, buffer, $) {
+    if (doesElementExist('meta', 'charset', $)) {
+        return $('meta').attr('charset');
+    }
+    if (doesElementExist('head > meta[name="charset"]', 'content', $)) {
+        return $('head > meta[name="charset"]').attr('content');
+    }
+    if (doesElementExist('head > meta[http-equiv="content-type"]', 'content', $)) {
+        const content = $('head > meta[http-equiv="content-type"]').attr('content');
+        const charsetRegEx = /charset=([^()<>@,;:"/[\]?.=\s]*)/i;
+        return charsetRegEx.test(content) ? charsetRegEx.exec(content)[1] : 'UTF-8';
+    }
+    if (body) {
+        return chardet_1.default.detect(Buffer.from(buffer));
+    }
+    return 'utf-8';
+}
 /**
  * performs the fetch request and formats the body for ogs
  *
@@ -17,7 +47,15 @@ async function requestAndResultsFormatter(options) {
             headers: { Origin: options.url, Accept: 'text/html' },
             ...options.fetchOptions,
         });
-        body = await response.text();
+        const bodyArrayBuffer = await response.arrayBuffer();
+        const bodyText = Buffer.from(bodyArrayBuffer).toString('utf-8');
+        const charset = getCharset(bodyText, bodyArrayBuffer, (0, cheerio_1.load)(bodyText));
+        if (charset.toLowerCase() === 'utf-8') {
+            body = bodyText;
+        }
+        else {
+            body = (0, iconv_lite_1.decode)(Buffer.from(bodyArrayBuffer), charset);
+        }
         if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
             throw new Error('Page must return a header content-type with text/');
         }
