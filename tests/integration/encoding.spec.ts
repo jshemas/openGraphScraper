@@ -598,4 +598,24 @@ describe('encoding', function () {
         });
     });
   });
+  it('abehiroshi - ShiftJIS', function () {
+    return ogs({ url: 'http://abehiroshi.la.coocan.jp/' })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.ogTitle).to.be.eql('阿部寛のホームページ');
+        expect(result.charset).to.be.eql('Shift_JIS');
+        expect(result.requestUrl).to.be.eql('http://abehiroshi.la.coocan.jp/');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'charset',
+          'ogTitle',
+          'requestUrl',
+          'success',
+        );
+        expect(response).to.be.an('Response');
+      });
+  });
 });
