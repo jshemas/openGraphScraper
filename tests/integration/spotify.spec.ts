@@ -123,10 +123,10 @@ describe('spotify', function () {
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql([{
-        url: 'https://i.scdn.co/image/ab6761610000e5eb867008a971fae0f4d913f63a',
+        url: 'https://i.scdn.co/image/ab6761610000e5eb6e835a500e791bf9c27a422a',
       }]);
       expect(result.twitterImage).to.be.eql([{
-        url: 'https://i.scdn.co/image/ab6761610000e5eb867008a971fae0f4d913f63a',
+        url: 'https://i.scdn.co/image/ab6761610000e5eb6e835a500e791bf9c27a422a',
       }]);
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.charset).to.be.eql('utf-8');
