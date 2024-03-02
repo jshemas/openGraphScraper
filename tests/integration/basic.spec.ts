@@ -30,6 +30,7 @@ describe('basic', function () {
         width: '300',
         height: '300',
         type: 'image/png',
+        alt: 'The Open Graph logo',
       }]);
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
       expect(result.charset).to.be.eql('utf-8');
@@ -61,6 +62,7 @@ describe('basic', function () {
       width: '300',
       height: '300',
       type: 'image/png',
+      alt: 'The Open Graph logo',
     }]);
     expect(result.requestUrl).to.be.eql('https://ogp.me/');
     expect(result.charset).to.be.eql('utf-8');
@@ -94,6 +96,7 @@ describe('basic', function () {
         width: '300',
         height: '300',
         type: 'image/png',
+        alt: 'The Open Graph logo',
       }]);
       expect(response.result.requestUrl).to.be.eql('https://ogp.me/');
       expect(response.result.charset).to.be.eql('utf-8');
@@ -112,6 +115,7 @@ describe('basic', function () {
       expect(result.ogUrl).to.be.eql('https://ogp.me/');
       expect(result.ogDescription).to.be.eql('The Open Graph protocol enables any web page to become a rich object in a social graph.');
       expect(result.ogImage).to.be.eql([{
+        alt: 'The Open Graph logo',
         url: 'https://ogp.me/logo.png',
         width: '300',
         height: '300',

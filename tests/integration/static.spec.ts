@@ -1760,6 +1760,7 @@ describe('static', function () {
           width: '1200',
           height: '630',
           type: 'image/jpeg',
+          alt: 'FILE - In this Oct. 8, 2014, file photo, a Wall Street address is carved in the side of a building in New York. Stocks are opening modestly higher on Wall Street, Friday, Aug. 11, 2017, led by gains in technology companies and banks. (AP Photo/Mark Lennihan, File)',
         }]);
         expect(result.twitterImage).to.be.eql([{
           url: 'https://ca-times.brightspotcdn.com/dims4/default/3d21428/2147483647/strip/true/crop/2048x1152+0+51/resize/1200x675!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff2%2F6c%2F8f7e89b7eb2a7ecc01f245e3ec0b%2Fla-1502459693-4svslqel7u-snap-image',
@@ -2800,6 +2801,7 @@ describe('static', function () {
         expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterUrl).to.be.eql('https://www.vox.com/recode/2020/6/11/21287395/jack-dorsey-start-small-billionaire-philanthropy-coronavirus-twitter-square-kaepernick-rihanna');
         expect(result.ogImage).to.be.eql([{
+          alt: 'Jack Dorsey Sydney Photo Shoot',
           url: 'https://cdn.vox-cdn.com/thumbor/PP5h21sGbjyDt0BoZYKpdNUsFFs=/0x0:4746x2485/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/20030444/524250960.jpg.jpg',
           width: '1200',
           height: '630',

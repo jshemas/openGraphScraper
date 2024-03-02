@@ -112,6 +112,7 @@ describe('static check meta tags', function () {
       <meta property="og:image:type" content="image/png">
       <meta property="og:image:width" content="1">
       <meta property="og:image" content="http://foobar.png">
+      <meta property="og:image:alt" content="alt text">
       <meta property="og:image:secure_url" content="https://foobar.png">
     </head></html>`;
 
@@ -128,6 +129,7 @@ describe('static check meta tags', function () {
           width: '1',
           height: '2',
           type: 'image/png',
+          alt: 'alt text',
         }]);
         expect(data.html).to.be.eql(metaHTML);
         expect(data.response).to.be.a('response');
