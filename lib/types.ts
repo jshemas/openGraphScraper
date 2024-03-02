@@ -83,6 +83,7 @@ export type ImageObject = {
   type?: string;
   url: string;
   width?: number;
+  alt?: string
 };
 
 export type VideoObject = {
@@ -203,6 +204,7 @@ export type OgObjectInteral = {
   ogImageType?: string | string[] | null[];
   ogImageURL?: string | string[] | null[];
   ogImageWidth?: string | string[] | null[];
+  ogImageAlt?: string | string[] | null[];
   ogLocale?: string;
   ogLocaleAlternate?: string;
   ogLogo?: string;

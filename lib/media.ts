@@ -34,6 +34,7 @@ const mediaMapper = (item: ImageObject[] | VideoObject[]) => ({
   type: item[3],
   url: item[0],
   width: item[1],
+  alt: item[4],
 });
 
 const mediaSorter = (
@@ -92,6 +93,7 @@ export function mediaSetup(ogObject: OgObjectInteral) {
     || ogObject.ogImageWidth
     || ogObject.ogImageHeight
     || ogObject.ogImageType
+    || ogObject.ogImageAlt
   ) {
     ogObject.ogImageSecureURL = ogObject.ogImageSecureURL ? ogObject.ogImageSecureURL : [];
     ogObject.ogImageURL = ogObject.ogImageURL ? ogObject.ogImageURL : [];
@@ -104,6 +106,7 @@ export function mediaSetup(ogObject: OgObjectInteral) {
     ogObject.ogImageWidth = ogObject.ogImageWidth ? ogObject.ogImageWidth : [];
     ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [];
     ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [];
+    ogObject.ogImageAlt = ogObject.ogImageAlt ? ogObject.ogImageAlt : [];
   }
 
   // format images and limit to 10
@@ -112,6 +115,7 @@ export function mediaSetup(ogObject: OgObjectInteral) {
     ogObject.ogImageWidth,
     ogObject.ogImageHeight,
     ogObject.ogImageType,
+    ogObject.ogImageAlt,
   )
     .map(mediaMapper)
     .filter((value:ImageObject) => value.url !== undefined && value.url !== '')
