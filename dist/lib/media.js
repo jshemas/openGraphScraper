@@ -28,6 +28,7 @@ const mediaMapper = (item) => ({
     type: item[3],
     url: item[0],
     width: item[1],
+    alt: item[4],
 });
 const mediaSorter = (a, b) => {
     if (!(a.url && b.url)) {
@@ -79,7 +80,8 @@ function mediaSetup(ogObject) {
         || ogObject.ogImageProperty
         || ogObject.ogImageWidth
         || ogObject.ogImageHeight
-        || ogObject.ogImageType) {
+        || ogObject.ogImageType
+        || ogObject.ogImageAlt) {
         ogObject.ogImageSecureURL = ogObject.ogImageSecureURL ? ogObject.ogImageSecureURL : [];
         ogObject.ogImageURL = ogObject.ogImageURL ? ogObject.ogImageURL : [];
         ogObject.ogImageProperty = ogObject.ogImageProperty ? ogObject.ogImageProperty : [];
@@ -91,9 +93,10 @@ function mediaSetup(ogObject) {
         ogObject.ogImageWidth = ogObject.ogImageWidth ? ogObject.ogImageWidth : [];
         ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [];
         ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [];
+        ogObject.ogImageAlt = ogObject.ogImageAlt ? ogObject.ogImageAlt : [];
     }
     // format images and limit to 10
-    const ogImages = zip(ogObject.ogImageProperty, ogObject.ogImageWidth, ogObject.ogImageHeight, ogObject.ogImageType)
+    const ogImages = zip(ogObject.ogImageProperty, ogObject.ogImageWidth, ogObject.ogImageHeight, ogObject.ogImageType, ogObject.ogImageAlt)
         .map(mediaMapper)
         .filter((value) => value.url !== undefined && value.url !== '')
         .filter((value, index) => index < 10)
