@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.5.0
+
+- Adding support for JSON LD
+- Adding support for `og:image:alt`, `twitterAccount`, `fbAppId` and extra og tags for `music` and `video`
+- Fixing jsdoc param name
+- Updating dependencies
+
 ## 6.4.0
 
 - Add character encoding detection and decoding logic using `iconv-lite`
