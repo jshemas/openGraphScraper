@@ -30,13 +30,17 @@ describe('encoding', function () {
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rakuten');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
+        expect(result.fbAppId).to.be.eql('194149240717705');
         expect(result.charset).to.be.eql('euc-jp');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'ogDescription',
           'ogImage',
           'ogSiteName',
+          'fbAppId',
           'ogTitle',
           'ogType',
           'ogLocale',
@@ -117,9 +121,11 @@ describe('encoding', function () {
           }]);
           expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/aliexpress');
+          expect(result.fbAppId).to.be.eql('176044105761845');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
             'favicon',
+            'fbAppId',
             'alAndroidAppName',
             'alAndroidPackage',
             'alAndroidUrl',
@@ -207,9 +213,11 @@ describe('encoding', function () {
           expect(result.ogUrl).to.be.eql('https://blog.csdn.net/qq449245884/article/details/107096460');
           expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/csdn');
+          expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
             'favicon',
+            'jsonLD',
             'charset',
             'ogDescription',
             'ogImage',
@@ -299,8 +307,12 @@ describe('encoding', function () {
           expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/okezone');
           expect(result.success).to.be.eql(true);
+          expect(result.fbAppId).to.be.eql('213195442194472');
+          expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
           expect(result).to.have.all.keys(
             'favicon',
+            'fbAppId',
+            'jsonLD',
             'articleAuthor',
             'articlePublishedTime',
             'articlePublisher',
@@ -598,6 +610,7 @@ describe('encoding', function () {
         });
     });
   });
+
   it('abehiroshi - ShiftJIS', function () {
     return ogs({ url: 'http://abehiroshi.la.coocan.jp/' })
       .then(function (data) {

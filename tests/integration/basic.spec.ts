@@ -34,6 +34,7 @@ describe('basic', function () {
       }]);
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
       expect(result.charset).to.be.eql('utf-8');
+      expect(result.fbAppId).to.be.eql('115190258555800');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogTitle',
@@ -43,11 +44,13 @@ describe('basic', function () {
         'ogImage',
         'requestUrl',
         'charset',
+        'fbAppId',
         'success',
       );
       expect(response).to.be.an('Response');
     });
   });
+
   it('using await should return valid data', async function () {
     const { error, result, response } = await ogsRequire({ url: 'https://ogp.me/' });
     console.log('error:', error);
@@ -66,11 +69,13 @@ describe('basic', function () {
     }]);
     expect(result.requestUrl).to.be.eql('https://ogp.me/');
     expect(result.charset).to.be.eql('utf-8');
+    expect(result.fbAppId).to.be.eql('115190258555800');
     expect(result.success).to.be.eql(true);
     expect(result).to.have.all.keys(
       'ogTitle',
       'ogType',
       'ogUrl',
+      'fbAppId',
       'ogDescription',
       'ogImage',
       'requestUrl',
@@ -79,6 +84,7 @@ describe('basic', function () {
     );
     expect(response).to.be.an('Response');
   });
+
   it('using callbackify should return valid data', function () {
     const ogsCallback = util.callbackify(ogsRequire);
     return ogsCallback({
@@ -100,11 +106,13 @@ describe('basic', function () {
       }]);
       expect(response.result.requestUrl).to.be.eql('https://ogp.me/');
       expect(response.result.charset).to.be.eql('utf-8');
+      expect(response.result.fbAppId).to.be.eql('115190258555800');
       expect(response.result.success).to.be.eql(true);
-      expect(response.result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'success');
+      expect(response.result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'fbAppId', 'success');
       expect(response.response).to.be.an('Response');
     });
   });
+
   it('using ogs import should still work', async function () {
     return ogs({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -123,9 +131,11 @@ describe('basic', function () {
       }]);
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
       expect(result.charset).to.be.eql('utf-8');
+      expect(result.fbAppId).to.be.eql('115190258555800');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogTitle',
+        'fbAppId',
         'ogType',
         'ogUrl',
         'ogDescription',
@@ -137,6 +147,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {
     return ogsRequire({ url: 'https://www.namecheap.com/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -149,9 +160,11 @@ describe('basic', function () {
       expect(result.ogTitle).to.be.eql('Buy a domain name - Register cheap domain names from $0.99 - Namecheap');
       expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
+      expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'jsonLD',
         'favicon',
         'ogTitle',
         'ogDescription',
@@ -165,6 +178,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('Test README.md using the default Accept: text/html header - Should Return correct Open Graph Info', function () {
     return ogsRequire({ url: 'https://github.com/jshemas/openGraphScraper/blob/master/README.md' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -185,10 +199,12 @@ describe('basic', function () {
       expect(result.favicon).to.be.eql('https://github.githubassets.com/favicons/favicon.svg');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.requestUrl).to.be.eql('https://github.com/jshemas/openGraphScraper/blob/master/README.md');
+      expect(result.fbAppId).to.be.eql('1401488693436528');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'charset',
         'favicon',
+        'fbAppId',
         'ogDescription',
         'ogImage',
         'ogLocale',
@@ -207,6 +223,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('vimeo.com should return open graph data', function () {
     return ogsRequire({ url: 'https://vimeo.com/232889838' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -261,10 +278,13 @@ describe('basic', function () {
       //   height: '720',
       // }]);
       expect(result.requestUrl).to.be.eql('https://vimeo.com/232889838');
+      expect(result.fbAppId).to.be.eql('19884028963');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
+        'fbAppId',
+        'jsonLD',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -301,6 +321,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('mozilla.org should return open graph data with one title', function () {
     return ogsRequire({ url: 'https://jshemas.github.io/openGraphScraperPages/mozilla' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -335,6 +356,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('facebook - testing cors mode - header origin should default to url', function () {
     return ogs({ url: 'https://www.facebook.com/' })
       .then(function ({ error, result, response }) {
@@ -353,10 +375,12 @@ describe('basic', function () {
         expect(result.ogTitle).to.be.eql('Facebook - log in or sign up');
         expect(result.ogDescription).to.be.eql('Log into Facebook to start sharing and connecting with your friends, family, and people you know.');
         expect(result.requestUrl).to.be.eql('https://www.facebook.com/');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'ogDescription',
           'ogImage',
           'ogLocale',

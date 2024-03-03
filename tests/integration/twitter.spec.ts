@@ -97,9 +97,11 @@ describe('twitter', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/github');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('1401488693436528');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'ogDescription',
           'ogImage',
           'ogSiteName',

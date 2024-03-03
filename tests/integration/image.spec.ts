@@ -32,9 +32,13 @@ describe('image', function () {
       }]);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/flickr');
       expect(result.charset).to.be.eql('UTF-8');
+      expect(result.fbAppId).to.be.eql('137206539707334');
+      expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
+        'jsonLD',
+        'fbAppId',
         'alIosAppName',
         'alIosAppStoreId',
         'alIosUrl',
@@ -58,6 +62,7 @@ describe('image', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('Test getting the description and images from meta tags', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/twitter.html' }).then(function ({ error, result, response }) {
       console.log('error:', error);

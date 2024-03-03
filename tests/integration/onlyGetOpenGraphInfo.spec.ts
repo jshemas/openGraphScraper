@@ -24,6 +24,7 @@ describe('onlyGetOpenGraphInfo', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('should get all open graph info', function () {
     return ogs({
       url: 'http://www.wikipedia.org/',

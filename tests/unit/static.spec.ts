@@ -215,6 +215,25 @@ describe('static check meta tags', function () {
       });
   });
 
+  it('jsonLD', function () {
+    const metaHTML = `<html><head>
+    <script type="application/ld+json">{"foo":"bar"}</script>
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.jsonLD).to.be.eql({ foo: 'bar' });
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
   it('encoding - utf-8', function () {
     /* eslint-disable max-len */
     const metaHTML = `<html><head>

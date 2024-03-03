@@ -56,6 +56,11 @@ function extractMetaTags(body, options) {
     // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks
     if (!options.onlyGetOpenGraphInfo) {
         ogObject = (0, fallback_1.default)(ogObject, options, $, body);
+        $('script').each((index, script) => {
+            if (script.attribs.type && script.attribs.type === 'application/ld+json') {
+                ogObject.jsonLD = JSON.parse($(script).text());
+            }
+        });
     }
     return ogObject;
 }

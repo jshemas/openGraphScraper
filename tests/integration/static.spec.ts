@@ -42,9 +42,11 @@ describe('static', function () {
         expect(result.twitterImage).to.be.eql([{ url: 'https://a1.muscache.com/im/pictures/43670185/606e6e19_original.jpg?aki_policy=x_large' }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/airbnb');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('138566025676');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -80,6 +82,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('arstechnica', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/arstechnica' })
       .then(function ({ error, result, response }) {
@@ -133,6 +136,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('battlefield', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/battlefield' })
       .then(function ({ error, result, response }) {
@@ -180,6 +184,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('bestbuy', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bestbuy' })
       .then(function ({ error, result, response }) {
@@ -205,9 +210,11 @@ describe('static', function () {
         expect(result.twitterImage).to.be.eql([{ url: 'http://pisces.bbystatic.com//image2/BestBuy_US/images/products/4447/4447801_sa.jpg;maxHeight=210;maxWidth=210' }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bestbuy');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'ogDate',
           'ogDescription',
           'ogImage',
@@ -229,6 +236,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('bjango', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bjango' })
       .then(function ({ error, result, response }) {
@@ -252,6 +260,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('bloomberg', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bloomberg' })
       .then(function ({ error, result, response }) {
@@ -284,9 +293,11 @@ describe('static', function () {
         expect(result.ogAudioType).to.be.eql('audio/mpeg');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/bloomberg');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -312,6 +323,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('businesstoday', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/businesstoday' })
       .then(function ({ error, result, response }) {
@@ -338,9 +350,13 @@ describe('static', function () {
         expect(result.ogDescription).to.be.eql("Madhu Kapur in her suit had sought various reliefs including recognition of the family's right to participate in the management of the bank");
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/businesstoday');
         expect(result.charset).to.be.eql('ISO-8859-1');
+        expect(result.fbAppId).to.be.eql('23230437118');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
+          'jsonLD',
           'ogDate',
           'ogDescription',
           'ogImage',
@@ -360,6 +376,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('cbronline', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cbronline' })
       .then(function ({ error, result, response }) {
@@ -392,9 +409,13 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cbronline');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('1880004222235592');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
+          'jsonLD',
           'articleModifiedTime',
           'articlePublishedTime',
           'articleSection',
@@ -418,6 +439,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('cio', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cio' })
       .then(function ({ error, result, response }) {
@@ -449,9 +471,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cio');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('196366870381968');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'author',
           'ogDate',
           'dcDateIssued',
@@ -474,6 +498,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('cloudpro', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cloudpro' })
       .then(function ({ error, result, response }) {
@@ -502,9 +527,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cloudpro');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -526,6 +553,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('cnet', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cnet' })
       .then(function ({ error, result, response }) {
@@ -557,9 +585,13 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cnet');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('16995676698');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
+          'fbAppId',
           'author',
           'ogDescription',
           'articlePublisher',
@@ -584,6 +616,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('crn', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/crn' })
       .then(function ({ error, result, response }) {
@@ -622,6 +655,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('computerworld', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/computerworld' })
       .then(function ({ error, result, response }) {
@@ -652,9 +686,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/computerworld');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('123026274413041');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'ogDate',
           'author',
           'dcDateIssued',
@@ -676,6 +712,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('darkreading', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/darkreading' })
       .then(function ({ error, result, response }) {
@@ -702,9 +739,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/darkreading');
         expect(result.charset).to.be.eql('iso-8859-1');
+        expect(result.fbAppId).to.be.eql('640989409269461');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -724,6 +763,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('discourse', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/discourse' })
       .then(function ({ error, result, response }) {
@@ -749,9 +789,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/discourse');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -770,6 +812,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('docs', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/docs' })
       .then(function ({ error, result, response }) {
@@ -804,6 +847,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('ebay', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/ebay' })
       .then(function ({ error, result, response }) {
@@ -830,9 +874,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/ebay');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('102628213125203');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
+          'fbAppId',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -852,6 +898,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('economictimes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/economictimes' })
       .then(function ({ error, result, response }) {
@@ -893,9 +940,13 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/economictimes');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('128738260476079');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
+          'jsonLD',
           'alAndroidAppName',
           'alAndroidUrl',
           'alIosAppName',
@@ -930,6 +981,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('entrepreneur', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/entrepreneur' })
       .then(function ({ error, result, response }) {
@@ -965,9 +1017,11 @@ describe('static', function () {
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/EntMagazine');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/entrepreneur');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('279152967822');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'articleAuthor',
           'articleModifiedTime',
           'articlePublishedTime',
@@ -994,6 +1048,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('etsy', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/etsy' })
       .then(function ({ error, result, response }) {
@@ -1035,9 +1090,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/etsy');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('89186614300');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -1072,6 +1129,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('facebook', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/facebook' })
       .then(function ({ error, result, response }) {
@@ -1090,9 +1148,11 @@ describe('static', function () {
         expect(result.ogDescription).to.be.eql('Log into Facebook to start sharing and connecting with your friends, family, and people you know.');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/facebook');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1106,6 +1166,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('fastcompany', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/fastcompany' })
       .then(function ({ error, result, response }) {
@@ -1148,9 +1209,13 @@ describe('static', function () {
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/FastCompany');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/fastcompany');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('178479832213933');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
+          'jsonLD',
           'articleModifiedTime',
           'articlePublishedTime',
           'articlePublisher',
@@ -1177,6 +1242,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('forbes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/forbes' })
       .then(function ({ error, result, response }) {
@@ -1207,9 +1273,13 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/forbes');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('123694841080850');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
+          'jsonLD',
           'articleAuthor',
           'articleSection',
           'articlePublisher',
@@ -1234,6 +1304,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('fortune', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/fortune' })
       .then(function ({ error, result, response }) {
@@ -1261,9 +1332,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/fortune');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'ogDate',
           'ogDescription',
           'ogImage',
@@ -1284,6 +1357,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('foursquare', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/foursquare' })
       .then(function ({ error, result, response }) {
@@ -1344,9 +1418,11 @@ describe('static', function () {
         expect(result.twitterUrl).to.be.eql('https://foursquare.com/v/the-baxter-inn/4ed4896c775b45f6ed7b0182');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/foursquare');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('86734274142');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -1389,6 +1465,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('geektime', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/geektime' })
       .then(function ({ error, result, response }) {
@@ -1423,9 +1500,11 @@ describe('static', function () {
         expect(result.twitterUrl).to.be.eql('https://www.geektime.com/duckface-can-saves-lives-binah-ai-raises-13-5m-to-monitor-health-condition-through-selfies/');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/geektime');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'ogDate',
           'articleModifiedTime',
           'articlePublishedTime',
@@ -1451,6 +1530,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('inc', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/inc' })
       .then(function ({ error, result, response }) {
@@ -1481,9 +1561,13 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/inc');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('139291179414843');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
+          'jsonLD',
           'articleAuthor',
           'articlePublishedTime',
           'articleSection',
@@ -1507,6 +1591,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('insta', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/insta' })
       .then(function ({ error, result, response }) {
@@ -1531,9 +1616,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/insta');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('124024574287414');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -1554,6 +1641,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('itunes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/itunes' })
       .then(function ({ error, result, response }) {
@@ -1581,8 +1669,10 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/itunes');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('116556461780510');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'fbAppId',
           'ogDate',
           'ogDescription',
           'ogImage',
@@ -1602,6 +1692,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('jewishbusinessnews', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/jewishbusinessnews' })
       .then(function ({ error, result, response }) {
@@ -1643,9 +1734,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/jewishbusinessnews');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'articleModifiedTime',
           'articlePublishedTime',
           'articlePublisher',
@@ -1673,6 +1766,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('kickstarter', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/kickstarter' })
       .then(function ({ error, result, response }) {
@@ -1707,9 +1801,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/kickstarter');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('69103156693');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
+          'fbAppId',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1735,6 +1831,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('latimes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/latimes' })
       .then(function ({ error, result, response }) {
@@ -1768,9 +1865,13 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/latimes');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('119932621434123');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
+          'jsonLD',
           'articleAuthor',
           'articlePublishedTime',
           'articleSection',
@@ -1793,6 +1894,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('leandata', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/leandata' })
       .then(function ({ error, result, response }) {
@@ -1838,6 +1940,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('learnxinyminutes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/learnxinyminutes' })
       .then(function ({ error, result, response }) {
@@ -1866,6 +1969,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('lifehacker', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/lifehacker' })
       .then(function ({ error, result, response }) {
@@ -1912,6 +2016,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('macrumors', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/macrumors' })
       .then(function ({ error, result, response }) {
@@ -1943,9 +2048,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/macrumors');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'articlePublisher',
           'ogDate',
           'ogDescription',
@@ -1968,6 +2075,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('mashable', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mashable' })
       .then(function ({ error, result, response }) {
@@ -2001,9 +2109,13 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mashable');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('122071082108');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
+          'jsonLD',
           'ogLocale',
           'author',
           'ogDate',
@@ -2030,6 +2142,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('medium', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/medium' })
       .then(function ({ error, result, response }) {
@@ -2069,9 +2182,13 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/medium');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('542599432471018');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
+          'jsonLD',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -2104,6 +2221,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('michaelkors', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/michaelkors' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -2127,9 +2245,11 @@ describe('static', function () {
       }]);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/michaelkors');
       expect(result.charset).to.be.eql('utf-8');
+      expect(result.fbAppId).to.be.eql('693861180706239');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
+        'fbAppId',
         'author',
         'ogLocale',
         'ogAvailability',
@@ -2148,6 +2268,7 @@ describe('static', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('mulesoft', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mulesoft' })
       .then(function ({ error, result, response }) {
@@ -2179,6 +2300,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('newegg', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/newegg' })
       .then(function ({ error, result, response }) {
@@ -2249,6 +2371,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('npm', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/npm' })
       .then(function ({ error, result, response }) {
@@ -2271,9 +2394,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/npm');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'ogDescription',
           'ogLocale',
           'ogImage',
@@ -2291,6 +2416,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('prnewswire', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/prnewswire' })
       .then(function ({ error, result, response }) {
@@ -2318,9 +2444,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/prnewswire');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'author',
           'ogDate',
           'ogDescription',
@@ -2341,6 +2469,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('reddit', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/reddit' })
       .then(function ({ error, result, response }) {
@@ -2383,6 +2512,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('reuters', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/reuters' })
       .then(function ({ error, result, response }) {
@@ -2416,9 +2546,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/reuters');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'author',
           'articlePublisher',
           'ogDescription',
@@ -2446,6 +2578,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('rottentomatoes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/rottentomatoes' })
       .then(function ({ error, result, response }) {
@@ -2505,9 +2638,13 @@ describe('static', function () {
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rottentomatoes');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('326803741017');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
+          'jsonLD',
           'ogDate',
           'ogImage',
           'ogTitle',
@@ -2524,6 +2661,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('smile', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/smile' })
       .then(function ({ error, result, response }) {
@@ -2591,6 +2729,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('techcrunch', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/techcrunch' })
       .then(function ({ error, result, response }) {
@@ -2620,9 +2759,13 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/techcrunch');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('187288694643718');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
+          'jsonLD',
           'articlePublisher',
           'ogDate',
           'ogDescription',
@@ -2645,6 +2788,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('ted', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/ted' })
       .then(function ({ error, result, response }) {
@@ -2685,9 +2829,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/ted');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('201021956610141');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -2719,6 +2865,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('thinkgeek', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/thinkgeek' })
       .then(function ({ error, result, response }) {
@@ -2751,9 +2898,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/thinkgeek');
         expect(result.charset).to.be.eql('ISO-8859-1');
+        expect(result.fbAppId).to.be.eql('199842396712737');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'articleAuthor',
           'articlePublisher',
           'ogDescription',
@@ -2777,6 +2926,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('vox', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/vox' })
       .then(function ({ error, result, response }) {
@@ -2812,9 +2962,13 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/vox');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
+        expect(result.fbAppId).to.be.eql('549923288395304');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
+          'fbAppId',
           'articleModifiedTime',
           'articlePublishedTime',
           'articlePublisher',
@@ -2840,6 +2994,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('w3', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/w3' })
       .then(function ({ error, result, response }) {
@@ -2870,6 +3025,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('xkcd', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/xkcd' })
       .then(function ({ error, result, response }) {

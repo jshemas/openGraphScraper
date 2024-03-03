@@ -29,6 +29,7 @@ describe('url', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('https', function () {
     return ogs({ url: 'https://www.wikipedia.org/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -55,6 +56,7 @@ describe('url', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('no protocol', function () {
     return ogs({ url: 'www.wikipedia.org/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -81,6 +83,7 @@ describe('url', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('no protocol and no wwww', function () {
     return ogs({ url: 'wikipedia.org/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -107,6 +110,7 @@ describe('url', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('protocol with no wwww', function () {
     return ogs({ url: 'http://wikipedia.org/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -133,6 +137,7 @@ describe('url', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('fake page', function () {
     return ogs({ url: 'http://testtesttest4564568.com' })
       .then(function () {
@@ -155,6 +160,7 @@ describe('url', function () {
         expect(response).to.eql(undefined);
       });
   });
+
   it('empty url', function () {
     return ogs({ url: '' })
       .then(function () {
@@ -177,6 +183,7 @@ describe('url', function () {
         expect(response).to.eql(undefined);
       });
   });
+
   it('empty options', function () {
     return ogs({})
       .then(function () {
@@ -199,6 +206,7 @@ describe('url', function () {
         expect(response).to.eql(undefined);
       });
   });
+
   it('url is a string of numbers', function () {
     return ogs({ url: '2323233' })
       .then(function () {
@@ -221,6 +229,7 @@ describe('url', function () {
         expect(response).to.eql(undefined);
       });
   });
+
   it('url is a string of words', function () {
     return ogs({ url: 'this is a test' })
       .then(function () {
@@ -243,6 +252,7 @@ describe('url', function () {
         expect(response).to.eql(undefined);
       });
   });
+
   it('url is invalid because user disallows https with urlValidatorSettings', function () {
     return ogs({
       url: 'https://www.wikipedia.org/',
@@ -281,6 +291,7 @@ describe('url', function () {
         expect(response).to.eql(undefined);
       });
   });
+
   it('url is to a pdf', function () {
     return ogs({ url: 'test.pdf?123' })
       .then(function () {

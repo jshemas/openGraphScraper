@@ -34,6 +34,7 @@ describe('fetch', function () {
         expect(rawUa).to.be.eql(`rawUa: ${userAgent}`);
       });
   });
+
   it('setting a timeout', function () {
     return ogs({ url: 'https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso', timeout: 3 })
       .then(function () {

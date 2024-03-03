@@ -1,7 +1,7 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "6.4.0",
+  "version": "6.5.0",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -28,7 +28,7 @@
     "chardet": "^2.0.0",
     "cheerio": "^1.0.0-rc.12",
     "iconv-lite": "^0.6.3",
-    "undici": "^6.6.2",
+    "undici": "^6.7.0",
     "validator": "^13.11.0"
   },
   "files": [
@@ -37,18 +37,18 @@
     "index.ts"
   ],
   "devDependencies": {
-    "@snyk/protect": "^1.1279.0",
+    "@snyk/protect": "^1.1281.0",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^18.19.15",
+    "@types/node": "^18.19.21",
     "@types/validator": "^13.11.9",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
     "chai": "^4.4.1",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-mocha": "^10.2.0",
+    "eslint-plugin-mocha": "^10.3.0",
     "eslint-plugin-promise": "^6.1.1",
     "mocha": "^10.3.0",
     "nyc": "^15.1.0",
@@ -64,6 +64,7 @@
   "keywords": [
     "app links",
     "dublin core",
+    "json ld",
     "meta tags",
     "metadata",
     "og",
