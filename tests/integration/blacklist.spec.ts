@@ -28,6 +28,7 @@ describe('blacklist', function () {
         expect(response).to.eql(undefined);
       });
   });
+
   it('when website is not on the blacklist', function () {
     return ogs({
       url: 'https://www.wikipedia.org/',
@@ -57,6 +58,7 @@ describe('blacklist', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('when blacklist empty', function () {
     return ogs({
       url: 'https://www.wikipedia.org/',

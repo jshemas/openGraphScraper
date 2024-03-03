@@ -598,6 +598,7 @@ describe('encoding', function () {
         });
     });
   });
+
   it('abehiroshi - ShiftJIS', function () {
     return ogs({ url: 'http://abehiroshi.la.coocan.jp/' })
       .then(function (data) {

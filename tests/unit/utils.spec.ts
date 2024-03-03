@@ -162,18 +162,22 @@ describe('utils', function () {
       const type = findImageTypeFromUrl('foobar.com/image.png?test=true');
       expect(type).to.eql('png');
     });
+
     it('foobar.com/image.png', function () {
       const type = findImageTypeFromUrl('foobar.com/image.png');
       expect(type).to.eql('png');
     });
+
     it('image.png', function () {
       const type = findImageTypeFromUrl('image.png');
       expect(type).to.eql('png');
     });
+
     it('image', function () {
       const type = findImageTypeFromUrl('image');
       expect(type).to.eql('image');
     });
+
     it('empty string', function () {
       const type = findImageTypeFromUrl('');
       expect(type).to.eql('');
@@ -185,6 +189,7 @@ describe('utils', function () {
       const valid = isImageTypeValid('png');
       expect(valid).to.eql(true);
     });
+
     it('when type is foo', function () {
       const valid = isImageTypeValid('foo');
       expect(valid).to.eql(false);
@@ -196,18 +201,22 @@ describe('utils', function () {
       const valid = isThisANonHTMLUrl('www.foo.com/bar.png');
       expect(valid).to.eql(true);
     });
+
     it('when url is type .html', function () {
       const valid = isThisANonHTMLUrl('www.foo.com/bar.html');
       expect(valid).to.eql(false);
     });
+
     it('when url is type .pdf and has params', function () {
       const valid = isThisANonHTMLUrl('www.foo.com/bar.pdf?123');
       expect(valid).to.eql(true);
     });
+
     it('when domain in url contains a non HTML string (.txt)', function () {
       const valid = isThisANonHTMLUrl('www.txt.com/bar.html');
       expect(valid).to.eql(false);
     });
+
     it('when domain in url contains a non HTML string (.mov) no extension on path', function () {
       const valid = isThisANonHTMLUrl('www.mov.com/bar');
       expect(valid).to.eql(false);
@@ -219,10 +228,12 @@ describe('utils', function () {
       const object = removeNestedUndefinedValues({ one: 1 });
       expect(object).to.eql({ one: 1 });
     });
+
     it('when there is undef values', function () {
       const object = removeNestedUndefinedValues({ one: 1, two: undefined });
       expect(object).to.eql({ one: 1 });
     });
+
     it('when there is a nested undef value', function () {
       const object = removeNestedUndefinedValues({ one: 1, two: { three: undefined } });
       expect(object).to.eql({ one: 1, two: {} });
@@ -234,6 +245,7 @@ describe('utils', function () {
       const { options } = optionSetup({});
       expect(options).to.eql({ onlyGetOpenGraphInfo: false });
     });
+
     it('when passing onlyGetOpenGraphInfo into optionSetup', function () {
       const { options } = optionSetup({ onlyGetOpenGraphInfo: true });
       expect(options).to.eql({ onlyGetOpenGraphInfo: true });
@@ -249,10 +261,12 @@ describe('utils', function () {
       }]);
       expect(response).to.eql(true);
     });
+
     it('when passing a enpty array into isCustomMetaTagsValid', function () {
       const response = isCustomMetaTagsValid([]);
       expect(response).to.eql(true);
     });
+
     it('when passing a custom tag missing property into isCustomMetaTagsValid', function () {
       // @ts-ignore
       const response = isCustomMetaTagsValid([{
@@ -261,6 +275,7 @@ describe('utils', function () {
       }]);
       expect(response).to.eql(false);
     });
+
     it('when passing a custom tag invalid property into isCustomMetaTagsValid', function () {
       const response = isCustomMetaTagsValid([{
         multiple: false,
@@ -270,6 +285,7 @@ describe('utils', function () {
       }]);
       expect(response).to.eql(false);
     });
+
     it('when passing a valid and invalid custom tag into isCustomMetaTagsValid', function () {
       // @ts-ignore
       const response = isCustomMetaTagsValid([{
@@ -282,6 +298,7 @@ describe('utils', function () {
       }]);
       expect(response).to.eql(false);
     });
+
     it('when passing a invalid array into isCustomMetaTagsValid', function () {
       // @ts-ignore
       const response = isCustomMetaTagsValid(['foo', 'bar']);

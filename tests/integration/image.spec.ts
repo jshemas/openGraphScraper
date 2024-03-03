@@ -58,6 +58,7 @@ describe('image', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('Test getting the description and images from meta tags', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/twitter.html' }).then(function ({ error, result, response }) {
       console.log('error:', error);

@@ -48,6 +48,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('using await should return valid data', async function () {
     const { error, result, response } = await ogsRequire({ url: 'https://ogp.me/' });
     console.log('error:', error);
@@ -79,6 +80,7 @@ describe('basic', function () {
     );
     expect(response).to.be.an('Response');
   });
+
   it('using callbackify should return valid data', function () {
     const ogsCallback = util.callbackify(ogsRequire);
     return ogsCallback({
@@ -105,6 +107,7 @@ describe('basic', function () {
       expect(response.response).to.be.an('Response');
     });
   });
+
   it('using ogs import should still work', async function () {
     return ogs({ url: 'https://ogp.me/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -137,6 +140,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {
     return ogsRequire({ url: 'https://www.namecheap.com/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -165,6 +169,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('Test README.md using the default Accept: text/html header - Should Return correct Open Graph Info', function () {
     return ogsRequire({ url: 'https://github.com/jshemas/openGraphScraper/blob/master/README.md' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -207,6 +212,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('vimeo.com should return open graph data', function () {
     return ogsRequire({ url: 'https://vimeo.com/232889838' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -301,6 +307,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('mozilla.org should return open graph data with one title', function () {
     return ogsRequire({ url: 'https://jshemas.github.io/openGraphScraperPages/mozilla' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -335,6 +342,7 @@ describe('basic', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('facebook - testing cors mode - header origin should default to url', function () {
     return ogs({ url: 'https://www.facebook.com/' })
       .then(function ({ error, result, response }) {

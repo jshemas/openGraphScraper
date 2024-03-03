@@ -28,6 +28,7 @@ describe('html', function () {
       expect(response).to.be.an('object').and.to.not.be.empty;
     });
   });
+
   it('Invalid Call - Can\'t request URL and pass in HTML string', function () {
     return ogs({
       url: 'https://upload.wikimedia.org/wikipedia/commons.jpg',
@@ -53,6 +54,7 @@ describe('html', function () {
         expect(response).to.eql(undefined);
       });
   });
+
   it('Invalid Call - Not a HTML page', function () {
     return ogs({
       url: 'https://upload.wikimedia.org/wikipedia/commons.jpg',

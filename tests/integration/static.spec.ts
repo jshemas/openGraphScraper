@@ -80,6 +80,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('arstechnica', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/arstechnica' })
       .then(function ({ error, result, response }) {
@@ -133,6 +134,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('battlefield', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/battlefield' })
       .then(function ({ error, result, response }) {
@@ -180,6 +182,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('bestbuy', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bestbuy' })
       .then(function ({ error, result, response }) {
@@ -229,6 +232,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('bjango', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bjango' })
       .then(function ({ error, result, response }) {
@@ -252,6 +256,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('bloomberg', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/bloomberg' })
       .then(function ({ error, result, response }) {
@@ -312,6 +317,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('businesstoday', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/businesstoday' })
       .then(function ({ error, result, response }) {
@@ -360,6 +366,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('cbronline', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cbronline' })
       .then(function ({ error, result, response }) {
@@ -418,6 +425,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('cio', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cio' })
       .then(function ({ error, result, response }) {
@@ -474,6 +482,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('cloudpro', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cloudpro' })
       .then(function ({ error, result, response }) {
@@ -526,6 +535,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('cnet', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/cnet' })
       .then(function ({ error, result, response }) {
@@ -584,6 +594,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('crn', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/crn' })
       .then(function ({ error, result, response }) {
@@ -622,6 +633,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('computerworld', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/computerworld' })
       .then(function ({ error, result, response }) {
@@ -676,6 +688,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('darkreading', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/darkreading' })
       .then(function ({ error, result, response }) {
@@ -724,6 +737,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('discourse', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/discourse' })
       .then(function ({ error, result, response }) {
@@ -770,6 +784,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('docs', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/docs' })
       .then(function ({ error, result, response }) {
@@ -804,6 +819,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('ebay', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/ebay' })
       .then(function ({ error, result, response }) {
@@ -852,6 +868,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('economictimes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/economictimes' })
       .then(function ({ error, result, response }) {
@@ -930,6 +947,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('entrepreneur', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/entrepreneur' })
       .then(function ({ error, result, response }) {
@@ -994,6 +1012,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('etsy', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/etsy' })
       .then(function ({ error, result, response }) {
@@ -1072,6 +1091,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('facebook', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/facebook' })
       .then(function ({ error, result, response }) {
@@ -1106,6 +1126,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('fastcompany', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/fastcompany' })
       .then(function ({ error, result, response }) {
@@ -1177,6 +1198,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('forbes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/forbes' })
       .then(function ({ error, result, response }) {
@@ -1234,6 +1256,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('fortune', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/fortune' })
       .then(function ({ error, result, response }) {
@@ -1284,6 +1307,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('foursquare', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/foursquare' })
       .then(function ({ error, result, response }) {
@@ -1389,6 +1413,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('geektime', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/geektime' })
       .then(function ({ error, result, response }) {
@@ -1451,6 +1476,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('inc', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/inc' })
       .then(function ({ error, result, response }) {
@@ -1507,6 +1533,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('insta', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/insta' })
       .then(function ({ error, result, response }) {
@@ -1554,6 +1581,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('itunes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/itunes' })
       .then(function ({ error, result, response }) {
@@ -1602,6 +1630,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('jewishbusinessnews', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/jewishbusinessnews' })
       .then(function ({ error, result, response }) {
@@ -1673,6 +1702,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('kickstarter', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/kickstarter' })
       .then(function ({ error, result, response }) {
@@ -1735,6 +1765,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('latimes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/latimes' })
       .then(function ({ error, result, response }) {
@@ -1793,6 +1824,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('leandata', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/leandata' })
       .then(function ({ error, result, response }) {
@@ -1838,6 +1870,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('learnxinyminutes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/learnxinyminutes' })
       .then(function ({ error, result, response }) {
@@ -1866,6 +1899,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('lifehacker', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/lifehacker' })
       .then(function ({ error, result, response }) {
@@ -1912,6 +1946,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('macrumors', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/macrumors' })
       .then(function ({ error, result, response }) {
@@ -1968,6 +2003,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('mashable', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mashable' })
       .then(function ({ error, result, response }) {
@@ -2030,6 +2066,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('medium', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/medium' })
       .then(function ({ error, result, response }) {
@@ -2104,6 +2141,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('michaelkors', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/michaelkors' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -2148,6 +2186,7 @@ describe('static', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('mulesoft', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/mulesoft' })
       .then(function ({ error, result, response }) {
@@ -2179,6 +2218,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('newegg', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/newegg' })
       .then(function ({ error, result, response }) {
@@ -2249,6 +2289,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('npm', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/npm' })
       .then(function ({ error, result, response }) {
@@ -2291,6 +2332,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('prnewswire', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/prnewswire' })
       .then(function ({ error, result, response }) {
@@ -2341,6 +2383,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('reddit', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/reddit' })
       .then(function ({ error, result, response }) {
@@ -2383,6 +2426,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('reuters', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/reuters' })
       .then(function ({ error, result, response }) {
@@ -2446,6 +2490,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('rottentomatoes', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/rottentomatoes' })
       .then(function ({ error, result, response }) {
@@ -2524,6 +2569,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('smile', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/smile' })
       .then(function ({ error, result, response }) {
@@ -2591,6 +2637,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('techcrunch', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/techcrunch' })
       .then(function ({ error, result, response }) {
@@ -2645,6 +2692,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('ted', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/ted' })
       .then(function ({ error, result, response }) {
@@ -2719,6 +2767,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('thinkgeek', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/thinkgeek' })
       .then(function ({ error, result, response }) {
@@ -2777,6 +2826,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('vox', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/vox' })
       .then(function ({ error, result, response }) {
@@ -2840,6 +2890,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('w3', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/w3' })
       .then(function ({ error, result, response }) {
@@ -2870,6 +2921,7 @@ describe('static', function () {
         expect(response).to.be.an('Response');
       });
   });
+
   it('xkcd', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/xkcd' })
       .then(function ({ error, result, response }) {

@@ -100,6 +100,7 @@ describe('spotify', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('artist should return music:musician', function () {
     return ogs({ url: 'https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -158,6 +159,7 @@ describe('spotify', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('track should return music:song and associated tags', function () {
     return ogs({ url: 'https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm' }).then(function ({ error, result, response }) {
       console.log('error:', error);
@@ -230,6 +232,7 @@ describe('spotify', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('playlist should return music:playlist and associated tags', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/spotifyPlayList' }).then(function ({ error, result, response }) {
       console.log('error:', error);

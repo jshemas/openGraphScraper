@@ -101,6 +101,7 @@ describe('video', function () {
       expect(response).to.be.an('Response');
     });
   });
+
   it('Test Twitch.tv Video - Should Return correct Open Graph Info', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/twitch.html' }).then(function ({ error, result, response }) {
       console.log('error:', error);
