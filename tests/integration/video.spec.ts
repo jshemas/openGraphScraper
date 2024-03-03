@@ -59,9 +59,11 @@ describe('video', function () {
       expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.charset).to.be.eql('UTF-8');
       expect(result.success).to.be.eql(true);
+      expect(result.fbAppId).to.be.eql('87741124305');
       if (result.ogDate === undefined) result.ogDate = 'hack because sometimes this does not come back for some reason';
       expect(result).to.have.all.keys(
         'favicon',
+        'fbAppId',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -118,9 +120,11 @@ describe('video', function () {
       expect(result.ogImage).to.be.to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/twitch.html');
       expect(result.charset).to.be.eql('utf-8');
+      expect(result.fbAppId).to.be.eql('161273083968709');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
+        'fbAppId',
         'ogDescription',
         'ogImage',
         'ogLocale',

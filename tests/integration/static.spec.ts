@@ -42,9 +42,11 @@ describe('static', function () {
         expect(result.twitterImage).to.be.eql([{ url: 'https://a1.muscache.com/im/pictures/43670185/606e6e19_original.jpg?aki_policy=x_large' }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/airbnb');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('138566025676');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -344,9 +346,11 @@ describe('static', function () {
         expect(result.ogDescription).to.be.eql("Madhu Kapur in her suit had sought various reliefs including recognition of the family's right to participate in the management of the bank");
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/businesstoday');
         expect(result.charset).to.be.eql('ISO-8859-1');
+        expect(result.fbAppId).to.be.eql('23230437118');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'ogDate',
           'ogDescription',
           'ogImage',
@@ -399,9 +403,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cbronline');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('1880004222235592');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'articleModifiedTime',
           'articlePublishedTime',
           'articleSection',
@@ -457,9 +463,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cio');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('196366870381968');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'author',
           'ogDate',
           'dcDateIssued',
@@ -567,9 +575,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/cnet');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('16995676698');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'author',
           'ogDescription',
           'articlePublisher',
@@ -664,9 +674,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/computerworld');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('123026274413041');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'ogDate',
           'author',
           'dcDateIssued',
@@ -715,9 +727,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/darkreading');
         expect(result.charset).to.be.eql('iso-8859-1');
+        expect(result.fbAppId).to.be.eql('640989409269461');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -846,9 +860,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/ebay');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('102628213125203');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
+          'fbAppId',
           'ogDescription',
           'ogImage',
           'ogSiteName',
@@ -910,9 +926,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/economictimes');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('128738260476079');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidUrl',
           'alIosAppName',
@@ -983,9 +1001,11 @@ describe('static', function () {
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/EntMagazine');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/entrepreneur');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('279152967822');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'articleAuthor',
           'articleModifiedTime',
           'articlePublishedTime',
@@ -1054,9 +1074,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/etsy');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('89186614300');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -1169,9 +1191,11 @@ describe('static', function () {
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/FastCompany');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/fastcompany');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('178479832213933');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'articleModifiedTime',
           'articlePublishedTime',
           'articlePublisher',
@@ -1229,9 +1253,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/forbes');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('123694841080850');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'articleAuthor',
           'articleSection',
           'articlePublisher',
@@ -1368,9 +1394,11 @@ describe('static', function () {
         expect(result.twitterUrl).to.be.eql('https://foursquare.com/v/the-baxter-inn/4ed4896c775b45f6ed7b0182');
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/foursquare');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('86734274142');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -1507,9 +1535,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/inc');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('139291179414843');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'articleAuthor',
           'articlePublishedTime',
           'articleSection',
@@ -1558,9 +1588,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/insta');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('124024574287414');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -1609,8 +1641,10 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/itunes');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('116556461780510');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
+          'fbAppId',
           'ogDate',
           'ogDescription',
           'ogImage',
@@ -1737,9 +1771,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/kickstarter');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('69103156693');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'ogDate',
+          'fbAppId',
           'ogDescription',
           'ogImage',
           'ogLocale',
@@ -1799,9 +1835,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/latimes');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('119932621434123');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'articleAuthor',
           'articlePublishedTime',
           'articleSection',
@@ -2037,9 +2075,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/mashable');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('122071082108');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'ogLocale',
           'author',
           'ogDate',
@@ -2106,9 +2146,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/medium');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('542599432471018');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -2165,9 +2207,11 @@ describe('static', function () {
       }]);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/michaelkors');
       expect(result.charset).to.be.eql('utf-8');
+      expect(result.fbAppId).to.be.eql('693861180706239');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
+        'fbAppId',
         'author',
         'ogLocale',
         'ogAvailability',
@@ -2550,9 +2594,11 @@ describe('static', function () {
         ]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rottentomatoes');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('326803741017');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'ogDate',
           'ogImage',
           'ogTitle',
@@ -2667,9 +2713,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/techcrunch');
         expect(result.charset).to.be.eql('UTF-8');
+        expect(result.fbAppId).to.be.eql('187288694643718');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'articlePublisher',
           'ogDate',
           'ogDescription',
@@ -2733,9 +2781,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/ted');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('201021956610141');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'alAndroidAppName',
           'alAndroidPackage',
           'alAndroidUrl',
@@ -2800,9 +2850,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/thinkgeek');
         expect(result.charset).to.be.eql('ISO-8859-1');
+        expect(result.fbAppId).to.be.eql('199842396712737');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'articleAuthor',
           'articlePublisher',
           'ogDescription',
@@ -2862,9 +2914,11 @@ describe('static', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/vox');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('549923288395304');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'articleModifiedTime',
           'articlePublishedTime',
           'articlePublisher',

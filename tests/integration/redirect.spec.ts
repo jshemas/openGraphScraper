@@ -122,9 +122,11 @@ describe('redirect', function () {
         }]);
         expect(result.requestUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa');
         expect(result.charset).to.be.eql('utf-8');
+        expect(result.fbAppId).to.be.eql('123694841080850');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'fbAppId',
           'ogDate',
           'articleAuthor',
           'articleSection',

@@ -34,6 +34,7 @@ describe('basic', function () {
       }]);
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
       expect(result.charset).to.be.eql('utf-8');
+      expect(result.fbAppId).to.be.eql('115190258555800');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogTitle',
@@ -43,6 +44,7 @@ describe('basic', function () {
         'ogImage',
         'requestUrl',
         'charset',
+        'fbAppId',
         'success',
       );
       expect(response).to.be.an('Response');
@@ -67,11 +69,13 @@ describe('basic', function () {
     }]);
     expect(result.requestUrl).to.be.eql('https://ogp.me/');
     expect(result.charset).to.be.eql('utf-8');
+    expect(result.fbAppId).to.be.eql('115190258555800');
     expect(result.success).to.be.eql(true);
     expect(result).to.have.all.keys(
       'ogTitle',
       'ogType',
       'ogUrl',
+      'fbAppId',
       'ogDescription',
       'ogImage',
       'requestUrl',
@@ -102,8 +106,9 @@ describe('basic', function () {
       }]);
       expect(response.result.requestUrl).to.be.eql('https://ogp.me/');
       expect(response.result.charset).to.be.eql('utf-8');
+      expect(response.result.fbAppId).to.be.eql('115190258555800');
       expect(response.result.success).to.be.eql(true);
-      expect(response.result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'success');
+      expect(response.result).to.have.all.keys('ogTitle', 'ogType', 'ogUrl', 'ogDescription', 'ogImage', 'requestUrl', 'charset', 'fbAppId', 'success');
       expect(response.response).to.be.an('Response');
     });
   });
@@ -126,9 +131,11 @@ describe('basic', function () {
       }]);
       expect(result.requestUrl).to.be.eql('https://ogp.me/');
       expect(result.charset).to.be.eql('utf-8');
+      expect(result.fbAppId).to.be.eql('115190258555800');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'ogTitle',
+        'fbAppId',
         'ogType',
         'ogUrl',
         'ogDescription',
@@ -190,10 +197,12 @@ describe('basic', function () {
       expect(result.favicon).to.be.eql('https://github.githubassets.com/favicons/favicon.svg');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.requestUrl).to.be.eql('https://github.com/jshemas/openGraphScraper/blob/master/README.md');
+      expect(result.fbAppId).to.be.eql('1401488693436528');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'charset',
         'favicon',
+        'fbAppId',
         'ogDescription',
         'ogImage',
         'ogLocale',
@@ -267,10 +276,12 @@ describe('basic', function () {
       //   height: '720',
       // }]);
       expect(result.requestUrl).to.be.eql('https://vimeo.com/232889838');
+      expect(result.fbAppId).to.be.eql('19884028963');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
+        'fbAppId',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',

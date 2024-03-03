@@ -32,9 +32,11 @@ describe('image', function () {
       }]);
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/flickr');
       expect(result.charset).to.be.eql('UTF-8');
+      expect(result.fbAppId).to.be.eql('137206539707334');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
+        'fbAppId',
         'alIosAppName',
         'alIosAppStoreId',
         'alIosUrl',

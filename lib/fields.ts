@@ -277,6 +277,11 @@ const fields = [
   },
   {
     multiple: false,
+    property: 'twitter:account',
+    fieldName: 'twitterAccount',
+  },
+  {
+    multiple: false,
     property: 'twitter:title',
     fieldName: 'twitterTitle',
   },
@@ -929,6 +934,11 @@ const fields = [
     multiple: false,
     property: 'al:web:should_fallback',
     fieldName: 'alWebShouldFallback',
+  },
+  {
+    multiple: false,
+    property: 'fb:app_id',
+    fieldName: 'fbAppId',
   },
 ];
 

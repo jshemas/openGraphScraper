@@ -30,6 +30,7 @@ describe('encoding', function () {
           url: 'https://r.r10s.jp/com/img/home/top/ogp.png',
         }]);
         expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/rakuten');
+        expect(result.fbAppId).to.be.eql('194149240717705');
         expect(result.charset).to.be.eql('euc-jp');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
@@ -37,6 +38,7 @@ describe('encoding', function () {
           'ogDescription',
           'ogImage',
           'ogSiteName',
+          'fbAppId',
           'ogTitle',
           'ogType',
           'ogLocale',
@@ -117,9 +119,11 @@ describe('encoding', function () {
           }]);
           expect(result.charset).to.be.eql('utf-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/aliexpress');
+          expect(result.fbAppId).to.be.eql('176044105761845');
           expect(result.success).to.be.eql(true);
           expect(result).to.have.all.keys(
             'favicon',
+            'fbAppId',
             'alAndroidAppName',
             'alAndroidPackage',
             'alAndroidUrl',
@@ -299,8 +303,10 @@ describe('encoding', function () {
           expect(result.charset).to.be.eql('UTF-8');
           expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/okezone');
           expect(result.success).to.be.eql(true);
+          expect(result.fbAppId).to.be.eql('213195442194472');
           expect(result).to.have.all.keys(
             'favicon',
+            'fbAppId',
             'articleAuthor',
             'articlePublishedTime',
             'articlePublisher',

@@ -168,6 +168,7 @@ export type OgObjectInteral = {
   error?: string;
   errorDetails?: Error;
   favicon?: string;
+  fbAppId?: string;
   modifiedTime?: string;
   musicAlbum?: string;
   musicAlbumDisc?: string;
@@ -264,6 +265,7 @@ export type OgObjectInteral = {
   restaurantVariationPriceAmount?: string;
   restaurantVariationPriceCurrency?: string;
   success?: boolean;
+  twitterAccount?: string;
   twitterAppIdGooglePlay?: string;
   twitterAppIdiPad?: string;
   twitterAppIdiPhone?: string;
