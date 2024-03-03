@@ -23,6 +23,11 @@ const fields = [
         fieldName: 'ogLogo',
     },
     {
+        multiple: false,
+        property: 'og:website',
+        fieldName: 'ogWebsite',
+    },
+    {
         multiple: true,
         property: 'og:image',
         fieldName: 'ogImageProperty',
@@ -164,8 +169,58 @@ const fields = [
     },
     {
         multiple: true,
+        property: 'og:movie',
+        fieldName: 'ogMovie',
+    },
+    {
+        multiple: true,
+        property: 'og:episode',
+        fieldName: 'ogEpisode',
+    },
+    {
+        multiple: true,
+        property: 'og:video:actor',
+        fieldName: 'ogVideoActor',
+    },
+    {
+        multiple: true,
         property: 'og:video:actor:id',
         fieldName: 'ogVideoActorId',
+    },
+    {
+        multiple: true,
+        property: 'og:video:actor:role',
+        fieldName: 'ogVideoActorRole',
+    },
+    {
+        multiple: true,
+        property: 'og:video:director',
+        fieldName: 'ogVideoDirector',
+    },
+    {
+        multiple: true,
+        property: 'og:video:writer',
+        fieldName: 'ogVideoWriter',
+    },
+    {
+        multiple: true,
+        property: 'og:video:duration',
+        fieldName: 'ogVideoDuration',
+    },
+    {
+        multiple: true,
+        property: 'og:video:release_date',
+        fieldName: 'ogVideoReleaseDate',
+    },
+    {
+        multiple: true,
+        property: 'og:video:Tag',
+        fieldName: 'ogVideoTag',
+    },
+    {
+        multiple: true,
+        property: 'og:video:series',
+        fieldName: 'ogVideoSeries',
     },
     {
         multiple: true,
@@ -181,6 +236,16 @@ const fields = [
         multiple: true,
         property: 'og:video:type',
         fieldName: 'ogVideoType',
+    },
+    {
+        multiple: true,
+        property: 'og:video:tv_show',
+        fieldName: 'ogVideoTvShow',
+    },
+    {
+        multiple: true,
+        property: 'og:video:other',
+        fieldName: 'ogVideoOther',
     },
     {
         multiple: false,
@@ -319,6 +384,11 @@ const fields = [
     },
     {
         multiple: true,
+        property: 'music:playlist',
+        fieldName: 'musicPlaylist',
+    },
+    {
+        multiple: true,
         property: 'music:song',
         fieldName: 'musicSongProperty',
     },
@@ -351,6 +421,11 @@ const fields = [
         multiple: false,
         property: 'music:duration',
         fieldName: 'musicDuration',
+    },
+    {
+        multiple: true,
+        property: 'music:radio_station',
+        fieldName: 'musicRadioStation',
     },
     {
         multiple: true,
