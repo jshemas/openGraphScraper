@@ -70,10 +70,12 @@ describe('spotify', function () {
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.fbAppId).to.be.eql('174829003346');
+      expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
         'fbAppId',
+        'jsonLD',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -134,10 +136,12 @@ describe('spotify', function () {
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.fbAppId).to.be.eql('174829003346');
+      expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
         'fbAppId',
+        'jsonLD',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -202,10 +206,12 @@ describe('spotify', function () {
       expect(result.requestUrl).to.be.eql('https://open.spotify.com/track/3p6fkbeZDIVqapfdgQe6fm');
       expect(result.charset).to.be.eql('utf-8');
       expect(result.fbAppId).to.be.eql('174829003346');
+      expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
         'fbAppId',
+        'jsonLD',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -317,10 +323,12 @@ describe('spotify', function () {
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/spotifyPlayList');
       expect(result.charset).to.be.eql('UTF-8');
       expect(result.fbAppId).to.be.eql('174829003346');
+      expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',
         'fbAppId',
+        'jsonLD',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',

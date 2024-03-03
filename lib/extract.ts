@@ -56,6 +56,12 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
   // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks
   if (!options.onlyGetOpenGraphInfo) {
     ogObject = fallback(ogObject, options, $, body);
+
+    $('script').each((index, script) => {
+      if (script.attribs.type && script.attribs.type === 'application/ld+json') {
+        ogObject.jsonLD = JSON.parse($(script).text());
+      }
+    });
   }
 
   return ogObject;

@@ -160,9 +160,11 @@ describe('basic', function () {
       expect(result.ogTitle).to.be.eql('Buy a domain name - Register cheap domain names from $0.99 - Namecheap');
       expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
       expect(result.requestUrl).to.be.eql('https://www.namecheap.com/');
+      expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
       expect(result.charset).to.be.eql('utf-8');
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
+        'jsonLD',
         'favicon',
         'ogTitle',
         'ogDescription',
@@ -282,6 +284,7 @@ describe('basic', function () {
       expect(result).to.have.all.keys(
         'favicon',
         'fbAppId',
+        'jsonLD',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -372,10 +375,12 @@ describe('basic', function () {
         expect(result.ogTitle).to.be.eql('Facebook - log in or sign up');
         expect(result.ogDescription).to.be.eql('Log into Facebook to start sharing and connecting with your friends, family, and people you know.');
         expect(result.requestUrl).to.be.eql('https://www.facebook.com/');
+        expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
         expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
           'favicon',
+          'jsonLD',
           'ogDescription',
           'ogImage',
           'ogLocale',
