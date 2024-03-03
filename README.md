@@ -3,9 +3,9 @@
 [![Node.js CI](https://github.com/jshemas/openGraphScraper/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/jshemas/openGraphScraper/actions?query=branch%3Amaster)
 [![Known Vulnerabilities](https://snyk.io/test/github/jshemas/openGraphScraper/badge.svg)](https://snyk.io/test/github/jshemas/openGraphScraper)
 
-A simple node module(with TypeScript declarations) for scraping Open Graph and Twitter Card info off a site.
+A simple node module(with TypeScript declarations) for scraping Open Graph and Twitter Card and other metadata off a site.
 
-Note: `open-graph-scraper` doesn't support browser usage at this time.
+Note: `open-graph-scraper` doesn't support browser usage at this time but you can use `open-graph-scraper-lite` if you already have the `HTML` and can't use Node's [Fetch API](https://nodejs.org/dist/latest-v18.x/docs/api/globals.html#fetch).
 
 ## Installation
 
