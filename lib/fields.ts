@@ -32,6 +32,11 @@ const fields = [
   },
   {
     multiple: true,
+    property: 'og:image:alt',
+    fieldName: 'ogImageAlt',
+  },
+  {
+    multiple: true,
     property: 'og:image:secure_url',
     fieldName: 'ogImageSecureURL',
   },
