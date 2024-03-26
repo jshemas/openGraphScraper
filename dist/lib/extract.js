@@ -58,7 +58,11 @@ function extractMetaTags(body, options) {
         ogObject = (0, fallback_1.default)(ogObject, options, $, body);
         $('script').each((index, script) => {
             if (script.attribs.type && script.attribs.type === 'application/ld+json') {
+                if (!ogObject.allJsonLD) {
+                    ogObject.allJsonLD = [];
+                }
                 ogObject.jsonLD = JSON.parse($(script).text());
+                ogObject.allJsonLD.push(ogObject.jsonLD);
             }
         });
     }
