@@ -170,6 +170,7 @@ export type OgObjectInteral = {
   favicon?: string;
   fbAppId?: string;
   jsonLD?: object;
+  allJsonLD?: object[];
   modifiedTime?: string;
   musicAlbum?: string;
   musicAlbumDisc?: string;
