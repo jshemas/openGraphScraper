@@ -33,7 +33,7 @@ describe('image', function () {
       expect(result.requestUrl).to.be.eql('https://jshemas.github.io/openGraphScraperPages/flickr');
       expect(result.charset).to.be.eql('UTF-8');
       expect(result.fbAppId).to.be.eql('137206539707334');
-      expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
+      expect(result.jsonLD).to.be.an('array').and.to.not.be.empty;;
       expect(result.success).to.be.eql(true);
       expect(result).to.have.all.keys(
         'favicon',

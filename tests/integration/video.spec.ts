@@ -60,7 +60,7 @@ describe('video', function () {
       expect(result.charset).to.be.eql('UTF-8');
       expect(result.success).to.be.eql(true);
       expect(result.fbAppId).to.be.eql('87741124305');
-      expect(result.jsonLD).to.be.an('object').and.to.not.be.empty;
+      expect(result.jsonLD).to.be.an('array').and.to.not.be.empty;;
       if (result.ogDate === undefined) result.ogDate = 'hack because sometimes this does not come back for some reason';
       expect(result).to.have.all.keys(
         'favicon',
