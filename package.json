@@ -58,7 +58,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/jshemas/openGraphScraper.git",
+    "url": "git+ssh://git@github.com/jshemas/openGraphScraper.git",
     "web": "http://github.com/jshemas/openGraphScraper"
   },
   "keywords": [
