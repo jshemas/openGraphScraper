@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.5.1
+
+- jsonLD is now a array of objects since there can be more then one jsonLD tag pre page
+- Updating dependencies to fix npm vulnerabilities
+
 ## 6.5.0
 
 - Adding support for JSON LD
