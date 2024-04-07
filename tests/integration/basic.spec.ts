@@ -375,7 +375,7 @@ describe('basic', function () {
         expect(result.ogTitle).to.be.eql('Facebook - log in or sign up');
         expect(result.ogDescription).to.be.eql('Log into Facebook to start sharing and connecting with your friends, family, and people you know.');
         expect(result.requestUrl).to.be.eql('https://www.facebook.com/');
-        expect(result.jsonLD).to.be.an('array').and.to.not.be.empty;;
+        expect(result.jsonLD).to.be.an('array').and.to.not.be.empty;
         expect(result.charset).to.be.eql('utf-8');
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
