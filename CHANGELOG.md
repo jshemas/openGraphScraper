@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.5.2
+
+- adding a new favicon fallback using appIcon
+- Updating dependencies to fix npm vulnerabilities
+
 ## 6.5.1
 
 - jsonLD is now a array of objects since there can be more then one jsonLD tag pre page

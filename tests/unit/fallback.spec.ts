@@ -410,6 +410,13 @@ describe('fallback', function () {
       expect(ogObject.favicon).to.be.eql('foo');
       expect(ogObject).to.have.all.keys('favicon');
     });
+    it('when there is a appIcon', function () {
+      const $ = load('<html><head><meta property="tapcart-banner:appIcon" content="foo"></head></html>');
+      const ogObject = fallback({}, {}, $, '');
+      console.log('ogObject', ogObject);
+      expect(ogObject.favicon).to.be.eql('foo');
+      expect(ogObject).to.have.all.keys('favicon');
+    });
   });
 
   context('charset', function () {
