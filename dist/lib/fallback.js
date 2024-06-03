@@ -185,6 +185,9 @@ function fallback(ogObject, options, $, body) {
         else if (doesElementExist('link[type="image/x-icon"]', 'href', $)) {
             ogObject.favicon = $('link[type="image/x-icon"]').attr('href');
         }
+        else if (doesElementExist('head > meta[property*="appIcon"]', 'content', $)) {
+            ogObject.favicon = $('head > meta[property*="appIcon"]').attr('content');
+        }
     }
     // set the charset
     if (doesElementExist('meta', 'charset', $)) {
