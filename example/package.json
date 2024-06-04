@@ -1,0 +1,14 @@
+{
+  "name": "example-app",
+  "version": "1.0.0",
+  "description": "Example open-graph-scraper express app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "open-graph-scraper": "^6.5.2"
+  }
+}

@@ -133,3 +133,7 @@ ogs({ url: 'https://www.wikipedia.org/', fetchOptions: { headers: { 'user-agent'
     console.log('response:', response); // This contains response from the Fetch API
   })
 ```
+
+## Running the example app
+
+Inside the `example` folder contains a simple express app where you can run `npm ci && npm run start` to spin up. Once the app is running, open a web browser and go to `http://localhost:3000/scraper?url=http://ogp.me/` to test it out. There is also a `Dockerfile` if you want to run this example app in a docker container.
