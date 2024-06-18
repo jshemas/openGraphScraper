@@ -14,7 +14,7 @@ const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
 /**
  * gets the charset of the html
  */
-function getCharset(body: string, buffer: Uint8Array, $: CheerioAPI) {
+function getCharset(body: string, buffer: ArrayBuffer, $: CheerioAPI) {
   if (doesElementExist('meta', 'charset', $)) {
     return $('meta').attr('charset');
   }
