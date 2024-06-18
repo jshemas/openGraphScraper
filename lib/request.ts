@@ -55,7 +55,7 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
 
     const bodyArrayBuffer = await response.arrayBuffer();
     const bodyText = Buffer.from(bodyArrayBuffer).toString('utf-8');
-    const charset = getCharset(bodyText, bodyArrayBuffer, load(bodyText));
+    const charset = getCharset(bodyText, bodyArrayBuffer, load(bodyText)) || 'utf-8';
     if (charset.toLowerCase() === 'utf-8') {
       body = bodyText;
     } else {
