@@ -113,7 +113,7 @@ describe('return ogs', function () {
     it('with encoding set to null (this has been deprecated, but should still work)', function () {
       mockAgent.get('http://www.test.com')
         .intercept({ path: '/' })
-        .reply(200, Buffer.from(encodingHTML, 'utf8'));
+        .reply(200, Buffer.from(encodingHTML, 'utf-8'));
 
       return ogs({ url: 'www.test.com' })
         .then(function (data) {
@@ -742,6 +742,39 @@ describe('return ogs', function () {
       <html>
         <head>
           <meta charset="shift_jis">
+          <meta property="og:description" content="OG説明">
+          <meta property="og:title" content="OGタイトル">
+          <meta property="foo" content="バー">
+        </head>
+        <body>
+          <h1>こんにちは</h1>
+          <img width="360" src="test.png" alt="テスト画像">
+          <img width="360" alt="テスト画像2">
+        </body>
+      </html>
+      `;
+      const htmlBuffer = encode(html, 'shift_jis');
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200, htmlBuffer);
+
+      return ogs({ url: 'www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogTitle).to.be.eql('OGタイトル');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.html).to.be.eql(html);
+          expect(data.response).to.be.a('response');
+        });
+    });
+  });
+
+  context('when the character encoding is not UTF-8 - using http-equiv meta tag', function () {
+    it('using just a url', function () {
+      const html = `
+      <html>
+        <head>
+          <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
           <meta property="og:description" content="OG説明">
           <meta property="og:title" content="OGタイトル">
           <meta property="foo" content="バー">

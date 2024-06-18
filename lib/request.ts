@@ -22,9 +22,13 @@ function getCharset(body: string, buffer: ArrayBuffer, $: CheerioAPI) {
     return $('head > meta[name="charset"]').attr('content');
   }
   if (doesElementExist('head > meta[http-equiv="content-type"]', 'content', $)) {
-    const content = $('head > meta[http-equiv="content-type"]').attr('content');
+    const content = $('head > meta[http-equiv="content-type"]').attr('content') || '';
     const charsetRegEx = /charset=([^()<>@,;:"/[\]?.=\s]*)/i;
-    return charsetRegEx.test(content) ? charsetRegEx.exec(content)[1] : 'UTF-8';
+
+    if (charsetRegEx.test(content)) {
+      const charsetRegExExec = charsetRegEx.exec(content);
+      if (charsetRegExExec !== null && charsetRegExExec[1]) return charsetRegExExec[1];
+    }
   }
   if (body) {
     return chardet.detect(Buffer.from(buffer));
