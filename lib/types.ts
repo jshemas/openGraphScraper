@@ -184,10 +184,10 @@ export type OgObjectInteral = {
   musicRadioStation?: string;
   musicReleaseDate?: string;
   musicSong?: MusicSongObject[];
-  musicSongDisc?: string | string[] | null[];
-  musicSongProperty?: string | string[] | null[];
-  musicSongTrack?: number | string[] | null[];
-  musicSongUrl?: string | string[] | null[];
+  musicSongDisc?: string[];
+  musicSongProperty?: string[];
+  musicSongTrack?: string[];
+  musicSongUrl?: string[];
   ogArticleAuthor?: string;
   ogArticleExpirationTime?: string;
   ogArticleModifiedTime?: string;
@@ -205,13 +205,13 @@ export type OgObjectInteral = {
   ogDeterminer?: string;
   ogEpisode?: string;
   ogImage?: ImageObject[];
-  ogImageAlt?: string | string[] | null[];
-  ogImageHeight?: string | string[] | null[];
-  ogImageProperty?: string | string[] | null[];
-  ogImageSecureURL?: string | string[] | null[];
-  ogImageType?: string | string[] | null[];
-  ogImageURL?: string | string[] | null[];
-  ogImageWidth?: string | string[] | null[];
+  ogImageAlt?: string[];
+  ogImageHeight?: string[];
+  ogImageProperty?: string[];
+  ogImageSecureURL?: string[];
+  ogImageType?: string[];
+  ogImageURL?: string[];
+  ogImageWidth?: string[];
   ogLocale?: string;
   ogLocaleAlternate?: string;
   ogLogo?: string;
@@ -233,16 +233,16 @@ export type OgObjectInteral = {
   ogVideoActorRole?: string;
   ogVideoDirector?: string;
   ogVideoDuration?: string;
-  ogVideoHeight?: string | string[] | null[];
+  ogVideoHeight?: string[];
   ogVideoOther?: string;
-  ogVideoProperty?: string | string[] | null[];
+  ogVideoProperty?: string[];
   ogVideoReleaseDate?: string;
   ogVideoSecureURL?: string;
   ogVideoSeries?: string;
   ogVideoTag?: string;
   ogVideoTvShow?: string;
-  ogVideoType?: string | string[] | null[];
-  ogVideoWidth?: string | string[] | null[];
+  ogVideoType?: string[];
+  ogVideoWidth?: string[];
   ogVideoWriter?: string;
   ogWebsite?: string;
   placeLocationLatitude?: string;
@@ -283,17 +283,17 @@ export type OgObjectInteral = {
   twitterCreatorId?: string;
   twitterDescription?: string;
   twitterImage?: TwitterImageObject[];
-  twitterImageAlt?: string | string[] | null[];
-  twitterImageHeight?: string | string[] | null[];
-  twitterImageProperty?: string | string[] | null[];
-  twitterImageSrc?: string | string[] | null[];
-  twitterImageWidth?: string | string[] | null[];
+  twitterImageAlt?: string[];
+  twitterImageHeight?: string[];
+  twitterImageProperty?: string[];
+  twitterImageSrc?: string[];
+  twitterImageWidth?: string[];
   twitterPlayer?: TwitterPlayerObject[];
-  twitterPlayerHeight?: string | string[] | null[];
-  twitterPlayerProperty?: string | string[] | null[];
-  twitterPlayerStream?: string | string[] | null[];
+  twitterPlayerHeight?: string[];
+  twitterPlayerProperty?: string[];
+  twitterPlayerStream?: string[];
   twitterPlayerStreamContentType?: string;
-  twitterPlayerWidth?: string | string[] | null[];
+  twitterPlayerWidth?: string[];
   twitterSite?: string;
   twitterSiteId?: string;
   twitterTitle?: string;
@@ -301,12 +301,14 @@ export type OgObjectInteral = {
   updatedTime?: string;
 };
 
+// Omit values from mediaMapperProperties
 export type OgObject = Omit<
 OgObjectInteral,
 'musicSongDisc' |
 'musicSongProperty' |
 'musicSongTrack' |
 'musicSongUrl' |
+'ogImageAlt' |
 'ogImageHeight' |
 'ogImageProperty' |
 'ogImageSecureURL' |
