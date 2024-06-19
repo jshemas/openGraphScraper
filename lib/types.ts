@@ -127,7 +127,9 @@ export type OgObjectInteral = {
   articleAuthor?: string;
   articleExpirationTime?: string;
   articleModifiedTime?: string;
+  articlePublishedDate?: string;
   articlePublishedTime?: string;
+  articleModifiedDate?: string;
   articlePublisher?: string;
   articleSection?: string;
   articleTag?: string;
