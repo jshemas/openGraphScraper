@@ -62,7 +62,7 @@ export function validateAndFormatURL(url: string, urlValidatorSettings: Validato
  *
  */
 export function findImageTypeFromUrl(url: string): string {
-  let type: string = url.split('.').pop() || '';
+  let type: string = url.split('.').pop() ?? '';
   [type] = type.split('?');
   return type;
 }

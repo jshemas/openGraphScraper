@@ -27,11 +27,11 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
     return { ogObject, response: { body: options.html }, html: options.html };
   }
 
-  const formattedUrl = validateAndFormatURL(options.url || '', (options.urlValidatorSettings || defaultUrlValidatorSettings));
+  const formattedUrl = validateAndFormatURL(options.url ?? '', (options.urlValidatorSettings ?? defaultUrlValidatorSettings));
 
   if (!formattedUrl.url) throw new Error('Invalid URL');
 
-  if (!isCustomMetaTagsValid(options.customMetaTags || [])) throw new Error('Invalid Custom Meta Tags');
+  if (!isCustomMetaTagsValid(options.customMetaTags ?? [])) throw new Error('Invalid Custom Meta Tags');
 
   options.url = formattedUrl.url;
 

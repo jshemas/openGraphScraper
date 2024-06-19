@@ -8,7 +8,7 @@ import type { OpenGraphScraperOptions } from './types';
  * checks if an element exists
  */
 const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
-  $(selector).attr(attribute) && ($(selector).attr(attribute)?.length || 0) > 0
+  $(selector).attr(attribute) && ($(selector).attr(attribute)?.length ?? 0) > 0
 );
 
 /**
@@ -22,7 +22,7 @@ function getCharset(body: string, buffer: ArrayBuffer, $: CheerioAPI) {
     return $('head > meta[name="charset"]').attr('content');
   }
   if (doesElementExist('head > meta[http-equiv="content-type"]', 'content', $)) {
-    const content = $('head > meta[http-equiv="content-type"]').attr('content') || '';
+    const content = $('head > meta[http-equiv="content-type"]').attr('content') ?? '';
     const charsetRegEx = /charset=([^()<>@,;:"/[\]?.=\s]*)/i;
 
     if (charsetRegEx.test(content)) {
@@ -49,17 +49,17 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
   let response;
   try {
     response = await fetch(
-      options.url || '',
+      options.url ?? '',
       {
-        signal: AbortSignal.timeout((options.timeout || 10) * 1000),
-        headers: { Origin: options.url || '', Accept: 'text/html' },
+        signal: AbortSignal.timeout((options.timeout ?? 10) * 1000),
+        headers: { Origin: options.url ?? '', Accept: 'text/html' },
         ...options.fetchOptions,
       },
     );
 
     const bodyArrayBuffer = await response.arrayBuffer();
     const bodyText = Buffer.from(bodyArrayBuffer).toString('utf-8');
-    const charset = getCharset(bodyText, bodyArrayBuffer, load(bodyText)) || 'utf-8';
+    const charset = getCharset(bodyText, bodyArrayBuffer, load(bodyText)) ?? 'utf-8';
     if (charset.toLowerCase() === 'utf-8') {
       body = bodyText;
     } else {
