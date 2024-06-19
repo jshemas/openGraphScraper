@@ -26,18 +26,54 @@ function extractMetaTags(body, options) {
         const property = meta.attribs.property || meta.attribs.name;
         const content = meta.attribs.content || meta.attribs.value;
         metaFields.forEach((item) => {
+            // if (item && property.toLowerCase() === item.property.toLowerCase()) {
+            //   if (!item.multiple) {
+            //     ogObject[item.fieldName] = content;
+            //   // } else if (!ogObject[item.fieldName]) {
+            //   } else if (!ogObject[item.fieldName] && mediaMapperProperties.includes(item.fieldName)) {
+            //   // } else if (!ogObject[item.fieldName] && (item.fieldName === 'ogImageAlt')) {
+            //   // } else if (!ogObject[item.fieldName] && item.multiple) {
+            //     ogObject[item.fieldName] = [content];
+            //   } else if (Array.isArray(ogObject[item.fieldName])) {
+            //   // } else if (Array.isArray(ogObject[item.fieldName]) && item.fieldName === 'ogImageAlt') {
+            //     ogObject[item.fieldName]?.push(content);
+            //   }
+            // }
             if (item && property.toLowerCase() === item.property.toLowerCase()) {
-                if (!item.multiple) {
+                // check if fieldName is one of mediaMapperProperties
+                if (item.fieldName === 'musicSongDisc'
+                    || item.fieldName === 'musicSongProperty'
+                    || item.fieldName === 'musicSongTrack'
+                    || item.fieldName === 'musicSongUrl'
+                    || item.fieldName === 'ogImageAlt'
+                    || item.fieldName === 'ogImageHeight'
+                    || item.fieldName === 'ogImageProperty'
+                    || item.fieldName === 'ogImageSecureURL'
+                    || item.fieldName === 'ogImageType'
+                    || item.fieldName === 'ogImageURL'
+                    || item.fieldName === 'ogImageWidth'
+                    || item.fieldName === 'ogVideoHeight'
+                    || item.fieldName === 'ogVideoProperty'
+                    || item.fieldName === 'ogVideoType'
+                    || item.fieldName === 'ogVideoWidth'
+                    || item.fieldName === 'twitterImageAlt'
+                    || item.fieldName === 'twitterImageHeight'
+                    || item.fieldName === 'twitterImageProperty'
+                    || item.fieldName === 'twitterImageSrc'
+                    || item.fieldName === 'twitterImageWidth'
+                    || item.fieldName === 'twitterPlayerHeight'
+                    || item.fieldName === 'twitterPlayerProperty'
+                    || item.fieldName === 'twitterPlayerStream'
+                    || item.fieldName === 'twitterPlayerWidth') {
+                    if (!ogObject[item.fieldName]) {
+                        ogObject[item.fieldName] = [content];
+                    }
+                    else {
+                        ogObject[item.fieldName]?.push(content);
+                    }
+                }
+                else {
                     ogObject[item.fieldName] = content;
-                }
-                else if (!ogObject[item.fieldName]) {
-                    ogObject[item.fieldName] = [content];
-                }
-                else if (Array.isArray(ogObject[item.fieldName])) {
-                    ogObject[item.fieldName] = [
-                        ...ogObject[item.fieldName],
-                        content,
-                    ];
                 }
             }
         });
