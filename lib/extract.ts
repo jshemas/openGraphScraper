@@ -15,7 +15,7 @@ import type { OgObjectInteral, OpenGraphScraperOptions } from './types';
  *
  */
 export default function extractMetaTags(body: string, options: OpenGraphScraperOptions) {
-  let ogObject: OgObjectInteral = {};
+  let ogObject: OgObjectInteral = { success: true };
   const $ = load(body);
   const metaFields = fields;
 
@@ -27,11 +27,14 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
     metaFields.forEach((item) => {
       if (item && property.toLowerCase() === item.property.toLowerCase()) {
         if (!item.multiple) {
-          ogObject[item.fieldName] = content;
+          ogObject[item.fieldName as string] = content;
         } else if (!ogObject[item.fieldName]) {
-          ogObject[item.fieldName] = [content];
+          ogObject[item.fieldName as string] = [content];
         } else if (Array.isArray(ogObject[item.fieldName])) {
-          ogObject[item.fieldName].push(content);
+          ogObject[item.fieldName as string] = [
+            ...ogObject[item.fieldName as string],
+            content,
+          ];
         }
       }
     });

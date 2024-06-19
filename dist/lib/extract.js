@@ -16,7 +16,7 @@ const media_1 = __importDefault(require("./media"));
  *
  */
 function extractMetaTags(body, options) {
-    let ogObject = {};
+    let ogObject = { success: true };
     const $ = (0, cheerio_1.load)(body);
     const metaFields = fields_1.default;
     // find all of the open graph info in the meta tags
@@ -34,7 +34,10 @@ function extractMetaTags(body, options) {
                     ogObject[item.fieldName] = [content];
                 }
                 else if (Array.isArray(ogObject[item.fieldName])) {
-                    ogObject[item.fieldName].push(content);
+                    ogObject[item.fieldName] = [
+                        ...ogObject[item.fieldName],
+                        content,
+                    ];
                 }
             }
         });

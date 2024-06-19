@@ -48,7 +48,6 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
     const ogObject = extractMetaTags(body, options);
 
     ogObject.requestUrl = options.url;
-    ogObject.success = true;
 
     return { ogObject, response, html: body };
   } catch (exception: any) {

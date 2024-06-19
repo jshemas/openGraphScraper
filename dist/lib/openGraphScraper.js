@@ -39,7 +39,6 @@ async function setOptionsAndReturnOpenGraphResults(ogsOptions) {
         const { body, response } = await (0, request_1.default)(options);
         const ogObject = (0, extract_1.default)(body, options);
         ogObject.requestUrl = options.url;
-        ogObject.success = true;
         return { ogObject, response, html: body };
     }
     catch (exception) {
