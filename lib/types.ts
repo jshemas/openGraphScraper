@@ -13,7 +13,7 @@ import type { RequestInit } from 'undici';
  * @typeParam {number} [timeout] - Number of seconds before the fetch request ends. (default is 10 seconds)
  * @typeParam {ValidatorSettings} [urlValidatorSettings] - Sets the options used by validator.js for testing the URL
  */
-export type OpenGraphScraperOptions = {
+export interface OpenGraphScraperOptions {
   blacklist?: string[];
   customMetaTags?: CustomMetaTags[];
   fetchOptions?: RequestInit;
@@ -22,7 +22,7 @@ export type OpenGraphScraperOptions = {
   timeout?: number;
   url?: string;
   urlValidatorSettings?: ValidatorSettings;
-};
+}
 
 /**
  * Options for isURL method in Validator.js
@@ -36,7 +36,7 @@ export type OpenGraphScraperOptions = {
  * @typeParam validate_length - if set as false isURL will skip string length validation (IE maximum is 2083)
  *
  */
-export type ValidatorSettings = {
+export interface ValidatorSettings {
   allow_fragments: boolean;
   allow_protocol_relative_urls: boolean;
   allow_query_components: boolean;
@@ -49,7 +49,7 @@ export type ValidatorSettings = {
   require_tld: boolean;
   require_valid_protocol: boolean;
   validate_length: boolean;
-};
+}
 
 /**
  * The type for user defined custom meta tags you want to scrape.
@@ -58,48 +58,48 @@ export type ValidatorSettings = {
  * @typeParam {string} property - meta tag name/property attribute
  * @typeParam {string} fieldName - name of the result variable
  */
-export type CustomMetaTags = {
+export interface CustomMetaTags {
   fieldName: string;
   multiple: boolean;
   property: string;
-};
+}
 
-export type TwitterImageObject = {
+export interface TwitterImageObject {
   alt?: string;
   height?: number;
   url: string;
   width?: number;
-};
+}
 
-export type TwitterPlayerObject = {
+export interface TwitterPlayerObject {
   height?: number;
   stream?: string;
   url: string;
   width?: number;
-};
+}
 
-export type ImageObject = {
+export interface ImageObject {
   height?: number;
   type?: string;
   url: string;
   width?: number;
   alt?: string
-};
+}
 
-export type VideoObject = {
+export interface VideoObject {
   height?: number;
   type?: string;
   url: string;
   width?: number;
-};
+}
 
-export type MusicSongObject = {
+export interface MusicSongObject {
   disc?: string;
   track?: number;
   url: string;
-};
+}
 
-export type OgObjectInteral = {
+export interface OgObjectInteral {
   alAndroidAppName?: string;
   alAndroidClass?: string;
   alAndroidPackage?: string;
@@ -299,7 +299,7 @@ export type OgObjectInteral = {
   twitterTitle?: string;
   twitterUrl?: string;
   updatedTime?: string;
-};
+}
 
 // Omit values from mediaMapperProperties
 export type OgObject = Omit<

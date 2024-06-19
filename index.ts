@@ -51,16 +51,16 @@ export default async function run(options: OpenGraphScraperOptions): Promise<Err
 
 module.exports = run;
 
-export type SuccessResult = {
+export interface SuccessResult {
   error: false;
   html: string;
   response: object;
   result: OgObject;
-};
+}
 
-export type ErrorResult = {
+export interface ErrorResult {
   error: true;
   html: undefined;
   response: undefined;
   result: OgObject;
-};
+}
