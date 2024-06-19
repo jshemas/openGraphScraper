@@ -1,4 +1,4 @@
-import type { CustomMetaTags, ValidatorSettings, OpenGraphScraperOptions } from './types';
+import type { CustomMetaTags, OgObjectInteral, OpenGraphScraperOptions, ValidatorSettings } from './types';
 export declare const defaultUrlValidatorSettings: {
     allow_fragments: boolean;
     allow_protocol_relative_urls: boolean;
@@ -66,9 +66,7 @@ export declare function isThisANonHTMLUrl(url: string): boolean;
  */
 export declare function removeNestedUndefinedValues(object: {
     [key: string]: any;
-}): {
-    [key: string]: any;
-};
+}): OgObjectInteral;
 /**
  * Split the options object into ogs and got option objects
  *
