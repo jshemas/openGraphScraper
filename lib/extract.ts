@@ -17,7 +17,7 @@ import type { OgObjectInteral, OpenGraphScraperOptions } from './types';
 export default function extractMetaTags(body: string, options: OpenGraphScraperOptions) {
   let ogObject: OgObjectInteral = {};
   const $ = load(body);
-  const metaFields = fields.concat(options.customMetaTags || []);
+  const metaFields = fields;
 
   // find all of the open graph info in the meta tags
   $('meta').each((index, meta) => {
@@ -35,20 +35,26 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
         }
       }
     });
-  });
 
-  // take all of the customMetaTags out of base of ogObject and store them into ogObject.customMetaTags
-  if (options.customMetaTags) {
-    options.customMetaTags.forEach((customMetaTag) => {
-      if (ogObject[customMetaTag.fieldName]) {
-        ogObject.customMetaTags = {
-          ...ogObject.customMetaTags,
-          [customMetaTag.fieldName]: ogObject[customMetaTag.fieldName],
-        };
-        delete ogObject[customMetaTag.fieldName];
-      }
-    });
-  }
+    if (options.customMetaTags) {
+      options.customMetaTags.forEach((item) => {
+        if (!ogObject.customMetaTags) ogObject.customMetaTags = {};
+        if (item && property.toLowerCase() === item.property.toLowerCase()) {
+          if (!item.multiple) {
+            ogObject.customMetaTags[item.fieldName] = content;
+          } else if (!ogObject.customMetaTags[item.fieldName]) {
+            ogObject.customMetaTags[item.fieldName] = [content];
+          } else if (Array.isArray(ogObject.customMetaTags[item.fieldName])) {
+            ogObject.customMetaTags[item.fieldName] = [
+              ...ogObject.customMetaTags[item.fieldName],
+              content,
+            ];
+          }
+        }
+      });
+      if (ogObject.customMetaTags && Object.keys(ogObject.customMetaTags).length === 0) delete ogObject.customMetaTags;
+    }
+  });
 
   // formats the multiple media values
   ogObject = mediaSetup(ogObject);

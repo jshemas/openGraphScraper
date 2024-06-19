@@ -18,7 +18,7 @@ const media_1 = __importDefault(require("./media"));
 function extractMetaTags(body, options) {
     let ogObject = {};
     const $ = (0, cheerio_1.load)(body);
-    const metaFields = fields_1.default.concat(options.customMetaTags || []);
+    const metaFields = fields_1.default;
     // find all of the open graph info in the meta tags
     $('meta').each((index, meta) => {
         if (!meta.attribs || (!meta.attribs.property && !meta.attribs.name))
@@ -38,19 +38,29 @@ function extractMetaTags(body, options) {
                 }
             }
         });
+        if (options.customMetaTags) {
+            options.customMetaTags.forEach((item) => {
+                if (!ogObject.customMetaTags)
+                    ogObject.customMetaTags = {};
+                if (item && property.toLowerCase() === item.property.toLowerCase()) {
+                    if (!item.multiple) {
+                        ogObject.customMetaTags[item.fieldName] = content;
+                    }
+                    else if (!ogObject.customMetaTags[item.fieldName]) {
+                        ogObject.customMetaTags[item.fieldName] = [content];
+                    }
+                    else if (Array.isArray(ogObject.customMetaTags[item.fieldName])) {
+                        ogObject.customMetaTags[item.fieldName] = [
+                            ...ogObject.customMetaTags[item.fieldName],
+                            content,
+                        ];
+                    }
+                }
+            });
+            if (ogObject.customMetaTags && Object.keys(ogObject.customMetaTags).length === 0)
+                delete ogObject.customMetaTags;
+        }
     });
-    // take all of the customMetaTags out of base of ogObject and store them into ogObject.customMetaTags
-    if (options.customMetaTags) {
-        options.customMetaTags.forEach((customMetaTag) => {
-            if (ogObject[customMetaTag.fieldName]) {
-                ogObject.customMetaTags = {
-                    ...ogObject.customMetaTags,
-                    [customMetaTag.fieldName]: ogObject[customMetaTag.fieldName],
-                };
-                delete ogObject[customMetaTag.fieldName];
-            }
-        });
-    }
     // formats the multiple media values
     ogObject = (0, media_1.default)(ogObject);
     // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks

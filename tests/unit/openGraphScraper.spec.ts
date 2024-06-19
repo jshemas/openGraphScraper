@@ -299,6 +299,44 @@ describe('return ogs', function () {
         });
     });
 
+    it('when passing in a custom tag and using multiples', function () {
+      const basicMultiplesHTML = `
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <meta property="og:description" content="test description">
+            <meta property="og:title" content="test page">
+            <meta property="foo" content="bar">
+            <meta property="foo" content="foo">
+          </head>
+          <body>
+            <h1>hello test page</h1>
+            <img width="360" src="test.png" alt="test">
+            <img width="360" alt="test2">
+          </body>
+        </html>`;
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200, basicMultiplesHTML);
+
+      return ogs({
+        url: 'www.test.com',
+        customMetaTags: [{
+          multiple: true,
+          property: 'foo',
+          fieldName: 'fooTag',
+        }],
+      })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.customMetaTags?.fooTag).to.be.eql(['bar', 'foo']);
+          expect(data.result.ogTitle).to.be.eql('test page');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.html).to.be.eql(basicMultiplesHTML);
+          expect(data.response).to.be.a('response');
+        });
+    });
+
     it('when passing in a custom tag and nothing is found', function () {
       mockAgent.get('http://www.test.com')
         .intercept({ path: '/' })

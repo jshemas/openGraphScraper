@@ -137,7 +137,7 @@ export type OgObjectInteral = {
     businessContactDataStreetAddress?: string;
     charset?: string;
     customMetaTags?: {
-        [key: string]: string | undefined;
+        [key: string]: string | string[];
     };
     dcContributor?: string;
     dcCoverage?: string;
