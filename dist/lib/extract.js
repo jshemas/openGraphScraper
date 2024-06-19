@@ -26,19 +26,6 @@ function extractMetaTags(body, options) {
         const property = meta.attribs.property || meta.attribs.name;
         const content = meta.attribs.content || meta.attribs.value;
         metaFields.forEach((item) => {
-            // if (item && property.toLowerCase() === item.property.toLowerCase()) {
-            //   if (!item.multiple) {
-            //     ogObject[item.fieldName] = content;
-            //   // } else if (!ogObject[item.fieldName]) {
-            //   } else if (!ogObject[item.fieldName] && mediaMapperProperties.includes(item.fieldName)) {
-            //   // } else if (!ogObject[item.fieldName] && (item.fieldName === 'ogImageAlt')) {
-            //   // } else if (!ogObject[item.fieldName] && item.multiple) {
-            //     ogObject[item.fieldName] = [content];
-            //   } else if (Array.isArray(ogObject[item.fieldName])) {
-            //   // } else if (Array.isArray(ogObject[item.fieldName]) && item.fieldName === 'ogImageAlt') {
-            //     ogObject[item.fieldName]?.push(content);
-            //   }
-            // }
             if (item && property.toLowerCase() === item.property.toLowerCase()) {
                 // check if fieldName is one of mediaMapperProperties
                 if (item.fieldName === 'musicSongDisc'

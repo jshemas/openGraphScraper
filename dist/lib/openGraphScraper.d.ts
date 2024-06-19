@@ -8,6 +8,12 @@ import type { OpenGraphScraperOptions } from './types';
  */
 export default function setOptionsAndReturnOpenGraphResults(ogsOptions: OpenGraphScraperOptions): Promise<{
     ogObject: import("./types").OgObjectInteral;
-    response: any;
-    html: any;
+    response: {
+        body: string;
+    };
+    html: string;
+} | {
+    ogObject: import("./types").OgObjectInteral;
+    response: import("undici").Response;
+    html: string;
 }>;

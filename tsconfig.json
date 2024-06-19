@@ -7,15 +7,15 @@
     "tests/**/*"
   ],
   "compilerOptions": {
-    "allowJs": true,
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["es2023"],
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "node16",
+    "moduleResolution": "node16",
     "outDir": "./dist",
     "skipLibCheck": true,
-    "target": "es2022"
+    "strict": true,
+    "target": "es2022",
   }
 }
