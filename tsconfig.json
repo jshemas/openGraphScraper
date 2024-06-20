@@ -8,12 +8,10 @@
   ],
   "compilerOptions": {
     "declaration": true,
+    "declarationDir": "./dist/types",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["es2023"],
-    "module": "node16",
-    "moduleResolution": "node16",
-    "outDir": "./dist",
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
