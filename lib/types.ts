@@ -148,7 +148,7 @@ export interface OgObjectInteral {
   businessContactDataRegion?: string;
   businessContactDataStreetAddress?: string;
   charset?: string;
-  customMetaTags?: { [key: string]: string | string[] };
+  customMetaTags?: Record<string, string | string[]>
   dcContributor?: string;
   dcCoverage?: string;
   dcCreator?: string;

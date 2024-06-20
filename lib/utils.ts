@@ -99,7 +99,7 @@ export function isThisANonHTMLUrl(url: string): boolean {
  * @return {object} object without nested undefs
  *
  */
-export function removeNestedUndefinedValues(object: { [key: string]: any }): OgObjectInteral {
+export function removeNestedUndefinedValues(object: Record<string, any>): OgObjectInteral {
   Object.entries(object).forEach(([key, value]) => {
     if (value && typeof value === 'object') removeNestedUndefinedValues(value);
     else if (value === undefined) delete object[key];
