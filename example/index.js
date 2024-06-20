@@ -11,7 +11,7 @@ app.get('/scraper', async (req, res) => {
     const data = await ogs(options);
     res.send(data); 
   } catch (error) {
-    res.send(error);
+    res.send(error.result);
   }
 });
 
