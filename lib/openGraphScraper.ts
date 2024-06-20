@@ -39,7 +39,7 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
   if (isThisANonHTMLUrl(options.url)) throw new Error('Must scrape an HTML page');
 
   // eslint-disable-next-line max-len
-  if (options.blacklist && options.blacklist.some((blacklistedHostname) => options.url?.includes(blacklistedHostname))) {
+  if (options?.blacklist?.some((blacklistedHostname) => options.url?.includes(blacklistedHostname))) {
     throw new Error('Host name has been black listed');
   }
 

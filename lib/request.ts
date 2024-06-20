@@ -27,7 +27,7 @@ function getCharset(body: string, buffer: ArrayBuffer, $: CheerioAPI) {
 
     if (charsetRegEx.test(content)) {
       const charsetRegExExec = charsetRegEx.exec(content);
-      if (charsetRegExExec !== null && charsetRegExExec[1]) return charsetRegExExec[1];
+      if (charsetRegExExec?.[1]) return charsetRegExExec[1];
     }
   }
   if (body) {
@@ -66,10 +66,10 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
       body = decode(Buffer.from(bodyArrayBuffer), charset);
     }
 
-    if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
+    if (response?.headers?.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
       throw new Error('Page must return a header content-type with text/');
     }
-    if (response && response.status && (response.status.toString().startsWith('4') || response.status.toString().startsWith('5'))) {
+    if (response?.status && (response.status.toString().startsWith('4') || response.status.toString().startsWith('5'))) {
       switch (response.status) {
         case 400:
           throw new Error('400 Bad Request');

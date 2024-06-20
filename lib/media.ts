@@ -46,9 +46,9 @@ const mediaSorter = (
   }
 
   const aRes = a.url.match(/\.(\w{2,5})$/);
-  const aExt = (aRes && aRes[1].toLowerCase()) ?? null;
+  const aExt = (aRes?.[1].toLowerCase()) ?? null;
   const bRes = b.url.match(/\.(\w{2,5})$/);
-  const bExt = (bRes && bRes[1].toLowerCase()) ?? null;
+  const bExt = (bRes?.[1].toLowerCase()) ?? null;
 
   if (aExt === 'gif' && bExt !== 'gif') {
     return -1;
@@ -209,7 +209,7 @@ export function mediaSetup(ogObject: OgObjectInteral) {
     .sort(mediaSorterMusicSong);
 
   // remove old values since everything will live under the main property
-  fields.filter((item) => (item.multiple && item.fieldName && item.fieldName.match('(ogImage|ogVideo|twitter|musicSong).*')))
+  fields.filter((item) => (item.multiple && item.fieldName?.match('(ogImage|ogVideo|twitter|musicSong).*')))
     .forEach((item) => {
       delete ogObject[item.fieldName];
     });
