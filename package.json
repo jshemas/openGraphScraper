@@ -1,7 +1,7 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "6.5.2",
+  "version": "6.6.0",
   "license": "MIT",
   "exports": {
     ".": {
