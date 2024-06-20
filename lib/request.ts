@@ -69,7 +69,7 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
     if (response && response.headers && response.headers.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
       throw new Error('Page must return a header content-type with text/');
     }
-    if (response && response.status && (response.status.toString().substring(0, 1) === '4' || response.status.toString().substring(0, 1) === '5')) {
+    if (response && response.status && (response.status.toString().startsWith('4') || response.status.toString().startsWith('5'))) {
       switch (response.status) {
         case 400:
           throw new Error('400 Bad Request');
