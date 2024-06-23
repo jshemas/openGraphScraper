@@ -6,19 +6,19 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/types/index.d.ts",
         "default": "./dist/esm/index.js"
       },
       "require": {
-        "types": "./dist/types/index.d.ts",
         "default": "./dist/cjs/index.js"
       }
     }
   },
+  "types": "types/index.d.ts",
   "main": "./dist/cjs/index.js",
   "scripts": {
     "build": "rm -rf dist/ && tsc --module commonjs --outDir dist/cjs/ && tsc --module ESNext --moduleResolution bundler --outDir dist/esm/",
-    "ci": "npm run eslint && npm run build && npm run test",
+    "build:declaration": "tsc --project tsconfig.declaration.json --module ESNext --moduleResolution bundler",
+    "ci": "npm run eslint && npm run build && build:declaration && npm run test",
     "eslint:fix": "eslint . --ext .js,.ts --fix",
     "eslint": "eslint . --ext .js,.ts",
     "mocha:int": "ts-mocha --recursive \"./tests/integration/**/*.spec.ts\" --timeout 10000",
@@ -44,6 +44,7 @@
   },
   "files": [
     "/dist",
+    "/types",
     "CHANGELOG.md",
     "index.ts"
   ],
