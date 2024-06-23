@@ -6,14 +6,15 @@
   "exports": {
     ".": {
       "import": {
-        "default": "./dist/esm/index.js"
+        "default": "./dist/esm/index.js",
+        "types": "./types/index.d.ts"
       },
       "require": {
-        "default": "./dist/cjs/index.js"
+        "default": "./dist/cjs/index.js",
+        "types": "./types/index.d.ts"
       }
     }
   },
-  "types": "types/index.d.ts",
   "main": "./dist/cjs/index.js",
   "scripts": {
     "build": "rm -rf dist/ && tsc --module commonjs --outDir dist/cjs/ && tsc --module ESNext --moduleResolution bundler --outDir dist/esm/",
