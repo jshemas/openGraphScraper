@@ -46,8 +46,7 @@
   "files": [
     "/dist",
     "/types",
-    "CHANGELOG.md",
-    "index.ts"
+    "CHANGELOG.md"
   ],
   "devDependencies": {
     "@snyk/protect": "^1.1291.1",
