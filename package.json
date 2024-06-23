@@ -48,6 +48,7 @@
   "files": [
     "/dist",
     "/types",
+    "index.ts",
     "CHANGELOG.md"
   ],
   "devDependencies": {
