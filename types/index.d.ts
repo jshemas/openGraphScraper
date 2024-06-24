@@ -15,15 +15,18 @@ import type { OpenGraphScraperOptions, OgObject } from './lib/types';
  * @returns {Promise} Promise Object with the Open Graph results
  */
 export default function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult>;
-export type SuccessResult = {
+export interface SuccessResult {
     error: false;
     html: string;
     response: object;
     result: OgObject;
-};
-export type ErrorResult = {
+}
+export interface ErrorResult {
     error: true;
     html: undefined;
     response: undefined;
     result: OgObject;
-};
+}
+
+// adding this line in to fix ESM imports for `module/moduleResolution = NodeNext` projects
+export = run;

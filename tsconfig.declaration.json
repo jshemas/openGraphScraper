@@ -7,11 +7,12 @@
     "tests/**/*"
   ],
   "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./types",
+    "emitDeclarationOnly": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["es2023"],
-    "module": "node16",
-    "moduleResolution": "node16",
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",

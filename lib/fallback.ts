@@ -10,7 +10,7 @@ import {
 import type { OpenGraphScraperOptions, ImageObject, OgObjectInteral } from './types';
 
 const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
-  $(selector).attr(attribute) && ($(selector).attr(attribute)?.length || 0) > 0
+  $(selector).attr(attribute) && ($(selector).attr(attribute)?.length ?? 0) > 0
 );
 
 /**
@@ -27,7 +27,7 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   if (!ogObject.ogTitle) {
     if ($('title').text() && $('title').text().length > 0) {
       ogObject.ogTitle = $('title').first().text();
-    } else if ($('head > meta[name="title"]').attr('content') && ($('head > meta[name="title"]').attr('content')?.length || 0) > 0) {
+    } else if ($('head > meta[name="title"]').attr('content') && ($('head > meta[name="title"]').attr('content')?.length ?? 0) > 0) {
       ogObject.ogTitle = $('head > meta[name="title"]').attr('content');
     } else if ($('.post-title').text() && $('.post-title').text().length > 0) {
       ogObject.ogTitle = $('.post-title').text();
@@ -55,11 +55,11 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   if (!ogObject.ogImage) {
     ogObject.ogImage = [];
     $('img').map((index, imageElement) => {
-      const source: string = $(imageElement).attr('src') || '';
+      const source: string = $(imageElement).attr('src') ?? '';
       if (!source) return false;
       const type = findImageTypeFromUrl(source);
       if (
-        !isUrlValid(source, (options.urlValidatorSettings || defaultUrlValidatorSettings)) || !isImageTypeValid(type)
+        !isUrlValid(source, (options.urlValidatorSettings ?? defaultUrlValidatorSettings)) || !isImageTypeValid(type)
       ) return false;
       const fallbackImage: ImageObject = {
         url: source,
@@ -86,15 +86,15 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
 
   // audio fallback
   if (!ogObject.ogAudioURL && !ogObject.ogAudioSecureURL) {
-    const audioElementValue: string = $('audio').attr('src') || '';
-    const audioSourceElementValue: string = $('audio > source').attr('src') || '';
+    const audioElementValue: string = $('audio').attr('src') ?? '';
+    const audioSourceElementValue: string = $('audio > source').attr('src') ?? '';
     if (doesElementExist('audio', 'src', $)) {
       if (audioElementValue.startsWith('https')) {
         ogObject.ogAudioSecureURL = audioElementValue;
       } else {
         ogObject.ogAudioURL = audioElementValue;
       }
-      const audioElementTypeValue: string = $('audio').attr('type') || '';
+      const audioElementTypeValue: string = $('audio').attr('type') ?? '';
       if (!ogObject.ogAudioType && doesElementExist('audio', 'type', $)) ogObject.ogAudioType = audioElementTypeValue;
     } else if (doesElementExist('audio > source', 'src', $)) {
       if (audioSourceElementValue.startsWith('https')) {
@@ -102,7 +102,7 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
       } else {
         ogObject.ogAudioURL = audioSourceElementValue;
       }
-      const audioSourceElementTypeValue: string = $('audio > source').attr('type') || '';
+      const audioSourceElementTypeValue: string = $('audio > source').attr('type') ?? '';
       if (!ogObject.ogAudioType && doesElementExist('audio > source', 'type', $)) ogObject.ogAudioType = audioSourceElementTypeValue;
     }
   }
@@ -178,11 +178,15 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   } else if (doesElementExist('head > meta[name="charset"]', 'content', $)) {
     ogObject.charset = $('head > meta[name="charset"]').attr('content');
   } else if (doesElementExist('head > meta[http-equiv="content-type"]', 'content', $)) {
-    const content = $('head > meta[http-equiv="content-type"]').attr('content');
+    const content = $('head > meta[http-equiv="content-type"]').attr('content') ?? '';
     const charsetRegEx = /charset=([^()<>@,;:"/[\]?.=\s]*)/i;
-    ogObject.charset = charsetRegEx.test(content) ? charsetRegEx.exec(content)[1] : 'UTF-8';
+
+    if (charsetRegEx.test(content)) {
+      const charsetRegExExec = charsetRegEx.exec(content);
+      if (charsetRegExExec?.[1]) ogObject.charset = charsetRegExExec[1] || 'utf-8';
+    }
   } else if (body) {
-    ogObject.charset = chardet.detect(Buffer.from(body)) || '';
+    ogObject.charset = chardet.detect(Buffer.from(body)) ?? '';
   }
 
   return ogObject;

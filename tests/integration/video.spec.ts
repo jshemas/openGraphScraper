@@ -56,6 +56,8 @@ describe('video', function () {
         width: '1280',
         height: '720',
       }]);
+      expect(result.ogVideoTag).to.be.eql('never gonna give you up karaoke');
+      expect(result.ogVideoSecureURL).to.be.eql('https://www.youtube.com/embed/dQw4w9WgXcQ');
       expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
       expect(result.charset).to.be.eql('UTF-8');
       expect(result.success).to.be.eql(true);
@@ -82,6 +84,8 @@ describe('video', function () {
         'ogType',
         'ogUrl',
         'ogVideo',
+        'ogVideoTag',
+        'ogVideoSecureURL',
         'requestUrl',
         'success',
         'charset',

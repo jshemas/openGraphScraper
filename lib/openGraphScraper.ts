@@ -27,11 +27,11 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
     return { ogObject, response: { body: options.html }, html: options.html };
   }
 
-  const formattedUrl = validateAndFormatURL(options.url || '', (options.urlValidatorSettings || defaultUrlValidatorSettings));
+  const formattedUrl = validateAndFormatURL(options.url ?? '', (options.urlValidatorSettings ?? defaultUrlValidatorSettings));
 
   if (!formattedUrl.url) throw new Error('Invalid URL');
 
-  if (!isCustomMetaTagsValid(options.customMetaTags || [])) throw new Error('Invalid Custom Meta Tags');
+  if (!isCustomMetaTagsValid(options.customMetaTags ?? [])) throw new Error('Invalid Custom Meta Tags');
 
   options.url = formattedUrl.url;
 
@@ -39,7 +39,7 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
   if (isThisANonHTMLUrl(options.url)) throw new Error('Must scrape an HTML page');
 
   // eslint-disable-next-line max-len
-  if (options.blacklist && options.blacklist.some((blacklistedHostname) => options.url?.includes(blacklistedHostname))) {
+  if (options?.blacklist?.some((blacklistedHostname) => options.url?.includes(blacklistedHostname))) {
     throw new Error('Host name has been black listed');
   }
 
@@ -48,7 +48,6 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
     const ogObject = extractMetaTags(body, options);
 
     ogObject.requestUrl = options.url;
-    ogObject.success = true;
 
     return { ogObject, response, html: body };
   } catch (exception: any) {

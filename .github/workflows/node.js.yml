@@ -18,6 +18,7 @@ jobs:
         node-version:
           - 18
           - 20
+          - 22
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -30,6 +31,8 @@ jobs:
       run: npm run eslint
     - name: Running Typescript
       run: npm run build
+    - name: Running Typescript Declaration
+      run: npm run build:declaration
     - name: Unit Testing
       run: npm run mocha:unit
     - name: Integration Testing

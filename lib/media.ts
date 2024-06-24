@@ -46,24 +46,24 @@ const mediaSorter = (
   }
 
   const aRes = a.url.match(/\.(\w{2,5})$/);
-  const aExt = (aRes && aRes[1].toLowerCase()) || null;
+  const aExt = (aRes?.[1].toLowerCase()) ?? null;
   const bRes = b.url.match(/\.(\w{2,5})$/);
-  const bExt = (bRes && bRes[1].toLowerCase()) || null;
+  const bExt = (bRes?.[1].toLowerCase()) ?? null;
 
   if (aExt === 'gif' && bExt !== 'gif') {
     return -1;
   } if (aExt !== 'gif' && bExt === 'gif') {
     return 1;
   }
-  return Math.max(b.width || 0, b.height || 0) - Math.max(a.width || 0, a.height || 0);
+  return Math.max(b.width ?? 0, b.height ?? 0) - Math.max(a.width ?? 0, a.height ?? 0);
 };
 
 const mediaSorterMusicSong = (a: MusicSongObject, b: MusicSongObject) => {
   if (!(a.track && b.track)) {
     return 0;
-  } if ((a.disc || 0) > (b.disc || 0)) {
+  } if ((a.disc ?? 0) > (b.disc ?? 0)) {
     return 1;
-  } if ((a.disc || 0) < (b.disc || 0)) {
+  } if ((a.disc ?? 0) < (b.disc ?? 0)) {
     return -1;
   }
   return a.track - b.track;
@@ -88,12 +88,12 @@ export function mediaSetup(ogObject: OgObjectInteral) {
   // sets ogImage property/width/height/type to empty array if one these exists
   if (
     ogObject.ogImageSecureURL
-    || ogObject.ogImageURL
-    || ogObject.ogImageProperty
-    || ogObject.ogImageWidth
-    || ogObject.ogImageHeight
-    || ogObject.ogImageType
-    || ogObject.ogImageAlt
+    ?? ogObject.ogImageURL
+    ?? ogObject.ogImageProperty
+    ?? ogObject.ogImageWidth
+    ?? ogObject.ogImageHeight
+    ?? ogObject.ogImageType
+    ?? ogObject.ogImageAlt
   ) {
     ogObject.ogImageSecureURL = ogObject.ogImageSecureURL ? ogObject.ogImageSecureURL : [];
     ogObject.ogImageURL = ogObject.ogImageURL ? ogObject.ogImageURL : [];
@@ -123,7 +123,7 @@ export function mediaSetup(ogObject: OgObjectInteral) {
     .sort(mediaSorter);
 
   // sets ogVideo property/width/height/type to empty array if one these exists
-  if (ogObject.ogVideoProperty || ogObject.ogVideoWidth || ogObject.ogVideoHeight || ogObject.ogVideoType) {
+  if (ogObject.ogVideoProperty ?? ogObject.ogVideoWidth ?? ogObject.ogVideoHeight ?? ogObject.ogVideoType) {
     ogObject.ogVideoProperty = ogObject.ogVideoProperty ? ogObject.ogVideoProperty : [];
     ogObject.ogVideoWidth = ogObject.ogVideoWidth ? ogObject.ogVideoWidth : [];
     ogObject.ogVideoHeight = ogObject.ogVideoHeight ? ogObject.ogVideoHeight : [];
@@ -145,10 +145,10 @@ export function mediaSetup(ogObject: OgObjectInteral) {
   // sets twitter image src/property/width/height/alt to empty array if one these exists
   if (
     ogObject.twitterImageSrc
-    || ogObject.twitterImageProperty
-    || ogObject.twitterImageWidth
-    || ogObject.twitterImageHeight
-    || ogObject.twitterImageAlt
+    ?? ogObject.twitterImageProperty
+    ?? ogObject.twitterImageWidth
+    ?? ogObject.twitterImageHeight
+    ?? ogObject.twitterImageAlt
   ) {
     ogObject.twitterImageSrc = ogObject.twitterImageSrc ? ogObject.twitterImageSrc : [];
     // eslint-disable-next-line max-len
@@ -172,9 +172,9 @@ export function mediaSetup(ogObject: OgObjectInteral) {
 
   // sets twitter property/width/height/stream to empty array if one these exists
   if (ogObject.twitterPlayerProperty
-    || ogObject.twitterPlayerWidth
-    || ogObject.twitterPlayerHeight
-    || ogObject.twitterPlayerStream
+    ?? ogObject.twitterPlayerWidth
+    ?? ogObject.twitterPlayerHeight
+    ?? ogObject.twitterPlayerStream
   ) {
     ogObject.twitterPlayerProperty = ogObject.twitterPlayerProperty ? ogObject.twitterPlayerProperty : [];
     ogObject.twitterPlayerWidth = ogObject.twitterPlayerWidth ? ogObject.twitterPlayerWidth : [];
@@ -194,7 +194,7 @@ export function mediaSetup(ogObject: OgObjectInteral) {
     .sort(mediaSorter);
 
   // sets music property/songTrack/songDisc to empty array if one these exists
-  if (ogObject.musicSongProperty || ogObject.musicSongTrack || ogObject.musicSongDisc || ogObject.musicSongUrl) {
+  if (ogObject.musicSongProperty ?? ogObject.musicSongTrack ?? ogObject.musicSongDisc ?? ogObject.musicSongUrl) {
     ogObject.musicSongUrl = ogObject.musicSongUrl ? ogObject.musicSongUrl : [];
     ogObject.musicSongProperty = ogObject.musicSongProperty ? ogObject.musicSongProperty : ogObject.musicSongUrl; // deafult to musicSongUrl
     ogObject.musicSongTrack = ogObject.musicSongTrack ? ogObject.musicSongTrack : [];
@@ -209,7 +209,7 @@ export function mediaSetup(ogObject: OgObjectInteral) {
     .sort(mediaSorterMusicSong);
 
   // remove old values since everything will live under the main property
-  fields.filter((item) => (item.multiple && item.fieldName && item.fieldName.match('(ogImage|ogVideo|twitter|musicSong).*')))
+  fields.filter((item) => (item.multiple && item.fieldName?.match('(ogImage|ogVideo|twitter|musicSong).*')))
     .forEach((item) => {
       delete ogObject[item.fieldName];
     });

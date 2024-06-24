@@ -1,10 +1,18 @@
+import type { OgObjectInteral } from './types';
+
+type Fields = {
+  multiple: boolean;
+  property: string;
+  fieldName: keyof OgObjectInteral;
+}[];
+
 /**
  * array of meta tags ogs is looking for
  *
  * @return {array} array of meta tags
  *
  */
-const fields = [
+const fields: Fields = [
   {
     multiple: false,
     property: 'og:title',
@@ -161,62 +169,62 @@ const fields = [
     fieldName: 'ogVideoProperty',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:secure_url',
     fieldName: 'ogVideoSecureURL',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:movie',
     fieldName: 'ogMovie',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:episode',
     fieldName: 'ogEpisode',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:actor',
     fieldName: 'ogVideoActor',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:actor:id',
     fieldName: 'ogVideoActorId',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:actor:role',
     fieldName: 'ogVideoActorRole',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:director',
     fieldName: 'ogVideoDirector',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:writer',
     fieldName: 'ogVideoWriter',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:duration',
     fieldName: 'ogVideoDuration',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:release_date',
     fieldName: 'ogVideoReleaseDate',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:Tag',
     fieldName: 'ogVideoTag',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:series',
     fieldName: 'ogVideoSeries',
   },
@@ -236,12 +244,12 @@ const fields = [
     fieldName: 'ogVideoType',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:tv_show',
     fieldName: 'ogVideoTvShow',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'og:video:other',
     fieldName: 'ogVideoOther',
   },
@@ -336,7 +344,7 @@ const fields = [
     fieldName: 'twitterPlayerStream',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'twitter:player:stream:content_type',
     fieldName: 'twitterPlayerStreamContentType',
   },
@@ -386,7 +394,7 @@ const fields = [
     fieldName: 'twitterAppUrlGooglePlay',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'music:playlist',
     fieldName: 'musicPlaylist',
   },
@@ -411,7 +419,7 @@ const fields = [
     fieldName: 'musicSongUrl',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'music:musician',
     fieldName: 'musicMusician',
   },
@@ -426,17 +434,17 @@ const fields = [
     fieldName: 'musicDuration',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'music:radio_station',
     fieldName: 'musicRadioStation',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'music:creator',
     fieldName: 'musicCreator',
   },
   {
-    multiple: true,
+    multiple: false,
     property: 'music:album',
     fieldName: 'musicAlbum',
   },

@@ -1,13 +1,27 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "6.5.2",
+  "version": "6.6.0",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/esm/index.js",
+        "types": "./types/index.d.ts"
+      },
+      "require": {
+        "default": "./dist/cjs/index.js",
+        "types": "./types/index.d.ts"
+      }
+    }
+  },
+  "main": "./dist/cjs/index.js",
   "scripts": {
-    "build": "tsc",
-    "ci": "npm run eslint && npm run build && npm run test",
+    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir dist/cjs/",
+    "build:declaration": "tsc --project tsconfig.declaration.json --module ESNext --moduleResolution bundler",
+    "build:esm": "tsc --project tsconfig.build.json --module ESNext --moduleResolution bundler --outDir dist/esm/",
+    "build": "rm -rf dist/ && npm run build:cjs && npm run build:esm",
+    "ci": "npm run eslint && npm run build && build:declaration && npm run test",
     "eslint:fix": "eslint . --ext .js,.ts --fix",
     "eslint": "eslint . --ext .js,.ts",
     "mocha:int": "ts-mocha --recursive \"./tests/integration/**/*.spec.ts\" --timeout 10000",
@@ -28,21 +42,22 @@
     "chardet": "^2.0.0",
     "cheerio": "^1.0.0-rc.12",
     "iconv-lite": "^0.6.3",
-    "undici": "^6.18.2",
+    "undici": "^6.19.2",
     "validator": "^13.12.0"
   },
   "files": [
     "/dist",
-    "CHANGELOG.md",
-    "index.ts"
+    "/types",
+    "index.ts",
+    "CHANGELOG.md"
   ],
   "devDependencies": {
     "@snyk/protect": "^1.1291.1",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "^18.19.33",
-    "@types/validator": "^13.11.10",
-    "@typescript-eslint/eslint-plugin": "^7.11.0",
-    "@typescript-eslint/parser": "^7.11.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "^18.19.39",
+    "@types/validator": "^13.12.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
     "chai": "^4.4.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -51,10 +66,10 @@
     "eslint-plugin-mocha": "^10.4.3",
     "eslint-plugin-promise": "^6.2.0",
     "mocha": "^10.4.0",
-    "nyc": "^15.1.0",
+    "nyc": "^17.0.0",
     "sinon": "^18.0.0",
     "ts-mocha": "^10.0.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   },
   "repository": {
     "type": "git",

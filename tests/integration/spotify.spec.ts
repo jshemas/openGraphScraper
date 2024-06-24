@@ -19,7 +19,7 @@ describe('spotify', function () {
       // expect(result.favicon).to.be.eql('https://open.scdn.co/cdn/images/favicon.0c211e2e.png');
       // expect(result.ogUrl).to.be.eql('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
       expect(result.ogType).to.be.eql('music.album');
-      expect(result.musicMusician).to.be.eql(['https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x']);
+      expect(result.musicMusician).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.musicReleaseDate).to.be.eql('2018-06-01');
       expect(result.twitterTitle).to.be.eql('ye');
       expect(result.twitterSite).to.be.eql('@spotify');
@@ -185,9 +185,9 @@ describe('spotify', function () {
       // expect(result.favicon).to.be.eql('https://open.scdn.co/cdn/images/favicon32.a19b4f5b.png');
       expect(result.ogType).to.be.eql('music.song');
       expect(result.musicDuration).to.be.eql('196');
-      expect(result.musicAlbum).to.be.eql(['https://open.spotify.com/album/4xM1pUHZp9HsuKNxyOQDR0']);
+      expect(result.musicAlbum).to.be.eql('https://open.spotify.com/album/4xM1pUHZp9HsuKNxyOQDR0');
       expect(result.musicAlbumTrack).to.be.eql('4');
-      expect(result.musicMusician).to.be.eql(['https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x']);
+      expect(result.musicMusician).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.musicReleaseDate).to.be.eql('2016-06-10');
       expect(result.ogAudio).to.be.an('string').and.to.not.be.empty;
       expect(result.ogAudioType).to.be.eql('audio/mpeg');
@@ -261,7 +261,7 @@ describe('spotify', function () {
       expect(result.ogUrl).to.be.eql('https://open.spotify.com/playlist/4BSIiLTu7qzDZLDdkHaty9');
       expect(result.favicon).to.be.eql('https://open.scdn.co/cdn/images/favicon32.a19b4f5b.png');
       expect(result.ogType).to.be.eql('music.playlist');
-      expect(result.musicCreator).to.be.eql(['https://open.spotify.com/user/mjaschmidt']);
+      expect(result.musicCreator).to.be.eql('https://open.spotify.com/user/mjaschmidt');
       expect(result.twitterTitle).to.be.eql('Calm Hip Hop Mindset');
       expect(result.twitterAppIdiPhone).to.be.eql('324684580');
       expect(result.twitterAppIdGooglePlay).to.be.eql('com.spotify.music');
