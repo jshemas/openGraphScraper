@@ -1,5 +1,15 @@
 # Change Log
 
+## 6.6.0
+
+- Updating the `tsc` build process to better support both `ESM` and `commonJS`
+- Fixed issue where some meta tags would always come back as array even thought there was only ever one meta tag.
+- Removed the `dist` folder from version control
+- Start running node22 in the CI pipeline
+- General typescript clean up
+- Example service will only return the `result` of OGS now
+- Updating dependencies
+
 ## 6.5.2
 
 - adding a new favicon fallback using appIcon
