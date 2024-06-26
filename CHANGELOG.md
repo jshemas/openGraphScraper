@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.6.1
+
+- Use `node16` for `module`/`moduleResolution` ESM build
+- Fixed issue with `package.json` `exports` was not working in `NextJs` projects.
+
 ## 6.6.0
 
 - Updating the `tsc` build process to better support both `ESM` and `commonJS`
