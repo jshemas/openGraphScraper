@@ -5,17 +5,11 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "import": {
-        "default": "./dist/esm/index.js",
-        "types": "./types/index.d.ts"
-      },
-      "require": {
-        "default": "./dist/cjs/index.js",
-        "types": "./types/index.d.ts"
-      }
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "types": "./types/index.d.ts"
     }
   },
-  "main": "./dist/cjs/index.js",
   "scripts": {
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir dist/cjs/",
     "build:declaration": "tsc --project tsconfig.declaration.json --module ESNext --moduleResolution bundler",
