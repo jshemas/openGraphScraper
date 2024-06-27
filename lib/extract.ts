@@ -94,7 +94,11 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
     $('script').each((index, script) => {
       if (script.attribs.type && script.attribs.type === 'application/ld+json') {
         if (!ogObject.jsonLD) ogObject.jsonLD = [];
-        ogObject.jsonLD.push(JSON.parse($(script).text()));
+        const scriptText = $(script).text();
+        if (scriptText) {
+            ogObject.jsonLD.push(JSON.parse(scriptText));
+        }
+        
       }
     });
   }
