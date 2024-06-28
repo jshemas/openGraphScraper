@@ -96,9 +96,8 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
         if (!ogObject.jsonLD) ogObject.jsonLD = [];
         const scriptText = $(script).text();
         if (scriptText) {
-            ogObject.jsonLD.push(JSON.parse(scriptText));
+          ogObject.jsonLD.push(JSON.parse(scriptText));
         }
-        
       }
     });
   }
