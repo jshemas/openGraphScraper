@@ -3,6 +3,7 @@
 ## 6.6.2
 
 - Fixed issue with `package.json` `exports` was not working in `CommonJs` projects.
+- Fixed issue where if the `jsonLD` tag was empty, it would cause a error.
 
 ## 6.6.1
 
