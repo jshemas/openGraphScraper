@@ -1,5 +1,9 @@
 # Change Log
 
+## 6.6.2
+
+- Fixed issue with `package.json` `exports` was not working in `CommonJs` projects.
+
 ## 6.6.1
 
 - Use `node16` for `module`/`moduleResolution` ESM build
