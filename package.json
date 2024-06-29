@@ -3,14 +3,15 @@
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
   "version": "6.6.1",
   "license": "MIT",
+  "main": "./dist/cjs/index.js",
+  "types": "./types/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/cjs/index.js",
+      "types": "./types/index.d.ts",
       "import": "./dist/esm/index.js",
-      "types": "./types/index.d.ts"
+      "require": "./dist/cjs/index.js"
     }
   },
-  "types": "./types/index.d.ts",
   "scripts": {
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir dist/cjs/",
     "build:declaration": "tsc --project tsconfig.declaration.json --module node16 --moduleResolution node16",
