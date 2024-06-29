@@ -218,6 +218,7 @@ describe('static check meta tags', function () {
   it('jsonLD', function () {
     const metaHTML = `<html><head>
     <script type="application/ld+json">{"foo":"bar"}</script>
+    <script type="application/ld+json"></script>
     </head></html>`;
 
     mockAgent.get('http://www.test.com')
