@@ -224,7 +224,8 @@ describe('basic', function () {
     });
   });
 
-  it('vimeo.com should return open graph data', function () {
+  // vimeo.com is now blocking OGS even when using the "User Agent" header
+  it.skip('vimeo.com should return open graph data', function () {
     return ogsRequire({ url: 'https://vimeo.com/232889838' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
