@@ -21,6 +21,8 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
 
   if (options.html && options.url) throw new Error('Must specify either `url` or `html`, not both');
 
+  if (!isCustomMetaTagsValid(options.customMetaTags ?? [])) throw new Error('Invalid Custom Meta Tags');
+
   if (options.html) {
     const ogObject = extractMetaTags(options.html, options);
     ogObject.success = true;
@@ -30,8 +32,6 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
   const formattedUrl = validateAndFormatURL(options.url ?? '', (options.urlValidatorSettings ?? defaultUrlValidatorSettings));
 
   if (!formattedUrl.url) throw new Error('Invalid URL');
-
-  if (!isCustomMetaTagsValid(options.customMetaTags ?? [])) throw new Error('Invalid Custom Meta Tags');
 
   options.url = formattedUrl.url;
 
