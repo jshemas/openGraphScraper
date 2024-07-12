@@ -17,7 +17,7 @@
     "build:declaration": "tsc --project tsconfig.declaration.json --module node16 --moduleResolution node16",
     "build:esm": "tsc --project tsconfig.build.json --module node16 --moduleResolution node16 --outDir dist/esm/",
     "build": "rm -rf dist/ && npm run build:cjs && npm run build:esm",
-    "ci": "npm run eslint && npm run build && build:declaration && npm run test",
+    "ci": "npm run eslint && npm run build && npm run build:declaration && npm run test",
     "eslint:fix": "eslint . --ext .js,.ts --fix",
     "eslint": "eslint . --ext .js,.ts",
     "mocha:int": "ts-mocha --recursive \"./tests/integration/**/*.spec.ts\" --timeout 10000",
