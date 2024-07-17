@@ -186,7 +186,9 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
       if (charsetRegExExec?.[1]) ogObject.charset = charsetRegExExec[1] || 'utf-8';
     }
   } else if (body) {
-    ogObject.charset = chardet.detect(Buffer.from(body)) ?? '';
+    const encoder = new TextEncoder();
+    const uint8Array = encoder.encode(body);
+    ogObject.charset = chardet.detect(uint8Array) ?? '';
   }
 
   return ogObject;
