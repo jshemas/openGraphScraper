@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.6.3
+
+- Fix issue with the `charset` fallback. Replace Buffer.from with Uint8Array since body is always html
+- Updating dependencies to fix npm vulnerabilities
+
 ## 6.6.2
 
 - Fixed issue with `package.json` `exports` was not working in `CommonJs` projects.
