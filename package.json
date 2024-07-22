@@ -38,7 +38,7 @@
     "chardet": "^2.0.0",
     "cheerio": "^1.0.0-rc.12",
     "iconv-lite": "^0.6.3",
-    "undici": "^6.19.2"
+    "undici": "^6.19.4"
   },
   "files": [
     "/dist",
@@ -49,16 +49,16 @@
   "devDependencies": {
     "@snyk/protect": "^1.1292.1",
     "@types/mocha": "^10.0.7",
-    "@types/node": "^18.19.40",
-    "@typescript-eslint/eslint-plugin": "^7.16.1",
-    "@typescript-eslint/parser": "^7.16.1",
+    "@types/node": "^18.19.41",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "@typescript-eslint/parser": "^7.17.0",
     "chai": "^4.4.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-mocha": "^10.4.3",
-    "eslint-plugin-promise": "^6.4.0",
+    "eslint-plugin-promise": "^6.6.0",
     "mocha": "^10.6.0",
     "nyc": "^17.0.0",
     "sinon": "^18.0.0",
