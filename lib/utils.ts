@@ -146,3 +146,33 @@ export function isCustomMetaTagsValid(customMetaTags: CustomMetaTags[]): boolean
 
   return result;
 }
+
+/**
+ * Unescape script text.
+ *
+ * Certain websites escape script text within script tags, which can
+ * interfere with `JSON.parse()`. Therefore, we need to unescape it.
+ *
+ * Known good escape sequences:
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Character_escape#uhhhh
+ *
+ * ```js
+ * JSON.parse('"\\u2611"'); // '☑'
+ * ```
+ *
+ * Known bad escape sequences:
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Character_escape#xhh
+ *
+ * ```js
+ * JSON.parse('"\\x26"'); // '&'
+ * ```
+ *
+ * @param {string} scriptText - the text of the script tag
+ * @returns {string} unescaped script text
+ */
+export function unescapeScriptText(scriptText: string) {
+  // https://stackoverflow.com/a/34056693
+  return scriptText.replace(/\\x([0-9a-f]{2})/ig, (_, pair) => String.fromCharCode(parseInt(pair, 16)));
+}
