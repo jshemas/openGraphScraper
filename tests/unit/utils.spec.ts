@@ -317,6 +317,7 @@ describe('utils', function () {
 
     it('should unescape script text', function () {
       expect(unescapeScriptText('"\\x26"')).to.eql('"&"');
+      expect(unescapeScriptText('"\\x22"')).to.eql('"\\""');
     });
   });
 });
