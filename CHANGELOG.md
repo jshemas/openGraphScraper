@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.7.0
+
+- Replace `validator` with internal version of `isUrl` so we have better control on how that works.
+- Fix issue where `JSON` parsing fails when Youtube escape '&' to '\x26'.
+- Updating dependencies
+
 ## 6.6.3
 
 - Fix issue with the `charset` fallback. Replace Buffer.from with Uint8Array since body is always html
