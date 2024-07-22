@@ -132,6 +132,7 @@ function isIP(str, version = '') {
   assertString(str);
   version = String(version);
   if (!version) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return isIP(str, 4) || isIP(str, 6);
   }
   if (version === '4') {
