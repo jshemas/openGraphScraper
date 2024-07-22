@@ -1,4 +1,4 @@
-import validator from 'validator';
+import isUrl from './isUrl';
 import type {
   CustomMetaTags,
   OgObjectInteral,
@@ -30,7 +30,7 @@ export const defaultUrlValidatorSettings = {
  *
  */
 export function isUrlValid(url: string, urlValidatorSettings: ValidatorSettings): boolean {
-  return typeof url === 'string' && url.length > 0 && validator.isURL(url, urlValidatorSettings);
+  return typeof url === 'string' && url.length > 0 && isUrl(url, urlValidatorSettings);
 }
 
 /**

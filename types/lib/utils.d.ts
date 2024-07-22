@@ -83,3 +83,29 @@ export declare function optionSetup(ogsOptions: OpenGraphScraperOptions): {
  *
  */
 export declare function isCustomMetaTagsValid(customMetaTags: CustomMetaTags[]): boolean;
+/**
+ * Unescape script text.
+ *
+ * Certain websites escape script text within script tags, which can
+ * interfere with `JSON.parse()`. Therefore, we need to unescape it.
+ *
+ * Known good escape sequences:
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Character_escape#uhhhh
+ *
+ * ```js
+ * JSON.parse('"\\u2611"'); // '☑'
+ * ```
+ *
+ * Known bad escape sequences:
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Character_escape#xhh
+ *
+ * ```js
+ * JSON.parse('"\\x26"'); // '&'
+ * ```
+ *
+ * @param {string} scriptText - the text of the script tag
+ * @returns {string} unescaped script text
+ */
+export declare function unescapeScriptText(scriptText: string): string;

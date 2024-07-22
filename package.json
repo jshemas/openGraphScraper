@@ -38,8 +38,7 @@
     "chardet": "^2.0.0",
     "cheerio": "^1.0.0-rc.12",
     "iconv-lite": "^0.6.3",
-    "undici": "^6.19.2",
-    "validator": "^13.12.0"
+    "undici": "^6.19.2"
   },
   "files": [
     "/dist",
@@ -51,7 +50,6 @@
     "@snyk/protect": "^1.1292.1",
     "@types/mocha": "^10.0.7",
     "@types/node": "^18.19.40",
-    "@types/validator": "^13.12.0",
     "@typescript-eslint/eslint-plugin": "^7.16.1",
     "@typescript-eslint/parser": "^7.16.1",
     "chai": "^4.4.1",
