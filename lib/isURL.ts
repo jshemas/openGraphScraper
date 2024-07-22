@@ -1,3 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // This is from https://github.com/validatorjs/validator.js version: 13.12.0
 
 // https://github.com/validatorjs/validator.js/blob/master/src/lib/util/assertString.js
@@ -13,8 +19,20 @@ function assertString(input) {
   }
 }
 
+// https://github.com/validatorjs/validator.js/blob/master/src/lib/util/merge.js
+// eslint-disable-next-line @typescript-eslint/default-param-last
+function merge(obj = { }, defaults) {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const key in defaults) {
+    if (typeof obj[key] === 'undefined') {
+      obj[key] = defaults[key];
+    }
+  }
+  return obj;
+}
+
 // https://github.com/validatorjs/validator.js/blob/master/src/lib/isFQDN.js
-const default_fqdn_options = {
+const defaultFqdnOptions = {
   require_tld: true,
   allow_underscores: false,
   allow_trailing_dot: false,
@@ -25,7 +43,7 @@ const default_fqdn_options = {
 
 function isFQDN(str, options) {
   assertString(str);
-  options = merge(options, default_fqdn_options);
+  options = merge(options, defaultFqdnOptions);
 
   /* Remove the optional trailing dot before checking validity */
   if (options.allow_trailing_dot && str[str.length - 1] === '.') {
@@ -46,7 +64,11 @@ function isFQDN(str, options) {
       return false;
     }
 
-    if (!options.allow_numeric_tld && !/^([a-z\u00A1-\u00A8\u00AA-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]{2,}|xn[a-z0-9-]{2,})$/i.test(tld)) {
+    if (
+      !options.allow_numeric_tld
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        && !/^([a-z\u00A1-\u00A8\u00AA-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]{2,}|xn[a-z0-9-]{2,})$/i.test(tld)
+    ) {
       return false;
     }
 
@@ -61,6 +83,7 @@ function isFQDN(str, options) {
     return false;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return parts.every((part) => {
     if (part.length > 63 && !options.ignore_max_length) {
       return false;
@@ -94,16 +117,16 @@ const IPv4AddressFormat = `(${IPv4SegmentFormat}[.]){3}${IPv4SegmentFormat}`;
 const IPv4AddressRegExp = new RegExp(`^${IPv4AddressFormat}$`);
 
 const IPv6SegmentFormat = '(?:[0-9a-fA-F]{1,4})';
-const IPv6AddressRegExp = new RegExp('^(' +
-  `(?:${IPv6SegmentFormat}:){7}(?:${IPv6SegmentFormat}|:)|` +
-  `(?:${IPv6SegmentFormat}:){6}(?:${IPv4AddressFormat}|:${IPv6SegmentFormat}|:)|` +
-  `(?:${IPv6SegmentFormat}:){5}(?::${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,2}|:)|` +
-  `(?:${IPv6SegmentFormat}:){4}(?:(:${IPv6SegmentFormat}){0,1}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,3}|:)|` +
-  `(?:${IPv6SegmentFormat}:){3}(?:(:${IPv6SegmentFormat}){0,2}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,4}|:)|` +
-  `(?:${IPv6SegmentFormat}:){2}(?:(:${IPv6SegmentFormat}){0,3}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,5}|:)|` +
-  `(?:${IPv6SegmentFormat}:){1}(?:(:${IPv6SegmentFormat}){0,4}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,6}|:)|` +
-  `(?::((?::${IPv6SegmentFormat}){0,5}:${IPv4AddressFormat}|(?::${IPv6SegmentFormat}){1,7}|:))` +
-  ')(%[0-9a-zA-Z-.:]{1,})?$');
+const IPv6AddressRegExp = new RegExp('^('
+  + `(?:${IPv6SegmentFormat}:){7}(?:${IPv6SegmentFormat}|:)|`
+  + `(?:${IPv6SegmentFormat}:){6}(?:${IPv4AddressFormat}|:${IPv6SegmentFormat}|:)|`
+  + `(?:${IPv6SegmentFormat}:){5}(?::${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,2}|:)|`
+  + `(?:${IPv6SegmentFormat}:){4}(?:(:${IPv6SegmentFormat}){0,1}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,3}|:)|`
+  + `(?:${IPv6SegmentFormat}:){3}(?:(:${IPv6SegmentFormat}){0,2}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,4}|:)|`
+  + `(?:${IPv6SegmentFormat}:){2}(?:(:${IPv6SegmentFormat}){0,3}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,5}|:)|`
+  + `(?:${IPv6SegmentFormat}:){1}(?:(:${IPv6SegmentFormat}){0,4}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,6}|:)|`
+  + `(?::((?::${IPv6SegmentFormat}){0,5}:${IPv4AddressFormat}|(?::${IPv6SegmentFormat}){1,7}|:))`
+  + ')(%[0-9a-zA-Z-.:]{1,})?$');
 
 function isIP(str, version = '') {
   assertString(str);
@@ -120,16 +143,6 @@ function isIP(str, version = '') {
   return false;
 }
 
-// https://github.com/validatorjs/validator.js/blob/master/src/lib/util/merge.js
-function merge(obj = { }, defaults) {
-  for (const key in defaults) {
-    if (typeof obj[key] === 'undefined') {
-      obj[key] = defaults[key];
-    }
-  }
-  return obj;
-}
-
 // https://github.com/validatorjs/validator.js/blob/master/src/lib/isURL.js
 /*
 options for isURL method
@@ -143,7 +156,7 @@ allow_protocol_relative_urls - if set as true protocol relative URLs will be all
 validate_length - if set as false isURL will skip string length validation (IE maximum is 2083)
 
 */
-const default_url_options = {
+const defaultUrlOptions = {
   protocols: ['http', 'https', 'ftp'],
   require_tld: true,
   require_protocol: false,
@@ -158,15 +171,16 @@ const default_url_options = {
   validate_length: true,
 };
 
-const wrapped_ipv6 = /^\[([^\]]+)\](?::([0-9]+))?$/;
+const wrappedIpv6 = /^\[([^\]]+)\](?::([0-9]+))?$/;
 
 function isRegExp(obj) {
   return Object.prototype.toString.call(obj) === '[object RegExp]';
 }
 
 function checkHost(host, matches) {
-  for (let i = 0; i < matches.length; i++) {
-    let match = matches[i];
+  // eslint-disable-next-line @typescript-eslint/prefer-for-of
+  for (let i = 0; i < matches.length; i += 1) {
+    const match = matches[i];
     if (host === match || (isRegExp(match) && match.test(host))) {
       return true;
     }
@@ -182,7 +196,7 @@ export default function isURL(url, options) {
   if (url.indexOf('mailto:') === 0) {
     return false;
   }
-  options = merge(options, default_url_options);
+  options = merge(options, defaultUrlOptions);
 
   if (options.validate_length && url.length >= 2083) {
     return false;
@@ -196,7 +210,9 @@ export default function isURL(url, options) {
     return false;
   }
 
-  let protocol, auth, host, hostname, port, port_str, split, ipv6;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  let protocol; let auth; let host; let port; let port_str; let split; let
+    ipv6;
 
   split = url.split('#');
   url = split.shift();
@@ -248,13 +264,15 @@ export default function isURL(url, options) {
       return false;
     }
   }
-  hostname = split.join('@');
+  const hostname = split.join('@');
 
   port_str = null;
   ipv6 = null;
-  const ipv6_match = hostname.match(wrapped_ipv6);
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const ipv6_match = hostname.match(wrappedIpv6);
   if (ipv6_match) {
     host = '';
+    // eslint-disable-next-line prefer-destructuring
     ipv6 = ipv6_match[1];
     port_str = ipv6_match[2] || null;
   } else {
