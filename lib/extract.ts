@@ -3,6 +3,7 @@ import { load } from 'cheerio';
 import fallback from './fallback';
 import fields from './fields';
 import mediaSetup from './media';
+import { unescapeScriptText } from './utils';
 
 import type { OgObjectInteral, OpenGraphScraperOptions } from './types';
 
@@ -94,8 +95,9 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
     $('script').each((index, script) => {
       if (script.attribs.type && script.attribs.type === 'application/ld+json') {
         if (!ogObject.jsonLD) ogObject.jsonLD = [];
-        const scriptText = $(script).text();
+        let scriptText = $(script).text();
         if (scriptText) {
+          scriptText = unescapeScriptText(scriptText);
           ogObject.jsonLD.push(JSON.parse(scriptText));
         }
       }

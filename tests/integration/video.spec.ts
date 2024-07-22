@@ -110,6 +110,113 @@ describe('video', function () {
     });
   });
 
+  it('Test Youtube Video with bad escape sequence - Should Return correct Open Graph Info', function () {
+    return ogs({ url: 'https://www.youtube.com/watch?v=nFbKMg4E3JM' }).then(function ({ error, result, response }) {
+      console.log('error:', error);
+      console.log('result:', result);
+      expect(error).to.be.eql(false);
+      expect(result.alAndroidAppName).to.be.eql('YouTube');
+      expect(result.alAndroidPackage).to.be.eql('com.google.android.youtube');
+      expect(result.alAndroidUrl).to.be.eql('vnd.youtube://www.youtube.com/watch?v=nFbKMg4E3JM&feature=applinks');
+      expect(result.alIosAppName).to.be.eql('YouTube');
+      expect(result.alIosAppStoreId).to.be.eql('544007664');
+      expect(result.alIosUrl).to.be.eql('vnd.youtube://www.youtube.com/watch?v=nFbKMg4E3JM&feature=applinks');
+      expect(result.alWebUrl).to.be.oneOf(['https://www.youtube.com/watch?v=nFbKMg4E3JM&feature=applinks', 'http://www.youtube.com/watch?v=nFbKMg4E3JM&feature=applinks']);
+      expect(result.ogSiteName).to.be.eql('YouTube');
+      expect(result.ogUrl).to.be.eql('https://www.youtube.com/watch?v=nFbKMg4E3JM');
+      expect(result.ogTitle).to.be.eql('Force Class 10 in One Shot (Full Chapter) | ICSE 10 Physics Chapter 1 - Abhishek Sir |Vedantu 9 & 10');
+      expect(result.ogDescription).to.be.an('string').and.to.not.be.empty;
+      expect(result.ogType).to.be.eql('video.other');
+      expect(result.ogLocale).to.be.oneOf(['en', 'en-US', 'nl-NL']);
+      expect(result.twitterCard).to.be.eql('player');
+      expect(result.twitterSite).to.be.eql('@youtube');
+      expect(result.twitterTitle).to.be.eql('Force Class 10 in One Shot (Full Chapter) | ICSE 10 Physics Chapter 1 - Abhishek Sir |Vedantu 9 & 10');
+      expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
+      expect(result.twitterAppNameiPhone).to.be.eql('YouTube');
+      expect(result.twitterAppIdiPhone).to.be.eql('544007664');
+      expect(result.twitterAppNameiPad).to.be.eql('YouTube');
+      expect(result.twitterAppIdiPad).to.be.eql('544007664');
+      expect(result.twitterUrl).to.be.eql('https://www.youtube.com/watch?v=nFbKMg4E3JM');
+      expect(result.ogDate).to.be.eql('2021-06-11T09:14:37-07:00');
+      expect(result.twitterAppUrliPhone).to.be.eql('vnd.youtube://www.youtube.com/watch?v=nFbKMg4E3JM&feature=applinks');
+      expect(result.twitterAppUrliPad).to.be.eql('vnd.youtube://www.youtube.com/watch?v=nFbKMg4E3JM&feature=applinks');
+      expect(result.twitterAppNameGooglePlay).to.be.eql('YouTube');
+      expect(result.twitterAppIdGooglePlay).to.be.eql('com.google.android.youtube');
+      expect(result.twitterAppUrlGooglePlay).to.be.eql('https://www.youtube.com/watch?v=nFbKMg4E3JM');
+      expect(result.ogImage).to.be.eql([{
+        url: 'https://i.ytimg.com/vi/nFbKMg4E3JM/maxresdefault.jpg',
+        width: '1280',
+        height: '720',
+        type: 'jpg',
+      }]);
+      expect(result.ogVideo).to.be.eql([{
+        url: 'https://www.youtube.com/embed/nFbKMg4E3JM',
+        width: '1280',
+        height: '720',
+        type: 'text/html',
+      }]);
+      expect(result.twitterImage).to.be.eql([{
+        url: 'https://i.ytimg.com/vi/nFbKMg4E3JM/maxresdefault.jpg',
+      }]);
+      expect(result.twitterPlayer).to.be.eql([{
+        url: 'https://www.youtube.com/embed/nFbKMg4E3JM',
+        width: '1280',
+        height: '720',
+      }]);
+      expect(result.ogVideoTag).to.be.eql('vedantu');
+      expect(result.ogVideoSecureURL).to.be.eql('https://www.youtube.com/embed/nFbKMg4E3JM');
+      expect(result.requestUrl).to.be.eql('https://www.youtube.com/watch?v=nFbKMg4E3JM');
+      expect(result.charset).to.be.eql('UTF-8');
+      expect(result.success).to.be.eql(true);
+      expect(result.fbAppId).to.be.eql('87741124305');
+      expect(result.jsonLD).to.be.an('array').and.to.not.be.empty;
+      if (result.ogDate === undefined) result.ogDate = 'hack because sometimes this does not come back for some reason';
+      expect(result).to.have.all.keys(
+        'favicon',
+        'fbAppId',
+        'jsonLD',
+        'alAndroidAppName',
+        'alAndroidPackage',
+        'alAndroidUrl',
+        'alIosAppName',
+        'alIosAppStoreId',
+        'alIosUrl',
+        'alWebUrl',
+        'ogDate',
+        'ogDescription',
+        'ogImage',
+        'ogLocale',
+        'ogSiteName',
+        'ogTitle',
+        'ogType',
+        'ogUrl',
+        'ogVideo',
+        'ogVideoTag',
+        'ogVideoSecureURL',
+        'requestUrl',
+        'success',
+        'charset',
+        'twitterAppIdGooglePlay',
+        'twitterAppIdiPad',
+        'twitterAppIdiPhone',
+        'twitterAppNameGooglePlay',
+        'twitterAppNameiPad',
+        'twitterAppNameiPhone',
+        'twitterAppUrlGooglePlay',
+        'twitterAppUrliPad',
+        'twitterAppUrliPhone',
+        'twitterCard',
+        'twitterDescription',
+        'twitterImage',
+        'twitterPlayer',
+        'twitterSite',
+        'twitterTitle',
+        'twitterUrl',
+      );
+      expect(response).to.be.an('Response');
+    });
+  });
+
   it('Test Twitch.tv Video - Should Return correct Open Graph Info', function () {
     return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/twitch.html' }).then(function ({ error, result, response }) {
       console.log('error:', error);

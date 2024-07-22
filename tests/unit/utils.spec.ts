@@ -8,6 +8,7 @@ import {
   isThisANonHTMLUrl,
   optionSetup,
   removeNestedUndefinedValues,
+  unescapeScriptText,
   validateAndFormatURL,
 } from '../../lib/utils';
 
@@ -303,6 +304,21 @@ describe('utils', function () {
       // @ts-ignore
       const response = isCustomMetaTagsValid(['foo', 'bar']);
       expect(response).to.eql(false);
+    });
+  });
+
+  describe('unescapeScriptText', function () {
+    it('is needed because `JSON.parse()` is not able to parse string with \\xHH', function () {
+      expect(JSON.parse('"\\u2611"')).to.eql('☑');
+      expect(() => {
+        JSON.parse('"\\x26"');
+      }).to.throw(SyntaxError);
+    });
+
+    it('should unescape script text', function () {
+      expect(unescapeScriptText('"\\x27"')).to.eql('"\'"');
+      expect(unescapeScriptText('"\\x26"')).to.eql('"&"');
+      expect(unescapeScriptText('"\\x22"')).to.eql('"\\""');
     });
   });
 });
