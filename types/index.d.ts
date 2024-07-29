@@ -14,7 +14,5 @@ import type { ErrorResult, OpenGraphScraperOptions, SuccessResult } from './lib/
  * @param {string} options.url - URL of the site. (Required)
  * @returns {Promise} Promise Object with the Open Graph results
  */
-export default function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult>;
-
-// adding this line in to fix ESM imports for `module/moduleResolution = NodeNext` projects
+declare function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult>;
 export = run;

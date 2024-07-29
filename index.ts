@@ -21,7 +21,7 @@ import type {
  * @param {string} options.url - URL of the site. (Required)
  * @returns {Promise} Promise Object with the Open Graph results
  */
-export default async function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult> {
+async function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult> {
   let results;
   try {
     results = await setOptionsAndReturnOpenGraphResults(options);
@@ -50,4 +50,4 @@ export default async function run(options: OpenGraphScraperOptions): Promise<Err
   return returnSuccess;
 }
 
-module.exports = run;
+export = run;
