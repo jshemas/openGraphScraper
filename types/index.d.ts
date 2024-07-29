@@ -1,4 +1,4 @@
-import type { OpenGraphScraperOptions, OgObject } from './lib/types';
+import type { ErrorResult, OpenGraphScraperOptions, SuccessResult } from './lib/types';
 /**
  * `open-graph-scraper` uses [fetch](https://developer.mozilla.org/en-US/docs/Web/API/fetch) for http requests
  * for scraping Open Graph and Twitter Card info off a website.
@@ -14,19 +14,5 @@ import type { OpenGraphScraperOptions, OgObject } from './lib/types';
  * @param {string} options.url - URL of the site. (Required)
  * @returns {Promise} Promise Object with the Open Graph results
  */
-export default function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult>;
-export interface SuccessResult {
-    error: false;
-    html: string;
-    response: object;
-    result: OgObject;
-}
-export interface ErrorResult {
-    error: true;
-    html: undefined;
-    response: undefined;
-    result: OgObject;
-}
-
-// adding this line in to fix ESM imports for `module/moduleResolution = NodeNext` projects
+declare function run(options: OpenGraphScraperOptions): Promise<ErrorResult | SuccessResult>;
 export = run;
