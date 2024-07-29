@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.7.1
+
+- Remove `default` export off of the `run` function and just set `export` to `run`.
+- Updating dependencies
+
 ## 6.7.0
 
 - Replace `validator` with internal version of `isUrl` so we have better control on how that works.
