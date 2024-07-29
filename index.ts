@@ -1,8 +1,9 @@
-/* eslint-disable max-len, import/no-import-module-exports */
+/* eslint-disable import/no-import-module-exports */
 import setOptionsAndReturnOpenGraphResults from './lib/openGraphScraper';
 import type {
+  ErrorResult,
   OpenGraphScraperOptions,
-  OgObject,
+  SuccessResult,
 } from './lib/types';
 
 /**
@@ -50,17 +51,3 @@ export default async function run(options: OpenGraphScraperOptions): Promise<Err
 }
 
 module.exports = run;
-
-export interface SuccessResult {
-  error: false;
-  html: string;
-  response: object;
-  result: OgObject;
-}
-
-export interface ErrorResult {
-  error: true;
-  html: undefined;
-  response: undefined;
-  result: OgObject;
-}

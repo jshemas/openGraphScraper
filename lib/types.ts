@@ -1,6 +1,20 @@
 /* eslint-disable max-len */
 import type { RequestInit } from 'undici';
 
+export interface SuccessResult {
+  error: false;
+  html: string;
+  response: object;
+  result: OgObject;
+}
+
+export interface ErrorResult {
+  error: true;
+  html: undefined;
+  response: undefined;
+  result: OgObject;
+}
+
 /**
  * The options used by Open Graph Scraper
  *
