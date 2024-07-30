@@ -32,7 +32,7 @@ export interface OpenGraphScraperOptions {
   customMetaTags?: CustomMetaTags[];
   fetchOptions?: RequestInit;
   html?: string;
-  onlyGetOpenGraphInfo?: boolean;
+  onlyGetOpenGraphInfo?: boolean | 'image';
   timeout?: number;
   url?: string;
   urlValidatorSettings?: ValidatorSettings;

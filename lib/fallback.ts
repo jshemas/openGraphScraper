@@ -52,7 +52,7 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   }
 
   // Get all of images if there is no og:image info
-  if (!ogObject.ogImage) {
+  if (!ogObject.ogImage && options.onlyGetOpenGraphInfo !== 'image') {
     ogObject.ogImage = [];
     $('img').map((index, imageElement) => {
       const source: string = $(imageElement).attr('src') ?? '';
