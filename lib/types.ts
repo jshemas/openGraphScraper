@@ -15,13 +15,15 @@ export interface ErrorResult {
   result: OgObject;
 }
 
+export type OnlyGetOpenGraphInfoItem = 'image' | 'title' | 'description' | 'locale' | 'logo' | 'url' | 'favicon' | 'audioUrl' | 'date';
+
 /**
  * The options used by Open Graph Scraper
  *
  * @typeParam {string} url - URL of the site. (Required)
  * @typeParam {string} [html] - You can pass in an HTML string to run ogs on it. (use without options.url)
  * @typeParam {string[]} [blacklist] - Pass in an array of sites you don't want ogs to run on.
- * @typeParam {boolean} [onlyGetOpenGraphInfo] - Only fetch open graph info and don't fall back on anything else.
+ * @typeParam {boolean | OnlyGetOpenGraphInfoItem[]} [onlyGetOpenGraphInfo] - Only fetch open graph info and don't fall back on anything else.
  * @typeParam {CustomMetaTags} [customMetaTags] - Here you can define custom meta tags you want to scrape.
  * @typeParam {Request} [fetchOptions] - The options passed into fetch.
  * @typeParam {number} [timeout] - Number of seconds before the fetch request ends. (default is 10 seconds)
@@ -32,7 +34,7 @@ export interface OpenGraphScraperOptions {
   customMetaTags?: CustomMetaTags[];
   fetchOptions?: RequestInit;
   html?: string;
-  onlyGetOpenGraphInfo?: boolean | 'image';
+  onlyGetOpenGraphInfo?: boolean | OnlyGetOpenGraphInfoItem[];
   timeout?: number;
   url?: string;
   urlValidatorSettings?: ValidatorSettings;

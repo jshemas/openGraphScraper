@@ -89,7 +89,7 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
   ogObject = mediaSetup(ogObject);
 
   // if onlyGetOpenGraphInfo isn't set, run the open graph fallbacks
-  if (!options.onlyGetOpenGraphInfo || options.onlyGetOpenGraphInfo === 'image') {
+  if (!options.onlyGetOpenGraphInfo || Array.isArray(options.onlyGetOpenGraphInfo)) {
     ogObject = fallback(ogObject, options, $, body);
 
     $('script').each((index, script) => {
