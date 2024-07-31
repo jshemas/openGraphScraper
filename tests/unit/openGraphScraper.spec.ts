@@ -152,7 +152,7 @@ describe('return ogs', function () {
     it('when it should not fallback to image elements', function () {
       mockAgent.get('http://www.test.com')
         .intercept({ path: '/' })
-        .reply(200, multipleImageHTML);
+        .reply(200, basicHTML);
 
       return ogs({ url: 'www.test.com', onlyGetOpenGraphInfo: ['image'] })
         .then(function (data) {
