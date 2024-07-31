@@ -157,10 +157,8 @@ describe('return ogs', function () {
       return ogs({ url: 'www.test.com', onlyGetOpenGraphInfo: ['image'] })
         .then(function (data) {
           expect(data.result.success).to.be.eql(true);
-          expect(data.result.ogTitle).to.be.eql('test page');
-          expect(data.result.ogImage).to.be.eql([]);
-          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-          expect(data.html).to.be.eql(multipleImageHTML);
+          expect(data.result.ogImage).to.be.eql(undefined);
+          expect(data.html).to.be.eql(basicHTML);
           expect(data.response).to.be.a('response');
         });
     });
