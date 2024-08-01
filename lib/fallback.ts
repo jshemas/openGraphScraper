@@ -7,7 +7,9 @@ import {
   isImageTypeValid,
   isUrlValid,
 } from './utils';
-import type { OpenGraphScraperOptions, ImageObject, OgObjectInteral, OnlyGetOpenGraphInfoItem } from './types';
+import type {
+  OpenGraphScraperOptions, ImageObject, OgObjectInteral, OnlyGetOpenGraphInfoItem,
+} from './types';
 
 const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
   $(selector).attr(attribute) && ($(selector).attr(attribute)?.length ?? 0) > 0
@@ -23,12 +25,11 @@ const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
  *
  */
 export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOptions, $: CheerioAPI, body: string) {
-
   const shouldFallback = (key: OnlyGetOpenGraphInfoItem): boolean => {
-    if(!options.onlyGetOpenGraphInfo){
-      return true; 
+    if (!options.onlyGetOpenGraphInfo) {
+      return true;
     }
-    if(options.onlyGetOpenGraphInfo === true){
+    if (options.onlyGetOpenGraphInfo === true) {
       return false;
     }
     return !options.onlyGetOpenGraphInfo.includes(key);
