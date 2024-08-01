@@ -61,7 +61,7 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | fetchOptions         | Options that are used by the Fetch API                                     | {}            |          |
 | timeout              | Request timeout for Fetch (Default is 10 seconds)                          | 10            |          |
 | blacklist            | Pass in an array of sites you don't want ogs to run on.                    | []            |          |
-| onlyGetOpenGraphInfo | Only fetch open graph info and don't fall back on anything else.           | false         |          |
+| onlyGetOpenGraphInfo | Only fetch open graph info and don't fall back on anything else. Also accepts an array of properties for which no fallback should be used | false         |          |
 | customMetaTags       | Here you can define custom meta tags you want to scrape.                   | []            |          |
 | urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/utils.ts#L4-L17)          |          |
 

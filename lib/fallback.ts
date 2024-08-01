@@ -7,7 +7,9 @@ import {
   isImageTypeValid,
   isUrlValid,
 } from './utils';
-import type { OpenGraphScraperOptions, ImageObject, OgObjectInteral } from './types';
+import type {
+  OpenGraphScraperOptions, ImageObject, OgObjectInteral, OnlyGetOpenGraphInfoItem,
+} from './types';
 
 const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
   $(selector).attr(attribute) && ($(selector).attr(attribute)?.length ?? 0) > 0
@@ -23,8 +25,18 @@ const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
  *
  */
 export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOptions, $: CheerioAPI, body: string) {
+  const shouldFallback = (key: OnlyGetOpenGraphInfoItem): boolean => {
+    if (!options.onlyGetOpenGraphInfo) {
+      return true;
+    }
+    if (options.onlyGetOpenGraphInfo === true) {
+      return false;
+    }
+    return !options.onlyGetOpenGraphInfo.includes(key);
+  };
+
   // title fallback
-  if (!ogObject.ogTitle) {
+  if (!ogObject.ogTitle && shouldFallback('title')) {
     if ($('title').text() && $('title').text().length > 0) {
       ogObject.ogTitle = $('title').first().text();
     } else if ($('head > meta[name="title"]').attr('content') && ($('head > meta[name="title"]').attr('content')?.length ?? 0) > 0) {
@@ -41,7 +53,7 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   }
 
   // Get meta description tag if og description was not provided
-  if (!ogObject.ogDescription) {
+  if (!ogObject.ogDescription && shouldFallback('description')) {
     if (doesElementExist('head > meta[name="description"]', 'content', $)) {
       ogObject.ogDescription = $('head > meta[name="description"]').attr('content');
     } else if (doesElementExist('head > meta[itemprop="description"]', 'content', $)) {
@@ -52,7 +64,7 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   }
 
   // Get all of images if there is no og:image info
-  if (!ogObject.ogImage) {
+  if (!ogObject.ogImage && shouldFallback('image')) {
     ogObject.ogImage = [];
     $('img').map((index, imageElement) => {
       const source: string = $(imageElement).attr('src') ?? '';
@@ -85,7 +97,7 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   }
 
   // audio fallback
-  if (!ogObject.ogAudioURL && !ogObject.ogAudioSecureURL) {
+  if (!ogObject.ogAudioURL && !ogObject.ogAudioSecureURL && shouldFallback('audioUrl')) {
     const audioElementValue: string = $('audio').attr('src') ?? '';
     const audioSourceElementValue: string = $('audio > source').attr('src') ?? '';
     if (doesElementExist('audio', 'src', $)) {
@@ -108,7 +120,7 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   }
 
   // locale fallback
-  if (!ogObject.ogLocale) {
+  if (!ogObject.ogLocale && shouldFallback('locale')) {
     if (doesElementExist('html', 'lang', $)) {
       ogObject.ogLocale = $('html').attr('lang');
     } else if (doesElementExist('head > meta[itemprop="inLanguage"]', 'content', $)) {
@@ -117,7 +129,7 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   }
 
   // logo fallback
-  if (!ogObject.ogLogo) {
+  if (!ogObject.ogLogo && shouldFallback('logo')) {
     if (doesElementExist('meta[itemprop="logo"]', 'content', $)) {
       ogObject.ogLogo = $('meta[itemprop="logo"]').attr('content');
     } else if (doesElementExist('img[itemprop="logo"]', 'src', $)) {
@@ -126,7 +138,7 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   }
 
   // url fallback
-  if (!ogObject.ogUrl) {
+  if (!ogObject.ogUrl && shouldFallback('url')) {
     if (doesElementExist('link[rel="canonical"]', 'href', $)) {
       ogObject.ogUrl = $('link[rel="canonical"]').attr('href');
     } else if (doesElementExist('link[rel="alternate"][hreflang="x-default"]', 'href', $)) {
@@ -135,7 +147,7 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   }
 
   // date fallback
-  if (!ogObject.ogDate) {
+  if (!ogObject.ogDate && shouldFallback('date')) {
     if (doesElementExist('head > meta[name="date"]', 'content', $)) {
       ogObject.ogDate = $('head > meta[name="date"]').attr('content');
     } else if (doesElementExist('[itemprop*="datemodified" i]', 'content', $)) {
@@ -152,7 +164,7 @@ export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOpt
   }
 
   // favicon fallback
-  if (!ogObject.favicon) {
+  if (!ogObject.favicon && shouldFallback('favicon')) {
     if (doesElementExist('link[rel="shortcut icon"]', 'href', $)) {
       ogObject.favicon = $('link[rel="shortcut icon"]').attr('href');
     } else if (doesElementExist('link[rel="icon"]', 'href', $)) {
