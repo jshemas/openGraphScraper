@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.7.2
+
+- Adding `types` to the npm export. You can now use `import { SuccessResult } from 'open-graph-scraper/types/lib/types';`
+- Updating dependencies
+
 ## 6.7.1
 
 - Remove `default` export off of the `run` function and just set `export` to `run`.

@@ -10,7 +10,8 @@
       "types": "./types/index.d.ts",
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
-    }
+    },
+    "./types/lib/types": "./types/lib/types.d.ts"
   },
   "scripts": {
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir dist/cjs/",
@@ -38,7 +39,7 @@
     "chardet": "^2.0.0",
     "cheerio": "^1.0.0-rc.12",
     "iconv-lite": "^0.6.3",
-    "undici": "^6.19.4"
+    "undici": "^6.19.5"
   },
   "files": [
     "/dist",
@@ -47,7 +48,7 @@
     "CHANGELOG.md"
   ],
   "devDependencies": {
-    "@snyk/protect": "^1.1292.1",
+    "@snyk/protect": "^1.1292.2",
     "@types/mocha": "^10.0.7",
     "@types/node": "^18.19.42",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
