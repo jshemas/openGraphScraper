@@ -4,10 +4,10 @@
   "version": "6.7.1",
   "license": "MIT",
   "main": "./dist/cjs/index.js",
-  "types": "./types/index.d.ts",
+  "types": "./dist/cjs/index.d.ts",
   "exports": {
     ".": {
-      "types": "./types/index.d.ts",
+      "types": "./dist/cjs/index.d.ts",
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     }
@@ -42,7 +42,6 @@
   },
   "files": [
     "/dist",
-    "/types",
     "index.ts",
     "CHANGELOG.md"
   ],
