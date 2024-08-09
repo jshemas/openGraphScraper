@@ -11,7 +11,7 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
-    "./types/lib/types": "./types/lib/types.d.ts"
+    "./types": "./types/lib/types.d.ts"
   },
   "scripts": {
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir dist/cjs/",
