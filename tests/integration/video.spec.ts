@@ -2,7 +2,8 @@ import { expect } from 'chai';
 
 import ogs from '../../index';
 
-describe('video', function () {
+// TODO: youtube is blocking requests from github, will need to find a way around this
+describe.skip('video', function () {
   it('Test Youtube Video - Should Return correct Open Graph Info', function () {
     const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36';
     return ogs({ url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', fetchOptions: { headers: { 'user-agent': userAgent } } }).then(function ({ error, result, response }) {
