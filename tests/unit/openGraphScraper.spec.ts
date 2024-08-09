@@ -149,6 +149,20 @@ describe('return ogs', function () {
         });
     });
 
+    it('when it should not fallback to image elements', function () {
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200, basicHTML);
+
+      return ogs({ url: 'www.test.com', onlyGetOpenGraphInfo: ['image'] })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.result.ogImage).to.be.eql(undefined);
+          expect(data.html).to.be.eql(basicHTML);
+          expect(data.response).to.be.a('response');
+        });
+    });
+
     it('when meta description exist while og description does not', function () {
       mockAgent.get('http://www.test.com')
         .intercept({ path: '/' })
