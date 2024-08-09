@@ -1,7 +1,7 @@
 import isUrl from './isUrl';
 import type {
   CustomMetaTags,
-  OgObjectInteral,
+  OgObjectInternal,
   OpenGraphScraperOptions,
   ValidatorSettings,
 } from './types';
@@ -93,13 +93,13 @@ export function isThisANonHTMLUrl(url: string): boolean {
 }
 
 /**
- * Find and delete nested undefs
+ * Find and delete nested undefineds
  *
  * @param {object} object - object to be cleaned
- * @return {object} object without nested undefs
+ * @return {object} object without nested undefineds
  *
  */
-export function removeNestedUndefinedValues(object: Record<string, any>): OgObjectInteral {
+export function removeNestedUndefinedValues(object: Record<string, any>): OgObjectInternal {
   Object.entries(object).forEach(([key, value]) => {
     if (value && typeof value === 'object') removeNestedUndefinedValues(value);
     else if (value === undefined) delete object[key];

@@ -1,4 +1,4 @@
-import type { CustomMetaTags, OgObjectInteral, OpenGraphScraperOptions, ValidatorSettings } from './types';
+import type { CustomMetaTags, OgObjectInternal, OpenGraphScraperOptions, ValidatorSettings } from './types';
 export declare const defaultUrlValidatorSettings: {
     allow_fragments: boolean;
     allow_protocol_relative_urls: boolean;
@@ -58,13 +58,13 @@ export declare function isImageTypeValid(type: string): boolean;
  */
 export declare function isThisANonHTMLUrl(url: string): boolean;
 /**
- * Find and delete nested undefs
+ * Find and delete nested undefineds
  *
  * @param {object} object - object to be cleaned
- * @return {object} object without nested undefs
+ * @return {object} object without nested undefineds
  *
  */
-export declare function removeNestedUndefinedValues(object: Record<string, any>): OgObjectInteral;
+export declare function removeNestedUndefinedValues(object: Record<string, any>): OgObjectInternal;
 /**
  * Split the options object into ogs and got option objects
  *
