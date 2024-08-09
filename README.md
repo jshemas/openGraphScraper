@@ -123,7 +123,7 @@ The request header is set to [undici](https://github.com/nodejs/undici) by defau
 
 ```javascript
 const ogs = require("open-graph-scraper");
-const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36';
+const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36';
 ogs({ url: 'https://www.wikipedia.org/', fetchOptions: { headers: { 'user-agent': userAgent } } })
   .then((data) => {
     const { error, html, result, response } = data;

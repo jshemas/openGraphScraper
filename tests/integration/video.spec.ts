@@ -4,7 +4,8 @@ import ogs from '../../index';
 
 describe('video', function () {
   it('Test Youtube Video - Should Return correct Open Graph Info', function () {
-    return ogs({ url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' }).then(function ({ error, result, response }) {
+    const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36';
+    return ogs({ url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', fetchOptions: { headers: { 'user-agent': userAgent } } }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
@@ -111,7 +112,8 @@ describe('video', function () {
   });
 
   it('Test Youtube Video with bad escape sequence - Should Return correct Open Graph Info', function () {
-    return ogs({ url: 'https://www.youtube.com/watch?v=nFbKMg4E3JM' }).then(function ({ error, result, response }) {
+    const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36';
+    return ogs({ url: 'https://www.youtube.com/watch?v=nFbKMg4E3JM', fetchOptions: { headers: { 'user-agent': userAgent } } }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
       expect(error).to.be.eql(false);
