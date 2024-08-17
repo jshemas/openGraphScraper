@@ -67,6 +67,31 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 
 Note: `open-graph-scraper` uses the [Fetch API](https://nodejs.org/dist/latest-v18.x/docs/api/globals.html#fetch) for requests and most of [Fetch's options](https://developer.mozilla.org/en-US/docs/Web/API/fetch#options) should work as `open-graph-scraper`'s `fetchOptions` options.
 
+## Types And Import Example
+
+```javascript
+// example of how to get types
+import type { SuccessResult } from 'open-graph-scraper/types';
+const example: SuccessResult = {
+  result: { ogTitle: 'this is a title' },
+  error: false,
+  response: {},
+  html: '<html></html>'
+}
+
+// import example
+import ogs from 'open-graph-scraper';
+const options = { url: 'http://ogp.me/' };
+ogs(options)
+  .then((data) => {
+    const { error, html, result, response } = data;
+    console.log('error:', error);  // This returns true or false. True if there was an error. The error itself is inside the result object.
+    console.log('html:', html); // This contains the HTML of page
+    console.log('result:', result); // This contains all of the Open Graph results
+    console.log('response:', response); // This contains response from the Fetch API
+  });
+```
+
 ## Custom Meta Tag Example
 
 ```javascript
