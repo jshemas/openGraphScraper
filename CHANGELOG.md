@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.8.0
+
+- Updating how `onlyGetOpenGraphInfo` works. By default it is `false` but now it accepts an array of properties for which no fallback should be used.
+- Updating how you get types `import { SuccessResult } from 'open-graph-scraper/types';`. See readme for details.
+- Updating dependencies
+
 ## 6.7.2
 
 - Adding `types` to the npm export. You can now use `import { SuccessResult } from 'open-graph-scraper/types/lib/types';`
