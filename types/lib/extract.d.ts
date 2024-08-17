@@ -1,4 +1,4 @@
-import type { OgObjectInteral, OpenGraphScraperOptions } from './types';
+import type { OgObjectInternal, OpenGraphScraperOptions } from './types';
 /**
  * extract all of the meta tags needed for ogs
  *
@@ -7,4 +7,4 @@ import type { OgObjectInteral, OpenGraphScraperOptions } from './types';
  * @return {object} object with ogs results
  *
  */
-export default function extractMetaTags(body: string, options: OpenGraphScraperOptions): OgObjectInteral;
+export default function extractMetaTags(body: string, options: OpenGraphScraperOptions): OgObjectInternal;

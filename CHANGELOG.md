@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.8.0
+
+- Updating how `onlyGetOpenGraphInfo` works. By default it is `false` but now it accepts an array of properties for which no fallback should be used.
+- Updating how you get types `import { SuccessResult } from 'open-graph-scraper/types';`. See readme for details.
+- Updating dependencies
+
 ## 6.7.2
 
 - Adding `types` to the npm export. You can now use `import { SuccessResult } from 'open-graph-scraper/types/lib/types';`
@@ -100,7 +106,7 @@
 - Modified the `url` property in `OpenGraphScraperOptions` to be an optional property since you don't need this when using just `html`
 - `Type` can optional in `ImageObject` since type is not set it it's invalid
 - Take all of the `customMetaTags` out of base of `ogObject` and store them into `ogObject.customMetaTags`
-- The interal meta properties can be string arrays
+- The internal meta properties can be string arrays
 - Updating Dependencies
 
 ## 6.1.0
@@ -119,7 +125,7 @@
 - Replace `GOT` with [fetch](https://nodejs.org/docs/latest-v18.x/api/globals.html#fetch)!
 - Only supporting `node18` or higher going forward
 - Updated how options work. `Fetch` and `OGS` options no longer being mixed together, users can now set [fetch options](https://developer.mozilla.org/en-US/docs/Web/API/fetch#options) using `options.fetchOptions`
-- Remove any ogImages/ogVideos/twitterImages/twitterPlayers/musicSongs resultes that have no url
+- Remove any ogImages/ogVideos/twitterImages/twitterPlayers/musicSongs results that have no url
 - The `downloadLimit` option has been removed in favor of just using timeouts.
 - Limit ogImages/ogVideos/twitterImages/twitterPlayers/musicSongs to 10 items
 - Adding html to the `SuccessResult` of `OGS`

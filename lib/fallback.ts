@@ -8,7 +8,7 @@ import {
   isUrlValid,
 } from './utils';
 import type {
-  OpenGraphScraperOptions, ImageObject, OgObjectInteral, OnlyGetOpenGraphInfoItem,
+  OpenGraphScraperOptions, ImageObject, OgObjectInternal, OnlyGetOpenGraphInfoItem,
 } from './types';
 
 const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
@@ -24,7 +24,7 @@ const doesElementExist = (selector:string, attribute:string, $: CheerioAPI) => (
  * @return {object} object with ogs results with updated fallback values
  *
  */
-export function fallback(ogObject: OgObjectInteral, options: OpenGraphScraperOptions, $: CheerioAPI, body: string) {
+export function fallback(ogObject: OgObjectInternal, options: OpenGraphScraperOptions, $: CheerioAPI, body: string) {
   const shouldFallback = (key: OnlyGetOpenGraphInfoItem): boolean => {
     if (!options.onlyGetOpenGraphInfo) {
       return true;

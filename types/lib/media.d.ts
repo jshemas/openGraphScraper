@@ -1,4 +1,4 @@
-import type { OgObjectInteral } from './types';
+import type { OgObjectInternal } from './types';
 /**
  * formats the multiple media values
  *
@@ -7,5 +7,5 @@ import type { OgObjectInteral } from './types';
  * @return {object} object with ogs results with updated media values
  *
  */
-export declare function mediaSetup(ogObject: OgObjectInteral): OgObjectInteral;
+export declare function mediaSetup(ogObject: OgObjectInternal): OgObjectInternal;
 export default mediaSetup;

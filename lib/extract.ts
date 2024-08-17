@@ -5,7 +5,7 @@ import fields from './fields';
 import mediaSetup from './media';
 import { unescapeScriptText } from './utils';
 
-import type { OgObjectInteral, OpenGraphScraperOptions } from './types';
+import type { OgObjectInternal, OpenGraphScraperOptions } from './types';
 
 /**
  * extract all of the meta tags needed for ogs
@@ -16,7 +16,7 @@ import type { OgObjectInteral, OpenGraphScraperOptions } from './types';
  *
  */
 export default function extractMetaTags(body: string, options: OpenGraphScraperOptions) {
-  let ogObject: OgObjectInteral = { success: true };
+  let ogObject: OgObjectInternal = { success: true };
   const $ = load(body);
   const metaFields = fields;
 

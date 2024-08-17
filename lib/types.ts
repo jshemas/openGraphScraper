@@ -115,7 +115,7 @@ export interface MusicSongObject {
   url: string;
 }
 
-export interface OgObjectInteral {
+export interface OgObjectInternal {
   alAndroidAppName?: string;
   alAndroidClass?: string;
   alAndroidPackage?: string;
@@ -319,7 +319,7 @@ export interface OgObjectInteral {
 
 // Omit values from mediaMapperProperties
 export type OgObject = Omit<
-OgObjectInteral,
+OgObjectInternal,
 'musicSongDisc' |
 'musicSongProperty' |
 'musicSongTrack' |

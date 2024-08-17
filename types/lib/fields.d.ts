@@ -1,8 +1,8 @@
-import type { OgObjectInteral } from './types';
+import type { OgObjectInternal } from './types';
 type Fields = {
     multiple: boolean;
     property: string;
-    fieldName: keyof OgObjectInteral;
+    fieldName: keyof OgObjectInternal;
 }[];
 /**
  * array of meta tags ogs is looking for

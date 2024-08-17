@@ -7,13 +7,13 @@ import type { OpenGraphScraperOptions } from './types';
  *
  */
 export default function setOptionsAndReturnOpenGraphResults(ogsOptions: OpenGraphScraperOptions): Promise<{
-    ogObject: import("./types").OgObjectInteral;
+    ogObject: import("./types").OgObjectInternal;
     response: {
         body: string;
     };
     html: string;
 } | {
-    ogObject: import("./types").OgObjectInteral;
+    ogObject: import("./types").OgObjectInternal;
     response: import("undici").Response;
     html: string;
 }>;
