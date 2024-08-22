@@ -52,7 +52,7 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
       options.url ?? '',
       {
         signal: AbortSignal.timeout((options.timeout ?? 10) * 1000),
-        headers: { Origin: options.url ?? '', Accept: 'text/html' },
+        headers: { Origin: options.url ?? '', Accept: 'text/html', ...options.fetchOptions?.headers },
         ...options.fetchOptions,
       },
     );
