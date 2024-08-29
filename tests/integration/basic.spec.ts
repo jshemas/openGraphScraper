@@ -497,7 +497,7 @@ describe('basic', function () {
         ]);
         expect(result.twitterImage).to.be.eql([
           {
-            url: 'https://dev.epicgames.com/community/api/documentation/image/meta_tag?path=ja-jp/unreal-engine/volume-actors-in-unreal-engine&application_version=5.4'
+            url: 'https://dev.epicgames.com/community/api/documentation/image/meta_tag?path=ja-jp/unreal-engine/volume-actors-in-unreal-engine&application_version=5.4',
           },
         ]);
         expect(result.favicon).to.be.eql('https://edc-cdn.net/assets/images/favicon-light.png');
