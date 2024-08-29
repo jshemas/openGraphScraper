@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.8.1
+
+- Fixing issue where setting `fetchOptions.headers` would replace the default `headers`
+- Updating dependencies
+
 ## 6.8.0
 
 - Updating how `onlyGetOpenGraphInfo` works. By default it is `false` but now it accepts an array of properties for which no fallback should be used.
