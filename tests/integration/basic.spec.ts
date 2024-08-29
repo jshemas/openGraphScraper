@@ -464,4 +464,64 @@ describe('basic', function () {
         expect(response).to.eql(undefined);
       });
   });
+
+  it('epicgames.com - should return og data using a header', function () {
+    return ogs({
+      url: 'https://dev.epicgames.com/documentation/ja-jp/unreal-engine/volume-actors-in-unreal-engine',
+      fetchOptions: {
+        headers: {
+          'user-agent': 'Twitterbot',
+          Origin: 'https://dev.epicgames.com/documentation/ja-jp/unreal-engine/volume-actors-in-unreal-engine',
+        },
+      },
+    })
+      .then(function ({ error, result, response }) {
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.ogSiteName).to.be.eql('Epic Games Developer');
+        expect(result.ogDescription).to.be.eql('Unreal Engine でのさまざまな種類の Volume アクタのリファレンス');
+        expect(result.ogTitle).to.be.eql('Unreal Engine での Volume アクタ | Unreal Engine 5.4 ドキュメンテーション | Epic Developer Community');
+        expect(result.ogType).to.be.eql('website');
+        expect(result.ogUrl).to.be.eql('https://dev.epicgames.com/documentation/ja-jp/unreal-engine/volume-actors-in-unreal-engine');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterTitle).to.be.eql('Unreal Engine での Volume アクタ | Unreal Engine 5.4 ドキュメンテーション | Epic Developer Community');
+        expect(result.twitterDescription).to.be.eql('Unreal Engine でのさまざまな種類の Volume アクタのリファレンス');
+        expect(result.twitterSite).to.be.eql('@UnrealEngine');
+        expect(result.ogImage).to.be.eql([
+          {
+            height: '630',
+            url: 'https://dev.epicgames.com/community/api/documentation/image/meta_tag?path=ja-jp/unreal-engine/volume-actors-in-unreal-engine&application_version=5.4',
+            width: '1200',
+          },
+        ]);
+        expect(result.twitterImage).to.be.eql([
+          {
+            url: 'https://dev.epicgames.com/community/api/documentation/image/meta_tag?path=ja-jp/unreal-engine/volume-actors-in-unreal-engine&application_version=5.4'
+          },
+        ]);
+        expect(result.favicon).to.be.eql('https://edc-cdn.net/assets/images/favicon-light.png');
+        expect(result.charset).to.be.eql('utf-8');
+        expect(result.requestUrl).to.be.eql('https://dev.epicgames.com/documentation/ja-jp/unreal-engine/volume-actors-in-unreal-engine');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'ogSiteName',
+          'ogDescription',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'twitterCard',
+          'twitterTitle',
+          'twitterDescription',
+          'twitterSite',
+          'ogImage',
+          'twitterImage',
+          'favicon',
+          'charset',
+          'requestUrl',
+          'success',
+        );
+        expect(response).to.be.an('Response');
+      });
+  });
 });
