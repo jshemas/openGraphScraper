@@ -44,12 +44,25 @@ function getCharset(body: string, buffer: ArrayBuffer, $: CheerioAPI) {
  * @return {object} formatted request body and response
  *
  */
+
+function shouldEncode(value: string) {
+  const regex = /[^\x00-\x7F]/;
+  return regex.test(value);
+}
+
 export default async function requestAndResultsFormatter(options: OpenGraphScraperOptions) {
   let body;
   let response;
+
+  let url = options.url ?? ''
+
+  if (shouldEncode(url)) {
+    url = encodeURIComponent(url)
+  } 
+
   try {
     response = await fetch(
-      options.url ?? '',
+      url ?? '',
       {
         signal: AbortSignal.timeout((options.timeout ?? 10) * 1000),
         ...options.fetchOptions,
