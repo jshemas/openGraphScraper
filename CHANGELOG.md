@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.8.2
+
+- Remove new lines from jsonLD.
+- If url string is not `isLatin1` then encode it, otherwise you will run into `ByteString` errors within `fetch`
+- Updating dependencies
+
 ## 6.8.1
 
 - Fixing issue where setting `fetchOptions.headers` would replace the default `headers`
