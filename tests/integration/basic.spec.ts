@@ -465,7 +465,8 @@ describe('basic', function () {
       });
   });
 
-  it('epicgames.com - should return og data using a header', function () {
+  // todo: this test no longer works in github ci
+  it.skip('epicgames.com - should return og data using a header', function () {
     return ogs({
       url: 'https://dev.epicgames.com/documentation/ja-jp/unreal-engine/volume-actors-in-unreal-engine',
       fetchOptions: {
