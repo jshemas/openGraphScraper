@@ -48,12 +48,18 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
   let body;
   let response;
   try {
+    // eslint-disable-next-line no-control-regex
+    const isLatin1 = /^[\u0000-\u00ff]{0,}$/;
+
+    let url = options.url ?? '';
+    if (!isLatin1.test(url)) url = encodeURI(url);
+
     response = await fetch(
-      options.url ?? '',
+      url ?? '',
       {
         signal: AbortSignal.timeout((options.timeout ?? 10) * 1000),
         ...options.fetchOptions,
-        headers: { Origin: options.url ?? '', Accept: 'text/html', ...options.fetchOptions?.headers },
+        headers: { Origin: url ?? '', Accept: 'text/html', ...options.fetchOptions?.headers },
       },
     );
 

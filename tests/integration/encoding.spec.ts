@@ -631,4 +631,55 @@ describe('encoding', function () {
         expect(response).to.be.an('Response');
       });
   });
+
+  it('velog - ByteString issues with URL', function () {
+    this.timeout(30000);
+    return ogs({ url: 'https://velog.io/@skynet/직사각형의-넓이는-왜-가로세로일까', timeout: 30 })
+      .then(function (data) {
+        const { error, result, response } = data;
+        console.log('error:', error);
+        console.log('result:', result);
+        expect(error).to.be.eql(false);
+        expect(result.fbAppId).to.be.eql('203040656938507');
+        expect(result.ogUrl).to.be.eql('https://velog.io/@skynet/직사각형의-넓이는-왜-가로세로일까');
+        expect(result.ogType).to.be.eql('article');
+        expect(result.ogTitle).to.be.eql('직사각형의 넓이는 왜 가로×세로일까?');
+        expect(result.ogDescription).to.be.eql('제목의 질문에 말문이 막혔다면 한 번 읽어보세요.');
+        expect(result.twitterCard).to.be.eql('summary_large_image');
+        expect(result.twitterTitle).to.be.eql('직사각형의 넓이는 왜 가로×세로일까?');
+        expect(result.twitterDescription).to.be.eql('제목의 질문에 말문이 막혔다면 한 번 읽어보세요.');
+        expect(result.ogImage).to.be.eql([
+          {
+            url: 'https://velog.velcdn.com/images/skynet/post/d0f53ddc-9f62-4fc9-90e8-9f9f344e0d49/image.png',
+            type: 'png',
+          },
+        ]);
+        expect(result.twitterImage).to.be.eql([
+          {
+            url: 'https://velog.velcdn.com/images/skynet/post/d0f53ddc-9f62-4fc9-90e8-9f9f344e0d49/image.png',
+          },
+        ]);
+        expect(result.favicon).to.be.eql('https://static.velog.io/favicon.ico');
+        expect(result.charset).to.be.eql('UTF-8');
+        expect(result.requestUrl).to.be.eql('https://velog.io/@skynet/직사각형의-넓이는-왜-가로세로일까');
+        expect(result.success).to.be.eql(true);
+        expect(result).to.have.all.keys(
+          'charset',
+          'favicon',
+          'fbAppId',
+          'ogDescription',
+          'ogImage',
+          'ogTitle',
+          'ogType',
+          'ogUrl',
+          'requestUrl',
+          'success',
+          'twitterCard',
+          'twitterDescription',
+          'twitterImage',
+          'twitterTitle',
+        );
+        expect(response).to.be.an('Response');
+      });
+  });
 });
