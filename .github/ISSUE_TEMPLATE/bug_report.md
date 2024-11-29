@@ -28,3 +28,4 @@ Add any other context about the problem here.
  - OS: [e.g. iOS/Windows/Linux]
  - Node Version: [e.g. 18]
  - openGraphScraper Version:
+ - tsconfig.json:
