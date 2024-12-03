@@ -95,7 +95,7 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
     $('script').each((index, script) => {
       if (script.attribs.type && script.attribs.type === 'application/ld+json') {
         if (!ogObject.jsonLD) ogObject.jsonLD = [];
-        let scriptText = $(script).text();
+        let scriptText = $(script).text().trim();
         if (scriptText) {
           scriptText = scriptText.replace(/(\r\n|\n|\r)/gm, ''); // remove newlines
           scriptText = unescapeScriptText(scriptText);
