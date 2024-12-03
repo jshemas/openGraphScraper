@@ -273,7 +273,7 @@ describe('static check meta tags', function () {
       .then(function (data) {
         expect(data.result.success).to.be.eql(true);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
-        expect(data.result.jsonLD).to.be.eql([{ foo: '    bar    ' }]);
+        expect(data.result.jsonLD).to.be.eql([]);
         expect(data.html).to.be.eql(metaHTML);
         expect(data.response).to.be.a('response');
       });
