@@ -39,7 +39,7 @@
     "chardet": "^2.0.0",
     "cheerio": "^1.0.0-rc.12",
     "iconv-lite": "^0.6.3",
-    "undici": "^6.19.8"
+    "undici": "^6.21.0"
   },
   "files": [
     "/dist",
@@ -48,20 +48,20 @@
     "CHANGELOG.md"
   ],
   "devDependencies": {
-    "@snyk/protect": "^1.1293.1",
-    "@types/mocha": "^10.0.8",
-    "@types/node": "^18.19.50",
+    "@snyk/protect": "^1.1294.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^18.19.67",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "chai": "^4.5.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-mocha": "^10.5.0",
-    "eslint-plugin-promise": "^7.1.0",
-    "mocha": "^10.7.3",
-    "nyc": "^17.0.0",
+    "eslint-plugin-promise": "^7.2.1",
+    "mocha": "^10.8.2",
+    "nyc": "^17.1.0",
     "sinon": "^19.0.2",
     "ts-mocha": "^10.0.0",
     "typescript": "^5.5.4"
