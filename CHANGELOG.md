@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.8.3
+
+- Fixed issue where empty jsonLD would caused an error
+- Updating dependencies
+
 ## 6.8.2
 
 - Remove new lines from jsonLD.
