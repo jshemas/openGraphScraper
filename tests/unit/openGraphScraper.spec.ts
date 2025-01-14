@@ -709,6 +709,22 @@ describe('return ogs', function () {
         });
     });
 
+    it('should handle case-insensitive Content-Type headers', function () {
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200, basicHTML, { headers: { 'Content-Type': 'Text/html; charset=utf-8' } });
+
+      return ogs({ url: 'http://www.test.com' })
+        .then(function (data) {
+          expect(data.result.success).to.be.eql(true);
+          expect(data.error).to.be.eql(false);
+          expect(data.result.ogTitle).to.be.eql('test page');
+          expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+          expect(data.html).to.be.eql(basicHTML);
+          expect(data.response).to.be.a('response');
+        });
+    });
+
     it('when trying to hit a non html pages based on content-type', function () {
       mockAgent.get('http://www.test.com')
         .intercept({ path: '/' })

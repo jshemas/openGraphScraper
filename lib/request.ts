@@ -72,7 +72,8 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
       body = decode(Buffer.from(bodyArrayBuffer), charset);
     }
 
-    if (response?.headers?.get('content-type') && !response.headers.get('content-type')?.includes('text/')) {
+    const contentType = response?.headers?.get('content-type')?.toLowerCase();
+    if (contentType && !contentType.includes('text/')) {
       throw new Error('Page must return a header content-type with text/');
     }
     if (response?.status && (response.status.toString().startsWith('4') || response.status.toString().startsWith('5'))) {
