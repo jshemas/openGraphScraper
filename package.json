@@ -48,9 +48,9 @@
     "CHANGELOG.md"
   ],
   "devDependencies": {
-    "@snyk/protect": "^1.1294.2",
+    "@snyk/protect": "^1.1295.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^18.19.67",
+    "@types/node": "^18.19.70",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "chai": "^4.5.0",
@@ -64,7 +64,7 @@
     "nyc": "^17.1.0",
     "sinon": "^19.0.2",
     "ts-mocha": "^10.0.0",
-    "typescript": "^5.5.4"
+    "typescript": "5.5.4"
   },
   "repository": {
     "type": "git",
