@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.8.4
+
+- Normalize `content-type` header check for case insensitivity
+- Updating dependencies
+
 ## 6.8.3
 
 - Fixed issue where empty jsonLD would caused an error
