@@ -54,16 +54,17 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 
 ## Options
 
-| Name                 | Info                                                                       | Default Value | Required |
-|----------------------|----------------------------------------------------------------------------|---------------|----------|
-| url                  | URL of the site.                                                           |               | x        |
-| html                 | You can pass in an HTML string to run ogs on it. (use without options.url) |               |          |
-| fetchOptions         | Options that are used by the Fetch API                                     | {}            |          |
-| timeout              | Request timeout for Fetch (Default is 10 seconds)                          | 10            |          |
-| blacklist            | Pass in an array of sites you don't want ogs to run on.                    | []            |          |
-| onlyGetOpenGraphInfo | Only fetch open graph info and don't fall back on anything else. Also accepts an array of properties for which no fallback should be used | false         |          |
-| customMetaTags       | Here you can define custom meta tags you want to scrape.                   | []            |          |
-| urlValidatorSettings | Sets the options used by validator.js for testing the URL                  | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/utils.ts#L4-L17)          |          |
+| Name                 | Info                                                                                                                                      | Default Value                                                                       | Required |
+|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|----------|
+| url                  | URL of the site.                                                                                                                          |                                                                                     | x        |
+| html                 | You can pass in an HTML string to run ogs on it. (use without options.url)                                                                |                                                                                     |          |
+| fetchOptions         | Options that are used by the Fetch API                                                                                                    | {}                                                                                  |          |
+| timeout              | Request timeout for Fetch (Default is 10 seconds)                                                                                         | 10                                                                                  |          |
+| blacklist            | Pass in an array of sites you don't want ogs to run on.                                                                                   | []                                                                                  |          |
+| onlyGetOpenGraphInfo | Only fetch open graph info and don't fall back on anything else. Also accepts an array of properties for which no fallback should be used | false                                                                               |          |
+| customMetaTags       | Here you can define custom meta tags you want to scrape.                                                                                  | []                                                                                  |          |
+| urlValidatorSettings | Sets the options used by validator.js for testing the URL                                                                                 | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/utils.ts#L4-L17) |          |
+| jsonLDOptions        | Sets the options used when parsing JSON-LD data                                                                                           |                                                                            |          |
 
 Note: `open-graph-scraper` uses the [Fetch API](https://nodejs.org/dist/latest-v18.x/docs/api/globals.html#fetch) for requests and most of [Fetch's options](https://developer.mozilla.org/en-US/docs/Web/API/fetch#options) should work as `open-graph-scraper`'s `fetchOptions` options.
 
@@ -150,6 +151,26 @@ The request header is set to [undici](https://github.com/nodejs/undici) by defau
 const ogs = require("open-graph-scraper");
 const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36';
 ogs({ url: 'https://www.wikipedia.org/', fetchOptions: { headers: { 'user-agent': userAgent } } })
+  .then((data) => {
+    const { error, html, result, response } = data;
+    console.log('error:', error);  // This returns true or false. True if there was an error. The error itself is inside the result object.
+    console.log('html:', html); // This contains the HTML of page
+    console.log('result:', result); // This contains all of the Open Graph results
+    console.log('response:', response); // This contains response from the Fetch API
+  })
+```
+
+## JSON-LD Parsing Options Example
+
+`throwOnJSONParseError` and `logOnJSONParseError` properties control what happens if `JSON.parse`
+throws an error when parsing JSON-LD data. 
+If `throwOnJSONParseError` is set to `true`, then the error will be thrown. 
+If `logOnJSONParseError` is set to `true`, then the error will be logged to the console.
+
+```javascript
+const ogs = require("open-graph-scraper");
+const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36';
+ogs({ url: 'https://www.wikipedia.org/', jsonLDOptions: { throwOnJSONParseError: true } })
   .then((data) => {
     const { error, html, result, response } = data;
     console.log('error:', error);  // This returns true or false. True if there was an error. The error itself is inside the result object.
