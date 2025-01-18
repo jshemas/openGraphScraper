@@ -99,7 +99,16 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
         if (scriptText) {
           scriptText = scriptText.replace(/(\r\n|\n|\r)/gm, ''); // remove newlines
           scriptText = unescapeScriptText(scriptText);
-          ogObject.jsonLD.push(JSON.parse(scriptText));
+          try {
+            ogObject.jsonLD.push(JSON.parse(scriptText));
+          } catch (error: unknown) {
+            if (options.jsonLDOptions?.logOnJSONParseError) {
+              console.error('Error parsing JSON-LD script tag:', error);
+            }
+            if (options.jsonLDOptions?.throwOnJSONParseError) {
+              throw error;
+            }
+          }
         }
       }
     });

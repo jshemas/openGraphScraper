@@ -279,6 +279,75 @@ describe('static check meta tags', function () {
       });
   });
 
+    it('jsonLD - invalid JSON string that cannot be parsed does not throw error', function () {
+    const metaHTML = `<html><head>
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "Blah ",
+      "sameAs": [
+        "https:\\\\/\\\\/twitter.com\\\\/blah?lang=en"
+        "https:\\\\/\\\\/www.facebook.com\\\\/blah\\\\/"
+        ""
+        "https:\\\\/\\\\/www.instagram.com\\\\/blah\\\\/"
+        ""
+        ""
+        "https:\\\\/\\\\/www.youtube.com\\\\/@blah"
+        ""
+      ],
+      "url": "https:\\\\/\\\\/blah.com"
+    }
+    
+    </script>
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.jsonLD).to.be.eql([]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
+    it('jsonLD - invalid JSON string that cannot be parsed throws error when options.jsonLDOptions.throwOnJSONParseError = true', function () {
+    const metaHTML = `<html><head>
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "Blah ",
+      "sameAs": [
+        "https:\\\\/\\\\/twitter.com\\\\/blah?lang=en"
+        "https:\\\\/\\\\/www.facebook.com\\\\/blah\\\\/"
+        ""
+        "https:\\\\/\\\\/www.instagram.com\\\\/blah\\\\/"
+        ""
+        ""
+        "https:\\\\/\\\\/www.youtube.com\\\\/@blah"
+        ""
+      ],
+      "url": "https:\\\\/\\\\/blah.com"
+    }
+    
+    </script>
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com', jsonLDOptions: {throwOnJSONParseError: true} }).catch((data) => {
+      expect(data.result.success).to.be.eql(false);
+    });
+  });
+
   it('encoding - utf-8', function () {
     /* eslint-disable max-len */
     const metaHTML = `<html><head>
