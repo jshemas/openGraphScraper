@@ -279,7 +279,7 @@ describe('static check meta tags', function () {
       });
   });
 
-    it('jsonLD - invalid JSON string that cannot be parsed does not throw error', function () {
+  it('jsonLD - invalid JSON string that cannot be parsed does not throw error', function () {
     const metaHTML = `<html><head>
     <script type="application/ld+json">
     {
@@ -316,7 +316,7 @@ describe('static check meta tags', function () {
       });
   });
 
-    it('jsonLD - invalid JSON string that cannot be parsed throws error when options.jsonLDOptions.throwOnJSONParseError = true', function () {
+  it('jsonLD - invalid JSON string that cannot be parsed throws error when options.jsonLDOptions.throwOnJSONParseError = true', function () {
     const metaHTML = `<html><head>
     <script type="application/ld+json">
     {
@@ -343,7 +343,7 @@ describe('static check meta tags', function () {
       .intercept({ path: '/' })
       .reply(200, metaHTML);
 
-    return ogs({ url: 'www.test.com', jsonLDOptions: {throwOnJSONParseError: true} }).catch((data) => {
+    return ogs({ url: 'www.test.com', jsonLDOptions: { throwOnJSONParseError: true } }).catch((data) => {
       expect(data.result.success).to.be.eql(false);
     });
   });
