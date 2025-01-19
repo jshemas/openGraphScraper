@@ -1,5 +1,9 @@
 # Change Log
 
+## 6.9.0
+
+- Add `jsonLDOptions.throwOnJSONParseError` and change default behavior to not throw on JSON-LD string parse errors
+
 ## 6.8.4
 
 - Normalize `content-type` header check for case insensitivity
