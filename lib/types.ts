@@ -38,6 +38,7 @@ export interface OpenGraphScraperOptions {
   timeout?: number;
   url?: string;
   urlValidatorSettings?: ValidatorSettings;
+  jsonLDOptions?: JSONLDOptions;
 }
 
 /**
@@ -65,6 +66,14 @@ export interface ValidatorSettings {
   require_tld: boolean;
   require_valid_protocol: boolean;
   validate_length: boolean;
+}
+
+/**
+ * Options for the JSON-LD parser
+ */
+export interface JSONLDOptions {
+  throwOnJSONParseError?: boolean;
+  logOnJSONParseError?: boolean;
 }
 
 /**
