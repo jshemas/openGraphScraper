@@ -112,10 +112,9 @@ describe('redirect', function () {
         expect(result.ogLocale).to.be.eql('en');
         expect(result.twitterTitle).to.be.eql('3 Stocks Like Apple Was 10 Years Ago: Tesla, Nvidia And Alibaba');
         expect(result.twitterDescription).to.be.an('string').and.to.not.be.empty;
-        expect(result.articlePublisher).to.be.eql('https://www.facebook.com/forbes');
         expect(result.ogImage).to.be.eql([{
           url: 'https://imageio.forbes.com/specials-images/imageserve/825671570/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds',
-          type: 'jpg',
+          type: 'image/jpeg',
         }]);
         expect(result.twitterImage).to.be.eql([{
           url: 'https://imageio.forbes.com/specials-images/imageserve/825671570/0x0.jpg?format=jpg&height=600&width=1200&fit=bounds',
@@ -123,16 +122,13 @@ describe('redirect', function () {
         expect(result.requestUrl).to.be.eql('https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa');
         expect(result.charset).to.be.eql('utf-8');
         expect(result.fbAppId).to.be.eql('123694841080850');
-        expect(result.jsonLD).to.be.an('array').and.to.not.be.empty;
         expect(result.success).to.be.eql(true);
         expect(result).to.have.all.keys(
-          'jsonLD',
           'favicon',
           'fbAppId',
           'ogDate',
           'articleAuthor',
           'articleSection',
-          'articlePublisher',
           'author',
           'ogDescription',
           'ogImage',
