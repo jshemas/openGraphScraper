@@ -1,5 +1,9 @@
 # Change Log
 
+## 6.10.0
+
+- Updating dependencies to fix npm vulnerabilities
+
 ## 6.9.0
 
 - Add `jsonLDOptions.throwOnJSONParseError` and change default behavior to not throw on JSON-LD string parse errors
