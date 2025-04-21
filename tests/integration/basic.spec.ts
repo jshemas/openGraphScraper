@@ -148,7 +148,8 @@ describe('basic', function () {
     });
   });
 
-  it('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {
+  // namecheap is now blocking ogs
+  it.skip('Test Name Cheap Page That Dose Not Have content-type=text/html - Should Return correct Open Graph Info', function () {
     return ogsRequire({ url: 'https://www.namecheap.com/' }).then(function ({ error, result, response }) {
       console.log('error:', error);
       console.log('result:', result);
