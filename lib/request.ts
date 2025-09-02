@@ -90,6 +90,8 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
           throw new Error('408 Request Timeout');
         case 410:
           throw new Error('410 Gone');
+        case 429:
+          throw new Error('429 Too Many Requests');
         case 500:
           throw new Error('500 Internal Server Error');
         case 502:
