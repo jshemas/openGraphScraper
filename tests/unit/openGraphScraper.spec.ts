@@ -505,6 +505,28 @@ describe('return ogs', function () {
         });
     });
 
+    it('when the request sends a 429 error', function () {
+      mockAgent.get('http://www.testerror.com')
+        .intercept({ path: '/' })
+        .reply(429, {
+          message: '429 Too Many Requests',
+          code: '429',
+        });
+
+      return ogs({ url: 'http://www.testerror.com' })
+        .then(function () {
+          expect('').to.be.eql('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('429 Too Many Requests');
+          expect(data.result.errorDetails.toString()).to.eql('Error: 429 Too Many Requests');
+          expect(data.result.success).to.eql(false);
+          expect(data.response).to.be.eql(undefined);
+          expect(data.html).to.be.eql(undefined);
+        });
+    });
+
     it('when the request sends a general error', function () {
       mockAgent.get('http://www.testerror.com')
         .intercept({ path: '/' })
