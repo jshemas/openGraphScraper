@@ -28,7 +28,7 @@
     "test": "npm run mocha:unit && npm run mocha:int"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "author": {
     "name": "Josh Shemas",
@@ -36,10 +36,10 @@
     "url": "https://github.com/jshemas"
   },
   "dependencies": {
-    "chardet": "^2.1.0",
-    "cheerio": "^1.0.0-rc.12",
-    "iconv-lite": "^0.6.3",
-    "undici": "^6.21.2"
+    "chardet": "^2.1.1",
+    "cheerio": "^1.1.2",
+    "iconv-lite": "^0.7.0",
+    "undici": "^7.16.0"
   },
   "files": [
     "/dist",
@@ -48,7 +48,7 @@
     "CHANGELOG.md"
   ],
   "devDependencies": {
-    "@snyk/protect": "^1.1296.2",
+    "@snyk/protect": "^1.1301.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "^18.19.86",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
@@ -60,7 +60,7 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-mocha": "^10.5.0",
     "eslint-plugin-promise": "^7.2.1",
-    "mocha": "^11.1.0",
+    "mocha": "^11.7.5",
     "nyc": "^17.1.0",
     "sinon": "^19.0.2",
     "ts-mocha": "^11.1.0",

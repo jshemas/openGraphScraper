@@ -14,14 +14,14 @@ describe('spotify', function () {
       expect(result.alIosAppName).to.be.eql('Spotify');
       expect(result.alIosAppStoreId).to.be.eql('324684580');
       expect(result.alIosUrl).to.be.eql('spotify://album/5EBGCvO6upi3GNknMVe9x9');
-      expect(result.ogTitle).to.be.eql('ye');
+      expect(result.ogTitle).to.be.eql('ye - Album by Kanye West | Spotify');
       // expect(result.ogDescription).to.be.eql('Album · Kanye West · 2018 · 7 songs');
       // expect(result.favicon).to.be.eql('https://open.scdn.co/cdn/images/favicon.0c211e2e.png');
       // expect(result.ogUrl).to.be.eql('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
       expect(result.ogType).to.be.eql('music.album');
       expect(result.musicMusician).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
       expect(result.musicReleaseDate).to.be.eql('2018-06-01');
-      expect(result.twitterTitle).to.be.eql('ye');
+      expect(result.twitterTitle).to.be.eql('ye - Album by Kanye West | Spotify');
       expect(result.twitterSite).to.be.eql('@spotify');
       // expect(result.twitterDescription).to.be.eql('Album · Kanye West · 2018 · 7 songs');
       expect(result.twitterCard).to.be.eql('summary');

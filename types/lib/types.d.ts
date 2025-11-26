@@ -33,6 +33,7 @@ export interface OpenGraphScraperOptions {
     timeout?: number;
     url?: string;
     urlValidatorSettings?: ValidatorSettings;
+    jsonLDOptions?: JSONLDOptions;
 }
 /**
  * Options for isURL method in Validator.js
@@ -59,6 +60,13 @@ export interface ValidatorSettings {
     require_tld: boolean;
     require_valid_protocol: boolean;
     validate_length: boolean;
+}
+/**
+ * Options for the JSON-LD parser
+ */
+export interface JSONLDOptions {
+    throwOnJSONParseError?: boolean;
+    logOnJSONParseError?: boolean;
 }
 /**
  * The type for user defined custom meta tags you want to scrape.

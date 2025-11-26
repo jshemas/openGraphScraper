@@ -126,6 +126,7 @@ describe('redirect', function () {
         expect(result).to.have.all.keys(
           'favicon',
           'fbAppId',
+          'jsonLD',
           'ogDate',
           'articleAuthor',
           'articleSection',
