@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.11.0
+
+- Updating `type` to support the new `jsonLDOptions`
+- Dropping `node18` support since it's passed it's end of life
+- Updating to the latest `undici` version 7
+- Updating dependencies to fix npm vulnerabilities
+
 ## 6.10.0
 
 - Updating dependencies to fix npm vulnerabilities
