@@ -39,7 +39,7 @@
     "chardet": "^2.1.1",
     "cheerio": "^1.1.2",
     "iconv-lite": "^0.7.0",
-    "undici": "^7.16.0"
+    "undici": "^7.18.2"
   },
   "files": [
     "/dist",
