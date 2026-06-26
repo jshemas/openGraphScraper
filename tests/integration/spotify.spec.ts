@@ -28,7 +28,9 @@ describe('spotify', function () {
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogImage).to.be.eql([{
+        height: '640',
         url: 'https://i.scdn.co/image/ab67616d0000b27397508a4b756763370510bd44',
+        width: '640',
       }]);
       expect(result.twitterImage).to.be.eql([{
         url: 'https://i.scdn.co/image/ab67616d0000b27397508a4b756763370510bd44',
@@ -128,7 +130,9 @@ describe('spotify', function () {
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql([{
+        height: '640',
         url: 'https://i.scdn.co/image/ab6761610000e5eb6e835a500e791bf9c27a422a',
+        width: '640',
       }]);
       expect(result.twitterImage).to.be.eql([{
         url: 'https://i.scdn.co/image/ab6761610000e5eb6e835a500e791bf9c27a422a',
@@ -142,6 +146,7 @@ describe('spotify', function () {
         'favicon',
         'fbAppId',
         'jsonLD',
+        'ogDate',
         'alAndroidAppName',
         'alAndroidPackage',
         'alAndroidUrl',
@@ -198,7 +203,9 @@ describe('spotify', function () {
       expect(result.ogSiteName).to.be.eql('Spotify');
       expect(result.ogLocale).to.be.eql('en');
       expect(result.ogImage).to.be.eql([{
+        height: '640',
         url: 'https://i.scdn.co/image/ab67616d0000b2730939dadf614e70aeffc6710c',
+        width: '640',
       }]);
       expect(result.twitterImage).to.be.eql([{
         url: 'https://i.scdn.co/image/ab67616d0000b2730939dadf614e70aeffc6710c',

@@ -1,7 +1,7 @@
 {
   "name": "open-graph-scraper",
   "description": "Node.js scraper module for Open Graph and Twitter Card info",
-  "version": "6.11.0",
+  "version": "6.12.0",
   "license": "MIT",
   "main": "./dist/cjs/index.js",
   "types": "./types/index.d.ts",
@@ -36,10 +36,10 @@
     "url": "https://github.com/jshemas"
   },
   "dependencies": {
-    "chardet": "^2.1.1",
-    "cheerio": "^1.1.2",
-    "iconv-lite": "^0.7.0",
-    "undici": "^7.16.0"
+    "chardet": "^2.2.0",
+    "cheerio": "^1.2.0",
+    "iconv-lite": "^0.7.2",
+    "undici": "^7.28.0"
   },
   "files": [
     "/dist",
@@ -48,21 +48,21 @@
     "CHANGELOG.md"
   ],
   "devDependencies": {
-    "@snyk/protect": "^1.1301.0",
+    "@snyk/protect": "^1.1305.2",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^18.19.86",
+    "@types/node": "^20.19.43",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
-    "chai": "^4.5.0",
+    "chai": "^6.2.2",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-mocha": "^10.5.0",
     "eslint-plugin-promise": "^7.2.1",
-    "mocha": "^11.7.5",
-    "nyc": "^17.1.0",
-    "sinon": "^19.0.2",
+    "mocha": "^11.7.6",
+    "nyc": "^18.0.0",
+    "sinon": "^22.0.0",
     "ts-mocha": "^11.1.0",
     "typescript": "5.5.4"
   },
