@@ -1,5 +1,10 @@
 # Change Log
 
+## 6.12.0
+
+- CI/CD now supports node26!
+- Updating dependencies to fix npm vulnerabilities
+
 ## 6.11.0
 
 - Updating `type` to support the new `jsonLDOptions`
