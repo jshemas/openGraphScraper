@@ -611,7 +611,7 @@ describe('encoding', function () {
     });
   });
 
-  // this test is skipped because it doesn't work in CI/CD environment, but works locally. It is a test for ShiftJIS encoding.
+  // this test is skipped because it doesn't work in CI/CD environment, but works locally.
   it.skip('abehiroshi - ShiftJIS', function () {
     return ogs({ url: 'http://abehiroshi.la.coocan.jp/' })
       .then(function (data) {
