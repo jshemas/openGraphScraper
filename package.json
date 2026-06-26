@@ -36,10 +36,10 @@
     "url": "https://github.com/jshemas"
   },
   "dependencies": {
-    "chardet": "^2.1.1",
-    "cheerio": "^1.1.2",
-    "iconv-lite": "^0.7.0",
-    "undici": "^7.16.0"
+    "chardet": "^2.2.0",
+    "cheerio": "^1.2.0",
+    "iconv-lite": "^0.7.2",
+    "undici": "^7.28.0"
   },
   "files": [
     "/dist",
