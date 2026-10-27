@@ -8,5 +8,5 @@ import type { OpenGraphScraperOptions } from './types';
  */
 export default function requestAndResultsFormatter(options: OpenGraphScraperOptions): Promise<{
     body: string;
-    response: import("undici").Response;
+    response: Response;
 }>;

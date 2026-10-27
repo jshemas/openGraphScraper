@@ -68,6 +68,8 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 
 Note: `open-graph-scraper` uses the [Fetch API](https://nodejs.org/dist/latest-v18.x/docs/api/globals.html#fetch) for requests and most of [Fetch's options](https://developer.mozilla.org/en-US/docs/Web/API/fetch#options) should work as `open-graph-scraper`'s `fetchOptions` options.
 
+For SSRF protection, requests are limited to HTTP(S) destinations whose resolved IP addresses are public. Redirect destinations are checked before they are requested. Redirect handling cannot be overridden and custom Undici dispatchers in `fetchOptions` are ignored because they could bypass these protections.
+
 ## Types And Import Example
 
 ```javascript

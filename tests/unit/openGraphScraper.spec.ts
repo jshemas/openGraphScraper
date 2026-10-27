@@ -70,6 +70,56 @@ describe('return ogs', function () {
   });
 
   context('should be able to hit site and find OG title info', function () {
+    it('follows redirects to public IP addresses', function () {
+      mockAgent.get('http://1.1.1.1')
+        .intercept({ path: '/' })
+        .reply(302, '', { headers: { location: 'http://8.8.8.8/' } });
+      mockAgent.get('http://8.8.8.8')
+        .intercept({ path: '/' })
+        .reply(200, basicHTML);
+
+      return ogs({ url: 'http://1.1.1.1' })
+        .then(function ({ error, result }) {
+          expect(error).to.equal(false);
+          expect(result.ogTitle).to.equal('test page');
+        });
+    });
+
+    it('blocks redirects to private IP addresses', function () {
+      mockAgent.get('http://1.1.1.1')
+        .intercept({ path: '/' })
+        .reply(302, '', { headers: { location: 'http://127.0.0.1/' } });
+
+      return ogs({ url: 'http://1.1.1.1' })
+        .then(function () {
+          expect().fail('the redirect should have been blocked');
+        })
+        .catch(function ({ error, result }) {
+          expect(error).to.equal(true);
+          expect(result.error).to.contain('non-public IP addresses');
+        });
+    });
+
+    it('does not allow fetch options to re-enable automatic redirects', function () {
+      mockAgent.get('http://1.1.1.1')
+        .intercept({ path: '/' })
+        .reply(302, '', { headers: { location: 'http://127.0.0.1/' } });
+
+      const bypassDispatcher = new MockAgent();
+      return ogs({
+        url: 'http://1.1.1.1',
+        fetchOptions: { redirect: 'follow', dispatcher: bypassDispatcher },
+      })
+        .then(function () {
+          expect().fail('the redirect should have been blocked');
+        })
+        .catch(function ({ error, result }) {
+          expect(error).to.equal(true);
+          expect(result.error).to.contain('non-public IP addresses');
+        })
+        .finally(() => bypassDispatcher.close());
+    });
+
     it('using just a url', function () {
       mockAgent.get('http://www.test.com')
         .intercept({ path: '/' })
