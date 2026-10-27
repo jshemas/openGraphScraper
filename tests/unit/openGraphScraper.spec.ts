@@ -63,13 +63,31 @@ const mockAgent = new MockAgent();
 const originalFetch = undici.fetch;
 const originalGlobalDispatcher = getGlobalDispatcher();
 let requestDispatchers: unknown[] = [];
+let fetchStub: sinon.SinonStub;
+
+function assertRequestFailure(code: string) {
+  mockAgent.get('http://www.testerror.com')
+    .intercept({ path: '/' })
+    .replyWithError(Object.assign(new Error('request failed'), { code }));
+
+  return ogs({ url: 'www.testerror.com' })
+    .then(function () {
+      expect('').to.be.eql('this should not happen');
+    })
+    .catch(function (data) {
+      expect(data.error).to.be.eql(true);
+      expect(data.result.error).to.eql('Page not found');
+      expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+      expect(data.result.success).to.eql(false);
+    });
+}
 
 describe('return ogs', function () {
   beforeEach(function () {
     setGlobalDispatcher(mockAgent);
     mockAgent.disableNetConnect();
     requestDispatchers = [];
-    sandbox.stub(undici, 'fetch').callsFake((input, init) => {
+    fetchStub = sandbox.stub(undici, 'fetch').callsFake((input, init) => {
       requestDispatchers.push(init?.dispatcher);
       return originalFetch(input, { ...init, dispatcher: mockAgent });
     });
@@ -465,6 +483,19 @@ describe('return ogs', function () {
           expect(data.response).to.be.a('response');
         });
     });
+
+    it('when passing in invalid custom tags', function () {
+      return ogs({ html: basicHTML, customMetaTags: [{} as never] })
+        .then(function () {
+          expect('').to.be.eql('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Invalid Custom Meta Tags');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Invalid Custom Meta Tags');
+          expect(data.result.success).to.eql(false);
+        });
+    });
   });
 
   context('should return the proper error data', function () {
@@ -550,6 +581,34 @@ describe('return ogs', function () {
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
           expect(data.html).to.be.eql(undefined);
+        });
+    });
+
+    it('when the request failure code is ENOTFOUND', function () {
+      return assertRequestFailure('ENOTFOUND');
+    });
+
+    it('when the request failure code is EHOSTUNREACH', function () {
+      return assertRequestFailure('EHOSTUNREACH');
+    });
+
+    it('when the request failure code is ENETUNREACH', function () {
+      return assertRequestFailure('ENETUNREACH');
+    });
+
+    it('when the request is aborted', function () {
+      const abortError = Object.assign(new Error('request aborted'), { name: 'AbortError' });
+      fetchStub.rejects(Object.assign(new Error('fetch failed'), { cause: abortError }));
+
+      return ogs({ url: 'www.testerror.com' })
+        .then(function () {
+          expect('').to.be.eql('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('The operation was aborted due to timeout');
+          expect(data.result.errorDetails.toString()).to.eql('Error: The operation was aborted due to timeout');
+          expect(data.result.success).to.eql(false);
         });
     });
 

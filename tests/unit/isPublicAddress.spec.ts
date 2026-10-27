@@ -29,6 +29,29 @@ describe('public address validation', function () {
     ].forEach((address) => expect(isPublicAddress(address), address).to.equal(false));
   });
 
+  it('returns false for malformed or non-IP input', function () {
+    [
+      '',
+      'example.com',
+      '1.2.3.4.5',
+      '256.1.1.1',
+      ':::',
+      '2001:db8:::1',
+      '2001:db8:zzzz::1',
+    ].forEach((address) => expect(isPublicAddress(address), address).to.equal(false));
+  });
+
+  it('blocks reserved IPv4 and IPv6 ranges not already covered', function () {
+    [
+      '0.0.0.0',
+      '192.0.0.1',
+      '198.51.100.1',
+      '203.0.113.1',
+      '2001:1::1',
+      '3fff:0fff::1',
+    ].forEach((address) => expect(isPublicAddress(address), address).to.equal(false));
+  });
+
   it('rejects non-HTTP protocols and private IP literals', async function () {
     const protocolError = await assertPublicUrl('file:///etc/passwd')
       .then(() => undefined, (error: Error) => error.message);
@@ -37,5 +60,12 @@ describe('public address validation', function () {
 
     expect(protocolError).to.equal('Only HTTP and HTTPS URLs are allowed');
     expect(addressError).to.contain('non-public IP addresses');
+  });
+
+  it('rejects hostnames that resolve to a non-public IP', async function () {
+    const privateLookupError = await assertPublicUrl('http://localhost/')
+      .then(() => undefined, (error: Error) => error.message);
+
+    expect(privateLookupError).to.contain('non-public IP addresses');
   });
 });

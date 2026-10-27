@@ -2,10 +2,13 @@ import { expect } from 'chai';
 
 /* eslint-disable mocha/no-setup-in-describe */
 import {
+  defaultUrlValidatorSettings as defaultSettings,
   findImageTypeFromUrl,
+  isBlacklistedUrl,
   isCustomMetaTagsValid,
   isImageTypeValid,
   isThisANonHTMLUrl,
+  isUrlValid,
   optionSetup,
   removeNestedUndefinedValues,
   unescapeScriptText,
@@ -26,7 +29,31 @@ const validateUrl = (urls, valid, message, urlValidatorSettings) => {
 };
 
 describe('utils', function () {
+  describe('isUrlValid', function () {
+    it('returns true for a valid URL', function () {
+      expect(isUrlValid('https://example.com', defaultSettings)).to.eql(true);
+    });
+
+    it('returns false for an empty or invalid URL', function () {
+      expect(isUrlValid('', defaultSettings)).to.eql(false);
+      expect(isUrlValid('not a URL', defaultSettings)).to.eql(false);
+    });
+
+    it('returns false when the value is not a string', function () {
+      // @ts-ignore
+      expect(isUrlValid(null, defaultSettings)).to.eql(false);
+    });
+  });
+
   describe('validateAndFormatURL', function () {
+    it('adds the http protocol when the URL does not include one', function () {
+      expect(validateAndFormatURL('example.com', defaultSettings).url).to.eql('http://example.com');
+    });
+
+    it('preserves the protocol when the URL already includes one', function () {
+      expect(validateAndFormatURL('https://example.com', defaultSettings).url).to.eql('https://example.com');
+    });
+
     context('validing URLs', function () {
       const defaultUrlValidatorSettings = {
         allow_fragments: true,
@@ -158,6 +185,21 @@ describe('utils', function () {
     });
   });
 
+  describe('isBlacklistedUrl', function () {
+    it('returns true when the URL contains a blacklisted value', function () {
+      expect(isBlacklistedUrl('https://example.com/path', ['example.com'])).to.eql(true);
+    });
+
+    it('returns false when no blacklist value matches', function () {
+      expect(isBlacklistedUrl('https://example.com/path', ['other.com'])).to.eql(false);
+    });
+
+    it('returns false when the blacklist is omitted or empty', function () {
+      expect(isBlacklistedUrl('https://example.com/path')).to.eql(false);
+      expect(isBlacklistedUrl('https://example.com/path', [])).to.eql(false);
+    });
+  });
+
   describe('findImageTypeFromUrl', function () {
     it('foobar.com/image.png?test=true', function () {
       const type = findImageTypeFromUrl('foobar.com/image.png?test=true');
@@ -254,6 +296,12 @@ describe('utils', function () {
   });
 
   describe('isCustomMetaTagsValid', function () {
+    it('when passing a non-array into isCustomMetaTagsValid', function () {
+      // @ts-ignore
+      const response = isCustomMetaTagsValid({});
+      expect(response).to.eql(false);
+    });
+
     it('when passing a valid custom tag into isCustomMetaTagsValid', function () {
       const response = isCustomMetaTagsValid([{
         multiple: false,
@@ -283,6 +331,26 @@ describe('utils', function () {
         property: 'foo',
         // @ts-ignore
         fieldName: true,
+      }]);
+      expect(response).to.eql(false);
+    });
+
+    it('when passing a custom tag missing multiple into isCustomMetaTagsValid', function () {
+      // @ts-ignore
+      const response = isCustomMetaTagsValid([{
+        property: 'foo',
+        fieldName: 'fooTag',
+      }]);
+      expect(response).to.eql(false);
+    });
+
+    it('when passing a custom tag with invalid multiple and property types into isCustomMetaTagsValid', function () {
+      const response = isCustomMetaTagsValid([{
+        // @ts-ignore
+        multiple: 'false',
+        // @ts-ignore
+        property: true,
+        fieldName: 'fooTag',
       }]);
       expect(response).to.eql(false);
     });
