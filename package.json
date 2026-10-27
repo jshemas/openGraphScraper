@@ -21,8 +21,8 @@
     "ci": "npm run eslint && npm run build && npm run build:declaration && npm run test",
     "eslint:fix": "eslint . --ext .js,.ts --fix",
     "eslint": "eslint . --ext .js,.ts",
-    "mocha:int": "ts-mocha --recursive \"./tests/integration/**/*.spec.ts\" --timeout 10000",
-    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ ts-mocha --recursive \"./tests/unit/**/*.spec.ts\"",
+    "mocha:int": "mocha --require ts-node/register/transpile-only --recursive \"./tests/integration/**/*.spec.ts\" --timeout 10000",
+    "mocha:unit": "nyc --reporter=html --reporter=text --exclude=tests/ mocha --require ts-node/register/transpile-only --recursive \"./tests/unit/**/*.spec.ts\"",
     "prepare": "npm run snyk-protect && npm run build",
     "snyk-protect": "snyk-protect",
     "test": "npm run mocha:unit && npm run mocha:int"
@@ -63,7 +63,7 @@
     "mocha": "^11.8.0",
     "nyc": "^18.0.0",
     "sinon": "^22.1.0",
-    "ts-mocha": "^11.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "5.5.4"
   },
   "repository": {
