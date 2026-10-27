@@ -36,7 +36,7 @@ describe('fetch', function () {
   });
 
   it('setting a timeout', function () {
-    return ogs({ url: 'https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso', timeout: 3 })
+    return ogs({ url: 'https://releases.ubuntu.com/26.10/ubuntu-26.10-desktop-amd64.iso', timeout: 3 })
       .then(function () {
         expect().fail('this should not happen');
       })
@@ -45,7 +45,7 @@ describe('fetch', function () {
         console.log('result:', result);
         expect(error).to.be.eql(true);
         expect(result.success).to.be.eql(false);
-        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso');
+        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/26.10/ubuntu-26.10-desktop-amd64.iso');
         expect(result.error).to.eql('The operation was aborted due to timeout');
         expect(result.errorDetails.toString()).to.eql('TimeoutError: The operation was aborted due to timeout');
         expect(result).to.have.all.keys(
@@ -60,7 +60,7 @@ describe('fetch', function () {
   // https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout
   // eslint-disable-next-line mocha/no-skipped-tests
   it.skip('setting a timeout - using AbortSignal.timeout()', function () {
-    return ogs({ url: 'https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso', fetchOptions: { signal: AbortSignal.timeout(3000) } })
+    return ogs({ url: 'https://releases.ubuntu.com/26.10/ubuntu-26.10-desktop-amd64.iso', fetchOptions: { signal: AbortSignal.timeout(3000) } })
       .then(function () {
         expect().fail('this should not happen');
       })
@@ -86,7 +86,7 @@ describe('fetch', function () {
   it.skip('setting a timeout - using controller.abort()', function () {
     const controller = new AbortController();
     setTimeout(() => controller.abort(), 3000);
-    return ogs({ url: 'https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso', fetchOptions: { signal: controller.signal } })
+    return ogs({ url: 'https://releases.ubuntu.com/26.10/ubuntu-26.10-desktop-amd64.iso', fetchOptions: { signal: controller.signal } })
       .then(function () {
         expect().fail('this should not happen');
       })
@@ -95,7 +95,7 @@ describe('fetch', function () {
         console.log('result:', result);
         expect(error).to.be.eql(true);
         expect(result.success).to.be.eql(false);
-        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/23.04/ubuntu-23.04-desktop-amd64.iso');
+        expect(result.requestUrl).to.be.eql('https://releases.ubuntu.com/26.10/ubuntu-26.10-desktop-amd64.iso');
         expect(result.error).to.eql('The operation was aborted due to timeout');
         expect(result.errorDetails.toString()).to.eql('Error: The operation was aborted due to timeout');
         expect(result).to.have.all.keys(
