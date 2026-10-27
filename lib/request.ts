@@ -1,6 +1,6 @@
 import { lookup as dnsLookup } from 'node:dns';
 import {
-  Agent, fetch, getGlobalDispatcher, Headers, type RequestInit,
+  Agent, fetch, Headers, type RequestInit,
 } from 'undici';
 import { decode } from 'iconv-lite';
 import { CheerioAPI, load } from 'cheerio';
@@ -9,14 +9,8 @@ import type { OpenGraphScraperOptions } from './types';
 import { assertPublicUrl, isPublicAddress } from './isPublicAddress';
 
 const redirectStatuses = new Set([301, 302, 303, 307, 308]);
-const initialGlobalDispatcher = getGlobalDispatcher();
 
 function createRequestDispatcher() {
-  const globalDispatcher = getGlobalDispatcher();
-  if (globalDispatcher !== initialGlobalDispatcher) {
-    return { dispatcher: globalDispatcher, close: () => Promise.resolve() };
-  }
-
   const dispatcher = new Agent({
     connect: {
       lookup(hostname, options, callback) {

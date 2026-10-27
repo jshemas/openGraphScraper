@@ -2,7 +2,10 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 
 import chardet from 'chardet';
-import { MockAgent, setGlobalDispatcher } from 'undici';
+import undici = require('undici');
+import {
+  getGlobalDispatcher, MockAgent, setGlobalDispatcher,
+} from 'undici';
 import { encode } from 'iconv-lite';
 import ogs from '../../index';
 
@@ -57,16 +60,25 @@ const encodingHTML = `
 
 const sandbox = sinon.createSandbox();
 const mockAgent = new MockAgent();
+const originalFetch = undici.fetch;
+const originalGlobalDispatcher = getGlobalDispatcher();
+let requestDispatchers: unknown[] = [];
 
 describe('return ogs', function () {
   beforeEach(function () {
     setGlobalDispatcher(mockAgent);
     mockAgent.disableNetConnect();
+    requestDispatchers = [];
+    sandbox.stub(undici, 'fetch').callsFake((input, init) => {
+      requestDispatchers.push(init?.dispatcher);
+      return originalFetch(input, { ...init, dispatcher: mockAgent });
+    });
   });
 
   afterEach(function () {
     sandbox.restore();
     mockAgent.enableNetConnect();
+    setGlobalDispatcher(originalGlobalDispatcher);
   });
 
   context('should be able to hit site and find OG title info', function () {
@@ -116,6 +128,21 @@ describe('return ogs', function () {
         .catch(function ({ error, result }) {
           expect(error).to.equal(true);
           expect(result.error).to.contain('non-public IP addresses');
+        })
+        .finally(() => bypassDispatcher.close());
+    });
+
+    it('does not use a global dispatcher changed after module load', function () {
+      const bypassDispatcher = new MockAgent();
+      setGlobalDispatcher(bypassDispatcher);
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200, basicHTML);
+
+      return ogs({ url: 'http://www.test.com' })
+        .then(function ({ result }) {
+          expect(result.success).to.equal(true);
+          expect(requestDispatchers[0]).not.to.equal(bypassDispatcher);
         })
         .finally(() => bypassDispatcher.close());
     });
