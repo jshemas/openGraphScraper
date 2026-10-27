@@ -112,6 +112,21 @@ describe('return ogs', function () {
         });
     });
 
+    it('blocks redirects to blacklisted URLs', function () {
+      mockAgent.get('http://1.1.1.1')
+        .intercept({ path: '/' })
+        .reply(302, '', { headers: { location: 'http://8.8.8.8/' } });
+
+      return ogs({ url: 'http://1.1.1.1', blacklist: ['8.8.8.8'] })
+        .then(function () {
+          expect().fail('the redirect should have been blocked');
+        })
+        .catch(function ({ error, result }) {
+          expect(error).to.equal(true);
+          expect(result.error).to.equal('Host name has been black listed');
+        });
+    });
+
     it('does not allow fetch options to re-enable automatic redirects', function () {
       mockAgent.get('http://1.1.1.1')
         .intercept({ path: '/' })

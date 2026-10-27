@@ -22,7 +22,7 @@ export type OnlyGetOpenGraphInfoItem = 'image' | 'title' | 'description' | 'loca
  *
  * @typeParam {string} url - URL of the site. (Required)
  * @typeParam {string} [html] - You can pass in an HTML string to run ogs on it. (use without options.url)
- * @typeParam {string[]} [blacklist] - Pass in an array of sites you don't want ogs to run on.
+ * @typeParam {string[]} [blacklist] - Pass in site values to block, including redirect destinations.
  * @typeParam {boolean | OnlyGetOpenGraphInfoItem[]} [onlyGetOpenGraphInfo] - Only fetch open graph info and don't fall back on anything else.
  * @typeParam {CustomMetaTags} [customMetaTags] - Here you can define custom meta tags you want to scrape.
  * @typeParam {Request} [fetchOptions] - The options passed into fetch.

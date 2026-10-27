@@ -34,6 +34,14 @@ export declare function validateAndFormatURL(url: string, urlValidatorSettings: 
     url: string | null;
 };
 /**
+ * Checks whether a URL contains a blacklisted value.
+ *
+ * @param {string} url - url to be checked
+ * @param {string[]} blacklist - values that should be blocked
+ * @return {boolean} whether the URL is blacklisted
+ */
+export declare function isBlacklistedUrl(url: string, blacklist?: string[]): boolean;
+/**
  * Finds the image type from a given url
  *
  * @param {string} url - url to be checked

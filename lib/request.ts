@@ -7,6 +7,7 @@ import { CheerioAPI, load } from 'cheerio';
 import chardet from 'chardet';
 import type { OpenGraphScraperOptions } from './types';
 import { assertPublicUrl, isPublicAddress } from './isPublicAddress';
+import { isBlacklistedUrl } from './utils';
 
 const redirectStatuses = new Set([301, 302, 303, 307, 308]);
 
@@ -65,9 +66,12 @@ function createRequestDispatcher() {
   return { dispatcher, close: () => dispatcher.close() };
 }
 
-async function fetchWithPublicDestinationGuard(url: string, options: RequestInit) {
+async function fetchWithPublicDestinationGuard(url: string, options: RequestInit, blacklist: string[] = []) {
   const redirectMode = options.redirect ?? 'follow';
   async function fetchRedirect(currentUrl: string, redirects: number, requestOptions: RequestInit): Promise<Response> {
+    if (isBlacklistedUrl(currentUrl, blacklist)) {
+      throw new Error('Host name has been black listed');
+    }
     await assertPublicUrl(currentUrl);
     const response = await fetch(currentUrl, { ...requestOptions, redirect: 'manual' });
     const location = response.headers.get('location');
@@ -171,7 +175,7 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
       ...options.fetchOptions,
       dispatcher: requestDispatcher.dispatcher,
       headers: { Origin: url, Accept: 'text/html', ...options.fetchOptions?.headers },
-    });
+    }, options.blacklist);
 
     const bodyArrayBuffer = await response.arrayBuffer();
     const bodyText = Buffer.from(bodyArrayBuffer).toString('utf-8');

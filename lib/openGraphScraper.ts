@@ -2,6 +2,7 @@ import extractMetaTags from './extract';
 import requestAndResultsFormatter from './request';
 import {
   defaultUrlValidatorSettings,
+  isBlacklistedUrl,
   isCustomMetaTagsValid,
   isThisANonHTMLUrl,
   optionSetup,
@@ -38,8 +39,7 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
   // trying to limit non html pages
   if (isThisANonHTMLUrl(options.url)) throw new Error('Must scrape an HTML page');
 
-  // eslint-disable-next-line max-len
-  if (options?.blacklist?.some((blacklistedHostname) => options.url?.includes(blacklistedHostname))) {
+  if (isBlacklistedUrl(options.url, options.blacklist)) {
     throw new Error('Host name has been black listed');
   }
 
