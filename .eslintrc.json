@@ -1,12 +1,11 @@
 {
   "extends": [
-    "airbnb-base",
-    "airbnb-typescript/base",
     "plugin:promise/recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked"
   ],
   "plugins": [
+    "import",
     "promise"
   ],
   "parserOptions": {

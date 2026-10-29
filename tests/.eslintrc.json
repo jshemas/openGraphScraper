@@ -1,12 +1,12 @@
 {
   "root": true,
   "extends": [
-    "airbnb-base",
-    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
     "plugin:promise/recommended",
     "plugin:mocha/recommended"
   ],
   "plugins": [
+    "import",
     "mocha"
   ],
   "env": {
@@ -16,6 +16,8 @@
     "project": "./tsconfig.tests.json"
   },
   "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-unused-expressions": 0,
     "func-names": 0,
     "import/extensions": 0,
