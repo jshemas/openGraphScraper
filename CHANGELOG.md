@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.12.0
+## 6.13.0
 
 - Added URL and IP validation to block non-HTTP(S) URLs and private, loopback, link-local, reserved, and mapped IP addresses. See `lib/isPublicAddress.ts`.
 - Updated `lib/request.ts` to check DNS results at connection time and validate each redirect destination. Caller-provided fetch options can’t restore automatic redirect handling or replace the guarded dispatcher.
