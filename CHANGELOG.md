@@ -2,6 +2,14 @@
 
 ## 6.12.0
 
+- Added URL and IP validation to block non-HTTP(S) URLs and private, loopback, link-local, reserved, and mapped IP addresses. See `lib/isPublicAddress.ts`.
+- Updated `lib/request.ts` to check DNS results at connection time and validate each redirect destination. Caller-provided fetch options can’t restore automatic redirect handling or replace the guarded dispatcher.
+- `lib/request.ts`: Always uses OGS’s DNS-guarded Undici Agent, rather than switching to a global dispatcher that may have changed after module initialization.
+- Blacklist now applies to redirect destinations.
+- Updating dependencies to fix npm vulnerabilities
+
+## 6.12.0
+
 - CI/CD now supports node26!
 - Updating dependencies to fix npm vulnerabilities
 
