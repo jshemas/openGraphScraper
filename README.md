@@ -60,13 +60,15 @@ Check the return for a ```success``` flag. If success is set to true, then the u
 | html                 | You can pass in an HTML string to run ogs on it. (use without options.url)                                                                |                                                                                     |          |
 | fetchOptions         | Options that are used by the Fetch API                                                                                                    | {}                                                                                  |          |
 | timeout              | Request timeout for Fetch (Default is 10 seconds)                                                                                         | 10                                                                                  |          |
-| blacklist            | Pass in an array of sites you don't want ogs to run on.                                                                                   | []                                                                                  |          |
+| blacklist            | Pass in site values to block, including redirect destinations.                                                                            | []                                                                                  |          |
 | onlyGetOpenGraphInfo | Only fetch open graph info and don't fall back on anything else. Also accepts an array of properties for which no fallback should be used | false                                                                               |          |
 | customMetaTags       | Here you can define custom meta tags you want to scrape.                                                                                  | []                                                                                  |          |
 | urlValidatorSettings | Sets the options used by validator.js for testing the URL                                                                                 | [Here](https://github.com/jshemas/openGraphScraper/blob/master/lib/utils.ts#L4-L17) |          |
 | jsonLDOptions        | Sets the options used when parsing JSON-LD data                                                                                           |                                                                            |          |
 
 Note: `open-graph-scraper` uses the [Fetch API](https://nodejs.org/dist/latest-v18.x/docs/api/globals.html#fetch) for requests and most of [Fetch's options](https://developer.mozilla.org/en-US/docs/Web/API/fetch#options) should work as `open-graph-scraper`'s `fetchOptions` options.
+
+For SSRF protection, requests are limited to HTTP(S) destinations whose resolved IP addresses are public. Redirect destinations are checked before they are requested. Redirect handling cannot be overridden, and custom Undici dispatchers supplied in `fetchOptions` or configured globally are ignored because they could bypass these protections.
 
 ## Types And Import Example
 

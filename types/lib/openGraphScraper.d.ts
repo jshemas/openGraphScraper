@@ -14,6 +14,6 @@ export default function setOptionsAndReturnOpenGraphResults(ogsOptions: OpenGrap
     html: string;
 } | {
     ogObject: import("./types").OgObjectInternal;
-    response: import("undici").Response;
+    response: Response;
     html: string;
 }>;

@@ -2,7 +2,10 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 
 import chardet from 'chardet';
-import { MockAgent, setGlobalDispatcher } from 'undici';
+import undici = require('undici');
+import {
+  getGlobalDispatcher, MockAgent, setGlobalDispatcher,
+} from 'undici';
 import { encode } from 'iconv-lite';
 import ogs from '../../index';
 
@@ -57,19 +60,126 @@ const encodingHTML = `
 
 const sandbox = sinon.createSandbox();
 const mockAgent = new MockAgent();
+const originalFetch = undici.fetch;
+const originalGlobalDispatcher = getGlobalDispatcher();
+let requestDispatchers: unknown[] = [];
+let fetchStub: sinon.SinonStub;
+
+function assertRequestFailure(code: string) {
+  mockAgent.get('http://www.testerror.com')
+    .intercept({ path: '/' })
+    .replyWithError(Object.assign(new Error('request failed'), { code }));
+
+  return ogs({ url: 'www.testerror.com' })
+    .then(function () {
+      expect('').to.be.eql('this should not happen');
+    })
+    .catch(function (data) {
+      expect(data.error).to.be.eql(true);
+      expect(data.result.error).to.eql('Page not found');
+      expect(data.result.errorDetails.toString()).to.eql('Error: Page not found');
+      expect(data.result.success).to.eql(false);
+    });
+}
 
 describe('return ogs', function () {
   beforeEach(function () {
     setGlobalDispatcher(mockAgent);
     mockAgent.disableNetConnect();
+    requestDispatchers = [];
+    fetchStub = sandbox.stub(undici, 'fetch').callsFake((input, init) => {
+      requestDispatchers.push(init?.dispatcher);
+      return originalFetch(input, { ...init, dispatcher: mockAgent });
+    });
   });
 
   afterEach(function () {
     sandbox.restore();
     mockAgent.enableNetConnect();
+    setGlobalDispatcher(originalGlobalDispatcher);
   });
 
   context('should be able to hit site and find OG title info', function () {
+    it('follows redirects to public IP addresses', function () {
+      mockAgent.get('http://1.1.1.1')
+        .intercept({ path: '/' })
+        .reply(302, '', { headers: { location: 'http://8.8.8.8/' } });
+      mockAgent.get('http://8.8.8.8')
+        .intercept({ path: '/' })
+        .reply(200, basicHTML);
+
+      return ogs({ url: 'http://1.1.1.1' })
+        .then(function ({ error, result }) {
+          expect(error).to.equal(false);
+          expect(result.ogTitle).to.equal('test page');
+        });
+    });
+
+    it('blocks redirects to private IP addresses', function () {
+      mockAgent.get('http://1.1.1.1')
+        .intercept({ path: '/' })
+        .reply(302, '', { headers: { location: 'http://127.0.0.1/' } });
+
+      return ogs({ url: 'http://1.1.1.1' })
+        .then(function () {
+          expect().fail('the redirect should have been blocked');
+        })
+        .catch(function ({ error, result }) {
+          expect(error).to.equal(true);
+          expect(result.error).to.contain('non-public IP addresses');
+        });
+    });
+
+    it('blocks redirects to blacklisted URLs', function () {
+      mockAgent.get('http://1.1.1.1')
+        .intercept({ path: '/' })
+        .reply(302, '', { headers: { location: 'http://8.8.8.8/' } });
+
+      return ogs({ url: 'http://1.1.1.1', blacklist: ['8.8.8.8'] })
+        .then(function () {
+          expect().fail('the redirect should have been blocked');
+        })
+        .catch(function ({ error, result }) {
+          expect(error).to.equal(true);
+          expect(result.error).to.equal('Host name has been black listed');
+        });
+    });
+
+    it('does not allow fetch options to re-enable automatic redirects', function () {
+      mockAgent.get('http://1.1.1.1')
+        .intercept({ path: '/' })
+        .reply(302, '', { headers: { location: 'http://127.0.0.1/' } });
+
+      const bypassDispatcher = new MockAgent();
+      return ogs({
+        url: 'http://1.1.1.1',
+        fetchOptions: { redirect: 'follow', dispatcher: bypassDispatcher },
+      })
+        .then(function () {
+          expect().fail('the redirect should have been blocked');
+        })
+        .catch(function ({ error, result }) {
+          expect(error).to.equal(true);
+          expect(result.error).to.contain('non-public IP addresses');
+        })
+        .finally(() => bypassDispatcher.close());
+    });
+
+    it('does not use a global dispatcher changed after module load', function () {
+      const bypassDispatcher = new MockAgent();
+      setGlobalDispatcher(bypassDispatcher);
+      mockAgent.get('http://www.test.com')
+        .intercept({ path: '/' })
+        .reply(200, basicHTML);
+
+      return ogs({ url: 'http://www.test.com' })
+        .then(function ({ result }) {
+          expect(result.success).to.equal(true);
+          expect(requestDispatchers[0]).not.to.equal(bypassDispatcher);
+        })
+        .finally(() => bypassDispatcher.close());
+    });
+
     it('using just a url', function () {
       mockAgent.get('http://www.test.com')
         .intercept({ path: '/' })
@@ -373,6 +483,19 @@ describe('return ogs', function () {
           expect(data.response).to.be.a('response');
         });
     });
+
+    it('when passing in invalid custom tags', function () {
+      return ogs({ html: basicHTML, customMetaTags: [{} as never] })
+        .then(function () {
+          expect('').to.be.eql('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('Invalid Custom Meta Tags');
+          expect(data.result.errorDetails.toString()).to.eql('Error: Invalid Custom Meta Tags');
+          expect(data.result.success).to.eql(false);
+        });
+    });
   });
 
   context('should return the proper error data', function () {
@@ -458,6 +581,34 @@ describe('return ogs', function () {
           expect(data.result.success).to.eql(false);
           expect(data.response).to.be.eql(undefined);
           expect(data.html).to.be.eql(undefined);
+        });
+    });
+
+    it('when the request failure code is ENOTFOUND', function () {
+      return assertRequestFailure('ENOTFOUND');
+    });
+
+    it('when the request failure code is EHOSTUNREACH', function () {
+      return assertRequestFailure('EHOSTUNREACH');
+    });
+
+    it('when the request failure code is ENETUNREACH', function () {
+      return assertRequestFailure('ENETUNREACH');
+    });
+
+    it('when the request is aborted', function () {
+      const abortError = Object.assign(new Error('request aborted'), { name: 'AbortError' });
+      fetchStub.rejects(Object.assign(new Error('fetch failed'), { cause: abortError }));
+
+      return ogs({ url: 'www.testerror.com' })
+        .then(function () {
+          expect('').to.be.eql('this should not happen');
+        })
+        .catch(function (data) {
+          expect(data.error).to.be.eql(true);
+          expect(data.result.error).to.eql('The operation was aborted due to timeout');
+          expect(data.result.errorDetails.toString()).to.eql('Error: The operation was aborted due to timeout');
+          expect(data.result.success).to.eql(false);
         });
     });
 

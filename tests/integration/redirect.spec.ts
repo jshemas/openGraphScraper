@@ -90,7 +90,8 @@ describe('redirect', function () {
         expect(response).to.be.an('Response');
       });
     });
-    it('forbes page', function () {
+    // forbes is blocking requests, will need to find way to bypass this
+    it.skip('forbes page', function () {
       return ogs({
         url: 'https://www.forbes.com/sites/kenkam/2017/09/28/3-stocks-like-apple-was-10-years-ago-tesla-nvidia-and-alibaba/#2636f6c2f0fa',
       }).then(function ({ error, result, response }) {

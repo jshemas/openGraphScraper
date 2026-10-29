@@ -55,6 +55,17 @@ export function validateAndFormatURL(url: string, urlValidatorSettings: Validato
 }
 
 /**
+ * Checks whether a URL contains a blacklisted value.
+ *
+ * @param {string} url - url to be checked
+ * @param {string[]} blacklist - values that should be blocked
+ * @return {boolean} whether the URL is blacklisted
+ */
+export function isBlacklistedUrl(url: string, blacklist: string[] = []): boolean {
+  return blacklist.some((blacklistedHostname) => url.includes(blacklistedHostname));
+}
+
+/**
  * Finds the image type from a given url
  *
  * @param {string} url - url to be checked

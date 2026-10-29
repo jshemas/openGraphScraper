@@ -2,22 +2,31 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import { encode } from 'iconv-lite';
 
-import { MockAgent, setGlobalDispatcher } from 'undici';
+import undici = require('undici');
+import {
+  getGlobalDispatcher, MockAgent, setGlobalDispatcher,
+} from 'undici';
 
 import ogs from '../../index';
 
 const sandbox = sinon.createSandbox();
 const mockAgent = new MockAgent();
+const originalFetch = undici.fetch;
+const originalGlobalDispatcher = getGlobalDispatcher();
 
 describe('static check meta tags', function () {
   beforeEach(function () {
     setGlobalDispatcher(mockAgent);
     mockAgent.disableNetConnect();
+    sandbox.stub(undici, 'fetch').callsFake((input, init) => (
+      originalFetch(input, { ...init, dispatcher: mockAgent })
+    ));
   });
 
   afterEach(function () {
     sandbox.restore();
     mockAgent.enableNetConnect();
+    setGlobalDispatcher(originalGlobalDispatcher);
   });
 
   it('check one off tags', function () {
