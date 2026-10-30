@@ -23,8 +23,8 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
   // find all of the open graph info in the meta tags
   $('meta').each((index, meta) => {
     if (!meta.attribs || (!meta.attribs.property && !meta.attribs.name)) return;
-    const property = meta.attribs.property || meta.attribs.name;
-    const content: any = meta.attribs.content || meta.attribs.value;
+    const property = meta.attribs.property ?? meta.attribs.name;
+    const content: any = meta.attribs.content ?? meta.attribs.value;
     metaFields.forEach((item) => {
       if (item && property.toLowerCase() === item.property.toLowerCase()) {
         // check if fieldName is one of mediaMapperProperties
@@ -67,7 +67,7 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
 
     if (options.customMetaTags) {
       options.customMetaTags.forEach((item) => {
-        if (!ogObject.customMetaTags) ogObject.customMetaTags = {};
+        ogObject.customMetaTags ??= {};
         if (item && property.toLowerCase() === item.property.toLowerCase()) {
           if (!item.multiple) {
             ogObject.customMetaTags[item.fieldName] = content;
@@ -94,7 +94,7 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
 
     $('script').each((index, script) => {
       if (script.attribs.type && script.attribs.type === 'application/ld+json') {
-        if (!ogObject.jsonLD) ogObject.jsonLD = [];
+        ogObject.jsonLD ??= [];
         let scriptText = $(script).text().trim();
         if (scriptText) {
           scriptText = scriptText.replace(/(\r\n|\n|\r)/gm, ''); // remove newlines

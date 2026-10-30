@@ -17,7 +17,7 @@ import {
 
 const validateUrl = (urls, valid, message, urlValidatorSettings) => {
   for (let index = 0; index < urls.length; index += 1) {
-    // eslint-disable-next-line no-loop-func
+
     it(`${urls[index]} ${message}`, function () {
       const formattedUrl = validateAndFormatURL(urls[index], urlValidatorSettings);
       if (valid) {

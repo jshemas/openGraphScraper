@@ -20,9 +20,9 @@ function assertString(input) {
 }
 
 // https://github.com/validatorjs/validator.js/blob/master/src/lib/util/merge.js
-// eslint-disable-next-line @typescript-eslint/default-param-last
+
 function merge(obj = { }, defaults) {
-  // eslint-disable-next-line no-restricted-syntax
+
   for (const key in defaults) {
     if (typeof obj[key] === 'undefined') {
       obj[key] = defaults[key];
@@ -66,7 +66,7 @@ function isFQDN(str, options) {
 
     if (
       !options.allow_numeric_tld
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+
         && !/^([a-z\u00A1-\u00A8\u00AA-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]{2,}|xn[a-z0-9-]{2,})$/i.test(tld)
     ) {
       return false;
@@ -132,8 +132,8 @@ function isIP(str, version = '') {
   assertString(str);
   version = String(version);
   if (!version) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return isIP(str, 4) || isIP(str, 6);
+     
+    return [isIP(str, 4), isIP(str, 6)].some(Boolean);
   }
   if (version === '4') {
     return IPv4AddressRegExp.test(str);
@@ -211,7 +211,7 @@ export default function isURL(url, options) {
     return false;
   }
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+
   let protocol; let auth; let host; let port; let port_str; let split; let
     ipv6;
 
@@ -269,13 +269,13 @@ export default function isURL(url, options) {
 
   port_str = null;
   ipv6 = null;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+
   const ipv6_match = hostname.match(wrappedIpv6);
   if (ipv6_match) {
     host = '';
-    // eslint-disable-next-line prefer-destructuring
+
     ipv6 = ipv6_match[1];
-    port_str = ipv6_match[2] || null;
+    port_str = ipv6_match[2] ?? null;
   } else {
     split = hostname.split(':');
     host = split.shift();
@@ -305,7 +305,7 @@ export default function isURL(url, options) {
     return false;
   }
 
-  host = host || ipv6;
+  host = host ?? ipv6;
 
   if (options.host_blacklist && checkHost(host, options.host_blacklist)) {
     return false;
