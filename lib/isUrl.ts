@@ -132,8 +132,8 @@ function isIP(str, version = '') {
   assertString(str);
   version = String(version);
   if (!version) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return isIP(str, 4) || isIP(str, 6);
+     
+    return [isIP(str, 4), isIP(str, 6)].some(Boolean);
   }
   if (version === '4') {
     return IPv4AddressRegExp.test(str);
@@ -275,7 +275,7 @@ export default function isURL(url, options) {
     host = '';
 
     ipv6 = ipv6_match[1];
-    port_str = ipv6_match[2] || null;
+    port_str = ipv6_match[2] ?? null;
   } else {
     split = hostname.split(':');
     host = split.shift();
@@ -305,7 +305,7 @@ export default function isURL(url, options) {
     return false;
   }
 
-  host = host || ipv6;
+  host = host ?? ipv6;
 
   if (options.host_blacklist && checkHost(host, options.host_blacklist)) {
     return false;
