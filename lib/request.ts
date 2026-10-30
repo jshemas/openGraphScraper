@@ -3,7 +3,7 @@ import {
   Agent, fetch, Headers, type RequestInit,
 } from 'undici';
 import { decode } from 'iconv-lite';
-import { CheerioAPI, load } from 'cheerio';
+import { load, type CheerioAPI } from 'cheerio';
 import chardet from 'chardet';
 import type { OpenGraphScraperOptions } from './types';
 import { assertPublicUrl, isPublicAddress } from './isPublicAddress';

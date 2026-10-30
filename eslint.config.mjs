@@ -15,6 +15,7 @@ export default [
   ...withFiles(
     compat.config({
       extends: [
+        'plugin:import/recommended',
         'plugin:promise/recommended',
         'plugin:@typescript-eslint/recommended-type-checked',
         'plugin:@typescript-eslint/stylistic-type-checked',
@@ -37,6 +38,13 @@ export default [
           ignoreTrailingComments: true,
         }],
         'no-param-reassign': 'off',
+      },
+      settings: {
+        'import/resolver': {
+          node: {
+            extensions: ['.js', '.mjs', '.ts'],
+          },
+        },
       },
     }),
     ['index.ts', 'lib/**/*.ts'],
