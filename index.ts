@@ -1,4 +1,4 @@
-/* eslint-disable import/no-import-module-exports */
+
 import setOptionsAndReturnOpenGraphResults from './lib/openGraphScraper';
 import type {
   ErrorResult,
@@ -39,7 +39,7 @@ async function run(options: OpenGraphScraperOptions): Promise<ErrorResult | Succ
       response: undefined,
       html: undefined,
     };
-    // eslint-disable-next-line @typescript-eslint/no-throw-literal
+    // eslint-disable-next-line @typescript-eslint/only-throw-error
     throw returnError;
   }
   const returnSuccess: SuccessResult = {

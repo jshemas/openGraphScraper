@@ -3,7 +3,6 @@ import { expect } from 'chai';
 import ogs from '../../index';
 
 // http://httpstat.us keeps going offline, we need to fine a replacement
-// eslint-disable-next-line mocha/no-skipped-tests
 describe.skip('statusCode', function () {
   context('when the site returns', function () {
     it('403', function () {
@@ -28,6 +27,7 @@ describe.skip('statusCode', function () {
           expect(response).to.eql(undefined);
         });
     });
+
     it('500', function () {
       return ogs({ url: 'http://httpstat.us/500' })
         .then(function () {

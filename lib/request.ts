@@ -164,7 +164,7 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
   let response;
   const requestDispatcher = createRequestDispatcher();
   try {
-    // eslint-disable-next-line no-control-regex
+
     const isLatin1 = /^[\u0000-\u00ff]{0,}$/;
 
     let url = options.url ?? '';

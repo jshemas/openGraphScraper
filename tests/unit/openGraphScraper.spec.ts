@@ -384,6 +384,7 @@ describe('return ogs', function () {
           .reply(200, basicHTML);
         sandbox.stub(chardet, 'detect').returns(false);
       });
+
       it('using promises', function () {
         return ogs({ url: 'www.test.com' })
           .then(function (data) {
