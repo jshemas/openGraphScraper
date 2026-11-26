@@ -31,13 +31,11 @@ export default [
         '@typescript-eslint/no-unsafe-return': 'warn',
         '@typescript-eslint/prefer-nullish-coalescing': 'warn',
         '@typescript-eslint/prefer-optional-chain': 'warn',
-        'import/no-named-as-default': 0,
         'max-len': ['error', {
           code: 120,
           ignoreStrings: true,
           ignoreTrailingComments: true,
-        }],
-        'no-param-reassign': 'off',
+        }]
       },
       settings: {
         'import/resolver': {
@@ -69,20 +67,13 @@ export default [
     rules: {
       '@typescript-eslint/ban-ts-comment': 'off',
       '@typescript-eslint/no-require-imports': 'off',
-      '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-unused-expressions': 0,
-      'func-names': 0,
-      'import/extensions': 0,
-      'import/no-unresolved': 0,
       'max-len': ['error', {
         code: 120,
         ignoreStrings: true,
         ignoreTrailingComments: true,
       }],
       'no-console': 0,
-      'no-param-reassign': 'off',
-      'no-unused-expressions': 0,
-      'prefer-arrow-callback': 0,
       'promise/always-return': 0,
     },
   },
