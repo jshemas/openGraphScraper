@@ -58,7 +58,8 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
             ogObject[fieldName] = imageValues;
           }
         } else if (
-          item.fieldName === 'musicSongDisc'
+          item.fieldName === 'musicMusician'
+          || item.fieldName === 'musicSongDisc'
           || item.fieldName === 'musicSongProperty'
           || item.fieldName === 'musicSongTrack'
           || item.fieldName === 'musicSongUrl'

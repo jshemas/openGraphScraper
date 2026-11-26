@@ -235,7 +235,10 @@ describe('static check meta tags', function () {
         }]);
         expect(data.result.ogSiteName).to.be.eql('Spotify');
         expect(data.result.fbAppId).to.be.eql('174829003346');
-        expect(data.result.musicMusician).to.be.eql('http://open.spotify.com/artist/0oSGxfWSnnOXhD2fKuz2Gy');
+        expect(data.result.musicMusician).to.be.eql([
+          'http://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d',
+          'http://open.spotify.com/artist/0oSGxfWSnnOXhD2fKuz2Gy'
+        ]);
         expect(data.result.musicAlbum).to.be.eql('http://open.spotify.com/album/7rq68qYz66mNdPfidhIEFa');
         expect(data.result.musicAlbumTrack).to.be.eql('2');
         expect(data.result.musicDuration).to.be.eql('236');

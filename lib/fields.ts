@@ -419,7 +419,7 @@ const fields: Fields = [
     fieldName: 'musicSongUrl',
   },
   {
-    multiple: false,
+    multiple: true,
     property: 'music:musician',
     fieldName: 'musicMusician',
   },

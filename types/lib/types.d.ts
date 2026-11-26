@@ -190,7 +190,7 @@ export interface OgObjectInternal {
     musicAlbumUrl?: string;
     musicCreator?: string;
     musicDuration?: string;
-    musicMusician?: string;
+    musicMusician?: string[];
     musicPlaylist?: string;
     musicRadioStation?: string;
     musicReleaseDate?: string;
