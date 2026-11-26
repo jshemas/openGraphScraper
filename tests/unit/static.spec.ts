@@ -63,6 +63,7 @@ describe('static check meta tags', function () {
   });
 
   it('basic metadata', function () {
+    // https://ogp.me/
     const metaHTML = `<html><head>
       <title>The Rock (1996)</title>
       <meta property="og:title" content="The Rock" />
@@ -92,6 +93,7 @@ describe('static check meta tags', function () {
   });
 
   it('optional metadata', function () {
+    // https://ogp.me/
     const metaHTML = `<html><head>
       <meta property="og:audio" content="https://example.com/bond/theme.mp3" />
       <meta property="og:description" content="Sean Connery found fame and fortune as the suave, sophisticated British agent, James Bond." />
@@ -178,6 +180,7 @@ describe('static check meta tags', function () {
   });
 
   it('audio - ogp example', function () {
+    // https://ogp.me/
     const metaHTML = `<html><head>
       <meta property="og:audio" content="http://example.com/sound.mp3" />
       <meta property="og:audio:secure_url" content="https://secure.example.com/sound.mp3" />
@@ -195,6 +198,47 @@ describe('static check meta tags', function () {
         expect(data.result.ogAudio).to.be.eql('http://example.com/sound.mp3');
         expect(data.result.ogAudioSecureURL).to.be.eql('https://secure.example.com/sound.mp3');
         expect(data.result.ogAudioType).to.be.eql('audio/mpeg');
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
+  it('audio - facebook example - song', function () {
+    // https://developers.facebook.com/docs/opengraph/music/
+    const metaHTML = `<html><head>
+      <meta property="og:title" content="Under Pressure"/>
+      <meta property="og:type" content="music.song"/>
+      <meta property="og:url" content="http://open.spotify.com/track/2aSFLiDPreOVP6KHiWk4lF"/>
+      <meta property="og:image" content="http://o.scdn.co/image/e4c7b06c20c17156e46bbe9a71eb0703281cf345"/>
+      <meta property="og:site_name" content="Spotify"/>
+      <meta property="fb:app_id" content="174829003346"/>
+      <meta property="music:musician" content="http://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d">
+      <meta property="music:musician" content="http://open.spotify.com/artist/0oSGxfWSnnOXhD2fKuz2Gy">
+      <meta property="music:album" content="http://open.spotify.com/album/7rq68qYz66mNdPfidhIEFa">
+      <meta property="music:album:track" content="2">
+      <meta property="music:duration" content="236">
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.ogTitle).to.be.eql('Under Pressure');
+        expect(data.result.ogType).to.be.eql('music.song');
+        expect(data.result.ogUrl).to.be.eql('http://open.spotify.com/track/2aSFLiDPreOVP6KHiWk4lF');
+        expect(data.result.ogImage).to.be.eql([{
+          url: 'http://o.scdn.co/image/e4c7b06c20c17156e46bbe9a71eb0703281cf345',
+        }]);
+        expect(data.result.ogSiteName).to.be.eql('Spotify');
+        expect(data.result.fbAppId).to.be.eql('174829003346');
+        expect(data.result.musicMusician).to.be.eql('http://open.spotify.com/artist/0oSGxfWSnnOXhD2fKuz2Gy');
+        expect(data.result.musicAlbum).to.be.eql('http://open.spotify.com/album/7rq68qYz66mNdPfidhIEFa');
+        expect(data.result.musicAlbumTrack).to.be.eql('2');
+        expect(data.result.musicDuration).to.be.eql('236');
         expect(data.html).to.be.eql(metaHTML);
         expect(data.response).to.be.a('response');
       });
@@ -231,6 +275,7 @@ describe('static check meta tags', function () {
   });
 
   it('image - ogp example', function () {
+    // https://ogp.me/
     const metaHTML = `<html><head>
       <meta property="og:image" content="http://example.com/ogp.jpg" />
       <meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" />
@@ -433,6 +478,7 @@ describe('static check meta tags', function () {
   });
 
   it('video - ogp example', function () {
+    // https://ogp.me/
     const metaHTML = `<html><head>
       <meta property="og:video" content="http://example.com/movie.swf" />
       <meta property="og:video:secure_url" content="https://secure.example.com/movie.swf" />
