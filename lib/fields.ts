@@ -630,6 +630,41 @@ const fields: Fields = [
   },
   {
     multiple: false,
+    property: 'business:contact_data:email',
+    fieldName: 'businessContactDataEmail',
+  },
+  {
+    multiple: false,
+    property: 'business:contact_data:phone_number',
+    fieldName: 'businessContactDataPhoneNumber',
+  },
+  {
+    multiple: false,
+    property: 'business:contact_data:fax_number',
+    fieldName: 'businessContactDataFaxNumber',
+  },
+  {
+    multiple: false,
+    property: 'business:contact_data:website',
+    fieldName: 'businessContactDataWebsite',
+  },
+  {
+    multiple: false,
+    property: 'business:hours:day',
+    fieldName: 'businessHoursDay',
+  },
+  {
+    multiple: false,
+    property: 'business:hours:start',
+    fieldName: 'businessHoursStart',
+  },
+  {
+    multiple: false,
+    property: 'business:hours:end',
+    fieldName: 'businessHoursEnd',
+  },
+  {
+    multiple: false,
     property: 'restaurant:menu',
     fieldName: 'restaurantMenu',
   },

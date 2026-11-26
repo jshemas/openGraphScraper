@@ -168,10 +168,17 @@ export interface OgObjectInternal {
   booksRatingValue?: string;
   bookTag?: string;
   businessContactDataCountryName?: string;
+  businessContactDataEmail?: string;
+  businessContactDataFaxNumber?: string;
   businessContactDataLocality?: string;
+  businessContactDataPhoneNumber?: string;
   businessContactDataPostalCode?: string;
   businessContactDataRegion?: string;
   businessContactDataStreetAddress?: string;
+  businessContactDataWebsite?: string;
+  businessHoursDay?: string;
+  businessHoursEnd?: string;
+  businessHoursStart?: string;
   charset?: string;
   customMetaTags?: Record<string, string | string[]>
   dcContributor?: string;
