@@ -948,6 +948,66 @@ const fields: Fields = [
     property: 'fb:app_id',
     fieldName: 'fbAppId',
   },
+  {
+    multiple: false,
+    property: 'og:latitude',
+    fieldName: 'ogLatitude',
+  },
+  {
+    multiple: false,
+    property: 'og:longitude',
+    fieldName: 'ogLongitude',
+  },
+  {
+    multiple: false,
+    property: 'og:street-address',
+    fieldName: 'ogStreetAddress',
+  },
+  {
+    multiple: false,
+    property: 'og:locality',
+    fieldName: 'ogLocality',
+  },
+  {
+    multiple: false,
+    property: 'og:region',
+    fieldName: 'ogRegion',
+  },
+  {
+    multiple: false,
+    property: 'og:postal-code',
+    fieldName: 'ogPostalCode',
+  },
+  {
+    multiple: false,
+    property: 'og:country-name',
+    fieldName: 'ogCountryName',
+  },
+  {
+    multiple: false,
+    property: 'og:email',
+    fieldName: 'ogEmail',
+  },
+  {
+    multiple: false,
+    property: 'og:phone_number',
+    fieldName: 'ogPhoneNumber',
+  },
+  {
+    multiple: false,
+    property: 'og:fax_number',
+    fieldName: 'ogFaxNumber',
+  },
+  {
+    multiple: false,
+    property: 'og:isbn',
+    fieldName: 'ogIsbn',
+  },
+  {
+    multiple: false,
+    property: 'og:upc',
+    fieldName: 'ogUpc',
+  },
 ];
 
 export default fields;
