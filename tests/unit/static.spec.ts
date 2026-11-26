@@ -61,6 +61,67 @@ describe('static check meta tags', function () {
       });
   });
 
+  it('basic metadata', function () {
+    const metaHTML = `<html><head>
+      <title>The Rock (1996)</title>
+      <meta property="og:title" content="The Rock" />
+      <meta property="og:type" content="video.movie" />
+      <meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
+      <meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.ogTitle).to.be.eql('The Rock');
+        expect(data.result.ogType).to.be.eql('video.movie');
+        expect(data.result.ogUrl).to.be.eql('https://www.imdb.com/title/tt0117500/');
+        expect(data.result.ogImage).to.be.eql([{
+          url: 'https://ia.media-imdb.com/images/rock.jpg',
+          type: 'jpg',
+        }]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
+  it('optional metadata', function () {
+    const metaHTML = `<html><head>
+      <meta property="og:audio" content="https://example.com/bond/theme.mp3" />
+      <meta property="og:description" content="Sean Connery found fame and fortune as the suave, sophisticated British agent, James Bond." />
+      <meta property="og:determiner" content="the" />
+      <meta property="og:locale" content="en_GB" />
+      <meta property="og:locale:alternate" content="fr_FR" />
+      <meta property="og:locale:alternate" content="es_ES" />
+      <meta property="og:site_name" content="IMDb" />
+      <meta property="og:video" content="https://example.com/bond/trailer.swf" />
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.ogAudio).to.be.eql('https://example.com/bond/theme.mp3');
+        expect(data.result.ogDescription).to.be.eql('Sean Connery found fame and fortune as the suave, sophisticated British agent, James Bond.');
+        expect(data.result.ogDeterminer).to.be.eql('the');
+        expect(data.result.ogLocale).to.be.eql('en_GB');
+        expect(data.result.ogLocaleAlternate).to.be.eql('es_ES');
+        expect(data.result.ogSiteName).to.be.eql('IMDb');
+        expect(data.result.ogVideo).to.be.eql([ { url: 'https://example.com/bond/trailer.swf' } ]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
   it('article', function () {
     const metaHTML = `<html><head>
       <meta property="article:author" content="foo">
