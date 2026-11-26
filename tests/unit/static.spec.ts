@@ -247,6 +247,112 @@ describe('static check meta tags', function () {
       });
   });
 
+  it('audio - facebook example - album', function () {
+    // https://developers.facebook.com/docs/opengraph/music/
+    const metaHTML = `<html><head>
+      <meta property="og:title" content="Greatest Hits II"/>
+      <meta property="og:type" content="music.album"/>
+      <meta property="og:url" content="http://open.spotify.com/album/7rq68qYz66mNdPfidhIEFa"/>
+      <meta property="og:image" content="http://o.scdn.co/image/e4c7b06c20c17156e46bbe9a71eb0703281cf345"/>
+      <meta property="og:site_name" content="Spotify"/>
+      <meta property="fb:app_id" content="174829003346"/>
+      <meta property="og:description" content="Greatest Hits II, an album by Queen on Spotify."/>
+      <meta property="music:release_date" content="2011-04-19">     
+      <meta property="music:musician" content="http://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d">
+      <meta property="music:song" content="http://open.spotify.com/track/0pfHfdUNVwlXA0WDXznm2C">
+      <meta property="music:song:disc" content="1">
+      <meta property="music:song:track" content="1">     
+      <meta property="music:song" content="http://open.spotify.com/track/2aSFLiDPreOVP6KHiWk4lF">
+      <meta property="music:song:disc" content="1">
+      <meta property="music:song:track" content="2">
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.ogTitle).to.be.eql('Greatest Hits II');
+        expect(data.result.ogType).to.be.eql('music.album');
+        expect(data.result.ogUrl).to.be.eql('http://open.spotify.com/album/7rq68qYz66mNdPfidhIEFa');
+        expect(data.result.ogImage).to.be.eql([{
+          url: 'http://o.scdn.co/image/e4c7b06c20c17156e46bbe9a71eb0703281cf345',
+        }]);
+        expect(data.result.ogSiteName).to.be.eql('Spotify');
+        expect(data.result.fbAppId).to.be.eql('174829003346');
+        expect(data.result.musicMusician).to.be.eql(['http://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d']);
+        expect(data.result.musicSong).to.be.eql([
+        {
+          "disc": "1",
+          "track": "1",
+          "url": "http://open.spotify.com/track/0pfHfdUNVwlXA0WDXznm2C"
+        },
+        {
+          "disc": "1",
+          "track": "2",
+          "url": "http://open.spotify.com/track/2aSFLiDPreOVP6KHiWk4lF"
+        }
+        ]);
+        expect(data.result.musicReleaseDate).to.be.eql('2011-04-19');
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
+  it('audio - facebook example - playlists', function () {
+    // https://developers.facebook.com/docs/opengraph/music/
+    const metaHTML = `<html><head>
+      <meta property="og:title" content="on repeat"/>
+      <meta property="og:type" content="music.playlist"/>
+      <meta property="og:url" content="http://open.spotify.com/user/austinhaugen/playlist/1a8444uyNXVOpwtFdgakhv"/>
+      <meta property="og:image" content="http://o.scdn.co/300/756df3afcb3d14cb362448b68ed2f5506479f313"/>
+      <meta property="og:site_name" content="Spotify"/>
+      <meta property="fb:app_id" content="174829003346"/>
+      <meta property="music:creator" content="http://open.spotify.com/user/austinhaugen"/>
+      <link rel="opengraph" href={DESTINATION_URL}/>
+      <meta property="og:type" content="metadata"/>
+      <link rel="origin" href={SOURCE_URL}/>
+      <meta property="music:song" content="http://open.spotify.com/track/3yM53DMMIioxVy7Pha1hD0">
+      <meta property="music:song:track" content="1">     
+      <meta property="music:song" content="http://open.spotify.com/track/4vVYPpGmuNowTTqof3k2wP">
+      <meta property="music:song:track" content="2"> 
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.ogTitle).to.be.eql('on repeat');
+        expect(data.result.ogType).to.be.eql('metadata');
+        expect(data.result.ogUrl).to.be.eql('http://open.spotify.com/user/austinhaugen/playlist/1a8444uyNXVOpwtFdgakhv');
+        expect(data.result.ogImage).to.be.eql([{
+          url: 'http://o.scdn.co/300/756df3afcb3d14cb362448b68ed2f5506479f313',
+        }]);
+        expect(data.result.ogSiteName).to.be.eql('Spotify');
+        expect(data.result.fbAppId).to.be.eql('174829003346');
+        expect(data.result.musicCreator).to.be.eql('http://open.spotify.com/user/austinhaugen');
+        expect(data.result.musicSong).to.be.eql([
+        {
+          "track": "1",
+          "url": "http://open.spotify.com/track/3yM53DMMIioxVy7Pha1hD0"
+        },
+        {
+          "track": "2",
+          "url": "http://open.spotify.com/track/4vVYPpGmuNowTTqof3k2wP"
+        }
+        ]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
   it('image', function () {
     const metaHTML = `<html><head>
       <meta property="og:image" content="http://foobar.png">
