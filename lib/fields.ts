@@ -109,7 +109,7 @@ const fields: Fields = [
     fieldName: 'ogLocale',
   },
   {
-    multiple: false,
+    multiple: true,
     property: 'og:locale:alternate',
     fieldName: 'ogLocaleAlternate',
   },

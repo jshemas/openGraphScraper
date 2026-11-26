@@ -229,7 +229,7 @@ export interface OgObjectInternal {
     ogIsbn?: string;
     ogLatitude?: string;
     ogLocale?: string;
-    ogLocaleAlternate?: string;
+    ogLocaleAlternate?: string[];
     ogLocality?: string;
     ogLogo?: string;
     ogLongitude?: string;

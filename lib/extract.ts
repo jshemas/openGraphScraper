@@ -65,6 +65,7 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
           || item.fieldName === 'ogImageProperty'
           || item.fieldName === 'ogImageSecureURL'
           || item.fieldName === 'ogImageURL'
+          || item.fieldName === 'ogLocaleAlternate'
           || item.fieldName === 'ogVideoHeight'
           || item.fieldName === 'ogVideoProperty'
           || item.fieldName === 'ogVideoType'

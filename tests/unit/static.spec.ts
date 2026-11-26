@@ -115,7 +115,7 @@ describe('static check meta tags', function () {
         expect(data.result.ogDescription).to.be.eql('Sean Connery found fame and fortune as the suave, sophisticated British agent, James Bond.');
         expect(data.result.ogDeterminer).to.be.eql('the');
         expect(data.result.ogLocale).to.be.eql('en_GB');
-        expect(data.result.ogLocaleAlternate).to.be.eql('es_ES');
+        expect(data.result.ogLocaleAlternate).to.be.eql(['fr_FR', 'es_ES']);
         expect(data.result.ogSiteName).to.be.eql('IMDb');
         expect(data.result.ogVideo).to.be.eql([ { url: 'https://example.com/bond/trailer.swf' } ]);
         expect(data.html).to.be.eql(metaHTML);

@@ -1779,7 +1779,7 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('Kickstarter');
         expect(result.ogDescription).to.be.eql('LVL is a wearable hydration monitor that gives you the complete picture of your health by also tracking activity, sleep, mood and HR.');
         expect(result.ogLocale).to.be.eql('en_US');
-        expect(result.ogLocaleAlternate).to.be.eql('fr_FR');
+        expect(result.ogLocaleAlternate).to.be.eql([ 'en_US', 'de_DE', 'es_ES', 'fr_FR' ]);
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.ogDate).to.be.eql('2016-10-26T23:00:00-04:00');
         expect(result.twitterSite).to.be.eql('@kickstarter');
