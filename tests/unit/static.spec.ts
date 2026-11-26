@@ -177,6 +177,29 @@ describe('static check meta tags', function () {
       });
   });
 
+  it('audio - ogp example', function () {
+    const metaHTML = `<html><head>
+      <meta property="og:audio" content="http://example.com/sound.mp3" />
+      <meta property="og:audio:secure_url" content="https://secure.example.com/sound.mp3" />
+      <meta property="og:audio:type" content="audio/mpeg" />
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.ogAudio).to.be.eql('http://example.com/sound.mp3');
+        expect(data.result.ogAudioSecureURL).to.be.eql('https://secure.example.com/sound.mp3');
+        expect(data.result.ogAudioType).to.be.eql('audio/mpeg');
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
   it('image', function () {
     const metaHTML = `<html><head>
       <meta property="og:image" content="http://foobar.png">
@@ -201,6 +224,36 @@ describe('static check meta tags', function () {
           height: '2',
           type: 'image/png',
           alt: 'alt text',
+        }]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
+  it('image - ogp example', function () {
+    const metaHTML = `<html><head>
+      <meta property="og:image" content="http://example.com/ogp.jpg" />
+      <meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" />
+      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:width" content="400" />
+      <meta property="og:image:height" content="300" />
+      <meta property="og:image:alt" content="A shiny red apple with a bite taken out" />
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.ogImage).to.be.eql([{
+          url: 'https://secure.example.com/ogp.jpg',
+          width: '400',
+          height: '300',
+          type: 'image/jpeg',
+          alt: 'A shiny red apple with a bite taken out',
         }]);
         expect(data.html).to.be.eql(metaHTML);
         expect(data.response).to.be.a('response');
@@ -346,6 +399,34 @@ describe('static check meta tags', function () {
           width: '1',
           height: '2',
           type: 'text/bar',
+        }]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
+  it('video - ogp example', function () {
+    const metaHTML = `<html><head>
+      <meta property="og:video" content="http://example.com/movie.swf" />
+      <meta property="og:video:secure_url" content="https://secure.example.com/movie.swf" />
+      <meta property="og:video:type" content="application/x-shockwave-flash" />
+      <meta property="og:video:width" content="400" />
+      <meta property="og:video:height" content="300" />
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.ogVideo).to.be.eql([{
+          url: 'http://example.com/movie.swf',
+          width: '400',
+          height: '300',
+          type: 'application/x-shockwave-flash',
         }]);
         expect(data.html).to.be.eql(metaHTML);
         expect(data.response).to.be.a('response');
