@@ -132,7 +132,8 @@ describe('static check meta tags', function () {
       <meta property="article:modified_time" content="2000-01-02">
       <meta property="article:published_time" content="2000-01-01">
       <meta property="article:section" content="bar">
-      <meta property="article:tag" content="foobar">
+      <meta property="article:tag" content="foofoo">
+      <meta property="article:tag" content="barbar">
       <meta property="og:type" content="article">
     </head></html>`;
 
@@ -149,7 +150,7 @@ describe('static check meta tags', function () {
         expect(data.result.articleModifiedTime).to.be.eql('2000-01-02');
         expect(data.result.articlePublishedTime).to.be.eql('2000-01-01');
         expect(data.result.articleSection).to.be.eql('bar');
-        expect(data.result.articleTag).to.be.eql('foobar');
+        expect(data.result.articleTag).to.be.eql(['foofoo', 'barbar']);
         expect(data.result.ogType).to.be.eql('article');
         expect(data.html).to.be.eql(metaHTML);
         expect(data.response).to.be.a('response');

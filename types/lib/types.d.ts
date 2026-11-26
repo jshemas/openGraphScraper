@@ -143,7 +143,7 @@ export interface OgObjectInternal {
     articlePublishedTime?: string;
     articlePublisher?: string;
     articleSection?: string;
-    articleTag?: string;
+    articleTag?: string[];
     author?: string;
     bookAuthor?: string;
     bookCanonicalName?: string;

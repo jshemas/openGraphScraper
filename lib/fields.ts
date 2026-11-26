@@ -499,7 +499,7 @@ const fields: Fields = [
     fieldName: 'articleSection',
   },
   {
-    multiple: false,
+    multiple: true,
     property: 'article:tag',
     fieldName: 'articleTag',
   },
