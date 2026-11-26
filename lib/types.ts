@@ -274,7 +274,7 @@ export interface OgObjectInternal {
   ogVideoOther?: string;
   ogVideoProperty?: string[];
   ogVideoReleaseDate?: string;
-  ogVideoSecureURL?: string;
+  ogVideoSecureURL?: string[];
   ogVideoSeries?: string;
   ogVideoTag?: string;
   ogVideoTvShow?: string;
@@ -354,6 +354,7 @@ OgObjectInternal,
 'ogImageWidth' |
 'ogVideoHeight' |
 'ogVideoProperty' |
+'ogVideoSecureURL' |
 'ogVideoType' |
 'ogVideoWidth' |
 'twitterImageAlt' |

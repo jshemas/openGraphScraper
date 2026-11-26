@@ -169,7 +169,7 @@ const fields: Fields = [
     fieldName: 'ogVideoProperty',
   },
   {
-    multiple: false,
+    multiple: true,
     property: 'og:video:secure_url',
     fieldName: 'ogVideoSecureURL',
   },

@@ -123,8 +123,19 @@ export function mediaSetup(ogObject: OgObjectInternal) {
     .sort(mediaSorter);
 
   // sets ogVideo property/width/height/type to empty array if one these exists
-  if (ogObject.ogVideoProperty ?? ogObject.ogVideoWidth ?? ogObject.ogVideoHeight ?? ogObject.ogVideoType) {
+  if (
+    ogObject.ogVideoSecureURL
+    ?? ogObject.ogVideoProperty
+    ?? ogObject.ogVideoWidth
+    ?? ogObject.ogVideoHeight
+    ?? ogObject.ogVideoType
+  ) {
+    ogObject.ogVideoSecureURL = ogObject.ogVideoSecureURL ?? [];
     ogObject.ogVideoProperty = ogObject.ogVideoProperty ?? [];
+    // set ogVideoProperty to ogVideoSecureURL if it exists
+    // eslint-disable-next-line max-len
+    ogObject.ogVideoProperty = (ogObject.ogVideoSecureURL.length !== 0) ? ogObject.ogVideoSecureURL : ogObject.ogVideoProperty;
+
     ogObject.ogVideoWidth = ogObject.ogVideoWidth ?? [];
     ogObject.ogVideoHeight = ogObject.ogVideoHeight ?? [];
     ogObject.ogVideoType = ogObject.ogVideoType ?? [];
@@ -151,7 +162,6 @@ export function mediaSetup(ogObject: OgObjectInternal) {
     ?? ogObject.twitterImageAlt
   ) {
     ogObject.twitterImageSrc = ogObject.twitterImageSrc ?? [];
-     
     ogObject.twitterImageProperty = ogObject.twitterImageProperty ?? ogObject.twitterImageSrc; // deafult to twitterImageSrc
     ogObject.twitterImageWidth = ogObject.twitterImageWidth ?? [];
     ogObject.twitterImageHeight = ogObject.twitterImageHeight ?? [];

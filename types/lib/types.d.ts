@@ -260,7 +260,7 @@ export interface OgObjectInternal {
     ogVideoOther?: string;
     ogVideoProperty?: string[];
     ogVideoReleaseDate?: string;
-    ogVideoSecureURL?: string;
+    ogVideoSecureURL?: string[];
     ogVideoSeries?: string;
     ogVideoTag?: string;
     ogVideoTvShow?: string;
@@ -323,4 +323,4 @@ export interface OgObjectInternal {
     twitterUrl?: string;
     updatedTime?: string;
 }
-export type OgObject = Omit<OgObjectInternal, 'musicSongDisc' | 'musicSongProperty' | 'musicSongTrack' | 'musicSongUrl' | 'ogImageAlt' | 'ogImageHeight' | 'ogImageProperty' | 'ogImageSecureURL' | 'ogImageType' | 'ogImageURL' | 'ogImageWidth' | 'ogVideoHeight' | 'ogVideoProperty' | 'ogVideoType' | 'ogVideoWidth' | 'twitterImageAlt' | 'twitterImageHeight' | 'twitterImageProperty' | 'twitterImageSrc' | 'twitterImageWidth' | 'twitterPlayerHeight' | 'twitterPlayerProperty' | 'twitterPlayerStream' | 'twitterPlayerWidth'>;
+export type OgObject = Omit<OgObjectInternal, 'musicSongDisc' | 'musicSongProperty' | 'musicSongTrack' | 'musicSongUrl' | 'ogImageAlt' | 'ogImageHeight' | 'ogImageProperty' | 'ogImageSecureURL' | 'ogImageType' | 'ogImageURL' | 'ogImageWidth' | 'ogVideoHeight' | 'ogVideoProperty' | 'ogVideoSecureURL' | 'ogVideoType' | 'ogVideoWidth' | 'twitterImageAlt' | 'twitterImageHeight' | 'twitterImageProperty' | 'twitterImageSrc' | 'twitterImageWidth' | 'twitterPlayerHeight' | 'twitterPlayerProperty' | 'twitterPlayerStream' | 'twitterPlayerWidth'>;

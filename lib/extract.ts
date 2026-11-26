@@ -68,6 +68,7 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
           || item.fieldName === 'ogLocaleAlternate'
           || item.fieldName === 'ogVideoHeight'
           || item.fieldName === 'ogVideoProperty'
+          || item.fieldName === 'ogVideoSecureURL'
           || item.fieldName === 'ogVideoType'
           || item.fieldName === 'ogVideoWidth'
           || item.fieldName === 'twitterImageAlt'

@@ -395,6 +395,33 @@ describe('static check meta tags', function () {
         expect(data.result.success).to.be.eql(true);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.ogVideo).to.be.eql([{
+          url: 'https://www.foo.com',
+          width: '1',
+          height: '2',
+          type: 'text/bar',
+        }]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
+  it('video - non-secure', function () {
+    const metaHTML = `<html><head>
+      <meta property="og:video:height" content="2">
+      <meta property="og:video:type" content="text/bar">
+      <meta property="og:video:url" content="http://www.foo.com">
+      <meta property="og:video:width" content="1">
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.ogVideo).to.be.eql([{
           url: 'http://www.foo.com',
           width: '1',
           height: '2',
@@ -423,7 +450,7 @@ describe('static check meta tags', function () {
         expect(data.result.success).to.be.eql(true);
         expect(data.result.requestUrl).to.be.eql('http://www.test.com');
         expect(data.result.ogVideo).to.be.eql([{
-          url: 'http://example.com/movie.swf',
+          url: 'https://secure.example.com/movie.swf',
           width: '400',
           height: '300',
           type: 'application/x-shockwave-flash',
