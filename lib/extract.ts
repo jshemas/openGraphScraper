@@ -7,6 +7,8 @@ import { unescapeScriptText } from './utils';
 
 import type { OgObjectInternal, OpenGraphScraperOptions } from './types';
 
+type OgImageStructuredField = 'ogImageAlt' | 'ogImageHeight' | 'ogImageType' | 'ogImageWidth';
+
 /**
  * extract all of the meta tags needed for ogs
  *
@@ -19,6 +21,8 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
   let ogObject: OgObjectInternal = { success: true };
   const $ = load(body);
   const metaFields = fields;
+  let ogImageRootIndex = -1;
+  let lastOgImageRootField: 'ogImageProperty' | 'ogImageURL' | undefined;
 
   // find all of the open graph info in the meta tags
   $('meta').each((index, meta) => {
@@ -27,19 +31,40 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
     const content: any = meta.attribs.content || meta.attribs.value;
     metaFields.forEach((item) => {
       if (item && property.toLowerCase() === item.property.toLowerCase()) {
-        // check if fieldName is one of mediaMapperProperties
-        if (
+        if (item.fieldName === 'ogImageProperty' || item.fieldName === 'ogImageURL') {
+          const previousRootValues = lastOgImageRootField === 'ogImageProperty'
+            ? ogObject.ogImageProperty
+            : ogObject.ogImageURL;
+          const previousRootValue = previousRootValues?.[previousRootValues.length - 1];
+          const isAliasOfPreviousRoot = lastOgImageRootField !== undefined
+            && lastOgImageRootField !== item.fieldName
+            && previousRootValue === content;
+
+          if (!isAliasOfPreviousRoot) ogImageRootIndex += 1;
+          lastOgImageRootField = item.fieldName;
+        }
+
+        const isOgImageStructuredProperty = item.fieldName === 'ogImageAlt'
+          || item.fieldName === 'ogImageHeight'
+          || item.fieldName === 'ogImageType'
+          || item.fieldName === 'ogImageWidth';
+
+        // Structured image properties are associated with the most recent image root.
+        if (isOgImageStructuredProperty) {
+          if (ogImageRootIndex >= 0) {
+            const fieldName = item.fieldName as OgImageStructuredField;
+            const imageValues = ogObject[fieldName] ?? [];
+            imageValues[ogImageRootIndex] = content;
+            ogObject[fieldName] = imageValues;
+          }
+        } else if (
           item.fieldName === 'musicSongDisc'
           || item.fieldName === 'musicSongProperty'
           || item.fieldName === 'musicSongTrack'
           || item.fieldName === 'musicSongUrl'
-          || item.fieldName === 'ogImageAlt'
-          || item.fieldName === 'ogImageHeight'
           || item.fieldName === 'ogImageProperty'
           || item.fieldName === 'ogImageSecureURL'
-          || item.fieldName === 'ogImageType'
           || item.fieldName === 'ogImageURL'
-          || item.fieldName === 'ogImageWidth'
           || item.fieldName === 'ogVideoHeight'
           || item.fieldName === 'ogVideoProperty'
           || item.fieldName === 'ogVideoType'

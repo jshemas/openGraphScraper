@@ -117,10 +117,10 @@ describe('static check meta tags', function () {
 
   it('image', function () {
     const metaHTML = `<html><head>
+      <meta property="og:image" content="http://foobar.png">
       <meta property="og:image:height" content="2">
       <meta property="og:image:type" content="image/png">
       <meta property="og:image:width" content="1">
-      <meta property="og:image" content="http://foobar.png">
       <meta property="og:image:alt" content="alt text">
       <meta property="og:image:secure_url" content="https://foobar.png">
     </head></html>`;
@@ -139,6 +139,72 @@ describe('static check meta tags', function () {
           height: '2',
           type: 'image/png',
           alt: 'alt text',
+        }]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
+  it('image - real example', function () {
+    const metaHTML = `<html><head>
+      <meta content="https://foobar.com/7u-snap-image" property="og:image">
+      <meta content="https://foobar.com/7u-snap-image" property="og:image:url">
+      <meta content="1200" property="og:image:width">
+      <meta content="630" property="og:image:height">
+      <meta content="image/jpeg" property="og:image:type">
+      <meta content="FILE - In this Oct. 8, 2014, file photo." property="og:image:alt">
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.ogImage).to.be.eql([{
+          url: 'https://foobar.com/7u-snap-image',
+          width: '1200',
+          height: '630',
+          type: 'image/jpeg',
+          alt: 'FILE - In this Oct. 8, 2014, file photo.',
+        }]);
+        expect(data.html).to.be.eql(metaHTML);
+        expect(data.response).to.be.a('response');
+      });
+  });
+
+  it('image - array', function () {
+    const metaHTML = `<html><head>
+      <meta property="og:image" content="https://example.com/rock.jpg" />
+      <meta property="og:image:width" content="300" />
+      <meta property="og:image:height" content="300" />
+      <meta property="og:image" content="https://example.com/rock2.jpg" />
+      <meta property="og:image" content="https://example.com/rock3.jpg" />
+      <meta property="og:image:height" content="1000" />
+    </head></html>`;
+
+    mockAgent.get('http://www.test.com')
+      .intercept({ path: '/' })
+      .reply(200, metaHTML);
+
+    return ogs({ url: 'www.test.com' })
+      .then(function (data) {
+        expect(data.result.success).to.be.eql(true);
+        expect(data.result.requestUrl).to.be.eql('http://www.test.com');
+        expect(data.result.ogImage).to.be.eql([{
+          url: 'https://example.com/rock3.jpg',
+          type: 'jpg',
+          height: '1000',
+        },{
+          url: 'https://example.com/rock.jpg',
+          type: 'jpg',
+          width: '300',
+          height: '300',
+        }, {
+          url: 'https://example.com/rock2.jpg',
+          type: 'jpg',
         }]);
         expect(data.html).to.be.eql(metaHTML);
         expect(data.response).to.be.a('response');
