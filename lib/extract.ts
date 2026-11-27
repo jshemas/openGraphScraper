@@ -31,7 +31,7 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
     const content = meta.attribs.content || meta.attribs.value;
     if (content === undefined) return;
     metaFields.forEach((item) => {
-      if (item && property.toLowerCase() === item.property.toLowerCase()) {
+      if (property.toLowerCase() === item?.property.toLowerCase()) {
         if (item.fieldName === 'ogImageProperty' || item.fieldName === 'ogImageURL') {
           const previousRootValues = lastOgImageRootField === 'ogImageProperty'
             ? ogObject.ogImageProperty
@@ -98,7 +98,7 @@ export default function extractMetaTags(body: string, options: OpenGraphScraperO
     if (options.customMetaTags) {
       options.customMetaTags.forEach((item) => {
         ogObject.customMetaTags ??= {};
-        if (item && property.toLowerCase() === item.property.toLowerCase()) {
+        if (property.toLowerCase() === item?.property.toLowerCase()) {
           if (!item.multiple) {
             ogObject.customMetaTags[item.fieldName] = content;
           } else if (!ogObject.customMetaTags[item.fieldName]) {
