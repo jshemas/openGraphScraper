@@ -1,6 +1,6 @@
 {
   "name": "open-graph-scraper",
-  "description": "Node.js scraper module for Open Graph and Twitter Card info",
+  "description": "A Node.js library for extracting Open Graph, Twitter Card, JSON-LD, and other metadata from web pages",
   "version": "6.13.0",
   "license": "MIT",
   "main": "./dist/cjs/index.js",
@@ -71,11 +71,16 @@
     "web": "http://github.com/jshemas/openGraphScraper"
   },
   "keywords": [
-    "app links",
-    "dublin core",
+    "app-links",
+    "dublin-core",
+    "html",
+    "html metadata",
     "json ld",
+    "link preview",
     "meta tags",
     "metadata",
+    "node",
+    "nodejs",
     "og",
     "ogp",
     "ogs",
@@ -83,9 +88,15 @@
     "open graph",
     "opengraph",
     "openGraphScraper",
+    "rich previews",
     "scraper",
+    "social media",
+    "social metadata",
+    "structured data",
     "twitter card",
-    "twitter"
+    "twitter",
+    "web scraping",
+    "website preview"
   ],
   "snyk": true
 }
