@@ -9,27 +9,29 @@ import type {
   VideoObject,
 } from './types';
 
-const mediaMapperTwitterImage = (item: TwitterImageObject[]) => ({
+type MediaValues = [string, ...(string | undefined)[]];
+
+const mediaMapperTwitterImage = (item: MediaValues) => ({
   alt: item[3],
   height: item[2],
   url: item[0],
   width: item[1],
 });
 
-const mediaMapperTwitterPlayer = (item: TwitterPlayerObject[]) => ({
+const mediaMapperTwitterPlayer = (item: MediaValues) => ({
   height: item[2],
   stream: item[3],
   url: item[0],
   width: item[1],
 });
 
-const mediaMapperMusicSong = (item: MusicSongObject[]) => ({
+const mediaMapperMusicSong = (item: MediaValues) => ({
   disc: item[2],
   track: item[1],
   url: item[0],
 });
 
-const mediaMapper = (item: ImageObject[] | VideoObject[]) => ({
+const mediaMapper = (item: MediaValues) => ({
   height: item[2],
   type: item[3],
   url: item[0],
@@ -45,9 +47,9 @@ const mediaSorter = (
     return 0;
   }
 
-  const aRes = a.url.match(/\.(\w{2,5})$/);
+  const aRes = /\.(\w{2,5})$/.exec(a.url);
   const aExt = (aRes?.[1].toLowerCase()) ?? null;
-  const bRes = b.url.match(/\.(\w{2,5})$/);
+  const bRes = /\.(\w{2,5})$/.exec(b.url);
   const bExt = (bRes?.[1].toLowerCase()) ?? null;
 
   if (aExt === 'gif' && bExt !== 'gif') {
@@ -55,7 +57,8 @@ const mediaSorter = (
   } if (aExt !== 'gif' && bExt === 'gif') {
     return 1;
   }
-  return Math.max(b.width ?? 0, b.height ?? 0) - Math.max(a.width ?? 0, a.height ?? 0);
+  return Math.max(Number(b.width ?? 0), Number(b.height ?? 0))
+    - Math.max(Number(a.width ?? 0), Number(a.height ?? 0));
 };
 
 const mediaSorterMusicSong = (a: MusicSongObject, b: MusicSongObject) => {
@@ -66,14 +69,14 @@ const mediaSorterMusicSong = (a: MusicSongObject, b: MusicSongObject) => {
   } if ((a.disc ?? 0) < (b.disc ?? 0)) {
     return -1;
   }
-  return a.track - b.track;
+  return Number(a.track) - Number(b.track);
 };
 
 // lodash zip replacement
-const zip = (array: any, ...args: any) => {
+const zip = <T>(array: T[] | undefined, ...args: (T[] | undefined)[]): [T, ...(T | undefined)[]][] => {
   if (array === undefined) return [];
   return array
-    .map((value: any, idx: number) => [value, ...args.map((arr: []) => arr[idx])]);
+    .map((value, idx) => [value, ...args.map((arr) => arr?.[idx])]);
 };
 
 /**
@@ -95,18 +98,18 @@ export function mediaSetup(ogObject: OgObjectInternal) {
     ?? ogObject.ogImageType
     ?? ogObject.ogImageAlt
   ) {
-    ogObject.ogImageSecureURL = ogObject.ogImageSecureURL ? ogObject.ogImageSecureURL : [];
-    ogObject.ogImageURL = ogObject.ogImageURL ? ogObject.ogImageURL : [];
-    ogObject.ogImageProperty = ogObject.ogImageProperty ? ogObject.ogImageProperty : [];
+    ogObject.ogImageSecureURL = ogObject.ogImageSecureURL ?? [];
+    ogObject.ogImageURL = ogObject.ogImageURL ?? [];
+    ogObject.ogImageProperty = ogObject.ogImageProperty ?? [];
     // set ogImageProperty to ogImageSecureURL if it exists
     // eslint-disable-next-line max-len
     ogObject.ogImageProperty = (ogObject.ogImageSecureURL.length !== 0) ? ogObject.ogImageSecureURL : ogObject.ogImageProperty;
     // fall back to ogImageURL if ogImageProperty isn't set
     ogObject.ogImageProperty = (ogObject.ogImageProperty.length !== 0) ? ogObject.ogImageProperty : ogObject.ogImageURL;
-    ogObject.ogImageWidth = ogObject.ogImageWidth ? ogObject.ogImageWidth : [];
-    ogObject.ogImageHeight = ogObject.ogImageHeight ? ogObject.ogImageHeight : [];
-    ogObject.ogImageType = ogObject.ogImageType ? ogObject.ogImageType : [];
-    ogObject.ogImageAlt = ogObject.ogImageAlt ? ogObject.ogImageAlt : [];
+    ogObject.ogImageWidth = ogObject.ogImageWidth ?? [];
+    ogObject.ogImageHeight = ogObject.ogImageHeight ?? [];
+    ogObject.ogImageType = ogObject.ogImageType ?? [];
+    ogObject.ogImageAlt = ogObject.ogImageAlt ?? [];
   }
 
   // format images and limit to 10
@@ -123,11 +126,22 @@ export function mediaSetup(ogObject: OgObjectInternal) {
     .sort(mediaSorter);
 
   // sets ogVideo property/width/height/type to empty array if one these exists
-  if (ogObject.ogVideoProperty ?? ogObject.ogVideoWidth ?? ogObject.ogVideoHeight ?? ogObject.ogVideoType) {
-    ogObject.ogVideoProperty = ogObject.ogVideoProperty ? ogObject.ogVideoProperty : [];
-    ogObject.ogVideoWidth = ogObject.ogVideoWidth ? ogObject.ogVideoWidth : [];
-    ogObject.ogVideoHeight = ogObject.ogVideoHeight ? ogObject.ogVideoHeight : [];
-    ogObject.ogVideoType = ogObject.ogVideoType ? ogObject.ogVideoType : [];
+  if (
+    ogObject.ogVideoSecureURL
+    ?? ogObject.ogVideoProperty
+    ?? ogObject.ogVideoWidth
+    ?? ogObject.ogVideoHeight
+    ?? ogObject.ogVideoType
+  ) {
+    ogObject.ogVideoSecureURL = ogObject.ogVideoSecureURL ?? [];
+    ogObject.ogVideoProperty = ogObject.ogVideoProperty ?? [];
+    // set ogVideoProperty to ogVideoSecureURL if it exists
+    // eslint-disable-next-line max-len
+    ogObject.ogVideoProperty = (ogObject.ogVideoSecureURL.length !== 0) ? ogObject.ogVideoSecureURL : ogObject.ogVideoProperty;
+
+    ogObject.ogVideoWidth = ogObject.ogVideoWidth ?? [];
+    ogObject.ogVideoHeight = ogObject.ogVideoHeight ?? [];
+    ogObject.ogVideoType = ogObject.ogVideoType ?? [];
   }
 
   // format videos and limit to 10
@@ -150,12 +164,11 @@ export function mediaSetup(ogObject: OgObjectInternal) {
     ?? ogObject.twitterImageHeight
     ?? ogObject.twitterImageAlt
   ) {
-    ogObject.twitterImageSrc = ogObject.twitterImageSrc ? ogObject.twitterImageSrc : [];
-    // eslint-disable-next-line max-len
-    ogObject.twitterImageProperty = ogObject.twitterImageProperty ? ogObject.twitterImageProperty : ogObject.twitterImageSrc; // deafult to twitterImageSrc
-    ogObject.twitterImageWidth = ogObject.twitterImageWidth ? ogObject.twitterImageWidth : [];
-    ogObject.twitterImageHeight = ogObject.twitterImageHeight ? ogObject.twitterImageHeight : [];
-    ogObject.twitterImageAlt = ogObject.twitterImageAlt ? ogObject.twitterImageAlt : [];
+    ogObject.twitterImageSrc = ogObject.twitterImageSrc ?? [];
+    ogObject.twitterImageProperty = ogObject.twitterImageProperty ?? ogObject.twitterImageSrc; // deafult to twitterImageSrc
+    ogObject.twitterImageWidth = ogObject.twitterImageWidth ?? [];
+    ogObject.twitterImageHeight = ogObject.twitterImageHeight ?? [];
+    ogObject.twitterImageAlt = ogObject.twitterImageAlt ?? [];
   }
 
   // format twitter images and limit to 10
@@ -176,10 +189,10 @@ export function mediaSetup(ogObject: OgObjectInternal) {
     ?? ogObject.twitterPlayerHeight
     ?? ogObject.twitterPlayerStream
   ) {
-    ogObject.twitterPlayerProperty = ogObject.twitterPlayerProperty ? ogObject.twitterPlayerProperty : [];
-    ogObject.twitterPlayerWidth = ogObject.twitterPlayerWidth ? ogObject.twitterPlayerWidth : [];
-    ogObject.twitterPlayerHeight = ogObject.twitterPlayerHeight ? ogObject.twitterPlayerHeight : [];
-    ogObject.twitterPlayerStream = ogObject.twitterPlayerStream ? ogObject.twitterPlayerStream : [];
+    ogObject.twitterPlayerProperty = ogObject.twitterPlayerProperty ?? [];
+    ogObject.twitterPlayerWidth = ogObject.twitterPlayerWidth ?? [];
+    ogObject.twitterPlayerHeight = ogObject.twitterPlayerHeight ?? [];
+    ogObject.twitterPlayerStream = ogObject.twitterPlayerStream ?? [];
   }
 
   // format twitter player and limit to 10
@@ -195,10 +208,10 @@ export function mediaSetup(ogObject: OgObjectInternal) {
 
   // sets music property/songTrack/songDisc to empty array if one these exists
   if (ogObject.musicSongProperty ?? ogObject.musicSongTrack ?? ogObject.musicSongDisc ?? ogObject.musicSongUrl) {
-    ogObject.musicSongUrl = ogObject.musicSongUrl ? ogObject.musicSongUrl : [];
-    ogObject.musicSongProperty = ogObject.musicSongProperty ? ogObject.musicSongProperty : ogObject.musicSongUrl; // deafult to musicSongUrl
-    ogObject.musicSongTrack = ogObject.musicSongTrack ? ogObject.musicSongTrack : [];
-    ogObject.musicSongDisc = ogObject.musicSongDisc ? ogObject.musicSongDisc : [];
+    ogObject.musicSongUrl = ogObject.musicSongUrl ?? [];
+    ogObject.musicSongProperty = ogObject.musicSongProperty ?? ogObject.musicSongUrl; // deafult to musicSongUrl
+    ogObject.musicSongTrack = ogObject.musicSongTrack ?? [];
+    ogObject.musicSongDisc = ogObject.musicSongDisc ?? [];
   }
 
   // format music songs and limit to 10
@@ -209,7 +222,7 @@ export function mediaSetup(ogObject: OgObjectInternal) {
     .sort(mediaSorterMusicSong);
 
   // remove old values since everything will live under the main property
-  fields.filter((item) => (item.multiple && item.fieldName?.match('(ogImage|ogVideo|twitter|musicSong).*')))
+  fields.filter((item) => (item.multiple && /(ogImage|ogVideo|twitter|musicSong).*/.exec(item.fieldName)))
     .forEach((item) => {
       delete ogObject[item.fieldName];
     });

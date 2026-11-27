@@ -1,6 +1,6 @@
 {
   "name": "open-graph-scraper",
-  "description": "Node.js scraper module for Open Graph and Twitter Card info",
+  "description": "A Node.js library for extracting Open Graph, Twitter Card, JSON-LD, and other metadata from web pages",
   "version": "6.13.0",
   "license": "MIT",
   "main": "./dist/cjs/index.js",
@@ -39,7 +39,7 @@
     "chardet": "^2.2.0",
     "cheerio": "^1.2.0",
     "iconv-lite": "^0.7.3",
-    "undici": "^7.30.1"
+    "undici": "^7.30.2"
   },
   "files": [
     "/dist",
@@ -48,17 +48,16 @@
     "CHANGELOG.md"
   ],
   "devDependencies": {
-    "@snyk/protect": "^1.1308.3",
+    "@eslint/eslintrc": "^3.3.7",
+    "@snyk/protect": "^1.1309.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "^20.19.43",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.74.0",
+    "@typescript-eslint/parser": "^8.74.0",
     "chai": "^6.3.0",
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint": "^9.39.5",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-mocha": "^10.5.0",
+    "eslint-plugin-mocha": "^11.3.0",
     "eslint-plugin-promise": "^7.2.1",
     "mocha": "^12.0.3",
     "nyc": "^18.0.0",
@@ -72,11 +71,16 @@
     "web": "http://github.com/jshemas/openGraphScraper"
   },
   "keywords": [
-    "app links",
-    "dublin core",
+    "app-links",
+    "dublin-core",
+    "html",
+    "html metadata",
     "json ld",
+    "link preview",
     "meta tags",
     "metadata",
+    "node",
+    "nodejs",
     "og",
     "ogp",
     "ogs",
@@ -84,9 +88,15 @@
     "open graph",
     "opengraph",
     "openGraphScraper",
+    "rich previews",
     "scraper",
+    "social media",
+    "social metadata",
+    "structured data",
     "twitter card",
-    "twitter"
+    "twitter",
+    "web scraping",
+    "website preview"
   ],
   "snyk": true
 }

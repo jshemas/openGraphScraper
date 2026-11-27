@@ -53,6 +53,7 @@ describe('twitter', function () {
         expect(response).to.be.an('Response');
       });
     });
+
     it('On Github Site', function () {
       return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/github',
@@ -123,6 +124,7 @@ describe('twitter', function () {
         expect(response).to.be.an('Response');
       });
     });
+
     it('On Atom Site', function () {
       return ogs({
         url: 'https://jshemas.github.io/openGraphScraperPages/atom.html',

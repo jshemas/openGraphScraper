@@ -3,7 +3,7 @@ import {
   Agent, fetch, Headers, type RequestInit,
 } from 'undici';
 import { decode } from 'iconv-lite';
-import { CheerioAPI, load } from 'cheerio';
+import { load, type CheerioAPI } from 'cheerio';
 import chardet from 'chardet';
 import type { OpenGraphScraperOptions } from './types';
 import { assertPublicUrl, isPublicAddress } from './isPublicAddress';
@@ -164,7 +164,7 @@ export default async function requestAndResultsFormatter(options: OpenGraphScrap
   let response;
   const requestDispatcher = createRequestDispatcher();
   try {
-    // eslint-disable-next-line no-control-regex
+
     const isLatin1 = /^[\u0000-\u00ff]{0,}$/;
 
     let url = options.url ?? '';

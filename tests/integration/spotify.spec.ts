@@ -19,7 +19,7 @@ describe('spotify', function () {
       // expect(result.favicon).to.be.eql('https://open.scdn.co/cdn/images/favicon.0c211e2e.png');
       // expect(result.ogUrl).to.be.eql('https://open.spotify.com/album/5EBGCvO6upi3GNknMVe9x9');
       expect(result.ogType).to.be.eql('music.album');
-      expect(result.musicMusician).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
+      expect(result.musicMusician).to.be.eql(['https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x']);
       expect(result.musicReleaseDate).to.be.eql('2018-06-01');
       expect(result.twitterTitle).to.be.eql('Listen to ye - Album by Kanye West | Spotify');
       expect(result.twitterSite).to.be.eql('@spotify');
@@ -192,7 +192,7 @@ describe('spotify', function () {
       expect(result.musicDuration).to.be.eql('196');
       expect(result.musicAlbum).to.be.eql('https://open.spotify.com/album/4xM1pUHZp9HsuKNxyOQDR0');
       expect(result.musicAlbumTrack).to.be.eql('4');
-      expect(result.musicMusician).to.be.eql('https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x');
+      expect(result.musicMusician).to.be.eql(['https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x']);
       expect(result.musicReleaseDate).to.be.eql('2016-06-10');
       expect(result.ogAudio).to.be.an('string').and.to.not.be.empty;
       expect(result.ogAudioType).to.be.eql('audio/mpeg');

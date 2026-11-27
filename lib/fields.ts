@@ -109,7 +109,7 @@ const fields: Fields = [
     fieldName: 'ogLocale',
   },
   {
-    multiple: false,
+    multiple: true,
     property: 'og:locale:alternate',
     fieldName: 'ogLocaleAlternate',
   },
@@ -169,7 +169,7 @@ const fields: Fields = [
     fieldName: 'ogVideoProperty',
   },
   {
-    multiple: false,
+    multiple: true,
     property: 'og:video:secure_url',
     fieldName: 'ogVideoSecureURL',
   },
@@ -419,7 +419,7 @@ const fields: Fields = [
     fieldName: 'musicSongUrl',
   },
   {
-    multiple: false,
+    multiple: true,
     property: 'music:musician',
     fieldName: 'musicMusician',
   },
@@ -499,7 +499,7 @@ const fields: Fields = [
     fieldName: 'articleSection',
   },
   {
-    multiple: false,
+    multiple: true,
     property: 'article:tag',
     fieldName: 'articleTag',
   },
@@ -627,6 +627,41 @@ const fields: Fields = [
     multiple: false,
     property: 'business:contact_data:country_name',
     fieldName: 'businessContactDataCountryName',
+  },
+  {
+    multiple: false,
+    property: 'business:contact_data:email',
+    fieldName: 'businessContactDataEmail',
+  },
+  {
+    multiple: false,
+    property: 'business:contact_data:phone_number',
+    fieldName: 'businessContactDataPhoneNumber',
+  },
+  {
+    multiple: false,
+    property: 'business:contact_data:fax_number',
+    fieldName: 'businessContactDataFaxNumber',
+  },
+  {
+    multiple: false,
+    property: 'business:contact_data:website',
+    fieldName: 'businessContactDataWebsite',
+  },
+  {
+    multiple: false,
+    property: 'business:hours:day',
+    fieldName: 'businessHoursDay',
+  },
+  {
+    multiple: false,
+    property: 'business:hours:start',
+    fieldName: 'businessHoursStart',
+  },
+  {
+    multiple: false,
+    property: 'business:hours:end',
+    fieldName: 'businessHoursEnd',
   },
   {
     multiple: false,
@@ -947,6 +982,66 @@ const fields: Fields = [
     multiple: false,
     property: 'fb:app_id',
     fieldName: 'fbAppId',
+  },
+  {
+    multiple: false,
+    property: 'og:latitude',
+    fieldName: 'ogLatitude',
+  },
+  {
+    multiple: false,
+    property: 'og:longitude',
+    fieldName: 'ogLongitude',
+  },
+  {
+    multiple: false,
+    property: 'og:street-address',
+    fieldName: 'ogStreetAddress',
+  },
+  {
+    multiple: false,
+    property: 'og:locality',
+    fieldName: 'ogLocality',
+  },
+  {
+    multiple: false,
+    property: 'og:region',
+    fieldName: 'ogRegion',
+  },
+  {
+    multiple: false,
+    property: 'og:postal-code',
+    fieldName: 'ogPostalCode',
+  },
+  {
+    multiple: false,
+    property: 'og:country-name',
+    fieldName: 'ogCountryName',
+  },
+  {
+    multiple: false,
+    property: 'og:email',
+    fieldName: 'ogEmail',
+  },
+  {
+    multiple: false,
+    property: 'og:phone_number',
+    fieldName: 'ogPhoneNumber',
+  },
+  {
+    multiple: false,
+    property: 'og:fax_number',
+    fieldName: 'ogFaxNumber',
+  },
+  {
+    multiple: false,
+    property: 'og:isbn',
+    fieldName: 'ogIsbn',
+  },
+  {
+    multiple: false,
+    property: 'og:upc',
+    fieldName: 'ogUpc',
   },
 ];
 

@@ -57,6 +57,7 @@ describe('encoding', function () {
         expect(response).to.be.an('Response');
       });
     });
+
     it('360', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/360' })
         .then(function (data) {
@@ -96,6 +97,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('aliexpress', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/aliexpress' })
         .then(function (data) {
@@ -145,6 +147,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('baidu', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/baidu' })
         .then(function (data) {
@@ -198,6 +201,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('csdn', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/csdn' })
         .then(function (data) {
@@ -230,6 +234,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('naver', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/naver' })
         .then(function (data) {
@@ -269,6 +274,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('okezone', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/okezone' })
         .then(function (data) {
@@ -340,6 +346,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('qq', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/qq' })
         .then(function (data) {
@@ -366,6 +373,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('sohu', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/sohu' })
         .then(function (data) {
@@ -390,6 +398,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('taobao', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/taobao' })
         .then(function (data) {
@@ -447,6 +456,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('tmall', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/tmall' })
         .then(function (data) {
@@ -488,6 +498,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('weibo', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/weibo' })
         .then(function (data) {
@@ -514,6 +525,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('xinhuanet', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/xinhuanet' })
         .then(function (data) {
@@ -567,6 +579,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('zhanqi', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/zhanqi' })
         .then(function (data) {
@@ -589,6 +602,7 @@ describe('encoding', function () {
           expect(response).to.be.an('Response');
         });
     });
+
     it('abehiroshi', function () {
       return ogs({ url: 'https://jshemas.github.io/openGraphScraperPages/abehiroshi' })
         .then(function (data) {

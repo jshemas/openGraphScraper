@@ -82,32 +82,32 @@ export interface CustomMetaTags {
 }
 export interface TwitterImageObject {
     alt?: string;
-    height?: number;
+    height?: number | string;
     url: string;
-    width?: number;
+    width?: number | string;
 }
 export interface TwitterPlayerObject {
-    height?: number;
+    height?: number | string;
     stream?: string;
     url: string;
-    width?: number;
+    width?: number | string;
 }
 export interface ImageObject {
-    height?: number;
+    height?: number | string;
     type?: string;
     url: string;
-    width?: number;
+    width?: number | string;
     alt?: string;
 }
 export interface VideoObject {
-    height?: number;
+    height?: number | string;
     type?: string;
     url: string;
-    width?: number;
+    width?: number | string;
 }
 export interface MusicSongObject {
     disc?: string;
-    track?: number;
+    track?: number | string;
     url: string;
 }
 export interface OgObjectInternal {
@@ -137,13 +137,13 @@ export interface OgObjectInternal {
     alWindowsUrl?: string;
     articleAuthor?: string;
     articleExpirationTime?: string;
+    articleModifiedDate?: string;
     articleModifiedTime?: string;
     articlePublishedDate?: string;
     articlePublishedTime?: string;
-    articleModifiedDate?: string;
     articlePublisher?: string;
     articleSection?: string;
-    articleTag?: string;
+    articleTag?: string[];
     author?: string;
     bookAuthor?: string;
     bookCanonicalName?: string;
@@ -154,10 +154,17 @@ export interface OgObjectInternal {
     booksRatingValue?: string;
     bookTag?: string;
     businessContactDataCountryName?: string;
+    businessContactDataEmail?: string;
+    businessContactDataFaxNumber?: string;
     businessContactDataLocality?: string;
+    businessContactDataPhoneNumber?: string;
     businessContactDataPostalCode?: string;
     businessContactDataRegion?: string;
     businessContactDataStreetAddress?: string;
+    businessContactDataWebsite?: string;
+    businessHoursDay?: string;
+    businessHoursEnd?: string;
+    businessHoursStart?: string;
     charset?: string;
     customMetaTags?: Record<string, string | string[]>;
     dcContributor?: string;
@@ -190,7 +197,7 @@ export interface OgObjectInternal {
     musicAlbumUrl?: string;
     musicCreator?: string;
     musicDuration?: string;
-    musicMusician?: string;
+    musicMusician?: string[];
     musicPlaylist?: string;
     musicRadioStation?: string;
     musicReleaseDate?: string;
@@ -211,10 +218,13 @@ export interface OgObjectInternal {
     ogAudioType?: string;
     ogAudioURL?: string;
     ogAvailability?: string;
+    ogCountryName?: string;
     ogDate?: string;
     ogDescription?: string;
     ogDeterminer?: string;
+    ogEmail?: string;
     ogEpisode?: string;
+    ogFaxNumber?: string;
     ogImage?: ImageObject[];
     ogImageAlt?: string[];
     ogImageHeight?: string[];
@@ -223,10 +233,16 @@ export interface OgObjectInternal {
     ogImageType?: string[];
     ogImageURL?: string[];
     ogImageWidth?: string[];
+    ogIsbn?: string;
+    ogLatitude?: string;
     ogLocale?: string;
-    ogLocaleAlternate?: string;
+    ogLocaleAlternate?: string[];
+    ogLocality?: string;
     ogLogo?: string;
+    ogLongitude?: string;
     ogMovie?: string;
+    ogPhoneNumber?: string;
+    ogPostalCode?: string;
     ogPriceAmount?: string;
     ogPriceCurrency?: string;
     ogProductAvailability?: string;
@@ -234,9 +250,12 @@ export interface OgObjectInternal {
     ogProductPriceAmount?: string;
     ogProductPriceCurrency?: string;
     ogProductRetailerItemId?: string;
+    ogRegion?: string;
     ogSiteName?: string;
+    ogStreetAddress?: string;
     ogTitle?: string;
     ogType?: string;
+    ogUpc?: string;
     ogUrl?: string;
     ogVideo?: VideoObject[];
     ogVideoActor?: string;
@@ -248,7 +267,7 @@ export interface OgObjectInternal {
     ogVideoOther?: string;
     ogVideoProperty?: string[];
     ogVideoReleaseDate?: string;
-    ogVideoSecureURL?: string;
+    ogVideoSecureURL?: string[];
     ogVideoSeries?: string;
     ogVideoTag?: string;
     ogVideoTvShow?: string;
@@ -311,4 +330,4 @@ export interface OgObjectInternal {
     twitterUrl?: string;
     updatedTime?: string;
 }
-export type OgObject = Omit<OgObjectInternal, 'musicSongDisc' | 'musicSongProperty' | 'musicSongTrack' | 'musicSongUrl' | 'ogImageAlt' | 'ogImageHeight' | 'ogImageProperty' | 'ogImageSecureURL' | 'ogImageType' | 'ogImageURL' | 'ogImageWidth' | 'ogVideoHeight' | 'ogVideoProperty' | 'ogVideoType' | 'ogVideoWidth' | 'twitterImageAlt' | 'twitterImageHeight' | 'twitterImageProperty' | 'twitterImageSrc' | 'twitterImageWidth' | 'twitterPlayerHeight' | 'twitterPlayerProperty' | 'twitterPlayerStream' | 'twitterPlayerWidth'>;
+export type OgObject = Omit<OgObjectInternal, 'musicSongDisc' | 'musicSongProperty' | 'musicSongTrack' | 'musicSongUrl' | 'ogImageAlt' | 'ogImageHeight' | 'ogImageProperty' | 'ogImageSecureURL' | 'ogImageType' | 'ogImageURL' | 'ogImageWidth' | 'ogVideoHeight' | 'ogVideoProperty' | 'ogVideoSecureURL' | 'ogVideoType' | 'ogVideoWidth' | 'twitterImageAlt' | 'twitterImageHeight' | 'twitterImageProperty' | 'twitterImageSrc' | 'twitterImageWidth' | 'twitterPlayerHeight' | 'twitterPlayerProperty' | 'twitterPlayerStream' | 'twitterPlayerWidth'>;

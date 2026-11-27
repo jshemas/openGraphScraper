@@ -1,20 +1,35 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: ''
+about: Suggest an improvement or new feature
+title: '[Feature]: '
+labels: enhancement
 assignees: ''
-
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## Problem
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+What problem or limitation would this feature address?
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+## Proposed solution
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+Describe the behavior you would like.
+
+Example usage:
+
+```js
+// Your proposed API or usage
+```
+
+## Alternatives considered
+
+Describe any alternative solutions or workarounds you have considered.
+
+## Compatibility
+
+- Would this require breaking changes?
+- Does the proposed API need to preserve existing behavior?
+- Are there relevant edge cases or platform considerations?
+
+## Additional context
+
+Links, logs, screenshots, or other relevant details.

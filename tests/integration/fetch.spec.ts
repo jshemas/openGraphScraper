@@ -5,7 +5,6 @@ import ogs from '../../index';
 
 describe('fetch', function () {
   // TODO: Site keeps going offline, will need to find a new site
-  // eslint-disable-next-line mocha/no-skipped-tests
   it.skip('setting the fetch headers', function () {
     // userAgent is undici by default
     const userAgent = 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.5563.57 Mobile Safari/537.36';
@@ -58,7 +57,6 @@ describe('fetch', function () {
       });
   });
   // https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout
-  // eslint-disable-next-line mocha/no-skipped-tests
   it.skip('setting a timeout - using AbortSignal.timeout()', function () {
     return ogs({ url: 'https://releases.ubuntu.com/26.10/ubuntu-26.10-desktop-amd64.iso', fetchOptions: { signal: AbortSignal.timeout(3000) } })
       .then(function () {
@@ -82,7 +80,6 @@ describe('fetch', function () {
       });
   });
   // https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/abort
-  // eslint-disable-next-line mocha/no-skipped-tests
   it.skip('setting a timeout - using controller.abort()', function () {
     const controller = new AbortController();
     setTimeout(() => controller.abort(), 3000);

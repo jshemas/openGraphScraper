@@ -391,7 +391,7 @@ describe('static', function () {
         expect(result.ogDescription).to.be.eql('“Undertaking a detailed evaluation of all IT systems and network endpoints in the target enterprise will be vital for enabling the M&A team to identify how to effectively operationalise the');
         expect(result.ogUrl).to.be.eql('https://www.cbronline.com/opinion/cyber-security-due-diligence-in-mergers');
         expect(result.ogSiteName).to.be.eql('Computer Business Review');
-        expect(result.articleTag).to.be.eql("Sidebar Editor's Pick");
+        expect(result.articleTag).to.be.eql(["acquisitions", "anurag kahol", "bitglass", "cyber security", "due diligence", "Homepage News List", "M&A", "Mergers", "Sidebar Editor's Pick"]);
         expect(result.articleSection).to.be.eql('Business');
         expect(result.articlePublishedTime).to.be.eql('2020-06-04T13:14:28+01:00');
         expect(result.articleModifiedTime).to.be.eql('2020-06-04T13:32:55+01:00');
@@ -917,7 +917,7 @@ describe('static', function () {
         expect(result.ogUrl).to.be.eql('https://economictimes.indiatimes.com/jobs/lockdown-led-to-30-surge-in-resumes-from-job-seekers-recruitment-firms/articleshow/76152443.cms');
         expect(result.ogDescription).to.be.eql('Placement firm TeamLease Services has received 22,367 resumes in May from hospitality sectors alone, up a staggering 444 per cent from 4,109 in the previous month. Professionals who are proactively looking out have either been handed out pink slips or are facing job threats as their companies take the restructuring route, said executives aware of the matter.');
         expect(result.articlePublishedTime).to.be.eql('2020-06-02T14:05:00.000Z');
-        expect(result.articleTag).to.be.eql('Corona');
+        expect(result.articleTag).to.be.eql(['lockdown impact on jobs', 'coronavirus india', 'Jobs', 'lockdown', 'Corona']);
         expect(result.articleModifiedTime).to.be.eql('2020-06-03T12:41:00.000Z');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@EconomicTimes');
@@ -997,7 +997,7 @@ describe('static', function () {
         expect(result.ogType).to.be.eql('article');
         expect(result.articlePublishedTime).to.be.eql('2019-03-14T14:35:12Z');
         expect(result.articleModifiedTime).to.be.eql('2019-03-14@14:35:13 UTC');
-        expect(result.articleTag).to.be.eql('Technology,Robots');
+        expect(result.articleTag).to.be.eql(['Technology,Robots']);
         expect(result.ogDate).to.be.eql('2019-03-14@14:35:13 UTC');
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.twitterSite).to.be.eql('@Entrepreneur');
@@ -1188,7 +1188,7 @@ describe('static', function () {
         expect(result.articlePublishedTime).to.be.eql('2020-06-11T06:00:03');
         expect(result.articleModifiedTime).to.be.eql('2020-06-11T09:47:11');
         expect(result.author).to.be.eql('KC Ifeanyi');
-        expect(result.articleTag).to.be.eql('audio');
+        expect(result.articleTag).to.be.eql(['Creativity', 'audio', 'Creativity', 'audio']);
         expect(result.twitterUrl).to.be.eql('https://www.fastcompany.com/90514725/the-internets-favorite-psychiatrist-has-a-game-plan-for-your-mental-health');
         expect(result.ogImage).to.be.eql([{
           url: 'https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2020/06/p-2-dr-jess-clemons-creative-conversation.jpg',
@@ -1480,7 +1480,7 @@ describe('static', function () {
         expect(result.ogUrl).to.be.eql('https://www.geektime.com/duckface-can-saves-lives-binah-ai-raises-13-5m-to-monitor-health-condition-through-selfies/');
         expect(result.articlePublishedTime).to.be.eql('2020-06-11T15:58:33.000Z');
         expect(result.articleModifiedTime).to.be.eql('2020-06-11T15:58:33.000Z');
-        expect(result.articleTag).to.be.eql('startups');
+        expect(result.articleTag).to.be.eql(['investments', 'startups']);
         expect(result.ogDate).to.be.eql('2020-06-11');
         expect(result.articlePublisher).to.be.eql('https://www.facebook.com/geektimecoil');
         expect(result.twitterCard).to.be.eql('summary_large_image');
@@ -1707,7 +1707,7 @@ describe('static', function () {
         expect(result.ogDescription).to.be.eql('Technion doctoral Muhammad Khatib, inspired biological healing process of the human skin, decided to adapt his elastomer into an autonomous self-healing system.');
         expect(result.ogUrl).to.be.eql('https://jewishbusinessnews.com/2020/06/11/israeli-student-at-the-technion-develops-self-healing-artificial-electronic-skin/');
         expect(result.ogSiteName).to.be.eql('Jewish Business News');
-        expect(result.articleTag).to.be.eql('Technion – Israel Institute of Technology');
+        expect(result.articleTag).to.be.eql(['Technion – Israel Institute of Technology']);
         expect(result.articleSection).to.be.eql('World');
         expect(result.ogDate).to.be.eql('2020-06-11T20:29:48+03:00');
         expect(result.articlePublishedTime).to.be.eql('2020-06-11T15:51:41+03:00');
@@ -1779,7 +1779,7 @@ describe('static', function () {
         expect(result.ogSiteName).to.be.eql('Kickstarter');
         expect(result.ogDescription).to.be.eql('LVL is a wearable hydration monitor that gives you the complete picture of your health by also tracking activity, sleep, mood and HR.');
         expect(result.ogLocale).to.be.eql('en_US');
-        expect(result.ogLocaleAlternate).to.be.eql('fr_FR');
+        expect(result.ogLocaleAlternate).to.be.eql([ 'en_US', 'de_DE', 'es_ES', 'fr_FR' ]);
         expect(result.twitterCard).to.be.eql('summary_large_image');
         expect(result.ogDate).to.be.eql('2016-10-26T23:00:00-04:00');
         expect(result.twitterSite).to.be.eql('@kickstarter');

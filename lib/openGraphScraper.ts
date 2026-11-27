@@ -50,10 +50,14 @@ export default async function setOptionsAndReturnOpenGraphResults(ogsOptions: Op
     ogObject.requestUrl = options.url;
 
     return { ogObject, response, html: body };
-  } catch (exception: any) {
-    if (exception && (exception.code === 'ENOTFOUND' || exception.code === 'EHOSTUNREACH' || exception.code === 'ENETUNREACH')) {
+  } catch (exception: unknown) {
+    if (typeof exception === 'object' && exception !== null
+      && 'code' in exception
+      && (exception.code === 'ENOTFOUND' || exception.code === 'EHOSTUNREACH' || exception.code === 'ENETUNREACH')) {
       throw new Error('Page not found');
-    } else if (exception && (exception.name === 'AbortError')) {
+    } else if (typeof exception === 'object' && exception !== null
+      && 'name' in exception
+      && exception.name === 'AbortError') {
       throw new Error('The operation was aborted due to timeout');
     }
     if (exception instanceof Error) throw exception;

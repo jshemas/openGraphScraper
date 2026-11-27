@@ -23,7 +23,7 @@ function isBlockedIPv4(address: string) {
 
 function parseIPv6(address: string) {
   let normalized = address.toLowerCase();
-  const ipv4Suffix = normalized.match(/(\d{1,3}(?:\.\d{1,3}){3})$/)?.[1];
+  const ipv4Suffix = (/(\d{1,3}(?:\.\d{1,3}){3})$/.exec(normalized))?.[1];
 
   if (ipv4Suffix) {
     const octets = ipv4Suffix.split('.').map(Number);
