@@ -184,7 +184,7 @@ export function isCustomMetaTagsValid(customMetaTags: CustomMetaTags[]): boolean
  */
 export function unescapeScriptText(scriptText: string) {
   // https://stackoverflow.com/a/34056693
-  return scriptText.replace(/\\x([0-9a-f]{2})/ig, (_, pair) => {
+  return scriptText.replace(/\\x([0-9a-f]{2})/ig, (_match: string, pair: string) => {
     const charCode = parseInt(pair, 16);
     if (charCode === 34) {
       return '\\"';
