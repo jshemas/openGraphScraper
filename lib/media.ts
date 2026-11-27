@@ -9,27 +9,29 @@ import type {
   VideoObject,
 } from './types';
 
-const mediaMapperTwitterImage = (item: TwitterImageObject[]) => ({
+type MediaValues = [string, ...(string | undefined)[]];
+
+const mediaMapperTwitterImage = (item: MediaValues) => ({
   alt: item[3],
   height: item[2],
   url: item[0],
   width: item[1],
 });
 
-const mediaMapperTwitterPlayer = (item: TwitterPlayerObject[]) => ({
+const mediaMapperTwitterPlayer = (item: MediaValues) => ({
   height: item[2],
   stream: item[3],
   url: item[0],
   width: item[1],
 });
 
-const mediaMapperMusicSong = (item: MusicSongObject[]) => ({
+const mediaMapperMusicSong = (item: MediaValues) => ({
   disc: item[2],
   track: item[1],
   url: item[0],
 });
 
-const mediaMapper = (item: ImageObject[] | VideoObject[]) => ({
+const mediaMapper = (item: MediaValues) => ({
   height: item[2],
   type: item[3],
   url: item[0],
@@ -55,7 +57,8 @@ const mediaSorter = (
   } if (aExt !== 'gif' && bExt === 'gif') {
     return 1;
   }
-  return Math.max(b.width ?? 0, b.height ?? 0) - Math.max(a.width ?? 0, a.height ?? 0);
+  return Math.max(Number(b.width ?? 0), Number(b.height ?? 0))
+    - Math.max(Number(a.width ?? 0), Number(a.height ?? 0));
 };
 
 const mediaSorterMusicSong = (a: MusicSongObject, b: MusicSongObject) => {
@@ -66,14 +69,14 @@ const mediaSorterMusicSong = (a: MusicSongObject, b: MusicSongObject) => {
   } if ((a.disc ?? 0) < (b.disc ?? 0)) {
     return -1;
   }
-  return a.track - b.track;
+  return Number(a.track) - Number(b.track);
 };
 
 // lodash zip replacement
-const zip = (array: any, ...args: any) => {
+const zip = <T>(array: T[] | undefined, ...args: (T[] | undefined)[]): [T, ...(T | undefined)[]][] => {
   if (array === undefined) return [];
   return array
-    .map((value: any, idx: number) => [value, ...args.map((arr: []) => arr[idx])]);
+    .map((value, idx) => [value, ...args.map((arr) => arr?.[idx])]);
 };
 
 /**

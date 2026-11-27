@@ -82,32 +82,32 @@ export interface CustomMetaTags {
 }
 export interface TwitterImageObject {
     alt?: string;
-    height?: number;
+    height?: number | string;
     url: string;
-    width?: number;
+    width?: number | string;
 }
 export interface TwitterPlayerObject {
-    height?: number;
+    height?: number | string;
     stream?: string;
     url: string;
-    width?: number;
+    width?: number | string;
 }
 export interface ImageObject {
-    height?: number;
+    height?: number | string;
     type?: string;
     url: string;
-    width?: number;
+    width?: number | string;
     alt?: string;
 }
 export interface VideoObject {
-    height?: number;
+    height?: number | string;
     type?: string;
     url: string;
-    width?: number;
+    width?: number | string;
 }
 export interface MusicSongObject {
     disc?: string;
-    track?: number;
+    track?: number | string;
     url: string;
 }
 export interface OgObjectInternal {
