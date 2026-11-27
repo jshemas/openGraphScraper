@@ -1,31 +1,57 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
+about: Report a reproducible bug
+title: '[Bug]: '
+labels: bug
 assignees: ''
-
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+## Description
 
-**To Reproduce**
-Steps to reproduce the behavior:
+A clear description of the issue.
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## Reproduction
 
-**Actual behavior**
-A clear and concise description of what is happening.
+Provide a minimal code example:
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+```js
+// Your code here
+```
 
-**Additional context**
-Add any other context about the problem here.
+URL:
 
- - OS: [e.g. iOS/Windows/Linux]
- - Node Version: [e.g. 18]
- - openGraphScraper Version:
- - tsconfig.json:
+```text
+https://example.com
+```
+
+Options:
+
+```json
+{}
+```
+
+Steps:
+1.
+2.
+3.
+
+## Expected behavior
+
+What should happen?
+
+## Actual behavior
+
+What happens instead? Include errors or unexpected returned data.
+
+## Environment
+
+- openGraphScraper version:
+- Node.js version:
+- OS:
+- Runtime (Node, browser, serverless, etc.):
+- Package manager:
+- `tsconfig.json` (if relevant):
+
+## Additional context
+
+Links, logs, screenshots, or other relevant details.
